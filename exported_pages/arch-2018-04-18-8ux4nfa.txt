@@ -1,0 +1,112 @@
+UPDATES:
+
+Javi
+	* Merged a few tiny pull requests from Gio to get rid of ansible's inventory warning
+	* Focused on producing an installer for the demo at MS next month
+		* It's based on demo-ATIA branch
+		* Already merged a few requirements
+		* Willing to produce a valid installer by the EOD for Kavya to test - not the final one
+
+Antranig
+	* Review of I18N work by Astea
+	* Work on "user error manager" for GPII-2831
+		* This will interact with the I18N work by Astea - hoisting out hardcoded strings into a bundle file
+	* Meetings about schema and I18N interaction
+	* "Core API" team meetings with Cindy et al about new data model/snapset provisioning
+	* Matchmaker meeting 
+	* Working with Cindy on enabling PSP updates to write to the cloud
+	* Looking at PSP3 specs
+	* General work considering planning and specs, reviewing status for Gregg with Sandra and Javi
+	* Meeting about "errors" with the site team which morphed into a meeting about accounts
+		* There will be some, even though they are not called that and we do not have a spec on what they will allow to be administered
+
+Cindy
+	* GPII-2630: addressing code review comments and also apply Antranig's suggestions
+	* Meetings about the next step with snapsets, user keys, PPT
+	* Discussion with Tyler, Colin, Antranig about a CD step that syncs up snapsets/demo keys in github dirs with couchdb data
+	* GPII-2965: Hook up PSP with Cloud. Just started
+
+Georgi (on behalf of the Astea team):
+	* Participated in two i18n discussions
+		* Explained the current i18n approach for the PSP to the team
+	* Working on the PSP3
+		* GPII-2929: About screen
+		* GPII-2932: Image associated with preference set
+		* GPII-2940: Grouping functionality in PSP
+		* GPII-2941: Modify PSP application restart behavior
+	* Looked into the issue with the hanging gpii-app tests when assessing the test coverage
+	* GPII-2937: Update Electron version in PSP to 1.8.4 (yay!)
+		* Created a workaround for the “instanceof Array” issue
+
+JJ:
+	* Addressing Steve Grundell comments on GPII-2729 - Windows. Thanks Steve.
+	* Working into fixing the issue of acceptanceTests. Confirmed with Javi that it's indeed expected behavior.
+	* Reviewed Steve GPII-2772, pure magic, hope I could talk about this more with Steve.
+	* Fixing Acceptance tests for GPII-2521, random fail about wallpaper that needs to be identified.
+
+Joseph:
+	* FLUID-6271: Buildkite Agent breaks Vagrant Builds (https://issues.fluidproject.org/browse/FLUID-6271)
+		* Worked with Gio to figure out which failures were buildkite's and which were test failures in my pull request.
+		* Resolved with respect to buildkite.
+	* GPII-2493: Improving test coverage reports for Windows
+		* Modified .nycrc file and made a pull request against Tony's pull request and Tony commented.
+		* Working on getting the correct mixture of include/excludes.
+		* https://github.com/the-t-in-rtf/windows/pull/1
+	* GPII-2927:  Fixed code coverage for process reporter components in universal
+		* My pull request has been reviewed by Tony
+		* Needs someone with commit access to do a review and maybe a merge.
+		* https://github.com/GPII/universal/pull/604
+
+Justin:
+	* Joined the i18n meeting on Tuesday
+	* Working on FLUID-6175 to add play/pause to TTS
+		* https://issues.fluidproject.org/browse/FLUID-6175
+	* Addressing FLUID-6176 code review with the work for FLUID-6175
+
+
+Kavya:
+	* Testing Justin's UIO+ beta version - few observations but no major issues identified
+	*  Working on putting things together for upcoming demo.
+
+Sandra:
+    - Working on demo to Microsoft by Gregg next month (Javi, Kavya, Steve Grundell)
+    - Working on high-level component status for Gregg (Javi, Antranig)
+    - Continue to interview candidates for IoD. 
+    - Hired a DevOps new team member, start date on 23-April. Sergey Nazarov, lives in Seattle but moving to Portland. 
+    - Reposting position for Kasper's replacement. 
+    - Met with UX regarding Error Messages/Manager. Good progress. 
+    - Meeting regarding Matchmaker Phase 2, follow-up from Tony after he returns. 
+
+Steve Grundell:
+    Reviewed some of JJ's work
+    Implemented a new way of using the tokens: GPII-2946
+    Wrote some bad code for the latest demo
+    Investigating how to download language packs. Automatically? Interesting.
+    Looking into some problem with uploading the logs to elastic search
+
+STEVE GITHENS
+
+WILL DEFINITELY FILL OUT HIS UPDATES THIS TIME.  THEY'LL BE AWESOME. Will totally do it in a sec when I get to my keyboardl
+
+Tony:
+	1. Got an early preview of data we will use to federate the UL with AbleData, our largest data set to date by far.
+	1. Met with Kasper, Antranig and others to discuss my taking over some of Kasper's former responsibilities and otherwise helping prepare for the community college pilot.
+	1. Sketched out more of the innards of Fluid Schema Lite and reviewed with Antranig, ASTEA and others. Have good feedback to continue moving forward with that.
+	1. Continued working on gpii-app code coverage, Georgi from ASTEA provided key feedback to help move that forward.
+	1. Looked at Joseph's pull, even I get confused between my instrumentation syntax and nyc. It could be easier.
+	1. Off for two weeks starting Monday. I will be online intermittently if there are quick questions, but otherwise out.
+
+Tyler:
+    * Sergey joins Ops team on Monday
+    * Interviews
+    * State of the GPII Cloud demo for Gregg
+    * AWS -> GCP migration: Helm charts
+
+AGENDA:0.
+
+	* Quick question:  is there an APCP Windows discussion meeting tomorrow (11:30am CDT, 16:30 UTC)? (Joseph)
+		* NO
+	* Is that the *other* meeting Antranig mentioned at 20:00 CET (14:00 Cindy Time) tomorrow?  I need to know about that one.
+		* Yes, API team meeting is at 2pm EDT  on Vidyo W
+		* https://www.timeanddate.com/worldclock/meetingdetails.html?year=2018&month=4&day=19&hour=18&min=0&sec=0&p1=3364&p2=250&p3=136
+	* Review components in JIRA and default assignees

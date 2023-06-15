@@ -1,0 +1,34 @@
+2017-07-03
+	
+Tyler:
+	Yesterday: GPII-2412
+	Today: GPII-2412
+	Not blocked
+	
+Alfredo:
+	Yesterday: 
+		* GPII-2390,GPII-2398 Metrics
+	Today:
+		* GPII-2390,GPII-2398 Metrics
+		* GPII-2476 Ansible Grafana
+     Semi-blocked by the keystroke metric definition. We have detected an issue due to amount of data that it generates and we are trying to figure out how to simplify the data. So we also asked to Bern/Vera for alternatives.
+
+Giovanni:
+    Yesterday: GPII-2470
+    Today: GPII-2470
+    Not blocked
+
+
+2017-07-05
+
+Tyler:
+	Yesterday: GPII-2412
+	Today: GPII-2412
+	Not blocked
+
+Alfredo:
+    Yesterday: GPII-2476
+    Today: GPII-2476
+    and following the conversations about the metrics definition
+	
+

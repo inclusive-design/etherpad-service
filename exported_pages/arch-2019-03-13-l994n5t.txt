@@ -1,0 +1,101 @@
+GPII Architecute Meeting Minutes, March 13, 2019.
+
+UPDATES:
+
+Javi
+	* Morphic 1.1.0
+	* Created a couple of installers for testing (one before the weekend and another one yesterday)
+	* Created a WiX merge module for our installer to bundle sharex - need to send PRs
+	* Helped as much as I can in making gpii-app tests passing again - Thanks Tony, Antranig and Cindy for great progress!!
+	* The rest of the week I'll be:
+		* Continuing to fine tune the sharex module (if it's blocking us from keep going) - I'll figure out after this meeting with Kavya
+		* Testing the login solution now that all the pieces are ready
+
+Sandra:
+    - New 1.1.0 candidate installer out yesterday, a few issues being investigated. Plan is to send next to the pilot leads for more testing. 
+    - Checking with Gregg about this year's face-to-face technical meeting. Looking at 1st week in June (3rd - 7th) in Toronto at OCAD. 
+
+Alfredo:
+    - Working on sending the cluster backups to an external project: GPII-2782
+    - Some DNS setup for raisingthefloor.org
+
+Antranig:
+    - Advising on and merging HA work leading to Morphic 1.1.0 release
+    - A bit of review for Windows Service work
+    - Continuing to pursue gpii-app integration test failures with Adtkins
+	    - These are now very close, just resulting from a single (real) issue https://issues.gpii.net/browse/GPII-3791
+	    - We will issue a quick hacked fix for this in order to unstick the merging of our tests
+
+Bryan
+	* GPII-3677 restoring missing SPI settings
+	* Digging through SPI settings handler 
+
+Cindy
+	* GPII-3747: Replace /device http endpoint with an internal function call
+		* Pull request ready for review: https://github.com/GPII/universal/pull/752
+	* GPII-3784: Transformer does not filter out settings handlers that match any interim setting path
+		* Pull request ready for review: https://github.com/GPII/universal/pull/755
+	* Helped with investigating a gpii-app integration test failure
+	* GPII-3719: Enhance data model to encode new grant types and security restrictions for keyless logon
+		* In progress
+	* GPII-3791: Race condition in LifecycleManager session
+		* Will work on
+
+JJ:
+	* Some work into GPII-3652 tests. R&W pull.
+	* Updated some pulls against master.
+	* Worked into GPII-3780. Issues with "desktopBackground" transformations. Pull ready for review.
+	* Some research/testing for:
+		* https://issues.gpii.net/browse/GPII-3771
+		* https://issues.gpii.net/browse/GPII-3792
+
+Joseph:
+	* GPII-3333 Tests of cloud baseed flowmanager endpoints, where tests are shared between development and production configurations
+		* Removed generation of 'user' keys and prefs safes from package.json (and from testing).
+		* Finished tricky merge with master (GPIi-3721 "Enhance Cloud-Based Flow Manager endpoints to support possibility that vault is not yet provisioned")
+		* Re-factored adding/deleting 'user' preferences and improved the deletion.
+		* Next is to test in GCP
+		* https://github.com/GPII/universal/pull/718
+
+Kavya:
+	* Testing new Morphic installer - Reported few issues reg sharex video capture
+	* Testing Demo personas for Gregg
+
+Stepan:
+    - Traffic encryption/Istio
+      - PRs ready - GPII-3671 - Istio - Move Flowmanager and Preferences to Istio
+      - Working on - GPII-3781 - Istio - Move certificates validation to DNS01 challenge
+
+Steven Githens
+- Working with Amarja on using the ppt, changes to config to handle the dev cluster certs.  
+  Successfully able to edit some settings, add JAWS to prefsets, save them, and use them in Morphic
+- Wrapped up latest comments from review on GPII-2966, finishing rewriting it's unit tests to the new couch grade style
+- minor tweaking to my GCP cluster
+- reviewing UI changes to capture tool save workflow, preparing to do that the rest of the month
+
+Steve Grundell
+	- The windows account login
+	- Just done the "open USB drive"
+	- Started the metrics capture of the QSS usage.
+
+Tony:
+
+	1. Working to help unblock Javi's pull against gpii-app, which needs improvements to avoid a range of timing issues, and to avoid mixing test and production configs.
+	1. Continuing work on schema validation of the SR.
+		2. Already have validated all SR entries, generic preferences, and test data sets.
+		2. Working on adding automatic validation to various kettle endpoints in universal, so that invalid payloads will be automatically rejected.
+	1. Continuing to work on UL API synchronisation issues.
+
+Tyler:
+* Persistent Disk recovery process is more documented and cluster spin-up is more reliable (and more information is captured when spin-up fails)
+ * Working on making cloud envs more portable
+
+
+AGENDA:
+
+Sandra: Update with Kavya, Javi and other on latest installer, i.e., when can it be sent to the pilot leads?
+Issues: https://docs.google.com/document/d/1mUZbT5Gb4IDqg0sOSdL42jf-wgm1L05R1B9Efsf3D-o/edit#
+
+
+
+

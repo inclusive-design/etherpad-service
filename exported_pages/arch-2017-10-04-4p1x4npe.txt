@@ -1,0 +1,133 @@
+Updates:
+    
+Ale:
+	* Keep working on onboarding stuff.
+		* Planning
+		* Work in progress with Magic and Dragon
+		* Working with JJ in others PRs.    
+
+Alfredo:
+	* Testing replication vs clustering in CouchDB
+	* Setting up a development environment for developing and testing the E2E tests of GPII
+	* Figuring out how to send all the cloud infrastructure messages to Elastic Search
+	* Attending some meetings
+
+Antranig:
+	* Several updates to PCP Channel
+		* Now supports a new streamlined API, as well as PCP-initiated context switching
+		* Some docs updates for these
+		* Update meeting on Monday with Gregg, Sandra and Astea
+	* Merged stegru's windows metrics pulls for pilots
+	* Characterised some more framework issues arising from PCP work - e.g. FLUID-6208 "model shrinkage"
+	* Meetings about our data model for keys, keytokens, preference safes, etc.
+	* Meeting about our testing/CI configuration and the various technologies they use
+	* Testing some pulls for ADTKINS and merged an update to gpii-express solving problems with error handlers
+
+Avtar:
+	* Met with a few people regarding CI, containers, VMs, etc.
+	* Making changes to the QI CI jobs to make use of the new Alpine containers and move away from Ansible
+	* Spent time with gpii-launcher and used it for the QI backend
+	* Working with Cindy this week to review backend changes
+
+Cindy
+	* GPII-2435, GPII-2538: keep up to date with the master branch
+	* Create the new data model based on "keys and key tokens" document: https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+	* Meetings about the data model and testing environments
+
+Colin
+	* Was away on Friday and Monday in Ottawa
+	* Helping plan our logging strategy with the devops team
+	* Talking with a contractor regarding performance/scalability testing
+	* Still need to summarize activities and progress for infrastructure team and device reporter work
+
+
+Danail:
+	* synced with Antranig on the PCP channel API
+	* modified and completed tasks according to newest changes and discussions
+		* GPII-2533, GPII-2609, GPII-2603
+	* Continue our work with tasks:
+		* GPII-2607
+		* GPII-2608
+		* GPII-2593
+
+Javi
+        - Been working on e2e testing for upcoming APCP pilots. Mostly, conversations with Alfredo to understand cloud-related stuff and performing tests locally with custom configurations and docker containers.
+        - Merged a few pull requests and updated the windows hst-2017 branch with latest changes from master.
+        - Created a new installer for Kavya that includes the updated metrics
+        - I'll be reviewing a few pull requests, mostly the ones from Justin and JJ
+
+JJ:
+	* Finished GPII-1053 (brightness) pull request and preliminary research about WMI API.
+	* Finished GPII-2503 (dictionary) pull request, functionality blocked by bug.
+	* Updating Readmes about MiMiC for the Github repository.
+	* Identified bug about the lifecycle actions with the help of Steve Grundell, who reopened GPII-2106 (nice catch there).
+	* Research about several settings to support soon.
+
+
+Joseph
+	* GPII-1882: Use Process Reporter in acceptance testting
+		* Using Kasper's branch for GPII-1230 (Use "isRunning" block in solutions registry entry).
+		* in progjress
+	* Device Reporter provides all screen resolutions (GPII-1939)
+		* Bringing universal and windows pull requests up-to-date wtih respect to mater.
+		* Should wrap up today.
+
+
+Justin:
+	* UIO+ Phase 1 work
+		* Watining on code review for
+			* GPII-2612 ( https://github.com/GPII/universal/pull/553 )
+			* FLUID-5534 ( https://github.com/fluid-project/infusion/pull/844 )
+				* FLUID-6180 ( https://github.com/fluid-project/infusion/pull/853 )
+				* GPII-2424 ( https://github.com/GPII/gpii-chrome-extension/pull/2 )
+		* Working on issues:
+			* GPII-2559 ( https://issues.gpii.net/browse/GPII-2559 )
+	* Starting on Phase 2 features
+		* GPII-2429 ( https://issues.gpii.net/browse/GPII-2429 )
+			* Working on it in Infusion under FLUID-6204 ( https://issues.fluidproject.org/browse/FLUID-6204 )
+			* Does anyone have more information about what is needed for letter spacing, e.g. research on the topic?
+
+
+Kavya:
+    - Done testing  uio_ec796c.crx version UIO+ browser extension with UIO preference sets - No new issues identified
+    - Started testing on new build for pilots from Javi - WIll have update by eod   
+    
+Michelle:
+	* Met with Bern to get clarificaiton on messages to the user. Refactoring the app message window
+
+Sandra:
+    - Monitoring new build for Pilots. Kavya testing it. 
+    - More planning meetings
+    - On vacation on and off this week. 
+
+Simon
+	* Attending meetings
+		* Update to GPII database model for Keys and KeyTokens
+		* GPII test infrastructure and environments
+	* Review and testing of Cindy's GPII-2435
+	* Planning to do Visible Nexus UX evaluation
+
+Steve Grundell
+	Finished the windows service
+		Just need to integrate it with the installer build
+	Started a PoC for the node NFC listener
+		Using nfc-pcsc, able to send APDUs to the card so far.
+
+
+Tony:
+
+	1. Updated gpii-express with improved "global failure handler": https://issues.gpii.net/browse/GPII-2628
+	1. Updated infusion-docs to use markdown-it instead of marked: https://issues.fluidproject.org/browse/FLUID-6205
+	1. As part of doing this, it was necessary to address https://issues.fluidproject.org/browse/FLUID-5176 and check all links in the  docpad output.  Found ~150 broken links in various passes.  Around 100 are only broken when viewing the raw markdown on GitHub. 
+	1. Of those, I fixed all but one, which is documented here: https://issues.fluidproject.org/browse/FLUID-6207
+	1. In discussions with Antranig on a minor gpii-json-schema pull, we discussed refactoring gpii.express.handler to use a prioritised chain of event listeners.  If any of that means anything to you, let me know, AFAIK I'm the only person who uses the grade: https://issues.gpii.net/browse/GPII-2632
+
+
+Tyler
+* CouchDB backup/restore in the cloud (GPII-2545, GPII-2546, GPII-2601)
+
+Yuriy:
+* working on finalizing task requirements
+* looking at style guides for UI components and overall look of the PCP
+
+Agenda:

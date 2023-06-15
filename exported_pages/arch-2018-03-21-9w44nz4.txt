@@ -1,0 +1,131 @@
+UPDATES:
+
+Javi:
+	* Created an installer for Bern to test the new Survey Pop Up functionality
+	* Been investigating some issues reported by Bern with this last installer
+	* Had hands-on sessions with two candidates
+	* Been reviewing and selecting more candidates for the developer position
+	* Attended some meetings
+	* Provided some help to JJ
+	* Will work on https://issues.gpii.net/browse/GPII-2895 as it is a high priority one
+
+Sandra:
+    - Continue to review resumes and interview candidates. 
+    - Meetings and more meetings.
+    - Working on security remediation tasks (clarifying, opening JIRAs)
+
+Alfredo:
+	* Working on loggin collection in AWS ES service
+	* Strategy/planning of the next steps on devops plan
+
+Antranig:
+	* Two more I18N meetings
+		* general meeting on Tuesday cross-team
+		* special meeting today with Astea
+		* General notes in https://pad.gpii.net/p/i18n-meetings-6294n3p
+	* Interviewing another IoD condidate, Matt
+	* Working with ADTKINS on resolving gpii-testem/CI issues for upcoming framework branch
+	* Merged in Astea's major branch on "queued error dialogs" which moves this functionality over from "electron notifications" to stylable and (potentially) accessible HTML dialogs
+
+Brendan:
+	* Was out Mon/Tue
+	* Before that: a bunch of time hunting/fixing rogue email senders
+		* Note: not actual rogues, more "I wonder where that email gets sent from"
+			* So the answer was usually "Canada," but the path to prove that may shock you
+
+Cindy
+	* GPII-2558: addressed pull request comments. Simon has merged this pull request
+	* GPII-2630: Working with Simon on a intermittent failure at running all-tests.js
+		* Some notes below in Simon's update
+	* Back on the google doc to think about Bern's design for user sign up and the capture tool
+	* Reviewed and merged infusion pull requests
+
+Georgi (on behalf of Astea):
+	* GPII-2894: Initial version of the i18n for PSP
+		* Participated in i18n discussions
+		* Created a grunt task for assembling message bundles for different locales
+		* Implementing a component which distributes messages to all internationalizable components in the PSP
+	* GPII-2890: PSP does not preserve its aspect ratio when DPI is changed
+		* Discovered a corner case for which we implemented a fix that is being tested
+		* The issue can still be rarely reproduced when changing the DPI frequently
+	* GPII-2913: keyedInUserToken doesn’t change until restart (in the recorded survey data) - the fix is available in master
+
+JJ:
+	* GPII-2521: 
+		* Trying to make pass AcceptanceTests and update the rest of the pull.
+		* Update the JIRA tickets with all the information about our solution for using powershell cmdlets in the project.
+	* GPII-1053:
+		* Started updating pull, need to look at tests.
+	* Started looking to Steve pulls GPII-2338 and GPII-2212.
+	* Follow udpates of pulls related with new settings wave.
+
+Joseph
+	* GPII-2775, use process reporter/bridge in integration testing
+		* now based off Kasper's GPII-1230-2 branch
+		* pull request:  https://github.com/kaspermarkus/universal/pull/24
+	* Using Atkins' testing and test coverage on gpiii-master and GPII-2775
+		* on master, process reporter has little coverage, about 30%
+		* on GPII-2775, it's up to about 60%.
+		* looking into this to improve coverage.
+	* Reviewed Stegru's pull request for GPII-2578 (use process reporter code in parts of Windows process handling)
+		* https://github.com/GPII/windows/pull/169
+
+Justin:
+	* Filed PRs for Letter-Spacing work, looking for reviewers
+		* https://github.com/GPII/universal/pull/598
+		* https://github.com/GPII/gpii-chrome-extension/pull/7
+	* Starting work on TTS
+		* https://issues.fluidproject.org/browse/FLUID-6176
+	* Joined the i18n meeting on Tuesday
+
+Kavya:
+	* Regression testing survey pop up Installer - No critical issues identified
+		* Some issues with cloud spinner when zoomtext is turned off
+	* Spend some time on resetting my sony vaio machine
+
+Simon:
+	* Reviewed and merged Cindy's GPII-2558
+	* Reviewing GPII-2630
+		* https://github.com/GPII/universal/pull/591
+	* Is the term "GPII Key" stable?
+		* -> how could we ever know? : P [this is a fair response :) maybe I can ask: does anyone know if it is no longer current?]
+		* -> I have no evidence that they are not current (AB) Awesome, thanks
+	* Investigating intermittent failure
+		* See end of https://ci.gpii.net/job/universal-node-tests/735/console
+		* "FATAL ERROR: Uncaught exception: Error: Parse error on line 1: User with GPII key t"
+		* What we think we know so far:
+			* It looks like it only happens on the GPII-2630 branch
+			* It looks like the failure happens in UserLogonStateChangeTests.js
+			* When diffing a successful run of all-tests.js against a failing run, I see that in the successful run, a call to /user/testUser1/proximityTriggered is debounced:
+			* "FATAL ERROR: Uncaught exception: Proximity trigger ignored due to bounce rules. Please wait current logon change is complete"
+			* Whereas, in the failing run, it is not debounced
+			* Perl script to repeatedly run all-tests.js: https://gist.github.com/simonbates/a6d3f6906f0e8f5ebaa1844003245c4d
+
+Steven Githens:
+    - Cleaning up https://github.com/GPII/gpii-devpmt/pull/1
+    - Continuing work on https://issues.gpii.net/browse/GPII-2694
+    - Set up nodejs coverage for PTT, thinking about the list thread about potential webdriver coverage
+
+STeve Grundell:
+    - Made the process related in Windows use the process reporter. GPII-2578
+    - Making windows explorer restart, for the windows simplification and language change, GPII-2844
+
+Tony:
+	* Updated gpii-express and gpii-testem to assist in testing the upcoming "potentia ii" release of Infusion: https://issues.fluidproject.org/browse/FLUID-6148 
+	* Continued updating UL to work with CouchDB 2.0.
+	* Prepped for and attended latest i18n/json schema crossover meeting 
+	* Started writing up detailed examples of how we might handle UI hints and error messages when working with schemas.
+
+Tyler:
+    * More strategy/planning.
+    * Start investigating a move to Google Cloud / Google Kubernetes Engine
+
+AGENDA:
+
+	* Who will be able to review my UIO+ related PRs?
+		* Javi will review universal's side and test UIO+ one - then I'll let Antranig to give a final review/merge
+	* Unit tests for Universal ( https://issues.gpii.net/browse/GPII-2908 )
+		* Can't recall/see whether ADTKINS successfully added Integration test runs to master yet or not - we will all look at it tomorrow morning
+	* Extending code coverage to windows, linux and gpii-app
+		* Windows are linux are "mostly" there
+		* Tony needs to work on the electron one

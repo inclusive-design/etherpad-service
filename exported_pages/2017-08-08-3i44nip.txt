@@ -1,0 +1,39 @@
+  Agenda:
+      1. Report and restrospective from Sprint 6
+      2. Plan Sprint 7
+      3. Finish reviewing and updating the backlog:
+          https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=19&view=planning
+   Notes from 31-July:
+	*         GPII-2463, moving to next pilot, Gio will update. 
+		* this assumes that we will move our development infrastructure to AWS within the next couple months
+ -  GPII-2386, move out to next pilot. 
+ - GPII-2329, keeping in Pilot 2 Stage, Antranig will consult. 
+- GPII-2010, move off the scrum board (Sandra)
+ - GPII-2014, move to Pilot 3
+ - GPII-2017, need Alfredo 
+ - GPII-2321, also need Alfredo
+ - GPII-2015, ditto, same bucket as 2017 and 2321.
+ - GPII-2325, 2326 and 2327 move to Pilot 3
+ - GPII-2123, need to discuss with Alfredo. 
+ - 2025, need to discuss with Alfredo
+ - Action item for Sandra: Move the roll-up JIRAs out of the backlog.
+ 
+ We got as far as 2035. 
+
+Notes:
+1. Sprint 6:
+    - 2390 - Keep open until the last current requirement for Pilot 1 are completed (one left, being worked on by Steve Grundell)
+    - 2464 - Gio didn't have time to work on it, moves back to the backlog. 
+    Retrospective: No comments for this Sprint. 
+    
+2. Continuation of the Backlog review:
+        - 
+        
+3. Sprint 7 planning:
+    - Gio: 2464
+    - Tyler: 2520
+    - Alfredo: 2448
+    
+    Next week we will estimate the effort for the JIRAs that don't have story points. Then project completion. 
+    
+

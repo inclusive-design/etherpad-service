@@ -1,0 +1,59 @@
+Notes of Nexus Integration Meeting for Windows UI Automation 23/2/17
+
+Present:
+    Antranig, Cindy, Javi, JJ, Joseph, Simon, ADTKINS
+    
+JJ has the following task:
+    
+    Adapting Microsoft's "Learning tools" which are essentially arbitrary desktop windows apps. 
+    Singleton issue: Each application is indeed configurable individually, but we will try to maintain the abstraction from the point of view of the GPII that they can be governed by a single settingsHandler.
+    
+    In many cases the UI elements will not even be visible (specifically, UIAutomationElements are unavailable) unless some preparatory UI operations are made in order to expose them - for example, expanding a dialog to show some settings. If the user is watching the app, they will inevitably see this process unfolding - they may even potentially interfere with it, causing it to need to be restarted etc.
+    
+A Plan:
+   Expose the results of the UI Automation API as a mirroring Nexus tree of components, with significant user actions mapped to corresponding models.
+   This will enable us to express a form of "declarative scripts" as lists of JSON, which can be authored against each individual application.
+   These will be similar in form to the dialect that we currently use in the "IoC Testing Framework", where we express a conversational sequence of fixtures against a "structured application segment" - these typically take the form of alternating elements where we trigger some kind of action in the tree (in this case this will be done via model interactions) and then await the satisfaction of some condition.
+
+    
+Joseph has remarked that the already implemented plan is for Microsoft to replace Active Accessibility with UI Automation - the latest released version of Edge already reflects this transition. The Microsoft engineers have said "Ignore MSAA as far as ARIA is concerned".
+On the other hand, NVDA does not go near UI Automation. We don't know what the story is wrt. NVDA and Edge.
+
+FWIW, Links to .NET API for UIAutomation
+	* https://msdn.microsoft.com/en-us/library/windows/desktop/ms701155(v=vs.85).aspx (Note, this is a C++ interface)
+	* https://msdn.microsoft.com/en-us/library/ms754059(v=vs.110).aspx --tutorial topics for using .NET/C# to access UIAutomation information
+		* Useful if you use edge.js for caling into .NET from nodejs.
+	* As JJ noted yesterday, UIA provides the ability for asynchronous notification of the creation and destruction of automatable elements, which implies that we need not be reliant on polling. This is exposed via the Accessible Event Watcher API:
+		* https://msdn.microsoft.com/en-us/library/dd317979(v=vs.85).aspx
+		* https://msdn.microsoft.com/en-us/library/system.windows.automation.automationevent(v=vs.110).aspx -- .NET/C# version
+		* As with all the other aspects of UIA, there are numerous inconsistencies relating to the delivery and bubbling of events.
+			* The most effective way to detect when a node has been destroyed is to watch that node - in that case, the listener needs to be reattached.
+		* StructureChangeType enumeration: https://msdn.microsoft.com/en-us/library/windows/desktop/ee671618(v=vs.85).aspx
+			* This is the core "change type" notifying the appearance and disappearance of child elements. This page contains warnings on ordering and bulking of these notifications:
+			* Because the implementation of structure-change events depends on the underlying UI framework, UI Automation defines no strict rule governing when a provider must switch from sending individual ChildAdded or ChildRemoved events to the bulk equivalent. However, the switch typically occurs when two to five child elements are added or removed at once. The bulk events help to prevent clients from being flooded by individual ChildAdded and ChildRemoved events.
+
+Q (to JJ): What would you like to implement first?
+A: Changing Windows 10 to look like Window 7
+	* https://issues.gpii.net/browse/GPII-2300 (assigned to Pilots Stage 1)
+		* We need to coordinate this with any of Steve Grundell's work on desktop themes, e.g.https://issues.gpii.net/browse/GPII-252
+	* https://issues.gpii.net/browse/GPII-2238 - GPII Onboarding of line spacing for Pilot Stage 1
+		* https://issues.gpii.net/browse/GPII-2292 Implement proof of concept of control of Microsoft Learning Tools
+		* Learning Tools is an addin that can be added to OneNote. I need to know if OneNote is running.
+			* If OneNote is not running, we can configure it via registry keys.
+			* "Learning tools is an addit for OneNote using an API not officially supported by OneNote - VSTO"
+		* A bigger problem is with MS Word (our settings are linespacing, syllables - syllable boundaries are rendered visually with hyphens)
+			* These settings are not persistent
+			* Learning Tools is embedded in MS Word in two versions - normal purchased version and subscription version (365). In the latter version it is embedded in a different style with a different UI layout, with the settings not supported by Registry Keys.
+			* For example, syllables are registered for only one of these integrations and are not persistent.
+			* JJ thinks we should tackle this using UIA rather than by process polling.
+			* Right now: Watching if a new window is created, check if it is MS Word. If the window changes an internal pane, substitute it with the reading mode panel.
+				* For processes bridge,  we can watch for the disappearance of a single process by tracking it (polling), but if we are waiting for the appearance of a process, we don't have an alternative to taking a complete list of running processes and looking for it (also, polling).
+		* https://www.microsoftpressstore.com/articles/article.aspx?p=2233328 - "You can't get handles from processes from userspace"
+			* The windows version of the processBridge uses the .NET System.Diagnostics.Process class.  That class provides a Handle property, but I don't know if there is a security exception to access it.
+				* https://msdn.microsoft.com/en-us/library/system.diagnostics.process(v=vs.110).aspx
+				* Example of use of Process class in the windows processes bridge:  https://github.com/klown/windows/blob/GPII-442/gpii/node_modules/processReporter/dotNetProcesses.csx#L66
+
+Plan: JJ will "do whatever he needs to do" via a C# use of the UIA API, we will then reconvene and study this code for its potential for genericity, with the hopes of factoring it into a generic part (on the C# side) which binds to certain UIA events in a schema-driven way, and then
+kicks these over a Nexus bus to an engine operating on appearance and disappearance of model components via further schematic rules (hopefully resembling the rules adopted by Simon in work such as the "co-occurence engine" - as well as the schematic kinds of 
+asynchronous conversations operated by the IoC testing framework)
+

@@ -1,0 +1,65 @@
+Ops Meeting 12/19/2016
+==================
+
+	1. Updates
+
+Ale:
+	* Made some test with gitlab-ci-multirunner in my own machine, looks good. But find some problems with the connection to the project, it's a bit cumbersome process to obtain the api key, etc.. because thre's many api keys. Probably we need to automatize that work for the rest of the team.
+		* From Avtar: We need to plan carefully the migration to gitlab through middle pieces to have a more flexible and powerful environment for running our jobs. Let's to discuss the viability of this in next Architecture/Core meeting.
+	* Asking about AWS migration to start to work on that. Trying to align all the pieces.
+
+Alfredo:
+	* Mostly working on SSL infrastructure using LetsEncrypt, that involves:
+		* Creation of a playbook to create/renew certificates
+		* Change the actual Nginx-reverse role
+		* Create a LetsEncrypt account and wrap up all the things
+	* Give support of Windows to vagrant-gpii-ci
+	* Create a playbook to test Jenkins role
+
+Avtar:
+	* Tested Gio's updated Vagrant boxes with GPII/linux and GPII/universal -- can get VMs provisioned and all tests pass. The nexus repo needs a PR so that the correct version of nodejs is installed, currently what is in the master branch will not result in a correctly provisioned VM.
+	* Tested https://github.com/GPII/ci-service/pull/23 but could not get it to work as-is. Backslashes in paths need to be escaped.
+	* Primarily working on P4A demo tasks.
+
+Giovanni:
+	* Refactored common role, inventory files, simplified many things
+	* Updated idi-ops/packer-centos-internal-use repository with improvements
+	* Tested CentOS 7.3 VM template image with these news changes (VM size went from 1.2GB to ~900MB)
+	* Testing CentOS 7.3 upgrade for physical servers and VMs now (will upgrade servers throughout the week)
+
+Agenda Items:
+
+Other topics:
+	* Workaround for Packer shutdown issues:
+		* Set "shutdown_timeout": "1h", and (perhaps) "headless": false, in the json definition of the box.
+	* Gitlab Container: https://github.com/sameersbn/docker-gitlab
+	* Question: Makes sense to integrate powershell scripts into the vagrant generation machines scripts? Last time I checked it seems pretty straightforward and it will help to have a tidy and more powerful environment.
+	* Question: Do we have a service map for current testing GPII infrastructure?
+		* Gio: We need it! :D
+		* Gio: Probably makes sense to move all the services and QI services too to the new cloud platform.
+		* Alfredo has access to the AWS account of RtF, but have to check if has permission to do so
+		* Gio: Will collect an inventory list.
+	* Question: Is it worth to move some of the installation of software from our current provisioning scripts to the image generation.
+		* Gio: We can have differents flavours of every vm. a complete or full one (with pinned versions of the software) and a vanilla one. Probably the former is going to be better for developers day-to-day usage and the second one for other kind of environment.
+			* box name?
+				* windows10-vanilla
+				* windows10-dev
+			* https://chocolatey.org/packages/FirefoxESR
+			* https://www.mozilla.org/en-US/firefox/organizations/
+			* NodeJS LTS
+			* linked_clone option to speed up the creation of the VM
+				* Document the option
+				* https://github.com/amatas/vagrant-gpii-ci/blob/master/lib/vagrant-gpii-ci/config/config_provider.rb#L10
+				* https://www.vagrantup.com/docs/virtualbox/configuration.html (LINKED CLONES section)
+			* Clean up script to make the final image smaller
+	* Free providers:
+		* Heroku
+		* https://www.microsoft.com/en-us/philanthropies/product-donations/products/azure
+		* https://www.openshift.com/grants/
+		* https://aws.amazon.com/government-education/nonprofits/
+		* https://www.digitalocean.com/community/questions/is-there-a-discount-promo-for-non-profit-organizations-or-charities
+		* Kubernetes
+			* Google Cloud Platform - GKE - https://cloud.google.com/container-engine/
+			* Azure - ACS - https://azure.microsoft.com/en-us/services/container-service
+			* CoreOS - https://tectonic.com/
+			* ... many others

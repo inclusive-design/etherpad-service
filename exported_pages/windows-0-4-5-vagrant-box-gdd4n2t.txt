@@ -1,0 +1,56 @@
+Install a required WinRM plugin
+
+	* vagrant plugin install vagrant-winrm
+
+
+Find and destroy old Windows VMs
+
+	* vagrant global-status
+	* cd <path to vm>
+	* vagrant destroy -f
+
+
+Remove the old box
+
+	* vagrant box remove inclusivedesign/windows10-eval
+
+
+Download and add version 0.4.5 of the Windows box
+
+	* vagrant box add inclusivedesign/windows10-eval
+
+
+Start a GPII Windows VM
+
+	* git clone https://github.com/GPII/windows.git
+	* cd windows
+	* vagrant up
+
+
+Create a snapshot before proceeding
+
+	* vagrant snapshot save fresh
+
+
+This should pass and the exit code should be zero
+
+	* vagrant winrm -c "do.ps1 -c 'node tests\UnitTests.js'"
+	* echo $?
+
+
+This should fail and return a non-zero exit code
+
+	* vagrant winrm -c "do.ps1 -c 'node tests\AcceptanceTests.js'"
+	* echo $?
+
+
+Restore the snapshot
+
+	* vagrant snapshot restore fresh --no-provision
+
+
+This should pass
+
+	* vagrant winrm -c "do.ps1 -c 'node tests\AcceptanceTests.js builtIn'"
+	* echo $?
+

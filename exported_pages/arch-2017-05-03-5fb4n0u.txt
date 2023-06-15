@@ -1,0 +1,96 @@
+UPDATES
+
+Kasparnet:
+	* Wrapping up work on GPII-2297 (fixing up MM payloads) and GPII-1802
+	* Looking forward to review on my MM work
+	* Will start to get an overview of pending matchmaker work and things I need to discuss with the larger group before I can continue
+	* Excited about Toronto despite the horrible weather.
+    
+Ale:
+	* Two days off enjoying "Feria de Sevilla"
+	* Exotic meetings!
+	* Keep working on UIA
+	* Keep looking for somebody/some company that could help us with IoD.
+
+Alfredo:
+	* Fixing the issues related to the Testing VMs
+	* Meetings
+
+Antranig
+	* Network diagnostic system for GPII-2349 is now merged at https://github.com/GPII/gpii-app/pull/12
+	* Issued new release of Kettle for update dependencies and fix issues found by Adtkins, also implementing JSON5 support for "configs": https://github.com/fluid-project/kettle/blob/master/History.md
+	* More writing on the Nexus and work on stability/error handling
+	* Worked with Adtkins to continue to improve cleanup after test runs for gpii-webdriver, etc.
+
+Avtar:
+	* Away for part of last week
+	* Planning remaining QI work for P4A Year 4
+	* Looking into GitLab CI issues Tony pointed out when trying a runner on OS X
+
+Cindy
+	* Finished the design of using dedicated privileged process for storing the client credential: https://wiki.gpii.net/w/Designs_of_Using_a_Dedicated_Process_to_Protect_the_Client_Secret_Assigned_to_GPII_Local_Installation. Simon is going to review.
+	* Helping Michelle with writing the integration test for gpii-app
+	* Data loader pull request is ready for more reviews: https://github.com/GPII/universal/pull/503
+
+Giovanni
+	* GPII-2319/2320 - Docker Swarm cluster on AWS
+
+JJ:
+	* Keep working on the PoC framework + tools for Onboarding UI Automation.
+	* Re-thinking framework infraestructure for future impl.
+	* Keep the investigation of the limitations of UI Automation API and projection.
+	* All the work is related with the issue. https://issues.gpii.net/browse/GPII-2238
+
+
+Joseph:
+	* GPII-2395, improving the way the XRandR display settings handler retrieves and exposes the current and available screen resolutions.
+		* Pushed to my pull request (https://github.com/GPII/linux/pull/92).
+	* Started modifying the windows display settings handler in analogous way.
+	* Thinking about how to promote these results in universal
+		* device reporter?
+		* settings handler?
+
+Justin: 
+	* Initial stages of exploring Edge Extensions for UIO +
+	* Need to talk to Michelle about what is required for UIO +
+
+Kavya
+	* On vacation last week,Checking emails 
+	* Working on Consolidating Core 2 features
+	* Need to start work on documentation for Test Automation framework
+
+Michelle:
+	* P4A review meeting went really well
+	* Doing planning for P4A
+	* Meeting for FLOE funding went really well
+
+Sandra:
+    - Back from vacation, been catching up. 
+    - Working on collecting agenda topics for F2F meeting.
+    - Updating status of Core 2 (support for Pilot Stage 1)
+
+Simon:
+	* Nexus post-P4A-review tidying up and planning
+	* Reviewing some security notes for Cindy
+
+steve Grundell
+	* Metrics: GPII-2333
+
+Tony:
+	1. As most of the Dutch public holidays are in the Spring, worked 1/3 time last week, and am working 1/2 time this week.
+	1. Continuing to push through various PRs, some ongoing, many created to use the "root safe dedupe" version of infusion/kettle required for Vagrant testing in the way I do it.
+	1. Among other things, working on "temp cruft cleanup" in gpii-pouchdb and gpii-testem
+	1. In doing so, discovered a bug in testem when working with merged options of the type we use: https://github.com/testem/testem/issues/1119
+	1. Created and submitted a PR, which has already been accepted by testem's maintainer.
+	1. Will be sketching out and sharing a detailed example of the solution->setting->ontology interrelationship for the live solutions registry for tomorrow night's meeting and the offsite.
+	1. Will be remotely attending the offsite.
+
+Tyler:
+    * Terraform and integration tests: GPII-2388
+
+
+AGENDA
+
+	* Fluid 10 year anniversary potluck dinner during the APCP F2F
+		* Fluid celebrated the 10-year aniversary in April and in that connection there's a suggestion to have a potluck dinner 
+

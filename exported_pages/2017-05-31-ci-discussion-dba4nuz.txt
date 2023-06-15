@@ -1,0 +1,28 @@
+CI discussion
+Attendees: Alfredo, Avtar, Colin, Gio, Tyler
+
+
+	* We will continue to host  the main repositories on Github
+		* Github provides us free features (private repos?)
+		* Github has critical mass of community
+		* Workflows settled on Github
+	* We want to replace Jenkins with the CI features in GitLab
+	* GitLab's CI features will only work with git repositories hosted within a GitLab instance
+	* So we need to mirror our GitHub repositories in a GitLab instance in order to perform CI tasks on them
+	* We need bi-directional communication between GitHub and our GitLab instance:
+		* We need to know when changes are pushed to a Github repository (to trigger CI)
+		* We need to send the results of a GitLab-managed CI job back to GitHub (in order to reflect build status on GitHub pull request pages, for example)
+	* Cross repo CI job triggering to appear in an upcoming 9.3 release https://gitlab.com/gitlab-org/gitlab-ce/issues/16556
+
+Possible next steps: GPII-2448
+	* Host an instance of GitLab GPII-2439
+	* CI runners hosted in the data centre (must be bare metal) GPII-2450
+	* A service that mirrors GitHub repos and is capable of pushing CI jobs results to GitHub PR threads https://github.com/avtar/docker-push-ref-gitlab  GPII-2449
+	* PRs containing .gitlab-ci.yml files for GPII repos - GPII-2123
+	* Webhook payload URLs configured for each of the GPII GitHub repos GPII-2451
+	* repo:status token for the above repos GPII-2451
+	* Move container configuration for the preferences server, flow manager, and other components in the official Universal repository
+		* Set up pipeline stages that build container images and push them to container repos once upstream test suites have passed
+
+Push approach:
+    https://github.com/avtar/docker-push-ref-gitlab

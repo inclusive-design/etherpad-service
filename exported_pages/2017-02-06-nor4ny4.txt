@@ -1,0 +1,51 @@
+Updates:
+    
+Alan
+	* Most of last week working on non-GPII issues
+	* Need to document a number of things, open some PRs for Ansible roles + Docker containers (this afternoon / tomorrow)
+	* Need to open some issues on First Discovery Server to get it compatible with current GPII
+
+Ale:
+	* Nothing related to infra this week.
+	* Just attending to FOSDEM event this last weekend, I had some aha moments with k8s and Mesos and that stuff. A good collection of talks there.
+		* what kind of aha moments? - How it operates and how is being implemented. And that you can use this https://github.com/kubernetes/minikube for testing in your local machine. Also very interesting the talks about rkt https://coreos.com/rkt so you see how the containers works or could work in differents ways. Another interesting bit https://coreos.com/tectonic free for play.
+
+Alfredo:
+	* get.gpii.org (certificates, and site)
+	* qi-background.gpii.org (certificates)
+	* Jenkins role playbook. Need to know the status of i-0037, i-0038 and i-0039
+	* Vagrant CI plugin
+	* Building a bunch of VMs for testing
+		* Windows 8 64 is out ( https://atlas.hashicorp.com/inclusivedesign/boxes/windows81-eval-x64 )
+
+Giovanni
+	* Reviewed all tasks in IDI's Jenkins (docker/container jobs) and fixed issues
+	* Re-processed all GPII/universal PRs through Jenkins for updated results (all PRs have proper status now)
+	* Switched Jenkins role to use LTS version (and adjusted our 3 instances -- ci.gpii.net, ci.fluidproject.org and ci.inclusivedesign.ca) -- v 2.32.2
+	* Upgraded Docker on all hosts except i-0026 -- many issues with containers that get stopped (and won't start without workaround) and need to delete all images too
+	* New arrangement for pfSense firewall rules for SSH access - Using aliases now
+	* Lots of fun with SIP/H323 and Vidyo last week (at least for audio, it works great! I don't have the codecs for video though)
+	* Next step: small scale, proof of concept deployment using Jenkins (not Gitlab for now) and Kubernetes so we can learn more about the possibilities
+		* Focus on CI/CD, not provisioning VMs, etc... that's a better job for Terraform.
+		* Will get the cluster up & running whatever it takes, try to mimick GCP/kops as much as possible, on our own infrastructure
+
+JJ:
+	* Nothing related to infra.
+	* Getting up to day with more infra details thanks to Ale and Javi. 
+
+Tyler:
+    * IDRC Grafana is up (http://i-0023.tor1.inclusivedesign.ca:3000/). Ansible-izing it now. Experimenting with Molecule.
+    * Conversations about the future: Ansible, containers
+    * Not planning to work on continuous Ansible (https://issues.gpii.net/browse/GPII-2261)
+
+Agenda:
+	* AWS Cost estimate feedback [tyler]
+		* https://docs.google.com/document/d/1WXjwcG7RsWLvg9fPKFGOhJvKZqCHsXyYz2QjYM_jF_Y/edit#heading=h.xt6sq5p46rfy
+		* alan: Can Gregg provide a threshold ("spend no more than $X/mo"), and we can not worry so much about cost estimates until then?
+		* pilot stage 2: q1 2018. not sure if need cloud infra for that stage.
+		* Community college deployment: summer 2018. will need cloud infra for this stage, but probably not pii.
+	* Agenda for F2F. Brainstorm discussion topics. Decide if we need to prepare anything ahead of pairing sessions. [tyler]
+		* https://docs.google.com/a/raisingthefloor.org/document/d/1_uS96eDCwCxclUdAXIy2OqW0FT_ZTtWagJyTR9g5pe0/edit?usp=sharing_eixpa_nl&ts=5888c701
+	
+	
+

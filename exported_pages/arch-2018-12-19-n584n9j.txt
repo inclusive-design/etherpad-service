@@ -1,0 +1,126 @@
+GPII Architecture Meeting Minutes, December 19th, 2018
+
+UPDATES:
+
+Javi
+	* Continued working on 1.0.1
+		* We continued digging into the slowness problems
+	* Spent some time revising my script to move prefs between two couchdb instances
+	* Delivered an interim installer for early testing of 1.0.1
+		* Now going through bugs reported against it
+	* I fly to Spain next Sunday
+		* BUT will definetly do some work and be available if there's urgent stuff to do
+		* Will be fully back on January 6th
+
+Alfredo:
+	* GPII-2802: Working on reduce the privileges needed for each user that uses the GPII cloud.
+	* GPII-2864: Searching for a valid SCAP security scanner for the GPII, needed for FERPA compliance
+	* Troubleshooting some issues related to the APIs enabled in the GCP
+	* Helping Javi with the migration of the data from AWS to GCP
+
+Antranig
+	* Tracing some significant memory leaks in our core universal tests together with ADTKINS
+		* Plugged several sources of these which individually seemed significant but some enormous remaining cause is left
+		* Most plausible remaining suspect is our use of pouchdb and a memory leak in its use of throwaway V8 contexts in reduce function from this site:
+			* https://github.com/pouchdb/pouchdb/blob/master/packages/node_modules/pouchdb-mapreduce/src/evalFunctionInVm.js#L42
+	* Working on improvements to resource loading in prefs framework
+	* More merges of JJ's onboarding pulls
+	* Advising on conversation with NOVA about our best current idea for how to protect reads and writes to the cloud in the absence of authentication
+	* Have just merged Astea's 1.0.1 branch of the GPII app - hooray!
+
+Bryan
+	* Submitted PR for GPII-3554
+	* Created subtask GPII-3595 of GPII-3554
+	* Updated PR Based on feedback
+
+Cindy
+	* GPII-3584: Improve the context manager logging information
+		* Pull request comments addressed and ready for another look: https://github.com/GPII/universal/pull/719
+	* GPII-3424: Fixed the bug that noUser and another key could key in at the same time
+		* Pull request ready to be reviewed: https://github.com/GPII/universal/pull/722
+	* GPII-3594: Replace the dynamic session component in the lifecycle manager with standard sub-components
+		* In progress
+	* I will be away from Dec 24 - Jan 1
+
+JJ:
+	* Continue some work into:
+		* GPII-3130: Narrator
+		* GPII-3148: OSK Windows 10
+		* GPII-3511: ShowSounds/SoundSentry
+		* GPII-3509: Privacy
+	* Updating "Onboarding Status and Priorities" document reviewing current settings and starting updating machines names.
+	* Updating pulls with received feeback from the team, many of them are ready for review again.
+
+Joseph (Not present)
+	* GPII-3551: Improvements and bug fixes for /ready and /health endpoints of the cloud based flow manager
+		* Pull request merged (https://github.com/GPII/universal/pull/713)
+		* Bug closed (https://issues.gpii.net/browse/GPII-3551)
+	* GPII-3333: Improve production config test to cover more functionality (https://issues.gpii.net/browse/GPII-3333)255
+		* Was blocked by GPII-3551 (above).
+		* Current master tests only /login and /logout endpoints
+		* Added tests for /ready, /health/, /access_token (POST), /%gpiiKey/settings/%device (GET), and /%gpiiKey/settings (PUT)
+		* All working, as defined.  Pull request: https://github.com/GPII/universal/pull/718
+		* Want to re-use settings tests already defined in "universal/tests/platform/cloud/SettingsGetTests.js and SettingsPutTests.js
+			* the above tests are run under a development configuration
+			* want to reuse the test definitions, but run them under a production configuration
+		* Currently refactoring and carving out the common aspects so the tests can be shared between the two scenarios.
+		* Work thus far:  https://github.com/klown/universal/commit/0c6cccec52642cb1cf3f08de8bf65ec4d21f4bad
+	* Off Dec 23 - Jan 6; back Jan 7 2019 -- Merry Christmas and Happy New Year!
+
+Justin:
+	* Open PRs
+		* https://github.com/fluid-project/infusion-docs/pull/142
+	* Cindy published a beta 11 of UIO+
+	* I'll be on vacation from Dec 24 - Jan 4 (inclusive)
+	* Happy Holidays!!!
+
+
+
+Sandra:
+    - Back from vacation.
+    - Focusing on updating status and addressing issues found in latest installer. 
+    - Following-up next steps for MyMorphic sign-on.
+    - Out Friday afternoon, 21-Dec through Wed, 26-Dec. I'll be working 27-Dec and 28-Dec. 
+
+Sergey:
+    – [GPII-3516]: Use auth user email instead of alerts@raisingthefloor list for dev cluster notifications
+    – [GPII-3516]: Fine tune some alert policies to reduce number of false positives
+    – [GPII-3326]: Configure cloud audit logging
+    – User actions tracing demo
+
+Stepan
+- Enable encryption of intra-cluster http traffic (Istio) - GPII-3347 (get back to)
+- Update Helm and all other various tools (kubectl, gcp sdk, terraform & terragrunt...) - GPII-3586 (done)
+- Smaller issues:
+    - GPII-3392 - Remove `administration-tasks` module,
+    - GPII-3601 - couchdb_destroy_pvcs fails on destroy
+    - GPII-3592 - Fix zonal only get-credentials
+
+Steve Githens
+- Capture Tool Work
+- With some minor tweaks got a large portion of the gpii-handlebars, gpii-binder, etc etc stack running in Electron and from the gpii-app bootstrap which is really nice
+
+Steve Grundell
+	Auto-login almost done, GPII-3496
+	Fixing a lot of bugs (This time not mine!)
+
+Tony:
+
+	1. Solutions Registry Validation: Partway through adding a GSS schema validation test for the legacy SR data.
+	1. New CouchDB test harness: After discussions with Antranig over the weekend, I stopped to work on replacing pouchdb in universal, as the added data from recent onboarding efforts has exposed serious memory leaks that prevent builds from completing.
+	1. Vacation: Will be off starting next Monday until January 3rd.  Someone else needs to create the pads until I get back....
+
+Tyler:
+    * CouchDB metrics are live
+    * Demo on current state of metrics / performance analysis
+    * Out Dec 24-Dec 25, plus ski days
+
+
+
+AGENDA:
+
+	1. Arch meeting next week - is it worth having it?
+		2. Next arch meeting has been cancelled - Next will be on January 2nd
+	1. Morphic 1.0.1 - what's left? What's our best estimation about having it ready?
+		2. https://pad.gpii.net/p/morphic-1-0-1-5oa4n0y
+

@@ -1,0 +1,22 @@
+	* Visible Nexus UI updates
+		* Deadline
+			* Review is March 13-15
+			* Be prepared to demonstrate -- in person and/or a video
+	* Coding to Learn proposal (Bridges, Clayton Lewis, Antranig)
+		* Arrange meeting with Susie and Clayton to discuss ideas
+		* Canadian funding deadlines
+			* Feb 2, 2018 -- too soon!
+			* June 2, 2018
+		* Check requirements for applying for funding, such as only needing to apply for one date and not, say, all of them
+		* Aim to get a '2 pager' ready by end of January
+		* Simon: 25%
+	* APCP/GPII code review
+		* pre-pilot 2
+			* GPII-2554: simon will take a quick look at the code, we will ask ale to test it thoroughly, and colin will review test push
+		* Cindy's GPII-2511 and other work
+			* Work on these, Kasper may be able to help
+	* SJRK code review
+	* Dashboard Metrics? (on Michelle's 2018 plan, with Dana)
+		* Not a priority at the moment
+	* Check if Antranig can make Pattern Languages community meeting
+

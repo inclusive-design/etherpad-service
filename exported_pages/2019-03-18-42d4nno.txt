@@ -1,0 +1,15 @@
+Agenda:
+    - 1. Any demos this week?
+	* Tyler could demo moving environment between regions, migration from global keys. Not sure how interesting these are for a wider audience
+	* Sandra: let's wait until next week, as many developers will be busy with Morphic 1.1.0 release by Friday
+	* Tyler: when might we see a demo of what we're launching in NOVA?
+		* Sandra: next week at the earliest. Lots of integration remains. So not next Wed, but the Wed after (Mar 27)
+    - 2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+    - 3. Review of Sprint 21
+    - 4. Planning for Sprint 22
+    - 5. Current timeline for NOVA?
+		* Earliest time in NOVA around 3/28, 3/29.
+		* First step is it goes to IT for them to install and test
+			* We missed a deadline last week to get it installed before the new quarter. 300 new computers to install and deploy. The code wasn't ready, there were still bugs, key-in was not completed. Hopefully completed this week.
+			* Earliest, next Thursday-Friday. They want a few days to test it. Then they will start deploying to the 72 computers currently in the plan. 
+			* So early April for first public computers (the set of 72)

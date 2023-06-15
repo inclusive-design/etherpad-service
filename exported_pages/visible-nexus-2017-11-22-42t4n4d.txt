@@ -1,0 +1,58 @@
+
+Visible Nexus UX Evaluation:
+
+	* https://docs.google.com/document/d/199yvZICri6hWho6JSZMpo_XMixeHG0k2MKl8JVg7Jk4/edit?usp=sharing
+
+Connections/relationships not yet shown:
+
+	* options distribution
+	* where did this come from?
+		* model relay
+		* distributed options
+		* events
+		* invokers
+		* model listeners
+		* defaults
+
+Potential UI gesture -- show me where this came from?
+	* Perhaps like a tooltip that can be pinned, or persisted
+	* Take me to the source code for these options
+	* increase control over dynamicity of interactions
+
+Timeline scrubber to move through time
+At any point you can trace back to the causes - enable reasoning of an effect to causes
+
+At runtime "Why did this message appear in the user interface" -- enable user to trace effects back to causes
+
+Support user in researching "I want to userstand why this model field has this value at this point in time"
+customized research program scope - being able to customize the interface - what to see, when to see it, for what duration, etc.
+
+Record particular queries or views of the system, to be reviewed or replayed later
+
+containment has its limits - we have to deal with some form of none consumptive layout > the marggin > think of scaling it, not using up the visual resources (e.g when you have more than 3 layers of containers it becomes confusing and not understandable) using arrows might still be a better option 
+ability to easily move between the containers/ scales
+if we use scaling and hiding containes we need to find a strategy to show the connections across many levels
+
+https://github.com/d3/d3-hierarchy/blob/master/README.md#partition
+
+Remove the margins from our containment
+Perhaps alternating shades for different levels in the tree
+
+Or treemap
+https://github.com/d3/d3-hierarchy/blob/master/README.md#treemap
+you need the boundary between the parents and children to materilize the space > so in treemap the boundary in internal > makes it very hard to tak about the relationships between parents and children - it also doesn't support the continuety and dynamic data - this is important for a11y
+poor stability properties if we dynamically change the size or number of components
+treemap maybe also be harder to navigate by keyboard
+
+Need to show for model relay:
+	* Original data
+	* Definition
+	* How did the data pass through the definition
+	* Value received, value output
+
+Jonathan Edwards' visualisation of dataflow showing passage of values through expressions/function calls etc: https://vimeo.com/106073134
+
+Next steps:
+	* Try out some new visualization strategies based on this discussion
+	* With a deeper, more complex component tree
+	* 

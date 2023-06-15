@@ -1,0 +1,95 @@
+UPDATES:
+    
+KASPARDNITT:
+	* Worked on the documentation for model transformations
+	* Started work on inverse transformations 
+    
+Adewale:
+Possible suggestion for user management library: Stormpath
+
+
+ALE:
+	* Contract with SILO for Windows installer work ready for sign. They will start to work starting next week.
+	* All build stories are in JIRA https://issues.gpii.net/browse/GPII-1712
+	* Rebooting onboarding, meaning reviewing Wayne PR and reviewing onboarding process.
+	* Creating operations plan with help from Alfredo and Javi. - https://drive.google.com/open?id=1Xac_Ibasa8I2GRJclJjikFk6IY8FopN6eZFZv4FPVUI
+	* Reading electron and electron-builder for using it in GPII/Infusion. (Digging on it)
+	* Checking how to add tests to the work in progress of including electron into infusion started by Colin - https://github.com/colinbdclark/infusion-electron
+		* TONY @KINS has a test framework for this stuff that he will paste a link for here: https://github.com/GPII/gpii-test-browser
+		* Based on http://www.nightmarejs.org/
+		* 
+    
+Alfredo:
+	* Working on tasks for CI
+	* Writing some doc with Ale about infrastructure and ops
+	* Ops tasks
+
+Cindy
+	* Working on GPII-1274: https://issues.gpii.net/browse/GPII-1274, in the process of migrating the data and their structures used by the in memory data store to couchDB
+	* APCP meetings
+
+JAVI
+	* Mostly, chrome extension
+		* Added a few unit tests at component level (still need to think about browser-side testing)
+		* Started creating a component to connect to the flowManager
+		* Will start/have plans to add more settings:
+			* Color Inversion
+			* Zoom
+	* Will work on addressing ANTVANIQUE's comments on "porting node addons to NaN"
+	* Will look for c++ linting as requested by Antranig
+
+JOSEPH
+	* Looking into displays and acquiring more information about them (EDID)
+		* Looking at Linux Xrandr add-on and XRandr itself to see how to get the EDID info (or, rather, the physical size of the display). Javi did something to get the physical size, will check whether he can rescue that portion of code from a backup :) Cool!
+			* Results so far are whacky -- wondering if because on a virtual machine, with a virtual screen...
+	* Starting on Antranig's constructive criticism re: port linux/gnome node add-ons to Nan (GPII-1526: https://github.com/amb26/linux/pull/2/). 
+
+Sandra:
+	* I've finally created a wiki page to place relevant APCP information, such as schedules and status, dependencies, content of the first release in July-2016, etc. I will send this out once it's completed. I've also added the process flow for delivering function. 
+	* Worked on finalizing the decision as to where to hold the face-to-face technical meeting and creating the estimated budget. Toronto, week of June 5th. 
+	* Attending meetings with IBM and APCP. 
+
+Simon:
+	* Working with Colin on the Nexus demo for the P4A review tomorrow
+	* We have for the demo the following integrated with the Nexus:
+		* Synthesizer running on a Mac laptop
+		* Headtracker-driven visual grid-based controller for triggering notes running on a Windows tablet, via AsTeRICS
+		* Piano keyboard running on an iPad
+		* Tremolo controlled via mobile phone orientation, via KIT P4A Sensors project
+		* Note triggering using a game controller, via AsTeRICS, conntected to Windows tablet
+
+Giovanni:
+	* Mostly APCP meetings
+	* Pushed Docker image with node.js 4.4.3 (looking forward to dropping all 0.10.x and old 4.x versions as soon as possible)
+	* Experimenting with Kubernetes and some scenarios for container orchestration
+
+Tony:
+	1. Continuing to work on PRs.
+	1. This week, had a key breakthrough in modeling Express routers and middleware in gpii.express.  Routers are now only containers for other middleware, and will almost always only be written purely as declarative blocks of configuration options.  Nearly everything else is middleware.  Error handling is now also cleanly delegated to error handling middleware.
+	1. Pushing those changes through all packages and continuing on other PRs with help from Antranig.
+	1. Once gpii-express-user (the most complex) is updated, will focus on preparing the UL API for its PR.
+	1. Managed to rearrange my trip to the US to attend the offsite in June.
+
+Katy:
+1. Working with understanding  the GPII Security code  to identify security gaps.
+2. Next will understand the GPII oauth2 security
+
+
+
+OAuth server - public availability (for internal use)? 
+
+Open questions:
+	* To what extend do we feel ready to deploy the OAuth server?
+	* How do we go about credentials privisioning?
+
+Old notes:
+Got a complain from a customer that the flowmanager didn't have OAuth support.
+We ofc., want to provide a good customer experience and deploy a 'semi-production' OAuth server.
+
+Cindy: It's not ready to be deployed in production mode (ie. open to the public).
+Antranig/Simon: we're not currently in production and the preferences server is open for everyone to POST/PUT to. 
+Hens: Where should the 'what used to be called the first discovery tool' be located?
+Simon: It can live anywhere - but it has to be registered as an application that is authorized. Each instance of the discovery tool should have its own credentials (so they can be revoked).
+Hens: So realistically you wouldn't ever run the discovery tool on a local device? 
+SIMON: Correct
+

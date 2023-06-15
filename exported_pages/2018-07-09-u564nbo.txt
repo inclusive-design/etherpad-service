@@ -1,0 +1,36 @@
+Agenda:
+    - New requirement: Need to have CI integrated into Windows 7 and 8. Alfredo started this work year before last. 
+	* https://github.com/idi-ops/packer-windows
+	* https://issues.gpii.net/browse/GPII-1762
+	* Needed for August
+	* Revert this commit: https://gitlab.com/gpii-ops/packer-windows/commit/df4723da66155cf0cbb1658dfce8d1d9ebb39d36
+	* Create new Jenkins jobs to run the tests against new windows versions
+	* This new requirement will pull Alfredo away and subtract from the team's velocity
+    - Deploying PSP with memory on AWS in August
+	* Increased responsibility (a Real Production system), increased support burden (developers working with real infrastructure), increased maintenance burden will subtract from the team's velocity
+	* We lack monitoring-of-monitoring, automated e2e tests / "higher-level" monitoring (is it up vs does it return preferences)
+	* locust / smoke-testing (Sergey will create ticket: https://issues.gpii.net/browse/GPII-3188)
+	* We need a discussion about our strategy for automated testing and monitoring/alerting for AWS for August deployment
+	* August deployment will be: "development libraries" (2 sites), upgrading AJC Pilot 2 site. All Windows 10.
+    - Update on Sergio / IoD [tyler]
+    - Onboarding new ops team members plan [tyler]
+	* Standups (let's do them, every day)
+		* Decision: real-time standups every day, consider going to 3x/week or written after initial trial period
+		* Suggestion: 1850 CET (Alfredo), 1750 BST (Stepan), 1250 EDT (Sergio & Colin), 1150 CST (Sandra), 1050 MDT (Tyler), 950 PDT (Sergey)
+	* First day activities
+		* Accounts (Sandra's onboarding doc, AWS/GCP IAMs)
+		* Tyler gives State of the Cloud presentation
+			* Solicit their feedback about our architecture
+		* Set up a cluster with gpii-infra (AWS and GCP)
+			* Need to create DNS zone and point to new person's cluster's DNS records
+	* What will they work on?
+		* Tyler thinks we have a lot of parallelizable work available in the backlog for the new folks to pick up
+    - GPII-2996, tagged builders [tyler]
+	* Tagged builders strategy seems ok
+	* May not scale well, but we can revisit
+	* Alfredo will look and see if there are alternative strategies that we missed
+	* Tyler will proceed to implementation using this strategy
+    - GPII-3103
+	* Team agreed to close this out
+    - GPII-3123: Updated secrets management (Sergey) (https://github.com/gpii-ops/gpii-infra/pull/44/files)
+    - GPII-3146: CouchDB Persistent volumes + backups? (Sergey) (Sergey is taking GPII-3136 and moving it into spring)

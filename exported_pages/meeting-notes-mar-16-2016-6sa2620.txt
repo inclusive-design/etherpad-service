@@ -1,0 +1,13 @@
+1. Diagrams for APCP team
+	* Hybrid production configuration - having kettle servers running separately as different node instances
+	* all-in-one at local, in one single node instance
+	* all-in-one at local, with several node instances
+
+2. Authentication process
+	* Key-in/login -- requires a token and no further authentication
+	* Retrieval of preferences by local flow manager from cloud based flow manager -- requires only token and no further authentication, though preferences are filtered according to the privacy policy associated with the token
+	* Editing of privacy policy (/privacy-settings) -- requires username and password
+	* Retrieval of preferences over OAuth 2 (UIO case) -- requires username and password
+	* Add new preference set (First Discovery Tool) -- requires authentication of the client itself (First Discovery Tool)
+	* Currently editing of preferences (PMT) does not require any authentication (this needs to change)
+	* 

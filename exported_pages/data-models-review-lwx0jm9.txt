@@ -1,0 +1,69 @@
+Data Models Review
+
+Comparing Original Model with Steve Githens (Hens) Model
+
+Reference: https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences#Future_Data_Model
+
+Hens model adds some new types, moves a field to one of the new types, but, otherwise, the Keys, Client Credentials, App Installation Clients and App Installation Authorizations are the same.
+
+The differences are:
+	* Hens adds a "Users" and a "GPII Cloud Safe Credentials" model
+	* The "password" field in the original Prefs Safes is moved to the Users
+	* The Users are in one-to-one correspondence with the Cloud Safe Credentials
+		* Hence, the user and their credentials can be thought of as a unit
+	* The Cloud Safe Credentials are many-to-one with respect to a PrefsSafe
+		* many users can reference the same PrefsSafe
+		* just like, in the original model, many Keys can reference the same PrefsSafe
+	* Users:
+		* id: the id of this User record (String)
+		* type: "user"
+		* schemaVersion: String
+		* name: the name of the user (String), e.g. "John Smith" [double check this]
+		* email: the user's email (String)
+		* roles: (Array) [???]
+		* username:  the user's username (String), e.g. "jsmith"
+		* verified: Boolean [???]
+		* iterations: Integer [???]
+		* password_schema: String [???]
+		* salt: for security (String)
+		* derived_key: String [???]
+		* verification_code: String [???]
+	* GPII Cloud Safe Credentials
+		* id: the id of this Cloud Safe Credentials record (String)
+		* type: "gpiiCloudSafeCredentials"
+		* schemaVersion: String
+		* prefsSafesId: the id of the PrefsSafe record associated with these credentials
+		* gpiiExpressUserId: String
+
+Comparing Original Model with NOVA Model
+
+Reference: https://wiki.gpii.net/w/Enhanced_Data_Model_for_NOVA
+
+The main difference is in the Client Credentials where a number of permissions are added
+	* allowedIPBlocks: IP addresses or blocks (Array of String)
+		* e.g., 125.19.23.0/24 -- IPv4 block
+		* e.g., 2001:cdba::3257:9652 -- IPv6 block
+		* e.g., 62.230.58.1 -- IP string
+	* allowedPrefsToWrite: PrefKey (Array of String), e.g., common terms
+	* isCreateGpiiKeyAllowed: Boolean
+	* isCreatePrefsSafeAllowed: Booean
+
+Structure of the Preferences Themselves
+	* Example form Antranig.  Note that "prefsSets" was formerly "contexts"
+{
+    "prefsSets": {
+        "default": {
+                "name": "Default preferences",   // user defined name
+                "preferences": { // At this point basically a key-value store, even if the values are pretty composite
+                    "common/highContrast": {
+                         "enabled": true // Fix this long-standing issue that was on the table when GPII closed - "enabled" should be an ordinary nested preference
+                    },
+                    "applications/com.freedomScientific.jaws": { // Note: we should still attempt to align here with the final format of the GPII solutions registry, e.g. win32.json5 since there is a lot of learning banked in here
+                        "ENU-Message.Rate": 140,
+        }
+    }
+}
+	* Why the slash (/) in the "common/highContrast" example?  Why not "common.highContrast"?
+	* Not sure what the issue is with "enabled".  Should it be "common/highContrast/enabled"?
+		* what is an "oridnary nested preference"?
+	* 

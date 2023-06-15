@@ -1,0 +1,5 @@
+1. Anything to demo this week?
+   -  no demos this week
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+3. Sprint 25 Review
+4. Sprint 26 Planning 

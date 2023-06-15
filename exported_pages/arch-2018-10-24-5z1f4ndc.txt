@@ -1,0 +1,123 @@
+GPII Architecture Meeting Minutes, October 24, 2018
+
+Attendees: Javi, Antranig, Cindy, JJ, Joseph, Justin, Kavya, Sandra, Sergey, Stepan, Steve Grundell, Steven o'clock Githens, Tony, Tyler
+
+UPDATES
+
+Javi
+	* Creating a release!
+		* Installer: https://drive.google.com/file/d/1JCDmjaeBcRQCI-g8-oURVWnhpKjPOnoP/view?usp=sharing
+		* Installation instructions and general information about this version: https://docs.google.com/document/d/1ZttxNQTDwnI--gWoOOFQi4gW84InBR0SjHNSGMK59gU/edit?usp=sharing
+		* Document to report the issues: https://docs.google.com/document/d/1qyP5-CjkmGMPDzgkPZev7U1Uj9nFMYhu-LmaoBGVNi8/edit?usp=sharing
+	* Going over the issues reported
+		* Nothing critical, plan is to have a new installer on next Monday
+	* Will keep working on incorporating last required bits for the upcoming installer
+
+Alfredo: (not here - now he is here) :)
+	* Restrict permissions on the roles used to provision the GPII cloud GPII-3354
+	* Dockerising UL
+
+Antranig:
+	* Working with cindy on improvements to core
+	* Generalised code review and tidyup - have created new pull request status "has outstanding review" - please remove this when you address review comments
+	* Review for GPII chrome extension
+	* Interviewing new candidate for dev backfill
+	* Reviewing new documents from Gregg about account creation process
+		* https://docs.google.com/document/d/1cG4jErACrPJxBNBzK2RDLPsvTdlxNJjPiYp684JubFk/edit?ts=5bcf5fad#
+	* Will be away Friday and Monday - and all of week starting Nov 5th - well deserved!!
+
+Cindy
+	* GPII-3450: add readiness and liveness endpoints for CBFM and Preferences Server
+		* Issued a pull request: https://github.com/GPII/universal/pull/699
+	* GPII-3435: Use standard preferences for "reset all" configuration
+		* Starting on
+
+JJ
+	* Finished up GPII-1053, received feeback from the team today, so, it needs to be updated.
+	* Received imput from GPII-3139, GPII-3320, GPII-2809 and GPII-3131.
+	* Working into new privacy settings, two approaches for them:
+		* Easy ones through the registrySettingsHandler.
+		* Boolean ones about specific permissions through the systemSettingsHandler.
+		* Other ones are more complex and needs more research, first part of the impl will contain just two mentioned previously.
+	* Rewriting GPII-2809, windows part.
+
+Joseph:
+	* Working on the dataloader - GPII-3138
+	* Working with Stepan to move the relevant code from the gpii-dataloader repository into universal
+		* once fiinshed gpii-dataloader repository will be obsolete, including the associated Docker container
+		* new pull request: https://github.com/GPII/universal/pull/692
+	* Stepan is doing most of the heavy lifting
+	* Starting to test under AWS
+
+Justin:
+	* Addressing code review
+		* https://github.com/GPII/gpii-chrome-extension/pull/21 (ready for more review) [has been merged]
+		* https://github.com/GPII/gpii-chrome-extension/pull/19 (ready for more review)
+	* Working on
+		* https://issues.fluidproject.org/browse/FLUID-6240
+		* https://issues.gpii.net/browse/GPII-3470
+	* Need to merge https://github.com/GPII/gpii-chrome-extension/pull/22 after next installer is created 
+
+Kavya:
+	* Almost done Tesplan for early windows versions - Need to create few ukeys for language and high contrast settings
+	* Started testing on installer for upcoming pilots on Sony vaio - no new or critical issues identified so far
+	* Waiting on Iso image of pilot sites from Gregg
+
+
+Sandra:
+    - Continued focus on new installer for next pilots. Tentative start date for both AJC 3 and library is 12-Nov. Targeting new installer for this Monday, 29-Oct. 
+    https://docs.google.com/document/d/1qyP5-CjkmGMPDzgkPZev7U1Uj9nFMYhu-LmaoBGVNi8/edit?ts=5bd09933#
+    - UX submitted new specs for our review and approval:
+	        Morphic account:
+	        https://docs.google.com/document/d/1cG4jErACrPJxBNBzK2RDLPsvTdlxNJjPiYp684JubFk/edit?ts=5bcf5f0a#
+	         Web-Based survey:
+		https://docs.google.com/document/d/1Nr9J6CoEoSUu9A_D0d_amKAhgmYX3qhVYut9s_LpCS0/edit?ts=5bcf33e6#
+    - Developer position re-posted. Reviewing resumes. 
+    - I'll be out this Friday. 
+
+Sergey:
+    - Alerting for GCP infra
+
+Stepan:
+    - CouchDB (addressing feedback on upstream ticket, GPII-3421 - [GCP]: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', and 'updateStrategy' are forbidden)
+    - Dataloader (move code in universal and correspondign infra work, release process and cleanup documented - GPII-3391 [GCP]: Unknown desc = Job.batch "dataloader" is invalid: spec.template: Invalid value)
+
+Steve Githens
+- Long PPT Review meeting, declared featurefully ready for 1.0
+- Branch cleanup, and other Tony/Basman meetings about express, users, and stuff
+- Reviewing Account docs as well
+- Working on my GCP instance
+- Several half days the rest of this week
+
+Steve Grundell
+	1. On boarding of Office - GPII-3448
+	1. More metrics: identifying when control panel sets a setting, and AT usage - GPII-3469
+	1. Screen capture tool - GPII-3447
+	1. Identified slowness - GPII-3471
+
+Tony
+	1. Onboarded additional JAWS 2019 settings and added them to the open pull with the new NVDA settings.
+	1. Continued "dockerising" the UL API.
+	1. Updated gpii-testem so that its code coverage sender can be used with gpii-app, gpii-webdriver and other environments where QUnit and/or Testem are not used.
+	1. Investigated problems with gpii-testem and potentia-ii that (thankfully) turned out to have already been addressed.
+
+Tyler
+* Investigate a performance problem in GCP
+	* Anyone want to talk about adding request tracing support to Flowmanager/Preferences? https://cloud.google.com/trace/docs/setup/nodejs
+		* I do want to talk about it (AB) but need to head out today - let's schedule a meeting between us, Cindy and perhaps a few others perhaps Monday?
+			* If you want to receive a Doodle about this meeting, add your name here by 1200 MDT today
+				* tyler
+				* antranig
+				* cindy
+				* stepan
+				* Alfredo
+				* Javi
+				* sgithens
+				* JJ
+				* sergey
+				
+
+AGENDA
+
+yippee!
+

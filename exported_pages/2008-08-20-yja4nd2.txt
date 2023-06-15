@@ -1,0 +1,28 @@
+Agenda:
+    
+- GCP CI testing strategy -> ops weekly
+  - Wait for CI Volumes to be merged
+  - Merge master (including CI Volume) into GPII-3125 locally
+  - Create a common/stg directory with the test organization as a parameter
+  - Test locally using shared Test organisation (stg)
+  - Push local branch (GPII-3125 + master) to master
+  - Add CI steps to test common part of GCP infrastructure on stg (Test organization)
+  - Add CI steps to apply common part on prd
+
+
+Separate task from previous:
+  - Integrate unique IDs code
+
+
+Planning
+* Alfredo wants all his tasks in one backlog (even for things that aren't strictly related to the ops team at large)
+* Closed some old tickets, re-prioritzed some tickets
+* Alfredo will be point person on IDRC Migration and associated tasks
+	* Will ask for help on certain issues on a case-by-case basis, especially on things that are cross-cutting (e.g. maintaining a separate k8s cluster for Gregg's random projects, the CI Worker)
+
+
+
+Sergio on test strategy
+
+SSP
+

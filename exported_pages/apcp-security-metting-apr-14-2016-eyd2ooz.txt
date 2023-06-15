@@ -1,0 +1,17 @@
+Agenda:
+    
+	* Login & authorization: https://flowmanager.gpii.net/login
+	* GPII OAuth 2 work flow: https://wiki.gpii.net/w/GPII_OAuth_2_Guide
+	* Walk thru the source code for the auth server: https://github.com/amb26/universal/blob/GPII-1318/gpii/node_modules/gpii-oauth2/gpii-oauth2-authz-server/src/AuthServer.js
+		* Middlewares used: 
+			* Passport: http://passportjs.org/
+			* OAuth2orize: https://github.com/jaredhanson/oauth2orize
+	* GPII components that GPII auth server interacts with: 
+		* flow manager for privacy filtering 
+		* preferences server for processing /add-preferences end point that accepts access token assigned by client credentials grant
+	* Why do we pick OAuth2orize middleware
+		* We should do a (partially retrospective) evaluation exercise to share the evidence for selection of this middleware, and that we know it used at scale, meets our other criteria for technology selectoin (to the best of our knowledge, it does)
+
+Furthur discussions
+	* Plan for the auth server - https://wiki.gpii.net/w/GPII_Security_Plan#Authorization_server
+	* The integration of User management system and OAuth authentication

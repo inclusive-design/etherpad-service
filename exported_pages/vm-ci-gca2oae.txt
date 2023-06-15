@@ -1,0 +1,104 @@
+git clone https://github.com/amatas/vagrant-gpii-server-client.git
+cd vagrant-gpii-server-client
+vagrant box update
+vagrant up server fedora
+
+# once the VMs are finished the provisioning
+
+vagrant ssh fedora
+
+# inside the fedora box
+
+sudo systemctl stop gpii-linux-framework
+cd /home/vagrant/gpii/node_modules/universal/
+git remote add origin-alf https://github.com/amatas/GPII-universal.git
+git fetch origin-alf
+git checkout GPII-1781
+node tests/ProductionConfigTests.CI.js
+
+###############
+
+Assumptions:
+    
+	1. The application has to have the ability to spin up several VMs
+	1. The VMs must be defined in a yml or json file
+	1. We need the ability to link the VMs
+	1. We need a way to deploy applications
+	1. An application can be deployed in one of the VMs defined
+
+
+http://kubernetes.io/docs/user-guide/pods/multi-container/
+https://docs.travis-ci.com/user/customizing-the-build/
+https://git.openstack.org/cgit/openstack-infra/project-config/tree/jenkins/jobs/ansible-role-jobs.yaml
+
+
+---
+
+.ci_env:
+  vms:
+    windows10:
+      cpu: 2
+      memory: 2048
+      clone: true
+      autostart: true
+      box: inclusivedesign/windows10-eval
+
+.ci_stages:
+  - setup
+  - test
+
+setup_job:
+  stage: setup
+  script:
+    - |
+      choco upgrade firefox googlechrome -y
+      $moduleLocation = Join-Path $env:SystemDrive "vagrant/provisioning/Provisioning.psm1"
+      $destinationDir = Join-Path $env:SystemDrive "tmp"
+      cp $moduleLocation $destinationDir
+    - provisioning/Chocolatey.ps1
+    - provisioning/Npm.ps1
+    - provisioning/Build.ps1
+    - provisioning/Installer.ps1
+
+test_job:
+  stage: test          # name of the stage
+  script:              # One line per command to execute
+    - do.ps1 -c 'node tests/AcceptanceTests.js builtIn'
+    - do.ps1 -c 'node tests/UnitTests.js'
+
+variables:
+  VAGRANT_CI_FILE: .gitlab-ci.yml
+
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  untracked: true
+  paths:
+  - node_modules/
+
+stages:
+    - vagrantup
+    - vagranttests
+    - vagrantdestroy
+
+before_script:
+   - "mkdir -p ../.vagrant-$CI_BUILD_REF_NAME"
+   - rm -fr .vagrant
+   - "ln -s ../.vagrant-$CI_BUILD_REF_NAME .vagrant"
+
+vagrantup_job:
+  stage: vagrantup
+  script:
+  - vagrant up
+  when: always
+
+vagranttests_job:
+  stage: vagranttests
+  script:
+  - vagrant ci test
+
+vagrantdestroy_job:
+  stage: vagrantdestroy
+  script:
+  - vagrant destroy -f
+  - "rm -fr ../.vagrant-$CI_BUILD_REF_NAME"
+  when: always

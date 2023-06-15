@@ -1,0 +1,102 @@
+This algo is to match match maker results (matchMakerOutput.inferredConfiguration.settings) with settings that can be handled (what's defined in solution registry):
+
+An example of matchMakerOutput.inferredConfiguration.settings:
+
+    "matchMakerOutput": {
+            "inferredConfiguration": {
+                    "gpii-default": {
+                            "applications": {
+                                    "com.microsoft.windows.magnifier": {
+                                            "active": true,
+                                            "settings": {
+                                                    "http://registry.gpii.net/common/tracking": [
+                                                            "mouse",
+                                                            "mouse",
+                                                            "caret"
+                                                    ],
+                                                    "http://registry.gpii.net/common/magnification": 2,
+                                                    "http://registry.gpii.net/common/invertColours": true,
+                                                    "http://registry.gpii.net/common/magnifierPosition": "RightHalf",
+                                                    "http://registry.gpii.net/applications/com.microsoft.windows.magnifier": {
+                                                            "Magnification": 200,
+                                                            "ZoomIncrement": 50,
+                                                            "Invert": 0,
+                                                            "FollowMouse": 1,
+                                                            "FollowFocus": 1,
+                                                            "FollowCaret": 1,
+                                                            "MagnificationMode": 1
+                                                    }
+                                            }
+                                    }
+                            }
+                    }
+            }
+    }
+
+Case 1:
+inferredConfiguration.settings:
+{
+    "http://registry.gpii.net/common/magnification": 2
+}
+
+SR:
+"http://registry.gpii.net/common/magnification"
+
+So for example - in this case, the test case should apply jqUnit.assertDeepEq("", ["http://registry.gpii.net/common/magnification"], output)
+where output is generated from a freshly factored function which returns the "actualSettingsPaths" which are computed partway through hasSupportedSettings
+e.g. a new gpii.transformer.computeSupportedSettings
+
+To match: the key from the top level
+
+Case 2: 
+inferredConfiguration.settings:
+{
+        "http://registry.gpii.net/applications/com.microsoft.windows.magnifier": {
+                "http://registry.gpii.net/common/invertColours": true
+        }
+}
+
+SR:
+"http://registry.gpii.net/common/invertColours"
+
+To match: the key from the 2nd level
+
+Case 3:
+inferredConfiguration.settings:
+{
+        "http://registry.gpii.net/common": {
+                "magnification": 1,
+                "showCrosshairs": true
+        },
+        "http://registry.gpii.net/applications/com.microsoft.windows.magnifier": {
+                "invertColours": true
+        }
+}
+
+SR:
+"http://registry\\.gpii\\.net/common/magnification"
+
+To match: 
+    before: join all leaves
+    to fix: join keys from the top level and the 2nd level
+
+JJ's case:
+inferredConfiguration.settings:
+{
+        "http://registry.gpii.net/applications/com.microsoft.windows.desktopBackgroundColor": {
+                "SolidColor": {
+                        "r": 67,
+                        "g": 187,
+                        "b": 19
+                }
+        }
+}
+
+SR:
+"http://registry\\.gpii\\.net/applications/com\\.microsoft\\.windows\\.desktopBackgroundColor.SolidColor"
+
+To match: join keys from the top level and the 2nd level
+
+
+
+

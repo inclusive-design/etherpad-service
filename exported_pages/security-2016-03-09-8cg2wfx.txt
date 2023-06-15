@@ -1,0 +1,45 @@
+Agenda
+
+	* Feedback from IBM
+	* Preferences and Payloads
+
+Adewale:
+
+	* Micro services and denial of service
+	* Risk assessment framework
+	* Staging and other environments
+	* Role based Access Controls (RBAC) 
+		* Users
+		* Administrators
+		* Systems
+			* e.g Docker daemon itself runs as root
+	* Threat Modeling 
+		* Risk Assessment
+		* Patch management for solutions in play, node.js, couchdb etc 
+		* Vulnerability scans
+	* GPII Environments
+		* DevOps
+		* Stage
+		* Production 
+
+Questions:
+
+	* Ale: Where I could find current progress of IBM work? - Ok, we are going to label the issues.
+
+Actions
+
+	* Adewale to lead work on risk assessment framework
+	* Simon to add link to Cindy's https://github.com/cindyli/gpii-payloads/ to the GPII wiki Security Dashboard page
+	* Sandra to continue on documenting ATs targeted for American Job Centers (based on survey list from Maureen Kaine)
+	* Alejandro to continue on preferences gathering looking towards what we will cover going into the future (5 years) - my work is getting updated here https://issues.gpii.net/browse/GPII-1586
+	* Working with Maureen to collect the most we can about the AJC center that we are going to pilot soon. <- This could be an interesting input for security reasons, maybe.
+	* 
+
+GPII Payloads
+
+https://github.com/cindyli/gpii-payloads/
+
+Maureen Kaine-Krolak (maureen@raisingthefloor.org) <- Link between Stakeholders and Development teams for Pilots (amongst other stuff)
+
+
+

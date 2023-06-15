@@ -1,0 +1,95 @@
+KASPARNET:
+	* Made a fix for GPII-1880 (https://github.com/GPII/universal/pull/532 ) allowing for payload sizes up to 1MB (from 100kB previously) - this is a requirement for the pull request here: https://github.com/GPII/universal/pull/494 which I was reviewing
+	* Started pulling in the changes from josephs' process reporter branch
+
+
+Alfredo:
+	* GPII-2439 - New Gitlab Enterprise edition installed as part of our own CI
+	* GPII-2390 - Metrics
+	* Fixed some ansible roles for updating the SSL certificatesh e3
+	* Metrics meetings
+
+
+Antranig:
+	* Pushing fixes through all of our projects to deal with running from a bare drive letter under Windows, as recommended by recent discussions about our vagrant configurations
+		* Updates of infusion, jqUnit-node, kettle, gpii-express, gpii-pouchdb, and a pull is open for universal - https://github.com/GPII/universal/pull/531
+		* I believe this pull will also resolve our intermittent CI test failures on the browser tests (GPII-2456)
+		* I'd like Gio or someone to give this the "stress testing" that has been seen to increase the probability of these failures
+	* Recent meetings on Sticky PCP
+		* Notes at https://pad.gpii.net/p/pcp-with-memory-core-team-discussions-tby4n2s?
+	* Discussions with ADTKINS on i18n
+	* Testing for gpii-handlebards failures with Adtkins
+	* Review of Kaspar's MM pull and Joseph's process reporter pull, Kaspar's GPII-1880 pull, Justin's transformations pulls, etc.
+
+Avtar:
+	* Working on GPII-2440
+	* Met with Cindy regarding the JIRA mentioned above for refactoring feedback
+
+Cindy
+	* GPII-2435: Continuing fixing APIs provided by the auth server to web prefs consumer clients and onboarded solution clients
+	* Meeting on sticky PCP
+	* Meeting with Avtar for refactoring the backend server for the dashboard demo
+
+Javi
+	* Merged pull requests with new branding/logos
+	* Merged Joseph's pull request that adds acceptance/integration tests for xrandr
+	* Did some clean up in my WIP branch for the PCP API - I still need to keep cleaning before pushing for review
+	* Looked at https://issues.gpii.net/browse/GPII-2510 - Looks like our windows RFID listener needs some love
+	* Will update https://github.com/GPII/universal/pull/494 as requested by Kasparnet
+	* Will test Antranig's https://github.com/GPII/universal/pull/531
+
+Joseph
+	* GPII-2480: XRandR acceptance test.
+		* Final modificationgs, and merged by Javi (thanks!)
+	* GPII-442: Universal ProcessReporter code
+		* Finiished addressing Antranig's comments.
+		* Cut and pasted changes from Qasper's GPII-442 branch back into my branch.
+		* Pushed it all back to github -- ready for another round of review.
+		* Moving on to making changes to Linux and WIndows branches due to changes in Universal
+			* Linux changes done, and pushed.
+			* Windows changes underway.
+
+Justin
+	* Working on UIO+ / GPII integartion
+		* trying to get tests for solutions registry transformations to work
+			* also learning about debugging with VS Code and GPII
+		* Filed a PR for rounding model transformation in Infusion ( https://github.com/fluid-project/infusion/pull/837 ) 
+	* Need to update infusion in my GPII-2424 branch before i can send a PR for current UIO+ work
+		* waiting for ( https://github.com/fluid-project/infusion/pull/836 ) to be merged into Infusion first
+	* Finished adding Table of Contents adaptation to UIO+
+	* Switched to use the mobile presentation of UIO for the UIO+ panel, so that arrows will indicate additional panels. However, it's fairly minimal so may want to switch back to desktop presentation.
+
+
+Kavya
+	* Done testing unoffical build for usability enhancements
+	* Setting up environments with new AT softwares, Again.
+	* Started testing GPII for compatability with AT software - Sony Vaio and if possible other windows versions for pilots
+
+Sandra:
+    - Working on several to-do's from Gregg
+    - Finally received plan and schedule for the Y3 plan, will be working on that.
+    - Posted position for Security developer on WeWorkRemotely, Indeed and LinkedIn
+    - Closing on contract with ASTEA to implement PCP wireframes
+    - 
+
+
+Steve grundell
+	* At the end of the language support for Windows
+	* Oh, also met about the metrics
+
+
+
+
+Tony:
+	1. Working with the SAI team to get ready for their September user review.  This week, created reports and "curation" scripts to clean up various duplicated and incomplete image data coming from UL vendors.
+	1. Spiked the two remaining viable approaches to internationalising (and localising) messages, one with i18next, the other with Infusion's messageResolver. Will write up results for review in the next PCP API meeting. When is that?
+	1. Worked on pushing Antranig's "root" fixes through "the stack" of gpii-X packages I maintain.  Also updating to use the newest Vagrant image and confirming everything working without the drive mounting steps I used previously. Also updating deps and other housekeeping (mainly to address snyk feedback).
+	1. Finally able to reproduce Windows-specific issues with the gpii-handlebars pull in a BootCamp VM, will work on those tomorrow.
+	1. Fixed a timing but in gpii-testem that was resulting in incomplete code coverage reports in the infusion pull I'm working with Cindy on.  Resolved that, should be ready for further review.
+	1. Away for three weeks starting on August 5th, if you need my input before September, you still have a week to reach out.
+
+
+
+AGENDA:
+
+

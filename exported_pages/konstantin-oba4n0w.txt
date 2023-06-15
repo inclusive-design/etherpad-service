@@ -1,0 +1,106 @@
+WHAT WE ARE LOOKING FOR
+	* 5+ years of experience in designing QA test plans and executing an open source testing and release cycle
+	* Experience building static HTML pages developing sophisticated, interaction-layer code as well as other technical aspects of front-end and user interface development
+	* Strong command of JavaScript
+	* Clear communicator (written and verbal)
+	* Ability to focus on deadlines and deliverables 
+	* Experience in an open source and global development environments?
+	* Experience with JavaScript, JSON and Node.js libraries?
+	* Understanding of IoC
+	* Writing acceptance tests
+	* Experience with Git and Github.
+	* Experience using JIRA and Agile development methodology.
+	* Highly motivated and self-directed.
+
+Konstantin:
+2 years experience in automated testing. (3 years in QA)
+mostly works on automation but also does manual testing.
+Experience in Writing testplans, creating requirements, 
+Ios and Android automated testing
+developing a cross platform automated testing platform - 6 platforms
+using Selenium, Selenum Driver, selenium Grid, webdriver.
+worked on software for low vision users
+it's great to automate everything that can be automated
+
+
+Tell us a bit about what you know of the GPII and how it is developed? How will you fit into this process, and what will you contribute?
+
+I don't know anything about the project.
+
+
+** What techniques and strategies will you use to determine, in the context of an open source community, which features and parts of the GPII will most need to be tested, and in which order? Have you worked in open source?
+
+just a little. volunteer project for the government. to provide government documents. hasn't worked distributed.
+I think we'd need somethings to communicate. perhaps github and snapchat. I would need to learn something about it.
+
+
+Which platforms and devices will you test the GPII with first? And why those ones? Any experience with cross platform testing automation (in particular on windows and/or mac)?
+
+
+* Describe some techniques and strategies you have experience with to help maximize the value and impact of QA testing, especially within the context of a small team such as the GPII’s?
+Good part of small team is that you can communicate and enter actions quickly. Automation is critical in thi
+
+
+** What kind of experience do you have with writing automated acceptance tests? What tools have you used, and what challenges or difficulties have you faced when using these tools?
+Selenium - use cases, accepteance, integration. 3-400. 60% coverage.
+In the last project, not as many tests, but they were run on 6 different platforms each.
+created a testm environment from scratch. 
+in the Chromium based app he's faced problems because the tools don't map. needs to test the separate features in general.
+
+
+How do you organize your work? (we are looking for self directed)
+
+tries to use his working time as productively as possible. he breaks down his tasks.
+in his current project he was only one QA. he has to be all the roles himself.
+created criteria for the finish of the project. discussed it with the project owner. 
+created separte tasks
+	create docs
+	create testcases
+(maintain all system setups?)
+now he's got two team members so he manages their activities. prioritizes the work for them
+
+
+Do you have experience with agile development? 
+
+lean methodology
+
+* Most of our framework is written in javascript (with some windows/linux bindings). 90% of our unit tests and acceptance tests are run using jqunit (javascript). Seeing your resume only mentions experience in Java programming, do you have any non-formal experience with other programming languages? (Javascript, JSON, Node, IoC)
+Hasn't any experience with nodejs nor javascript. Only fixed some existing code for some nodejs tests
+
+Never used Inversion of Control
+
+What is your strategy for learning?
+read documentation on offical site
+try live examples
+just try to write something
+talk to people he knows who knows it
+possibly take a course
+
+
+What strategies have you used for testing a system that is still in very active development, especially when it may lack end-to-end integration of some components? What kinds of things can you do to do deal with this kind of situation?
+has experience with an internal project. The application was built from scratch. he was creating tests during development even when the features were not implemented yet. it's good because he can communicate with developers. it's harder when you have to do it at the end. it's great when you can communicate with the developers.
+
+
+* Test reporting - what's your experience there, which tools have you been using/which approach? (JIRA)
+first try to reproduce it, clarify the steps to reproduce. When reporting a but with unclear steps, it's a waste of his time, developers time, etc. So steps and results/expectations need to be clear. (also mentioned screenshot, video, etc later on)
+
+When the steps are clear, it's reported in any system - JIRA, google spreadsheet, emails, github issue. 
+
+If it's critical/important, he can talk to the PM.
+
+What do you know about Testem (CI?) and Nightmare (browser automation library of JS)?
+
+
+Have you used git and github? 
+
+used bitbucket
+
+
+his questions: 
+wants to know more about the project and will read some docs. seems really interesting. 
+
+what is the size of the team? 
+
+do you have automated tests right now?
+
+what platforms? 

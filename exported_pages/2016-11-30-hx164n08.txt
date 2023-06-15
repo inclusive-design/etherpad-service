@@ -1,0 +1,32 @@
+# GPII Infrastructure Meeting - 2016-11-30
+
+Updates
+	* Alan: containers, cat
+	* Alfredo: working on new Vagrant plugin for CI
+		* Integrated the Gio's code
+		* Merged the previous code of the vagrant-vmenv
+	* Avatar: 
+		* interviews
+		* GPII-1884 is the first step towards a multi-vm testing configurations contained in a single repository
+		* GPII-2133
+			* Goal is to share status with the list today
+			* work with Tony to integrate web driver builds into this
+	* Gio:
+		* interviews
+		* more Yarn testing—things are looking good but there are a few rough edges
+			* made the Node.js ansible role support yarn
+			* Ansible yarn module is not very good at moment (PR still in review)
+		* worked on automating Polymer projects
+			* Created a Polymer builder container --> outputs static code
+			* Polymer apps then just import "inclusivedesign/nginx" and copy the static content
+			* Jenkins (ci.inclusivedesign) isconfigured to build the containers automatically
+			* Finishing the Jenkins code to deploy the containers, like GPII preferences/flowmanager containers
+
+
+Agenda
+	* Walkthrough of Alfredo's Vagrant plugin work
+	* Progress towards:
+		* Multi-VM testing
+		* Multi-Windows testing
+		* Relationship with the above
+	* Status of Migration from Jenkins to Gitlab

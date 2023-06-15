@@ -1,0 +1,98 @@
+UPDATES:
+
+Javi:
+	* Short week
+	* Mostly, testing and helping on testing the demo MS installer
+	* Helping on testing the update of gpii-app to electron 1.8
+	* Supporting JJ and others, as always :)
+
+Alfredo:
+	* Working on moving the GPII cloud from AWS to GKE (GPII-2942)
+	* Meetings for planning the migration
+
+Antranig:
+	* Working on "user errors" implementation for GPII-2831
+	* Consulting with JJ on failures when settings handlers fail via promise rejection rather than throw
+		* Written up https://issues.gpii.net/browse/GPII-2986 which calls on us to eliminate the old-fashioned "retrying settings handler" feature in core now that our settings handlers now mostly work right
+	* Merged update to Electron 1.8.4
+	* Continuing to chase Kasparnet on his windows pull https://github.com/GPII/windows/pull/120 which is blocking us from propagating universal updates to other packages
+	* Started review of Window systems settings handler etc.
+	* Merged a solutions update from JJ, bumped other pulls which are waiting on answering feedback from Stegru
+
+Cindy
+	* GPII-2630: implement the new data model
+		* Restored the prefs server back to a kettle server
+		* The universal pull request is ready for more reviews
+		* Working on other pull requests for ops repos to support this change
+	* Meetings about the data model and PPT
+
+Colin
+	* Working with ops team, planning, consulting with cindy on data modelling and architecture issues, coordinating with gregg and sandra regarding pilot planning etc.
+
+Georgi (on behalf of Astea):
+	* Working on PSP3 features, as well as tests and documentation for them:
+		* GPII-2928: Login screen for the PSP
+		* GPII-2931: Play sound effect associated with preference set
+		* GPII-2932: Image associated with preference set
+		* GPII-2940: Settings grouping functionality
+	* Thinking about the QuickSet Strip functionality
+	* The PR for the update to Electron 1.8.4 was merged
+	* Two PRs ready for review:
+		* GPII-2890 (the DPI issue that comes with Electron 1.8.*): https://github.com/GPII/gpii-app/pull/42
+		* GPII-2969 (Add support for multiple triggers and surveys): https://github.com/GPII/gpii-app/pull/46 
+
+JJ:
+	* Tracing down the bug for GPII-2938. It looks like it affects to SettingsHandlers.
+	* Talking with Antranig about the previous issue and GPII-2986.
+	* Researching about LearningTools for new demo at Microsoft.
+	* Two days off on vacation.
+
+Joseph:
+	* GPII-2493:  Improve .nycrc file inclusion/exclusion patterns for windows code coverage
+		* pull request:  https://github.com/GPII/windows/pull/172
+		* good:  better coverage
+		* bad:  still including *some* but *not all* (very little, actually) of node_modules/gpii-universal code (should only include code under ./gpii)
+		* pretty much baffled
+	* GPII-2927: Improve code coverage in universal
+		* pull request:  https://github.com/GPII/universal/pull/604
+		* Tony has reviewed
+		* Needs someone to do a final review and merge.
+	* Otherwise, bringing various universal, windows, and linux pull requests up-to-date with their respective master branches.
+	* Will be away on vacation next week (May 7 - 11).
+
+Justin:
+	* TTS for UIO+
+		* Submitted a PR for FLUID-6175 ( https://github.com/fluid-project/infusion/pull/898 )
+			* this includes changes for FLUID-6176
+		* Starting to look at FLUID-6177 ( https://issues.fluidproject.org/browse/FLUID-6177 ), which adds the ability to read back a selection of text
+			* will require some reworking of how utterances are queued and passed to the speech synthesis because this will have to work alongside the automatic reading
+		* Filed new Issuue FLUID-6278 for handling different languages when reading in text. ( https://issues.fluidproject.org/browse/FLUID-6278 )
+		* Have requested what the priorities of FLUID-6177 and FLUID-6278
+		* Also received an e-mail from Gregg that mentions some different functionality for the TTS/Self Voicing than expected. Have asked for clarification
+
+ Sandra:
+     - More resumes and interviews. 
+     - Status updates.
+     - Reviewing MVP/MVIP document 
+
+Sergey:
+– GPII-2942: Main AWS -> GKE Epic
+– GPII-2959: Load balancing for GPII components, switching existing services to nginx ingress, adding certificate management with Letsencrypt
+– GPII-2981: Fixes for Letsencrypt issuer on staging
+– GPII-2973: RBAC in AWS cluster (low priority)
+– GPII-2952: Reserching better alternative for GitLab, testing Spinnaker
+– Reading security / usage docs to better estimate DevOps efforts before Pilots
+
+Steve Grundell
+- Fixed windows-test build
+- Petty review fixes
+- Made windows service perform actions
+- Started IoD, almost finished the client side.
+
+Tyler:
+    * GKE migration
+
+AGENDA:
+
+Keep going with the APCP Team Meeting for commetary on MVIP document
+		* https://pad.gpii.net/p/apcp-team-comments-on-mvip-r31a4npo

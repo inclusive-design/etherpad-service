@@ -1,0 +1,11 @@
+Vagrant-GPII-CI
+
+
+
+https://issues.gpii.net/browse/GPII-2060
+https://issues.gpii.net/browse/GPII-2303
+
+https://issues.gpii.net/browse/GPII-2117 Edge doesn't work in our windows10 box but will be ready in the next versions of the box.
+
+https://issues.gpii.net/browse/GPII-2303?focusedCommentId=24933&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-24933
+

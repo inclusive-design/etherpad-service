@@ -1,0 +1,76 @@
+0GPII Architecture Meeting Minutes, April 10th, 2019.
+
+
+UPDATES:
+ Javi and JJ are working on debugging issues with next 1.1.0 installer. 
+
+Sandra:
+    - Work continues to deliver Morphic 1.1.0. Javi, JJ and Steve debugging and fixing last few bugs. 
+    - Training of student volunteers took place Monday and Tuesday of this week at NOVA. We'll start deploying as soon as we have a new installer with all major issues fixed. 
+    - Updating the Timeline with Gregg. I think the next major deliverable will be the ability to install at home. 
+
+Alfredo
+	* Working on backup exporter for the GPII cloud
+		* New permissions and backup policies.
+
+Bryan 
+	* Met with Steven Githens about capture tool acceptance tests
+	* Stubbed out skeleton for acceptance tests
+	* Currently writing tests doe getSystemSettingsCapture
+
+Joseph:
+	* GPII-3333: Production configuration tests for cloud based flow manager endpoints
+		* Remove extra access tokens added to the database as a side effect of these tests.
+		* Waiting for review
+		* https://github.com/GPII/universal/pull/718
+	* GPII-3832: Handle production configuration tests in the cloud (AWS and GCP)
+		* Pull request for AWS, removing the tests
+		* Reviewed by Tyler, Alfredo, and Stepan.
+		* https://github.com/gpii-ops/gpii-infra/pull/347
+		* Thinking about what to do for GCP -- want to run them here in some environment, likely only the dev environment (not stg nor prd)
+	* GPII-3646: Periodic archive of access token records, then delete them from the database
+		* Rough code that:
+			* finds all the expired access tokens and appends them to a file, e.g. "AccessTokensArchive.json"
+			* deletes them from Couch after archiving them.
+			* option to ignore the expiration date, and archive/delete all of them.
+			* https://github.com/klown/universal/blob/GPII-3646/scripts/archiveAndFlushAccessTokens.js
+		* Is writing them to a file enough in terms of an archive?
+
+Kavya:
+	* Back from vacation
+	* Working on 1.2 release - End of April
+		* Next step - Work on 1.2 relase Test Plan
+	* Early windows version testing
+
+Sergey:
+    - GPII-3841: Code to display universal image info
+    - GPII-3642: Security web scans and asset lists
+    - GPII-2862: Security Command Center and Forseti integration
+
+Stepan:
+    - Finished and rolled out... and reverted - GPII-3781 Istio - Move certificates validation to DNS01 challenge
+    - Debuggin ^ GPII-3843 - Investigate Locust/DNS failure
+      - Issue that happens only shortly after new cluster is created
+      - DNS resolution failure, but the changes did not really touch DNS itself
+
+Steven Githens:
+- Super long capture tool review meeting
+- Created a new settings export of the solutions registry for the UX team to review.
+- Cleaning up code on GPII-2966, GPII-3640, GPII-3698, GPII-2452
+
+
+Tony:
+
+	* Per feedback from Steve Githens, hardened the GSS metaschema to disallow invalid syntax like "divisibleBy", "max", "maxValue".  Awaiting review.
+	* Updated "validation" pull against universal to secure flowmanager and prefs server endpoints.  Also fixed schema errors revealed by improved GSS metaschema. Awaiting review.
+	* Updated gpii-testem to work with newer versions of Testem.  Awaiting review.
+	* Submitted a pull against fluidproject CI to add "browser bundle" tests for Infusion.  Awaiting review.
+	* Submitted a pull against GPII CI to add gpii-express and other projects to CI.  Awaiting review.
+	* Working on AbleData imports into the UL API, importing in phases using their detailed search.
+	* In working on various static sites (reports, demos), researched the current options for static site searching (for the Infusion Docs).  Wrote a technology evaluation document for review: https://wiki.gpii.net/w/Technology_Evaluation_-_Static_Site_Search
+
+Tyler (out today):
+* Moving to GCR: unit-tested ruby code to sync images that runs in a Docker container. This will replace gpii-version-updater.
+
+AGENDA ITEMS:
+    1. From Sandra: Short demo by Sergey (Moved to next week) 

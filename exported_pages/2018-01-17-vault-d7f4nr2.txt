@@ -1,0 +1,46 @@
+	* "Tactically, it's fine" says Tyler
+	* Lots of issues have been already addressed
+	* Strategic questions:
+		* Relationship to gpii-infra repository
+			* question of direct containment vs. dependency via a module?
+		* Automated testing and CI
+		* Further automatability—especially with commenting/uncommenting 
+		* Openness
+			* possible to reduce the amount of closed code in some way?
+
+
+	* Tyler's walking skeleton model
+		* idea is to get a system that works, and then start addresing the details and quality of implementation
+	* Brendan's approach to security on GPII
+		* building the processes that have to be in place before we can even start talking about HIPAA, FedRAMP etc.
+		* written plans, key management and encryption, backups, centralized logging and monitoring—"you must be this tall to ride" requirements
+		* question 0 for any vendor assessment is always "please provide written security policies," which motivates the approach we've taken so far
+		* then we can start the big work
+		* like it or not [Colin's words, because i don't like it ;)] we are charged with preparing for things like FedRAMP compliance sooner rather than later
+		* FERPA is cool because all it requires is a "robust information security programme"—i.e. any functioning programme
+	* Brendan's thoughts on Vault
+		* if Vault falls over, there won't be any end user impact unless we're in the middle of a deploy
+		* It needs be up when we spin up new containers and swap out new servers
+		* that means testing Vault, aside from "can we test an AMI?", doesn't really work—it doesn't lend itself well to CI
+		* the key is probably smoke testing
+		* in terms of automation, yes, it's sub-optimal, but couldn't find alternatives that won't be brittle
+			* Colin: Likelihood of mistakes under pressure / cognitive load with manual deploy process
+	* For things that are not production, can we create some kind of test instance seeded wtih "passwords/gpg keys we don't care about"
+		* Is there significant value in moving to a dev/stg/prod vault triplet?
+			* risk: all these vaults laying around, no controls over them
+			* in other enterprises, have seen the use of path tiers
+				* e.g. dev gets access to the dev path within vault
+				* vault is "basically a complex http server" so it can do complex permissions around access to certain paths
+			* could increase the cost of vault overall
+	* Advantages to Vault triplet
+		* consistent of environment
+		* may not be much extra complexity, since all of the management of these different environments is automated
+		* provides some reassurance that "this code, run in this way, produces this cluster in a repeatable manner"
+	* Does Vault have the same set of concerns as other infrastructure, and does it thus require the same continuous integration patterns?
+	* problem of blue/green with terraform
+		* hashi recommends just using atlas
+		* Tyler will do some research to see what other alternatives are available
+		* 
+Reflection on what we learned from recent staff turnover. What works, what doesn't work? Ops meeting next week / two weeks?
+
+

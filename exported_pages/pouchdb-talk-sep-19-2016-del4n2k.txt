@@ -1,0 +1,14 @@
+	* The new data source grade gpii.dataSource.pouchDB
+		* https://github.com/cindyli/universal/blob/GPII-1821/gpii/node_modules/gpii-oauth2/gpii-oauth2-datastore/test/js/DataSource-PouchDB.js
+		* https://github.com/cindyli/universal/blob/GPII-1821/gpii/node_modules/gpii-oauth2/gpii-oauth2-datastore/test/js/DbDataStoreTests.js
+
+Tony to send link to use new url encoding mechanism.
+https://github.com/the-t-in-rtf/gpii-express/blob/GPII-1800/src/js/lib/querystring-coding.js#L117
+
+Update on 409 errors and other issues:
+	* https://github.com/GPII/gpii-pouchdb/pull/12#issuecomment-247959695
+
+db.destroy is apparently deprecated:
+	* https://github.com/pouchdb/pouchdb/issues/4917
+
+Update:  Alan read through, apparently this is only the PouchDB.destroy method available at the top-level.  Individual instances still have a working destroy method.

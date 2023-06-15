@@ -1,0 +1,97 @@
+UPDATES
+
+Kasparnet: 
+	* Merged Narrator
+	* Reviewing pull requests
+	* Updating my own pull request (ready for more reviewing)
+
+Ale:
+	* Creating new issues and work plan for pending work in Onboarding.
+	* Creating work plan for MiMiC for next quarter.
+	* Following-up, subcontracting for IoD.
+	* Verification of demo-personas covering all that we have onboarded.
+
+Alfredo:
+	* Working on collecting metrics from the system side and also from the users of GPII
+	* GPII-2390
+	* GPII-2476
+
+Antranig
+	* Been somewhat ill and travelling, not achieved much
+	* Helped Gio with GPII-2470, Justin with FLUID-6165
+
+Colin
+	* Helping with the reliability/scalability/security rfp process
+
+Giovanni
+- GPII-2470 - With Antranig's help, figured out how to arrange config files to read env vars (https://github.com/GPII/universal/pull/522 )
+- GPII-2322 - Submitted a PR to convert universal's Dockerfile to Alpine Linux (https://github.com/GPII/universal/pull/521 )
+- GPII-2322 - Submitted a PR to convert the data loader container to Alpine Linux (https://github.com/gpii-ops/docker-preferences-server-data-loader/pull/2)
+- Adjusted CI/CD configuration and removed old cruft from CI configuration (https://github.com/inclusive-design/ci-service/commits/master)
+- Security updates last Thursday (https://access.redhat.com/errata/RHSA-2017:1615)
+
+Javi
+	* Created a new hst build with the NEW GPII ICON!!
+	* A lot of progress in PCP API
+		* Work is being tracked here: https://github.com/GPII/universal/pull/517 - Will appreciate some preliminary feedback on this
+		* Model changes are propagated between the two end points (flowManager and PCP)
+		* Need to talk to Kasper about performing changes on the current session - basically, how should I send updates to the lifecycle manager
+
+JJ
+	* Continue working in cross platform process detection and windows matching for MiMiC.
+	* Added Clang static analyzer and mem-leak checks for windows code.
+	* Created C++ types for base MiMiC framework.
+	* Decisions for future contribution guide.
+
+Joseph:
+	* Another short week due to holidays and vacation.
+	* Working on changing the device reporter to report the available screen resolutions:
+		* https://issues.gpii.net/browse/GPII-1939 
+		* plan is to provide the information in the platform reporter block of the device reporter payload.  See comment: https://issues.gpii.net/browse/GPII-1939?focusedCommentId=27024&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-27024
+		* but, found bug in my changes to xrandr (linux display settings handler), and working on fixing that first (GPII-2395/pull 92).
+
+Justin:
+	* Continuing work adding the UIO+ panel to the browser extension, currently adding new adjusters
+		* ran into some issues along the way, so am behind where i was hoping to be at this point
+	* Spoke with Kasper last week about UIO+ / GPII integration, lots of little things to do for that, will get to that in the comming weeks
+	* 
+
+Kavya:
+	*     Just done testing new hST build for network diagnostic tool and windows icons
+	*      Away next week Monday-Wednesday
+
+Sandra:
+    - Continue working on planning. 
+    - Will start checking references for the candidates submitted. 
+    - Lots of follow-ups from being on vacation last week. 
+    - Out again this Thursday through Monday of next week, back on Tuesday. 
+    
+
+Steve Grundell
+	* Fixed reviewed prs
+	* Updated keyboard metrics
+	* Started looking at 2145 (vladimir)
+	* Windows language support - Great!
+
+
+Tony:
+	1. Moved to a new collocation space.  It's nice.
+	1. Moved key discussions regarding the UL forward in the RERC meeting, will focus on the "merge API" (duplicate management) for the next few days.
+	1. Responded to feedback on the "live reloading" PR for gpii-handlebars.
+	1. Following up on the "code coverage" universal PR and issues around IE11 and universal browser tests.
+	1. Still hoping for someone to pick up the infusion "code coverage" PR.
+
+Tyler:
+* GPII-2412: Integrating Terraform and Kubernetes
+
+Agenda:
+
+Where to put freeTransforms used in the solution registry transformations?
+	* When talking about onboarding the Chrome Extension, the topic
+	* Example free transform function 
+		* function: https://github.com/jobara/gpii-chrome-extension/blob/GPII-2466/extension/src/lib/chromeSettings.js#L180-L182 
+		* transformation https://github.com/jobara/gpii-chrome-extension/blob/GPII-2466/extension/src/lib/chromeSettings.js#L144-L158
+		* In the above case, in theory it should be easier to write it as a nested transformation in the solutions registry, as there are extra requirements/issues when writring transforms in modelRelays.
+
+
+https://issues.gpii.net/browse/GPII-2471 (broken universal browser tests for IE11) 

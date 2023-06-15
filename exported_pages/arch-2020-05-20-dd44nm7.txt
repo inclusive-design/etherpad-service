@@ -1,0 +1,117 @@
+GPII Architecture Meeting Minutes, May 20th, 2020.
+
+UPDATES:
+
+Javi
+	* 1.3.x tech debt
+	* some capture tool testing
+	* supporting others on the duties
+	* calls/meetings
+
+Alfredo:
+	* GPII-4128: Reviewing Stepan's research about binary authorization update for GCP
+	* GPII-4195: Building the terraform code to deploy all the infrastructure using the CI pipeline
+	* Fixing payments issues in AWS and SpamHero with Eugene
+	* Trying to install/use licensing software for JAWS, but it is not possible without a corporate network.
+
+Antranig:
+	* Merged in a bunch of pulls, including the CAPTCHER TOOL
+		* Capture tool passes tests but has some issues under investigation from Githens and Javi
+		* Currently blocked on mysteriously failing tests on ribbon pull
+	* Had chat with Kaspar and Lite folks, looked through MVP20 plans and gave some feedback
+	* Attended onboarding meeting and gave feedback on "heretical onboarding" document
+	* Upcoming meeting with Justin about UIO+ channel
+
+Christopher:
+	* MorphicLiteClientWindows
+		* Posting all Windows onboarding reverse-engineering/analysis notes to: https://drive.google.com/drive/folders/1z-W3BlTHCA2YD9kHWdRNkC5V2bdP6ER2
+			* From AB: Very helpful work - could you file a JIRA and attach this link to it - cheers!
+			* No worries, done it for you: https://issues.gpii.net/browse/GPII-4485 <-- Thanks Antranig :)
+		* Issue # 23: Native code to support Night Mode
+			* NOTE: SystemSettings capture/apply is particularly unreliable with this feature
+		* Issue # 25: Native code to support Color Filters
+			* NOTE: Color Filters "Invert" mode is a special case (not supported by SystemSettings) and negates the "Invert" in Screen Magnifier
+		* Issue # 28: Analysis of Narrator settings
+			* Currently pulling in all Windows 10 2004 details; screenshots are already posted in the above-linked folder
+	* Windows 10 2004
+		* Microsoft SDK shipped yesterday (via VS2019 installer); release is in "Windows Insider" as the stable preview
+
+Joseph:
+	* Short week.  Took Friday off and Monday was a holiday.
+	* Technical debt meetings
+	* GPII-2493: Test coverage for ProcessReporter (windows)
+		* Noticed that the JIRA was closed (closed in January)
+		* Looked over my PR and decided that it was no longer relevant, and closed it
+		* https://github.com/GPII/windows/pull/172
+		* https://issues.gpii.net/browse/GPII-2493
+	* Open PRs in maintenance mode -- merging latest mods from to master and making sure code doesn't fall behind
+		* GPII-4400: (universal) Remove 'web' based solutions and adjust related material
+			* https://github.com/GPII/universal/pull/858
+				* From AB: Will add this to "debt" pad and merge shortly if ADTKINS is ok with it
+		* GPII-4273: LFM gets revision from CBFM and uses it to download that revsion of the solutions registry from github (the "latest").
+			* universal and gpii-infra
+			* tested in GCP -- worked
+			* https://github.com/GPII/universal/pull/840
+			* https://github.com/gpii-ops/gpii-infra/pull/610
+
+Justin:
+	* Open PRs:
+		* GPII-4410: Open in same tab extension
+			* https://github.com/GPII/gpii-open-same-tab-extension/pull/1
+		* fix: Remove Morphic specific code
+			* https://github.com/fluid-project/uio-plus/pull/10
+	* Draft PRs:
+		* GPII-4345: Separating "UIO+" and "UIO+ for Morphic"
+			* https://github.com/GPII/gpii-chrome-extension/pull/51
+	* Waiting on:
+		* Need to talk to Antranig about GPII-4218
+			* https://issues.gpii.net/browse/GPII-4218
+	* Future/Blocked
+		*  GPII-4218: PSPChannel read API cannot read UIO+ setting
+			* https://issues.gpii.net/browse/GPII-4218
+			* Need to talk to Antranig
+		* Publish to Open in Same Tab extension to Chrome and Firefox extension stores
+			* Need GPII-4410 PR merged
+			* Need access to push tags to https://github.com/GPII/gpii-open-same-tab-extension
+			* Need access to Firefox extension store, may need someone else to publish
+			* Need to test with morphic, although this may happen as part of code review
+		* Publish NPM release of UIO+ 
+			* Need PR merged
+		* Publish UIO+ and UIO+ for Morphic to Chrome web store
+			* Need UIO+ NPM module
+			* Need Draft PR merged
+			* After this is complete, the install scripts will need to be updated to point at the new chrome web store id for UIO+ for Morphic
+			* Will also need to update repo with links to the chrome web store page and etc (these aren't available till after a release is made)
+
+Stepan:
+  - Done: GPII-4475 - Deployment has enough available replicas alert too noisy
+    - fixing GKE cluster component - stackdriver-metadata-agent-cluster-level
+    - reduced some alerts
+  - Done: GPII-4128 Binary Authorization needs update and subscription
+    - finished PoC on using Grafeas/Kritis as replacement option directly
+    - can do some of stuff we need, compex setup, unstable, lot of issues, schema changes
+
+
+Steven Githens:
+    - Capture Tool merged in to master!
+    - JAWS work merged in to master
+    - Initial testing against Javi's dev cluster. filing a few jiras from that
+    - Finishing up Zoomtext work
+    - Emails and meeting and stuff about case studies and whatnot
+    - next monday is a us holiday
+
+Steve Grundell:
+    TEchnical debt PRs
+    Looking at the tray button
+
+Tony:
+
+	1. Continuing to work with Antranig to unblock the gpii-express-user updates that Githens requested.
+	1. Looking into coverage issues in Javi's gpii-app pull, no clear solutions yet.  Looked at other coverage tools tailored for use with electron, what we have is as good as we can hope for.
+	1. Meetings to agree on how to handle remaining legacy onboarding pulls before proceeding with the LSR.
+	1. Shorter week, school holiday on Thursday.
+
+
+AGENDA:
+
+

@@ -1,0 +1,15 @@
+* Brendan joins us to talk about operational security of GPII
+** Lots of compliance regs to worry about (NIST 800-37 (Risk management), NIST 800-53 (security controls), FedRAMP (NIST 800-37/53 plus a massive audit burden), HIPAA, HITECH (HIPAA Strikes Back), FERPA, etc.)
+** Reproducible cluster deployment (gpii-terraform is where this work is happening)
+** Vault is probably useful in our future (replacing manual key management, improve SSL cert management)
+** Centralized logging, ElasticSearch
+
+* End of Sprint 7
+	* Sprint never started? Reports are weird; closed tickets went down to Sprint 6. Sandra will investigate.
+* For Sprint 8:
+    * Follow up to 2464 that Gio will write -https://issues.gpii.net/browse/GPII-2563
+    * 2543 (SSL) to continue Gio's work
+    * 2542 (better docker image version management)
+    * 2544 (couchdb replication)
+    * Anyone who finishes early can help with couchdb or look at ebs backup/restore (2545)
+

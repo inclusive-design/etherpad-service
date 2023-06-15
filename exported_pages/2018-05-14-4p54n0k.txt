@@ -1,0 +1,11 @@
+Agenda:
+    
+    Updates about the first block of tasks: estimations of the migration to GKE.
+    
+    Estimation for AWS-GKE tasks have been estimated. 
+    Need to complete cleaning up the Security tasks (ones that are no longer relevant with the move to GKE). Then estimate them. Will probably need the rest of the week. Some of them are too broad, but they will finish with the estimation before asking for feedback or confirmation from Brendan. 
+    Plan for the week:
+        - Interviews
+        - Continue cleaning up and estimating the Security tasks. 
+        
+         

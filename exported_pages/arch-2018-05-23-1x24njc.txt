@@ -1,0 +1,102 @@
+UPDATES
+
+Javi
+	* MS demo work
+		* Troubleshooting of problems reported
+		* Trying to make edge to automatically follow the OS language switch without success
+		* Supporting JJ to onboard the Learning Tools for Word and OneNote (we even reported a problem to MS)
+	* Merged Tony's coverage report pull request for gpii/linux (thanks!)
+
+Alfredo:
+	* GKE migration
+		* GPII-2951 Evaluate the migration of gpii.net from Route53 to Google DNS
+		* GPII-2985
+	* Migration tasks estimations
+	* Coverage support at the CI
+		* https://github.com/GPII/ci-service/commit/cb70020fcf0f4fca0946714c5b499c9e43062939
+		* https://ci.gpii.net/job/gpii-app-tests/lastSuccessfulBuild/
+	* Meetings
+	* Interviews
+	* Fixed the data log collection from the AJCs pilots
+
+
+Antranig
+	* BIG MERGE of Cindy's Data Model GPII-2630 work
+		* This needs some fixes but not ones that will disrupt ongoing work
+		* A cascade of pulls now going on through infrastructure and other repos
+	* Meeting with Astea, Gregg about latest "Quick Set Strip" work and demos which are already looking very good
+	* Merge of ADTKINS gpii-app code coverage pull which now enables further merges
+		* Exposed some problems with our gpii-app configuration in CI - related to DPI test failures
+		* Some work is outstanding which will enable us to actually recover the coverage information from pulls
+	* Looking through resumes etc., we will be interviewing two candidates tomorrow
+	* Attended schema/I18n meeting starting work on schematising application-specific settings
+	* Talking to JJ about LifecycleManager/Acceptance Tests issues
+
+Colin
+	* CI Detective, extraordinaire
+	* Grant writing
+	* Interviewing developer candidates for APCP with Antranig
+	* Travelling to College Park next week
+
+JJ
+	* Working in GPII-2249, onboarding the LearningTools for OneNote 2016 and Word from Office 365.
+		* Meetings and debugging sessions with Javi about this, thanks Javi for the feedback and contributions.
+		* Now we support Word "Home" and "Pro" versions.
+	* Working into GPII-3066, tests inestability was a mix of timing and some AT solutions not being close properly due to utilman + system expected behavior.
+
+Sandra:
+    - Updating quarterly milestones for funding agency. Will send out the draft I submitted to Gregg for review. 
+    - Confirming gaps in reqs from UX for MVP/MVIP
+    - FYI, next week Colin and I will attend the team leads annual meeting in College Park, MD. I'm traveling on Tuesday, returning Friday night (1-June).
+    - More resume reviews. Not finding strong candidates, but hopeful.    
+    
+    
+Sergey:
+    * Estimates / planning
+    * GPI-2958 – charts for preferences / flowmanager
+    * GPI-2959 – load balancing 
+    * GPI-2960 – chart for couchdb
+    * GPI-2989 – changes to gke project init
+
+Simon:
+	* Attended data modelling and user accounts meetings
+
+STeve grundell:
+    IoD
+
+Tony:
+
+	* Continued working on the GSS (GPII Schema System) spike, will roll that into a new candidate release of gpii-json-schema in the next week and change.  Already have a working approach for:
+			* our metaschema
+			* schema-validated components that refuse to start up if their options are wrong.
+			* schema-validated modelComponents
+			* Our "UI" overlay which allows defining custom error messages and UI hints within the schema.
+			* Internationalisation/Localisation of validation output. 
+	* Worked with Antranig to figure out the last problems with the (now merged) gpii-app pull.
+	* Continued meeting with Simon, Antranig, (minus Cindy this week) regarding auth and other issues.
+	* Figured out how to create a "scoped" fork of gpii-express to let us use newer versions of the vendor's codebase, which is in a monorepo.  Should result in a release of gpii-pouchdb with much more modern dependencies.
+
+Tyler:
+    * Finished estimating backlog
+    * Deployed Cindy's PR
+    * AWS-to-GKE
+
+AGENDA
+
+0. State of Union: Continuous Integration (of Colin)
+	1. GPII Jenkins jobs definitions (Alfredo)
+		2. https://github.com/GPII/ci-service
+	1. Confirming the retirement of Mimic, and the question of preferred approaches to settings (Colin)
+	1. Review of Blocking and Critical JIRAs? (Sandra, Javi)
+
+Reminder, Agenda Topics for Toronto: https://docs.google.com/document/d/1XC64JZB7lJf9wRsaIfn7hLEjvZI8vd63SUd-vcMdweA/edit
+
+Windows 10 S Notes:
+
+	* https://support.microsoft.com/en-ca/help/4020089/windows-10-in-s-mode-faq
+	* "Windows 10 in S mode" is Microsoft's new language
+	* Initially Windows 10 S was a separate verson of Windows
+	* Now it's being presented as a mode
+	* So, Windows 10 Home, Pro, or Enterprise could each be run in "S mode"
+	* "With the release of Windows 10, the April 2018 Update, 'Windows 10 S' becomes a mode of Windows 10 (called 'S mode') that is available in more editions of Windows (not just Windows 10 Pro). You’ll be able to buy new PCs with either Windows 10 Home in S mode or Windows 10 Pro in S mode preinstalled. If you have an existing Windows 10 S device, when you install the April 2018 Update, the device will become a Windows 10 Pro in S mode device."
+

@@ -1,0 +1,29 @@
+	1. The progress with gpii.pouch.express API cleanUp() causing "document update conflict" error
+	1. Use browserify(http://browserify.org/) to have kettle working in browsers  (Previous approach using browserfiy and kettle.dataSource.URL: https://github.com/the-t-in-rtf/ul-api/commit/64e8d9432d4f92d33a6cdc38d21c403ffda13eb0#diff-8ab977cf2dd0f4dba0b081fd089ce978)
+	1. An AJAX-backed data source
+
+
+#1, we might also have the option to turn off the bits of express-pouchdb that are causing problems: https://github.com/pouchdb/express-pouchdb#api
+
+
+Discussion of wrapping promises in events:
+https://github.com/GPII/gpii-pouchdb/pull/12#discussion-diff-77005293
+https://issues.gpii.net/browse/GPII-1995
+https://issues.fluidproject.org/browse/FLUID-5949
+
+Discussion about the continued use of pouchdb-express:
+https://github.com/GPII/gpii-pouchdb/pull/12#discussion_r77007136
+
+Discussion about mitigating the 409 errors and problems with database created natively by express-pouchdb:    
+https://github.com/GPII/gpii-pouchdb/pull/12#discussion_r77164085
+
+The promise chain used by the flow manager to process match:
+https://github.com/GPII/universal/blob/master/gpii/node_modules/flowManager/src/FlowManagerUtilities.js#L109
+https://github.com/GPII/universal/blob/master/gpii/node_modules/flowManager/src/FlowManagerUtilities.js#L194-L213
+
+Example of using testem to connect to an API that needs to be started first:
+https://github.com/the-t-in-rtf/gpii-binder/blob/GPII-1886/testem.js
+
+Can also host local content using testem and its serve_files option:
+https://github.com/testem/testem/blob/master/docs/config_file.md#common-configuration-options
+

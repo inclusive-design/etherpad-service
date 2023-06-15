@@ -1,0 +1,21 @@
+Alejandro:
+    On-Going Actions:
+        * Create all the dev stories about Windows installer in Jira based on UX Team works and initial input from core team for the Windows installer. https://issues.gpii.net/browse/GPII-1712
+        * Imported the 80% of the survey to the SoSci system.
+        * Planning the Mac installer.
+        * Supporting UX-Team and Core-Team for defining new process. https://drive.google.com/drive/u/0/folders/0Bzk83ip2K5sqbEN2MG84S3FoVFU
+        * Close procedure of work between UX user stories and DEV user stories.
+        * Reviewed evaluation plan for APCP project.
+        * Meetings everywhere.
+    New Actions:
+        * Re-start onboarding team.
+        
+Alfredo:
+	* CI integration
+		* Split containers IDI/GPII
+		* Roles for Jenkins master/nodes/plugins
+	* APCP Meetings
+
+Javi:
+	* APCP Meetings
+	* Browser extensions

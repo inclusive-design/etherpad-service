@@ -1,0 +1,123 @@
+UPDATES
+
+Attendees: Javi, Alfredo, Antranig, Cindy, JJ, Joseph, Justin, Kavya, Sandra, Segey, Sergio, Simon, Stepan, Steve Grundell, Steve Hens, Tony, Tyler
+
+Javi
+	* Merged/reviewed couple of PRs
+	* Been working on producing automatic builds of installers whenever a new commit/pull request is pushed
+		* Created an initial pull request, mostly, for receiving feedback (https://github.com/GPII/gpii-app/pull/51)
+		* Some background: https://pad.gpii.net/p/automated-builds-2018-07-23-sa44nmu
+	* Will start building ASTEA's QSS branch to make sure that next week we can deliver an installer that works :)
+
+Alfredo:
+	* Wrapping up GPII-3125, GPII-3127, GPII-3126 and GPII-3128.
+		* https://github.com/gpii-ops/gpii-infra/pull/60
+	* Planning an infrastructure update based on the change of the previous tasks
+	* Helping Javi to set up the process to release a GPII installer.
+	* Reviewing pull requests
+
+Antranig
+	* Supporting Cindy on core work to support QSS and upcoming demos - see her updates
+	* Supporting Astea at their end with integration work for QSS
+	* Meetings on account management, snapset loading
+	* Review on Justin's pulls on UIO+ and Orator
+	* Meetings on determining requirements for upcoming releases of QSS 1.0, 1.1 etc.
+	* Reviewing stegru's new work on improved .INI file handling to support NVDA
+
+Cindy
+	* GPII-3213: support settings with memory
+		* Completed
+		* Astea team is integrating this work and has problem with receiving updated settings for captions and dictionary. Looking into this issue
+	* GPII-3193: when no actual key is keyed in, key in the special reserved "noUser" key so that QSS is still operable when no user is keyed in
+		* Antranig and I had a couple of round of discussions. In progress
+	* Meetings on account managment and snapset loading
+
+JJ
+	* Updating all my open pull requests.
+	* Finishing up GPII-3145, last final big pull for first wave.
+	* Meet with non-technical onboarding team, talk about the new onboarding sheets for settings.
+		* Started working with Steve into small spec for the way we represent settings in the sheets.
+	* Some work in GPII-1053.
+
+Joseph:
+	* Most of my time spent working on scripts for GPII-3138: Update snapsets in data base.
+		* modifying both the bash script in gpii-dataloader and a new node script in universal
+		* close to finished; need to test docker images and then in the cloud
+		* met with Cindy and Tyler
+			* one conclusion is that we could get rid of gpii-dataloader since most of the work is done in universal
+			* but likley not do-able for the Aug release
+			* stay with status quo for now, and revisit after Aug release
+	* New fedora27 vagrant box for universal
+		* met with Gio re: lack of mouse interaction in the current box
+		* likely due to wrong guest addtions, version of VirtualBox and issue with Linux kernel or some combination thereof
+		* Gio made a new box and it works.
+			* VirtualBox v5.2.16
+			* inclusivedesign/fedora27 v20180723
+
+Justin:
+	* PRs:
+		* FLUID-6296 ( https://github.com/fluid-project/infusion/pull/914 )
+			* Addressing Code Review comments from Antranig
+		* FLUID-6297 ( https://github.com/fluid-project/infusion/pull/915 )
+			* need someone to review
+		* GPII-2430 ( https://github.com/GPII/gpii-chrome-extension/pull/8 )
+			* waiting on review - I can do it, yes :)
+		* FLUID-6308 ( https://github.com/fluid-project/fluid-publish/pull/12 )
+	* Upcoming work
+		* onboard captions preference
+		* onboard updates contrast themes
+		* update UIO+ for captions
+		* update UIO+ for contrasts
+		* update textSize preference in UIO+ and onboarding
+		* remove dictionary from UIO+ and onboarding (time permitting)
+
+Kavya:
+	* Meetings with Cindy and Tyler on AWS and how to test GPII on cloud
+	* Continued testing on onboarded features
+	* Tried and failed few times building installer for MM testing (count on me)
+
+
+Sandra:
+    - Lots of activity trying to keep track of requirements for the demo in August to the auditors. This is the only deployment in August. 
+    - Refreshed the job posting for a backup for Kasper. Screening resumes. 
+    - Out on vacation the next two weeks, but holding calls int the mornings and checking email on my mobile device. 
+    - Key milestone next week is the delivery by ASTEA of the first installer for QSS 1.0
+
+
+Sergey:
+    - GCP
+       CouchDB backups
+       Destructive tests /  Data restoration guide
+       Secret management 
+    - AWS
+      Cloud1 release tasks
+
+Simon:
+	* No GPII (again)
+
+Stepan
+- Hi everyone :)
+- Setting up accounts, learning about the project and architecture
+- Managed to get up AWS cluster fot the 1st time, packaged the code in Docker image for convenience
+
+Steve Grundell:
+    - High-contrast theme fixes: (GPII-3220)
+        - Making them work again (my original hack for GPII-252 no longer works)
+        - Adding low-contrast themes, and support for other pre-defined non-high contrast themes (GPII-3187)
+        - Fixed ini file parser (GPII-2365)
+    - Metrics for the QSS
+    - Going to be adjusting DPI to be relative to the recommended setting (GPII-3230)
+
+
+Tyler
+* Onboarding new team members
+* Cloud account and training for Kavya
+* Code reviews
+* Some small cleanups and docs for August release
+
+AGENDA
+
+	* Continuation on GitHub Plugin(s) on JIRA (Tony)
+https://issues.gpii.net/browse/GPII-3155
+
+

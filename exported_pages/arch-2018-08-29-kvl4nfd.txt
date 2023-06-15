@@ -1,0 +1,111 @@
+UPDATES
+
+Sandra:
+    - Working on demo (potentially) to Microsoft on 10-September.
+    - Need from Sergio and Steve: List of questions to ask MS regarding IoD, if you have any. For Gregg. 
+	    SG: I have none
+    - Trying to keep up with Pilot schedule changes. 
+
+Alfredo:
+    - Working on GPII-3125
+    - Triaged some IDRC-APCP tasks
+    - Updated some APCP resources at the IDRC datacenter
+    - Updated Windows Vagrant boxes to 1803
+
+Antranig:
+    - Continuing to work through Stegru's windows pulls and Cindy's universal "noUser" pull
+    - Usual meetings with Astea and Gregg, preparing for possible demo to Microsoft in 2 weeks
+    - Meeting with Cindy, ADTKINS and Githens about user management support, inheritance in solutions registry
+
+Cindy
+	* GPII-3193: noUser keyin - ready for another review
+	* Hope to get Antranig to talk about the next TODO items for merginng feds-audit universal branch into the master. Details to be found at https://pad.gpii.net/p/arch-2018-08-15-e084ni5, line 94-96
+		* local matchmaker
+		* high contrast translation to windows and UIO+
+		* The save of supporting tool items
+	* I will be away this Friday. Next Monday is a public holiday in Canada
+
+Javi (offline)
+	* Enjoying my vacation in North Africa :), hey I use to be here.
+
+JJ
+	* Working into onboarding new settings for GPII-2750 since yesterday.
+	* Recovering work from learning tools onboarding for ATIA demo.
+	* Finishing up work for GPII-2809 and GPII-2810.
+
+Joseph
+	* Back from vacation and re-orienting myself to what I was doing two weeks ago.
+	* Working on the snapset database loader (GPII-3138)
+		* Updated the empty demo user prefs giving them slightly more structure as Javi requested
+		* Tested and pushed these changes
+		* Continuing with addressing Antranig's latest code review.
+
+Justin:
+	* PRs
+		* https://github.com/GPII/gpii-chrome-extension/pull/11
+		* https://github.com/GPII/gpii-chrome-extension/pull/13
+	* Working on 
+		* FLUID-6253 ( https://issues.fluidproject.org/browse/FLUID-6253 ) which is needed for future syllabificaiton work
+		* Talked about https://issues.fluidproject.org/browse/FLUID-6318 at a design crit
+			* https://wiki.fluidproject.org/display/fluid/Design+Options+for+Orator+%28text-to-speech%29+widget
+
+Kavya:
+	* Catching up from vacation
+	* Testing UUIds to reproduce issue with QSS menu misalignment -- Sent report to ASTEA
+	* Working on upcoming MS demo.
+
+Sergey:
+    – GPII-3188: Smoke testing
+    – GPII-2955: Monitoring
+
+Sergio:
+     - GPII-3248: GPII End To End Testing
+    - GPII-3250: First request to preferences timing out
+    
+Stepan
+- GPII-3296 & GPII-3125 - GCP testing
+- GPII-3209 - Unify components naming
+
+
+Steve Githens
+- prefs safe cresentials work
+- PPT review meeting with Gregg and sandra
+
+Steve Grundell
+	Tying up lose ends from the audit branch
+		AppZoom, explorer crash, etc.
+	Deploying filebeat with gpii, for the next pilots - GPII-3315
+
+
+
+Tony:
+
+	1. Revised settings per feedback from the JAWS team in last week's onboarding meeting.
+	1. Evaluated the work to be done to bring the UL and PTD up to date enough to use CouchDB 2.0.
+	1. Started work on a new globbing library to improve our build ("npm install") time in Infusion and other packages.  Initial testing suggests that we could save 90% of the time in linting runs, and potentially also in "dist" steps.
+	1. Released a new version of gpii-testem that should no longer output "setRawMode" errors when existing dev mode.
+
+
+
+Tyler:
+    * Investigating centralized logging in GCP. Two GPII component logging issues are in the Agenda.
+
+AGENDA
+* GPII logging tickets
+	* Fairly urgent: https://issues.gpii.net/browse/GPII-3309
+	* Less urgent: https://issues.gpii.net/browse/GPII-3310
+
+gpii/node_modules/accessRequester/test/AccessRequesterTests.js:    cloudMock.log(console.log);
+gpii/node_modules/eventLog/test/EventLogTests.js:        console.log("Log line", lineNumber, line);
+gpii/node_modules/flowManager/test/SettingsDataSourceTests.js:    cloudMock.log(console.log);
+gpii/node_modules/journal/src/Journal.js:            console.log("Restoring journal snapshot with contents " + JSON.stringify(journal, null, 2));
+gpii/node_modules/settingsHandlers/src/WebSocketsSettingsHandler.js:    // console.log("A change in settings has been registered: " + JSON.stringify(change));
+gpii/node_modules/singleInstance/test/SingleInstanceTests.js:    var otherProcess = child_process.exec("node -e \"setTimeout(console.log, 5000)\"");
+scripts/browserifyTestDependency.js:console.log("Browserifying dependent modules for web tests ...");
+scripts/browserifyTestDependency.js:        console.log("GPII is not running in a development mode, skipped the step to browserify test dependent node js scripts.")
+scripts/browserifyTestDependency.js:console.log("Finished browserifying!");
+scripts/convertPrefs.js:console.log("Converting preferences data in the source directory " + inputDir + " to the target directory " + targetDir + " ...");
+scripts/convertPrefs.js:        console.log("prefsSafesFile: " + prefsSafesFile);
+scripts/convertPrefs.js:        console.log("Finished converting preferences data in the source directory " + inputDir + " to the target directory " + targetDir);
+
+

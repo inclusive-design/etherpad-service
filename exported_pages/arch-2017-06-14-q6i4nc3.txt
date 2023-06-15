@@ -1,0 +1,116 @@
+Updates:
+    
+Qasparnet:
+	* Reviewed (and merged) some small pull requests from Javi
+	* Adressed comments from antranig on https://github.com/GPII/universal/pull/513  - planning to look at grundells windows equivalent: https://github.com/GPII/windows/pull/122
+	* Washington meeting
+    
+ Ale:
+	* Cooling down from previous week meetings marathon!
+	* Working on defining schedule for Onboarding :/   
+
+Antranig
+	* Preparing for and attending Steering Committee meeting of last week
+	* Completing work on Kettle environment variables pull, addressing Cindy's feedback on KETTLE-59 at https://github.com/fluid-project/kettle/pull/33
+	* Code review for:
+		* ADTKINS (gpii-testem is finally gloriously released)
+		* KASPARDNITT - debounce implementation for logon/logout and several others
+		* SIMOUN - modelPairToChanges implementation
+	* Talking with Cindy, Simon about OAuth2 grant types for protecting flow manager <-> flow manager channel
+
+Cindy
+	* GPII-2435: To support the OAuth2 resource owner password credentials grant in the auth server
+	* Prepared and presented GPII security slides at the Washinton meeting last week
+
+Colin
+	* Las week's APCP meetings to the advisory board/steering committee went EXTREMELY well—thank you to everyone who lent a hand
+
+Giovanni:
+	* GPI-2391 - Automate Kubernetes deployment on IDRC infrastructure
+
+Javi
+	* Mostly, working on the PCP API
+		* Updated the PCP API wiki page - it's still a DRAFT!
+		* Started filling "supportedSettings" blocks in the solutions registry with provisional settings' metadata
+		* Started implementing the PCP connector according to Antranig's advice on reusing the approach followed in THE NEXUS
+	* Will spend some time reviewing pull requests
+
+Joseph:
+	* No GPII work; all privacy preferences documentation.
+	* Should have more time beginning next week for other projects -- GPII, Infusion
+
+Justin:
+	* UIO+
+		* Added option to set the selection highlight color. Currently only 3 colours to choose from ( yellow, green, pink)
+		* continued Cindy's contrast work, removed the image adjustments from the calJobs specific styling
+		* Working on simplificaiton enactor
+
+JJ:
+	* Preparing last week demo.
+	* Cooling down a bit after demo last thursday.
+	* Mettings with Ale about next MiMiC architecture, research about the new ways we are going to procede with the project.
+	* Start working on migrating what we have to the Native API.
+
+Michelle:
+	* Pull request for GPII-2401: https://github.com/GPII/gpii-app/pull/15
+	* Continuing with refactoring and tests for the app
+
+
+Sandra:
+    - Good face to face meetings last week with the Federal Steering Committee and the Advisory Committee. Kudos to Colin, Kasper, Antranig, Gio, Cindy and Ale for putitng together the charts for the technical review and presenting. Gregg reported that the committee members were pleased and impressed. 
+    - Focusing now on getting the last PRs completed to create a new HST build. 
+    - Need to organize sessions to define the requirements we have from UX for the 2018 deliverables.
+    - In the midst of a solicitation through the University of Maryland to hire skills for reliability/performance/security. We should start reviewing candidates July 5. 
+    
+
+Simon:
+	* Continuing Nexus refactoring
+	* https://github.com/fluid-project/infusion/pull/830
+	* https://github.com/fluid-project/infusion-docs/pull/122
+	* Some security chats with Cindy and Antranig
+
+Steve THE Grundell
+	* GPII-2399, thought some more about a god IPC method and I think I've found one.
+	* GPII-2338, Windws service.. Implementing 2399
+
+Tony:
+	1. Worked with Antranig on the final stages in releasing gpii-testem.
+	1. Finished updating the UL imports to work with the newly-restored EASTIN API.
+	1. Lots of meetings regarding the Shopping and Alerting Aid.
+
+Tyler:
+    * Terraform CI/CD: Build node configuration (GPII-2443)
+
+
+
+Agenda: 
+    
+Pull request - assignment and status:
+	* https://github.com/GPII/universal/pulls
+	* https://github.com/GPII/windows/pulls
+	* https://github.com/GPII/linux/pulls
+	* I've filed our "fluid.tabbable is not a global function" phantom as https://issues.gpii.net/browse/GPII-2456
+
+Documentation and diagrams:
+	* https://github.com/GPII/gpii-architecture-docs/pulls 
+
+Talk to Kasper about UIO+ settings :)
+
+Talking about CI updates for universal (code coverage):
+    https://github.com/GPII/universal/pull/508
+    
+Talking about yarn/npm5:
+    See mailing list for background.
+
+Onboarding flow (Ale Draft)
+	* What does the onboarder need to provide with the solution?
+	* What's the review process like?
+	* How do we get test versions of the software getting onboarded?
+	* How do we go about periodical testing?
+	* What can we do to help support automated testing? (e.g. some kind of "mega AT" virtual machine that contains every application that we support)
+		* how would we manage licenses for this? would we need some kind of special CI-only process and buy licenses just for that VM, or could developers use this VM on their computers?
+
+Next steps for multi-server CI environment setups
+	* https://github.com/GPII/universal/pull/510
+	* GPII-2411, GPII-2103, and more
+

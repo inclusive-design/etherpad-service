@@ -1,0 +1,51 @@
+Attendees:
+    Alan
+    Antranig
+    Cindy
+    Colin
+    Michelle
+    Simon
+
+GPII Security Plan: https://wiki.gpii.net/w/GPII_Security_Plan
+
+	* Improve our current authorization server
+	* A centralized authorization and authentication server
+	* Other things
+
+
+APCP: pilots next summer
+    aiming for pilots: snapsets
+    have freedom to implement what we think approariate
+
+Functional requirements for the next pilot in the next summer:
+	* the use of snapsets: pre-defined preference sets
+	* secure the preferences server: be able to put snapsets into the system, use PCP to change the snapsets, save snapsets and secure them
+	* PMT workflow: use PMT to edit, disable, enable
+
+Simon:
+    work backwards
+    use upcoming requirements as drivers for what we need to do and make technical plans
+
+
+In time for APCP Pilots (when GPII Cloud is involved) and Hardware Sensitivity Testing (if we have one where GPII Cloud is involved):
+	* First step: protect the preference server when using pre-made snap sets. This means:
+		* "Administrators" should be able to manually create preference sets and save them into the preference server (probably in a very raw way, by loading JSON files, but we can talk about very simple editor for this purpose)
+		* Ensuring that Preference Sets can't be written to except by authorized clients (i.e. for now, the as-yet-undeveloped PCP)
+	* Logging (what kinds of security/audit logging do we need to implement in time for storing people's own preference sets?)
+		* Implement a security auditing system which records information about the request/response at each "access boundary" within the system
+			* first and foremost, the exchange between the client-side (Windows) components and the cloud components (CBFM)
+		* The logs are stored in a form that can be searched and analysed (will need to work with Gio on this)
+	* Security-focused code review:
+		* Get rid of unneeded code and end points
+		* Input validation
+		* Escape things that may cause SQL injection etc
+		* and applying other general web application best practices
+
+Medium Term:
+	* Shared authentication server for supporting individuals to save, edit, and use their own personal preference sets
+	* Move the user listeners into the main GPII process
+	* Replace HTTP-based inter-component communication amongst components that are running with the GPII App process
+
+I (Alan) Found This Roundup Post Helpful: https://blog.box.com/blog/a-baseline-approach-to-security-testing/
+	"This post lays out a baseline approach to security testing, which can be performed by developers themselves (or using resources from other teams) to identify security vulnerabilities in their applications or services. While this approach could apply to a wide variety of organizations, the processes described here might especially help smaller, younger companies push past the barrier to entry for security testing."
+	

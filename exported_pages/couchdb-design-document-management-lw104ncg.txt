@@ -1,0 +1,47 @@
+Meeting of 11th September 2017
+
+Present: ADTKINS, Alan, Antranig, Cindy, Colin. Gregor, Simon
+
+Agenda:
+	* design document management
+	* document management
+	* validation of documents
+	* migration of documents
+	* Capturing CouchDB configurations via Infusion components: https://github.com/waharnum/couch-config/tree/SJRK-6
+
+ ALAN AND GREGOR'S RECENT WORK
+	*  couch configuration: https://github.com/waharnum/couch-config
+		* a concern in this project: https://github.com/waharnum/sjrk-storyTelling-server
+	* regarding Couch specifically, we are most immediately interested in managing views and other "configuration" aspects of the database
+
+SIMON ON MIGRATION AND VALIDATION
+	* need is becoming more pressing as we get into managing systems with user data
+	* "testable, reproducable" method for migrating a database over time (a la SQL)
+	* versioning of views and other configuration aspects of the DB
+    
+TONY ON JSON SCHEMA
+	* may be helpful for validation
+
+What projects do we have coming up that could benefit from this?
+	* SJRK storytelling tool project: https://github.com/waharnum/sjrk-storyTelling-server
+	* GPII as a whole - http://gpii.net/
+	* Other non-GPII projects needing to store and manage data, such as MyL3
+
+Have we/shall we do a technology survey to determine what approaches are current in managing Couchdb design documents in a node module?
+Alan thinks there is not much at any useful level of abstraction.
+- A standard, minimal client - https://github.com/dscape/nano (official Apache supported)
+- https://github.com/flatiron/cradle
+
+Shall we assemble a "bestiary" of what CouchDB views we currently have, and what uses they are put to?
+	* I imagine our OAuth work in the core GPII will be a rich source of these
+	* 
+
+Use cases for a technical review
+	* Design document management
+	* Document migration and structure evolution
+	* Questions to answer
+		* Does a decent, maintained high-level Node library for CouchDB exist that could be wrapped?
+			* Something above the level of Nano or other REST-style API libraries
+	* urgency
+		* Two weeks?
+		* Simon: how far are we away from having user data in APCP? November/December time for PCP with memory deployment

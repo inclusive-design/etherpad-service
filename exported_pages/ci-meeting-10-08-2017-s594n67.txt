@@ -1,0 +1,20 @@
+CI meeting 10-8-2017
+
+Umbrella issue that covers all the tasks related to the CI migration:
+    https://issues.gpii.net/browse/GPII-2448
+
+Testing respository:
+Github:
+    
+https://github.com/amatas/gitlab-test-project
+Gitlab EE:
+    
+https://gitlab.gpii.net/gpiibot/gitlab-test-project/pipelines
+
+1. Move the Ci steps to pipelines .gitlab.yml
+https://github.com/amatas/gitlab-test-project/blob/test-pr/.gitlab-ci.yml
+
+2. Move the Vagrantfile to .vagrant.yml
+https://github.com/amatas/gitlab-test-project/blob/test-pr/.vagrant.yml
+
+

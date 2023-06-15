@@ -1,0 +1,24 @@
+Topic 1: using gpii.test.pouch for GPII security acceptance tests
+
+Currently, the setup steps require chained and nested calls.  Could be productive to wrap particular "db" functions so that things can be handled with a single call. Tony to write up a ticket with an approach.
+
+https://github.com/simonbates/universal/blob/GPII-1820/gpii/node_modules/testing/src/CloudBasedOAuth2.js#L69
+
+Topic 2: Create a testing infrastructure for using pouchdb within in browser unit tests
+
+Topic 3: Use pouch db for GPII development configuration
+
+An example to only start the gpii-pouchdb harness:
+https://github.com/the-t-in-rtf/gpii-pouchdb/blob/master/tests/js/launch-test-harness.js
+
+onDestroy of gpii.pouchdb:
+https://github.com/the-t-in-rtf/gpii-pouchdb/blob/master/src/js/pouch.js#L160)
+
+1. The normal gpii server shutdown shuts down the pouchdb database but does not clean up the data;
+2. Add an end point, such as a http request, to allow users be able to clean up the pouchdb data when needed;
+3. In case the local pouchdb storage files are deleted, at the pouchdb startup, re-populate the initial data if the db is empty;
+4. Using the process killing such as ctrl C to stop the gpii server does not trigger onDestroy. It means the pouchdb would not be shut down, so verify whether this would cause the problem next time at the pouchdb restart.
+
+Tony to write up grade refactoring as a JIRA ticket.
+
+Cindy to check in during our overlap on Monday.

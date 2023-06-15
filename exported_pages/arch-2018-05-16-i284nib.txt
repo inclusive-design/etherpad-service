@@ -1,0 +1,81 @@
+UPDATES
+
+Javi
+	* Been testing, troubleshooting, etc -mostly, doing some fine tuning of the MS-demo installer with the support of Steve Grundell and JJ
+	* Had a few meetings on different topics
+	* Started re-looking at Tony's coverage PR for GNU/Linux but not done yet
+
+Joseph (Not present)
+	* back from vacation but only for a week; on vacation again May 18 - 25.
+	* noted that Kasper used some of my suggestions regarding the ProcessReporter in his new MatchMaker code (GPII-1230), which has been merged with master (universal and windows).
+	* need to update my work on the MockProcessReporter based on the above merges (GPII-2755 [https://issues.gpii.net/browse/GPII-2775]).
+	* Worked a bit with Tony on .nycrc rules for code coverage (GPII-2493), specifically massaging the exclude-to-include global patterns to include only what we want.
+	* Wondered if it might be better to name modules such that names used in platform implementations (linux, windows) never match module names used in universal.  See https://github.com/GPII/windows/pull/172#discussion_r188371496
+
+Alfredo:
+	* New DevOps team candidates interviews
+	* Migration to GKE
+		* Planning meetings
+		* GPII-2951
+
+Antranig:
+	* Review for Cindy's GPII-2630
+	* Work on https://issues.gpii.net/browse/GPII-2831 "User Errors"
+		* Pull request ready for review at https://github.com/GPII/universal/pull/609
+		* Uncovered many dark old corners of the framework
+	* Meetings with Astea and Gregg on PSP3 and QSS
+	* Further testing of ADTKINS code coverage for gpii-app - still not producing coverage
+	* 
+
+Cindy
+	* GPII-2630
+		* Addressed review comments from Antranig, ready for more reviews
+		* Tested with windows VM and worked well
+		* Modified the dataloader - docker-preference-dataloader - to work with the new changes
+		* Will continue with gpii-infra branch once Sergey reverts developers clusters to http
+			* sergey fixed and deployed the fix last night :) Thanks!! ok now he says it didn't work? idk. OK, will wait
+	* Created a jira for linking a uKey to a particular preference set in a cloud safe: https://issues.gpii.net/browse/GPII-3046
+	* Will be on vacation from May 23-30. May 22, next Monday, is a public holiday in Canada
+
+Justin
+	* Has to skip the arch meeting today
+	* He's carrying on with TTS work
+
+Sandra:
+    - Working on syncing up team status against the MVP/MVIP document. 
+    - More resume reviews and interviews.
+    - Updating quarterly milestones for next two quarters.  
+    - If you have questions for the Community College pilot, please record them here for Gregg to ask: https://docs.google.com/document/d/1igyIt65_CJ34rHuhl8IGM-l2GOcLBMOQU-5Tm522qy4/edit
+
+Steve Grundell:
+    Install on Demand, GPII-2971
+    Bits and peices with Javi + JJ
+ 
+Sergey:
+    * GKE migration tasks
+    * Interviews
+    * Estimates and planning
+
+Steve Hens (Not present)
+	* Started looking at items to put on the interview list for the NOVA visit
+	* Some work on CouchDB data models and prototyping for a post 2630 world
+	* Created umbrella ticket for next phase of PPT work https://issues.gpii.net/browse/GPII-2975
+	* Finished some of the subtasks on umbrella ticket
+	* Started looking at core ticket https://issues.gpii.net/browse/GPII-2839
+	* Meeting and other planning for the core set of core work
+
+Tony (present) ha!
+	* Short week, we had Ascension Day off, and then I was out unexpectedly thanks to my son's chicken pox.  On the plus side, I learned a lot of Dutch related to itching.
+	* Back and working on GSS (our variant of the schema language).  Should have something to review together at our next Tuesday meeting.
+	* Continued looking at gpii-app pull, currently no code coverage is reported in CI.  Currently trying to reproduce locally, wanted to ask about CI config and retaining artefacts like reports.
+	* Researched some issues with code coverage in Joseph's pull, seems like we have a way forward there.
+
+Tyler:
+    * Planning
+    * Interviewing
+    * Code reviews / helping design stuff
+    * Set up official RtF Google Cloud account
+
+AGENDA
+
+	* Question regarding i18n: How are we going to allow translators to help us translating our THING?

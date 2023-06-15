@@ -1,0 +1,54 @@
+Meeting 13/7/18
+
+Present: Gregg, Antranig, Bern, Cindy, Colin, Kavya, Tony, Tyler
+
+
+
+Initial August release, going into AJCs in September will use USB key-in system for association with cloud safes.
+People are more confident with USB keys than with RFID cards because they see less risk they will "break the computer"
+Rollout order: AJC 3, AJC 2, AJC 1. AJC1 (California) will still use snapsets, but they will not be "on the cloud". Snapset cards go away when "cloud comes on board"
+Short-term, Gregg is not worried about users inserting USB devices into lab computers.
+
+Gregg's taxonomy of releases - 3 releases before MVP at Manassas:
+    "Audit release" - The one for August 14th when they come knocking. It will have a demonstration - [will circle back]
+    "August release" - Goes into the AJC and libraries, and will go in September - these will go into locations AJC1 and AJC2 (California) and AJC3 (Virginia)
+    "Additional features" / "cleanup build" - remainder of MVIP features that didn't get into August release
+    "MVP release" - will go into Manassas on secure Google cloud in October
+
+The Amazon cloud will be used for the first three of these releases. Will be used as-is wrt security (unless we find a big problem). This is why we are trying to avoid collecting any PII at all from users.
+	* Few users (dozens not hundreds), so manual password resetting policy rather than implementing special email handling
+
+QSS works without key-in. What happens when someone else keys in?
+	* Previous QSS settings are clobbered by new key in? Yes.
+	* What if you key-in, make changes with QSS, and you key-out. What happens now? It presumes you are leaving and clears out all preferences. This is what is implemented today.
+		* Alternate approach: user logs out, which returns computer to defaults
+		
+Original idea: USB key-in for "audit release", more complex account sign-up workflow for later releases
+New idea (Gregg and Bern must discuss): USB key-in for all 3 of these releases
+
+For the Audit, 
+We will only be using USBs - we will have implemented the "noUser" session support
+Justin's UIO+ will be in, coordinating with him
+Adtkin's JAWS settings will be onboarded
+
+
+
+Note that many settings that are changed in the QSS which are also listed as "with memory" in the PSP will cause these to be saved to the cloud as they are changed.
+
+Here are some typical settings which appear in the QSS which are *not* listed as "with memory".
+
+Language,
+Captions,
+Screen size, etc.
+
+We should adjust the USB support so that the file holding their key is 
+i) user-visible
+ii) involves the word "Morphic"
+
+
+
+
+
+
+
+

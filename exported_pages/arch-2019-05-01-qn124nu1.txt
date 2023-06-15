@@ -1,0 +1,91 @@
+GPII Architecture Meeting Minutes, May 1st, 2019.
+
+UPDATES:
+Sandra:
+    -  Just back from vacation. Catching up. 
+    - Antranig, Bryan, Javi and JJ are out today.
+    - Will work with Javi to track technical debt accumulated with 1.1.0.
+    - NOVA deployment in progress. No major issues reported. Gregg is planning to drive there tomorrow. 
+    - Content of Morphic 1.2.0 being defined, will share with team by next week. 
+
+Alfredo:
+	* GPII-2782: Secure backup
+		* Debug the GCP process that restores the backup
+		* Writing the documentation about how to setup the destination of the backups
+		* Writing the documentation about how to restore the backups
+
+Bryan (can't make it to today's call)
+	* Made progress on capture tool acceptance 
+
+Javi (not present):
+	* Still enjoying our vacation in Spain
+	* Here's the list of things included in the 1.1.0 installer considered as technical debt. Take a look at it to have an idea
+		* https://pad.gpii.net/mypads/?/mypads/group/technical-discussions-4g920a3/pad/view/morphic-1-1-0-w61l4nnz (Starting on line 67)
+
+Cindy
+	* GPII-3733: Fix preferences server tests for /ready and /health endpoints
+		* Pull request ready for review: https://github.com/GPII/universal/pull/778
+	* GPII-3753: MatchMaker dispatches all application-specific terms to all applications
+		* In progress
+	* Code reviews
+
+Joseph:
+	* GPII-3646 Delete expired access tokens from Couch (universal)
+		* Refactoried to find common functions to share with deleteAndLoadSnapsets.js.
+		* Working on a bash script to call periodically in the cloud to flush the access tokens 
+		* https://github.com/GPII/universal/pull/777
+	* GPII-3888 Periodic task to remove expired access tokens from the production Couch database (gpii-infra)
+		* Creating the requisite module and template documents for GCP to create a container/job to run the code developed in GPII-3646
+		* https://github.com/gpii-ops/gpii-infra/pull/383
+
+
+Kavya:
+	*     Testing NOVA build on Sony vaio and pilot machine Optiplex 3040
+
+Sergey:
+    - GPII-3865: Fixes for the org-level permissions management
+    - GPII-2862: Forseti integration
+
+Stepan
+- Fixing/investigating some issues related (or not) to DNS rollout  (Done - GPII-3883 - Fix slow max response time)
+- Done - GPII-3221 - Move preferences server out of public cloud
+- In progress - Istio - Move Flowmanager and Preferences to Istio (traffic encryption)
+  -  just rolling out 1st step (stg so far)
+
+Steven Githens:
+- Lots of code clean-up on branches from existing and new commentary by the Cindy Li, GPII-2452, GPII-2966
+- Still finishing up a few tests and converting some promise signatures on universal/GPII-228 to get it reviewed
+- Underwent a thorough review of the solutions registry settings with Lynn and categorized them based on which ones
+need more information or refined metadata in order to create editing widgets for them
+
+Steve Grundell:
+    Finishing Eject USB
+    Installing language packs for Office
+
+Tony:
+
+	1. Working through feedback on the GSS pull, thanks to Antranig for that.
+	1. Submitted an infusion docs PR to add searching to the static site.  Finished initial improvements requested, just need to add testem tests.
+	1. Pull to standardise Infusion CI builds to use "npm test" was merged, which also means we now have browser pack tests.
+	1. Various UL imports work.
+
+Tyler:
+* Demo GCR
+* Update couchdb and nginx-ingress in production
+	* Total reduced availability: about 30 seconds
+	* Total deploy time including monitoring some key stats: about 10 minutes
+* FYI: Docker Hub had a security incident: https://success.docker.com/article/docker-hub-user-notification
+* IGQotW: "After we deploy with individuals (sometime this summer) - then we will need to find a way to update a second system and swap so that Morphic doesn’t go offline at all for updates."
+
+
+AGENDA:
+What is Morphic 1.2 for?
+* New functionality requested by pilot leads
+* We have more flexibility in non-NOVA sites to do upgrades, as we have people who can go on-site to do upgrades, fewer devices
+* Gregg has a spreadsheet. Pilot leads vote for features they want
+	* Some things that were moved out of 1.1
+	* Major item: MS Office simplification
+* What about technical debt?
+	* Sandra and Javi collecting, will prioritize with feature requests from PLs
+	* Gregg is aware that addressing the debt is important
+* This is one reason there is no currently scheduled delivery date for 1.2

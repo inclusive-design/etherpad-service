@@ -1,0 +1,6 @@
+1. Anything to demo this week?
+	* No
+ 2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+	 * Tyler will ask Cindy about changes in couchdb size metrics https://app.google.stackdriver.com/dashboards/5252464485969725191?project=gpii-gcp-prd&timeDomain=6w
+	* Total time reviewing: 10 min
+

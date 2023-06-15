@@ -1,0 +1,97 @@
+Updates
+
+Alejandro:
+	* Started Windows 7 vagrant box generation. Find some issues in the road.
+
+Alfredo:
+	* GPII-1562 - Ansible role for managing Jenkins nodes
+	* GPII-1864 - Provide a way to provision non-Vagrant Windows installations
+	* Updating Windows VMs
+
+Avtar:
+	* GPII-1833 - Provision non-Vagrant Fedora environments
+
+Colin
+	* Got a wicked earful from Alan about the state of: 
+		* our GPII docker containers not being built automatically and falling behind relative to GPII framework updates
+		* difficulties (or lack of documentation?) about how to configure the GPII from command line/environment variables—e.g. changing the port number Kettle binds to, etc.
+
+Giovanni:
+	* Spent last week on Operations activities
+		* pfSense firewall upgrade
+		* various bug fixes and security fixes (Thursday morning)
+		* kernel security update (Thursday evening)
+			* issue with truncated grub.cfg causing VMs to fail to boot (unrecoverable)
+		* working on recovering GPII Jenkins DEV instances (Alfredo's 37/38/39 and Tony's i-0044)
+	* Other IDRC-specific activities
+
+Sandra:
+    - Started creating a table to project AWS cost based on input from Tyler: https://docs.google.com/document/d/1WXjwcG7RsWLvg9fPKFGOhJvKZqCHsXyYz2QjYM_jF_Y/edit?userstoinvite=gpt@gtirloni.com&ts=588745f2&actionButton=1
+    - Waiting on the revised list of what is needed for Pilot Stage 1
+
+Tyler:
+    * Explore IDRC infrastructure with help from Gio
+    * Start playing with Terraform in AWS
+	    * Send me info about other public clouds (Azure, GCE)!
+    * Work with Alan on First Discovery Server migration from "dev" to "production"
+
+Agenda:
+* Move JIRA tickets, as appropriate, from Pilot Stage 1 to Pilot Stage 2 [sandra]
+* Ansible drift (see alanharnum email http://lists.inclusivedesign.ca/mailman/private/ops/2017-January/000214.html ) [tyler]
+* Rebuilding all Docker upon commit, and when can we also do continuous staging deployment?
+	* https://issues.gpii.net/browse/GPII-2033
+	* https://issues.gpii.net/browse/GPII-2034
+* Windows 7 vagrant box generation is hell. awww
+
+Interesting links:
+	*  https://about.gitlab.com/2016/12/14/continuous-delivery-of-a-spring-boot-application-with-gitlab-ci-and-kubernetes/
+	*  https://about.gitlab.com/2017/01/22/gitlab-8-16-released/
+	* 
+
+Sample of .qi.yml file:
+---
+
+# These variables that start with a dot "." are ignored by gitlab-ci, 
+# but they are used by the vagrant-gpii-ci plugin
+#
+# .ci_env variable defines each VM settings. The common variables are group 
+# in the default section.
+.ci_env:
+  default: &default
+    cpu: 2
+    memory: 2048
+    clone: true
+    box: inclusivedesign/windows10-eval
+  vms:
+    windows:
+      <<: *default
+      mapped_ports:
+        - 8080
+    windows2:
+      <<: *default
+      mapped_ports:
+        - 8081
+
+.ci_env_tasks:
+  - name: gpii-windows
+    run_in_vm: windows
+    script:
+      - npm install
+      - "node tests\\AcceptanceTests.js"
+
+
+# Gitlab-CI definition
+
+stages:
+  - setup
+  - test
+
+setup_job:
+  stage: setup
+  script:
+    - npm install
+
+test_job:
+  stage: test
+  script:
+    - "node test\\AcceptanceTests.js"

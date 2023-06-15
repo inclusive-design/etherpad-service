@@ -1,0 +1,54 @@
+Meeting about Dialogs and Surveys in the PSP
+31/10/17
+Present: Antranig, Javi, Sandra, Colin
+
+Prior art: 
+    
+1. Document about survey requirements from UX
+https://docs.google.com/document/d/1v4UzVYFo9LJorF5WQmSZcyrjIy1YnKlpZtP7fEoe-Z4/edit#heading=h.uzld4c1f3r6u
+Entitled: "COVER PAGE & Specification-October 4, 2017 UX-Design Release to Build Team"
+
+2. Rough sketch for a dialog API as part of PSP API
+https://docs.google.com/document/d/1c7QWlh-CFmkdERja7m0VRby50rySAkAP9eLGNiSlZGE/edit?usp=drive_web
+Entitled: "PCP API Notes"
+Relevant section entitled "GPII asks the user a question"
+We plan to modelise this - and presumably all dialogs will be served over either localhost or global URL endpoints
+
+3. Some JIRAs on Dialogs from us and Astea
+https://issues.gpii.net/browse/GPII-2348 - "Notification about port 8081 is already in use doesn't work all the time"
+https://issues.gpii.net/browse/GPII-2665 - "Create a new mechanism for handling application errors"
+ - This indicates that we will most likely want to go with HTML dialogs for everything since as well as the technical issues there will also be accessibility concerns (raised by Gregg) - for example, the ability to defeat "lose focus means dismiss", more configurable timeouts (notifications seems forced to 6 seconds), etc.
+https://issues.gpii.net/browse/GPII-2516 - Message to user should be displayed with GPII cannot connect to the internet
+https://issues.gpii.net/browse/GPII-2565 - Display message with APCP support information to users
+
+4. Designs for Wait Dialog with Spinner and Error Message Dialog 
+https://issues.gpii.net/browse/GPII-2401
+
+
+
+General workflow:
+    Javi has a general plan for how to address surveys:
+			* https://www.soscisurvey.de/
+				* Javi and Ale had considered this against some alternatives (e.g. SurveyMonkey)
+				* It appears we fall under "2. Charity Research: Surveys without purpose to make profits performed by (a) an approved non-profit-organization or "
+				* sosci was also chosen because it has good a11y
+				* Relevant docs section for embedding: https://www.soscisurvey.de/help/doku.php/en:survey:url
+			* From Vera: Looking at QualTrics https://www.qualtrics.com/
+
+        
+    We should assess this and its requirements for use of URLs, any unpredictable interactions with the electron app, our architecture, styling, etc. - 
+	     - how exactly would we embed surveys encoded by global URLs?
+	     - iframes? Colin says there is such a thing as the "Web View" which might be used to embed remote content at a higher privilege level
+	    -  https://electron.atom.io/docs/api/webview-tag/
+	    -  "Unlike an iframe, the webview runs in a separate process than your app. It doesn’t have the same permissions as your web page and all interactions between your app and embedded content will be asynchronous"
+    And then see if we can think of a scheme for incorporating this within a general dialog system
+    
+    
+1. Survey engine, which is responsible for scheduling the timed appearance/disappearance of survey dialogs as described in the specification: about a month of work
+2. Dialog bus:  https://docs.google.com/document/d/1c7QWlh-CFmkdERja7m0VRby50rySAkAP9eLGNiSlZGE/edit?usp=drive_web : a week or so, but more work to 
+ - refactor our existing use of dialogs to the bus, and 
+ - design snippets of suitably styled static content to display the notifications
+ - mount a static-ish server which hosts these over localhost
+3. Some kind of work to bind the survey tool to our system via an API based on query parameters to the iFrame
+
+(these estimates don't include a fairly significant research time)

@@ -1,0 +1,93 @@
+UPDATES:
+
+Kasparnet:
+	* Lots of coding!!! (yay!)
+		* Finished up the first round of canopy MM work. Pull request made - expecting more MM work to appear in Toronto. 
+			* https://github.com/GPII/universal/pull/450 (version directed towards antranigs GPII-1318 branch for early review: https://github.com/amb26/universal/pull/7 )
+		* Added tests for input path collection (Model transformation functionality, used by the canopy MM): https://github.com/fluid-project/infusion/pull/715
+		* Removed support for old C4A preferences (GPII-1556) - pull request at https://github.com/GPII/universal/pull/451
+	* Bit of JIRA cleanup <- GREAT!
+	* Two pull requests that could use some review:
+		* Valuemapper syntax update and bug fixes: https://github.com/fluid-project/infusion/pull/710
+		* Documentation on the transformation framework: https://github.com/fluid-project/infusion-docs/pull/86 (big one!!!)
+
+Ale:
+	* Settings from differents AT-Tools for security team.
+	* Starting to work in first Mac settings handler. (exciting)
+	* Following Windows Installer work with SILO through meeting.
+
+Alfredo:
+	* Working on how to set diferent development environments with Vagrant for the Universal repository
+	* Working on update the RPM package for the GPII-Linux
+
+Antranig:
+	*     finished comparing branches for final merge
+	*     Finished code review with Tony
+	*     Getting Skørpån up to speed - he will be working on infusion for the next 3 months
+	*     Working on updating linting tools (tony found eshint to replace jshint)
+	*     Will pick up the journaling stuff next - expecting to be done in 1 month.
+
+Avtar:
+	* Working on QI config related changes https://github.com/avtar/qi-config
+	* Looking into git branches and Vagrant related changes based on Tony's feedback
+	* Will also be tackling planning and tasks this week for a QI screencast
+
+Colin:
+	* Final review of Kettle, will merge within the next hour or two (YAY!!!)
+	* Would you like me to merge the GPII branches, and if so, is there anything left to do or test?
+		* SHIP ITT!
+	* Continuing to meet regularly with Adewale and special guests about security
+		* Learned a lot about container and Kubernetes security--Gio should do a session explaining some of this to the whole team because it is AWESOME [Gio explaining session sounds great - Simon][Deal - Gio]
+	* Met with Justin and Javi to discuss Chrome extension work
+	* Want to check in with everyone regarding next steps and tasks towards July release
+	* Following Tony's lead to adopt Avtar's bleeding-edge QI features in a few of my own personal projects (osc.js and Flocking)
+
+Gio:
+	* Small updates to Ansible roles
+	* Reviewed some of the QI stuff Avtar is working on
+	* Re-reading APCP docs in preparation for F2F meetings
+	* Evaluating Kubernetes 1.3 and taking a first look at OpenShift PaaS platform
+	* Will prepare a presentation about Kubernetes and related topics for F2F meetings
+
+
+Javi:
+	* Fixed the orca settings handler tests - they've been merged into Antranig's giant pr
+	* Chrome extension
+		* Making progress on tests and webpage communication
+		* Will create a wiki page for this - mostly, putting description, scope and what needs to be done
+	* Meetings
+		* With SILO - windows installer
+		* With Colin, Justin - Chrome extension
+
+Joseph:
+	* Back from vacation.
+	* Dealing with a gazillion emails
+	* Catching up on GPII-1526 (port to Nan) and GPII-1318 (Antranig's giant branch)
+	* Need to bring process reporter work into line with GPII-1526 and GPII-1318 changes.
+
+Simon
+	* Updating the GPII user account model to support multuple GPII tokens per user
+	* Extending the number and types of inputs and outputs on the NexusConnector for AsTeRICS
+
+
+Sandra:
+	* Working on staffing for the project (job postings)
+	* Updating status
+	* Completed agenda for Toronto face-to-face meeting
+
+
+Tony:
+	1. Continuing work on the Unified Listing API refactor.
+	1. This week, discovered numerous problems with passing JSON payloads via query strings.  Previous approaches convert numbers, booleans, etc. to strings.  This limits our ability to write clean JSON Schemas and to validate payloads.
+		2. Ended up writing encoding/decoding functions that work in both browsers and node, and that correctly handle utf8 data, "deep" structures, and as full a range of data types as possible. 
+		2. To assist in using these, also wrote transformation functions, dataSources and middleware that use the new functions.
+		2. Also made key improvements to gpii-binder to ensure that values are relayed properly between form elements and model variables.
+		2. Need to review the "location bar relay" work as well on this front.
+	1. Started integrating two repositories with the QI infrastructure.  Will get the first proof-of-concept repos done this week and hope to do the same for the entire range of packages getting ready to be released.
+	1. Continuing to try out ESLint in parallel with our existing rules, closed a handful of the gaps this week in my sample settings file.  Antranig found a few more and will talk about that.
+	1. Did some research following Google I/O and believe it's now possible to change settings on Android in the way we need without requiring root (at least for Marshmallow and beyond).
+	1. Working with the User Review team, still ironing out getting a self-contained and CI-friendly test harness, but at least we have a test harness that shows their work to date integrated with the UL API and its components.
+
+
+GIANT PULL REQUEST:
+	* Current status, remaining work, action items.

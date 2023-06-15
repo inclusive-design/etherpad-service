@@ -1,0 +1,156 @@
+	1. 19 March 2019
+
+First pass on preferences sets:
+
+GPII-270-rbmm-demo.json5 -  is not going to work 
+alsa.json5 - settings for linux - do not test
+andrei.json5 - shouldn't work - includes settings for linux/orca and RWG
+audio.json5 - this one is for android - skip
+
+carla.json5 - very old one - includes settings for linux, RWG - I'd say skip this one
+carla_24751.json5 - same as carla - I'd skip it
+
+chris.json5 - should work but not sure will do, it's an old cloud4all one
+chromeDefault.json5 - won't work - the solution doesn't exist anymore - needs to be removed
+condTest.json5 - old cloud4all stuff - skip
+condTest2.json5 - old cloud4all stuff - skip
+
+easit1.json5 - skip
+easit2.json5 - skip
+
+empty.json5 - NOTHING HERE
+explodeLaunchHandlerStart.json5 - skip
+explodeLaunchHandlerStop.json5 - skip
+explodeSettingsHandlerGet.json5 - skip
+explodeSettingsHandlerSet.json5 - skip
+franklin.json5 - old RWG prefset - don't think it should work
+gert.json5 - not sure if this should work - and if it does, don't know what we expect to be configured
+
+jme_app.json5 - skip
+jme_common.json5 - skip
+li.json5 - skip
+
+maavis1.json5 - skip
+maavis2.json5 - skip
+
+maguro.json5 - skip (old android one)
+manuel.json5 - skip (old cloud4all one)
+mary.json5 - skip
+
+mobileaccessibility1.json5 - skip
+mobileaccessibility2.json5 - skip
+multi_context.json5 - skip (this was used for demoing multiple contexts on PSP, which has been deprecated recently)
+
+nisha.json5 - skip (it needs to be either removed or updated)
+
+olb_Alicia_app.json5 - skip (old cloud4all thing)
+
+omnitor1.json5 - skip
+omnitor2.json5 - skip
+os_android.json5 - skip
+os_android_common.json5 - skip
+
+randy.json5 - linux prefs - skip
+review3_chrome_high_contrast.json5 - skip
+review3_ma1.json5 - skip
+review3_ma2.json5 - skip
+review3_user_1.json5 - skip
+review3_user_2.json5 - skip
+review3_user_3.json5 - skip
+review3_user_4.json5 - skip
+
+sociable1.json5 - skip
+sociable2.json5 - skip
+talkback1.json5 - skip
+talkback2.json5 - skip
+
+testUser1.json5 - skip - not sure what is it about
+timothy.json5 - skip - includes linux settings
+
+tvm_jasmin.json5 - skip
+tvm_sammy.json5 - skip
+tvm_vladimir.json5 - skip
+
+vladimir.json5 - skip - needs to be revisited
+wayne.json5 - skip
+
+
+Prefs that should be tested:
+
+MikelVargas.json5 - should work
+alice.json5 - should work
+ben.json5 - should work (not working at this moment - it applies the brightness but crashes when keying-out)
+catalina.json5 - should work
+daniel.json5 - should work
+davey.json5 - RWG - should work
+david.json5 - RWG - should work
+debbie.json5 - should work
+elaine.json5 - should work (not closing Firefox)
+elmer.json5 - should work (if your computer supports 800x600)
+elmerv.json5 - should work (if your computer supports 1280x720)
+elod.json5 - should work
+jaws.json5 - should work
+liam.json5 - should work
+livia.json5 - should work 
+lorie.json5 - should work
+maggie.json5 - should work
+magic.json5 - should work
+mickey.json5 - should work
+mike.json5 - should work
+naomi.json5 - should work
+nvda.json5 - should work
+nyx.json - should work 
+olga.json5 - should work
+oliver.json5 - should work
+omar.json5 - should work (not closing firefox)
+phil.json5 - should work
+roger.json5 - should work
+rwg1.json5 - should work
+rwg2.json5 - should work
+salem.json5 - should work
+sammy.json5 - shouls work - need to revisit, Kavya says is failing
+simon.json5 - should work
+slater.json5 - should work (I guess it'll start Narrator, but not sure) - probably needs to be revisited
+snapset_1a.json5 - should work
+snapset_1b.json5 - should work
+snapset_1c.json5 - should work
+snapset_2a.json5 - should work
+snapset_2b.json5 - should work
+snapset_2c.json5 - should work
+snapset_3.json5 - should work
+snapset_4a.json5 - should work
+snapset_4b.json5 - should work
+snapset_4c.json5 - should work
+snapset_4d.json5 - should work
+snapset_5.json5 - should work
+telugu.json5 - should work
+tom.json5 - should work
+uioPlusCommon.json5 - should work
+uioPlus_captions.json5 - should work
+uioPlus_character_space.json5 - should work
+uioPlus_defaults.json5 - should work
+uioPlus_font_size.json5 - should work
+uioPlus_high_contrast.json5 - should work
+uioPlus_highlight_colour.json5 - should work
+uioPlus_inputs_larger.json5 - should work
+uioPlus_line_space.json5 - should work
+uioPlus_multiple_settings.json5 - should work
+uioPlus_self_voicing.json5 - should work
+uioPlus_simplified.json5 - should work
+uioPlus_syllabification.json5 - should work
+uioPlus_toc.json5 - should work
+uioPlus_word_space.json5 - should work
+vicky.json5 - should work
+
+20 June 2019
+
+Preference sets organization:
+    - Legacy / Broken
+    - Testing
+    - Demo
+
+Procedure is to throw everything into Legacy one they fail and we don't prioritize.
+
+https://docs.google.com/document/d/1OJov73KJtkBvUYXuLikM9Mu9AeQw6xfJWHZwwcTzcXk/edit#
+
+

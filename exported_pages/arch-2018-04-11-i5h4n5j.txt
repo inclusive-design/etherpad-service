@@ -1,0 +1,84 @@
+UPDATES:
+
+Javi:
+	* Short week - Sara's family has been here to visit us
+	* Finally, set up my office in the new house - yay!!! Very important.
+	* I've been troubleshooting a problem that Maureen reported last week - GPII-2935
+	* Merged Justin's GPII-2429
+	* Merged Gio's universal/pull/603 - will merge gpii/linux and gpii/nexus too
+	* Gregg is going to demo the GPII at Microsoft next month
+
+Alfredo:
+	* Interviews
+	* Meetings
+	* Evaluating how to move from AWS to GKE using our current code (with perhaps some modifications from (i.e) exekube)
+	* Thinking on let my beard grows to fit the ops looking code
+	* Setting up a new office
+
+Colin
+	* I think we're close to having a new hire for the ops team (yay)
+	* Helping with various technical planning tasks, especially ops-related as well as the new data model
+	* Finally got time to review Tony's schema proposal
+
+Cindy
+	* GPII-2630: Addressing code review comments on this pull request
+	* Meeting about APIs for capture tool & account setup and next steps
+	* Will work on hooking up PSP with GPII Cloud
+
+Danail (on behalf of the Astea team):
+	* Working on the updated designs for the PSP
+		* GPII-2931: Sound effect for preference sets - done
+		* GPII-2929: About screen - mostly done
+			* Is there any existing infrastructure for application updates?
+		* GPII-2932: Image associated with preference set - in progress
+		* Participated in discussions
+	* We provided some assistance to Tony for the gpii-app test coverage
+
+JJ:
+	* Reviewing Steve Grundell pull for GPII-2772.
+	* Go back to settings 10-20 from list https://docs.google.com/spreadsheets/d/1vhhzs0pLCYPyLDPXpWNVUrwVvTv8IoGhRHsUUiA7gJk/edit#gid=409694249.
+	* Trying to trace https://issues.gpii.net/browse/GPII-2938.
+
+Joseph
+	* Updating all my branches due to merging of Kasper's GPII-1230 into universal
+		* all pass in CI.
+	* Windows meeting last Thursday.
+	* Working with Tony on improving test coverage for process reporter components in universal
+		* GPII-2927  re:  process reporter components, specifically (https://issues.gpii.net/browse/GPII-2927)
+		* GPII-2936  re:  improving testem.js (https://issues.gpii.net/browse/GPII-2936)
+		* Pull request ready for merging: https://github.com/GPII/universal/pull/604
+	* Started to look at code coverage in Windows branch.
+
+Justin:
+	* GPII-2429 PRs have been merged, thanks Javi and Antranig
+		* Beta 4 of UIO+ available in the chrome web store ( https://chrome.google.com/webstore/detail/ui-options-plus-uio%20/okenndailhmikjjfcnmolpaefecbpaek )
+	* Self Voicing Enactor Work
+		* PR for FLUID-6176 ( https://github.com/fluid-project/infusion/pull/892 )
+		* Working on FLUID-6175 ( https://issues.fluidproject.org/browse/FLUID-6175 )
+
+
+Sandra:
+    - Short week. Continue with hiring process. One potential candidate for DevOps. Reposting the IoD position.
+    - Discussing timelines with Gregg for this summer's deployment to community college.
+    - Gathering requirements from Gregg for demo to Microsoft next month. 
+    
+
+Simon:
+	* Continuing code review of GPII-2630
+		* https://github.com/GPII/universal/pull/591
+	* Attended meeting Friday with Cindy, Antranig, Colin, and Steve Githens on data modelling, capture tool, and preference editing integration
+
+Tony:
+	* Wrote an initial metaschema for FSL (Fluid Schema Lite) that we might use for "schema validated components", will review in the weekly meeting tomorrow.
+	* Started initial sketches on the validator and components themselves, will add tests and continue to flesh those out as well.
+	* Came up with an approach to electron code coverage that I have confirmed working in isolation.  Still having trouble getting it working with gpii-app, mainly because the tests never complete if I run them directly.  Have narrowed it down to the integration tests (thanks Georgi!), and further to three specific tests.  Could use some help from people more familiar with the gpii-app repo: https://github.com/GPII/gpii-app/pull/44 - I can give a try to it :) Javi?
+	* I looked over Joseph's universal process reporter bridge pull and left him some comments.  Someone else still needs to actually complete the review.
+	* In that pull, the CI builds report various NullPointerException messages, just want to make sure this is expected: https://ci.gpii.net/job/universal-tests/812/console
+		* I think that is a bug of the Jenkins plugin, but I'll check
+
+Tyler:
+    * Interviews
+    * GCP migration, Exekube: https://github.com/exekube/exekube
+
+
+AGENDA:

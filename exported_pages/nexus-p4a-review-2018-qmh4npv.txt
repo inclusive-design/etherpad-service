@@ -1,0 +1,22 @@
+notes
+
+
+Slidedeck
+
+	1. Reminder of What is the Nexus?
+	1. Image of the Visible Nexus
+	1. Impact—how we finished everything we said we'd do, how we made several integrations along with SP3, and how it will serve as the basis for data projects such as MyL3, etc.
+		* Base on deliverable
+
+Screencast
+
+	* Changes that we made to the Visible Nexus
+	* What we did in Year 4
+		* Visible Nexus
+		* Containerization
+			* Isolation and ease of use/deployment
+	* Reminder of impact/use/continued value of the nexus
+	* Short, approx 2 minutes
+
+Aim to have ready for Tuesday next week
+

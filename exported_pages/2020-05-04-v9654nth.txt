@@ -1,0 +1,16 @@
+1. Anything to demo this week?
+no
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+done
+2a. If you are on top of the Standup list, prepare a browser with all Key Metrics loaded and ready to review.
+
+3. Backup testing
+ -> script failed - AI to investigate & finish
+
+4. Sprint planning
+
+5. Move the Slack notifications
+-> AI
+
+

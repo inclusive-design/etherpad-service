@@ -1,0 +1,86 @@
+UPDATES
+
+Javi
+	* Been testing a lot these days, also had a live testing session with Kavya
+		* We spotted several issues and some of them have been fixed already
+		* I'll have a new installer by the end of today/Friday morning (I am off tomorrow, it's holiday in Belgium)
+	* Met with Steve Grundell and JJ to provide an overview to Bern about the "language switch" feature
+	* Reviewed resumes for Kasper's backfill
+	* Attended to several meetings about different topics
+
+Alfredo:
+	* Writing terraform code to manage the Google DNS / AWS DNS zones and records(GPII-2951)
+	* Interviews
+	* Migration plan meetings
+
+Antranig:
+	* Continuing with GPII-2957, GPII-2831 etc. work on user errors
+	* Merged KASPAR'S LAST PULL which has fixed one settings corruption (magnifier) and introduced a new one (narrator) - https://issues.gpii.net/browse/GPII-2992
+	* Looking over resumes
+	* Meetings with Gregg about MVIP, Onboarding, Solutions registry etc.
+	* Astea meeting on PSP3 which is nearly ready
+	* Meetings about I18N and schemas
+	* 
+
+Cindy
+	* GPII-2630: 
+		* Modification to the universal repo pull request, ready for more reviews
+		* Modified the data loader at gpii-ops/docker-preferences-dataloader, ready for more reviews too
+		* Getting closer with gpii-infra pull request
+	* Meeting about PPT and APIs
+
+JJ
+	* Talk with Javi and Steve about the windows language feature.
+	* Wrote minor fix for Simi script for next demo (already merged locally). Talking with Javi about the issues. And reviewing installation doc.
+	* Addressing GPII-2938 in GPII-2521, problem will be solve for master once I address issue GPII-2986.
+	* Asked Kasper about the Vaio he was offering in IRC.
+	* Confirmed bug related to tests crashing due to high-contrast setting.
+	* Confirming that we cannot address LearningTools for MsDoc with common tools. :(
+
+Justin:
+	* TTS:
+		* Continuing work on FLUID-6177 (https://issues.fluidproject.org/browse/FLUID-6177)
+			* have been working on the UI (selection, button for playing)
+			* looking into modifications to the TextToSpeech component, which is used to interface with the Web Speech API, to support reading text selections
+	* Attended the i18n meeting this week
+	* Fixed a UIO bug with line-height
+    
+    Kavya:
+	* Testing demo installer on sony vaio found few issues-known issues
+	* Continued testing on Dell laptop windows 10 pro
+	* Breifly gone through IOD technical documents.
+        
+Sandra:
+    - Continuing with resume reviews and interviews for DevOps and Kasper's backfill. 
+    - Plan to refocus on non-DevOps Security remediation tasks this week. 
+    - Reports: monthly, weekly to Gregg. 
+
+Simon:
+	* Attended PPT meeting
+
+Steve GuRundell:
+    - Working on the IoD client (GPII-2971)
+	    Almost functional
+    - Working on the IoD server (GPII-2972)
+	    Functional enough for the client
+	- Spoke with the Javis about language support.
+
+Sergey:
+    * GKE migration tasks
+    * Backlog estimation
+    * Interviews
+
+Tony:
+	* Continued discussions regarding and then sketching out approaches to schema-validated components.
+	* Met with Antranig, Colin and others to discuss the relationship between the schema work, i18n work, the Live Solutions Registry, and the GPII in general.
+	* Finally figured out the last goofs with the code coverage PR for the gpii-app repository, which as far as I know is ready for review and hopefully to merge.
+	* Only remaining initial code coverage pull is the linux pull, which requires a change in the CI config: https://github.com/GPII/linux/pull/94#issuecomment-378175617
+
+Tyler:
+    * Interviews
+    * Planning and estimating
+    * CI for local fork of exekube
+    * Coming soon: The Official Raising the Floor Google Cloud Platform Account
+
+AGENDA
+

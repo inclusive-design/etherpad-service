@@ -1,0 +1,31 @@
+Date: Feb 16, 2018
+Participants: Cindy, Tyler
+
+CI to accommodate GPII-2630 change for the universal repo: https://github.com/cindyli/universal/tree/GPII-2630
+
+	* gpii-ops/gpii-infra: https://github.com/cindyli/gpii-infra/tree/GPII-2630
+		* The only problem is the curl for fetching carlar settings at https://github.com/cindyli/gpii-infra/blob/GPII-2630/rakefiles/deploy.rake#L83. This section has been commented out on my local machine
+		* Directly running the curl command from terminal returns expected response:
+			* curl "http://flowmanager.dev-cindyli.gpii.net/carla/settings/%7B%22OS%22:%7B%22id%22:%22linux%22%7D,%22solutions%22:\[%7B%22id%22:%22org.gnome.desktop.a11y.magnifier%22%7D\]%7D"
+	* gpii/universal: The shell that builds flowmanager containers: https://github.com/cindyli/universal/blob/GPII-2630/scripts/vagrantCloudBasedContainers.sh
+		* Remove the npm task "test:vagrantProduction" from package.json and add a section into README to explain how to use it
+	* gpii-ops/gpii-version-updater: modify `components.conf`, change `preferences-dataloader` to `gpii-dataloader`; remove the line of `preferences`
+	* gpii/ci-service: Update the jenkins jobs to build containers based off GPII-2630: git@github.com:gpii/ci-service
+		* Needs another pull request for this repo (Cindy to work on it)
+	* The npm task that runs ProductConfigTests.js: https://github.com/cindyli/universal/blob/GPII-2630/package.json#L73
+		* Need more discussion on how to set up the CI with gpii-infra to run this test when pull requests are merged into the master
+	* Remove the gpii/preferences docker image from the docker hub
+		* Do this later when GPII-2630 is merged
+
+======
+
+Date: Mar 1, 2018
+Participants: Alfredo, Cindy, Tyler
+Topic: how to run production config tests in CI
+
+Part 1: Have a docker container that runs the production config tests
+		* ability to set a environment variable with the URL of the flowmanater to point to
+Part 2: gpii-infra will have a step that runs this docker container and wait for it to complete successfully
+	* As part of gpii-infra CI: docker run <whatever> (on h5, the CI build machine)
+	* or maybe: wait_for('kubectl run <whatever>') (and run inside the cluster)
+

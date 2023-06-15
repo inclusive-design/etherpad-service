@@ -1,0 +1,32 @@
+# GPII Infrastructure Meeting - 2017-02-14
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Agenda:
+	* Start planning for F2F, especially first day: https://docs.google.com/document/d/1_uS96eDCwCxclUdAXIy2OqW0FT_ZTtWagJyTR9g5pe0/edit [sandra]
+		* Start with "High-level overview and planning for infrastructure for the next several Pilot Stages" and reviewing tickets in https://issues.gpii.net/browse/GPII-2009
+	* Status of GPII Vagrant plugin and .qi.yml
+		* https://github.com/amatas/vagrant-gpii-ci
+	* Alpine Linux and Minikube (proposed container development workflow)
+		* Develop using Minikube for integration testing?
+			* Forces us to get familiar with Kubernetes conventions
+		* How to bridge current non-Kubernetes state?
+			* Do we need to?
+
+
+
+

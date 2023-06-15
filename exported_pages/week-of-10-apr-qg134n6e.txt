@@ -1,0 +1,8 @@
+10-Apr-2017:
+Alfredo: Generate collection of Vagrant boxes. Stuck in Windows 7 32-bit (BSOD during build). Will publish rest of images for use. Waiting for Steve Grundell to talk about metrics stuff. Related to backlog task GPII-2026 which relies on Prometheus client -- extend that ticket to cover current work? No, that's separate work focused more on cloud components -- Alfredo will create a separate ticket.
+Tyler: Reorganizing terraform code into modules. Preparing for demo later today. No blockers.
+
+12-Apr-2017:
+Tyler: Demo on Monday, still working on modules. Not blocked. 
+Gio: Finished the first iteration of the Kubernetes cluster exploration. attached results on JIRA 2317, published documentation on the GitHub repo. No blockers. 
+Alfredo: Released most of the virtual boxes. Blocked on the metrics, waiting on Steve Grundell to become available (should be on 12-Apr). 

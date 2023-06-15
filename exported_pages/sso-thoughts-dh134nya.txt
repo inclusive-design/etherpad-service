@@ -1,0 +1,85 @@
+Meeting to consider plans for implementing SSO-like experience for Manassas Pilot 4/10/18
+Present:
+    Antranig, VANTTUNNEZZ, Cindy, Grudel, Githens, Colin
+    
+What we have:
+    
+Interview transcript with Nova technical staff last week:
+    - "Agenda and Notes from Meeting with IT - NoVa - 27-Sep-2018" https://docs.google.com/document/d/1BLuhdk-tpEuv0GbRjnTPsK5afoYES7f9CR4FaUH9-FE/edit?ts=5bacc7c6
+    - Older "Questions for Nova IT" https://docs.google.com/document/d/11H7IpPXdtHO57uxJOTCk7rhtcFLB6J3x9H0gQVpZO7A/edit?ts=5baa5e18
+    - Gregg's thoughts over the weekend: https://docs.google.com/document/d/1mDvSUEBP67Tg6NFxUZ2FzpUnpZmIex2YP4DatvDE0Ko/edit#heading=h.1hmsr1khurxw
+    
+
+From the Skype buffer:
+    Tyler: 
+	* in case you've never looked at it, this is what most MFA systems use these days: https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm
+	* There's also kerberos
+    Grudel:
+	* this is all because they're too cheap to have a networked home directory
+	* solution #2: buy them a network file server
+
+Steve says - "This seems useless since it's easy to find out the secret and once it's out it's no good"
+Antranig says - "You say it's useless but it is currently our front-running idea"
+
+Steve Gi - we should ask if there is literally anything that roams between logins? Would be good to follow up with them to confirm.  Backgrounds, language, any type of setting anywhere?
+Steve Gr - but whatever it is, it is probably turned off, and if we discover something that does roam, they'll probably turn it off ;)
+	
+	
+WE THINK THERE IS NOTHING WE CAN STORE IN THEIR ACTIVE DIRECTORY, AND NO WAY TO DO SO
+
+Microsoft's Kerberos:
+    https://website.aub.edu.lb/it/kb/win/Pages/Kerberos_With_Active_Directory.aspx
+    https://en.wikipedia.org/wiki/SPNEGO
+    Something horrific like this? https://www.npmjs.com/package/krb5 
+	    krb5 is a Node.js native binding for Kerberos. It is a Node.js implementation of Kerberos client tools:
+		* kinit (keytab, or password): retrieve initial credentials;
+		* kdestroy: destroy a credential cache;
+		* spnego: generate a SPNEGO token.
+	It uses the MIT Kerberos native library.
+	SPNEGO is a GSS mechanism to authenticate through HTML requests.
+	
+	The compilation instructions for this library seem horrific.
+	
+	Hens Note: SPNEGO (how do you pronounce this? :P) serves the same purpose as CAS, in that you are provided with some sort of short lived token that can be verified against one of their servers.  However it looks difficult to build, and would only work if they had this extension installed and supported.
+	
+Questions for NOVA:
+	* Does VCCS or NOVA operate  some kind of CAS or equivalent for authenticating (and doing SSO)? (due to great sleuthing, we believe the answer is yes) And will VCCS allow us a Morphic service (running in our cloud) to be a client of it?
+	* If not, will VCCS allow a Morphic service (running in our cloud) to be a client of their Active Directory? 
+(if the answer to both these questions is no, we will have to use a model where any "acceptable request" (defined as USERID + SITE SECRET) can both read and write settings freely, OR we have to introduce a separate account system that is Morphic-specific.) <--- is this statement correct?
+
+Questions for UX: 
+	* Is it acceptable for Morphic to require users to authenticate (username/password) in order to save any changes to their settings?
+		* is this (username/password) for Morphic account or the campus account (it depends, but ideally we mean their campus account, see above)
+
+
+Worst case scenario
+	* We can read the user ID ("SID") via a Windows API
+	* We can install a site-specific (i.e. NOVA-specific) secret on each machine we install Morphic on
+	* This provides only a very tenuous measure of certainty that a request is legimitate, and if our secret is compromised, we have no backup protections other than to reissue and replace secrets on all clients, etc.
+	* We recommend that, at very least, users be asked for their username and password prior to saving settings via the QS/PSP.
+		* this will require a Morphic service (running in our cloud) to be a client of either VCCS' CAS server or Active Directory server
+		* one other option, Javi pointed out, would be if there is some way to insert something into Windows' login process that would allow us to swipe the user id/password?
+	* 
+
+
+
+Githens has pottered around with their public website and is 90% sure it is just a standard uPortal-style CAS system.
+
+The following insane thing:
+
+    https://adsecurity.org/?page_id=1821 -  "A la vie, a l'amour"
+    https://security.stackexchange.com/questions/157922/how-are-windows-10-hashes-stored-if-the-account-is-setup-using-a-microsoft-accou
+
+Description document here: 
+    https://alexandreborgesbrazil.files.wordpress.com/2014/09/mimikatz.pdf - we would want lsadump::sam
+
+
+Follow-up: Hens will make some workflow documents (using draw.io) about why these different mechanisms are needed and some of the options and send them out to everyone on the call by the end of the day (Pacific time) Monday. 2018-10-08
+Antranig is going to start a google doc with our next set of questions for NOVA/VCCS
+
+
+
+
+
+
+

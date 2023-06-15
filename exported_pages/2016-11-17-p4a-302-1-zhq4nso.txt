@@ -1,0 +1,88 @@
+Desired End Products
+
+	* ILDH Entries
+		* Inclusive Education "Hacking, Making and Hands-On Learning"
+			* STEM and STEAM Learning
+			* general discussion of running hackathons and maker events inclusively
+			* specific examples using the Nexus
+			* John Travoltage / Nexus hackathon
+			* https://guide.inclusivedesign.ca/ (esp. Activities?)
+
+"Create Resources and Tutorials for Those Involved in the Open Education Community about P4A and How to Use P4A Deliverables"
+	- Guide
+	- Nexus
+	- ASTERICS
+	- Developer Space
+	- https://github.com/teco-kit/p4a-sensorAPI
+	- 
+
+Some classroom scenarios
+	- hacking/making with students with disabilities
+	- hacking/making collaboration between students and the disability community
+	- ed tech hackathons
+	- extracurricular events for students
+	- code sprints
+	- http://hackathon.inclusivedesign.ca/
+	- http://www.iidexcanada.com/media/iidex-news/the-inclusive-design-hackathon
+	
+- how to include people in these events
+- how the Guide can be used to motivate creative inclusive design
+- using P4A products (Nexus, Asterics, teco-kit)
+- examples, suggestions, references to events/activities we've done
+
+- end product should 
+	- holistically pull together resources from P4A and the general "education through making" concepts at both a theoretical and practical level
+	- inspire educators (broadly considered) to make use of P4A product to design more inclusive making / hacking experiences in and outside the classroom
+	- provide detailed examples of prior art (the PHET/Nexus hackathon, the DEEP hackathon, the inclusive design code sprint)
+
+Due Dates
+	- December 6 - outline
+	- December 23 - reviewed, completed, published 
+
+1-2 weeks of work
+
+Answering Questions...
+	- What is P4A?
+	- Why is it relevant to OER?
+	- how could it be used?
+	- what are examples of where the FLOE community has used it in an educational context?
+	- how could I get involved and use it in an educational context?
+	
+- ASK SIMON ABOUT EVERYTHING HE IS THE P4A EXPERT (jokes) 
+
+	* http://dspace.teco.edu/
+	* http://staging.developerspace.gpii.net/
+	* http://staging.developerspace.gpii.net/categories/building-blocks
+
+QUESTIONS ALAN NEEDS TO ANSWER FOR HIMSELF
+	- what exactly constitutes P4A product?
+
+Background:
+
+From the DOW:
+
+D302.1       Resources and tutorials regarding how teachers and students can benefit from and use Prosperity4All’s tools and components added to FLOE Inclusive Learning Design Handbook                                 
+Month 36
+
+Resources and tutorials regarding how teachers and students can benefit from and use Prosperity4All’s
+tools and components added to FLOE Inclusive Learning Design Handbook.
+
+T302.5: Integration of Prosperity4all with FLOE
+Month 6 - 48
+
+T302.5: Learners learn differently. Research shows that learners learn best when the learning experience is personalized to individual needs. OER is an ideal learning environment to meet the diverse needs of learners, including learners with disabilities.The FLOE (Flexible Learning for Open Education) Project supports the OER community in providing a sustainable, integrated approach to accessible learning, addressing the needs of learners who currently face barriers. FLOE’s personalized learning tools and resources will serve as an ideal context for eLearning innovation in Prosperity4All. This activity will: 
+		* Introduce Prosperity4All infrastructure, resources, and economic models into the Open Educational Resource (OER) environment. For example, FLOE may be connected with Prosperity4All’s Material and Media Transformation and Assistance on Demand infrastructure, helping to fill resource gaps encountered when delivering Open Education Resources.
+		* Share components and tools between FLOE and Prosperity4All’s Developer Space and repository. For example, the Web components, Architecture and Developer Space, and model-based authoring tool deliverables from Prosperity4All’s SP2 may be useful in FLOE, helping to lower the barrier to creating personalized OER content and reaching out to students with diverse learning and access needs. Similarly, many of FLOE’s web components will be excellent additions to the P4A web component repository. 
+		* Create new resources and tutorials within the FLOE Inclusive Learning Design Handbook to support teachers and authors in creating accessible and personalized resources 
+		* Ensure that the Prosperity4All tools and approach reflect the needs and goals of educators and students.
+
+
+We reported:
+
+In year 1 we said we added an ILDH entry about EPUB3
+
+In year 2 we said:
+	* First Discovery Tool uses automated deployment of Quality Infrastructure
+	* FD tutorials
+	* ILDH entries: interactives, Modal dialogs, SVG
+

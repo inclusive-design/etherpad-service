@@ -1,0 +1,20 @@
+Agenda:
+    - Status of Sprint 13
+    - Planning Sprint 14
+    - DNSSEC email (from Jan 2)
+    - Paid GitHub org question (note: we can do nonprofit pricing ($0), but which org?)
+    - Onboarding plan for Yuval
+
+Notes: 
+    - Tyler completed 2552, 2595, 2779 and 2780.
+    - Alfredo: Both items have PRs submitted, moving completion to next Sprint. 
+    - Planning Sprint 14: 
+	     - Alfredo: PR review and merge of 2766 and 2648. Add 2649. 
+		- Tyler: 2553. 2550 and 2596. 
+		- Brendan: incorporating feedback from demo into a Pull Request from a private GitHub. Colin will respond to his email. Brendan will open a JIRA ticket to track the Pull Request (once GitHub private is established). GPII 2781.
+	
+	- Onboarding for Yuval:
+		1. clone gpii-infra, spin up a dev environment
+		2. Focus on what is left to support the Pilots (for PSP with Memory), review the backlog and assign tasks, then proceed to plan a sprint focusing on performance planning/scalability testing. 
+		3. Email address (Gregg). 
+		4. IDRC access (Gio, Colin will talk to him re. email address)

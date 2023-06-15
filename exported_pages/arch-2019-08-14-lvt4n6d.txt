@@ -1,0 +1,98 @@
+GPII Architecture Meeting Minutes, August 14, 2019
+
+UPDATES:
+
+Javi:
+	* Continued working in the code to automate the installer creation
+	* Been testing/reviewing/merging pull requests
+	* Created several siteConfig and credentials installers for different purposes
+	* Interviewed 2 candidates for the macOS implementation why? because it's good practice to assess someone before emplying them
+	* Meetings/calls with different people/teams about different topics
+	* Will be away 3 weeks. YAY!! 19-Aug to Sep-6 - Back on duty on Sep 9
+	* Yesterday I had a session with JJ and the Steves to explain the whole process of creating an installer
+	* Don't panic! Will be reachable all the time :)
+
+
+Sandra:
+    - Potential Morphic 1.2.1 with fixes for wallpaper feature in the works. This is needed by AJC 3.
+    - No updates from Pilot teams this week, but Kavya installed Morhpic 1.2 at the AJC 3 over the weekend.  Work in progress to create installation package for UMD. Gregg is going to try to install and test on one of their library computers before IT installs and tests. I don't have a date for UMD, but sounds like they want to deploy soon. 
+    - Started working with Gregg to define Morphic 1.3. 
+
+Alfredo:
+	* GPII-4014: Cloud deployment of NOVA security work
+	* GPII-4080: loaded UMD credentials in stg and prd
+	* GPII-3917: fixing backup exporter issues
+	* On vacation next week Aug 19 to Aug 23.
+
+Cindy
+	* GPII-4014: Cloud deployment of NOVA security work
+		* Done. Deployed to the staging and the production yesterday
+	* GPII-4036: Updates to a preference (via QSS) cause applications for other preferences to be applied
+		* More investigation. The cause of the problem is added as a JIRA comment. Need to talk to Antranig about the solution
+	* GPII-3958: Implement new API and core function to allow reread of settings during session
+		* Looking into how to query specific settingsHandler to re-read the setting value
+	* Will be on vacation from Aug 16 to Sep 3. Back on Sep 4
+
+JJ:
+	* Out for vacation end of last week.
+	* Started with the onboarding of Kurzweil 3000
+	* Fixed small issue GPII-4035
+	* Started today building a installer with the fix for the wallpaper: GPII-4081
+	* Have some conversations about the performance scripts, and the results of initial testing.
+
+Justin:
+	* Beta 12 of UIO+ released ( https://chrome.google.com/webstore/detail/ui-options-plus-uio%20/okenndailhmikjjfcnmolpaefecbpaek )
+		* Includes fixes for:
+			* UIO+ TTS stopping on CNN - https://issues.gpii.net/browse/GPII-3977
+			* Privacy Policy - https://issues.gpii.net/browse/GPII-4043
+			* Syllables not applied to iframes - https://issues.gpii.net/browse/GPII-4055
+	* Iteration 2:
+		* Started experimenting with integrating Antranig's FLUID-6148 branch into UIO+
+		* Working on GPII-3767 to address issue of the play button rendering far from the text
+			* https://issues.gpii.net/browse/GPII-3767 
+			* https://issues.fluidproject.org/browse/FLUID-6394
+	* Other:
+		* waiting to hear back from Gregg about YouTube captions
+		* e-mailed Bern about upcoming priorities that depend on GPII-3286 ( https://issues.gpii.net/browse/GPII-3286 )
+
+Kavya:
+	* Testing Morphic 1.2  - Early windows versions
+	* Updated AJC3 12 machines with Morphic 1.2 and site config - Office language packs are still not installed
+	* Testing cloud deployment NOVA security 
+
+Stepan
+- Done GPII-4061 - Review & clean up GCP firewall rules (https://issues.gpii.net/browse/GPII-4061)
+- Working on GPII-2865 - Configure K8s Network policies (https://issues.gpii.net/browse/GPII-2865)
+
+Steven Githens:
+    - Met with Javi/JJ/Grundell about building the morphic installer, working through those instructions
+    - Still merging my ppt/redis gpii-infra branch back up to master
+    - Capture Tool diagnostics work, workign through some specs with Bern, creating a fine grained list of tasks
+      required for it to be included in the next set of Morphic v1.3 milestone builds.
+    - Out next week, but not off the grid.  Will be checking email, and probably working to some extent
+      at odd hours.
+    - Looked a little bit at Aruns' stuff
+
+Steve Grundell
+- Resuming IOD, GPII-2971
+
+Tony:
+
+	1. Working to extend JJ's locust performance tasks to test a wider range of endpoints. 
+	1. Planning to submit new locust tasks as part of a pull against gpii-infra.
+	1. Working, but out the next two Wednesdays. (will create the pads on Tuesdays)
+
+Tyler:
+    * Pointless performance analysis
+    * Not-necessary New Relic installation
+https://tinyurl.com/yyx6maqo
+
+AGENDA:
+
+1. Who runs the arch meeting while I'm away? Sandra: I can. 
+
+2. Sandra: Prioritize action items from retrospective in Toronto:
+    https://docs.google.com/spreadsheets/d/1Yr6-JR2B5emXj-c5MPMUH6HlpT9vuIY0IfkZSAY_dj8/edit#gid=0
+
+
+

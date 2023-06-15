@@ -1,0 +1,22 @@
+Agenda:
+    - Update on onboarding Stepan and Sergio. Things seem to be going well so far. 
+    - GPII-3125 heads up about new changes in the projects hierarchy (Alf)
+	* Removing Projects that don't follow the naming scheme (like gpii-gcp-dev-tyler)
+		* gpii-sai -- talk to someone
+	* DNS wrangling
+		* Conflict between our common/ code and exekube, both trying to manage DNS zones for dev clusters
+			* Do it ourselves vs delegate to exekube
+			* The problem is permissions
+			* We have a dependency between DNS zones. Parent must point to Child zones. If a developer deletes their Child zone, that zone disappears from the Parent zone. If developer re-creates, it's not connected to Parent.
+				* What's implemented now is the simplest thing. The "fix the link between parent and child eventually" is more complex.
+				* Can we make exekube only manage records, and not the zone? Alfredo says it's "inside a core module" so it might require a fork.
+				https://github.com/exekube/exekube/blob/master/modules/gke-network/main.tf#L111-L117
+				* Sergey proposes common/ calculating zones from tfstate files. This was part of the solution Tyler and Alfredo developed, but Alfredo is worried that it's complicated.
+				* Import pre-existing zone every time developer runs rake in order to avoid new creation of the developers' new DNS zone and reuse the one created by gpii-common
+					* Stepan favors this approach. Tight coupling between zone and where it is used.
+				* https://github.com/gpii-ops/gpii-infra/blob/master/gcp/modules/nginx-ingress/main.tf#L10
+    - Installer release process (Alf)
+       - https://pad.gpii.net/p/automated-builds-2018-07-23-sa44nmu
+    - Exekube upstream changes and exekube 0.4 (GPII-3222)
+	Sergey is moving GPII-3222 into current sprint and start working on it after GPII-3216
+

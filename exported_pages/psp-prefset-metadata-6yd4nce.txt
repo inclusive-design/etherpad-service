@@ -1,0 +1,119 @@
+PSP Prefset Metadata
+
+This pad is to document planning on extra metadata fields to go in to preference sets to control various things like which items should show up in the PSP, how they might be grouped (differently than the default), which ones should have Memory (if that really becomes an issue).
+
+For reference of existing types of metadata that prefsets have, here are some example preference sets that contain metadata.
+
+- https://github.com/GPII/universal/blob/master/testData/preferences/chris.json5
+- https://github.com/GPII/universal/blob/master/testData/preferences/condTest.json5
+- https://github.com/GPII/universal/blob/master/testData/preferences/li.json5
+- https://github.com/GPII/universal/blob/master/testData/preferences/manuel.json5
+- https://github.com/GPII/universal/blob/master/testData/preferences/vladimir.json5
+
+Currently we have metadata of types: (though they might not actually be supported, but are still examples of syntax and structure)
+    - priority
+    - required
+    - helpMessage
+    
+For the PSP, the initial feature I need to support editing for in the PPT is whether the field would be displayed in the PPT (given that it would be displayed from it's other characteristics, device reporter, etc).
+https://issues.gpii.net/browse/GPII-3002
+
+In the future, we may also want to be able to group them, or as mentioned above toggle their memory settings.
+
+I have 2 initial ideas for this metadata format.
+ 
+ 
+In this one, we create a psp metadatatype, and then add a field that lists all the settings that should show up in the PSP    
+{
+    "flat": {
+        "name": "Manuel",
+        "contexts": {
+            "gpii-default": {
+                "name": "Default preferences",
+                "preferences": {
+                    "http://registry.gpii.net/common/magnification/enabled": true,
+                    "http://registry.gpii.net/common/magnification": 2,
+                    "http://registry.gpii.net/common/magnifierPosition": "TopHalf",
+                    "http://registry.gpii.net/applications/org.chrome.cloud4chrome": {
+                        "invertColours": false
+                    },
+                    "http://registry.gpii.net/common/matchMakerType": "RuleBased"
+                },
+                "metadata": [
+                    {
+                        "type": "priority",
+                        "scope": [
+                            "http://registry.gpii.net/applications/com.microsoft.windows.magnifier"
+                        ],
+                        "value": 1024
+                    },
+                    {
+                        "type": "psp",
+                        "showInPsp": [
+                            "http://registry\.gpii\.net/common/magnification",
+                            "http://registry\.gpii\.net/applications/org\.chrome\.cloud4chrome.invertColours"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+
+In this second one, we create a block to house all the settings under the PSP metadata. This has the advantage that for each 
+setting we could add future options other than just whether it is displayed or not.
+{
+    "flat": {
+        "name": "Manuel",
+        "contexts": {
+            "gpii-default": {
+                "name": "Default preferences",
+                "preferences": {
+                    "http://registry.gpii.net/common/magnification/enabled": true,
+                    "http://registry.gpii.net/common/magnification": 2,
+                    "http://registry.gpii.net/common/magnifierPosition": "TopHalf",
+                    "http://registry.gpii.net/applications/org.chrome.cloud4chrome": {
+                        "invertColours": false
+                    },
+                    "http://registry.gpii.net/common/matchMakerType": "RuleBased"
+                },
+                "metadata": [
+                    {
+                        "type": "priority",
+                        "scope": [
+                            "http://registry.gpii.net/applications/com.microsoft.windows.magnifier"
+                        ],
+                        "value": 1024
+                    },
+                    {
+                        "type": "psp",
+                        "settingConfig: {
+                            "http://registry\.gpii\.net/common/magnification/enabled" {
+                                "display": true,
+                                "otherCoolMetaOptions": {"so much stuff": "to configure"}
+                            },
+                            "http://registry\.gpii\.net/common/magnification": {
+                                "display": false,
+                            },
+                            "http://registry\.gpii\.net/common/magnifierPosition": {
+                                "display": true,
+                            },
+                            "http://registry\.gpii\.net/applications/org\.chrome\.cloud4chrome.invertColours: {
+                                "display": true,
+                            },
+                            // What types of defaults to use if a setting doesn't have PSP Metadata?
+                            // "http://registry.gpii.net/common/matchMakerType": {
+                            // }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+
+For either option we'll need to think about what the default behavior would be for settings/metadata that are missing completely or only partially.
+
+Antranig's notes:
+    
+    This metadata description looks good in terms of what goes into the actual preference sets, but as far as the PSP is concerned this will have to be dereferenced within the PSPChannel in order to produce a flattish set of flags that just sit in the "settingsControls" structure entries that it receives. We should produce some standard utilities for dereferencing metadata (as well as taking account of default values) for applications like this.

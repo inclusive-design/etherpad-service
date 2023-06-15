@@ -1,0 +1,100 @@
+GPII Architecture Meeting Minutes, May 15, 2019.
+
+UPDATES:
+
+Javi:
+	* I've been merging a lot of stuff pending from the 1.1.0 techinal debt
+		* https://docs.google.com/spreadsheets/d/1csR1weQs1OoMmP1R_YbuEcWt017fFKJaikkaw7BAQPQ
+	* I've been hotlining many people
+	* I'll continue working on the techical debt
+	* I'll go over this list https://docs.google.com/spreadsheets/d/1TkrFUBkbIZ8_pdIsGGVPxSe-aUIgFQ4oP_YypQDOAK0 to identify duplicates, issues that are already solved, ping people to check that issues are solved or not, etc
+
+Sandra:
+    - Supporting team members involved in debugging issues at pilot sites. Several racing-related issues are being debugged. 
+    - Deployments at NOVA completed last week. No major issues. 
+    - Deployment at Orlando library completed. No major issues reported. 
+    - Upgrading at AJC3 in progress, Maureen seeing issues on some machines. Debugging in progress.
+    - Upgrading at Richmond library scheduled to start 23-May.
+    - Morphic 1.2 in progress, no major function being planned. 
+    - Worked with Javi in updating the list of techncal debt from Morphic 1.1.0. 
+
+
+Alfredo
+	* GPII-2782 Secure backups, PR sent for this:
+		* Restore rake task to make easier the recovering of the snapshots
+		* Manage the IAM permissions involved
+		* Test the solution using an external GCS Bucket
+		* Set the timestamp of the backups to a human readable format.
+		* Use the GCR for Docker images
+		* Document how to create the destination bucket. It will be performed manually.
+		* Document how to restore the cluster using the exported snapshots
+		* Check that a basic alert is triggered when a backup fails. The alert "Container Restart Rate" is triggered when the process fails.
+
+Antranig
+	* Reviewing and merging things
+		* Two onboarding pulls from JJ, Windows Volume and System Brightness
+		* Cindy's fix for matching preference/setting path keys from the user's prefs set to the solutions entry
+		* ADTKINS work on schema validation
+		* Some review on PPT
+	* Meeting with Gregg/HA about next UI cycle
+	* Meetings about enhanced data model and auth grant type for NOVA
+
+Bryan
+	* PR up for GPII-3119
+	* PR up for GPII-3675
+	* Draft PR incoming for GPII-228
+
+Cindy
+	* GPI-3784: Improve the transformer algo to match user settings with settings to be handled by solutions
+		* Discussions and adjustments. Pull request is ready for another review: https://github.com/GPII/universal/pull/755
+			* - It was merged Thanks Antranig
+	* Meetings about the enhanced data model and auth grant type for NOVA
+
+JJ
+	* GPII-3864: Adressed small feedback and got merged.
+	* GPII-3886: Finishing work with StartMenuLayout, new problem found during development.
+		* Registry keys need are only reachable with super-user persmissions. We will need to delay the feature until being able to do this from service.
+	* GPII-3886: Finishing also work with Taskbar pesonalization.
+	* Started working into next feature for "Desktop Icons".
+	* Thanks for the merges!
+
+Kavya:
+	*     Going through Morphic 1.2 new features
+		* Next step is to start working on Testplan document
+
+Sergey:
+    GPII-2862: Forseti integration
+	    - Real-time enforcer
+	    - Using log-based metrics for alerts on VM spin-up events
+
+Stepan:
+- Traffic encryption / Istio theme (GPII-3671 Istio - Move Flowmanager and Preferences to Istio)
+  - Rolled back Istio phase 3 (move to Istio ingress gateway -> encryption between ingress and services)
+    - Kubernetes Garbage Collection issue - GPII-3903 Investigate istio-ingressgateway-certs secret issue
+      - only on ephemeral clusters, only like 1 in 4-5, pursued some dead ends befor figuring this out
+      - does not seem to be happening in 1.12 ->
+  - Done - GPII-3909 - Upgrade to Kube 1.12
+
+Steven Githens:
+    - wrapping up PR and everything to tag a ppt 1.0 before toronto
+    - minor organization and meetings about capture tool and metadata cleanup
+
+Tony:
+
+	1. Working on the initial universal validation pull with Antranig.
+	1. Preparing to require schemas for all supported settings by
+		2. "overboarding" legacy SR data like Maavis and Sociable.
+		2. Adding schemas for partially onboarded settings.
+	1. In discussion with Steve Grundell, figured out that schemas for all SPI settings needed to be updated to match what we actually store and pass around.  Did so.
+	1. Also sketched out schema inheritance and reuse approaches to discuss with Antranig ahead of the upcoming LSR effort.
+
+Tyler:
+* Binary authorization for GKE
+* FYI: Deleting old Docker images
+
+
+AGENDA:
+* Changes to universal - who is watching?
+	* Decision: stop automatic updates of gpii/universal -> gpii-infra/versions.yml. Tyler will do this
+	* https://issues.gpii.net/browse/GPII-3919
+

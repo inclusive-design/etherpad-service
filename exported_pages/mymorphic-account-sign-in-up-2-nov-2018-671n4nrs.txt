@@ -1,0 +1,35 @@
+2-Nov-2018
+Attendees: Gregg, Antranig, Cindy, Javi, Steve Grundell, Sandra
+
+
+Gregg is live-editing the signup specs in response to the question raised. They currently read
+
+Morphic users can do limited things without signing into an account (for example, they can save some settings where the user does not need to enter the vault.  For example if they are just click save on the QuickStrip -- or they have a setting in the PsP with memory -  the setting in the vault change but the user does not themselve enter the Vault.    In contrast, when you do a capture - you grab the settings and the user then must enter , but not things from the Capture Tool or other more in-depth settings changes.) In order to do more, users need to sign into their Morphic 
+
+I have referred him to the historical document originally called "Keys and Key Tokens".
+
+The most recent version I can find is at 
+
+https://docs.google.com/document/d/1UoJzaEVFXEVA_CBfA5WNUHn9Y3j4JSy3tHvqeg19N1k/edit
+
+It is now named "Keys, Preference Sets and Preference CloudSafes"
+
+Confusion had emerged on the use of the term "safe", users confused it with a verb, hence the new use of "vault".
+
+Gregg says, "The only way to get into the vault is on the web".
+
+"Even the capture tool which runs on the local machine, captures, it sends it to the cloud and then it throws you up to the cloud where you need to log in and then you need to do something with that. It goes to a separate file, a preference set"
+
+This has been worked on by Bern and Lynn.
+
+I have reasked the question "How does the cloud know what is allowed to be saved when the user has not entered the vault"
+
+
+Two action items for Gregg:
+    
+    i) Update Keys and Key Tokens for latest requirements
+    ii) Produce a doc summarising "vault"-era design thinking generated with Bern and Lynn
+    
+
+
+Gregg is saying - "I am not aware of any requirements for schemes for the server to validate written payloads".

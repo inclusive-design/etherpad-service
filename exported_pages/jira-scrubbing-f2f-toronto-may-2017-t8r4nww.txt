@@ -1,0 +1,159 @@
+
+9-May-2017:
+
+GPII-
+3. Is this the same as mono-repo? Link it to it. Keep open
+5, There are finer grain tickets for this one. We can close. 
+7. Closed, not a bug
+8. Assigned to Javi, pull request. 
+11. Was already fixed. Closed. 
+14. Assigned to Tony. 
+15. Fixed. Closed. 
+16. Obsolete. Closed. 
+17. Closed. 
+19. Obsolete. Closed. 
+28. Obsolete. Closed .
+29. Fixed. Closed. 
+31. Obsolete. Closed.
+34. Left open, still relevant. 
+38. Left open, still an issue. 
+45. Superseded. Closed. 
+46. Leave open. 
+57. Fixed. Closed.
+67. Closed.
+76. Done. Closed.
+99. Assign to Kasper. 
+101. Commented and Closed. 
+102. Link to one of the new ones Ale opened.Action Item: Sandra. For the RFID user listener we should use Steve's listener, using Node.js. Action Item: Steve Githens.
+111. Has been assigned to Tony Atkins. 
+112. Still an issue. Assigned to Kasper. 
+117. Still an issue. 
+-->Will skip the Discovery ones until review with Justin. 
+127. Leave open. Mothballed. 
+131. Mothballed. 
+SKIPPED DISCOVERY tickets
+139. Link to the current one. Assigned to Steve Githers. Action Item: Sandra.
+228, Assigned to Kasper.
+249. Still relevant. 
+278. Done. Closed. 
+284, Mothballed. 
+340. Mothballed 
+367. Linked to the JIRA that implemented the live changes, changes that don't require the restart. (GPII-78). Done.
+406. Assign to Cindy. Still relevant. 
+408. No longer relevant. Closed.
+409. Leave open.
+410. Still relevant. 
+415. Rephrased, leave open. Assigned to Joseph. Mothballed. 
+418. Done everywhere but in the user listeners. Still relevant, still open, assigned to Steve Grundell. 
+422. Closed. 
+424. Assigned to Tony. Lowered priority. 
+436. Assigned to Ale.
+442. 6 PRs open, close to being completed. 
+446. Closed. 
+450. Still relevant. Assigned to Grundell. Trivial. 
+469. Still relevant. Assigned to Grundell. 
+473. Mothballed. 
+480. Mothballed. 
+498. Mothballed. Assigned to Tony.
+501. Closed. 
+502. Still relevant. 
+503. Closed.
+511. Closed. 
+515. Still relevant. Close and copy into a kettle JIRA. Action Item: Antranig. 
+527. Assigned to Steve Githens.  
+528. Still relevant. Assingned to Javi. 
+539. Closed. 
+574. Still relevant. Blocker. 
+567. Closed. Reopened. 
+602. Closed. 
+
+To make this more efficient: Discovery Tool, have Justin and Cindy go through them. PCP tickets could be anyone who worked on Cloud4All. All of the Infrastructure and CI components, have the DevOps team. Android OS should all be mothballed. 
+10-May-2017:
+627. Closed.
+628. Still relevant. 
+631. Still relevant. 
+670. Still relevant. Looking for the JIRA to link it to,
+712. Still relevant. 
+714. Still relevant.
+770. Still relevant. 
+782. Still relevant. 
+783. Still relevant. 
+792. Still relevant. P4All.
+797. Close as dup.
+808. Closed. 
+809. Closed. 
+826. Closed. 
+827. Still relevant. Ale. 
+829. Still relevant. Ale. 
+830. Still relevant. Ale. 
+834. Still relevant, should be linked to something else. 
+841. Closed,
+848. Still relevant. 
+850. Still relevant. 
+851. Still relevant. 
+862. Closed. 
+863. Closed.
+867. Closed.
+871. Closed as dup
+874. Closed
+880. Still relevant. 
+881. Still relevant. 
+886. Mothballed. 
+954. Trivial.
+955. Still relevant. 
+956. Leave open.
+974. Closed. 
+975. Closed.
+976. Closed. 
+977. Closed.
+1005. P4All.
+1012. Closed. 
+1013. Closed. 
+1028. Closed. 
+1042. Closed. 
+1048. Still relevant. 
+1049. Assigned to Steve.
+1052. Mothballed.
+1053. Still relevant. 
+1056. Still relevant. 
+1058. Still relevant. Assigned to Cindy. 
+1072. Still relevant. Assigned to Cindy. 
+1076. Mothballed. 
+1078. Still relevant. Assigned to Cindy. 
+1079. Still relevant. Minor.
+1080. Still relevant. 
+1082. Closed. 
+1083. Linked to a dup. 
+1084. Still relevant. 
+1105. Still relevant. 
+1123. Leave open. 
+1168. Closed. 
+1181. Assigned to Cindy. 
+1188. Done. Closed. 
+1211. Closed as dup. 
+1213. Still relevant. 
+1230. Pull Request.
+1233. Closed. 
+1235. Still relevant. PR. 
+1238. Closed. 
+
+
+24-May-2017:
+1240. Assign to Cindy
+1246. Assigned to Cindy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+GPII Infrastructure Meeting - 2017-01-16
+
+UPDATES
+
+Ale
+	* Recover work around macOS vms - https://github.com/gloob/packer-osx
+
+Alfredo
+	* Mostly working on the integration of the Vagrant GPII plugin with windows guests VMs
+	* Trying to buy a flight to USA
+	* Updating wordpress plugins that had security fixes
+
+Giovanni
+	* Tyler onboarding
+	* Reviewing infrastructure / Ansible repository
+	* Researching more about proposed solutions (Terraform)
+	* Preparing Firewall upgrade for this week
+	* Other IDRC-specific tasks
+
+Colin
+	* Spent a few hours researching Terraform based on Tyler's references on the ops mailing list
+
+Tyler
+* Onboarding: reading and conversations with Colin, Alfredo, Gio, Avtar
+* Glorious future v0.1: Terraform
+* Start getting access to IDRC resources, start exploring
+
+AGENDA ITEMS
+
+	* Review GhOST JIRAs (https://issues.gpii.net/issues/?filter=13301 [amatas, sandra]
+	* Discuss Ansible and Windows (http://lists.gpii.net/pipermail/architecture/2017-January/004474.html, issue #3) [tyler]
+		* question 1: is this a big deal? is it worth re-evaluating our technology choice (ansible)?
+			* decision made before we were too worried about Windows pieces --amatas
+			* deadlines and constraints suggest not changing provisioning systems now, stick with powershell for now --amatas
+			* wrong people hear to make this decision --colin
+			* stick with status quo for now --colin
+		* tyler will send a follow-up email on the decision: keep status quo

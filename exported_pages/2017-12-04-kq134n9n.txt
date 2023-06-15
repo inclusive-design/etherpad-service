@@ -1,0 +1,11 @@
+Agenda:
+    
+
+From last week's meeting:
+    
+	- Question about requirements or where we are or where we will regarding testing PSP with memory with AWS. 
+		- Fron Tyler: 1. At the end of this sprint we should have a production environment that is usable. Should be able to run GPII code, which is probably what is needed for UX to do testing. Is there's someone that wants to tested today, they can use Stage environment (which currently is not working). 2. By end of December or early January should have structure in place for testing. 3. From meeting with Cindy last week, there are issues about loggin in that prevents us from using data loading. 
+	
+	https://pad.gpii.net/p/dev-and-prod-datasets-nov-22-2017-4iv4ng2
+	
+	Currently have a staging environment and a production environment. They can be used for testing, different approaches for testing. No additional requirements other than what is already in plan for development. 

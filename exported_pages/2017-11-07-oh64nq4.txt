@@ -1,0 +1,36 @@
+Agenda:
+    - Update on current work. 
+    
+    - List of maintenance items Sandra should track.
+    
+    - AWS permissions
+    https://aws.amazon.com/blogs/security/resource-level-permissions-for-ec2-controlling-management-access-on-specific-instances/
+    "Anyone who is competent of doing cluster development can and should have access"
+	    developers who are responsible for production need sufficient access for doing things in production
+	Decision: do nothing right now
+	Decision: meet in the next week or two (Colin, Tyler, Brendan, Alfredo, anyone else?) to talk about longer-term strategies
+	
+    
+    
+    Alfredo proposed, for his Preferneces Server clustering work (which is currently under way):
+	* "finishing my work on clustering"
+	* release a "pretty sable" cluster
+	* file a JIRA about introducing haproxy in order to deal with load balancing cases where Kubernetes' iptables strategy will redirect to a dead instance
+	* move on to high priority logging issues
+        
+System administration tasks:
+	* Fix the update of SSL certificates
+		* *.gpii.net -- which ones?
+	* Fix CI when it breaks, for example, when tasks get stuck or fail do to server issues
+	* Add features to the CI
+	* Trigger CI jobs
+	* Mediawiki issues
+	* Jira issues
+	* Upgrade common applications
+	* Update testing VMs
+	* Security updates
+
+Should we have a brief agenda item for each week?: "What tasks did you do this week that weren't in the plan or in the backlog?" -> for anything we identify here, we need to create JIRAs and add them to the plan
+
+
+

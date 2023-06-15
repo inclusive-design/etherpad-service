@@ -1,0 +1,20 @@
+
+
+Create gpii.pouch.db grade and move db init code there (to ease reuse outside of express-pouchdb).
+https://issues.gpii.net/browse/GPII-1896
+
+Isolate buildup and teardown code (to help Cindy's immediate work).
+https://issues.gpii.net/browse/GPII-1897
+
+Need to confirm how this works if a database exists:
+https://pouchdb.com/api.html#create_database
+
+Need to pick a filesystem-backed database for Cindy's work:
+    https://pouchdb.com/adapters.html
+
+LevelDB:
+	* https://github.com/google/leveldb
+	* https://rawgit.com/google/leveldb/master/doc/index.html
+	* https://rawgit.com/google/leveldb/master/doc/impl.html
+
+Tony to work on GPII-1897 this week and report back to the group.

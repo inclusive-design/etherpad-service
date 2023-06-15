@@ -1,0 +1,23 @@
+2017-06-28
+
+Tyler:
+    Yesterday: GPII-2412: researching strategies for integrating terraform with kops (or similar)
+    Today: GPII-2412: PoC with kops and existing CI infrastructure
+    
+Alfredo:
+    Yesterday: GPII-2398, researching how to get the keystroke info from the data gathered from the clients
+    Today: GPII-2398
+
+
+
+2017-06-30
+
+Giovanni:
+		* Yesterday: GPII-2470: research Kettle / Infusion and config files
+		* Today: GPII-2470: research Kettle / Infusion and config files
+		* Not blocked
+
+Tyler:
+	Yesterday: GPII-2412
+	Today: GPII-2412
+	Not blocked

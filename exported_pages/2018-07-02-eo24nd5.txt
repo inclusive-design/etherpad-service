@@ -1,0 +1,35 @@
+Agenda:
+    - Team evaluation of timeline for Security in Stages:
+        https://docs.google.com/document/d/11O7yfXtqkObHSFfEOBQyR1cOkxVCVR8MbeWZCVMXAjo/edit#heading=h.pqr30hmxk9x4
+    - Sprint Planning
+    - Current state of things with CouchDB
+	    * Sergey to file new tickets to cover work exposed in, but not completed in, GPII-2960
+	* Decision: We don't need tooling now to support scaling down a cluster. couchdiscover handles scaling up. Other scenarios will arise, but it's hard to know exactly what they will be, so we will wait and see.
+	* Decision: Continue using couchdiscover, make it work with helm chart. Sergey to file ticket.
+	* Decision: make gpii-ops/couchdiscover a proper project, with Gitlab CI/CD (disable Docker Hub automated build), publish to Docker Hub. (gpii-version-updater might be a good model)
+    - Secrets management and integration with KMS
+	* Sergey adding link to his PR to GPII-3123
+	* Our interpretation of Brendan's response is that we need separate buckets for differents sets of secrets (couchdb vs alertmanager), encrypted with different KMS keys
+	* Tyler still wonders if the complexity of the client-side solution is worth it, even though the lack of Terraform integration with the "Google uses KMS to handle the encryption for us" solution is annoying
+	* Sergey will explore "Google uses KMS" option.
+	* Alfredo will review the PR #44
+    - Sergey: exekube PR?
+	    * Sergey will follow up
+    - GPII-3103
+	* Alfredo working on a PR for a fix to the helm upgrade problem
+	* Tyler will add the secret-filtering code to the 'helm --debug' PR #46
+	* Tyler will try to repro what happened with stg prometheus in dev. If he can, we'll look again. If he can't, we'll chalk this up as a glitch about which we can collect no further information, restart the prometheus-0 Pod (restarting prometheus-1 resolved the problem for that Pod), and consider the matter closed.
+    - GPII-2996
+	* Alfredo suggested using multiple runners with tags to keep aws runner with aws builds and gcp runner with gcp builds. Tyler will investigate.
+	
+        
+        - Hiring update:
+            - Colin (and who else tyler, sergey) interviewing Stepan on 3-July at 12PM Eastern. And Sergio at 3PM Eastern also on 3-July. 
+
+Sprint 3:
+    - 2960: Topic of the agenda. The chart is completed, but need additional work regarding CouchDB. Sergey recommends we close this one and open a new one to address the CouchDB tasks. 
+    - 3122: Sergey suggests moving back to the backlog
+    - 3123: Pending review and discussion
+    - 3103: Need to discuss. 
+    - 2966: Has an update and need to discuss an issue. 
+    - 3125: Next sprint. 

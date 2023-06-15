@@ -1,0 +1,89 @@
+WHAT WE ARE LOOKING FOR
+	* 5+ years of experience in designing QA test plans and executing an open source testing and release cycle
+	* Experience building static HTML pages developing sophisticated, interaction-layer code as well as other technical aspects of front-end and user interface development
+	* Strong command of JavaScript
+	* Clear communicator (written and verbal)
+	* Ability to focus on deadlines and deliverables 
+	* Experience in an open source and global development environments?
+	* Experience with JavaScript, JSON and Node.js libraries?
+	* Understanding of IoC
+	* Writing acceptance tests
+	* Experience with Git and Github.
+	* Experience using JIRA and Agile development methodology.
+	* Highly motivated and self-directed.
+
+Alexander. QA engineer - "recently started working with automation". 
+Manual testing, designing automated tests.
+
+
+Tell us a bit about what you know of the GPII and how it is developed? How will you fit into this process, and what will you contribute?
+Cloud based application (not a single application) - service that will allow people with disabilities and seniors or other people with acc. issues to configure their devices from any place.
+His role will be to do some quality assurance stuff, software testing, technical documentation, test (check?) lists. Also automated testing is used in this project. We will have web and desktop techniologies.
+
+
+** What techniques and strategies will you use to determine, in the context of an open source community, which features and parts of the GPII will most need to be tested, and in which order? Have you worked in open source?
+[he didn't seem to have a lot of exerience working in this way, seemed confused about how it would work, expected there would be requirements and a team lead to ask questions to]
+he'll do functional tests, automated tests, exploratory tests. 
+Currently working on an open source project. datawearhousing for mass spectrometry data.
+
+
+Which platforms and devices will you test the GPII with first? And why those ones? Any experience with cross platform testing automation (in particular on windows and/or mac)?
+
+
+* Describe some techniques and strategies you have experience with to help maximize the value and impact of QA testing, especially within the context of a small team such as the GPII’s?
+
+
+** What kind of experience do you have with writing automated acceptance tests? What tools have you used, and what challenges or difficulties have you faced when using these tools?
+The main automation tool I've used is webdriver. In the past I've been working with Selenium RC. Webdriver on java.
+Used ??? Cucumber for testing on IOS. 
+
+Last complication which i meet is using Selenium "C/Greed?". 
+
+How do you organize your work? (we are looking for self directed)
+He's had a new role recently supporting people. 
+he finds out when someone has an issue. he verifies it and opens a JIRA
+Organized his work - morining starting reading issue reports and opening ticket. Then goes through JIRA tasks assigned to him. Most of the time will be spent from these tasks from JIRA - all tasks are estimated by him, so he knows approximately how long time things.
+
+Managing tasks via google mail as well.
+
+Priorities/Likes in work:
+his favourite is automated testing. he really likes programming. it's really interesting. when he's programming, he loses track of time. he really likes to do things he's never done before. 
+
+"even for 
+
+Do you have experience with agile development? 
+has experience estimating his work
+
+
+* Most of our framework is written in javascript (with some windows/linux bindings). 90% of our unit tests and acceptance tests are run using jqunit (javascript). Seeing your resume only mentions experience in Java programming, do you have any non-formal experience with other programming languages? (Javascript, JSON, Node, IoC)
+yes javascript - helped the dev team in fixing issues and writing some new features. javascript + angular front end. never used Node. feels this won't be an issue, because he has experience in different libraries. Has also been writing tests in QTests.
+
+Has worked with Spring, not his main area.  has used another IoC library (using "injections") - forgot the name now. Not something he's been using heavily. Found it difficult the first time but then it was fine.
+
+What strategies have you used for testing a system that is still in very active development, especially when it may lack end-to-end integration of some components? What kinds of things can you do to do deal with this kind of situation?
+The main difficulty is when the UI changes - when the front-end changes (meant back-end?), it's not a big issue for front end tests - it is, though, when selectors, etc. change. 
+Is currently working on a project that is in active development - for example they just changed the entire login procedure, which broke all the tests. This was rol
+
+
+* Test reporting - what's your experience there, which tools have you been using/which approach? (JIRA)
+
+Java and testNG uses 'reporter' when the build runs it appears as an artifact. Can view the reports of the automated tests. 
+
+When finding an issue, he files a bug report - we're using JIRA right now - he'll assign it to the "support hero". In earlier projects, he's assigned it to the relevant developer. When the bug has been fixed, or the bug is unreproducable, he'll test it again. If it's still broke, or has introduced new issues, he'll reassign it with clarification. 
+
+
+What do you know about Testem (CI?) and Nightmare (browser automation library of JS)?
+
+
+Have you used version control? (git and github) 
+yes, used git and mercuriual 
+
+
+he likes Webdriver but of you don't want to use that there are other options such as Phantomjs. HP also has a tool, but it's not free.
+
+
+his questions: 
+    
+    who is my point of contact? who will I talk to? 
+    
+    will I be choosing the framework? 

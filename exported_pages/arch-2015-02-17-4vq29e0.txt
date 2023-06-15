@@ -1,0 +1,84 @@
+
+KASPER (@markus.de):
+	* Working on Architecture diagrams for IBM
+	* Meeting on diagrams, APCP planning and other stuff
+	* A bit of work on the Canopy Matchmaker
+
+MICHELLE:
+	* Meeting with APCP diagram group
+	* Meeting up with Javi and Kasper today about diagrams again
+	* Requesting the original of the circle diagram from Colin so it can be updated
+
+ALEJANDRO:
+	* Lots of APCP planning going on
+	* Looking into whether we can use a simplified JIRA front-end to get feedback from jobcenters, etc.
+	* Asked for a testing Jira to test my diabolic plans for Jira
+	* Dumping everything I have on mind on tickets
+
+ALFREDO
+	1. Master of piratePAD
+		2. https://github.com/LaKing/ep_codepad <-- that would be good to group code reviews
+		2. A FILE never hang
+		2. HA HA! 502 for start fresh.
+	1. CI static frontend bugfix
+	1. Improving Jenkins roles
+
+Antranig
+	* Working with ADTKINS here this week on persistence and schema work for UL and PTD
+	* Consulting with Simon on his P4A presentation this week
+	* Meeting with APCP group drawing up task orders for the IBM contract
+	* Rounding up pre-release Infusion bugs and working on some model transformation/relay JIRAs
+
+AVTAR
+	* Worked on P4A face-to-face slides and other presentation material for Simon
+	* Addressed GPII-1572
+	* Going to be working on Manifest details which should abstract Jenkins Job Builder definitions from users, will require some small PRs to each project repository that's going to or is already using the QI
+
+Cindy
+	* Reivewed the security part of Antranig's giant pull request (GPII-1318)
+	* 2 pull requests, for GPII-1546 and GPII-1521, that are issued against Antranig's giant pull request for the auth server are ready to be reviewed
+	* Working on UIO and GPII integration
+
+COLIN
+	1. Worked with Simon and Michelle to prepare P4A presentations about the GPII Nexus, Quality Infrastructure, Infusion, sonification components, etc.
+	1. Reviewed several more amazing pull requests from Avtar related to GPII test automation (now on Windows, too!)
+	1. Today, I will make some models regarding frequency/sizing of payloads in the GPII
+	1. Providing SVG files for the INSANE PINWHEEL to Javi and Michelle
+	1. Working with Sandra and the team to ensure we're getting the best people on the job for supporting APCP security
+	1. On the cusp of eating a burrito
+	1. TETRIS: http://www.wired.co.uk/news/archive/2015-07/07/tetris-combats-ptsd
+	1. Goddammit - I thought ^ was a link ot the tetris game! :'(
+		2. GET A PLAYSTATION, HIPPIE -- or perhaps just a smartphone!
+	1. Why Are Germans So Into Alphabetical Order? Hey!!!! GoToMeeting is German?
+	1. Let's add another item here just for fun.
+	1. I think it should be purple
+
+JAVI:
+	* Working on new diagrams for IBM
+	* Had a few APCP meetings
+	* Browser extensions
+	
+JOSEPH
+	* Generally:  making ProcessReporter work with Antranig's giant pull request (GPII-1318):
+		* Fixed ProcessReporter unit test when running in development mode.
+		* Now back where I was before being distracted by GPII-1318.  In summary:
+			* modified native parts of PR to use NAN
+			* Updated various things in Linux side and Universal to work with the changes to the core tech introduced by GPII-1318.
+		* Read to pick up where I left off before this diversion
+			* was working on Integration and Acceptance tests
+	* Otherwise, lots of email and telecon discussion about the proper ARIA markup for a combobox. 
+
+
+H     o     w       d      o      e      s           b     r     i    g     h   t        r    e    d         w    o    r    k    ?    ?    ?        G    R   E    A   T    !      V      E R  Y      B  R   I  G   H  T  
+Epileptic attack incoming
+
+TONY
+	1. At Antranig's house! (It's nice!)
+	1. Working through JSON Schema validation PR in depth.
+	1. Breaking Ant's brain talking through 1.5 years of CouchDB and Lucene research in 1.5 hours.  We'll figure everything out tomorrow.  Our goal is to agree on how to manage relationships in Couch, we will have at least some comments on our approach by end of week.
+
+SANDRA:
+    1. Working on finalizing the contract with IBM.
+    2. Planning kick-off meetings with IBM. Hopefully next week. 
+    3. Following-up with Gregg to start engaging the UX team for ease-of-install, PCP and PMT. 
+    4. Contract with SILO for the installer updates is in progress. 

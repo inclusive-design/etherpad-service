@@ -1,0 +1,8 @@
+1. Anything to demo this week?
+	* Alfredo backup-exporter, but we probably need time to merge it first. Also Alfredo is changing some PTO days.
+	* So no.
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+	Took 12 minutes.
+2a. If you are on top of the Standup list, prepare a browser with all Key Metrics loaded and ready to review at.
+
+3. We forgot to start new sprint last week. We fixed it retroactively as best as Jira allows.

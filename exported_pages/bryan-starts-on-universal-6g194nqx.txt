@@ -1,0 +1,23 @@
+May 7, 2019
+
+Docs for GPII universal repo: https://github.com/GPII/universal/
+	* Main documentation: https://github.com/GPII/universal/tree/master/documentation
+	* GPII Deployment Structures: https://wiki.gpii.net/w/GPII_Deployment_Structures
+		* The structures in use are: 
+			* #1 (Deployment with Cloud === Local Flow Manager + Cloud Based Flow Manager) is deployed at NOVA; 
+			* #3 (All in Local === Local Flow Manager Only) is deployed at AJC and libraries
+			* There isn't real use case for #2
+			* Node tests in the universal repo cover structure #1 and #3
+	* Payloads for the deployment with Cloud: https://github.com/cindyli/gpii-architecture-docs/tree/GPII-2164/payloads
+
+Check out and run the universal code
+	* Checkout
+		* /universal needs to be checked out as a subdirectory of a self-created node_modules/ directory
+	* Examples of commands to start GPII locally
+		* Start all-in-local config: NODE_ENV=gpii.config.development.manualTesting.json5 node gpii.j
+		* Start untrusted config with both LFM and CBFM: 
+		* Once started, CouchDB data can be accessed via http://localhost:25984/_utils/
+
+Walkthru the Universal Code Structure
+
+JIRA to start on: https://issues.gpii.net/browse/GPII-3117

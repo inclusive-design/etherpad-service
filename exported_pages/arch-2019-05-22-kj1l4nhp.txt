@@ -1,0 +1,109 @@
+GPII Architecture Meeting Minutes, May 22, 2019.
+
+
+UPDATES:
+
+Javi
+	* Continued paying my tech debt from Morphic 1.1.0
+	* Continued reviewing/merging PRs from others' tech debt
+	* Started going over the non-showstoppers issues - we're making progress
+	* Supporting HA on some of the tasks they're working on
+	* Supporting deployments on AJC3 with Steve Grundell - Chickasaw
+	* Meetings on different topics
+	* Will continue with tech debt and non-showstoppers
+
+Sandra:
+    - Content for 1.2 is firmer, reviewed several times with Gregg. Major new function is MS Office simplification. https://docs.google.com/document/d/1bKqGA23KploQNN_TBzwziSUF40vVLs7NOEHFAYGoIFQ/edit?pli=1#
+    - F2F getting closer, we need to have the day-to-day agenda, with input from Colin and Antranig (prioritize). Gregg has prioritized his agenda: https://docs.google.com/document/d/1k7CRa07HbklsKjQoJ8Pc1ceasfi14-qZmsl1K6K-sdg/edit#bookmark=id.efxedatdn122
+    - Tracking Technical Debt progress, if you need to make updates, please do: https://docs.google.com/spreadsheets/d/1csR1weQs1OoMmP1R_YbuEcWt017fFKJaikkaw7BAQPQ/edit#gid=2050840168
+    - Reminder Monday, 27-May is a holiday in the US (Memorial Day).
+    
+Alfredo:
+	* Finished external backups has now restore procedure - GPII-3915
+	* Working on the alerting in the case of failure backups GPII-3916
+
+Antranig:
+	* Addressing some technical documentation debt and writing better (or existent) JSDocs for some of our libraries
+	* Working with ADTKINS on validation of solutions registry and requests to prefs server
+	* Code review for the dev PMT and various other things
+	* Discussions about implications of enhanced data model and auth for NOVA
+
+
+Bryan 
+	* Updated PR for GPII-3119, one more update coming
+	* Will check with sgithens for clarification on test needed for GPII- 3675
+
+Cindy
+	* GPII-3717: Use the existing OAuth grant type for NOVA requests
+		* In progress. Working on /access_token handler to verify ip address that the request is sent from
+	* GPII-3719: Updated the enhanced data model for NOVA
+		* Done
+	* Meetings about the final NOVA solution
+
+JJ:
+	* Finished first version for GPII-3886.
+	* Finishing GPII-3923:
+		* Testing and final details.
+	* Continue work regarding desktop-icons.
+		* Initial work to preseve icon arrangement in desktop. Thanks Steve for the chat about this.
+	* Pull for GPII-3930, adding a new common term for brightness. Required by QSS. - Awesome!! :)
+	* Need to submit a small pull with a bugfix.
+	* Wrote requirements for a utility to take raw system settings snapshots. Google doc in progress.
+	
+
+Joseph:
+	* Back from vacation
+	* GPII-3646 and GPII-3888: Removing expired access tokens from the production database
+		* Worked with ops team to test in my development cluster (GCP)
+		* Fixed bugs, improved Kubernetes cronjob
+		* Started testing just before leaving for vacation
+		* Since back:  Updated all relevant repositories to the latest from master (gpii-universal, gpii-infra, gpii-version-updater) and updated docker image/container. Frequent changes to master are a sign of healthy software development :)
+		* Started testing in my development clulster -- so far, so good.
+		* But, recent change (earlier today) in gpii-infra re: tagging of docker images -- will need to update and re-test.
+
+Kavya is out until Tuesday, 28-May.
+
+Sergey:
+    - Forseti integration
+    - Alerting on VM spin-up events
+
+Stepan
+- Finished GPII-3671 Istio - Move Flowmanager and Preferences to Istio
+  - all traffic (but DB :)) in cluster is now encrypted!
+  - smaller, mostly Istio related issues & fixes
+
+Steven Githens:
+- Cleaned up bulk of GPII-2452 comments
+- Gpii handlebars i18n stuff with Tony
+- Data migration scripts, should be ready to give an overview next week during arch
+- Agenda: I'd like to create a GPII-2966 feature branch in universal
+	- How does a feature branch differ from a regular (f) branch? I don't know.  I think they are the same thing, we don't make branches very often though.  I think sometimes we have branches for pilots and reviews.  Looking at github now, it looks like we have almost exclusively release and pilot branches these day.  But we have had feature branches named after specific Jira tickets in the past.
+	- Will it having passing tests? : P  Yes.  It's just being held up from going in to master because we need to devise a document migration system now for future work since have PRODUCTION SYSTEMS
+
+Steve Grundell:
+    Looking into some bugs that appear in production:
+        Workaround available, still needs work on fixing
+    Started datablocks GPII-3927
+
+Tony:
+
+	1. Still waiting for universal validation pull to be merged.
+		2. This is waiting on JJ's revival of https://github.com/GPII/universal/pull/733 for the RWG solution
+	1. Updating the gpii-express-user package to use gpii-json-schema 2.0.  Testing out various patterns that will be used in the LSR.
+	1. Helping review various pulls from Steve Githens against gpii-handlebars and gpii-express-user.
+	1. Meeting later this week to discuss longer term improvements to handlebars, gpii-json-schema, i18n message bundles with Githens and Antranig.
+
+Tyler:
+* The Binary Authorization API requires a change to how we do authentication (https://issues.gpii.net/browse/GPII-3860)
+* universal Docker images now have a unique tag. Instructions for dev environments to follow (https://issues.gpii.net/browse/GPII-3919)
+	* https://ci.gpii.net/job/docker-gpii-universal-master-release/191/console
+	* https://cloud.docker.com/u/gpii/repository/registry-1.docker.io/gpii/universal/tags
+* Blue Jays game in Toronto? https://www.mlb.com/bluejays/schedule/2019-06
+
+
+AGENDA:
+
+- Hens: I'd like to create a GPII-2966 feature branch in universal
+  - https://www.npmjs.com/package/gpii-universal/v/0.3.0-dev.20190222T143201Z.8ce0bde5.GPII-3741
+  
+

@@ -1,0 +1,72 @@
+This pad has been created to keep track of the 1.3.5 release process
+
+JIRA to keep track of the 1.3.5 release: https://issues.gpii.net/browse/GPII-4490
+
+1.3.5-r1 (https://drive.google.com/drive/folders/1T7JUc3peD2JX-DW0dwKRz7OReYDQ4-EX)
+
+	* Amarja
+		* A1: Languages are installed but not showing up in the QSS - NOT CRITICAL
+			* This is because Morphic only support our language packs - although this behavior can be changed with a config flag
+			* According to Bern, not likely to use the language feature during the case studies - as the users are already on their pcs GREGG AGREES NOT IMPORTANT
+		* A2: Save error for volume button - PR AVAILABLE
+			* We must treat the volume as a command - not a setting. There is a PR https://github.com/GPII/gpii-app/pull/203 that addresses this
+		* A3: Save error for Adjust Mouse - NEEDS WORK - Dont worry about this according to gregg
+			* Save error - Last update: https://github.com/GPII/gpii-app/pull/206#issuecomment-638800962
+			* QS not turning larger mouse pointer on/off (also ASz3): https://issues.gpii.net/browse/GPII-4506, PR is https://github.com/GPII/universal/pull/879
+		* A4a: When you click on Documorph, more panel also opens/ expands - CAN'T REPRODUCE - also "later" according to gregg
+			* Can't reproduce - asked for a pattern (if any)
+		* A4b: When you click on My Saved Settings, More panel flashes for few seconds  - CAN'T REPRODUCE - also "later" according to gregg
+			* Can't reproduce either
+		* A5: Multiple Documorph windows open up - FIXED 
+			* This should be fixed now after https://github.com/javihernandez/morphic-documorph-installer/releases/tag/0.2 and https://github.com/javihernandez/gpii-windows-installer/commit/d1d837aa349bbc00bf2e96b6ba6d9a8849d2df46
+			* It'll be available in the next installer
+		* A6: Volume when changes are not reflected in real time - LATER
+	* Maureen
+		* M1:  Color Vision/filter error - SCREENING - OK to skip according to gregg
+		* 2 things
+			* The QS doesn't reflect the right one after reset to std - https://github.com/GPII/gpii-app/pull/196
+			* The color filter won't turn off on 1909
+				* Javi to test on 1909
+				* Javi can't reproduce it in 2 different 1909 vms
+		* M2 After receiving the Save error notification (reported in A3), further attempts to save settings (contrast, zoom) resulted in the same error. - SIDE EFFECT OF A3
+	* Bern
+		* B1. Color vision changing to grayscale with settings panel open to “Color Filters” page - BUG-NOT CRITICAL? - later
+			* JIRA: https://issues.gpii.net/browse/GPII-4499
+		* B2. Note: Avast does a virus/malware check on several components on installation - WON'T FIX? - wont fix according to gregg
+		* B3. Not this version! Avast had sequestered tray-button.exe as a threat - NOT A BUG? - agreed from gregg
+		* B4. Color Vision menu not reflecting reality - RELATED TO M1
+	* Maegan
+		* MG1: Unable to Save without Morphic Key after Reset to Standard - NOT A BUG
+	* Yao
+		* Y1: [metrics] [Must have] Auto-data should report a “preference” event for each setting change from saved preferences. - GPII-4500 - HIGH PRIORITY according to gregg
+			* PR: https://github.com/GPII/universal/pull/878
+		* Y2: [metrics] [Must have] [dependent on Y1] In “preference” events, change “value” (a field with various data types) to “setTo” (strictly string type) GPII-4501 - HIGH PRIORITY according to gregg
+	* Anna
+		* ASz1: Morphic error appeared just after installation. After restarting the computer Morphie turned green, all is fine now. - NOT A BUG? - that's ok
+		* ASz2: I changed contrast from black on brown to regular and brown background remained on some parts of the website. I see the same issue when I change from black on yellow to regular (see below) - WON'T FIX? - not a problem
+		* ASz3: My mouse pointer does not get bigger when I turn on Larger mouse pointer - RELATED TO A3
+		* ASz4: Screen zoom button description - now we have- Change whole screen to make everything larger/smaller. Works for everything. - ASKED ANNA FOR UPDATES - NOT important according to Gregg
+		* ASz5: Would be good to unify button’s descriptions - ASKED ANNA FOR UPDATES - NOT important according to Gregg
+
+OTHER WELL KNOWN PROBLEMS:
+	* GPII-4384: When saving preferences, the QS shows the success dialog without checking whether the operation was successful or not - https://issues.gpii.net/browse/GPII-4348 - added to 1.4.pre-requisites and 1.3.5 in JIRA - WON'T FIX?
+	* GPII-4498: Update the cloudFolder link provided by Gregg in an private email https://github.com/GPII/gpii-app/pull/207 - NEEDS TO BE MERGED
+
+CAPTURE TOOL, WELL, KNOWN ISSUES:
+
+	* GPII-4468: Solutions with enabled set to false and other options being launched, or launched incorrectly - UNDER INVESTIGATION / IN PROGRESS
+
+	* GPII-4489: Create siteConfig option to determine whether the capture tool is available to be launched - LATER?
+
+	* GPII-4488 and GPII-4497 most likely will be resolved by the same PR
+	* GPII-4488: Validation doesn't pass when saving desktop background color - PR
+		* https://github.com/GPII/gpii-app/pull/201
+
+	* GPII-4497: Some 3rd application specific party settings are getting stripped out by lifecycle transform - IN PROGRESS
+		* https://issues.gpii.net/browse/GPII-4497
+
+	* GPII-4495: The default prefs not always getting picked up in capture with a brand new key - PR MERGED
+		* https://github.com/GPII/gpii-app/pull/204
+	* GPII-4494: The capture tool is listening to the Quickstrip's "onSaved" events - PR WAITING REVIEW
+		* https://github.com/GPII/gpii-app/pull/205
+

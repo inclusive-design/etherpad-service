@@ -1,0 +1,28 @@
+Updates
+
+Alan
+
+	* Worked last week on addressing issues with building Docker containers from latest GPII master (discovered trying to migrate FDS demo).
+	* Need to document and make PRs.
+	* Next immediate steps, need to look at getting First Discovery Server to work with current GPII.
+	* Longer-term, container build approach should look to using gpii-launcher.
+
+Alfredo:
+	* Working on vagrant ci plugin
+	* Uploaded the new Windows 10 VM
+	* GPII-1562
+
+
+
+Sandra: 
+    - From last week, I moved the JIRAs from Pilot Stage 1 to Pilot Stage 2. Could we please review Pilot Stage 1 to ensure the list is accurate: https://issues.gpii.net/issues/?filter=13000
+
+Tyler:
+    * Inventory cleanups
+    * AWS cost estimates
+    * Continuous Ansible? Dyanmic inventory?
+
+Agenda Items
+* Mild brainstorming about continuous ansible
+* Review Pilot Stage 1 and Pilot Stage 2 filters to make sure tickets look appropriately triaged
+

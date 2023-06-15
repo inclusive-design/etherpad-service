@@ -1,0 +1,84 @@
+UPDATES
+
+Alfredo:
+	* Helping to solve some CI errors
+	* Continue working on the migration to GKE
+		* GPII-2951
+		* GPII-2995
+		* Testing the Tyler's glue code and troubleshotting some issues
+
+Antranig
+	* Picking up various problems after the GPII-2630 merge
+		* 
+
+Hens
+	* PPT work
+	* Resurrecting Kaspar's ancient work on what was the "Snapshotter" -> Capture Tool
+
+Javi
+	* MS demo - more fine-tuning
+	* Spent some time testing the GPII with last Windows update on both a VM and VAIO
+	* Interviewed a candidate last week with Antranig and Colin
+
+JJ
+	* Working into GPII-2986. Small fixed removing unnecesary feature now: https://issues.gpii.net/browse/GPII-2986.
+	* Going back with GPII-3066, acceptanceTests stability still a issue, working with Steve into this.
+	* Going back with https://issues.gpii.net/browse/GPII-2729. Needs more work to be up to date.
+
+Joseph
+	* Back from vacation
+	* Updating the Vagrant VMs and master branches.
+	* Found a bug in the linux VM -- packagekit service is not enabled
+		* Linux DeviceReporter depends on packagekit -- falis
+		* Will file a JIRA and a pull request.
+
+Kavya:
+	* Returned from vacation
+	* Started testing 0.6 installer version for MS demo
+
+
+Tony:
+	* Nearly finished with the spike to incorporate the new GSS language into gpii-json-schema 2.0
+	* Based on feedback from Gregor and my own discovery of problems with its i18n implementation, refactored gpii-handlebars this week for an upcoming major release.
+	* Continued discussions with Antranig and ASTEA about i18n and schema concerns.
+	* Release an "uncaught exception-safe" version of gpii-pouchdb.
+	* Discussing further  improvements to gpii-pouchdb, will need to reconvene that interest group when Cindy returns.
+
+Sergey:
+    * GPII-2958
+    * GPII-2959
+
+Steve Grundell:
+    IoD
+    Debugging some weird memory corruption with JJ
+
+Tyler:
+    * exekube, glue code - GPII-2990
+
+AGENDA
+	* Catch-up with JJ on his findings on failing tests (Antranig)
+		* Presumably we have two problems - one, the fault in CI which claims that Windows pulls pass
+		* Secondly, the problem itself (something to do with high contrast?)
+		* Earliest (so far) successful fail: https://ci.gpii.net/job/windows-acceptance-tests/400/console
+		* https://github.com/GPII/windows/pull/164
+			* Pull request for GPII-2795: "Update to work with node 8.9.4"
+			* The crashes are random, so this work itself may not be implicated
+			* 12:26:29.775:  SCardSvr service not running - PC/SC user listener not available.
+			* 12:26:29.775:  PC/SC user listener is not available.
+			* doitclient.exe : doit: remote error: GetExitCodeProcess failed
+			*     + CategoryInfo          : NotSpecified: (doit: remote er...eProcess failed:String) [], RemoteException
+			*     + FullyQualifiedErrorId : NativeCommandError
+			* Finished: SUCCESS
+		* Not clear what is implicated - whether it is Windows High Contrast setting or not
+			* It appears that setting high contrast makes the issue more likely, but may not be the direct cause
+		* Stegru has tested with node 8.2.1 and has still seen the problem
+		* Stegru has also removed all edge.js stuff and it still fails
+		* Hypothesis is also that process crashes with exit code of 0 which is what leads to CI not detecting the problem
+		* Another line of investigation - it appears that gpii-app doesn't suffer from this problem since I (Antranig) run its tests pretty intensively and have not seen such a crash
+			* It may be that its version of node doesn't have the problem OR
+			* It may be that it is bound to a version of gpii-windows that predates the problem
+		* We should file this as its own JIRA, or pair of JIRAs
+	* JIRA's new status for tickets? (Antranig)
+		* We have a new issue "link type" - it is named "git code review opened" and has a reverse link type "opened during git code review in"
+		* What does this link type mean, does anyone know who added it?
+		* We can't find who has done this, and it does not appear in the audit log

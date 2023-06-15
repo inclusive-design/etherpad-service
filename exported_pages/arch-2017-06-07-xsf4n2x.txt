@@ -1,0 +1,90 @@
+Updates
+
+Alfredo:
+	* Working on Ansible roles for Prometheus (collector of metrics at the server side)
+	* Some meetings:
+		* DevOps Agile Sprint Planning session
+		* CI / GitLab next steps meeting
+
+Avtar:
+	* Attended DevOps CI next steps planning meeting
+	* Helped review CI JIRAs filed by Alfredo
+	* Working with Tony on GitHub to GitLab mirroring container
+
+Cindy
+	* Created GPII security slides for the APCP meeting, based off Simon's 2015 slides
+	* GPII-2435: Working on the auth server to add the support for OAuth2 resource owner password credentials grant
+
+Giovanni:
+	* APCP presentation and diagrams
+	* DevOps Agile Sprint Planning session
+	* CI / GitLab next steps meeting
+	* Tested Chrome 59 / Firefox headless modes - http://lists.gpii.net/pipermail/architecture/2017-June/004572.html
+
+Javi
+	* PCP API
+		* A lot of progress in JSON schema definitions
+		* Started to update https://wiki.gpii.net/w/Personal_Control_Panel_API according to the last PCP API meetings and feedback from Antranig
+
+JJ:
+	* Working on getting some things ready for meeting about MIMIC.
+	* Researching for new approaches, and ways to workaround some minor problems.
+	* Having some meetings with Ale and talks about the future framework.
+
+Joseph
+	* Short week; just got back from vacation last Thursday.
+	* Most of my time is on another project for the next while
+	* Did notice two new GPII JIRAs assigned to me
+		* Device Reporter should report available screen resolutions (GPII-1939)
+			* https://issues.gpii.net/browse/GPII-1939
+			* linked in my Windows and Linux setting handlers JIRAs and pull requests in this regard.
+			* added a comment
+		* Process Reporter should be used in Acceptance testing (GPII-1882)
+			* https://issues.gpii.net/browse/GPII-1882
+			* nothing done here yet
+
+Justin :
+	* Added more unit tests for UIO+
+	* Beginning work on selection highlighting, added an adaptation for the colour
+	* Starting to look into the timing of executing content scripts
+	* posted another UX question related to what "UI Options+ Tab" means. ( See: https://wiki.gpii.net/w/Browser_Adaptation_Design_Research#UIO.2B_Tab ) 
+	* Helping here and there for APCP meetings
+
+Kavya:
+	*  Did MM Core 1 testing-prepared some notes for MM phase 2 testing
+	* Spent time on Automation
+
+
+
+Michelle:
+	* Working on messages to the user on key in and key out. GPII-2401
+
+Simon:
+	* Helping with prep for APCP meetings
+
+Steve Grundell
+	* windows metrics and log improvements done: GPII-2333/2398
+		* https://github.com/GPII/windows/pull/126
+		* https://github.com/GPII/universal/pull/515
+	* Having another stab at the "secure IPC"
+	* Going to finish work on the Windows service
+
+
+Tony:
+	* Another (and the last) short week for a while.  School's... in... for... summer!  School's... in... for... ever!
+	* Prepped for and had a very productive PCP API meeting.  I think we're one solid meeting from having some really clear direction.  Next meeting is next week.
+	* Now that we have a new contract with EASTIN, I have been updating the imports we use to get their data and documenting issues.
+	* Worked with Avtar to test Github / docker / Gitlabs integration (it's what'll hopefully give us build feedback on our PRs going forward).
+	* Started trying out npm 5.  It works better than yarn, at least from what I've seen so far. (no problems with sharp, leveldown)
+
+
+Tyler:
+    * GPII-2389: CI/CD for Terraform. Demoing Monday, June 12 during devops weekly. All are welcome -- ping me for calendar invite if you are interested.
+    * GPII-2443: Build node automation.
+    * Unrelated: my favorite tweet of the week so far: https://twitter.com/stephenjmolloy/status/871799913528602627
+
+    
+    AGENDA:
+        
+        yarn vs. npm 5 vs. npm 3
+        https://github.com/GPII/universal/pull/508#pullrequestreview-41555997

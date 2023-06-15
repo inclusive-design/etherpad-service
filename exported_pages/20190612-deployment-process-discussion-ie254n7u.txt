@@ -1,0 +1,27 @@
+Deployment follow-up discussions, June 12, 2019.
+
+Present:  Colin, Tony, Stepan, Tyler, Sandra, Alfredo, Javi, Joseph, Kavya, Cindy, Steve Grundell (wasn't concentrating).
+
+we come from: https://pad.gpii.net/p/f2ftorontojune2019-sd1p4nf6 line 155
+
+Still working to deploy the validation changes mentioned here: https://issues.gpii.net/browse/GPII-3968
+Needs to have links to all issues that are brought in by the release.
+
+	* Last week, tried to run the deployment process
+	* But, the wrong version of universal was used in the deployment pull request
+	* Tony made a new pull request with the correct version of universal
+		* Second pull request: https://github.com/gpii-ops/gpii-infra/pull/417
+	* The "how-to" find the version of universal to deploy:  https://github.com/gpii-ops/gpii-infra/blob/master/gcp/README.md#i-want-to-deploy-a-new-version-of-universal-to-production
+		* Takes you to a Jenkins web page showing the "docker-gpii-universal-master" that was built from the merge into master (of universal)
+	* Perhaps Tony can improve the README based on what he learned by going through this: https://github.com/gpii-ops/gpii-infra/blob/master/gcp/README.md#i-want-to-deploy-a-new-version-of-universal-to-production
+
+
+Tony to create a shared filter pointing to open deployments and send a note to the group with instructions regarding how to subscribe to get notifications when new deployments are created, et cetera.
+
+Link the deployment JIRA with other JIRAs that describe original issues that are fixed and included in this deployment.
+
+Two kinds of changes for deployment
+	* Some are "internal" that the developer and ops check, but do not need Q/A from Kavya
+		* E.g., changes to the way the database is maintained
+	* Some are changes that affect the way the system works for end users and do require Q/A
+	* 

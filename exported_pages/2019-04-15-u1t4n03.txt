@@ -1,0 +1,43 @@
+Agenda:
+    1. Anything to demo?
+	- Sergey will demo code that shows universal image info
+	- will be short - 10m, can be part of the arch meeting
+	* Tyler could demo GCR stuff, but it may change. Sandra suggests waiting a week as core team is still quite busy with Morphic 1.1
+	
+	
+    2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+    
+    3. Review of Sprint 23.
+    4. Planning of Sprint 24
+    
+    5. Update on Morphic 1.1.0 NOVA pilot
+* For every new installer, a bug is fixed, and a new one appears
+* Discussed with Javi and Antranig. When Sandra has seen this behavior in previous projects, take a step back and try to understand why, can we do it differently?
+	* Has to do with complexity of what is being done, Windows made significant changes in 1809 (e.g. high-contrast, a key Morphic feature), combinations of features (high-contrast + language settings)
+	* Think we need to freeze the feature set and work on stability of the installer. No new features.
+	* Student volunteers were trained last week
+	* Gregg gave the hands-on IT person Friday's version of the installer. She installed on previous version of Windows before 1809. Installer ran fine.
+	* However, actual deployment is on older Windows versions, 1803 and 17xx. That's what we tested on Friday.
+	* Schedule/plan is day-to-day
+	* School + finals end on May 20
+	* Running out of window to collect data to use to extend project
+	* Morphic is still unstable. We (stegru + HA) are doing another round of fixes
+	* Gregg keeps wanting to add more features
+	* Review of testing results from weekend with Gregg. Steve is pursuing some showstoppers. Wait and see what happens tomorrow, if Steve has a fix.
+	* Still possible to deploy at NOVA by end of week
+	* Some regressions: install on top of old install used to work, now breaks, uninstall doesn't work. Language fix broke some other thing (wipes out menu options for languages). Language + high-contrast used to break, now it doesn't break Morphic, but it doesn't apply the language changes. Chinese always works, but other languages don't work in terms of being applied
+	* To Gregg, everything is simple. Ignores complexity of actual implementation, side effects in a complex distributed system
+	* Alfredo: engineers working on this crisis are getting burned out by all the stress and hours
+	* Tyler: does Gregg recognize how poorly things are going? Can he change? Or will he keep repeating the same mistakes?
+		* Sandra: Gregg is fighting for the survival of the project. August is a deadline to submit a proposal for new funding starting Oct 2020. He feels committed to a bunch of features.
+		* So the plan is to limp along and collect enough data to prolong the project.
+		* He's been told by the steering committee that there could be an extension if the project shows promise.
+	* May 20 is when summer session starts. We need to be deployed on the 70+ computers before then. We can no longer do anything (including updates!) during summer session. If it's already installed fine, it can stay through the summer.
+	* NOVA now targeting Windows 10 LTSB (https://www.computerworld.com/article/3250464/faq-windows-10-ltsb-explained.html)
+	* Somehow there is plan to use the NOVA (non-)authentication method in Library Pilots, without USB sticks. How can this work? No one knows.
+		* Cindy and Tony are working on a solution for this. Sandra thinks this is not real usernames/passwords, but some intermediate solution that is less bad than NOVA approach but still not usernames/passwords.
+	* Is there something the ops team could be doing to help with this large collection of problems? Meet with Gregg to try to "open his eyes"?
+		* Sandra will raise a bit of this in the context of a feature freeze
+		* The least we can do is point out the amount of risk that is continually re-introduced and how that impacts the health of the project and of the team
+		
+

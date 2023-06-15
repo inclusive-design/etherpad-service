@@ -1,0 +1,19 @@
+Agenda:
+    - Sprint 1 Restrospective    
+    - Sprint 2 Planning
+    
+
+Retrospective:
+    1. From Alfredo's side, the planning was reasonable, can probably tackle additional points. Up-font estimation was a good investment of time. What didn't go as well, setting up the accounts. 
+    2. Gio also completed his tasks earlier. 
+    3. From Tyler: what worked well was having a large block of time to work on a not-well-defined scope. What can be improved: Not a good grasp on what other team members are working on. Better visibility on what team members are working on. 
+    4. We discussed the process of how JIRAs are added to the backlog. Agreed that the Product Owner (in this case Colin), should make that determination. Sandra will follow-up with him to define a process. Can either automatically notify when a ticket arrives, or make it part of Sprint planning (i.e., review the tickets that have arrived in the last 3 weeks).  
+    
+    
+Other:
+    1. From Alfredo, need to size the effort for the metrics work once Gio and Steve Grundell are back. 
+    
+Sprint 2 Planning:
+        1. Tyler has enough work remaining from JIRA ticket GPII-2316. He will open new tickets to address the remaining work. Refer to his notes on GPII-2316. This is expected to take up Sprint 2. Or he can be available to support higher priority work if needed. 
+        2. For Alfredo, the highest priority for logging is its support for metrics, which will be needed in Pilot Stage 1. He will open a JIRA ticket that includes the notes from Steve Grundell. He also plans to start on Deployment of Prometheus server (GPII-2023), although Tyler suggested he may want to start on GPII-2319 to have it set up by the time of the Face-to-Face meeting in Toronto. He needs to balance his time between DevOps, system admin and supporting the demo on 21-Apr. 
+        3. Action item: Talk to Gio on Wednesday about whether he wants to tackle creating a Docker Swarm cluster to compare against the Kubernetes cluster (GPII-2319) 

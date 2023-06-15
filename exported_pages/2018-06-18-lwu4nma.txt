@@ -1,0 +1,11 @@
+Agenda (Planning meeting today)
+Update on last Sprint.
+	    - Alfredo: 2951, DNS. Realized they could cover more things than DNS, so the scope has been increasing. Original estimation was 3 pts, that's no longer the case to cover all of the common parts of the project (creation, permissions, DNS management, etc.). Team agreed Alfredo would move this JIRA back to the backlog and open new JIRAs for the new work. DNS is blocked by what will be in the new JIRAs. 
+	    - Alfredo will merge the PR once, all the comments are addressed in the code of the PR. Spent some time on 2995, but not resolved yet. 
+     - Tyler: Closed: 2990, 2944, 2945 and 2949. 2948 has dependency on Sergey's work. 2996 started working on. 
+     - Sergey: Closed 2958 and 2959, but code is not merged yet, so need to reopen. Additional tickets will be open:
+		* Secrets management
+		* IRB templating
+Planning new Sprint
+    - Elasticsearch / Gregg / elastic.co / https://issues.gpii.net/browse/GPII-2860
+	    * Sandra will follow-up with Brendan (clarifying his perception of elastic.co security situation) and Gregg

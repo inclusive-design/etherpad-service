@@ -1,0 +1,80 @@
+EXAMPLE:
+* What happens if a launchHandler is references from the "configure" block? -- Should we separate launchhandlers into a separate block behaving like a settings handler?
+* How would we handle custom update blocks? -- have them defined as separate launch handlers and called with no parameter?
+* How do we know which launch/settings handler blocks to fire on login? -- like we do for configure/restore blocks?
+
+
+{
+    "com.freedomscientific.jaws": {
+        "name": "JAWS",
+        "contexts": { ... } },
+        "settingsHandlers": {
+            "configuration1": (...) },
+            "configuration2": { (...) },
+            "launchHandler1": {
+                "type": "gpii.launchHandlers.default",
+                "options": {
+                    "start": [
+                        {
+                            "type": "gpii.launch.exec",
+                            "command": "\"${{registry}.HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\JAWS17.exe\\}\""
+                        }
+                    ],
+                    "stop": [
+                        {
+                            "type": "gpii.windows.closeProcessByName",
+                            "filename": "jfw.exe"
+                        }
+                    ],
+                    "isRunning": [
+                        {
+                            "type": "gpii.processReporter.find",
+                            "command": "jaws"
+                        }
+                    ]
+                }
+            }
+        },
+        "configure": [
+            "settings.configuration1"
+        ],
+        "start": [
+            "settings.launchHandler1"
+        ],
+        "restore": [ .. ],
+        "update": [
+            "stop",
+            {
+                "type": "gpii.launch.exec",
+                "command": "my_application --refresh"
+            }
+        ]
+        "isInstalled": [ .. ]
+    },
+
+    "Solution.id": {
+        "name": "My Solution"
+        "contexts": { ... },
+        "settingsHandlers": { 
+            "launchHandler": {
+                "type": "gpii.launchHandler.handleRegisteredAT",
+                "name": "magnifierpane",
+                "isRunning": {
+                    "type": "gpii.processReporter.find",
+                    "command": "Magnify"
+                }
+            }
+        },
+        "configure": [
+            "settings.configure"
+        ],
+        "restore": [
+            "settings.configure"
+        ],
+        "isInstalled": [
+            {
+                "type": "gpii.deviceReporter.alwaysInstalled"
+            }
+        ]
+    }
+    }

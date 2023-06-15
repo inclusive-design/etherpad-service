@@ -1,0 +1,24 @@
+1. Anything to demo?
+    - No
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+	- Check the security findings: situation with SA keys thats been discovered last week:
+		https://gist.github.com/natarajaya/0a4595f1e2f9555acef2fd933a08c572
+		Keys are still displayed in rake task output
+		(moved to action items)
+
+3. Security - Gregg wants Brendan to do another evaluation
+	Actually, what we ended up agreeing on is that DevOps team should first do a self-assessment. Will discuss with team. 
+
+4. Two companies to look into for DevOps support (for 24 x 7) are:
+    - https://lockstepgroup.com and https://ivision.com/
+    
+
+5. Sprint planning.
+
+6. Monthly backup restoration test - https://github.com/gpii-ops/gpii-infra/blob/master/gcp/README.md#data-corruption-on-all-replicas-of-couchdb-cluster
+	(moved to action items)
+
+
+
+

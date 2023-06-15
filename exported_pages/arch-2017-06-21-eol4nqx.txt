@@ -1,0 +1,113 @@
+Updates:
+
+
+Michelle:
+	* Have been working on other projects but I'm getting back to the pull request to master now.
+
+Ale:
+	* Keep looking for companies or contractors for helping us with IoD.
+	* Planning meetings (for tomorrow) to talk more about the IoD technical requirements.
+	* Classic meetings.
+
+Alfredo:
+	* GPII Metrics - GPII-2390
+
+Antranig:
+	* PR review
+	* GRUDELL Font scaling GPII-1716, https://github.com/GPII/universal/pull/506 and https://github.com/GPII/windows/pull/115
+	* GRUDELL Screen scaling GPII-2226, https://github.com/GPII/universal/pull/504/files and 
+	* Cindy OAuth new grant type GPII-2435 https://github.com/GPII/universal/pull/519
+	* KASPARDNIET Debounce for NFC tags GPII-2402 https://github.com/GPII/universal/pull/513/files/
+	* Review for Javi's PCP API
+
+
+Cindy
+	* GPII-2435: Sent a pull request - https://github.com/GPII/universal/pull/519. Will address Antranig's review comments
+	* Review and merge pull requests
+	* GPII security meeting with Greg
+
+Giovanni
+	* GPII-2391 - Automate Kubernetes on IDRC infrastructure
+		* Implemented some enhancements to github.com/kubernetes/kubeadm (deployment automation tool)
+		* Tested some failure modes for a Kubernets cluster
+		* Testing new container runtime (github.com/kubernetes-incubator/cri-o) to replace Docker on the server side
+	* Reminder: planned server outage today (6PM EDT) - https://blog.qualys.com/securitylabs/2017/06/19/the-stack-clash
+
+
+Joseph
+	* No APCP work this week; all time taking with IDRC privacy project
+	* Deadline for privacy work is end of day tomorrow (Jun 22)
+	* Will return to APCP end of this week (crossing my fingers).
+
+JJ:
+	* Working on setting up the infraestructure for the future cross-platform framework for MiMiC.
+	* Writing status of MiMiC implementation and current problems and approaches: https://docs.google.com/document/d/1y7G56ZFYVgSCA2Pm7rvtoXqYMMGB8NUkkoyfGzJ9jr8/edit.
+	* Started the PoC backend using the IUIAutomation Microsoft Native API.
+
+
+Kavya:
+	* Working on Test Automation 
+	* Working on QA plan for PMT
+
+Sandra:
+    - Started stage of reviewing candidates for the solicitation of skills through UMD.
+    - Kicked-off today with the planning effort for Y3 of the project (Oct-1-2017 to 30-Sep-2018. 
+	    - This is the link where we're collecting the first steps of this effort:
+	https://docs.google.com/spreadsheets/d/1_GxxAu0q6hlrtnc1kHdLiVxF6T3qk3iLBFtLYyEealk/edit#gid=0
+- On vacation the rest of the week. 
+
+Steve Grundell
+	* Windows Service
+	* Made GPII-2226 Screen scale pass tests
+	* Looked into changing the language on Windows: https://issues.gpii.net/browse/GPII-2212
+	* Started creating personas for Kavya
+	* 
+
+Tony:
+	1. Working on UL imports, ready to deploy later this week.  Now have a single-command full sync and documentation.
+	1. In preparing to import new data, doing lots of data analysis to look for different problems or confirm that other things are sane.  I have found this tool very useful for answering one-off questions about a JSON data set: http://www.jsonquerytool.com/
+	1. Lots of work around improving the flow of information between the SAI (nee SAA) and the UL.
+
+
+Tyler:
+    * PTO (greetings from Southern Utah)
+    * Automating configuration of CI build node (GPII-2443): plan to deploy in the next week
+
+Agenda:
+    
+Documentation and diagrams:
+	* https://github.com/GPII/gpii-architecture-docs/pulls 
+We need Javi and Kasper to take a look at this. It would be really good to get this merged.
+
+Talk to Kasper about UIO+ settings :)
+
+Talking about CI updates for universal (code coverage):
+    https://github.com/GPII/universal/pull/508
+Gio will test on linux & windows
+Gio will coordinate the update to the CI
+CIndy will merge
+
+Talking about yarn/npm5:
+    See mailing list for background.
+Tony will keep track of this and let us know when it's safe to move to it.
+
+Onboarding flow (Ale Draft)
+	* What does the onboarder need to provide with the solution?
+	* What's the review process like?
+	* How do we get test versions of the software getting onboarded?
+	* How do we go about periodical testing?
+	* What can we do to help support automated testing? (e.g. some kind of "mega AT" virtual machine that contains every application that we support)
+		* how would we manage licenses for this? would we need some kind of special CI-only process and buy licenses just for that VM, or could developers use this VM on their computers?
+
+Next steps for multi-server CI environment setups
+	* Our currently failing "canary in the mine" pull request https://github.com/GPII/universal/pull/510
+		* Giovanni comment: https://github.com/GPII/universal/pull/510#issuecomment-310130663
+	* GPII-2411, GPII-2103, and more
+	* Background information on why this is stuck:
+		* Kasper's PR depends on a new preference set (mike|Vargas) that doesn't exist in the master branch
+		* The tests depend on external services (preferences.gpii.net) and they are spin up from the master branch
+		* We need better end-to-end tests that spin up an environment and point the tests to the right location (in other words, the tests need to run against an instance of Preferences server that was conjured from the same branch)
+		* Another issues is that some tests are hard-coded to point to 'localhost' and that created a conflict with a separate Preferences server we wanted to spin up locally (see gist below)
+		* This last issue (hardcoded localhost) could in theory be solved with the new work merged into fluid-project/kettle/pull/33 and modification to the GPII config files
+		* Work done on the F2F to get this running (and then we got stuck with the hardcoded localhost tests) https://gist.github.com/gtirloni/eb38a8a031efea5e610ff12d31f52c0b
+

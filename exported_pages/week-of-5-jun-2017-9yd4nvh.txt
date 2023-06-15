@@ -1,0 +1,43 @@
+# 5-Jun-2017
+
+	* Alfredo:
+		* Prometheus setup
+			* GPII-2024
+			* GPII-2023
+			* Reading documentation about Prometheus, testing roles and playing around with the setup
+		* Metrics (Blocked)
+			* GPII-2390
+			* GPII-2398
+			* Need to check with Steve Grundell how the progress of the metrics in the GPII is
+		* Added the issues related to the CI to Jira:
+			* GPII-2448
+	* Giovanni
+		* Friday: started testing alternative container runtimes (cri-o, rkt, etc) - GPII-2483
+		* Today: preparing presentation about GPII deployment/scalability - NOJIRA
+
+
+# 7-Jun-2017
+
+* Tyler:
+	* Yesterday: GPII-2443, starting with gitlab-runner
+	* Today: GPII-2443
+	* Not blocked
+	* Alfredo:
+		* Prometheus setup
+			* GPII-2024
+			* GPII-2023
+			* Building playbooks to test the suggested roles by the official documentattion
+				* https://github.com/William-Yeh/ansible-prometheus
+	* Giovanni:
+		* Monday/Tuesday: APCP presentation and diagrams
+		* Wed/Thu: APCP presentation and diagrams
+
+
+# 9-Jun-2017
+
+* Tyler:
+    * Yesterday: GPII-2443: gitlab-runner, system package installs
+    * Today:
+        * GPII-2443: gitlab user-specific setup
+        * Plan to demo Terraform CI/CD at weekly meeting on Monday
+    * Not blocked

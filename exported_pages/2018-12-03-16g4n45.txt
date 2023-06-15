@@ -1,0 +1,6 @@
+Agenda:
+    - Review of Sprint 14
+    - Planning of Sprint 15
+    
+    * Propose different time for retrospective meeting (requires Alfredo)
+	* Done. Same time, moved to Tuesdays

@@ -1,0 +1,82 @@
+Updates:
+    
+
+
+Alfredo:
+	* Upgrading and testing the new VMs for QI and CI
+		* GPII-2062
+		* GPII-2063
+		* GPII-2064
+
+Michelle:
+    Working with Avtar on some build issues. Need to refactor the build a bit and take out some hardcoded paths so we can reuse it from the gpii-wrapper.
+
+Sandra:
+   - Did several follow-ups regarding the content of Core 2 (next internal release)
+   - Have follow-up meeting with ASTEA next week (re. PCP implementation and AT onboarding), have been preparing for it. 
+
+Antranig:
+    - Simon has merged the big journalling pull - this work is complete
+    - Finished work improving IoC Testing framework - this is out for review
+    - Merged Steve Grundell's Acceptance Test fixes for cursor corruption
+    - Merged Infusion upgrade to jQuery 3.x
+    - Merged prefs framework "lazy load" option for faster UI startup
+    - Merged GPII-1223 pull #471 "multiple SettingsHandlers in one solution" - thanks, Kaspar!
+    - Merged GPII-2206 pull #473 "do not explode on nonexistent config file"
+    - Meeting with the *ouchdb team on various issues - CouchDB 2.0 update, data loader, and GPII pull #464
+    - Meeting yesterday about repository modularisation - "monorepo" pattern for Infusion, GPII and other projects
+      - Meeting notes at https://pad.gpii.net/p/infusion-module-discussion-oct-4-2016-okg4ntt
+    - Various pull request review
+    - Now working on P4A Nexus work to produce beginnings of a visual/live dashboard
+
+Cindy
+	* Working with Gio and Avtar on the stack size exceeded error when running "npm install" using the universal CI with my GPII pull #464
+	* Reviewing pull requests
+	* Plan to work on data loaders (https://issues.gpii.net/browse/GPII-1987)
+
+Javi
+	* Several meetings
+	* Reviewed the installer after the merge of node6 and built one for Kavya to start testing
+	* Kept working on https://issues.gpii.net/browse/GPII-2046 - will ping Kasper and potentially Antranig to clarify a few things
+	* re PCP, we met yesterday and I've been going through the PCP wireframes again and see (based on the meeting) if there are things that need to be clarified before keep going with PCP/API
+
+Joseph
+	* GPII-1839:  use the dynamic device reporter when running acceptance tests:
+		* added a graceful way to handle writing a settings INI file that does not exist.
+		* still, the jqUnit tests with settings still fail (since the solution isn't installed, and there are no settings...).  Looking for a way to handle this (infusion's context awareness?)
+		* pinged Kasper about some of his comments on my pull request.
+	* GPII-1838: Some unit tests fail with running them from a host machine on a vagrant VM ('vagrant ssh -c ...').
+		* Using Alfredo's patch and testing to see if it solve the problem (https://github.com/idi-ops/packer-fedora/pull/8)
+		* looks good so far, but I haven't completed my testing.
+		* problem with ssh keys when doing 'vagrant up' (https://github.com/idi-ops/packer-fedora/pull/8#issuecomment-251716792)
+	* Updated status of my pull requests for Sandra.
+
+Kavya
+	* Evaluated few test tools and documented
+	* Done HW sensitivity testcases for UX team
+	* Done initial smoke tests on installer - found some bugs - need to check with kasper
+
+Simon
+	* Filed https://issues.gpii.net/browse/GPII-2060 "In virtual machines, use a node_modules that is separate from the host machine node_modules"
+	* Reviewing pull requests for GPII and Infusion
+	* Merged in Antranig's journaling work
+	* Preparing for upcoming P4A meeting and working on discovery for Nexus
+
+Steve Grundell
+	* GPII-1716: Font size support for Windows
+		* Windows 7
+			* Unable to apply DPI changes without requiring a logout
+			* Will retry the original SPI approach (which only adjusts the size of a few components)
+		* Windows 8/10
+			* Able to change DPI without logging out + in
+			* Different methods for each version, not very well documented
+	* Neglected GPII-81
+		* Need to add some unit tests
+
+
+Other Agenda Items:
+    
+    Test Tool Discussion:
+    https://docs.google.com/document/d/1DkPJ3OrhMPdh1q8OndRclPpNAXcII8LuF_0kzEe0iZY/edit#heading=h.gjdgxs    
+    
+    

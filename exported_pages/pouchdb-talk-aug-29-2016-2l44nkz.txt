@@ -1,0 +1,3 @@
+	* When using "gpii.pouch.harness" in acceptance tests, pouchdb is cleaned up at the end of each test sequence, when pouchdb is cleaned up and recreated more than twice, subsequent http requests hit 409 (Document update conflict) error.
+
+	* In the dev environment, what's the best way to re-init pouchdb? shall the http request be sent when GPII is running? Which js file in the universal can be modified to add the handling of this request?

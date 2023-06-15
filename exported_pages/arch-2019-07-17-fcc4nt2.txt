@@ -1,0 +1,75 @@
+GPII Architecture Meeting Minutes, July 17, 2019.
+
+UPDATES:
+
+Javi:
+	* Working on Morphic 1.2 release
+	* Testing and chasing reported issues
+	* Supporting people where needed
+	* Regular 1.2 checkpoints in addition to regular meetings
+
+Antranig:
+	* Continuing to advise on validation performance work
+	* Issued "soft-revert" of previous validation pull so that work can proceed on testing Cindy's IP block work in staging
+	* Merged a few pulls that IP block work depended on
+	* Attended checkpoint meetings and regular HA meeting leading up to our big NOVA deployment on Monday
+	* Continuing to work on docs and new ResourceLoader impl
+	* Light review of ongoing HA work, we are piling up the typical debt as before release cycles
+
+Cindy
+	* GPII-3828: PSP Channel reports the default schema settings as what are defined in the reset to default file
+		* Retested and re-issued the pull request: https://github.com/GPII/universal/pull/803
+	* Deployed the NOVA security checks work to my dev cluster @ https://flowmanager.cindyli.dev.gcp.gpii.net. Javi is testing it with Morphic installations (Javi: still need to keep testing)
+	* GPII-3936: Prevent the security issue with using a USB with NOVA computers to create GPII key and prefs safe 
+		* In progress
+
+JJ:
+	* GPII-4007:  Windows 10 speech recognition - AT Demo.
+	* GPII-4018:  Nuance Dragon Home 15 - AT Demo.
+	* Providing installer and fixes for AT Demo.
+		* Worked integrating Steve Grundell solution for closing down ATs with windows meesages.
+		* Provided a backup implementation using interface automation.
+
+Joseph:
+	* GPII-3832:  Run production configuration tests in the cloud (GCP)
+		* Testing flowmanager end points in "dev" and perhaps "stg".
+		* Can launch another container based on gpii-universal as a one-shot job that executes the production configuration tests
+		* Need to parameterize some of the variables so the tests can run in the VM/CI as currently do, as well as in the cloud (= changes to universal).
+		* Currently diagnosing an SSL issue:  the "productiontests" container gets an SSL error when trying to execute, eg., the /health flowmanager end point.
+	* GPII-3888:  Cron job to flush expired access tokens from the database
+			* monitoring progress on Cindy's NOVA data migration work
+			* discussions with CIndy regarding the correct tag for the universal image to use in my two pull requests for gpii-infra
+
+Justin:
+	* Met with Sandra to discuss priorities
+	* E-mailed list of recent Issues and remaining tasks to Sandra, Gregg, and Bern; waiting on feedback to know current priorities, and re-evaluate feature requests.
+
+Kavya:
+	* Testing Morphic 1.2. Overall very few issues reported by all testers.
+	* Support meetings with Gregg and Daune
+
+Stepan:
+    - Done - GPII-3970 - Istio ingress IP is ephemeral and breaks existing Web Security Scanner functionality
+      - moved ingress IP to static, seems like it did not help with Sergey's Web Security scanning work
+      - fixed several surfaced issues - race conditions (namespace, ingress IP availability) and failing locust - VS for egress traffic
+    - Done - GPII-3911 - Quick investigation of possibility to manage Stackdriver dashboards via API
+      - PoC of TF dashboard resource - we can create & manage dashboards via code, using Google's "undocumented" api
+    - Picked up GPII-4023 - Enable CouchDB Web UI access
+
+Steven Githens:
+    - GPII-228, GPII-1908, small workaround for capturing the SPI settings, capture tool installer to test
+
+Steve Grundell:
+    Lots of small things for this weeks release, such as the high-contrast/language, metrics.
+    
+
+Tony:
+
+	1. Completed a refactor of the underlying kettle validation middleware, which resulted in validation passes that take 50% of the previous time.  Still too slow for universal, 2.5x the previous average speed.
+	1. In discussion with Antranig, sketched out the core of a new approach, which uses multiple validation passes with very small schemas, one schema per solution.  Validating our test data takes less than 5ms in all cases tested.  Now working to implement this custom per solution validation middleware.
+
+Tyler
+* binauth
+
+AGENDA:
+

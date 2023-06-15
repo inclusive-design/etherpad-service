@@ -1,0 +1,39 @@
+BACKGROUND RESOURCES
+* Overview of Google Cloud's Stackdriver Tracing product: https://cloud.google.com/trace/
+* Stackdriver Trace with nodejs: https://cloud.google.com/trace/docs/setup/nodejs
+* Tyler has a PoC after doing the above (you should be able to see this if you are able to make a GCP development environment) (if you don't see any data, try zooming out to "1 week"): https://console.cloud.google.com/traces/traces?authuser=1&organizationId=247149361674&project=gpii-gcp-dev-tyler&start=1540779907368&end=1540784510675&maxl=505
+* Ticket about analyzing performance problems in GCP: https://issues.gpii.net/browse/GPII-3394
+
+Note that because of https://issues.gpii.net/browse/GPII-3309 , it is not currently appropriate to export the logs from staging to attach to a JIRA for public investigation.
+This is currently blocked on code review of upstream pull for https://issues.fluidproject.org/browse/KETTLE-73
+
+We examine a request trace for a request to /access_token
+Request times seem to vary between about 50ms and 460ms
+The request appears to have a critical path dominated by the costs of 4 back-to-back couch requests - 
+
+Pattern is 
+i) Fairly slow couch request
+ii) Slowest of 3 couch requests 
+iii) Two fairly quick couch requests
+
+Odd anomaly - with tracing enabled, we have not seen any instances of the super-slow >2 second requests which are primarily driving the investigation
+	I don't think this is an anomaly, but a result of a rare intermittent problem combined with limited timing data. I don't think enabling tracing is why we stopped seeing this problem.
+		Statistically, it strikes me as an anomaly given we seemed to be regularly finding 1 slow request in 100, whereas out of perhaps thousands of tracing requests we found none. I agree that the tracing status itself is unlikely to be a cause.
+Note that, in the tracing table, PUT requests are being tested at high frequency which is an unrealistic usage pattern.
+
+A sample request shows 182ms for a GET for the initial request for findClientByOauth2ClientId?key=....
+
+The concurrency load in locust testing is 15 concurrent requests to /accessToken. The maximum explosion factor of requests from /accessToken to couch is 
+3, suggesting that Couch is operating at a concurrency level of between 15 and 45 requests per second which doesn't seem particularly excessive.
+
+
+A sample performance investigation:
+https://gws.github.io/munin-plugin-couchdb/guide-to-couchdb-monitoring.html
+In the section "we could say, that to serve" appears to support the model that Couch requests are relatively slow (averaging 50ms) with the possibility for the
+occasional extremely slow request (5000ms), at least in the usage shown in the guide
+
+
+AGENDA
+* Why request tracing? [tyler]
+* Stackdrive Trace PoC [tyler]
+* What's next? [tyler]

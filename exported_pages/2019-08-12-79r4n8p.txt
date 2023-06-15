@@ -1,0 +1,14 @@
+1. Anything to demo this week?
+   -> nope
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+* Found an unexplained bucket related to backup-exporter
+* Found that we are orphaning KMS keys and then paying for them anyway
+
+
+
+3. Sprint planning
+
+4. New relic update
+
+Tyler has completed a proof of concept and is able to get system metrics into New Relic. Is this sufficient for Jake's needs?

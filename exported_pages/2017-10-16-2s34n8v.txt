@@ -1,0 +1,8 @@
+
+Issues opened for Infrastructure loggin:
+
+	* GPII-2651
+	* GPII-2650
+	* GPII-2649
+	* GPII-2648
+	* GPII-2647

@@ -1,0 +1,11 @@
+CATS!
+
+meow
+
+Infusion
+Infusion is a code framework for building flexible, adaptive applications and software systems using JavaScript and the Web (HTML). It is a growing collection of user interface components which are built on top of jQuery, and embraces unobtrusive, functional techniques that promote less code and greater flexibility. Infusion is separated into different functional parts so you can mix and match to easily build accessible things. It is made up of components that can have all their default parts and features taken apart and then different features, styling, and parts can be replaced and added. 
+
+Infusion brings users/people out of what we traditionally view as a role of consumption/use and puts them in a position where they can be actively engaged in the creative process. It provides an open modular system designed to be highly configurable so that anyone can modify and adapt it to create systems, applications, components, etc. that meet their specific use cases and needs. The Infusion framework reflects an accumulation of experience about how to make applications accessible, and is as much about code as it is about documentation and community values.  
+
+For more information about Infusion, please see http://docs.fluidproject.org/infusion/development/
+

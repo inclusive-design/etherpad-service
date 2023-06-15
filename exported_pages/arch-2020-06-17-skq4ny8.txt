@@ -1,0 +1,107 @@
+GPII Architecture Meeting Minutes, June 17th, 2020.
+
+
+UPDATES:
+
+Alfredo:
+	* Jenkins running on GKE, the current way to recreate the jobs requires manual intervention and it is very difficult to automate. 
+		* Is able to spin up EC2 instances with a custom AMI in order to pass the tests 
+		* Our current Vagrant/CI definition depends on custom resources in the IDRC server (UI, mail-gateway) 
+		* Lot of CI builds are broken 
+			* Ansible roles use very old python packages 
+			* Docker images depend on above ansible roles
+
+Antranig:
+	* Finished merging all pull requests that were already shipped as part of 1.3.5 installs WOOHOOO!
+		* Tech debt is now cleared to this level - some still remains relative to those things needed to properly close out Classic, e.g. dependency and build updates, and producing a minimal installer
+	* Meeting re migration from Classic to Lite solutions registry
+	* Review for UIO+ work
+	* Meeting supporting capture work, sorting out meaning of /enabled settings
+	* Now looking at https://issues.gpii.net/browse/GPII-4468 to fix this processing - looks like /enabled has not been properly propagated through the system to date
+	* Will be out Friday and Monday since moving back to London
+
+Christopher:
+	* MorphicLite > MorphicClientLiteMac
+		* Issue #13: Provide generic support for capture/apply using Property Lists
+			* Completed, checked in: https://github.com/oregondesignservices/MorphicLiteClientMac/pull/15
+			* Morphic for macOS can now capture any settings stored in Property Lists (and write any that are not read-only)
+			* Created notes on storage of Int32 and Float types (i.e. they are read back as Int64 and Double, respectively), etc.
+		* Issue #14: Create Swift wrapper for System Automation ("Accessibility") API
+			* Figured out how to supress launch of System Preferences UI (during UI automation) to just "Dock icon activation"
+			* Wrapping up memory management (alloc/free) and Swift library for navigating UI trees
+			* Next step: use the library to light up "apply" for settings
+		* macOS app notarization/signing
+			* Generated new "Developer ID Application" certificate for notarizing macOS apps (required for "outside the macOS app store" apps starting in macOS 10.14.5+)
+			* Di research on notarization requirements, made recommendations on command-line tools for signing in our pipline process, etc.
+	* MorphicLite > MorphicLiteClientWindows
+		* Walked through earlier findings on color filters, color inversion and related settings with Owen (also written up previously)
+	* Researched Chrome's reputation/whitelisting requirements for executable/installer downloads
+	* Working with Dayton to set up A/AAAA/CNAME records to direct users to official app/downloads site for Morphic Lite @ morphic.org
+	* Walked through bug reporting process with Yana
+	* Misc. meetings
+
+Javi
+	* 1.3.5
+		* Fixes here and there, reviewing/testing/merging stuff
+		* Created another build, 1.3.5-r2 - being tested right now
+		* Doing all the bereaucracy around reported issues docs, pads, etc
+		* I assume I'll spend some time troubleshooting/triaging issues reported against the last installer
+	* Meetings, calls with different people on different topics
+
+Joseph:
+	* GPII-4218: PSPChannel read API cannot read UIO+ setting
+		* Modified BrowserChannelHandler and WebSocketsSettingsHandler to provide for "changeSettings" requests from UIO+ for Morphic
+		* Discussions with Justin about the UIO+ extension -- what it's sending to GPII and what it expects back.
+		* Pull request ready for review: https://github.com/GPII/universal/pull/877
+	* GPII-4273: Local FlowManager retrieves latest solutions registry from github on startup
+		* Maintenance:  keeping up-to-date with changes to master branches.
+
+Justin:
+	* Draft PRs
+		* GPII-4218: Send UIO+ settings to Morphic
+			* https://github.com/GPII/gpii-chrome-extension/pull/52
+	* Other
+		* gpii-open-same-tab-extension
+			* waiting on GPII-4410: Making links work without the extension
+				* https://github.com/GPII/gpii-open-same-tab-extension/pull/2
+		* Need to publish uio+ and uio+ for morphic after all of the GPII-4218 PRs have been merged
+
+Kasper
+		* QA Automation coordination for morphic lite
+			* Meetings with Yana and Ivaylo, etc
+		* Wireframe discussion and coordination with Bern and Chris, and with Danail
+		* Walking through morphic community stuff with Chris - trying to get things down and final calls made
+		* Getting various people set up (connected) for deploying stuff - i.e. community webapp, QA automation
+		* 1.3.5 coordination
+		* Solutions registry migration effort meetings and discussions
+		* Meetings about remaining issues with capture tool for morphic classic
+			* Some bigger issues uncovered in the framework (/enabled stuff is and always has been ignored, apparently)
+			* Antranig is on it and it shouldn’t be a terrible big fix
+		* Ridiculous amounts of meetings
+		* Sporadic presence friday, but will also be partly available thursday
+
+Steven Githens:
+    - Fixed GPII-4505 to work with both the QSS and regular windows enabled high contrast
+    - Lots of investigation and working through issues with GPII-4488 with capturing application specific terms
+    - GPII-4497 Fixing SPI stuff by setting the SPI 'path' properties to no longer be strictly required
+    - Meetings and stuff, curating the solutions registry, and schemas, may need to update some defaults in zoomtext based on
+    actual values captured from a windows install
+
+Tony:
+
+	1. Onboarded Fusion 2020.  Stuck trying to verify that it's working because of /enabled problems.
+	1. Met with the Lite team to discuss Solutions Registry migration strategies.
+	1. Met with Hens and others to discuss blockers for Capture Tool work.  Need to fix /enabled a couple of ways, Ant suggested my doing it but need to know if he fixed it already.
+
+AGENDA:
+
+Does anyone remember onboarding Windows Sound Sentry?
+It's a windows visual notification to let people know when an application makes a noise, we need to update our accepted schema values for it... will look up the docs since whoever wrote it is not longer with us. - sgithens
+	* I could find this JIRA: https://issues.gpii.net/browse/GPII-3509
+	* Spreadshsheet with info about onboarded solutions https://docs.google.com/spreadsheets/d/1BaKlBevyghaPvW_kHKEKm5TIDjyhE6nDUcoA7Kao7N4/edit#gid=46751502
+
+
+
+
+
+

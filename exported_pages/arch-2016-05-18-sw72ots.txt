@@ -1,0 +1,93 @@
+UPDATES:
+    
+Kasparnet:
+	* Looked into the production test issue - was caused by the preferences server switch to SSL. https://github.com/fluid-project/kettle/pull/22
+		* Kettle fix provided by antranig for patch
+		* Fix to tests/CI version of test to alfredo: https://github.com/GPII/universal/compare/master...kaspermarkus:GPII-1781-2?expand=1#diff-77973ab3f76a1c3903b9a542466adad6R35
+	* Meetings about releasing and about test coverage
+	* Updating the configs to default to canopy MM (GPII-403) - not done yet, but hoping to be so EOD tomorrow
+
+Sandra:
+	*     Making progress assigning and "un-blocking" requirements for the Core 1 release (July)
+	*     Created job posting for Windows programmer with input from the team
+	*     Working on agenda for face-to-dace meeting in Toronto
+
+ALE:
+	* Starting Windows Installer work with SILO.
+	* Trying to dump automatically all the JAWS settings for the security guys.
+	* Digging on the concept Installation-on-demand for GPII. (Requirements gathering and potential solution and/or providers)
+	* Rebooting onboarding team. - Checking JAWS status with Wayne.
+
+Alfredo:
+	* Ansible role update for Jenkins 2.0 related to the CI tasks needed by July
+	* Updated the dev servers with the above role
+	* Trying to fix the CI integration test, but Kasper gently help me out https://github.com/amatas/GPII-universal/commits/GPII-1781
+	* Meetings about releasing and testing
+
+BOSMON:
+	* Giant branch:
+		* Some final issues remaining related to changes in the model transformation framework. (hoping to get ready by end of today)
+		* An infusion pull request outstanding
+		* Kettle branch that in theory needs to be merged in
+		* Alfredo's testrunner needs to be merged in
+
+Avtar:
+	* Wrapping up work for QI configuration required for generating Jenkins Job Builder definitions
+	* Submitted GPII CI email notifications changes to the gpii/ci-service repo
+	* Did some test coverage research for a discussion that took place on Tuesday morning
+
+Adewale
+Meetings with Colin, discussing identified security gaps
+	 
+	* Completed managed/Federal authenication/authorization use case - Detailed use cases for anonymous and kiosk users next
+	* Talked through 5 identified gaps
+	* Discussed Security across content lifecycles with Gio - Specifically using Kubernetes Plan to continue conversation with Gio 
+	* Development of threat modeling template for risk asssessment 
+
+Colin
+	* Hanging out with Adewale, talking security
+		* Learned about firewalls, encryption, and virtual network design (using Kubernetes, Docker, and Flannel) for GPII from Gio
+		* Working trhough use cases (as described above)
+	* Antranig and I met with Ben from IBM; he will be joining the team shortly
+	* Planning paper/demo of the P4A Nexus at PPIG conference with Antranig, Simon, and others
+	* Meetings, meetings, meetings
+	* Reminding core committers that we do indeed have AMAZING CONTINUOUS INTEGRATION services up and running for all GPII repositories <cough>
+
+Giovanni:
+	* Created separate spaces for each Jenkins instance so they can share build nodes (specially Xorg)
+	* Troubleshooting why the static website updater is triggering builds when it runs
+	* Fixed issues in Preferences and Flow Manager Docker instances that were preventing them from starting correctly
+	* Met with Colin/Adewale to discuss security topics around Kubernets deployments
+	* Reviewing changes that will be in Kubernetes 1.3 in a few weeks
+	* No progress on the PHP support since last week. Will try to increase mental strength to finish it this week.
+	* Mailed passport to Canadian Embassy (they've confirmed receipt). Now waiting for it to return with the visa stamp now.
+
+Javi:
+	* Mostly, working on the linux pull - now accepted by Antranig but still needs some refinements (Orca's unit tests are broken) :(
+	* Meetings - Coordination with Ale, releasing, etc
+
+Simon:
+	* GPII account modelling (continuing work that Cindy was doing) https://issues.gpii.net/browse/GPII-1274
+	* Will work with Avtar regarding test coverage reporting of the Nexus
+	* Some Kettle code review
+
+Hens:
+	* Meet with Sandra and Kasper about the Electron task tray work and the NFC reader/writer functionality
+	* notes found here: https://pad.gpii.net/p/2016-05-12-sgithens-meeting-z532ogt
+	* Will be working on getting an intitial pull for Electron work first, then NFC work
+
+Tony:
+	1. Working on the new search API for the UL..
+		2. The new code uses "new world" approaches like gpii-express, gpii-handlebars, gpii-json-schema, and kettle dataSources.
+		2. Should have feature parity with the read portions of the UL API by the end of next week, and will then move on to the "write" portions.  Need to work with Antranig on the "asymmetric" dataSource that should help with this.
+		2. To make this work, I needed to create a "URL encoding" dataSource that converts a JSON payload using qs and adds it to the query string:   https://github.com/the-t-in-rtf/gpii-couch-cushion/blob/GPII-1253/src/js/urlEncodedJsonReader.js
+		2. I also took a few minutes to revisit the many variations in mapping "relationships" in couch (in the UL, we need to represent "source" records that are associated with a "unified" record).  The updated API will not use the new "relationship documents" Antranig and I discussed at the Eythorne summit of 2016.  Instead, we will need to continue getting all related records and grouping them in Javascript, which IMO is the best we can do until after June.
+	1. Also working in parallel with Antranig on the kettle/infusion features I need and on the gpii-pouchdb improvements he needs to test the kettle CouchDB dataSources.
+	1. Hopefully close to an initial release of gpii-express, which will hopefully also lead to initial releases of a bunch of other libraries that depend on it.
+	1. Looking forward to "dogfooding" our QI infrastructure with gpii-binder as soon as Avtar sends details on adding the configuration file to my repo, et cetera.
+
+
+GIANT PULL ACTION ITEMS:
+	* Colin will merge in the fluid require pull request
+	* Simon will look at the Kettle and see if it's ready to go in
+	* Alfredo will discuss with antranig following this meeting in the channel

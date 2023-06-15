@@ -1,0 +1,91 @@
+Covering Javi while on vacation - installer creation
+
+Attendees: Steves and Javi 
+
+THINGS YOU NEED TO KNOW BEFORE GETTING TO THE INSTALLER CREATION
+----------------------------------------------------------------
+
+1st - Need to know what needs to be included in the build
+
+For you to know this, you will need to be in touch with different people:
+
+  - Anything that applies to universal: Antranig and/or Cindy
+  - Anything that applies to windows (onboarding, bugfixes, new stuff): Steve Grundell and/or JJ
+  - Anything that applies to gpii-app: HA (mostly for the changes in the UI side) but also Steve Grundell (tray icon, metrics or even installer creation internals)
+  - Anything that applies to gpii-wix-installer: Ask Steve Grundell
+  - If there's a new functionality in gpii-app that couples with new changes in core (ask Antranig/Cindy), when in windows (ask Steve Grundell)
+
+2nd - Ideally, you should start putting PRs together starting from master branches, but I'd say you should only focus on putting things on top of my GPII-4004 branch while I'm away - And this is a command, DO NOT start from master, create a ticket for the new installer, take the JIRA issue number and create a new branch taking my GPII-4004 as the base branch. Why? Testers don't test things that were working in previous releases. ALWAYS Merge things with "git merge --no-ff --log" 
+
+https://github.com/javihernandez/gpii-app/tree/GPII-4004
+https://github.com/javihernandez/universal/tree/GPII-4004
+https://github.com/javihernandez/windows/tree/GPII-4004
+https://github.com/javihernandez/gpii-wix-installer/tree/GPII-4004
+
+3rd - Since a lot of things are not in master branches, we're not publishing npm artifacts. We use git refs, which work just fine. REMEMBER: Delete node_modules folder AND package-lock.json file before running npm install.
+
+4th - WE NEVER APPLY FIXES OR HARDCODE THINGS IN CODE - this applies to any js or json file that comes from a repo. If you need to adjust anything, update universal/windows
+
+- RECAP - GOLDEN RULES:
+
+1.- ENSURE YOU KNOW EXACTLY WHAT NEEDS TO BE INCLUDED - ASK PEOPLE
+2.- USE MY GPII-4004 BRANCHES AS STARTING POINT
+3.- UPDATE GIT REFS AS NEEDED AND REMOVE NODE_MODULES AND PACKAGE-LOCK.JSON FILE
+4.- DO NOT CHANGE ANYTHING THAT IS COMING FROM SOURCE CODE
+5.- IF YOU STILL HAVE ANY DOUBTS, COUNT ON ME, I'LL BE REACHABLE ALL THE TIME
+
+INSTALLER - COMPONENTS
+----------------------
+
+- gpii-app
+- gpii-wix-installer: the branch is referenced in gpii-app/provisioning/Installer.ps1
+- filebeat/sharex/documorph
+  - I'll provide you the msms that you need to put in gpii-app/provisioning
+  - in case you need to create a new msm for filebeat (ask Steve Grundell), for sharex and documorph (ask me)
+- reset to std preferences: I'll send you the last version and it needs to go into gpii-app/node_modules/gpii-universal/testData/defaultSettings/defaultSettings.json5
+
+{
+    "contexts": {
+        "gpii-default": {
+            "preferences": {
+                "http://registry.gpii.net/common/language": "en-US",
+                "http://registry.gpii.net/common/DPIScale": 0,
+                "http://registry.gpii.net/common/highContrast/enabled": false,
+                "http://registry.gpii.net/common/highContrastTheme": "regular-contrast",
+                "http://registry.gpii.net/common/selfVoicing/enabled": false,
+                "http://registry.gpii.net/applications/com.microsoft.office": {
+                    "word-ribbon": "StandardSet"
+                }
+            }
+        }
+    }
+}
+
+- windows service config is located at gpii-app/provisioning: https://github.com/javihernandez/gpii-app/blob/GPII-4004/provisioning/service.json5
+
+- Different gpii-app configs can be found here: https://github.com/javihernandez/gpii-app/tree/GPII-4004/configs
+
+- Folder with different components: https://drive.google.com/drive/folders/1ouPAL0OY2pjqW-788dlYp3-jLGf81Cha?usp=sharing 
+
+INSTALLER CREATION PROCESS
+--------------------------
+
+GOLDEN RULES:
+
+- Follow the process described here: https://docs.google.com/document/d/16iRgCmYv6fx0GZ9xFK43Y77gv9G5v-1HrPNv0O7WGAU/edit?usp=sharing
+- IF have questions - ASK ME
+- DO NOT FORGET ANYTHING FROM THE PROCESS (THE ONLY EXCEPTION, DO NOT PUBLISH TO NPM BECAUSE WE'RE NOT BUILDING FROM MASTER)
+- IF have questions - ASK ME
+
+WHEN EVERYTING'S READY
+----------------------
+
+- Rename the installer from Morphic.1212232.3433.msi to Morphic-1.3-<hash-from-fluid-publish-test-output>.msi
+- Ask Sandra to create the "Reported issues document" for you - she will provide you the right place to upload the installer
+- Add what you think is worth including in the "What's new" section of the doc. This needs to be "user friendly" and useful for testers and to the end-user perspective, so, don't need to include every new commit or PR. Focus on, "fixed things" and "improvements/new features/things that now work in a different way"
+- When everything is in place - Send an email as I usually do - Look in your email for "New installer available" and use it as template. Respect the "subject" and PUT ME IN CC (This is how we're keeping track of released installers)
+
+
+
+
+

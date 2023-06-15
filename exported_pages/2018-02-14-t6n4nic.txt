@@ -1,0 +1,19 @@
+Agenda
+- Clarification re. debug logs (from Brendan, please)
+- When to have our retrospective meetings
+- Sprint 15 status
+https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&projectKey=GPII&view=planning.nodetail&selectedIssue=GPII-2718
+- Sprint 16 planning
+
+Notes:
+    = 2651 Pull Review submitted. Will remain open. Tyler will take a look at it. 
+    - 2380 will be completed today
+    - 2828 will try to wrap up before Tyler leaves on vacation. 
+    Alfredo:
+    - Integration of issue with integrating Cluster  with Vault
+    - Estimate 2860
+    
+    
+
+
+

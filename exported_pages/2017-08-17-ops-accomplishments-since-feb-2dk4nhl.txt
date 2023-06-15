@@ -1,0 +1,15 @@
+	* ELK cluster for metrics collection and analysis
+	* Evaluate container orchestration systems. Decide on Kubernetes
+		* The Plan A for the Cloud infrastructure is based on this technology
+		* A cloud based on containers is very easy to export to third party providers
+	* Numerous improvements to Continuous Integration system
+		* A catalog of all the MS Windows flavours (from windows 7 to windows 10 creators update) where the GPII can be tested
+		* The catalog can be updated almost automatically
+		* Vagrant CI plugin that orchestrates the build of the previous VMs and the tests of the GPII on any host (desktop PC or CI servers)
+		* Also the plugin is able to build complex environments that involves multiple VMs to test the GPII against a virtualized GPII cloud
+		* Simplification of the Docker containers based on Alpine (lighter and faster)
+	* Numerous improvements to GPII to facilitate CI improvements and cloud deployment
+		* Every change promoted to the main repositories triggers all the tests, and only when the tests pass the changes are applied.
+	* Prototype for automated deployment of GPII in AWS using Terraform and Kops
+		* We trend to automatic deployments, abstracting the operator of all the internals of a cloud deployment.
+	* Support the developers with the creation and execution of reliable test environments

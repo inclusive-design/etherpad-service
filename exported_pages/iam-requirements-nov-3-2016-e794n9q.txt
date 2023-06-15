@@ -1,0 +1,56 @@
+Attendees:
+	* Alan
+	* Cindy
+	* Dana
+	* Simon
+
+The goal of having a centralized account (authentication) and access (authorization) management system
+	* Authentication & single sign on: identify who this user is - user login, consent
+	* Authorization: 
+		* Authorize apps to access user information - linked with the authentication process
+		* Authorize apps to access user privacy settings
+
+Evaluate OpenID Connect protocol for user authentication
+	* The authentication steps using OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html#rfc.section.1.3
+	* Users will need to create their accounts on the OpenID server. 
+
+Use cases:
+	* Privacy settings site (https://flowmanager.gpii.net/login)
+		* A public website served by the GPII authorization server
+	* PMT (Preference Management Tool)
+		* Is it installed on users' own devices or a public website that users can sign up or login to edit their preference sets?
+		* What's the privilege - do users have full access to their profile, preference sets by using it?
+		* Colin to clarify or point to the right person for above questions
+	* First Discovery Tool
+		* Any thoughts on associating the returned GPII token with an user account? - No
+		* https://wiki.fluidproject.org/display/fluid/First+Discovery+Server+Demo
+		* http://prefint.mybluemix.net/demos/explorationToolPrefsServerIntegration/login.html
+		* https://docs.google.com/document/d/1FSTPbezpIn4hw7K5Ndgar9RDyTuvfuMeWKe4WuwYDGw/edit
+	* UIO + GPII
+		* Only requires the authorization on user privacy settings
+		* A simplified work flow?
+			* start with a single UIO preference set (but multiple privacy settings)
+			* We discussed the possibility of indicating on each UIO panel if that preference is synced with GPII (user has authorized)
+			* Latest Design from Dana (simpler): https://files.inclusivedesign.ca/s/AlQHEe9WGCx1Iqz#pdfviewer
+		* Simon: Possibility ot authorize access to users's preferences by websites that have UIO integrated rather than UIO itself, because users have different trust on different sites. 
+		* Alan: when vistiing a new site, list the authorized preferences from another UIO site that has preferences authorized and ask the user's permission to continue with it or define a new privacy setting for the new site
+		* https://issues.fluidproject.org/browse/FLUID-1653 - is this relevant?
+		* https://www.dropbox.com/s/i4c3pni6cnnwuts/uioptions%20GPII%20integration.pdf?dl=0
+		* First steps for UIO + GPII
+			- Happy path!
+				- gpii account exists
+				- gpii account has a preference set
+
+What is an "app" in this discussion?
+	- Installed AT? (uses GPII server to do privacy filtering)
+	- separate website? (uses OAuth2)
+	- contact a centralized GPII server and get information / settings
+	
+Preferences Settings vs. Privacy Settings - THE DISTINCTION (so Alan can understand it)
+	- a user can have a single preference set
+	- they can have multiple (per-application) privacy settings for access to that preference setting
+
+Latest Design from Dana: https://files.inclusivedesign.ca/s/AlQHEe9WGCx1Iqz#pdfviewer
+
+
+	

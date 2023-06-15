@@ -1,0 +1,95 @@
+GPII Architecture Meeting Minutes, June 12, 2019.
+
+
+UPDATES:
+
+Javi
+	* Biorhythms are almost back to the timezone
+	* Had some follow ups with different people about the f2f
+	* Had a technical interview with a candidate
+	* Been taking a look/providing feedback to a document for the Smartwork EU funded project
+	* Will be catching up on technical debt + list of non-showstoppers
+
+Alfredo:
+	* wrapping up GPII-3916 : Secure Backups - Monitor external backups and create alerts based on it
+	* GPII-3918: Setting up the retention policy of the backups in the destination.
+
+Antranig:
+	* Working with ADTKINS on solutions registry reorganisation
+	* Writing more documentation
+	* Meetings with HA about new functionality - "PSP replacement" 
+		* Descoped this slightly since the wireframes refer to functionality (icons/colours for prefs sets) that are not on our current critical path
+		* This includes the UI for authenticating to a safe via login/password
+		* There will need to be a further round of UX thought about what happens when a site running autologon (e.g. Nova) gets logged out, or logs in by some other means
+
+Cindy
+	* GPII-3717: Nova implementation
+		* Finished the work on /access_token request handler
+		* In progress on verifying client's privileges of creating GPII keys and prefs safes
+	* Merged Joseph's universal pull request that deletes expired access tokens(that no longer archives anything; just deletes the expired access tokens)
+
+Joseph:
+	* APCP face-to-face meeting
+	* GPII-3646: Remove expired access tokens (universal)
+		* Cindy merged into master (YAYYYY!!)
+		* JIRA still open -- should it be closed? just closed it. thanks for the reminder
+		* https://issues.gpii.net/browse/GPII-3646
+	* GPII-3333: Kubernetes cronjob to run the expired access tokens removal peridocially, aka "flushtokens" (gpii-infra)
+		* Updated pull request for deployment process to use the "latest" universal in GCP staging/production
+			* https://github.com/gpii-ops/gpii-infra/pull/383
+		* Working on modifying yaml for cronjob to kill the associated istio side car container when flushtokens container completes
+			* Using "lifecycle" section to implement shutdown of istio sidecar as demonstrated last week using the command line
+			* But, doesn't appear to do anything:  sidecar still running, and no errors.
+			* Will discuss with ops team in slack
+			* Just found github issue about lifecycle; will digest:  https://github.com/kubernetes/kubernetes/issues/55807
+
+Sandra:
+ - Update from Pilots: 
+      - Gregg hired a student, Matt Reyes, to provide onsite support at NOVA during the summer. He'll also help Maureen support AJC3. 
+	-  He also hired Rachel Woods to establish a support structure. He'll introduce her to the team at some point. 
+	- Update on NOVA: next week it’s going to be promoted for the first time, several tables will be set up in the library, in the Parish Hall lobby and in the open lab, introducing Morphic to students, giving them swag. Daune will be doing a little bit of training of Matt. Student interns will be helping. 
+	- Update on Broad Rock library: They are all installed, and everything seems to be working. There is evidence Morphic is being used.
+	- Update on Chicasaw library:  All 46 computers have been installed. No issues reported so far.
+	- Update on AJC3: Maureen has detected many inconsistencies with the languages. Steve Grundell checked, and his fix was not applied. Matt is going to uninstall all (10) and reinstall them. 
+- Working on my take-aways from Toronto: 1. Writing the Improvements from the post-mortem into actionable tasks and 2. Writing a plan for Individual Installation. 
+- I'm taking this afternoon off, maybe Friday afternoon also.  - Enjoy your days off ;)
+
+
+Kavya
+	* Working on 1.2 Testplan document
+	* Trouble shooting issues with languages installed on AJC 3 machine with Maureen - need to uninstall morphic
+and languages and do clean install
+
+
+Stepan
+- before F2F - done GPII-3960 Investigate failing test_preferences - istio-pilot issue
+- in progress - GPII-3953 - Upgrade K8s nodes in stg & prd
+  - GPII-3748 Istio: Set HPAutoscaler & Resource reservation
+  + some smaller fixes like prometheus exporter not starting
+
+Steven Githens:
+    - F2F
+    - Fixed up unit tests on GPII-2452
+    - Workign on unit tests for Data Migration Utility (from GPII-2966) as well as bulk updates and support for standard infusion transforms
+    - Putting together lists of next steps for PTT and username/password login from F2F
+
+Steve Grundell:
+    - Data blocks and Office simplification GPII-3927, ready for HA to work with
+
+Tony:
+
+	1. Short week, public holiday on Monday.
+	1. Preparing to break apart solutions registry.  Currently reviewing win32.json and components that consume it in detail.
+	1. Following up on deployment workflow and deployment of validation changes.
+
+Tyler Joe:
+* Resuming work on serviceaccounts / binaryauth
+* Deploying Tony's validation changes, take two:
+	* https://issues.gpii.net/browse/GPII-3968
+	* https://gitlab.com/gpii-ops/gpii-infra/pipelines/65909304 - not found - thanks
+* AWS infrastructure will be shut down in the next week or so
+* I posted a couple pics from Toronto: https://raisingthefloor.slack.com/archives/C9PCPPUF8/p1560192238040300
+* Long weekend this weekend, out last week of June (24-28)
+
+AGENDA:
+

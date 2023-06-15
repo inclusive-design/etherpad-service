@@ -1,0 +1,107 @@
+UPDATES
+
+Attendees list: Javi, Alfredo, Antranig, Cindy, JJ, Joseph, Justin, Sandra, Sergey, Sergio, Stepan, Steve Grundell, Tony, Tyler
+
+Javi
+	* Juggling with installers (delivered one last week and no unexpected problems so far)
+	* Reviewed Steve's Language pr again
+	* Started the Morphic rebranding
+	* Helped Kavya to continue with QA testing - had a problem with pref sets loading into the database - solved - Thanks Cindy for your support
+	* Meetings, ad-hoc calls
+
+Alfredo
+	* GPII-3125 Init GCP organization infrastructure
+		* https://github.com/gpii-ops/gpii-infra/pull/60/
+	* Reviewing PRs of other team members
+	* enjoying our first heat wave of the year: http://www.severe-weather.eu/mcd/update-on-the-extreme-heat-wave-for-iberia-confirmed/ (we are in the pink zone)
+
+Antranig
+	* Working with Cindy and Astea to plan strategy for QSS and core integration, including "noUser" session and lightweight snapshotting
+		* This work is being tracked in https://pad.gpii.net/p/plan-to-save-the-world-gpii-3088-etc-ssp4n03
+	* Usual meetings with Astea and Gregg
+	* Various pull request review
+	* Merged Justin's update to Infusion for new high contrast themes
+	* Merged various linting work of ADKINS
+
+Cindy
+	* GPII-3193: the integration branch for ASTEA that includes: noUser keyin, snapshotter, userError at key in fail
+		* noUser keyin: the temp solution is in place. In progress with the proper implementation. Putting this on hold to work on snapshotter
+		* Snapshotter: high priority for ASTEA integration. In progress
+		* userError at key in fail: will do
+	* GPII-3138: Issued a pull request to Joseph's branch to add test user keys for Aug demo
+	* Various meetings
+	* I will be on vaction next week till Wednesday. Back on Thursday (Next Monday is a public holiday in Canada) 
+
+JJ
+	* Finished work with GPII-3145, pull is now ready for review.
+	* Finished GPII-3246 will be up today.
+	* Some work on the sheet formats for products metadata.
+	* Started taking a look to new narrator settings.
+
+Joseph
+	* GPII-3138: Uploading/modifying snapsets in the database
+		* code looking good in both gpii-dataloader and in universal
+		* as of yesterday, modified to handle demo user preferences (which have a PrefsSafes type of "user", not "snapet")
+			* Part of GPII-3223
+			* Cindy has provided a pull request for these demo user preferences that I will pull into my branch
+		* Everything needs to be tested with AWS.
+	* Will meet with Tyler and Cindy about how this intersects with gpii-infra.
+
+Justin: 
+	* Submitted PRs and waiting for review
+		* GPII-3053 ( https://github.com/GPII/gpii-chrome-extension/pull/10 )
+		* GPII-3156, 3051, 3052 ( https://github.com/GPII/gpii-chrome-extension/pull/9 )
+		* GPII-2430 ( https://github.com/GPII/gpii-chrome-extension/pull/8 )
+		* Fluid-6296 ( https://github.com/fluid-project/infusion/pull/914 ) - looks like this is ready to go barring linting integration - AB
+	* Working on 
+		* GPII-3053 - removing onboarding of dictionary for UIO+
+		* GPII-3154 - integrating YouTube captions preference into UIO+ (see agenda item below)
+
+Sandra:
+    - On semi-vacation this week. Major deadline this week, delivery from ASTEA of the QSS 1.0 installer. 
+
+
+Sergey:
+    – Code reviews
+    - GCP: Exekube upstream changes
+    - GCP: Secret management refinements
+
+
+Stepan
+- GPII-3242 - Spike on Pure TF Infra automation
+- Reviewing & discussing PRs - security & encryption, secret mgmt, GCP init
+- "Design proposals" - propose & docs
+
+
+Steve Grundell:
+    - High-contrast themes (fixed, and added some), GPII-3220+3187
+	- Application zoom, GPII-3236
+	- Making the DPI preference relative to the recommended value (rather than absolute): GPII-3230
+
+
+Sergio:
+ - GPII-3248: Working on end-to-end testing and validation of ops assumptions on frontend communications with the clusters
+   - Working with Cindi
+ - GPII-3215: Rolling updates with kubernetes helm deployments
+
+Tony:
+	* Worked with Antranig and Justin on refining the two grunt linting plugins.  Now with global ignores foir ./node_modules and other goodness.
+	* Continued working to add a new "solution" resolver to universal.  Lots of reading code and working to understand things, hope to submit a pull for review later this week.
+
+
+Tyler
+* Small hygiene things for AWS cloud ahead of August release (GPII-3199, GPII-3200)
+* Cloud clown training (clown cloud training?)
+* CI for GCP is getting closer (GPII-2996)
+
+
+
+AGENDA
+
+	* YouTube Captions for UIO+ (Justin)
+		* https://issues.gpii.net/browse/GPII-3154
+		* https://lists.gpii.net/pipermail/architecture/2018-July/004848.hand,tml
+	* Secret mgmt in GCP demo? (Sergey)
+
+
+

@@ -1,0 +1,61 @@
+7-March-2018
+Attendees:
+    - Colin
+    - Sandra
+    - Alfredo
+   - Antranig
+   - Tyler
+
+
+The Steering Committee has been keen that we are not locked into a single cloud provider.
+Tyler has been told that cross-cloud portability may not (no longer) be a strong requirement.
+Were it expedient, we could bind ourselves to cloud vendor lock-in if necessary.
+What counts as PAAS? Perhaps Beanstalk, etc. What is or is not FERPA compliant? Apparently Heroku isn't.
+In the middle of the spectrum there is a la carte AWS, with hosted identity management, etc, their container engine, their hosted database, hosted load balancer, logging system (the latter two we were already planning to use).
+At the other end we manage our own VMs with our own hosted Kubernetes.
+We decided to stop development on ops infrastructure until we have determined what is appropriate.
+We currently don't know much about the weighting of costs that different choices could lead to.
+Brendan is not currently advocating for particular choices.
+"Operations in the long run will in some sense be easier" if we put more reliance on vendor services.
+If for example we weren't to configure our own Kubernetes cluster, and Amazon promises some FERPA-compliant variety of that, then could make a savings.
+<-- is this point, specifically, individually true?
+We can't answer definitively, but we'd imagine that Google and Microsoft might have solved a lot of the problems that Brendan is interested in.
+There is one problem he is interested in - for example, Google's account management (specifically for devops staff). 
+Is there anything in here that leads to particular implementation choices?
+--> What containers do we no longer want to build, and what services from Google or Amazon could we rely on instead of this?
+Is the task, specifically, of load-balancing, hardening CouchDB containers etc. even taking 10% of our devops time? We imagine it is actually much less.
+But there is no particularly tilt to this choice that relates it to security or FERPA compliance.
+We cannot make this choice without being aware of what is the checklist of points that such a container might be evaluated with respect to.
+Here is, for example, a set of benchmarks for well-attested technologies:
+    https://www.cisecurity.org/cis-benchmarks/
+    Mongo, Postgres appear on this list, and CouchDB does not.
+    What kind of stuff is in these documents?
+    Tyler has found them to be pretty good. They consist of checklists - "does your Mongo respond to read-only traffic from the internet" - it shouldn't, here is a list of tests.
+    But is there any relationship between CIS criteria and FERPA?
+    FERPA is a weird case because FERPA is not very prescriptive. The FERPA PDF is about 4 pages and says things in the abstract such as "There needs to be a mechanism for disabling accounts", "These things should be encrypted".
+    FEDRAMP, for example, is more prescriptive. When an auditor shows up and asks "how do you prove your Mongo is compliant"
+    Gregg has said that this should be done by 2020. A FEDRAMP audit takes 6-9 months.
+    Others, HIPPA, COPPA, GDPR?
+
+CIS benchmarks for technologies of interest to us:
+https://drive.google.com/drive/u/1/folders/1gcjdZiAIMgrIc3R1FHnqD0tRR__3f_XS
+Remediation Task Status:
+https://docs.google.com/spreadsheets/d/1d8B4nMh8J5fQ0WWdZXlaCEVtQ1i28-JiyfSbKKwRhw0/edit#gid=1769011929
+<-- Can we see any item on this list that might be speeded up by a different technical/deployment choice?
+Tyler says he prioritises working software over practically anything else.
+
+
+We need to i) move faster towards current devops goals, ii) reduce the ongoing burden in terms of person hours for maintenance, iii) 
+Classic triangle is time/quality/resources
+
+
+some kind of a propsed method for evaluating the benefit of using hosted cloud components (fast!):
+	* given a list of managed services offered by Amazon (or other cloud provider if we are interested):
+		* Determine if any of these services will make meeting these remediation steps either a) easier or b) faster: https://docs.google.com/spreadsheets/d/1d8B4nMh8J5fQ0WWdZXlaCEVtQ1i28-JiyfSbKKwRhw0/edit#gid=1769011929
+	* given a (currently imaginary) list of improvements (based on our backlog) we'd like to see to our infrastructure developments that would make us faster or more robust, now that we don't have the requirement of cross-cloud portability
+		* Determine if any of these managed services will help us meet those goals/improvements easier or faster
+
+Tyler's proposed action items:
+    * Evaluate list of security Jiras, remediations spreadsheet. Look for opportunities to go faster / have better infrastructure by using managed solutions
+    * Ops team needs help getting clarity around requirements. Is FedRAMP required? Is FERPA required? When? What is the minimal feature set to satisfy FedRAMP/FERPA?
+	    * Related decision: where in the spectrum do we want to be between throwing everything away and iterating on what we have?

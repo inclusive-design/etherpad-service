@@ -1,0 +1,74 @@
+PCP Coordination meeting of 29/7/17
+
+Present: Bern, Kasper, Sandra, Alfredo, Antranig, Danail, Georgi, Tyler, Yuriy
+
+Initial agenda from Sandra: 
+    
+Status on Astea PCP work
+        Working on visual tasks 
+        Discuss Infusion related questions
+Discuss PCP API
+        Document updates
+        Timeline
+Dedicated GPII cluster - discuss questions from DevOps
+
+Initial questions: 
+
+Antranig: What is the linkage between the ASTEA work and the products of the DevOps group?
+
+Answer: The deployment of the PCP with memory will require an available, near production-grade cloud-based flow manager with the ability to persist preferences.
+
+Document: "Questions from DevOps Team to ASTEA":
+    
+https://docs.google.com/document/d/1SDRonQTmH2wd3dj-3TZ_ElM_EB4h6OtkBB2bBHOLOD8/edit?ts=599db09d
+
+See answer 1: 
+    Our guess is that they will do most of their development on local machines, and use the cloud-based cluster for integration or end-to-end testing. Is that approximately correct?
+    ASTEA: yes, this is how we envision the process to be, too
+    
+We imagine that ASTEA's use of the live servers will not be different to that of the wider architecture team - that is, making use of integration testing (especially, the newer "end to end" integration testing coordinating multiple servers which is being worked on by Alfredo, Gio etc.) 
+
+Resources for ASTEA:
+    
+    Resources:
+	* https://wiki.fluidproject.org/display/fluid/Get+Involved
+		* In particular - Infusion-specific mailing lists are here: https://wiki.fluidproject.org/display/fluid/Mailing+Lists
+	* https://wiki.fluidproject.org/display/fluid/IRC+Channel <--- #fluid-work is the main channel
+		* https://botbot.me/freenode/fluid-work/ <--- logs of the architecture team's primary channel for hanging out (fluid-tech exists for esoteric overflow discussions)
+	* http://lists.gpii.net/mailman/listinfo <---- the archictecture list is the most important one
+	* http://docs.fluidproject.org/infusion/development/ <--- infusion documentation
+	* https://wiki.gpii.net/
+	* https://issues.gpii.net/
+
+Github accounts: georgitodorov, danailbd
+
+Infusion CSS selector naming conventions:
+    http://docs.fluidproject.org/infusion/development/ClassNameConventions.html
+    jobara in IRC - Justin Obara - is a person to contact with regards use of CSS frameworks, styling and skinning from the technical angle
+    
+    
+Questions on integration strategy for PCP:
+    
+    The ASTEA team are producing an electron app rendering more-or-less Windows 10 themed markup, following Infusion guidelines on selector naming, etc.
+    The integration will initially be delivered as a branch of the existing gpii-app work (which itself is a long-term branch maintained by Michelle D'Souza at the IDRC)
+	*     Initially we will continue with the integration approach from Javi's initial API using HTTP and WebSockets over local sockets
+		*      Whilst this is an approach with known performance and security problems, it is a good way to make progress quickly in the short term without getting bogged down with technological issues
+			* A version of the PCP suitable for delivery to the general public might well use a different approach, e.g. the use of electron-IPC to channel communications to the main architecture.
+		
+
+The PCP API page at https://docs.google.com/document/d/1c7QWlh-CFmkdERja7m0VRby50rySAkAP9eLGNiSlZGE/edit# has been updated to be more in line with the form of the PCP API that we expect to deliver, based on incremental updates to a single, shared large model, using the Infusion ChangeApplier API as seen in the Nexus "bindModel" WebSockets endpoint.
+The current state of Javi's branch at https://github.com/GPII/universal/pull/517 doesn't agree with this API, Antranig and Kaspar are working to update the branch together with improvements to the core architecture to support this. In the meantime, the ASTEA team will concentrate on client-directed work, together with local mocks of the API payloads if necessary.
+
+ASTEA team's rendering questions - will be posted to mailing list.
+
+A relevant resource to look at in the meantime - "fluid-authoring" project approach to rendering using dynamicComponents: 
+    
+    https://github.com/amb26/fluid-authoring/tree/FLUID-4884
+    
+    For example: https://github.com/amb26/fluid-authoring/blob/FLUID-4884/src/client/js/ComponentGraph.js#L484
+    
+
+However, the Infusion "preferences framework" is well-supported by the team and whilst it uses a somewhat cumbersome approach to markup/view generation it might be better to continue in a consistent way - especially since it is better understood how to make this UI itself responsive to changes in display preference (e.g. high contrast, font sizing, scaling etc.)
+
+http://docs.fluidproject.org/infusion/development/PreferencesFramework.html
+

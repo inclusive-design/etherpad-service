@@ -1,0 +1,26 @@
+QI dashboard improvements
+
+1. CSS
+	* The prefixes such as "gpiic-", "floec-" are for javascript controlled selectors, they should not be manipulated in css files. css selectors should start with "gpii-" or "floe-"
+https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/demos/src/css/qi-frontend-panels.css#L9 and line 40, 46 using "floec-"
+
+	* There are css styles that control the svg look such as colors/opacity, which can also be controlled by js. needs to be synced up and communicated, there's a jira for this issue
+https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/demos/src/css/qi-frontend-panels.css#L59
+	TODO: find the JIRA for this issue
+	
+2. demo javascript
+	* Use an infusion component to handle this demo js. It will help to get rid of duplications as well, such as:
+		* TODO: create a base component with multiple invokers that can be shared by panel components
+		* https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/demos/src/js/qi-frontend-demo.js#L31-L33
+		* https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/demos/src/js/qi-frontend-demo.js#L44-L48
+		* https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/demos/src/js/qi-frontend-demo.js#L52-L60
+		* https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/demos/src/js/qi-frontend-demo.js#L79-L81
+
+3. Instead of three separate function calls for each of these panels https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/demos/individualFiles-advanced.html#L156-L162 create one component that takes in the parent container ".gpii-demo-graphs" (line 156) and instantiates three sub panel components using three CSS selectors of sub divs from line 157-161. This component should also handle the input of selections on date range etc.
+
+4. base metrics panel - https://github.com/cindyli/qi-dashboard-frontend-demo/blob/GPII-2204/src/js/baseMetricsPanel.js
+	* The work flow of the base metrics panel: 1. jsonp to receive response; 2. transform the jsonp response to graph/summary data; 3. create graph
+	* Add another subcomponent for data transformation of step 2 so the parent component (base metrics panel) could be light-weighted
+
+5. Write unit tests to cover above three refactoring tasks, baseMultiDataSetMetricsPanel.js, baseSingleDataSetMetricsPanel.js, and ci*.js changes along with integration tests that manipulate graphs 
+

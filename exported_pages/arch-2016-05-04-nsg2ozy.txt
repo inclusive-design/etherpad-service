@@ -1,0 +1,97 @@
+UPDATES:
+
+Kasparnet:
+	* Meetings with antranig
+	* Meeting with Colin, Javi, Antranig on webpage configuration support
+		* https://pad.gpii.net/p/matchmaker-webpage-support-70f2ot6
+	* Valuemapper PR is ready: https://github.com/fluid-project/infusion/pull/710
+	* Updated the inversion PR: https://github.com/fluid-project/infusion/pull/701
+	* Expecting to finalize these by next meeting:
+		* Both require a tiny bit of tweaking
+		* documentation neecs to be updated with info on valuemapper and inversion
+	* Will be poking Tony Atkins and Hens early next week
+	* Public holiday in DK tomorrow (Thursday)
+
+SANDRA:
+	* Just returned from vacation. Nothing to report at this point. (this space intentionally left blank)
+
+Adewale
+	* Evaluating user authentication solutions\alternatives 
+		* Nginx using Passport and other frameworks 
+		* API gateways (middleware) for layer of abstraction
+
+Alfredo
+	* Working on vagrant vms to run production tests
+	* Fixing the GPII Linux PR with the comments and suggestions done
+	* Upgrading the QI testing VMs to Jenkins 2.0 and upload some jobs
+
+Antranig
+	* Mostly work on the giant pull request (GPII-1318) - making good progress and two repos are ready for further review (universal and windows) and the linux repo is waiting on a couple of fixes
+	* Fixing underlying faults in the testing libraries and model system
+	* Met with Adtkins about gpii-express (error handling strategy) and Kasper (model transformations supporting the canopy matchmaker)
+	* Attended meeting with Kaspar, Javi and Colin about "matchmaking for web applications"
+
+Avtar:
+	* Meetings with Alfredo, Javi, and Joseph regarding RPM packaging, Fedora 23, and Vagrant Universal production tests support
+	* Did QI screencast planning work with Michelle
+	* Been troubleshooting Fedora 23 Vagrant box issues, narrowed issues down to changes in Ansible and Systemd versions since F22, testing the new box with GPII Linux and Universal, and then it will be the new default for QI (desktop) Linux support
+
+Cindy
+	* Reviewed a few Antranig's pull requests for infusion fixes. Some of them have been merged
+	* Issued a pull request for fixing the infusion doc site deployment: https://github.com/fluid-project/infusion-docs/pull/87, Antranig will have a look
+	* Continuing working on adding couchDB support for the GPII auth server. Half way going thru the In Memory data store API and creating corresponding couchDB views
+	* Will be on vacation from next Tuesday (May 10) to May 27
+
+Michelle
+	* QI Planning with Avtar
+	* Random meetings :)
+
+Giovanni:
+	* Refactoring Ansible roles to add support for PHP projects in the QI framework
+
+Javi:
+	* Browser extension
+	* Continued working on porting linux native add-ons to nan
+	* Meeting about webpage configuration support 
+	* Meeting about linux's RPM
+	* Will be off on Thursday (Belgian Holiday)
+
+Joseph:
+	* Meeting with Javi, Avtar, and Alfredo about Fedora provisioning (use F23?).
+	* GPII-1526: modifications to the node PackageKit and Xrandr add-on and its tests for the Nan port.
+	* GPII-1744: progress output for node PackageKit add-on.
+		* https://issues.gpii.net/browse/GPII-1774
+	* passed all of the above over to Javi.
+		* https://github.com/javihernandez/linux/pull/21
+	* On vacation for the next two week; back on May 24.
+
+Simon:
+	* Working again on the NexusConnector plugin that I made for AsTeRICS
+	* I'm working on moving it past demo-quality to something that would be generally useful and working towards getting it merged into the main AsTeRICS repo
+	* https://issues.gpii.net/browse/GPII-1543
+	* Work to do:
+		* Increase the number of inputs and outputs for the NexusConnector
+		* Add properties to the NexusConnector for Nexus hostname, port, and component name
+		* Implement all of the AsTeRICS lifecycle behaviour in the NexusConnector
+
+Tony:
+	* Updated the rest of the important open PRs (gpii-json-schema, gpii-express-user) for their own reviews.  Now (finally!) updating the UL API for its code review.
+	* The UL work is highlighting follow up work in other packages, but these are hopefully smaller incremental improvements.  Currently, we are discussing how gpii.express.handler instances should deal with errors.
+	* Used to think Canadians were nice, until Colin convinced me to work on KETTLE-32.  Currently looking through topics previously discussed with Antranig, reviewing the docs.  Will look through the tests next.
+	* Spiked a new approach to using testem and gpii-express together (see mailing list).  Used this to test CORS support in the updated UL API (required for the SAA and possibly the user review tool).
+	* Also had to spike a quick approach to handling CORS errors correctly, which required bypassing jQuery.ajax(), which does not fire its "error" function when a CORS error occurs (apparently, by design).  I ended up using XHR directly.  How are other people handling this?
+
+
+TOPICS:
+    
+Antranigs Giant Pull request (GPII-1318)
+	* The pull request for supporting the LTS version of node.js (and express) in universal, kettle (KETTLE-32), windows and linux is ready for a second round of review
+	* Kasper, Javi, Cindy, Colin Clark and Simon (and Tony) should ALL prioritize reviewing our respective part (and the overall) of the pull request so we can get it in
+	* Quite a few pull requests are depending on this
+	* Pull requests against 4 repos:
+		* https://github.com/GPII/universal/pull/425 (biggest)
+		* https://github.com/GPII/windows/pull/67
+		* https://github.com/GPII/linux/pull/76 (has pulls of its own from jhernandez and clown)
+		* https://github.com/fluid-project/kettle/pull/21
+		* 
+

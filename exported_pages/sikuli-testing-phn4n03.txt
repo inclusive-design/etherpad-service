@@ -1,0 +1,36 @@
+Here are some notes to install and perform GPII testing using Sikuli:
+
+Installation
+
+	* Using Chocolatey ( https://chocolatey.org/packages/sikulix )
+		* choco install -y sikulix
+
+Running
+
+	* Using commandline
+		* C:\ProgramData\chocolatey\lib\sikulix\content\runsikulix.cmd -r C:\Users\vagrant\Desktop.sikuli
+	* Running installer tests: https://www.youtube.com/watch?v=Q9VjMnTQ_Ec
+
+Defining tests
+	* Sample tests:
+		* https://github.com/amatas/sikuli-gpii-test
+	* Javi successfully created a simple test in javascript that starts the gpii (clicking on the icon) and stopping the gpii (through the tray icon)
+
+Related issues, PRs and repositories:
+
+	* https://issues.gpii.net/browse/GPII-1992 - Evaluation
+	* https://issues.gpii.net/browse/GPII-1875 - Initial effort.
+	* [Ale] : I remember there's some documents in drive. TODO: Look for them and add it here.
+
+Actions:
+	* How to integrate Sikuli into GPII.
+		* Use cucumber?
+		* Integration with node.js?
+			* Cucumber (ruby) -> test definition (python) -> sikuli (java)
+			* Explore the possibility to use jqUnit
+		* IMHO the best way to integrate the tests and the thinking of the UX is using something like Cucumber
+	* Create a set of basic testing examples to use them as a guideline.
+	* Add as much tests we can using Sikuli for the HST release.
+	* Integrate with the CI/CD platform
+
+

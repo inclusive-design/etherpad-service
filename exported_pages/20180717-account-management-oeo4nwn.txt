@@ -1,0 +1,167 @@
+20180717 Account Management Discussion
+
+Present: Antranig, Cindy, Steve, Tony
+
+Initial discussion around timing.  Not entirely clear if we can just use USB keys for the upcoming pilot, or will need user management.  Gregg to confirm.
+
+In any case we need user management in the longer term.
+
+At a minimum need to discuss how/whether to map the existing modeling of users with that used in gpii-express-user.
+
+There will be a need for "admin accounts" to administrate safes and the PPT, but for the time being this discussion is about REAL USERS.
+
+We know we will use ADTKINS library for tasks such as validating and storing passwords, (sending forget emails etc.) the question is how will his data model coexist with ours.
+
+We agree that we will at the very least use the same database for these credentials as the main GPII one. The basic approach used by gpii-express-user is compatible with the one in the core, in that it stores documents with a top-level "type" field.
+
+There is currently no role administration within gpii-express user - but we don't need one for this initial use. Also, it currently contains no links between documents.
+
+Example document as stored by gpii-express-user:
+
+https://github.com/the-t-in-rtf/gpii-express-user/blob/master/tests/data/users.json
+
+// LEGACY gpii-express-user data model, sample record.
+{
+   "_id": "org.couch.db.user:importer",
+   "_rev": "2-b500f9e31bc74410ec7c052732202336",
+   "name": "importer",
+   "type": "user",
+   "email": "importer+duhrer@gmail.com",
+   "roles": [
+       "reviewers",
+       "importer"
+   ],
+   "username": "importer",
+   "verified": true,
+   "iterations": 10,
+   "password_scheme": "pbkdf2",
+   "salt": "59e9381c20fa3dd0791fcc7c62cce6c73772f140273be0cddea32b5534112930",
+   "derived_key": "f7a756fec513ae5f461c3213accba7bd2527c904",
+   "verification_code": "d54fcc4740b074d9a3a7a53dcb51e519"
+}
+
+Cindy's immortal data model document:
+https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+
+Proposal:
+{
+_id: "org.couchdb.user:sample",
+type: "user",
+name: "sample",
+username: "sample",
+derived_key: "dd11a6d074786fc914cbcdbc7ec5a06ad002812a",
+salt: "secret",
+iterations: 10,
+email: "sample@localhost",
+roles: [
+	"role1",
+	"role3"
+],
+verified: true
+},
+
+
+
+Limited notes from Toronto on the subject of reforming the data model to move credentials: 
+    https://pad.gpii.net/p/torontof2f-june2018-hyd4nt9 line 411
+    
+    
+    https://usercontent.irccloud-cdn.com/file/aWld89xf/IMG_1653.jpg
+    These whiteboard notes include an "access" field in order to determine what access level the credential allows
+    We are going to assume that an access level of "login" implies an access level of "keyin"
+    
+    Another set of mockups pre-toronto:
+        https://wiki.gpii.net/w/GPII_Key_Types
+    
+    JSON for PrefsSafe Keys with explicit access types
+        {
+           
+            },
+            {
+
+Draft plan:
+    The table called "KEYS" should become something like "User Credential Index" or "User Credential Shell".
+    Our "step 1" plan was to move username/password out of SAFE into KEYS but we should now move it two steps and store it in ADTKINS's structure in gpii-express-user.
+    "Credential Index" then stores a link to this, as well as a "role" or "access" field as shown on the whiteboard indicating what level of access the credential supplies - this becomes an expansion point to allow other kinds of credential in the system (OAuth, other 2FA, etc)
+    For role of type "keyin" the field prefsSetId is meaningful, for "login" it is not.
+
+BETTER PLAN:
+    The "Key" itself is a kind of null, "bearer credential".
+    We should move the "credential index" table one level further out, and have the keys table as another thing that it can point to, as a peer with the username/password table held by gpii-express-user.
+    All the fields in "Keys", e.g. revoked*, get moved into "Credentials Index", leaving behind simply THE KEY ITSELF in the keys table.
+    
+Meeting 19/7/18
+
+Present: Antranig, Adtkins, Hens, Cindy
+
+For situations where a gpii-express-user entry is used for both logging in and keying in, for that to happen we would have 2 separate GpiiKey documents that link to it, one for each of the specific purposes.
+
+{   // brainstorming
+    _id: {UUID},
+    type: "credential",
+    prefsSafeId: 
+    credential: {
+        "gpiiKey": [{
+            key: "alice",
+            revoked:
+            revokedReason:
+            timestamp:
+            prefsSetId: 
+        }],
+        "account": [{
+            userId:            <-- Should probably point to gpii-express-user doc
+            pwd:
+            roles: ["keyin", "login"],
+            timestamp:
+        }],
+        "googleLogin": [{
+            googleId
+        }]
+    }
+}
+
+The advantages of the above structure:
+1. Avoid the join between more than 2 document types
+2. Avoid sending multiple requests to retrieve one key/account information
+
+The disadvantages of the above structure:
+1. A large document to perserve and merge. Needs to be carefully maintained
+2. hard to build view index, such as by gpiiKey or account
+
+2018 July 24
+Antranig, Cindy, Steve, Tony present
+
+Discussing "relationship" strategy for linking safes to users and tokens, based on the first approach outlined here:
+
+http://docs.couchdb.org/en/2.0.0/couchapp/views/joins.html
+
+Reviewed "relationship" strategy, which consists of storing the CouchdB _id values for related documents as part of one document and then using a specially designed view map function to deliver the related document(s) in a single query.
+
+Discussed prior approaches to loading data into CouchDB/PouchDB, such as sample data:
+https://github.com/gpii-ops/gpii-dataloader/blob/master/loadData.sh#L48
+
+Gregor and Alan also worked on a loader:
+
+https://github.com/waharnum/fluid-couch-config/tree/SJRK-64
+
+The code that converts view functions to strings in views.json: https://github.com/BlueSlug/fluid-couch-config/blob/0d1f86facc233aaef0124c451d7a3182fd3f51e5/src/couchConfig.js#L212
+
+Cindy to check in with them on their recent progress.
+
+Steve working with gpii-express-user, will report back regarding what new endpoints are needed.  Discussing having users with "admin" roles who will be able to do things like create a user on their behalf.
+
+2018 July 26
+Antranig, Cindy, Steve, Tony present
+
+Steve reporting back on experience using gpii-express-user to provision accounts.
+
+Sounds like we do need:
+
+	1. A POST /api/user endpoint
+	1. The ability to turn off verification or auto-verify newly created users
+	1. CLI toois to create users, as part of that, componentized invokers or something so that the operations can be performed from other code
+
+Talking about prefs safe also being optional, i.e. a relationship document represents 1-3 thrings that are related, and might just be a token, or a user.
+
+Need to test the relationship document approach with bogus ids to confirm what will happen.
+

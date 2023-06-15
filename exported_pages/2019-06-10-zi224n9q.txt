@@ -1,0 +1,27 @@
+Agenda
+1. Anything to demo this week
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+	* Inventory metric. What do we want?
+		* Tyler wants to see inventory for prd (and sometimes stg) without expected noise, i.e. we don't need to know about all the Snapshots that are created and deleted expectedly. (However, we would want to know if e.g. all Snapshots had been deleted and no new ones had been created, or something.)
+		* Stepan wants all changes to production in one page/one dashboard, so we can quickly review those changes, with expected changes filtered out, for given time (1w).
+		* We don't see a way to exclude resources using dashboard. Can we do it with API calls?
+		* Even if we can filter, how can we ignore snapshots but notice if a bunch of old snapshots are deleted?
+		* Another approach: a set of queries for specific changes we want to monitor, e.g. Instances, K8s Clusters, IAM changes, etc. Maybe these mirror the changes we have dedicated alerts for? Or are the alerts we have for those resources sufficient to catch problems?
+		* It would be nice if we could use inventory to catch things we're not otherwise alerting on. But we can't find a way to do exclusions, so maybe we keep inventory only to satisfy the FERPA "you must have an inventory" requirement, not for detecting security issues.
+			* Alerts don't work on org-level events (we have a parking lot item for this)
+			* Corner cases may make this system useless
+				* I'm an intruder. First thing I do is disable stackdriver monitoring/logging. Or, I disable the relevant alerts so they can't fire.
+		* We thought we could use inventory as a "backstop" for things we don't explicitly alert on, so maybe we can't throw out inventory
+		* Decision: Sergey will investigate if there is any way to exclude things from the inventory
+3. From Sandra: conflicting meeting I had with this one has been rescheduled, so we can move this meeting back to 1PM Eastern, 10AM Pacific.
+	Sergey: Yay!
+	Decision: yes, reschedule for 1 hour later
+5. Request from Gregg. 
+	* Description of: these are the instances where the Google Cloud can become unavailable. Best-case/worst-case for:
+		* Scheduled maintenance
+		* Unexpected issues
+	* From F2F last week, having 24x7 uptime is not realistic and expensive
+	* Tyler was planning to tackle IR/DR documentation after binauth/serviceaccount changes (GPII-2806). Proposes that we do this work, see if that meets Gregg's "need" for this information
+6. F2F retrospective follow-up, Colin/Michelle
+	* Sandra has the "areas for improvement / what can we do differently" section. She is planning to organize it to make it available to others
+	* Tyler plans to raise the topics of retrospectives, demos, and following up on improving the team/project in every Arch Weekly

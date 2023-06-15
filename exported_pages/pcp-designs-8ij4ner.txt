@@ -1,0 +1,20 @@
+We need from Bern:
+	* A wireframe of the PCP that has:
+		* At least one generic preference
+		* At least one application (non-generic) preference
+	* A wireframe of the PCP that has:
+		* At least one dynamic setting
+		* At least one non-dynamic setting
+			* with graphical examples of what happens when the user changes the value (of a non-dynamic setting)
+		* At least one example of a generic preferences, that when applied to the system affect both dynamic and non-dynamic settings (for example, font size might apply live to the OS but requires a restart of Read and Write Gold to take effect)
+
+
+
+From Astea, we want to clarify:
+	* The PCP must be configurable (font size, high contrast, etc) - We expect to have Fluid UIOptions under the hood and applying customization on the fly
+
+
+to JIRA:
+	* Q: which out-of-the-box widgets/adjusters should the PCP support? One (or more) example(s) of each
+		* CREATE JIRA, ATTACH WIREFRAME AND RESOLVE
+

@@ -1,0 +1,15 @@
+1. Anything to demo this week?
+-> No
+	
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+	* 13 minutes
+
+3. Close current sprint.
+
+4. Plan new sprint. 
+	- Can we add the task from Gregg to this Sprint?
+		* Gregg is looking for funding beyond the end of Year 5
+		* Asked ops specifically about: cloud infra, security, scalability
+		* He is also asking about other parts of the project: secure login, UIO+, etc.
+		* Audience: Gregg, but for people who review requests for grant money. Depending on the field, reviewer would have some knowledge about the product, about a11y and AT, but probably not experts in software development. E.g. steering committee member. Gregg would emphasize who would benefit. At a high level, what has been accomplished. E.g. infra running on Google Cloud, with these high-level capabilities. Not technical per se.
+	* Sandra requested this be completed this week (ends jul 19)

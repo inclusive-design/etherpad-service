@@ -1,0 +1,41 @@
+Agenda: 
+    - Follow-up from last week's call regarding retrospective or lessons learned:
+        (silence means everything's peachy)
+	* are we planning effectively?
+		* do you know what your priorities are, generally?
+		* do you konw what your priorities are this sprint?
+		* do you know why they're priorities?
+		* do you think they're the right priorities, in general?
+		* does our planning process provide us with insights into our team's metrics—how long stuff takes us, etc.
+	* are we meeting efficiently?
+	* are we getting enough technical time with each other?
+	* do we have opportunities to work together in smaller groups as needed? 
+	* do we have the appropriate skills on our team?
+	* are our goals and priorities sufficiently clear? [and how could we make them more so?]
+
+Discussion Notes:
+	* Sandra: we could do a better job of mentioning and describing the priorities while we're doing sprint planning
+		* Adjustments to sprints at the end
+		* Tie in to higher-level priorities ("a production environment in the public cloud"), focus on next deliverables
+	* Tyler:
+		* 4 ceremonies in Scrum (standup, demo, retrospective, planning)
+			* we're strongest at planning—pretty good
+			* priorities are clear—have lots of influence over what the priorites are
+			* we're a little weaker at connection from what ops is doing to the organization's goals—not bad, but could be improved
+		* our metrics are pretty good, story points are aligned, some concern about finishing things within a sprint—granularity of tasks? makes it difficult to know when we'll be finished
+			* more fined-grained tasks might be part of the issue - easier/more accurate to esitmate smaller work items than larger work items
+				* Include space for learning about the problem, research and documenting possible solutions
+				* more "research spikes"? e.g. "implement a security gateway" -> one day spike, followed by further breakdown of tasks?
+				* Sandra: have planned one sprint for research and design (if needed); next sprint plan would break down the researched area into finer tasks (done prior to planning)
+				* How important are accurate estimates? Improving accuracy of estimates requires additional effort. We should not expend that effort unless it has business value
+	* Brendan:
+		* FERPA compliance must be in place before launching in educational environment (community college)
+		* All tickets he has ever written in Jira must be resolved before we are there
+			* With the exception of the LDAPS tickets, which can be addressed later.
+		* Completing ISO 27002 evaluation
+			* Alfredo: Can we have more information about this? Brendan: No.
+				* That's not what I said. What I said was that the assessment isn't mine to share beyond the project leadership, because it cuts across a large number of functional areas.
+		* Dashboard to surface these issues at a high level for the team to feed into prorities? Something we can look at during each spring planning?
+			* Brendan: I can repeat these, but the issues I've raised have not been addressed. Because: sufficient attention and resources have not been dedicated to these problems.
+
+Let's start having a dedicated Retrospective meeting. Once per sprint. Separate form regular ops weekly. Start with 30 minutes, learn how to retrospect together effectively.

@@ -1,0 +1,9 @@
+1. Anything to demo this week?
+   - Kiali
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+
+k8s-snapshots docker images has 7 critical issues
+	- moved to action items
+
+3. Sprint planning
+

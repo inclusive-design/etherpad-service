@@ -1,0 +1,89 @@
+- GCP Support Subscription
+  - Role based (per user) - 
+    - Development ($100/month) - Create P2 cases - response within 4 business hours.
+    -  "Hours of Operation" means 17:00 on Sunday to 17:00 on Friday Pacific Time Zone, except for holidays in local time for each region documented in the Admin Console. -> 24x5
+	* Can we create a "role user" for this?
+		* What about 2FA? Shared and save recovery codes? Shared and save initial QR seed so that multiple people can use 2FA "normally" for this account?
+		The Support Account Administrator is a key role during the setup process and has the ability to grant users in your organization access to support cases in the GCP Console anytime by assigning users a support role. You can select from user roles Basic, Development, Production, and Business Critical support (only for Enterprise support).
+  => Stepan to follow up with Sandra to arrange for support subscritpion, starting with 1 shared account "Development"
+
+* Alfredo's many things
+	* GPII-3125
+		* Stepan will test the code of the PR and share the issues found
+		* Discuss the behavior of the solution
+		* Merge and run the code in a working session.
+	* DNS setup for "morphic"
+		* GPII-3279
+	* Jira migration?
+		* Upgrade of Jira VM (database?) didn't go well.
+		*  
+		* Gio said he would deploy a VM running postgres and link GPII Jira to that database. This was completed. GPII Jira is now using a separate database. This fixed GPII Jira, and GPII Jira is running separately.
+			* This is the fastest solution because Gio did all the work. :)
+		* Can we move to Atlassian hosted?
+			* Can't have .gpii.net name.
+			* Tony said it's possible to move the Jira data (via a "backup") and Jira attachments (packaged up in a specific format) to a hosted instance
+
+Maintenance Jiras
+* Broader context: we are guests in the IDRC. How/when to migrate?
+* IDRC has worked on/with the GPII for decades. IDRC wants to help GPII as much as possible.
+* Invisible labor provided by IDRC/Gio.
+* IDRC volunteered to help GPII get separate tenancy.
+* Gio is leaving IDRC as of Sep 5. He will be operating Wikipedia! :)
+	* Colin is looking for a new ops person.
+	* Continuity plan involves Alan Harnum and (if absolutely necessary) Avtar
+	* Alan is best effort
+
+* Move idrc migration epic up significantly in priority?
+	* Colin, APCP hat: anything that isn't preparedness for NOVA is probaby not a priority
+	* Colin, IDRC hat: we pay for other things. Either pay for hosting, or "pay" for IDRC with labor
+	* Wants Sandra input - not a technical product ownership issue
+* What to do about the maintenance items specifically? Anything critical in that list?
+	* GPII-3263 
+	* Alfredo is (maybe - Colin will find out) dedicated 50% time to maintenance of things like random apps/projects in IDRC infrastructure
+	* Alfredo will look into various i26 issues
+	* Keep an eye on how many issues would go away if we moved to hosted Jira
+	* Where should random apps/projects live? Move to separate hosting, isolate from existing infrastructure? Separate Kubernetes cluster (benefit from our expertise in kubernetes and existing automation around kubernetes)?
+* What is the process of prioritizing and doing the tasks of keeping requisite infrastructure and stable and patched?
+	* Include maintenance when thinking about hosted (SaaS-style) solutions
+	* Inventory of everything used by APCP: VMs, apps, hosted services
+	* Subscribe to security updates / status messages for all these things
+	
+	
+ACTION ITEMS: (copied to standup pad)
+* Talk to Sandra about prioritization of idrc migration (Tyler, Colin?)
+* Look at i26 maintenance issues (Alfredo)
+	* Will talk to Gregg about whether all random apps/projects there are needed
+* Make tickets for 1. inventory of APCP things 2. list of security updates etc. to subscribe to (Alfredo)
+	
+
+* The Demo is this week! :)
+
+* Secrets management
+	* Current strategy vs customer-managed keys (Stepan's solution)
+		* Fetch secrets from tfstate
+		* Sergey's top concern: obfuscating secrets in terraform output if secrets aren't available in ruby land
+	* Current strategy vs Vault
+		* Operating Vault
+		* Integrating with Vault - this is the big unknown and probably the biggest effort
+		* Do we have time? How much effort is required?
+		* Do this last, to make sure we have time for more critical pieces where we have no solution at all?
+			* Start with a spike to round out our understanding?
+				* Try to stick as close as possible to current approach: exekube, a helm chart, and vault?
+		* Not clear exactly how Vault helps us since requirements are unclear
+	* What are the requirements?
+		* Do we need (or have, perhaps in a combination of some of Brendan's security/policy documents?) a System Security Plan?
+		* Sergio has volunteered to follow-up on this a bit with Sandra
+
+* Conclusions
+	* Consensus that we want more clarity on what a FERPA audit might look like
+	* Consensus that we prefer a working implementation over the uncertainty around Vault unless new requirements force us toward Vault
+	* Consensus that we will go forward with Sergey's current implementation (customer-supplied keys, ruby code)
+		* If new requirements dictate a change, we can re-evaluate
+	* Consensus is that we think this strategy will pass FERPA audit
+	
+
+* Planning
+
+
+
+* What should Stepan work on?

@@ -1,0 +1,12 @@
+Agenda:
+    * Cindy's cluster: couchdb issue
+    * Cindy's cluster: rolling-update issue
+    * CouchDB destructive testing with Sergey's helm chart (partially done)?
+	* Sergey's solution doesn't do re-sharding / doesn't sync all the data to all the nodes. Alfredo says his fork of couchdiscover handles this. Sergey is going to try latest couchdb (2.1) with Alfredo's couchdiscover fork.
+    * Docker Registry outage (https://status.docker.com/pages/incident/533c6539221ae15e3f000031/5b301cb6ab905c04b1de8e95)
+    * Postpone Vault integration in favor of Google KMS?
+	* Yes. Sergey is continuing to investigate.
+    
+    Security Phases:
+        https://docs.google.com/document/d/11O7yfXtqkObHSFfEOBQyR1cOkxVCVR8MbeWZCVMXAjo/edit#
+	        * We added used info from this doc to re-order our backlog. We also add Fix Versions related to each of the Stages in this doc.

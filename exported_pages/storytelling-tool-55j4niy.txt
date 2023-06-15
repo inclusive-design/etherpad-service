@@ -1,0 +1,59 @@
+CONCRETE STUFF
+- in January, Avtar is going to start making us a video for the storytelling tool which we'll be able to use for the P4A review, but will also be useful for SJRK / Floe
+- by January...
+	- What features do we want the tool to have?
+	- What do we want to be able to demonstrate?
+
+Latest build:
+    https://build.fluidproject.org/sjrk-storyTelling/
+
+Latest design:
+	https://files.inclusivedesign.ca/index.php/s/YPtJqKS9cVGzlWW#pdfviewer
+
+POSSIBILITIES / QUESTIONS
+- UIO implementation?
+	- Using multilingual UIO
+- do we need a deployed version with persistence?
+	- Storage of large binary files? (audio, video)
+	- Possibly already extant DataSource grade that deals with files that we can extend
+- design - visual and interaction? mobile?
+- search and display of stories?
+- transcribing recorder integration?
+- image uploading?
+	- designing an infusion component to capture from the camera?
+- translation?
+- audio input? audio recording? video?
+	- yes :)
+	- basic editing features?
+	- duration restrictions?
+	- 3rd-party platforms for hosting?
+		- WebRTC
+	- what is the experience like on a mobile device?
+
+Why the storytelling tool for a P4A video?
+	- other projects that may be more appropriate?
+		- The nexus, highlighting the visible nexus
+
+A video about the storytelling tool should be about people telling stories. Either as an implementation of the SJRK projects or as part of our process in developing the tool
+Organize a storytelling session with some people, create a "micro-site" that lets people tell their stories and share them (visuals, audio, etc)
+	- user testing
+	- "what I did when..."
+	- STORY JAM - friends and family sort of thing, low-cost and easy to organize - document this? with custom-voice-over with details about components
+	- can we have some persistence for this somehow? including a "browse all stories" option
+Having a "concrete" implementation of a storytelling site available for people to tell some stories, which we'll be able to point to and build on
+
+- designs for audio and images (audio at same "level" as text entry etc) i.e. multi-modal - Dana work with Eloisa
+- further designs for uploading/adding images - Dana
+- snazz up the visual design a little - Dana
+- create a design narrative? (like MyL3)
+- Oak report - find out what Jutta wants for this
+	- stories from partners - who they're working with, what are the stakes, what are the communities
+-UIO for learning differences - scaffolding for learning disabilities?
+- how we think about learning differences (highly contextual, more expansive than "learning disabilities", non-medical model)
+	- how this impacts how we think about building scaffolding, tools and research
+	
+- look at persistence options
+	- costs
+	- cloud options
+	- 3rd-party
+

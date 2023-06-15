@@ -1,0 +1,25 @@
+Date: Jan 25, 2018
+Attendees: Avtar, Cindy, Joseph, Jon, Lisa
+
+Topic: https://issues.gpii.net/browse/GPII-2774
+
+1. "back" and "forward" buttons:
+back: scroll back in time to view previous commits
+forward: scroll forward in time to view more recent commits
+- The word "Scroll" may not be meaningful. Possibly use a different word like "advance"?
+
+buttons should have "aria-controls" pointing to graphs, (Ideally to the x-axis, since that it what is being scrolled/controlled, but the graph is a good first approximation)
+buttons can have aria-describeby points to longer descriptions
+
+other suggestions:
+1. replace the back and forward buttons with a scrollbar
+2. use tooltips (wrap the descriptions into a tooltip widget)
+
+2. Provide a data table for each graph
+Suggestion: 
+	* have a toggle button to show the data table visually and both the graph and the data table are screen read accessible
+	* Using html <summary>, <details>, the expansion/contraction of the data table would be automated
+	* The problem is, with showing such a data table, the whole styling of the page needs to be changed
+
+The first step is to generate the data table then worry about how to present it
+

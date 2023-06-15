@@ -1,0 +1,37 @@
+# 12-Jun-2017
+
+Tyler:
+    * Yesterday: GPII-2443: All packages installed and configured. Couldn't quite get a successful gitlab build inside my vagrant box.
+    * Today:
+        * GPII-2443
+        * Terraform CI/CD demo (GPII-2389)
+        
+	* Giovanni
+		* Today: GPII-2391
+
+	* Alfredo
+		* Updated issues GPII-2023 and GPII-2024
+
+
+# 14-Jun-2017
+
+Tyler;
+    * Yesterday:
+        * GPII-2443
+        * Terraform CI/CD demo (GPII-2389)
+    * Today:
+        * GPII-2443
+        
+
+# 16-Jun-2017
+
+Tyler:
+    * Yesterday:
+        * GPII-2443
+    * Today:
+        * GPII-2443
+    * Reminder: limited availability next week
+	* Giovanni
+		* Yesterday: GPII-2193
+		* Today: GPII-2193
+		* Not blocked

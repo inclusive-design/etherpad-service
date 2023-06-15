@@ -1,0 +1,36 @@
+Agenda:
+    2. Review/update job posting: https://weworkremotely.com/remote-jobs/raising-the-floor-us-devops-engineer-emphasis-on-scalability-performance
+	* We made some updates to the job description, mostly de-emphasizing perf/scal-specific experience and emphasizing more general devops experience, our inclusive team, and a desire for more diversity in hiring
+	* We decided to post the job description in a few more places: LinkedIn (free for Sandra), professional engineering organizations associated with underrepresented groups: women engineers, hispanic engineers, black engineers
+
+    1. Discussion about infrastructure options: https://docs.google.com/document/d/1y95Wkl2LYTF12CufM-_c6MANRIKvx42rMEGeH7UpJ5I/edit
+	* Tyler will clean up some language around why we chose Kubernetes in the first place and why we still think it's valuable (vs option of targeting something like Elastic Beanstalk or Google App Engine)
+	* Team's gut feel is to move to Google Kubernetes Engine
+		* Tyler will start spiking this move, with an eye toward learning about changes needed in Google vs Amazon and later providing estimates on moving production from Amazon to Google
+	* Alfredo will finish up fluentd/ES logging work, emphasizing things that are less likely to change (deploying fluentd to Kubernetes, sending alerts from ElasticSearch based on events like ssh-ing to a Node), de-emphasizing Amazon-specific tasks like migrating ES from elastic.co to Amazon ElasticSearch
+	
+Notes Tyler moved from the Drive doc:
+
+Pros and cons of kubernetes:
+            * Colin says this is a key point in making the decision. What does k8s offer? Clarify what we’re weighing options against? Scaling choice, insights from logging, flexibility in adapting to change, do we risk rewrites/refactors by not using k8s? Also, what risks does kube present to us? (e.g. complexity, exposure to change/bugs on the bleeding edge, etc.)
+        * alfredo notes that we did write a document about why we chose Kubernetes—does it justify some of these questions?
+                * K8s is supported by many hosting providers/clouds. k8s is an abstraction for lower-level design decisions (vs EB and GAE which are more specific, less abstracted)
+                * Remind ourselves why we wanted to use k8s in the first place, why others in industry use it.
+                * Because we already build and use containers, migrating to another container-based orchestration system may not be so bad. Specific change with orchestration strategy though: wiring between containers, security
+
+“Gut Feel” Summary to date (March 19, 2018)
+	* Hardening Kubernetes is not entirely trivial, and a task we’d prefer to outsource this work to someone else (via a managed Kubernetes product)
+	* In an ideal world, we’d use AWS’ Kubernetes’ offering because it represents the least amount of systemic change, however it’s still in private beta (so we can’t)
+	* Given that we can't yet use AWS’ managed Kubernetes product, now’s possibly the time to move to Google’s cloud
+	* Tools like App Engine and Beanstalk don’t seem like a good fit for us. We don’t know of any large-scaling companies that use these products, and Kubernetes’ growth in the industry is clear. Using GAE or Beanstalk represents significant infrastructure- and application-tier change and vendor lock-in for the GPII.
+	* The next step may be to do a spike with Google’s managed Kubernetes product?
+	* We will need to analyze whether Google provides appropriate hosted versions of related technologies (such as Elastic Search) or equivalents
+
+Next steps
+	* Break down our use of k8s to justify why we’re using it (vs EB or GAE)
+		* Spike to inform decision and estimates
+		* “Gut feel” is an important part for now
+		* Start to quantify with estimates: X weeks to move to Google, Y weeks to move to Google-hosted ES, etc.
+		* Gregg wants to know that something he asked about has been considered seriously
+	* If we switch to Google, what other things have to move and how do they compare with Amazon/etc. offerings?
+

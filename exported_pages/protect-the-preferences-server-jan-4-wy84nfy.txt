@@ -1,0 +1,36 @@
+Attendees:
+	* Ale
+	* Antranig
+	* Cindy
+	* Colin
+	* Simon
+	* Steve Grundell
+	* Tony
+	* Tyler
+
+The wiki of the summary from the last meeting: https://wiki.gpii.net/w/Protect_communication_between_Local_Flow_Manager_and_Cloud_Based_Flow_Manager
+
+We established:
+	* We expect to provide credentials to each local flow manager on installation
+		* These credentials will establish that the local flow manager is *a* local flow manager
+			* These then authorise the local flow manager to fetch preferences on behalf of *any* GPII user
+	* Consider to use OAuth2 Resource Owner Grant: https://tools.ietf.org/html/rfc6749#section-4.3
+	* This is part of the regular OAuth2 spec - we are considering using this for securing native apps
+	* We have so far implemented 4.1 Auth Code Grant, and 4.4 Client Credentials Grant
+
+We wanted to establish:
+	* To what extent is the "securing the local flow manager problem" the same or similar to the "securing a native app problem":
+		* We think these are different problems
+		* There is a new OAuth 2 draft spec aimed at the native app problem - to not allow it to see the user's credentials: https://tools.ietf.org/html/draft-ietf-oauth-native-apps-06
+
+For these two problems:
+	* An important difference is that we don't mind the local flow manager seeing the user's credentials, if it has been authenticated, whereas we do mind an arbitrary native app seeing these credentials
+	* An important similarity is that neither of these two clients are browsers
+	Question: If we allocate client credentials to a native app, is the scope of these all installations of a particular kind of app, or a particular installation of it?
+	
+Next Steps:
+	* Identify in some detail the protections and threats and use cases we want our security implementation to provide
+		* e.g. If someone steals a user token, is it acceptable for someone else to be able to key into a different GPII-enabled computer with it?
+	* How do we protect the client credentials if ID and secret aren't enough?
+	* Hardening communication with stablished pilot sites as a security measure to avoid third capturing traffic or sensing active cloud services as a temporary measure.
+	* Use OWASP Top Ten (https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) as a matrix for defining measures against potential attacks.

@@ -1,0 +1,141 @@
+Meeting to plan deployment of production CloudBased FlowManager and matched client
+31/10/17 - Present: Alfredo, Antranig, Brendan, Colin, Javi, Kaspardniett, Sandra, Tyler
+
+
+	* (Alfredo) which of these deployments is the needed at the cloud for the pilots: https://wiki.gpii.net/w/GPII_Deployment_Structures
+		* Actually we are deploying a CouchDB (cluster) -> preferences server -> flowmanager
+		* The correct configs that we should be using for the pilots are:
+			* gpii.config.cloudBased.flowManager.production
+				* https://github.com/GPII/universal/blob/master/gpii/configs/gpii.config.cloudBased.flowManager.production.json
+			* gpii.config.preferencesServer.standalone.production
+				* https://github.com/GPII/universal/blob/master/gpii/configs/gpii.config.preferencesServer.standalone.production.json
+		* Once these ^ are deployed in the cloud at their offical addresses, the gpii-app should by default start in "production mode" using the remote servers
+
+We should have a major meeting to discuss how we do the swtich off the app to use the production servers. It would be useful as well to have a JIRA issue describing the requirements for the pilot setup (i.e. production mode of the servers)
+
+HEADING 1:
+Two-Pronged Testing Approach
+	1. We now (soon?) have the ability to spin up PERSONAL DEVELOPMENT instances of the cloud infrastructure on AWS (thank you Tyler!)
+		2. Javi is in the midst of testing this in practice, and tailoring the workflow to suit how we develop and test
+		2. This means developers will need a viable network connect to run their "pre-production tests," and this may involve some time spent waiting
+	1. We will eventually (but not our first priority) need to be able to spin up a local VM running the cloud-based infrastucture for testing
+NOTE THAT CI SHOULD ALSO AT LEAST BE ABLE TO DO #1
+
+In addition to our "end to end" testing for local trusted FlowManager + preferences server, we will also need the following end-to-end tested CI configurations:
+    i) Development config of untrusted FlowManager plus CloudBased FlowManager
+    ii) Near-production config of gpii-app in untrusted config plus CloudBased FlowManager
+
+HEADING 2: 
+Reliability and Resilience of cluster, its load-balancing and persistence
+1. What exactly are the guarantees about quality of service against the load-balanced CouchDB cluster, and what are the implications of this level of service for any custom resilience code in the middle tier which issues queries against it? (Current model is that a failed request to persistence results in a failed overall request)
+2. How will we run tests against this and verify the resilience infrastructure itself?
+
+HEADING 3:
+Behaviour of gpii-app client when cloud is not available, is malfunctioning or version mismatched - 
+	Should it simply fail, or make some attempts to revert to a fall-back "all local" strategy to at least enable testing with fixed snapsets, etc?
+		eventually but not yet (this is a UX question)—in the meantime, we should consider:
+			1. A timeout on requests that don't return quickly enough
+			2. Retrying requests that outright fail (x number of times, perhaps with an incrementing period between them?)
+	
+How does the cluster behavior under failure?
+* Destructive testing
+    * Short-term: manual destructive testing to better understand cluster behavior under failure
+    * Medium-term: automated destructive testing (e.g. Netflix Chaos Monkey, "chaos engineering") to prove resiliency automatically into the future
+* Performance testing
+	* Short-term: manual performance testing to better understand cluster behavior under failure
+	* Medium-term: automated performance testing, failing CI builds if performance falls too low
+	* We are currently trying to hire a DevOps Engineer specializing in performance/scalability, which should generate progress in this area
+	
+It is reasonable to assume that load balancers in the cloud should be able to handle the basic requirement for requests to succeed when a "partial" or "transient" failure may occur within a load balanced cluster (via redirecting to another node or a certain amount of retrying).
+
+
+HEADING 4:
+What is needed to make gpii app use production cloud resources?
+* Config files in app (Javi: "They need to change"). development vs production configs.
+
+Javi will take the lead on:
+	1. Drawing a "server deployment diagram" which shows which parts of the system should be deployed
+	1. Create an appropriate configuration that reflects this topology
+
+Prefs server: https://github.com/GPII/universal/blob/master/gpii/configs/gpii.config.preferencesServer.standalone.production.json
+CB flow manager: https://github.com/GPII/universal/blob/master/gpii/configs/gpii.config.cloudBased.flowManager.production.json
+Local flow manager?!?!?!: https://github.com/GPII/universal/blob/master/gpii/configs/gpii.config.untrusted.development.json
+	* Cloud based flowManager
+		* prefs server
+			* couchdb server
+	* Local flowManager
+		* uses the dynamic device reporter
+		* points to the cloud-based flowManager
+
+
+SSL SITUATION
+	* Gio abandoned us :)
+	* In the absence of a more formalized situation, Tyler manually created a wildcard certificate for our staging cluster
+		* (Side note: Vault's now deployed with Packer and Terraform, so today I'm keying/configuring it so we have a place to store certs)
+
+Backup PolicY:
+Antranig and tyler had a discussion about what to do with backups.
+We currently have k8s-snapshots that runs in kubernetes <kasper giving up on attempting notetaking cause there are too many weird words being used>
+* How much data are we willing to lose?
+* How much downtime are we willing to tolerate?
+
+* How long do we want to keep snapshots for?
+* How often do we want to take snapshots?
+
+What data are we storing?
+* Static pre-populated preferences associated with snapsets
+** However, we need a dataloader that can pregenerate a spreadsheet of UUIDs which goes to a vendor to get associated with [something; RFID cards maybe?]. Dataloader creates entries in auth db, prefs associated with these IDs.
+* User will modify and personalize snapsets via PSP
+** Any given preference set is the user's preference set. It's prepopulated but it's that user's set to modify as they like
+* Desirable to keep but not a huge catastrophe if we lose them
+* Second database that stores grants, OAuth stuff
+** Pre-populated. Should be static for now.
+** cindyli can tell us more about this -- see below
+* More destructive testing on this to verify we can restore from backups!
+* Data will start being "critical" during pre-pilot phase
+
+
+Tyler chats with Cindy:
+[31.10:47:23] <        cindyli> | the auth database does have some initial data and views at the moment to start with, but it's mainly for saving ppl's time for development
+[31.10:48:02] <        cindyli> | in the production, the auth database should only have views, but none actual user data to start with
+[31.10:48:31] <        cindyli> | finding links to views and sample dev data
+[31.10:49:03] <        cindyli> | views: https://github.com/GPII/universal/blob/master/gpii/node_modules/gpii-oauth2/gpii-oauth2-datastore/dbViews/views.json
+[31.10:49:24] <        cindyli> | dev data: https://github.com/GPII/universal/blob/master/testData/security/TestOAuth2DataStore.json
+
+
+[31.10:49:38] <        mrtyler> | so it sounds like this data is just important as, say, users' preferences?
+[31.10:49:54] <        mrtyler> | i.e. if we had a failure and the data was lost, users would be impacted until we can restore the data from backup?
+[31.10:49:55] <        cindyli> | yes, they are
+[31.10:50:13] <        cindyli> | yes, to ur 2nd question too
+
+[31.10:56:15] <        mrtyler> | first, username/password stuff is separate from this grants table, right?
+[31.10:56:27] <        mrtyler> | the grants table is for storing a token that is the by-product of OAuth
+[31.10:57:57] <        cindyli> | there currently are username password for a web login UI, but i'm right now removing them from the database. once that is done, no more username/password for web login in GPII databases
+[31.10:58:37] <        mrtyler> | ok so basically username/password storage, validation, etc. is all disconnected from couchdb and gpii-in-the-cloud?
+[31.10:58:51] <        cindyli> | yes, it would be. soon...
+
+[31.11:01:10] <        cindyli> | ah ok, if you meant a couple of weeks from now, the production would continue to have username, password
+[31.11:01:47] <        cindyli> | what I mean is the static data for username, password who we want them to login the web UI
+[31.11:02:01] <        cindyli> | more for demonstration purpose
+[31.11:02:08] <        mrtyler> | where does that user/pass data live today? in couchdb or elsewhere?
+[31.11:02:20] <        cindyli> | yes, in the couchdb -> auth database
+[31.11:02:32] <        mrtyler> | and it sounds like we need to worry about this for the time being then?
+[31.11:02:35] <        cindyli> | it's in the sample dev file i sent earlier
+[31.11:02:43] <        cindyli> | for the time being, yes
+
+[31.11:04:04] <        cindyli> | ok, i see. then those username, password info are not as important as preferences data because we are not going to expose the web UI to any real GPII users
+
+[31.11:04:55] <        mrtyler> | aside: in practice, we treat each couchdb instance as a big chunk and back it up all together. the specific questions are just me trying to understand the current architecture
+[31.11:05:07] <        mrtyler> | iow, it's not like we'll choose to back up preferences but not auth, or whatever
+
+[31.11:06:29] <        mrtyler> | scenario 1: Alice logged in an hour ago. couchdb crashes. (obviously while couchdb is down, everything is broken :)). we restore from a backup from 5 minutes ago. what happens to alice?
+[31.11:06:43] <        mrtyler> | my guess: nothing. as soon as couchdb comes back, she is back to normal operation
+[31.11:09:17] <        cindyli> | i think yes, if all data before the crash gets restored
+[31.11:09:41] <        mrtyler> | ok cool
+[31.11:10:03] <        mrtyler> | scenario 2: Bob logged in 1 minute ago. couchdb crashes. (everything is broken while it's down :)). we restore from a backup from 5 minutes ago. what happens to Bob?
+[31.11:10:29] <        mrtyler> | my guess: it sounds like bob is going to have a bad time, but his situation is fixed by logging out and logging back in (which creates a new entry in the auth table for him)
+[31.11:11:02] <        cindyli> | yes
+[31.11:11:14] <        mrtyler> | ok cool
+[31.11:11:23] <        mrtyler> | sounds like we might need some UX around this specific case
+[31.11:11:32] <        mrtyler> | "something has gone wrong. please log out and log back in." or similar
+[31.11:11:49] <        mrtyler> | depending on how confusing the errors are that Bob would otherwise receive

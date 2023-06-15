@@ -1,0 +1,33 @@
+Agenda:
+1. Anything to demo this week?
+	* Tyler GCP intro changes - wait for Cindy and Joseph training?
+	* We have a topic for this Wednesday: continuation of Tony "managing deployment of code" discussion - Sandra will confirm with him tomorrow
+	* Stepan Istio demo would be great, but we're not quite ready (demo for ops first, push it to prd, ready to go before sharing with that audience)
+2. Review key metrics
+	* What are the key metrics worth reviewing?
+		* locust flowmanager and locust preferences dashboards
+			* https://app.google.stackdriver.com/dashboards/10929930954431642073?project=gpii-gcp-prd&timeDomain=6w
+			* https://app.google.stackdriver.com/dashboards/10150992811830444288?project=gpii-gcp-prd&timeDomain=6w
+		* couch various metrics dashboard
+			* https://app.google.stackdriver.com/dashboards/10150992811830444288?project=gpii-gcp-prd&timeDomain=6w
+		* 500s and other errors
+			* We don't collect these metrics today. They would come from nginx I guess
+			* Istio will provide a bunch of these metrics
+				* Need to configure Istio to submit metrics, but then they are surfaced to stackdriver
+				* No automatic dashboards but metrics will show up
+				* Service monitoring with stackdriver is supposed to come to beta to help with this, but we don't know when it will land (probably not too soon)
+		* couchdb latency
+			* Not sure what metric we currently collect might give us this
+		* Overall utilization of cluster: cpu, memory, etc.
+			* GCP Dashboard -> prd -> Compute -> Instances -> Open each one -> Monitoring
+	* Tyler will find a place to persist these metrics (e.g. top of standup pad) for future reference
+	* More metrics from user side. Ask for insights from Pilot team, ES metrics, etc.
+		* Alfredo will ask Yao about this
+		* Raise it in arch weekly?
+
+    - Review of Sprint 19
+
+    - Planning for Sprint 20
+
+5. Alfredo demos auth changes
+

@@ -1,0 +1,4 @@
+* Alfredo gcp dns/projects demo? Too early at this point. 
+* Sandra: when will team be ready to estimate time to FERPA? Tyler: at least a complete sprint where 2 members are not still onboarding, ideally more. Error bars will be wide.
+* Sergey backup/restore demo - excellent. Lots of good questions/comments from Sergio and Stepan.
+* Broader discussion about secrets management - pushed to parking lot for tomorrow's standup

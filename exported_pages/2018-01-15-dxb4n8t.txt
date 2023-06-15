@@ -1,0 +1,17 @@
+Agenda:
+	* Updates on current sprint progress
+		* https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&projectKey=GPII&view=planning.nodetail
+	* Use of Hashi's Vault terraform module
+		* Not actually written by Hashi, written by Gruntwork—but in Hashi's Github org
+		* Brendan believes the design is not appropriate:
+			* Use of console
+			* Use of dnsmasq
+			* S3 as storage background and layering console on top of that
+			* Using Consul as a storage backend raises the number of servers required from 2 to 6
+			* 
+	* Yuval's list
+	* LDAPS
+
+Notes:
+    - Alfredo: GPII-2766 merged. Working on the other JIRAs for this sprint as planned. 
+    - Tyler: He will be working on other items that are higher priority. Will open JIRAs. 

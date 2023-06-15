@@ -1,0 +1,109 @@
+Backlog Grøøming Meeting April 22, 2020
+
+The Kasparnet is scheming to do a pull request focused hackathon next week to get as much of our pull request in the code as possible in a short period of time.
+
+There are two problems we need to solve:
+	* Currently a bottleneck for the pulls are Antranig and Grundell (reviewing and owning pulls, respectively)
+	* There are issues in the code causing CI to fail
+
+Overboarding:
+	* Antranig: We are currently blocked by https://issues.gpii.net/browse/GPII-4462 - this links to a spreadsheet compiling results of CI runs. The narrator autostart setting has failed 7 times out of 24, and needs to be pruned.
+AB has filed universal pull https://github.com/GPII/universal/pull/866 in order to overboard these settings
+	* Hatkins: Has overboarded screen mirroring because it caused serious stability issues, see https://github.com/GPII/universal/pull/860/commits/58650030ebc8430455ffff50b1644b012a1196dd
+	* Hatkins: Has created an epic to get rid of problematic settings
+
+Action Items:
+	1. Javi will merge in Antranig's pull
+	1. Antranig will re-update windows to ensure that the issue has gone away
+	1. Kasper will make a pull request of Tony's overboarding of screen mirroring against current master (only the relevant win32 portion of  https://github.com/GPII/universal/pull/860/commits/58650030ebc8430455ffff50b1644b012a1196dd)
+	1. Javi will review Kasper's pull
+	1. Tony will update his pull request with the changes in upstream master
+
+https://pad.gpii.net/p/morphic-1-3-x-debt-ni5p4nkg
+
+
+Next meeting: April 29th, 2020
+
+Present:
+    Antranig, Javi, Bosco, Christopher, Githens, Kasparnet, Joseph, Grudel, ADTKINS
+    
+    
+    Action items 1 and 2 have been done - masters of all projects are now consistent
+    Action item 3 is not yet done (tsk tsk tsk, Kasper!!)
+    
+    
+May 6th
+
+Present:
+    Antranig, Javi, Bosco (not today), Christopher, Githens, Kasparnet, Joseph, Grudel, ADTKINS
+
+	* We went through @-labelled ones by Gregg: https://pad.gpii.net/p/morphic-1-3-x-debt-ni5p4nkg 
+		* Adding "Priority" label on PRs
+		* Updated status, re-assigning, etc
+
+
+May 12th, 2020
+
+Present:
+    Atkins, Javi, Hens
+
+- JAWS work almost ready for another Atkins review
+- Zoomtext PR cleanup by Hens after JAWS 
+
+May 13th, 2020
+
+Present:
+    Kasper, Alfredo, Bosmon, Christopher, Joseph, Justin, Steve Githens, Steve Grundell, Tony, Javi
+    
+	* Javi reported a few problems during his trip to Githens' 1908 branch
+		* first, master fails to start due to missing analysis-related gpii-app PR -> Grundell to update that PR
+		* 2nd, having a problem when capturing settings
+
+May 20th, 2020
+  present: kasper, javi, christopher, joseph, githens, grundell, atkins
+  
+  - Capture tool and metrics pushed in last week. Bravo
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+Agenda:
+    
+    Today is a end-of-sprint update and sprint planning session. 
+    Sprint 1:
+    GPII-2951 (Alfredo): In progress. Need a couple more days. 
+    GPII-2958 (Sergey): Both of these depend on DNS changes to finish integration (GPII-2951). After this one is completed, will take a couple of more days. Already working on the dev cluster. 
+    GPII-2959 (Sergey): Same as above 
+    GPII-2990 (Tyle ): Is not quite done. Will probably be done in a couple of days. One this is completed, several others on Tyler's queue will also close. 2944, 2945, 2949 and small amount of work left on 2948. Then he will pick up something else. 
+    
+    Sprint 2, after Sprint 1 is completed:
+    GPII-2995 - Alfredo
+    GPII-2960 - Sergey
+    GPII-2995 - Tyler. Also 2996. 
+    
+
+Retrospective meeting tomorrow?
+    
+    * Mini-demo of ongoing exekube work [tyler]
+	* DNS setup, and GCP projects setup [alfredo]
+
+DNS setup
+
+Common:
+        gcp.gpii.net (infrastructure team, CI)    [aws-gcp-dns] permanent                                  xk-prd gpii-common
+    prd.gcp.gpii.net (infrastructure team, CI)    [aws-gcp-dns] permanent not needed here
+    stg.gcp.gpii.net (infrastructure team, CI)    [aws-gcp-dns] permanent not needed here
+    dev.gcp.gpii.net (developers, CI)             [aws-gcp-dns] permanent
+
+GCP:
+
+amatas.dev.gcp.gpii.net (amatas, CI)              [gke-network] ephemeral
+       prd.gcp.gpii.net (infrastructure team, CI) [gke-network] created here
+       stg.gcp.gpii.net (infrastructure team, CI) [gke-network] created here
+       
+* Hopeful solution: Make exekube manage both the A (etc.) records and the NS records
+	* Complication: exekube is designed to work with one Project at a time, but the A records and the NS records belong to different Projects
+	* https://cloud.google.com/dns/access-control

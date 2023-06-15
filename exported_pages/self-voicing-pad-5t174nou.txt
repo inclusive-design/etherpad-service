@@ -1,0 +1,54 @@
+Notes on meeting on Self-Voicing Component on 1/8/17
+
+Present: Justin, Antranig
+
+We talked over requirements for this component - designs are at https://wiki.fluidproject.org/display/fluid/%28Floe%29+UI+Options+Design+Walkthrough%2C+C.1?preview=/32014373/34734325/uio_tts2.jpg, with JIRA tracked at https://issues.fluidproject.org/browse/FLUID-6176
+
+The designs show reasonably fine-grained elements of the document being selected, highlighted and spoken - for example, it shows an individual word "Aliquam" in the process of being spoken.
+
+We face some design problems in splitting up and coordinating responsibility between the "Self Voicing" component responsing for the page-directed UI and activities, the the existing "TTS" component which just manages the raw process of coordination with the Web Speech API.
+
+Both of these might have some kind of queue - the TTS queues utterances, and the SV queues larger elements.
+
+"We imagine" that there will be problems in the quality of speech if we feed the text to be spoken to TTS in unsuitably small chunks - for example, if we send it in one word at a time, it may be unable to determine the correct pronunciation without context.
+
+We should, then feed in chunks of text "as large as is reasonable" - perhaps not the entire document/selection but segmented on pretty coarse boundaries such as <p>, <li>, etc.
+
+We then have the problem of how to coordinate receiving the "onboundary" event from TTS, which supplies a charIndex (offset into the text to be spoken) back to the original DOM location
+
+The SV component will need to build up a fairly rich index mapping back from the text buffer into DOM locations - as it does its business of "stripping" the DOM, traversing it hierarchically, and spitting out text into the output buffer, it will need to keep a record allowing it to map back from raw char index to materials suitable for the Web "Range" API. It's probably reasonable to encode the offset from the most derived DOM node enclosing the element, since this will likely be the one which includes (is) the Text element.
+
+The Range API provides sufficient primitives to let us highlight the relevant word (whether this is done by injecting wrapper elements into the DOM, or maintaining a sliding "overlay" which tracks the word).
+
+	* pass in large chunks of text, e.g. <p>
+	* highlight 1 word at a time, see: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/onboundary
+	* use the Range API to determine the boundary of the highlight https://developer.mozilla.org/en/docs/Web/API/Range
+		* will need to know the start index of the word as well as it's length for the end index.
+
+
+Potential Datastructures:
+
+[{
+    characterIndex: 5,
+    startOffset: 3,
+    endOffset: 8,
+    parent: DOM Node
+}, {
+    characterIndex: 15,
+    startOffset: 2,
+    endOffset: 4,
+    parent: DOM Node
+}]
+
+speechSynthesisUtteranceInstance.onboundary might return 7. So we find the closest? Yes
+- we should be able to just check the next expected one or the one after that, because we'll know what we have tested before and these should all be in order.
+
+We could use, for example, the https://github.com/parmentf/node-sentence-tokenizer to find boundaries <-- This library is absolutely terrible and just uses regexps to split on punctuation and whitespace.
+
+Here's a discussion of more mature alternatives, which will not be easy to use: https://stackoverflow.com/questions/860809/how-do-you-parse-a-paragraph-of-text-into-sentences-perferrably-in-ruby
+
+Ultimately leads here - a large Java repo: https://github.com/stanfordnlp/CoreNLP
+
+Another Option that Alan found: https://github.com/NaturalNode/natural
+
+For the intial pass "phrasing" will be considered as a block, such as the <p>, <li> etc. We'll provide a highlight for both the block and the word that is currenlty being synthesized.

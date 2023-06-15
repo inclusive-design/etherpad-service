@@ -1,0 +1,48 @@
+# 29-May-2017
+
+	* Giovanni
+		* Need to take a break from APCP activities until Wednesday to work on some IDRC-specific tasks
+		* Resume work on GPII-2413 afterwards
+		* Blocked: GPII-2411
+
+	* Alfredo
+		* Working on GPII Release Process with Javi
+		* Sent some more code for GPII-2398
+		* No blockers
+
+
+
+# 31-May-2017
+
+* Tyler
+	* Yesterday: GPII-2389: Figured out a design for CI/CD system that I think will work
+	* Today:
+		* CI meeting
+		* Questions from Gregg about public clouds
+		* GPII-2389: Start implementing CI/CD system
+
+	* Giovanni
+		* Yesterday: GPII-2413 - Tested new way to have a base image (that's faster)
+		* Today: GPII-2391 - continuing experiments (working on ingress controller)
+		* Blocked: GPII-2411
+
+	* Alfredo:
+		* Working on Ansible roles for Prometheus service, GPII-2025, GPII-2024
+		* Working on the Release process with Javi
+		* no blockers
+
+
+
+# 2-Jun-2017
+
+* Tyler
+	* Yesterday:
+		* GPII-2389: Modules -> Live connection is live
+		* Public Cloud Costs for Gregg
+	* Today: GPII-2389
+	* No blockers
+
+	* Giovanni
+		* Yesterday: out of office (sick)
+		* Today: GPII-2391
+		* Blocked: GPII-2411

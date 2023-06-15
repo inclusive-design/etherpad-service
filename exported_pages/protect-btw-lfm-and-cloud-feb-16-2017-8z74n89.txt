@@ -1,0 +1,56 @@
+Date: Feb 16, 2017
+
+Attendees:
+	* Antranig
+	* Cindy
+	* Colin
+	* Giovanni
+	* Joseph
+	* Simon
+	* Steve
+	* Tony
+
+Discussion Items:
+1. Continuing on how to protect the communication between the GPII local installation and GPII cloud
+
+The meeting notes from last discussion on the same topic: https://pad.gpii.net/p/protect-the-preferences-server-jan-4-wy84nfy
+
+The new wiki page with the research results to discuss this time: https://wiki.gpii.net/w/Continued_Researches_on_Possible_Approaches_for_Protecting_Communication_btw_LFM_and_CBFM
+
+1 OS-own security storage for keys 
+	* Is it possible to allow users to start GPII with the node (or Electron?) but restrict their ability to download javascript file and run node with other javascript apps
+	* Is it possible to start GPII as a privileged user so that login users can use GPII but cannot run node
+	* on windows, need to lock up Credential Manager application
+
+2. A dedicated process/service running on a different account for storing the GPII client secret 
+	* Is it possible to have the windows service to start LFM as the child process under the login user and still be able to access the desktop of that login user
+	* Relevant MSDN page for "starting process as another user with desktop access"    
+	*     https://msdn.microsoft.com/en-us/library/windows/desktop/ms682429(v=vs.85).aspx
+	*     Remarks:
+	*         "CreateProcessAsUser must be able to open the primary token of the calling process with the TOKEN_DUPLICATE and TOKEN_IMPERSONATE access rights.
+	* By default, CreateProcessAsUser creates the new process on a noninteractive window station with a desktop that is not visible and cannot receive user input. To enable user interaction with the new process, you must specify the name of the default interactive window station and desktop, "winsta0\default", in the lpDesktopmember of the STARTUPINFO structure. In addition, before calling CreateProcessAsUser, you must change the discretionary access control list (DACL) of both the default interactive window station and the default desktop. The DACLs for the window station and desktop must grant access to the user or the logon session represented by the hToken parameter."
+	* Stegru "will just try it" : P
+
+Next steps:
+	* Cindy: 
+		* Create diagrams for suggested approaches
+		* For the most promising approach: A dedicated process/service running on a different account for storing the GPII client secret
+			* Design the http end points and request formats, persistence on the auth server for hmac keys
+			* UX to assign the client id/secret, user/admin management on this info
+	* Steve: Try a proof of concept
+	* Installer: install both a system level service and GPII
+		* Steve: needs admin privilege to run installer to write into system dirs. This should provide enough privilege to install windows service
+		* auto launching: 
+			* The service will automatically listen for any user desktop logon, and when it occurs, it will automatically launch the GPII app and associated task tray and flow manager, connected to itself via the "anonymous named pipe".
+	* Use cases: 1, no user logon, windows service needs to deal with a system level LFM; 2. has a user logon, to start the LFM for this user right away
+		* Use case 1
+			* This is a more distant use case - but "in the fulness of time" the GPII will need to be able to personalise the OS desktop login screen itself - this is one of the prime use cases of the GPII (known as "chicken and egg logon").
+			* This requires a system level LFM in order to decode the user's preferences from their presented token, in order to adapt the desktop logon
+
+
+1. Shall we use OAuth2 resource owner grant to protect the communication btw the GPII local installation and GPII Cloud
+2. Which way should be used to store client id/secret on user's machine?
+
+2. Other in-time tasks for APCP pilots listed at line 30-42 at https://pad.gpii.net/p/gpii-security-next-step-nov-17-2016-p0m4nmb
+
+

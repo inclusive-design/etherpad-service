@@ -1,0 +1,6 @@
+Follow-up from last meeting:
+	* Identify gaps btw current GPII implementation and security criterias
+
+
+Next steps
+	* IBM to set up a working session with Cindy to understand the current auth server in order to prepare the doc for identifing gaps

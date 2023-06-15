@@ -1,0 +1,54 @@
+	*  It appears that this is a system that is primarily capable of doing authentication: i.e. account creation and single sign-on
+	* We need to understand the use cases for their system, particularly around authorization
+	* How do they release personal information to participating applications in the system?
+		* Seems to be no ability for users to control which attributes of their personal profile get shared ("This is bog standard for any kind of integration system like this," says Tony)
+
+
+we're not building our own server from scratch
+	* Passport for authentication; oauth2orize for OAuth2 authorization
+	* our main development is focused on granting access to portions of a user's preference set—this is distinctly "application logic"
+
+we've got multiple, overlapping, incomplete solutions for authentication
+	* the forgerock P4A solution
+	* a drupal-based implementation used by developerspace, etc.
+	* the GPII authorization/authentication server
+
+We are not very clear about our requirements!
+	* Who will be using it?
+		* Unified Listing
+		* Developer Space
+		* Autopersonalization system
+	* Do these clients have different requirements for access tokens—one for authentication and another for authorization?
+	* Do we even need distributed authorization/authentication
+
+Why do we need an authorization server for single sign on?
+Privacy concerns—need the ability to determine which applications have access to which portions of a user's account information
+Long term viability:
+	    who will support this?
+	how will it be deployed, maintained, automated
+User experience issues
+		* no status information when signing up for an account
+		* questions in the account setup fields that aren't appropriate
+		* no privacy policy/terms of use
+		* list of languages is "randomly ordered" " I CAN GET TO OLD ENGLISH BEFORE I CAN GET TO MODERN ENGLISH... HOLY GOD!"
+		* "when I hit submit it doesn't tell me that I've done anything successfully"
+		* very confusing, complex UI for managing membership in groups
+
+Open Standards in IAM
+http://www.slideshare.net/prabathsiriwardena/open-standards-in-identity-management
+
+OpenID Connect for OAuth2orize:
+https://github.com/jaredhanson/oauth2orize-openid
+
+A PATH FROM WHERE WE ARE TO THE FUTURE
+	* Use cases (to start)
+		* GPII First Discovery and PMT: ability to create a preference set and an accout to go with it; reset passwords, update account information as needed; log in to PMT to edit a preference set
+		* UI Options integrated into <insert random website>: ability to "link" an account on a website to a GPII token and to be properly authorized to read and edit preferences via UIO
+		* <GO TONY> What are your use cases for UL and PTD?
+	* Next steps:
+			* Cindy: research OpenID Connect and compare to our current (and others') OAuth 2.0 flows
+			* Alan: talk with Cindy, Simon, and Dana to refresh our memories about the requirements and flows for UI Options in combination with the Auth Server/Preferences Server
+				* we should try to define a simpler path to integration between UIO and Preferences Server, even if it isn't as ideal from a UX or functionality perspective (previous approach got too complicated)
+				* ^^ What do we mean by "the previous approach" here? -> The design iteration we did, which is documented in the Fluid wiki <-- could you shoot a link in here? trying to find it—our wiki is huge -- https://wiki.gpii.net/w/Security_Dashboard Designs section
+			* Tony: Spike integrate gpii-express-user with a test OpenID connect system, in the process identify OpenId Connect servers that could be a starting point for our own server.  Try out both sides of the oauth2orize-openid examples.
+			* 

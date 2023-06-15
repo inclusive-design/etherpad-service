@@ -1,0 +1,124 @@
+
+
+Kasparnet:
+	* Unable to join arch meeting today
+	* Addressing antranigs comments on GPII-2402 pull request (flowmanager part of the RFID/login stuff we talked about at F2F)
+	* Taken over michelles work on GPII-2401 - expecting a pull request tomorrow (UI part of the RFID/login stuff we talked about at F2F)
+	* 
+
+Ale:
+	* Working on presentation for the next meeting in Maryland about "Onboarding".
+	* Working together with JJ in AUI.
+
+Alfredo:
+	* Writing the GPII Release process with Javi GPII-2331
+	* In progress GPII-2390 - Metrics issue - Sending some code to Stegru
+	* Some research to improve the CI
+
+Antranig:
+	* Mostly living in mud
+	* Code review for Kasparnet's GPII-2402
+	* Security meeting with Cindy, Simon, Grudel & others on securing local FlowManager
+	* Working with ADTKINS on pulls and schemas
+	* Nexus factoring chat with Alan & Simon
+	* Off to Gay Paris next week to present the Nexus
+
+Cindy
+	* Security meeting yesterday and afterwards:
+		* updated wiki pages that have UX workflows and will chat with Colin about the updates after the arch meeting
+		* Creating JIRAs to cover implentations that I can start working on
+	* Trying and commenting on tony's universal pull request that incorporates gpii-testem: https://github.com/GPII/universal/pull/508
+
+Colin
+	* Preparing for technical presentation in Maryland in early June
+	* If anyone has techincal slides, please send them to me
+	* Which diagrams, etc. are the latest? THANKS CINDY!
+		* GPII Deployment Structures: https://wiki.gpii.net/w/GPII_Deployment_Structures
+		* GPII Authorization Workflows: https://wiki.gpii.net/w/GPII_Authorization_Workflows
+		* Not sure if they are the latest!!
+		* awesome!
+
+Javi
+	* Updated universal/pull/407 (GPII-2141)
+	* Reviewed/merged
+		* Kasper's "illuminance" pr
+		* Joseph's GPII-8 pr (YAY!!)
+	* Went through JIRA tickets assigned to me and updated them
+	* Been working with Alfredo on the build/release policies/process
+
+JJ
+	* Continue working with UI Automation API PoC of Learning Tools for next Onboarding presentation.
+	* Making research about the potential and the difficulties we have found this far with the technologie (UIA).
+
+Justin:
+	* Added an iteration plan ( https://wiki.fluidproject.org/display/fluid/Floe+Iteration+Plan#FloeIterationPlan-UIO+BrowserExtension )
+	* New umbrella issue for UIO+ work https://issues.gpii.net/browse/GPII-2424
+	* Merging Javi and Cindy's chrome extension branches
+	* I have questions for the UX team
+	* New settings for UIO+ adaptations
+
+Kavya:
+	* Started working on testing Network diagnosis server
+	* Setting up new set of Vms for testing.
+
+Simon:
+	* Continued Nexus factoring discussions with Antranig and Alan
+	* Paired with Michelle to work on key-in notification in the Windows GPII app
+	* Security meeting with Cindy and others
+
+Steve with No Surname (HENS)
+	1. In a car, can't type, listen carefully?
+	1. Getting feedback on the Dev PMT work from Gregg and others.
+	1. *mechanical gibberish*
+	1. Asked about the PCP meeting.  YES there is one.
+
+Steve Grundell
+	* Removed login state from RFID listener (GPII-2401/2/3)
+	* Windows metrics (GPII-2333). Currently done:
+		* Active Window
+		* Applications launched
+		* Key in/out time
+		* GPII start/stop
+	* Going to do more work with the windows service (GPII-2338)
+	* Need to make PoC for Cindy regarding the IPC and other promises I've made
+
+
+Tony:
+
+	1. Wrote up examples and background information for one key part of the PCP API JSON Schema discussion happening in this room in 2.5 hours.  See the mailing list.
+	1. Worked on a minor feature request for the Unified Listing, to link back to vendor records.
+	1. In pushing through updates to dependencies, I discovered that base grades in gpii-pouchdb are now configured in a way that causes problems when used with gpii-pouchdb-lucene.  As the fix is only needed in my work, I temporarily used a bit of distributeOptions trickery to relocate the problematic options.  I wanted to ask about the long term plans for options deletion, and thought it might be of wider interest.
+	1. Continuing to work with Antranig on pulls, we are down to four at the moment.
+	1. Thanks to Cindy for feedback on the "universal code coverage" PR.  I responded to her request with more information and small fixes. 
+		* Hi Tony, I made another comment after your last response (Great, will look at it in the morning) Thanks, TONY
+	1. Reviewed the filter Sandra sent around and commented on open issues assigned to me.  Everyone please do the same.
+	1. After reading this article, switched to Opera as my daily driver: https://motherboard.vice.com/en_us/article/leave-chrome-for-opera  I wanted to mention that the RESTED plugin for Opera is pretty reasonable for testing REST APIs, as an alternative to Postman.
+
+
+Tyler:
+    * GPII-2388: Devops team was able to provision and test their own AWS instances with terraform and friends
+    * GPII-2389: Designing terraform CI/CD workflow
+
+
+Agenda Items
+	* UIO+ questions
+		* UX (I guess we can schedule a meeting with UX)
+			* Where does the Table of Contents get injected into a page, or should we use a browser extension ( will require user interaction to display )?
+			* What are the controls for TTS read and highlight all text on the page (with play/pause button and auto-read mode)? What happens to highlight when paused?
+			* What is the UI for syllabification (e.g. only change highlighted text, all text, use dialog or change inline, and etc.)?
+			* I'd recommend writing up a quick document that outlines your questions and gives some context for them, including, if possible, screenshots that show the current behaviour of UIO
+			* When that document is ready, I can take it to the UX team and get them to work through answers to it
+			* Action item: Justin will prepare the above, he and Colin will talk about it and the send it up to the UX team
+		* settings ( "*" denotes settings that do not currently exist ) Action item: Justin will pair up with Kasper to understand the current process
+			* Text Size -> fontSize
+			* Line spacing -> lineSpace*
+			* Colour contrast -> highContrastEnabled and highContrastTheme
+			* Character spacing -> characterSpace*
+			* Larger links and form controls -> inputsLargerEnabled*
+			* TTS read and highlight all text on the page (with play/pause button and auto-read mode) -> selfVoicingEnabled
+			* TTS read and highlight selected text -> selfVoicingSelectionEnabled*
+			* Table of contents -> tableOfContentsEnabled*
+			* Dictionary -> dictionaryEnabled*
+			* Simplification -> SimplifiedUiEnabled
+			* Syllabification -> syllabification*
+	* Options deletion (time permitting)

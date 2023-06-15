@@ -1,0 +1,24 @@
+Agenda:
+    - Tyler's presentation about cloud infrastructure status and accomplishments. Intended audience is Gregg. I plan to schedule a call with Gregg and the team later this week. 
+    - Feedback on research by Tyler and Alfredo.
+    - update on the status of "non-GPII" RTF sites? (adventures in containers on i26) AKA DON"T MODIFY CONTAINERS BY SHELLING INTO THEM AND STOP USING MY MAIL SERVERS!!!
+
+Tyler:
+* Manual user creation and tied it with Gcloud and IAM
+- Recommends we continune down the path to move to GKE.
+
+
+From Alfredo: https://docs.google.com/spreadsheets/d/1SXPMlxNQn5bbza5R7YrnbRrIUAN0vGw9UBwwbZJIu7k/edit#gid=0
+
+Tyler and Alfedo will meet tomorrow to plan next steps (e.g., start opening JIRAs). I suggested setting goals for the week.
+
+
+Scope:
+
+
+Tasks:
+    
+    
+    
+    
+    https://github.com/exekube/exekube

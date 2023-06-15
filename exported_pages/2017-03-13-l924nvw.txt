@@ -1,0 +1,12 @@
+Agenda:
+    * Prioritize backlog [tyler]
+    ** Value/risk quadrant system (AEP p. 85): http://foldingburritos.com/wp-content/uploads/2015/11/value-vs-risk.png
+    ** Pilot stage 1 might want some ELK: GPII-2017 Logging - Identify log formats and necessary configur
+	* the issue is that the other machines run Deep Freeze, are wiped and restored (clear out downloads, malware, etc.)
+	* Probably good for our pilot machines to also do this
+	* But then we'd need our logs to go somewhere. Stream them realtime to ELK? Batch upload?
+	* If we had this for pilots stage 1, people would be delighted
+	* Other use case: metrics, usage analysis mainstream; rather than waiting for manual process, involve manual steps from Kavya or Han
+    ** How to represent priorities in Jira? Maybe talk to Tony?
+    ** APCP leadership uses Wrike for higher-level project management, Jira for individual tickets
+    * Next step: Tyler will follow up with Sandra about tooling (Jira, scrum/kanban boards, prioritization in jira, external spreadsheets/wrike avoided hopefully) and what else she wants from the prioritization process leading into release and iteration planning.

@@ -1,0 +1,71 @@
+
+What are the things Tony has been working on? (since Prosperity4All ended)
+	* UL integration work, such as (based on RD2 meeting - Bern, Yau, Gregg, Denis):
+			* Ongoing review of EASTIN and other imports and improvements to those.
+			* Integration work with the UL front end (nee SAI), including automated cleanup of deleted and duplicated records.
+			* Initial review of AbleData sample data in preparation for importing that.
+	* Maintaining and updating core GPII libraries such as
+		* gpii-express and gpii-handlebars
+			* Used by:
+				* Power Preferences Tool
+				* PSP?
+				* Unified Listing APIs
+				* PTD
+		* gpii-json-schema
+			* Used by the Unified Listing and the Preferences Terms Dictionary for front-end and API-level validation of data
+			* 
+		* gpii-pouchdb (used by core for test cases)
+		* testing and code coverage? (used by?)
+			* All projects - universal, windows, gpii-app, infusion, kettle, etc.
+		* GPII Schema System
+			* How does this relate to gpii-json-schema?
+				* It will be a project consumed by it, as well as one it will rely on, given it publishes a "hyperschema" which can be used for validation
+				* The hyperschema positions it as "any old JSON schema" once it has been fully dereferenced
+				* But it will also feature new approaches for modularity based on Infusion-like options merging and expansion
+			* The PPT, the preferences server, the live solutions registry
+		* internationalization tooling (built into gpii-handlebars, parts of it contributed upstream to Infusion)
+			* Factored out from the UL/PTD and soon to be used by PSP and PPT
+			* Workalikes have been built by Astea in gpii-app and need to be factored out in due course
+	* Code quality and coding standards automation improvements:
+		* to linter
+		* documentation tools
+		* et cetera.
+	* Code Coverage for everything, including required improvements to gpii-testem and much much research into nyc/istanbul
+		* required for reliability/robustness of all GPII code—Tony is our resident expert in automated testing and test coverage
+		* derived from we done in UL/PTD and now generalized for use in the entire codebase
+
+
+What Do We Want to Do With the Solutions Registry? What Are the Core Issues with respect to Schemas, Common Terms (Generic Settings), the Live Registry, etc.
+	* Will hinge on two things
+		* His "discovery", which needs to be Judoed/debunked about the the relationship between Generic Settings/Application-Specific Settings
+		* The idea that onboarding gets split into two processes - 
+			* The "technical onboarding" which he believes is like writing the settings handler for a particular application, e.g. JAWS - he likes to say "We didn't do any onboarding"
+			* The "metadata about solutions" into something that's done by a less technical team
+				* We think he imagines a UI to do this
+				* When he says LSR we think he imagines a UI in which some clinician enters metadata about settings
+				* This is our way in
+		* We have to give him an accurate picture of the complexity of this
+			* Note that the labels on the QuickSet all refer to generic terms
+			* They are expressed in a way that applies across multiple ATs, and will be materialised differently for each of them
+		* He thinks this is all "old Cloud4All stuff" and "all we need to do is carry around settings"
+			* He may have decided that "portability of settings" is no longer relevant to the GPII
+			* He may have forgotten any justifications for the PTD which was once an essential part of his vision for the GPII
+		* He thinks "we have only onboarded 4 settings of JAWS"
+		* We were able to distinguish between two levels of onboarding in the GPII
+	* GENERIC SETTINGS are required because:
+		* They are the only efficient way to allow transformation of settings for one application into those for another setting
+			* I think this is now a lower priority for Gregg
+		* They are required by tools such as the QuickSet Strip and PSP, which offer generic expressions of settings that may apply to multiple applications/ATs/access features on the system
+			* e.g. "Read Aloud," "Captions," "Easier Read," "Text Size"
+		* 
+
+
+What are the things Tony should best be deployed to work on?
+	* Live Solutions Registry, which requires some features for modularity
+		* Both on the level of entire solutions, but also on individual settings
+		* Component-based inheritance holding schemas
+		* Allows construction of a usable UI
+	* The PTD was useless without effective Schema support, it was refocused to simply a description of what settings there were
+	* ADTKINS thinks that some kind of user tools for onboarding could be produced in about 6 months, if there were not too many distractions
+	* Colin's Q: Could we imagine a development approach or iteration plan in which we have progressive removal of technical difficulty towards the LSR?
+	* 

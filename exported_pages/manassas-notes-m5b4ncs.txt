@@ -1,0 +1,28 @@
+Meeting 7/6/18
+Present: Gregg, Amarja, Antranig, Daune, Ifti, Javi, Sandra, Stegru, Hens, Tyler
+
+Gregg's notes are kept at https://docs.google.com/document/d/1AyYih2LwExnmMoRyVH9uKDXIwm6A3gFLYu05CNketQw/edit
+
+The College Engineers - "people who work directly with Steve Sachs".
+Next meeting - representative for engineering staff will be present.
+
+DeepFreeze equivalent is "Centurion"
+
+Student accessible computers are provisioned from an image based on software requests from faculty.
+Image update period is irregular - might be as long as a semester.
+
+Disk is wiped by Centurion each time computer is restarted.
+
+
+
+For the students, there is no shared volume mapped to their account.
+They use the Blackboard account as their repository. They also have an associated gmail.
+
+Windows 10 only, contrary to what we were told at earlier stages.
+
+Will we need to buy and set up Centurion to investigate / make use of images they provide us?
+Seems likely - I can't find any docs on their image format
+
+Internal infrastructure in the network seems good, compared to what we've been told. Doesn't sound like internal bandwidth will be a problem.
+
+

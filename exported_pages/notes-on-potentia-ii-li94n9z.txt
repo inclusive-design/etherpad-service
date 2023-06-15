@@ -1,0 +1,75 @@
+Step 1: registerPotentia (create / delete) enlists with current treeTransaction
+   Creates entries in pathToPotentiae -> this exists purely to accumulate multiple "records" - for example overlaying subcomponent records as they appear
+   -> destroyed along with the transaction
+   Pushes onto pendingPotentiae -> this list is consumed during commit Potentiae
+
+Step 2: commitPotentiae - consumes pendingPotentiae in a queue
+    for each potentia:
+         --> operateCreatePotentia -> will enqueue to the same queue as a result of registerConcreteSubPotentia in step 7/8
+  OR  --> operateDeletePotentia
+    At end of loop, we have the GLOBAL WORKFLOW POINT
+    --> instantiateEvents
+    --> concludeComponentInit
+    In case of failure, we run --> cancelTransaction
+ 
+Step 3: operateCreatePotentia
+    lightMergeRecords to discover type or isInjected
+    if type:
+    --> initComponentShell (to 4)
+    --> processComponentShell (to 7) -> iterates over subcomponents
+    if injected:
+      --> recordKnownComponent
+    Create a "destroy" entry in restoreRecords to use in case of failure
+
+Step 3a: operateDestroyPotentia
+  --> If it has not been destroyed already, clear the component and shift its original potentia into restoreRecords
+
+Step 4: initComponentShell [former assembleCreatorArguments]
+   --> receiveDistributions
+   --> get "upDefaults" based on lightMergeType taking into account distributions to "type"
+   --> construct the "type tag" which forms the component shell
+   --> set lifecycle status,
+   --> instantiator.recordKnownComponent (constructs shadow)
+   --> call mergeComponentOptions (to 5)
+   
+Step 5: mergeComponentOptions
+  --> expandComponentOptions - generates expand blocks, destroy method, mounts mergePolicy in shadow
+  --> set up blocks
+  --> driveStrategy for gradeNames
+  ----> deliverOptionsStrategy - cacheShadowGrades and mount mergeOptions in shadow
+  ----> computeComponentAccessor (to 6)
+  --> driveStrategy for mergePolicy
+  
+Step 6: computeComponentAccessor
+  --> construct accessor machinery
+  --> computeDynamicGrades -> applyDynamicGrades -> cacheShadowGrades 
+                                                -> collectDistributedGrades -> receiveDistributions
+     ====> In THEORY BREAK HERE - breaks FLUID-6193 outgoing distribution since target head doesn't exist yet
+  --> distributeOptions - push and mount outgoing options distributions
+  
+Step 7: processComponentShell
+  --> mounts the potentia into the shadow - so that it can be rolled back in operateDestroyPotentia
+  --> driveStrategy for each element in "components"
+  ----> registerConcreteSubPotentia
+  --> driveStrategy for each element in "dynamicComponents"
+  ----> registerConcreteSubPotentia for those with "sources"
+  
+Step 8: registerConcreteSubPotentia
+  --> registerPotentia --> back to Step 1
+  
+  
+TIMING PROBLEM: We must push distributions BEFORE processComponentShell of ourselves since we will almost certainly advise to children. We want distributions to be in place by BEGINNING of their initComponentShell since it may advise their type and then of course shortly afterwards gradeNames.
+Perhaps we will just have to special-case FLUID-6193 for now - and the end of one round of processComponentShell we know we will have created all siblings which may mutually refer via head expressions. These is all a bit nuts and ad hoc.
+[Is there some way to be synchronously notified once a head expression starts matching? It could only be via cacheShadowGrades in step 5/6 - but since this is prototypal it could never notify downwards]
+
+Draft plan: Collect any outgoing distributions with HEAD that is not {that} or {/} in step 6 - we do want them to match AS LOCALLY AS POSSIBLE so even if they appear to match now they may not match the correct targets. Then replay any of these that are pending once we have got to the end of one round of processComponentShell?! No, once we have done one round of dequeing their commitPotentiae. This implies some special kind of pendingPotentiae demarcation, what a mess.
+A better scheme would allow us to continue to go round loops of computeDynamicGrades + receiveDistributions at any stage rather than just during initComponentShell.
+Perhaps we want a new kind of REGISTERDISTRIBUTION potentia which gets enqueued to act at the end of processComponentShell's output.
+--> "not in fact" - "enqueued to act at the end of" is a nutty kind of operation on the queue. In practice we will just stuff a custom data structure into the transaction record chiz chiz.
+
+MODEL COMPONENTS:
+    
+i) There is some junk in registerModelListeners initModelEvent which confuses init model timing with onCreate
+ii) Current question - if evaluation machinery sets init model value to inEvaluation, how do initial values get applied on top of it?
+ --> it seems that it is that.model = undefined in deenlistModelComponent - which was invoked from fluid.initRelayModel
+iii) There appear to be two routes for invocation of fluid.initModelEvent - one in registerModelListeners and the other in operateInitialTransaction

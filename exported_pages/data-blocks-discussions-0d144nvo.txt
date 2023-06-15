@@ -1,0 +1,16 @@
+Meeting 5/2/19
+
+Recovering old notes:
+Meeting November 2nd 2018 "Data block preference Storage and Usage"  https://docs.google.com/document/d/1eU1KfcM1s0e42EC8DsRJDS9OCT9Xqebqn4iZOz38NuE/edit#
+
+Onboarding office ribbon: https://issues.gpii.net/browse/GPII-3448
+
+Pull request comment from December 12th 2018 reflecting that we had decided on "suffix" strategy - https://github.com/GPII/universal/pull/698#issuecomment-446689186
+
+Installing gpii-assets - Gregg would like this to be resolved from the web.
+Will we resolve this via github pages? Don't even need this, can resolve via github "raw" URLs.
+
+Ribbons are a few K per ribbon
+
+
+

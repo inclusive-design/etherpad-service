@@ -1,0 +1,74 @@
+Pending agenda items from 6-Mar-18:
+	* Tyler: Could you please set up a 2FA credential for GPII-Bot on GitHub? (Then I can flip the bit to enforce 2FA on gpii-ops.)
+	* AWSRoot@ Account discussion (brief)
+	* GPII-2888 -> Replaced by GPII-2886.
+
+Agenda items from today:
+	* Tasks required to secure data at current Pilot sites
+		* Debugging logs should be deleted (talk to Steve Grundell).
+	* Update from Tyler and Alfredo, discussion:
+	* https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-meetings-iqt4nbr/pad/view/security-tasks-6cj4nt7
+	* Slack: at Gregg's request, I have set up a Slack instance for RtF work, and we've gone through the nonprofit approval program (so now it's a Standard-tier business "paid" account). Login is tied to G Suite. Signup: https://raisingthefloor.slack.com/signup
+		* Note: because we have a paid account, we can invite guests (people without raisingthefloor.org emails) into specific channels; let me know if you need this to happen.
+
+
+Notes: 
+    - Brendan and Alfredo will talk offline regarding the AWSRoot@ agenda item. 
+
+From Tyler's email earlier today:
+        
+Given recent improvements in our understanding of the requirements for the project (e.g. Impact of FERPA reqs on DevOps), I believe now is a good time for the Ops team to do some more intensive medium-term planning.
+
+The first step is to gather as many requirements as we can.
+
+I think the biggest source of requirements is the above "technical remediations needed for FERPA compliance".
+
+(Another source of requirements is the existing set of "APCP Infrastructure" Jiras. I think many of these will be replaced with new tickets derived from the Security Requirements, but we should review the list as part of the requirements gathering process.)
+
+My understanding of the compliance requirements and Brendan's strategy for meeting those requirements is, briefly:
+* FERPA, which we need by ~June of this year for the community college pilots, calls for a somewhat nebulous, somewhat loose set of requirements.
+* FedRAMP, which we need by ~Jan 2020 due to promises made in the APCP grant, calls for a fairly strict set of requirements.
+* The path to FERPA is influenced by the path to FedRAMP, since we will need FedRAMP compliance eventually and since killing two birds with one stone is usually the most efficient way forward.
+
+
+A COUPLE QUESTIONS
+
+1. Brendan, is my summary of your FERPA/FedRAMP compliance strategy reasonably accurate?
+
+2. Given time and resource constraints, is there a shorter path to FERPA if we wanted to ignore FedRAMP for now and focus mostly on achieving FERPA compliance? I.e., is there a "minimum of the minimum" set of requirements? Or is the list of technical remediations at the top of this email already the minimum viable feature set?
+
+Priorities according to Brendan:
+    1. Centralized logging.
+    2. Monitoring and alerting from Centralized logging. 
+	    /var/log/* (and friends), cloudtrail logs
+	* When considering hosted alternatives, loop Brendan in so he can analyze their compliance readiness
+-- Tyler thinks user management / credential management (Vault) may need to show up here
+    3. Hardening Kubernetes  / applying CIS Benchmark standards to k8s
+-- We need a decision about Hosted Kubernetes. Amazon EKS still in private beta. Moving to Google/Azure expensive, need to start fast.
+    4. Other hardening tasks / applying CIS Benchmark standards to other GPII infrastructure (not necessarily for stuff like Mediawiki, Jira)
+    5. IDRC amicable separation
+	* CI-type things need to move
+	* Some resources might get duplicated/split (e.g. Jira??)
+	* Code that builds containers that we run (e.g. version-updater) needs to move. Anything that comes from github gpii-ops/ is included
+		* Brendan is concerned about version-updater specifically. Antipatterns.
+	* The website doesn't have to move but can (and could be outside of our other cloud infra, e.g. hosted wordpress)
+	* Jira - not for FERPA/community colleges, but yes before FedRAMP
+		* A duplicate Jira may be indicated to segregate general GPII dev tickets from RtF-specific tickets (e.g. bugs reported by customers)
+	* Mediawiki is mostly not related to operations/infrastructure/RtF things, so it can stay.
+		* Consider a separate RtF-specific wiki if RtF needs a wiki
+		
+What is the backup plan, if we can't reach FERPA compliance in time?
+	* We would have to delay the community college pilots. There is no technical alternative.
+	
+
+	
+2018-03-13 Follow-up discussion, Tyler and Alfredo
+* We want all requirements to be clearly listed in a single place - Jira
+	* This is already happening and largely complete, as far as we know. See Brendan's email "Follow-up from call re. use of hosted cloud components for hardening"
+	* Alfredo and I figured out how to use Epics to group tasks by requirement. Provides better filtering and visualization than other Jira link types, we think.
+* Who is responsible for "GPII open source" resources like Mediawiki, Jira, Jenkins(?) (does Infusion count as GPII or as FLUID? Do we need to manage CI builds of Infusion?)
+	* [colin] Infusion is totally orthogonal and Fluid maintains its own Ci infrastructure separately
+	* Can Gio manage Jira/Mediawiki? Can we move to hosted (e.g. by Atlassian) for those?
+	* Could CI be hosted? Probably not CD.
+* Hosted Kubernetes situation is a huge decision which impacts everything, e.g. if we need to move to Google because Amazon EKS is still private beta.
+

@@ -1,0 +1,43 @@
+Meeting on Onboarding via UIA and other topics
+
+10 April 2017
+
+Present: JJ, Sandra, Antranig, Cindy, Gio, Han, Javi, Kavya, Steve G, Tyler
+
+JJ presented his draft architecture for onboarding general Windows applications using UI Automation.
+
+Architecture diagrams:
+    
+    Overall Architecture: https://docs.google.com/drawings/d/1AK2gYyL_wuHE_6vUSG0zZZOM_L_jv1vsd3-I0BrhHto/edit
+    Component Manager: https://docs.google.com/drawings/d/19h6UI5GoG67RRqcdX7bA5zOwh_98zJgZnqtFF3gTzSI/edit
+    Core Service: (Needs update) https://docs.google.com/drawings/d/17wCjqAxTzcG7LjRhynuRxvus3NrQ9oVYnW1zBiQ2DMo/edit
+    
+Architecture documents:
+    https://docs.google.com/document/d/1otCMVRlvcp8LCX4Xac4c2bF1A-gmBe8BX8-i_gQt36Y/edit#heading=h.hmoejtah9xg8
+    
+Plan for 3 main elements: "Recorder App", "Player App", and "Core Service"
+
+Topic arose on whether architectural components will communicate via REST. We have aired this issue significantly with respect to the main architecture.
+
+Steve Grundell has been investigating whether the use of "anonymous pipes" could provide a secure and stable means to achieve this.
+
+https://github.com/stegru/service-poc/
+
+It turns out that because the anonymous pipes API does I/O, it needs to be wrapped by something resembling the same trick that libuv applies in order to get the node thread to suspend properly - on Windows this typically requires creating a further thread. This looked like it might be quite messy - either by creating a dedicated node native module, or possibly could be done in C# using edge.js if this permits creating threads.
+
+Problems: "Unable to use anonymous pipes, because the handles can't be shared over different sessions." This basically means that anonymous pipes are dead for the use case.
+
+Alternatives: 
+    Named pipes: These have a worrying security model in that it seems that any process on the machine can read and write to the pipe just by knowing its name.
+    
+    TCP plus a security check: It appears possible once a TCP connection is established to localhost to check the socket table to find which is the originating process and terminate the connection if it is not appropriate. If we were to do this, we may as well continue to use REST after all.
+    
+    This still leaves a "UX hole" whereby the OS creates a security dialog once the process opens a listening socket which requires it to be added to the firewall rules. Steve Grundell says that there can be some special action (the command is "netsh") we can do during installation to "bless" the executable so that the dialog is not created.
+    
+    There are other potential holes - port collision. Picking port 0 means "pick an unoccupied port" - we then need to inform any clients about what the ports are. This implies the server starts the clients, but we had already decided to buy into this for the anonymous pipes method.
+    
+
+
+First actions for onboarding:
+    
+    A simple example which in code, performs the necessary adaptations by finding the Microsoft Word window, etc. unfolds the dialog and adjusts the settings, as a "proof of concept". And then to wrap this in a simple settings handler API from the point of view of the core architecture - we can then say that we have "onboarded something". If possible, a 2nd example in literal code would help us to generalise better, before we start to design JSON schemas for expressing this binding.

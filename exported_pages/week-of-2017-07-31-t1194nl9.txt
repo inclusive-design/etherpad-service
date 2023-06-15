@@ -1,0 +1,17 @@
+Aug-2
+
+Tyler:
+    * Yesterday: GPII-2506
+    * Today:
+        * Waiting for code review before deploying to h5
+        * Looking for next thing to work on, probably related to getting GPII components running under Kubernetes (Helm?)
+        
+        
+
+
+Aug-4
+
+Tyler:
+    Yesterday: GPII-2506: idempotency issues
+    Today: Figuring out how to deploy GPII components into k8s cluster (I don't think we need Helm yet)
+    Waiting for code review: https://github.com/idi-ops/ansible-gpii-ci-worker/pull/2

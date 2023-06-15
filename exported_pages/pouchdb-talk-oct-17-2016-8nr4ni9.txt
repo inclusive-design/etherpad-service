@@ -1,0 +1,10 @@
+Work in progress on a Mango + fluid transform "find and replace" tool:
+	https://github.com/the-t-in-rtf/fluid-couch-cleaner
+
+outstanding gpii-pouchdb pull:
+    https://github.com/GPII/gpii-pouchdb/pull/12
+
+Need to talk about using "tasks" instead of events:
+	https://issues.fluidproject.org/browse/FLUID-5949
+	
+	Everyone using the pouchdb events agreed to refactor.  Tony to schedule that work as and when.

@@ -1,0 +1,26 @@
+Agenda:
+    - Discussion re. End-to-End testing status with Javi
+		* even though we have a cloud based flow manager running in the cloud, and we can eventually test against this
+		* however this won't use the same setup as we will use for the pilots
+		* tracking two pull requests from Cindy
+			* https://github.com/GPII/universal/pull/519 (has been merged; adds OAuth support for request to the CBFM)
+			* https://github.com/GPII/universal/pull/558 (but we need this one to be merged too, plus
+		* as of this week we have the ability to spin up development clusters
+			* need an AWS account first
+			* run a script, get a personalized development infrastructure
+				* will need to override a couple of variables to choose your own fork/branch, etc.
+			* ther are getting started documentation, but as far as we know, no developers have tried it yet (JAVI WANT TO TRY?) :)
+		* We still need a working production configuration for the GPII
+	
+	Next steps:
+	* Tyler to give Javi an AWS account
+	* Javi to start working with gpii-infra (https://github.com/gpii-ops/gpii-infra) to see how far he can get, take notes on his experiences
+		* More discussion in Production meeting tomorrow
+	
+    - Sprint 10 Retrospective
+	    2544 - Cluster has some issues that he's trying to solve. Main issue is that the data in the cluster is not properly propagated because the CoudhDB instances are not synchronized when the cluster is setup. Observed behavior described in his emails. Checkpoint on Monday of next week, should we continue down this path or change to a different DB? After 2554, he will continue with 2647 and 2648.
+		2547, 2548, 2549 and 2551. Good progress on these. Potentially close 2548. After these are completed, Tyler will continue with 2552. 
+		
+    - Sprint 11 Planning: Continue with the ones not completed in Sprint 10, plus 2552, 2647 and 2648.
+
+

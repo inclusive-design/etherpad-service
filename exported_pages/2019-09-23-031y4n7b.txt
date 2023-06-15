@@ -1,0 +1,16 @@
+1. Anything to demo this week?
+	Nothing.
+	
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+    - Lots of 404 in the traces that end in a 200 request. Perhaps it is normal, ask core team.
+    - Move to automatic snapshots and drop k8s-snapshots?
+    ^ we have a ticket, we talked about this, ok, perhaps as part of the work on couchdb
+3. Review of Sprint 34
+
+
+4. Fill the document about New Databases:
+    https://docs.google.com/document/d/1Ji3Ibt_vGVxTk_YCudyJKzQ0yCoklahDPbDlH4NuV9E/edit
+    
+5. Big planning :) Planning of Sprint 35 (Planning for the Scalability tasks)
+
+6. Question for Gregg about Scalability: https://docs.google.com/document/d/1DC2JyxRjQDdKbN_BNeqj3utGFdywZX4Zyuy7FpXgeFw/edit

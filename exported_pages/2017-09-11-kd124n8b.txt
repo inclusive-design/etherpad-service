@@ -1,0 +1,22 @@
+Agenda:
+    - Plan for review with Gregg week of 18-Sep
+    
+    https://docs.google.com/document/d/1-aRW9dv8H26V6RGNcc2vaXESw6i1Q2ASwsxHRApiuTQ/edit
+    
+    Notes:
+        - What Gregg will be interested in: 
+            How will we support cross-cloud deployment?
+            Where will we deploy GPII for upcoming pilots? (AWS, see document) ?
+            How will we support high-availability, upgradability without outages, etc. ?
+
+Colin will create a first draft of the presentation. 
+
+
+
+
+
+
+
+
+
+

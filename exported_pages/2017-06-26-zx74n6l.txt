@@ -1,0 +1,28 @@
+Agenda:
+	1. Status of Sprint 4: https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=19&view=planning 
+	1. Demo of working software (Alfredo Prometheus work? Tyler h5 automation?) [tyler] Should include Colin, as the product owner .
+	1. Retrospective of Sprint 4.
+	1. Planning for Sprint 5
+	1. How many points have been achieved?
+
+Notes:
+    Sprint 4:
+        - Alfredo: 2023 and 2024 were completed. List of metrics seems to be changing, Alfredo needs the updates (2390).
+        - Tyler: Completed 2443. Moving 2412 back to the backlog.
+        - Gio: Completed GPII-2391. GPII-2411 back to the backlog. 
+Restrospective: Too optimistic. Make 8 story points the upper limit per sprint? Need more specification about the metrics. Need to remember to include vacation or other known blocking items. 
+            
+Sprint 5 Planning:
+    
+    Gio: GPII-2391 Continuation 
+	    GPII-2464 - For sure
+	    GPII-2463 - high priority if need to store a state (Gio will confirm with Cindy/Simon)
+	    GPII-2465 - Lowest. Tyler would not work on this at this time. 
+	    GPII-2470 - End-to-end tests
+    Alfredo: 
+        Continue working on Metrics. GPII-2390
+    Tyler: 
+        GPII-2412 - Continue working on this. Need to determine what is the next thing to pick up. 
+
+Regarding question about security, what preferences need to be stored, etc. Gio will talk to Cindy tomorrow. 
+Sandra will investigate how to keep completed tasks in the sprint scrum board. 

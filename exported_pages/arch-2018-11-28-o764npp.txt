@@ -1,0 +1,114 @@
+GPII Architecture Meeting, Novermber 24, 2018
+
+Attendees: Javi, Sandra, Antranig, Bryan, Cindy, JJ, Joseph, Justin, Sergey, Stepan, Steve Grundell, Steven Githens, Tony, Tyler
+
+UPDATES:
+
+Javi:
+	* Continued working on the next upcoming releases, planning, etc
+	* All gpii-wix-installer pulls I had last week are now merged - thanks stegru!
+	* Finished the move to electron 3 - Also, built an installer from gpii-app/master with up-to-date windows and universal for Kavya to test
+	* Helping Astea to solve a problem when requiring gpii-windows as part of the messageBundles creation (GPII-3550)
+	* Addressed last review comments from Cindy on https://github.com/GPII/universal/pull/668
+
+Antranig:
+	* Reviewed and merged various things -
+		* Cindy's 3 pulls improving core workflow for "reset" etc.
+		* Justin's Syllabification preference and enactor <--- Thanks!!!
+	* Meetings with Astea, Gregg, etc. planning current work as well as for the "transition"
+	* Review for JJ's pulls of which a few are ready again
+	* Review for Stegru's language listing pull
+	* Thinking about improvements to framework's "ResourceLoader" which is used in the prefs framework and other places
+	* Waiting on outstanding review for framework logging improvements KETTLE-
+
+Cindy
+	* Pull requests for GPII-3434, 3435, 3539
+		* Addressed review comments. Antranig has merged them
+	* GPII-3551: Discussion with Joseph and Tyler regarding issues with /ready and /health endpoints. Joseph is making good progress on it.
+	* Reviewed pull reqeusts
+	* Looking into another issue stated in GPII-3539 about the undefined values returned by lifecycle manager
+
+JJ:
+	* Updating multiple pull requests following team suggestions:
+		* Windows:
+			* #186, #197, #195, #216.
+		* Universal:
+			* #636, #657, #655, #621, #642, #611.
+	* Continue work into pull regarding privacy settings.
+	* Thanks to the reviewers!
+
+Joseph:
+	* GPII-3333: Improving production config tests for cloud based flowmanager:
+		* finished test for the "/access_token end point. 
+		* added test for the "/%gpiiKey/settings/%device"
+		* continued to work on "/ready" test failure and found a bug in the preferences server that explains the faliure, which led to:
+	* GPII-3551:  Improvements and bug fix for /ready and /health endpoint
+		* https://issues.gpii.net/browse/GPII-3551?focusedCommentId=36006&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-36006
+		* Paired with Cindy to fix the bug; testing.
+		* Working on changing the response payloads and status codes
+			* Making sure that existing tests are adjusted as needed
+		* Hope to have a pull request by tomorrow.
+
+Justin:
+	* PRs:
+		* FLUID-6240: https://github.com/fluid-project/infusion/pull/944
+		* FLUID-6209: https://github.com/fluid-project/infusion-docs/pull/142
+	* Merged PRs:
+		* FLUID-6318: https://github.com/fluid-project/infusion/pull/945
+			* will make its way into UIO+ the next time we update infusion
+	* Pre-emptively integrating FLUID-6240 into UIO+
+		* GPII-2433: https://issues.gpii.net/browse/GPII-2433
+	* Working on:
+		* https://issues.gpii.net/browse/GPII-3490
+			* It seems that most of the "uncovered" lines of code are actually executed in the test
+
+Kavya:
+	* Testing Morphic 1.0 on Sony vaio - For Maureen to upgrade Morphic on pilot sites
+	* Helping Pilot members with language switching issues on quickstrip
+	* Morphic 1.0.1 testing planned for 28 & 29 Nov
+	* Out next week
+
+Sandra:
+    - Tracking completion of Morphic 1.0.1 (new things being added :-) and Morphic 1.1.0.
+    - Had Gregg update the list of known issues from latest builds that haven't been fixed yet, but need to. Will review with Javi, Steve Grundell and others. 
+    - Working on prioritizing ASTEA's work. 
+
+Sergey:
+    - Log-based metrics for GCP infra
+    - Monitoring k8s-snapshots
+    - Monitoring container logins
+
+Stepan
+- Done: Helm Terraform provider issue (GPII-3525 - Terraform helm_release ignores failed update on the next run)
+- Looking into: Helm-initializer issue (GPII-3513 - [GCP]: Terraform some times does not trigger helm-initializer module resources after cluster re-creation)
+
+Steven Githens:
+- Away for US holidays last week
+- GPII-2966 Implementing missing parts of end points found after putitng in more tests
+- GPII-288 bringing back up to master again, and comparing to Capture tool mockups to build prototype
+
+Steve Grundell
+- GPII-3544: Installed OS languages
+- GPII-3540: Tray button
+
+Bryan
+	* Continued review of testing framework and GPII-3396
+	* Meeting with Astea to familiarize myself with their workflow
+
+Tony:
+
+	1. Revised and submitted the new docker-based CouchDB test harness for review.
+	1. Created a GSS schema validation sandbox to assist the onboarding team in adding schema data to SR entries.  Try it at: https://the-t-in-rtf.github.io/gss-live-demo/
+	1. As part of that, discovered a bug in passing around JSON payloads from the DOM to a component model using gpii-binder.  Fixed in the brand new 1.0.4 release available today.
+	1. Various pull request updates and feedback, including commenting on how to model complex SR settings with schemas.
+	1. Testing imports of updated AbleData data, which will potentially more than double the volume of listings in the UL.
+
+Tyler
+* Metrics collection from nginx, couchdb
+* Thanksgiving holiday
+
+
+AGENDA:
+    Sandra: Any feedback so far on Gregg's email last evening:  https://docs.google.com/document/d/1KBEfWwS3yC_XcJnVh8QDRotbSmxU9Y2XIKafYt9rZSw/edit#
+
+

@@ -1,0 +1,15 @@
+There are different timing issues with snapsets and proper IDs.
+
+Basic structure of one survey at 20 minutes
+
+The survey would have a short part in a dialog box, and then a longer part with a consent process - one or two pages of stuff to fill out with open-ended questions.
+
+The initial popup would just have a single screen - 
+
+
+
+The initial part of the survey within dialogs would also be part of a remote system.
+
+(and another at 40)
+
+

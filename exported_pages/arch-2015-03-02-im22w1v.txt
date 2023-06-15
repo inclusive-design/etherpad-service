@@ -1,0 +1,98 @@
+UPDATES:
+
+KASPARNET:
+	* Lots of meetings - APCP/IBM planning meetings, Cloud4all deliverable follow ups
+	* Diagramming for IBM https://drive.google.com/drive/folders/0ByfE6R0ipKCjQjQzMkpfd3ctTzA
+	* Updating the C4A architecture deliverable + adding components descriptions to review demos
+
+MICHELLE:
+	* Working with Simon to get payloads for IBM. Will connect to Ale to hear more about the preferences sets that we want to collect payloads for.
+
+ALE:
+	* APCP Planning
+	* SILO and Windows Installer work plan
+	* Defining survey for AJCs (and executing it)
+	* Research *important* ATs we should cover in APCP project and use as input for Security analysis and work from the guys from IBM
+
+Alfredo:
+	* Working on other roles for jenkins
+	* Searching a good Jira Docker container to deploy a testing instance
+	* Almost finished ansible jenkins node role and uploaded to github
+	* Uploaded the etherpad playbook
+	* Reviewing Simon's mail about OAUTH2 in order to close some ancient tasks I have
+
+ANTVARNIQUENESS
+	* Reviewing pull requests from Tony Atkins
+	* Meeting with the APCP team on IBM tasks
+	* Documentation for the model relay
+	* GSOC students swarming the channel
+
+AVTAR:
+	* Been involved with QI Dashboard planning work with Alan, going to have a prototype to demo for the upcoming review
+	* Spent time becoming oriented with Node.js and GitHub APIs and going through Express resources
+	* Will be shifting focus to gpii-express
+
+Colin:
+	* Triumphant completion of Prosperity4All architecture deliverable D201.1 (except for the Developer Space section, which Till and Gregg are working on)
+	* Triumphant completion of a paper about open source design methods, including the GPII and Nexus
+	* Working closely with new IBM team to orient them to the project and get started on Security, Architecture review, and Windows development
+	* Causin' trouble
+	* This is me while writing deliverables: http://cohencentric.com/wp-content/uploads/2014/03/lc-looking-up-typewrit2er900.jpg
+	* Massive pull request reviewing sprint today FOR SURE
+
+GIO:
+	* Still working on metrics system
+	* Meetings about APCP security
+	* Working on some additional diagrams -- more focus on physical components
+
+
+JAVI:
+	* Making the latest changes on the high level diagrams of the architecture
+	* Attending to the APCP/IBM kickoff meetings
+	* Browser extensions
+	* Started looking at head/face tracking solutions
+
+
+JOSEPH:
+	* ProcessReporter:
+		* Last week:
+			* added the ability to query one solution to see if the process is running.
+			* - e.g., http://localhost:8081/processes/org.gnome.desktop.orca
+			* currently, as part of the payload, the PR returns the platform, i.e., "OS": { "id":"linux", "version":"4.3.4-200.fc22.x86-64" } }. Is that needed?
+			* Note:  all work above done in the context of ANTVARNIQUENESS's giant pull request (GPII-1318).
+		* This week:
+			* Updating to the latest GPII-1318 code in universal
+			* Running all the tests, and making sure the PR still works with the latest GPII-1318 code.
+	* ARIA
+		* still debating Combobox
+			* new task:  re-write the definition of aria-activedescendant.
+		* and lots of other flotsam.
+
+SIMON:
+	* At Prosperity4All meetings in Stuttgart
+	* Nexus examples and presentations for the meetings
+	* Made pull request to move Nexus development to GPII organization: https://github.com/GPII/nexus/pull/1
+	* APCP meetings
+
+
+TONY:
+	* Continuing to get the UL (and eventually the PTD) ready for review.  Started in October 2015, due by June.  The race for quality has no finish line, so technically it's more of a death march. (thanks, demotivators).
+	* Currently working through remaining PRs for gpii-express, gpii-binder, gpii-handlebars, gpii-express-user, gpii-json-schema, gpii-pouchdb-lucene.  Only four left open!  Notable things Antranig gently shamed me into doing this week:
+		* Finally learning to use "activatable" and "selectable" grades properly.
+	* Continuing to pull bits of existing packages into their own micro-modules for wider reuse.  This week we're talking about:
+		* a new "asymmetrical" CouchDB dataSource: https://issues.gpii.net/browse/GPII-1253
+		* a client-side dataSource that follows the same conventions as the existing Kettle dataSources, but, you know, works on the client side: https://issues.gpii.net/browse/GPII-1587
+
+
+Client side keyboard events - testing
+	* Currently we use jquery.simulate (no longer supported by its maintainers)
+	* Nightmare uses a similar strategy, namely triggering events on elements as though they had been sent keyboard input.
+	* This makes it difficult to test keyboard navigation, for example.
+	* Have been researching things like Intern, which allow using the WebDriver API to control the browser directly.
+	* Want to hear what everyone else has done in this area, about new approaches, etc.
+
+Colin:  
+Tony seems to be the front-runner in looking into this stuff.. This is not of significant enough importance to him to be able to spend all his time on it, but if someone else needs this or is interested in this, he would like to pair up on examining approaches.
+
+Avtar:
+https://github.com/tastejs/todomvc/issues/255

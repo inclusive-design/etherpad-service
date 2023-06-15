@@ -1,0 +1,57 @@
+What Does Luke Want To Build?
+
+4 social scientists
+a philosophy major <-- who wrote most of the Python
+a professor of international relations
+
+the people who didn't care about purity are the ones who have built the operational pipelines that are still in effect
+the technical debt is threatening to eat their organisation alive
+
+1. Refactor their code
+2. Make it run in containers
+
+They currently have no reproducibe way of getting an execution environment onto a particular machine
+
+3. Move over to an event based system rather than a pipeline
+
+This will take about 5 months
+
+The only technically interesting bit of this is the SHA-based doobry
+Every operation on a row updates a SHA of the row
+
+Processing scripts write to an organisationally accessible log, which allows bonkers results to be followed back through these SHA chains.
+
+The only thing that I don't understand is what the difference between this and blockchain is.
+
+A: The only difference is something that noone is interested in - which is, when there are multiple distributed copies of the entire database purporting to be the current one, you can tell which one it is.
+
+"I need software processes to have identity as well as human processes"
+"This thing called machine name which can never never change"
+
+"disdain is not abstraction"
+
+How big are we talking?
+
+For Africa's voices, just a couple of hundred Mb
+
+"If I stored every data item in a separate file, what I'm doing is just git", sad to say
+
+However, for Lark, our dataset will be in the Petabytes
+There will be "the provenance engine of Lark"
+
+How will they get data into this thing?
+
+They have a thing named Echomobile - what is it?
+It is a platform that turns SMSes into an API (what?)
+
+Their current API consists of HTML, CSS and JavaScript (what?)
+
+People click on a button labelled "Download XLS" which actually gives them a CSV in a format which is not compliant with CSV
+
+I will get back to you in the middle of April with the details of how we actually get this data
+
+"And nothing good happens from there"
+
+
+
+

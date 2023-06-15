@@ -1,0 +1,25 @@
+gpii.pcp.receiveIpcEvent = function (payload) {
+    var target = fluid.queryIoCSelector(payload.target);
+    var member = fluid.get(target, payload.member);
+    member.apply(null, payload.arguments);
+}
+
+gpii.pcp.sendIpcEvent = function (payload) {
+    ipcRenderer.send("ipcBridgeEvent", payload);
+}
+
+
+
+modelListeners: {
+    value: {
+        funcName: "gpii.pcp.sendIpcEvent",
+        target: "
+        member: "events.onSettingUpdate.fire"
+        args: ["{that}.model.path", "{change}.value"],
+	   excludeSource: ["init", "outer"]
+}
+
+
+
+
+Problems:

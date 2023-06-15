@@ -1,0 +1,15 @@
+1. Anything to demo this week?
+  - No
+  
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+ - Nothing interesting
+
+3. Sandra asked about  GPII-4094
+- wrong ticket linked, updated to point to 
+  - Web security scanning (GPII-3642)
+  - container security scanning (GPII-3641) 
+
+4. Pipeline
+  - not great to block pipeline for 2 weeks
+  - seems deployed code was not tested in dev (no need for stg)
+  - maybe separate deploy of Infra from Universal?

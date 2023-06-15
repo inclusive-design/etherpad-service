@@ -1,0 +1,27 @@
+1. Anything to demo this week?
+	* Gregg will demo Morphic in APCP slot
+	* Further demos would need to be during arch meeting
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+3. Pilot site updates
+	* Deployed to open lab and library at NOVA
+	* New library site Chickesaw is going up today (maybe -- scrambled over the weekend to deliver installers, site config files, language packs to library)
+	* CA AJC sites should be upgraded already
+	* Maureen planning to update  VA sites next week
+	* David's pilot site + VA site are last users of Morphic 1.0. Once they are upgraded, we can get rid of aws
+	
+	* Anyone worried about lack of notice for ops team?
+		* These things are fluid
+		* Sandra's job to keep ops team apprised of these changes. She will try to let us know after Wednesday pilot meetings when new info is disseminated
+		* Sandra says there is a "dashboard" (spreadsheet). But it is not updated.
+		* Ops team needs hours for all these sites: info for folks responsible, attempt to schedule maintenance outside of hours.
+			* Sandra will provide.
+				* https://docs.google.com/spreadsheets/d/1-ftZl6l8vhP-cghsyuJ2TgN6aqzB1TL4Io9VLGx3y9k/edit#gid=0
+
+	* How do logins work since we have no login/passwords and rely on a shared secret on a billion machines all over the country
+		* "Real" security solution is maybe 50% completed
+		* Antranig, cindy, tony, sgithens have been meeting and designing
+		* Most of the implementation work is on Cindy
+		* Original estimate was end of May, but didn't account for Cindy vacation. New estimate probably end of June
+		* We are pretty much deployed to all the sites we plan to be in
+			* Gregg has talking about organizing another pilot at UMD but Sandra hasn't heard about that recently
+

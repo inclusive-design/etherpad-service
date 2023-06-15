@@ -1,0 +1,12 @@
+1. Anything to demo this week?
+	Nothing.
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+    Something happened to the percentiles of the locust preferences metrics, we can not see continuous lines
+
+3. Previous Sprint estimate review
+	Done
+
+4. New Sprint planning
+	Done
+

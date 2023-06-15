@@ -1,0 +1,19 @@
+1. Anything to demo this week?
+	Sergey will show GPII log stats (no need for a special slot)
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+	Weird slow down in prod on Jan 7-8, lots of slow traces
+	https://console.cloud.google.com/traces/list?authuser=1&project=gpii-gcp-prd&pageState=(%22traceFilter%22:(%22chips%22:%22%255B%257B_22k_22_3A_22MinLatency_22_2C_22t_22_3A10_2C_22v_22_3A_22_5C_222s_5C_22_22%257D%255D%22),%22traceIntervalPicker%22:(%22groupValue%22:%22P7D%22))
+	
+3. Gregg's new request:
+
+to me, Gregg 
+
+Hi Alfredo,
+
+Where can I publish the web tools mentioned in the subject line?
+
+Best,
+Arun
+Arun Chandrasekar <arun@delitedigital.com> 
+Jan 10, 2020, 3:26 PM (3 days ago)

@@ -1,0 +1,20 @@
+Agenda:
+    - Metrics data collection discussion with Vera and Maureen
+    - Sprint 12 status
+    - Sprint 13 planning
+    
+Notes:
+   Metrictions:
+       - Difference between the data Maureen collecs and between what she collects
+	       Vera is being sent the logs twice. The sender logs "forgets" it already sent the data when a restart is initiated. Steve will work on a solution. Sorted by time stamp.  Steve will do additional cleanup of the data.
+	- Alfredo will give Vera access to the dashboard of metrics.    
+	
+	- Sprint 12 status: 
+		Tyler, still working on 2552, he has write-up in the JIRA, work in progress. Both moved to the backlog. 
+		Alfredo: 2648 good progress, close to finishing it. Had some problems with the deployment with the cluster. 2647 moves back to backlog. 
+		
+	- Sprint 13 planning:
+		- Discussion re. 2718.There's some work that needs to get done before it can be implemented.  It's also blocking Alfredo on 2648. Alfredo will create a new JIRA to address this work, and will link it to 2718 and 2648. 
+		Sprint 13 content: 2552 and the new one Alfredo will open, plus 2648.
+		- Tyler: Should work on 2553 and 2550 next. 
+		

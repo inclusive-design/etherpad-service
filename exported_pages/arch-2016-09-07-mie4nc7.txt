@@ -1,0 +1,109 @@
+UPDATES:
+    
+KASPER:
+	* Had a good conversation about the canopy MM with antranig yesterday, resulting in https://issues.gpii.net/browse/GPII-1998. Short summary is that the functionality in the current canopy MM pull request is sufficient for now. Antranig has given it another round of review, and I'm adressing those comments now.
+	* Alejandro brought https://issues.gpii.net/browse/GPII-1994 to my attention - main priority for tomorrow
+
+ALE
+	* Reading Colin things.
+	* Having fun helping the superb infrastructure/sysops/devops/humans team to bring new Windows box to live.
+	* Having fun following and discussing with the team all the issues, PRs and things associated to our incoming MOVE to npm3/nodejs6. Now Javi is onboard with that again with me doing an AWESOME tandem.
+		* It's so great to follow along on this
+	* Having fun helping Alfredo to be a superhero in the nodejs/v8 community reporting, fixing and pushing changes there.
+	* Having fun thinking about how to onboard EVIACAM (An AT Tool that act as a virtual mouse using the webcam) into GPII.
+	* Having fun with meetings.
+	* Always having fun :P
+
+
+ALFREDO:
+	* Following the 'nan' module issue https://github.com/nodejs/nan/pull/601 ... that seems a Node6 core issue
+		* Nice job with this pull request!
+	* Working on the Vagrant environments for QI, Ansible roles, and all this stuff
+	* Meetings...
+
+AVTAR:
+	* Finished making changes to the Flow Manager Ansible role as per Cindy's request, currently that work lives in my fork and GPII-1884 branch until Cindy's Universal changes get merged https://github.com/avtar/ansible-flow-manager/tree/GPII-1884
+	* Worked with Gio on the 0.4.5 Windows box so that CI work could get wrapped up. Getting everything tested ended up taking a while and on Friday uncovered two separate issues. One involving npm 2 and its version of node-gyp which needs to be upgraded to 3.4.0 -- Antranig merged that workaround and the permanent fix, moving towards npm 3 is WIP. Another issue was is that the provisioning batch files don't return correct exit codes upon failures -- Ale already covered that.
+
+Cindy:
+	* Completed setting up GPII in production configuration
+		* With Avtar's help, a VM is ready. It deploys the preferences server in one node instance and the flow manager in another node instance. And both uses CouchDB as the backend data storage
+	* Completed setting up GPII in development configuration
+		* Wrote a new GPII node module "Pouch Manager" to manage PouchDB used as the data storage by the authorization server
+	* Started working on the pouch backed in browser testing in order to fix the broken browser unit testing for the auth server
+		* At the moment learning "gpii.pouch" component (https://github.com/the-t-in-rtf/gpii-pouchdb/blob/GPII-1897/docs/pouchdb.md) to understand how to handle CouchDB http requests with gpii.pouch API calls
+
+COLIN:
+	* Sailing
+	* Swimming
+	* Anchoring
+	* Boogie boarding
+	* Reefing
+	* Napping
+	* Unit testing
+	* Filming
+	* Barbequing
+	* Back! Now it's time for some CODE REVIEW
+
+Javi:
+	* Catching up
+	* Updated node 6 prs:
+		* https://github.com/GPII/universal/pull/466
+		* https://github.com/GPII/linux/pull/86
+		* https://github.com/GPII/windows/pull/84
+	* Got an installer built with node 6 and so on - sadly, it's not functional :/ - It install! :)
+	* Will keep working on updating prs
+
+
+JOSEPH:
+	* Updateed process reporter universal and windows pull requests as per Antrangi's comments.
+		* https://github.com/GPII/universal/pull/355/
+	* More unit tests for process reporter, to test the monitoring of changing states of a process, both linux and windows
+		* https://github.com/GPII/linux/pull/58
+		* https://github.com/GPII/windows/pull/82
+	* Sandra requested updates to status of Process Reporter pull requests.
+		* Added information to her spread sheet.
+		* https://docs.google.com/spreadsheets/d/1YHhAckrhgS-GKzsNsQBPSqsparOvNelQ5HQ1H5XU5z0/edit#gid=790918513
+	* Started (barely) on the JIRA for using the process reporter (or processes bridge) within the testing framework.
+		* GPII-1882 (https://issues.gpii.net/browse/GPII-1882)
+
+
+Kavya:
+    
+	*     Tested on LGS Demo Personas with URL,USB,NFC listeners
+	* Worked on Smoke Tests
+	* Getting Everything ready for Review with team on Monday
+    
+MICHELLE: 
+	* Continuing with getting tests working inside the gpii wrapper. 
+	* Planning for the P4A face to face with Avtar
+	* Vacation starting Monday - back Sept 21
+
+Simon:
+	* Made a pull request against AsTeRICS to add the NexusConnector
+	* Unfortunately we were not able to get it finished before Martin went on leave
+	* We will merge when he is back in November
+	* Helped Avtar test new Windows box
+	* Continuing code review of journaling work
+
+Steve Grundell
+	* GPII-1540 - https://github.com/GPII/universal/pull/469 https://github.com/GPII/windows/pull/86
+		* Made the test application build during vagrant provisioning.
+	* GPII-81: Sticky keys (and others) for Windows.
+		* Making progress
+
+Sandra:
+    - Just back from vacation. Catching up. Focusing on Core 2 deliverables for Pilot 1 and continuing fleshing out the work items. 
+
+n
+AGENDA:
+    that
+Avtar has a question about whether anyone knows UAC (User Access Control):
+
+Tried this http://superuser.com/questions/227860/how-to-toggling-uac-on-off-quickly-eg-using-command-line-in-windows-7/784688#784688 but still had to restart Windows.
+
+Does anyone know of a way to enable UAC without restarting windows. 
+
+Grundell: Thinks that it is not possible since starting without UAC means that the user is run in low privileged user mode. So to change the privilege level, it is likely that one needs to log out.
+
+

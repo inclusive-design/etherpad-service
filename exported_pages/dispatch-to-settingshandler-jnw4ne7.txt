@@ -1,0 +1,147 @@
+Meeting on https://issues.gpii.net/browse/GPII-3651 dispatch to all settingsHandlers
+24/1/19 - Present: Antranig, Cindy, JJ, Javi
+
+Cindy's question:
+    
+[14:12] <cindyli> Bosmon, javjarfer[m], after looking into https://issues.gpii.net/browse/GPII-3651, the issue with empty payload being sent to settingsHandler, I have some questions about whether the fix should be made in the solution registry for "com.microsoft.windows.mouseSettings" solution, or matchmaker, or both. can we meet to talk about this?
+
+From which AB has filed https://issues.gpii.net/browse/GPII-3653 as the general issue
+
+We noted that there is also https://issues.gpii.net/browse/GPII-3119 which would improve the structure of the settingsHandler blocks
+
+The conversion from preferences to settingsHandler.settings
+
+	* preferences
+{
+    "http://registry.gpii.net/applications/com.microsoft.windows.mouseSettings": {
+        "SwapMouseButtonsConfig": 1
+    }
+}
+
+	* Generated each settingsHandler.settings
+		* "capabilitiesTransformations" definition for SwapMouseButtonsConfig
+
+                "capabilitiesTransformations": {
+                    "SwapMouseButtonsConfig": {
+                        "transform": {
+                            "type": "fluid.transforms.value",
+                            "inputPath": "http://registry\\.gpii\\.net/applications/com\\.microsoft\\.windows\\.mouseSettings.SwapMouseButtons",
+                            "outputPath": "value"
+                        },
+                        "path": {
+                            "literalValue": {
+                                "get": "pvParam",
+                                "set": "uiParam"
+                            }
+                        }
+                    }
+                },
+
+Generated settings for SwapMouseButtonsConfig:
+{
+    "SwapMouseButtonsConfig": 1
+}
+
+		* "capabilitiesTransformations" definition for configureScrollWheelMode - https://github.com/GPII/universal/blob/master/testData/solutions/win32.json5#L7072-L7085
+
+                "capabilitiesTransformations": {
+                    "ScrollWheelModeConfig": {
+                        "transform": {
+                            "type": "fluid.transforms.value",
+                            "inputPath": "http://registry\\.gpii\\.net/applications/com\\.microsoft\\.windows\\.mouseSettings.ScrollLines",
+                            "outputPath": "value"
+                        },
+                        "path": {
+                            "literalValue": {
+                                "get": "pvParam",
+                                "set": "uiParam"
+                            }
+                        }
+                    }
+                },
+
+Generated settings for configureScrollWheelMode:
+{
+    "ScrollWheelModeConfig": {
+        "path": {
+            "get": "pvParam",
+            "set": "uiParam"
+        }
+    }
+}
+
+Other generated settings:
+{
+    "ScrollFocusRoutingConfig": {
+        "path": "pvParam"
+    }
+}
+
+{
+    "MouseCursorShadowEnable": {
+        "path": "pvParam"
+    }
+}
+
+{
+    "ScrollCharsConfig": {
+        "path": {
+            "get": "pvParam",
+            "set": "uiParam"
+        }
+    }
+}
+
+{
+    "WindowsTrackingConfig": {
+        "path": "pvParam"
+    }
+}
+
+{
+    "ActiveZOrder": {
+        "path": "pvParam"
+    }
+}
+
+{
+    "WindowsArrangement": {
+        "path": {
+            "get": "pvParam",
+            "set": "uiParam"
+        }
+    }
+}
+
+	* "capabilitiesTransformations" definition for DoubleClickTimeConfig:
+
+                "capabilitiesTransformations": {
+                    "DoubleClickTimeConfig": {
+                            "transform": {
+                            "type": "fluid.transforms.value",
+                            "inputPath": "http://registry\\.gpii\\.net/applications/com\\.microsoft\\.windows\\.mouseSettings.DoubleClickTime",
+                            "outputPath": "value"
+                        }
+                    }
+                },
+
+Generated settings for DoubleClickTimeConfig:
+{
+    
+}
+
+Removing empty settings block from settingsHandlers block requires to remove corresponding elements from "config" and "restore" arrays: https://github.com/GPII/universal/blob/master/testData/solutions/win32.json5#L7361-L7382
+
+Questions:
+	* Are capabilitiesTransformations definitions for "SwapMouseButtonsConfig" etc correct? shall the "path" element in the "capabilitiesTransformations" be removed?
+		* Yes, it's something special with spiSettingsHandler. As line 10 states, https://issues.gpii.net/browse/GPII-3119 was created to improve the structure of the settingsHandler blocks
+	* Can we group the same type of settings together in one block? One example is "com.microsoft.windows.cursors" - https://github.com/GPII/universal/blob/master/testData/solutions/win32.json5#L5997-L6011
+		* Not in this case because each settingsHandler has its own "options" definition
+	* The changes to Matchmaker and Transformer:
+		* Improve gpii.matchMakerFramework.utils.extractCapabilities() to add an empty settings payload for settingsHandlers whose inputPaths are not found in preferences. These settingsHandlers with empty settings payloads will not be sent thru the transformer so empty settings payloads will not be overwritten
+		* After the transformer, remove settingsHandlers that have empty settings payloads, which could be added by extractCapabilities() or generated by the transformer
+		* Also remove the corresponding settings elements from "configure" and "restore" elements (https://github.com/GPII/universal/blob/master/testData/solutions/win32.json5#L7361-L7382)
+
+
+
+

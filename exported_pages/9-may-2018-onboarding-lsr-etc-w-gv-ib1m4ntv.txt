@@ -1,0 +1,37 @@
+Technical discussion with Gregg - Topic, Live Solutions Registry and Onboarding
+9-May-2018
+
+Present: Sandra, Antranig, Colin, Gregg, Javi, Steve Grundell, Tony
+
+
+Master Team Folder for APCP: https://drive.google.com/drive/u/5/folders/0B7GlZD-XKf0wfnRvcHNUai10UmtleW9nLWRoNkZWWC0xa1JnR3NzeG1pZ29hbGRTTzBNUGs
+Onboarding Folder: https://drive.google.com/drive/u/5/folders/0B_YyjfBc4PBUTHp6eEU2UkYxTUE
+
+Gregg has assembled three documents:
+
+Document 1:
+    Rough Draft notes on auto-personalization, solutions registry and matchmaking on https://docs.google.com/document/d/1L26MCemF1XEYIRm-I2-kG0dmtxORx8hTUOyI7SiuyzM/edit
+
+Document 2: 
+    Draft AT/AF Onboarding Model and Organization  V2 https://docs.google.com/document/d/1VATpiuKq0V7q5JOMD3S6MuasaoSlGTH56-VweDuTqMY/edit#
+
+Document 3:
+    Blank Product & Metadata Template https://docs.google.com/spreadsheets/d/1B9RuPPIgCNfs3Csl200N52h-sd2VGMhQUA__jUEjlUw/edit#gid=46751502
+
+
+Question to Gregg: 
+    What is comprised in "all settings" under point Stage 3 on document 2
+    This is referenced in JIRA https://issues.gpii.net/browse/GPII-1911
+
+Gregg has assembled draft spreadsheet for onboarding schema skeleton:
+
+
+Pass 1: We will only onboard settings that are "important and safe"
+
+Phase 1: They will go into the application and make a list of things they see in the control panel, instruction manual, etc in documented and visible features of the application.
+Contact the company and work their way to the "chief engineer" - this meeting we record so it can be used as technical reference.
+Some settings may only be evident when a product is fired up in a context with a particular device.
+Some settings may be "withdrawn" from public availability but still remain in persistence for backward compatibility purposes.
+Some may also be discovered opportunistically by means of investigating persistence.
+
+In light of this we don't expect hard and fast rules for determining the exact boundary of all useful and safe settings of interest to AP.

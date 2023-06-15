@@ -1,0 +1,79 @@
+Create a persona of an AJC user (name, background, needs and preferences, why they’re there)
+
+Antonio El Gatto
+	* immigrated from El Salvador with high school education 
+	* worked in a factory and injured his arm and can no longer work in that field
+	* currently unemployed and is looking for work that he can do
+	* not much English
+	* does not own a computer - low digital literacy - he's not aware of assistive technologies
+	* can only use one arm/hand
+
+
+Create, from scratch, a snapset that you think they might find useful
+	* prefers content to be displayed in Spanish
+	* simplified interface and/or tutorials for using the computer
+	* sticky keys
+	* head tracker
+
+Making the snapset notes:
+
+	1. We went to https://docs.google.com/spreadsheets/d/1Cj9YTzM6usgd96XFn60TGN6bfMYTLCgWVMycoA4JhA8/edit#gid=0, where we can find an example of settings that we can include into our snapset we found: language, stickyKeys, simplifiedUIEnabled, no head tracker
+	1. go to the universal testdata preferences and get an example of a snapset. (short one, just to get the shape/format)
+	1. modify it for our settings
+		2. looked up the language standard to get the correct language code (see comon terms spreadsheet)
+	1. considered onboarding a head tracker - possibly enable ViaCam - also considered AsTeRICS' head tracking solution
+
+    {
+  "flat": {
+    "contexts": {
+      "gpii-default": {
+        "name": "Default preferences",
+        "preferences": {
+          "http://registry.gpii.net/common/language: "es-419",
+          "http://registry.gpii.net/common/simplifiedUIEnabled: true,
+          "http://registry.gpii.net/common/stickyKeys: true
+        }
+      }
+    }
+  }
+}
+
+Briefly write down a scenario describing how this person will use the GPII, start to finish
+	The user goes the AJC for his first time and asks to use a computer to the administrator
+	A staff member asks him some questions
+			* why are you visiting us?
+			* how much do you use a computer?
+			* I'm curious, how do you use a computer without the use of your arm?
+		* and determines
+			* Spanish speaking
+			* difficulty using a keyboard and mouse
+			* Low digital literacy
+	then, the staff member takes the snapset that he thinks best fits Antonio's needs and takes him to a computer and shows him how to key in with it. then starts him looking for a job and leaves him at the computer
+	
+	After a few minutes, the staff member comes back and asks Antonio how he's doing and Antonio complains about a weird behaviour with the keyboard. Then the staff member knows that sticky keys is the reason why Antonio is complaining about. Then the stafff member uses the PCP to disable sticky keys.
+	Now Antonio is happier with this configuration and he continues his job search
+	
+	
+With your partner, assemble a build of the GPII and install it on a fresh Windows VM
+What we expect should happen:
+	* the administrator at the AJC will get an installer by downloading it from the APCP website.
+	* the administrator double clicks it and uses the standard installation - next next
+		* the GPII and user listeners are started automatically
+	* the administrator was given a bunch of nfc tags with snapsets on them (and a table describing what the snapsets are useful for)
+	* when they use the Antonio snapset, sticky keys is turned on, the language is Spanish and there is a simplified UI
+
+What we actually did:
+	* we got the installer from the provisioned machine
+		* vagrant up in the Windows repo
+		* c:\installer\output
+		* copied it to a USB key and put it on the desktop of the machine
+	* we went through the installation process
+	* we figured out how to change the permissions of the testdata directory
+	* we took our snapset and saved it into the testdata preferences directory
+	* double click the desktop GPII icon
+	* use a web browser to log in with the snap set
+	* our snapset was wrong so we fixed it - fixed the quotes
+	* when we logged in, only sticky keys worked because we don't currently support language or simplified UI
+
+
+

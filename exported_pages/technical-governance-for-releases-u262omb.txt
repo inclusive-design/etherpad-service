@@ -1,0 +1,60 @@
+PURPOSE OF MEETING:
+	* Reaching (at least a preliminary) agreement on how and when to cut releases for our different packages created in releation to GPII
+	* (Infusion has a significant reliance on manual QA so we'll put that aside for now)
+
+QUESTIONS:
+	* What are our criteria for what can be released? (why shall we release)
+		* For GPII components:
+			* Once alfredo's CI is ready (incl. installers and tasktray) we are theoretically ready to release at any time we want (given that the tests pass, etc)
+				* This is what we consider sufficient for staging servers, dev., etc
+		* 3 different types of relases/deployment/stability:
+			* Development:
+				* https://dev.servername.gpii.net
+				* Will be automatically deployed on every push to the master branch of the project repositories
+				* Data persistence - unreliable, cleared on each commit?????????? or nightly/weekly?
+			* Staging:
+				* https://staging.servername.gpii.net
+				* Used for QA'ing, pre-production releases
+				* Concensus across community about what should go in (and when) to the staging servers
+				* Automated but manually trigged (or automatically built from the latest npm releases?)
+				* Data persistence - partly reliable, announced when it's cleared?????????
+			* Production releases:
+				* https://servername.gpii.net
+				* This will have gone through QA'ing, etc.
+				* Automated but manually triggered by ops team
+				* Nothing will ever hit "production" until it's gone through "staging"
+				* Will be pushed to the official, public facing, and publically used GPII servers
+				* Data is persistent and stable.
+	* How will we release?
+		* In the most simple case, simply via "npm publish"
+		* However, there are two sets of wrinkles which currently do not perfectly line up
+			* Our "fluid-publish" scripts for automatically releasing dev artefacts, which we quite like
+			* A proposed "monorepo pattern" which will allow multiple npm artefacts to exist in one github artefact
+	* Who is authorized to create a release?
+		* Any committer may make a release
+		* In future, when we have QA infrastructure, as well as manual QA infrastructure for major projects (the GPII, Infusion), that release manager/team will make releases
+
+Suggestion to avtar:
+	* Part of the quality Infrastructure could be recursively checking dependences of a component and check if there are dependencies on non-released components (eg. directed references to git-hashes) <--- is this correct, Antranig/Colin?
+
+SHORT TERM PLAN:
+	* Merge the big branches and tidy up before release
+	* Rename repositories to gpii-x for releases (I think this makes sense before publishing to npm, does anyone disagree?)
+	* We will cut the 0.3.0 release and npm publish it, assuming:
+		* Alfredo's "full integration testing" automation is working
+		* and thus all the acceptance tests pass
+	* For components that can't be npm released because they have not yet been code reviewed or need improvement, we will write build stories for them and get them into the task backlog
+	* Gio and Alfredo will come up with a plan for introducing dev and staging tiers for our deployed in, where the staging tier will be deployed off the 0.3.0 release
+	* For each release, we will also build:
+		* rpm packages
+		* a windows installer
+		* Alfredo will automate the creation of these artefacts
+	* We will write a DEFINITIVE README that explains to users of a particular release (such as people demoing the GPII or experimenting with it):
+		* How to install it (on both Linux and Windows)
+		* Which third-party ATs they will also have to install
+		* How to provision a token (USB or NFC)
+		* How to use it
+
+
+
+

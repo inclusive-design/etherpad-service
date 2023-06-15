@@ -1,0 +1,84 @@
+UPDATES:
+    
+KASPER:
+	* Writing up a bit of matchmaker requirements for Kavyas QA plan
+	* Pull request updates
+	* Reading up on some of the preferences framework documentation
+	* A bit of work on the developers prefs editor
+ 
+ Ale:
+	* Back from holidays!
+	* Reviewing and fixing open Windows pull requests.
+	* Meetings everywhere catching things up again.
+        
+Alfredo:
+	* Finished the changes that involve the ansible role for Jenkins CI
+	* Working on merge the changes proposed in Toronoto F2F regarding the Vagrant testing environments #1876 https://github.com/amatas/vagrant-vmenv
+    
+Cindy:
+	* Worked with Kasper, Avtar to create a new config file for running GPII cloudbased in the production mode
+	* Worked with Avtar to set up a VM for running cloudbased production. Also learnt lots of vagrant and ansible knowledge from Avtar.
+		* There's one outstanding issue with the new VM: the old test, which is a http request to the flow manager deal with Carla's setting, fails
+	* Working on using CouchDB when GPII runs in the production mode
+		* Converted and loaded the test data used for the in memory data store to CouchDB
+		* Updated the config file to point to the CouchDB
+		* Can successfully connect to the flow manager to set up user authentication decisions, meaning the flow manager is set up properly with having CouchDB as the data persistence layer
+		* Need to verify the preference server also works fine with the privacy filtering
+	* Continuing meeting with Tony, Antranig, Alan on gpii-pouchDB talk. Tony has created a new grade to support the work that uses pouchDB when GPII runs in the dev mode.
+
+Antranig:
+	* Done a little code review, attended gpii-pouchDB meeting
+	* Changed 4 nappies
+	* Expressed 5ml of colostrum
+
+Colin:
+	* Meetings, meetings, meetings
+	* Meetings, meetings, meetings
+	* ...
+
+Michelle:
+	* Lots of planning and meetings.
+	* Working on the GPII wrapper - the unit tests can be run from electron, however, many are failing. Having trouble getting a debugger attached to electron. 
+	* On vacation from Friday - back August 29th
+
+kavya:
+    Done drafting down on testing requirements on core1 features
+    waiting for couple of things to from kasper and Antranig 
+    Reviewd with sandra and discuused on approach to hardware sensitivity testing 
+    
+    
+Sandra:
+    Almost completed with recording work items for GPII. 
+    AJC pilot rollout approach is changing, the roadmap needs to be updated (by Gregg with input from the different teams). We're dependent on that to continue with planning. 
+    Following up on status of Core 1 deliverables. 
+    
+Steve Grundell
+	* GPII-581 ready for re-review: https://github.com/GPII/windows/pull/83
+		* No longer requires child process
+		* Also fixes: GPII-481 and GPII-687
+	* Began on GPII-1540: GPII test persona settings return after laptop "wakes up" from sleep
+		* Able to reproduce
+		* Have a rough idea on the problem
+
+
+TONY:
+	1. Worked on first half of PouchDB spike to support Cindy's work.  Met with Alan, Cindy, and Antranig to agree on next steps, which ideally will be completed before Simon returns.  Next focus is on adding browser support and hardening the database teardown cycle to improve test reliability.
+	1. Continued exercising gpii-webdriver in my own work.  No fix for Firefox 48+ yet, but otherwise it's working reasonably well.
+	1. Continued talking with Justin about the sandbox.  We encountered odd behavior with sub-components, updating to use the early parts of the Nexus API seems to have addressed this.  Will demo the work at next week's design crit, demo links to be sent around early next week.
+	1. In working on the sandbox, ran into problems with codeMirror, which traps keyboard input.  Added the ability to escape from a codeMirror-infusion component and submitted that as a PR.  Talking with Colin about publishing codeMirror-infusion as a GPII package.
+	1. Meet with Avtar about QI, will take a couple hours to update all builds shortly to prepare for upcoming meetings with him.
+	1. Working through the latest round of feedback on various libraries, hope to resume work on the UL "any day now".
+
+Data Loaders to load CouchDB test data when GPII is running in the production mode (Avtar/Simon/Cindy/Everyone else)
+The email discussions:
+	* http://lists.gpii.net/pipermail/architecture/2016-August/004242.html
+	* http://lists.gpii.net/pipermail/architecture/2016-August/004243.html
+
+Cindy to write up and share notes on creating a loader.
+
+In our last  PouchDB meeting, we discussed that gpii-pouchdb can only reload data on a restart, and reloads all data.  Tony will be working to make it possible to reload individual database in real time in support of Cindy's work.  That will need to include a loader, I'd like to use a common one or work on it together.
+
+Questions about making jqUnit produce TAP output. Mainly checking to see if anyone has already tried this or researched the background.
+
+Tony to check with Avtar.
+

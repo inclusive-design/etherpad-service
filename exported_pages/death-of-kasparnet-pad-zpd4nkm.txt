@@ -1,0 +1,145 @@
+Things we will look at in general:
+    
+i) Things that Kaspar is actively closing out - 
+
+Active pull requests like:
+    
+https://github.com/GPII/universal/pull/507
+
+"Changing settings handlers into launch handlers"
+
+The journaller work, etc. shows that we need to state-ify the action of launch handlers, so that they correspond to the toggling of a boolean flag corresponding to whether the application is running.
+
+There are two special issues:
+    a) If the user wants an already running application, instead of invoking the launch action of the application, we want to fire its update action
+    b) Also, if we killed an application on login, when the user logs out, we need to restart the application.
+    These have led to improvements in the LifecycleManager's interpretation of the matchmaker's payloads. The payloads are largely as they were.
+    This logic is largely encoded here: https://github.com/GPII/universal/pull/507/files#diff-2a48866aecf7478e0d32381b8179c327R590
+There seems to be a new "isRunning" action - this is a specially encoded "name of a settings handler".
+
+Unfinished work/questions related to pull/507:
+* Should the launch handlers be separated from the settings handlers in the solutions registry
+-> What does he mean SEPARATED FROM? 
+       https://github.com/kaspermarkus/universal/blob/c2e06fc75b304217620a1d945c6b069b8bc09d3e/testData/solutions/win32.json5#L1014-L1050
+        "settingsHandlers": {
+            "configure": {
+                "type": "gpii.windows.registrySettingsHandler",
+                "options": {
+                    "hKey": "HKEY_CURRENT_USER",
+                    "path": "Software\\Microsoft\\Osk",
+                    "dataTypes": {
+                        "NavigationMode": "REG_DWORD"
+                    }
+                },
+                "supportedSettings": {
+                    "NavigationMode": { // TODO: Weird supported setting - How do we provide such use case?
+                        "schema": {
+                            "title": "On-Screen Keyboard",
+                            "description": "Enable/Disable On-Screen Keyboard",
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                },
+                "capabilities": [
+                    "http://registry\\.gpii\\.net/common/onScreenKeyboardEnabled"
+                ],
+                "capabilitiesTransformations": {
+                    "NavigationMode": {
+                        "literalValue": 0
+                    }
+                }
+            },
+            "launcher": {
+                "type": "gpii.windows.enableRegisteredAT",
+                "options": {
+                    "registryName": "osk",
+                    "queryProcess": "osk.exe"
+                }
+            }
+        },
+        "start": [
+            "settings.launcher"
+        ],
+        "stop": [
+            "settings.launcher"
+        ],
+        "update": [
+            "stop",
+            "configure",
+            "start"
+        ],
+        "isRunning": [
+            "settings.launcher"
+        ],
+        "configure": [
+            "settings.configure"
+        ],
+        "restore": [
+            "settings.configure"
+        ],
+        "isInstalled": [
+            {
+                "type": "gpii.deviceReporter.alwaysInstalled"
+            }
+        ]
+    },
+
+
+       He wants to take the block named "launcher" and stick it out at top level in "launchHandlers"
+       Right now you could make the mistake of referencing a settingsHandler in a start block
+       "There's something here which doesn't really work very well".
+       "In this update block it's not an issue, but it allowed to reference a settings handler directly - it might say "settings.configure" here". If you referenced a launch handler ... [incomplete]
+       
+
+There is a new field output by the matchmaker in the payload for each solution named "active":
+    https://github.com/GPII/universal/pull/507/files#diff-2a48866aecf7478e0d32381b8179c327R823
+    
+The matchmaker's dispositions are now once again just "accept"/"reject" but there is now the possibility for the matchmaker to "accept" with an active:false flag indicating that an application should be configured but not put in the started condition.
+The active: flag may be missing in which case the application will just be left in whatever state of startedness it was on start/stop
+But shouldn't there need to be a special user preference which this matchmaker's decision can be based on?
+We used to have preferences such as magnifierEnabled etc.- these were removed from everywhere because it was ignored. However it looks like we want these back again.
+
+* How should special "Update" actions be modelled? And could we find a solution that would disallow free lifecycle actions in any of the lifecycle blocks (update, start, stop, etc)?
+Here is the code which handles "free lifecycle actions": 
+    https://github.com/kaspermarkus/universal/blob/c2e06fc75b304217620a1d945c6b069b8bc09d3e/gpii/node_modules/lifecycleManager/src/LifecycleManager.js#L539
+--> What are "special update actions"? Are they anything like "special cameras to see inside"?
+We will carry on supporting special "Update" actions as arbitrary lifecycle actions. We'll continue to allow these everywhere but strongly discourage them except where they are special actions
+which assist the external world in recognising a change of state. We want anything which causes a change of state to be encoded in a settings-handler like way.
+--> we are still on the hook to resolve this comment on line 546 of LifecycleManager.js                     // TODO: It seems we have never supported asynchronous actions
+
+* Implement the "liveness" support in the backend (https://github.com/GPII/universal/pull/567 )
+ -> Right now this is encoded implicitly across the entire solutions registry entry. You could look at the "update" action in order to determine how live a setting was (example is https://github.com/GPII/universal/pull/507/files#diff-cb7e20a6c5ff97630ea4518024a845b2R779 )
+ This reads: 
+        "update": [
+            "stop",
+            "configure",
+            "start"
+         ],
+--> we would naturally want to infer this automatically from a setting which was listed as "appRestartRequired"
+However, some applications implement a special update action (see above).
+We will make a new convention that the "update" block can be omitted completely, and in this case the system will infer one of the two common forms from the "liveness" setting. However, if the user requires a special arbitrary action during update, they can write the whole block explicitly.
+
+--> Decisions about this - 
+a) existing "liveness" pull to be merged, since this just contains solutions registry entries
+b) Rebase 507 on top of this, and continue with the work to automatically infer update blocks as decided above
+c) Put back all the "enabled" flags and put logic to interpret these correctly and feed into the solution "active" flags as output by the matchmaker
+ --> What we mean by this is that there should be a specially ontologised relationship between the "enabled" term name and the output solution "active" flag
+ --> We will start backing away from flatness slowly by saying that the names of the "enabled" settings are just derived from the common terms by postpending /enabled to them e.g. http://registry\\.gpii\\.net/common/magnification/enabled
+ Here is an "apptology" entry: https://github.com/GPII/universal/blob/master/testData/ontologies/mappings/flat-apptology.json5
+d) if poss, fix up arbitrary actions so they can be properly asynchronous
+
+
+ii) "Sharded ontologies" to replace the old application-specific terms.
+As we decided for https://issues.gpii.net/browse/GPII-2839 we are going to stop supporting arbitrary unontologied (unschematised) application-specific terms - not least because these could never be effectively edited, but also because this poses a security risk.
+In this implementation, the launch handlers are inside the settings handlers block.
+
+iii) Future matchmaker work, including
+
+Multi-layer adaptation stuff
+
+iii) a) Anything that we are/were on the hook for delivering for the next round of pilots
+
+- Parts of the multi-layer adaptation
+- Taking available resolutions into account
+

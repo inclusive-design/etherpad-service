@@ -1,0 +1,85 @@
+UPDATES
+
+Kasparnet:
+	* A gazillion emails
+	* Review of Justin pulls
+	* Review of javis pull: https://github.com/GPII/universal/pull/407
+	* Fixing up some of my old pull requests
+	* Looking into GPII-2535 ... Need to do a bit more triaging, but think it is a trivial fix
+
+Alfredo:
+	* Meetings about cloud infrastructure planning
+	* Wrapping up the new CI infrastructure - GPII-2448
+	* Troubleshotting the old CI
+
+Antranig
+	* I have been away
+	* Javi has merged my pulls to resolve CI test failures
+
+Cindy
+	* Started and put on hold of GPII-2436: need to clarify some questions with its use on windows before proceeding.
+	* Started on GPII-2511
+	* Some refactoring on the pull request for GPII-2435. Also addressing Simon's review comments on this pull request
+	* Helped with interviewing the new security developer
+
+Danail
+	*  working on PCP Client Jira tickets
+		*  GPII-2533 (set active preference set - in the menu; as a tooltip)
+			* on hold
+			* blocked by https://github.com/GPII/universal/pull/517 - PCP Channel
+		* GPII-2532 (open simple window which is to become the Control Pannel)
+			* started working on tests
+			* related https://github.com/GPII/gpii-app/pull/17
+	*  further infusion exploration - css, components...
+
+Giovanni
+	* GPII-2464 - Figuring out Kubernetes Ingress controllers in AWS
+	* Did some work enabling persistent data storage for CouchDB in AWS
+	* Planning work for Sticky PCP infrastructure
+
+JJ
+	* Working on pull requests:
+		* https://github.com/GPII/universal/pull/540
+		* https://github.com/GPII/windows/pull/136
+	* Talking with Steve Grundell about the approach we will have for MiMiC localization and started the documentation of that process.
+		* Progress will be tracked here: https://docs.google.com/document/d/1y7G56ZFYVgSCA2Pm7rvtoXqYMMGB8NUkkoyfGzJ9jr8/edit#heading=h.x31za32q57es
+
+Justin:
+	* Focusing on UIO+ bug fixes and integration with GPII
+		* Bug fixes
+			* GPII-2523: https://issues.gpii.net/browse/GPII-2523 ( fixed in GPII-2424 PR )
+			* GPII-2525: https://issues.gpii.net/browse/GPII-2525 ( in progress )
+		* Integration
+			* GPII-2501 PR - https://github.com/GPII/universal/pull/539
+
+Sandra:
+    - Lot of activity from some team member to support the pre-pilot, which started yesterday and continues next week, and the first pilot which starts on 11-Sep.
+    - Colin and I worked with Gregg to prepare Y3 milestones timeline, it's been shared with the team. 
+    - We may have found a candidate for the Security position, contract pending. 
+    - Also activity around supporting PCP with Memory. 
+
+Simon:
+	* Helped with interviewing security developer
+	* Doing some code reviews
+
+Steven Hens
+	* Holiday last week in Mount Shasta
+	* On site in LA this week observing and taking notes during the Pre-pilot days this week at the Hollywood AJC
+
+
+Tyler:
+    * Planning and estimating cloud support for Sticky PCP 
+    *  Stapling GPII components to Terraform/Kops infrastructure
+
+AGENDA:
+    * Ops on GPII in the cloud for Sticky PCP -- end-to-end tests
+	* Messy notes with some background/context: https://pad.gpii.net/p/2017-08-15-3ke4nn8 <---- that link is extremely hard to see fixed :)
+	* "production tests" are merged to master
+	https://github.com/GPII/universal/pull/530
+	http://lists.gpii.net/pipermail/architecture/2017-August/004627.html
+	* Antranig believes these tests can be pointed to public cloud components. If these tests pass, we have confidence that public cloud-based components are working correctly.
+		* However - in a future deployment of the GPII and preferences infrastructure, for example, once the "PCP with memory" goes into production, our live preferences server will not hold simply test preferences, but live user data, and there will be different requirements on these so-called "production verification tests" (which may well run periodically and repeatedly as a running health check of the system)
+		* Tests need modification to point to public cloud
+		* Must not rely on existing preferences in preferences server (unless we decide that the contents of certain snapsets will continue to be hosted in the cloud in this way)
+		* Must be non-destructive
+	

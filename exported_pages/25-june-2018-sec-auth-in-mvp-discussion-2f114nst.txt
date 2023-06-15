@@ -1,0 +1,42 @@
+25-Jun-2018 discussion with Gregg on these open items:
+ 
+ Present: Sandra, Antranig, Bern, Cindy, Colin, Gregg, Stegru
+ 
+Previous F2F notes at https://pad.gpii.net/p/torontof2f-june2018-hyd4nt9
+
+Previous meeting with Bern was based on document https://docs.google.com/document/d/1m0aga5fVHxOboIKIQS2xbN9baOchvHZsQWGuGlPEMx8/edit
+
+
+
+Open questions:   
+MViP:
+Installers 
+	Individual computer installer for MVIP for AJCs, Libraries, (and Community College pre work) [BUILD: Need specs from UX for how each install will obtain the unique ID number - and install credentials -- for BULK installs and for IMAGE installs and for Individual (non-technical user) installs MVIP - individual installs. MVIP[12] needs 
+	
+	
+Key-Ins - 
+	Morphic authentication [BUILD: Morphic Authentication need specs from UX] 
+		MVIP - Morphic email & Password (with anonymous option) - typed into PSP panel (when not keyed in) 
+
+Question: We have seen l/p fields in the QSS. How is this going to interact with the SSO-derived credentials that we are planning to be our primary credential for the CC rollout?
+Gregg: l/p itself should be part of the MVIP.
+
+Gregg: At the CC, the l/p will not show up because they will already be keyed in via the SSO
+
+Gregg: "Home keys" are currently MVP2
+
+Gregg: We are still working thorugh the process where we would ask them for username and password.
+
+Current plan is that at the point they hit "Save" in the QSS, they will be walked through a "Terms of use" document, and then get to allocate l/p credentials which will come to be associated with the same cloudSafe.
+SSO, USB NFC is currently key-in 
+Social media OAuth, l/p are called "authentication schemes" which will cause log-in
+
+After January we will have key-in plus some other mechanism - biometrics, voiceprints etc. These are in "Future" category.
+
+
+MViP [i2]:
+Key-Ins - 
+	G-AP authentication <Moved to i2> Windows Log-in, [BUILD: This is critical path, will be significant work package. Need to start consulting with IT to understand the requirements.] 
+LogIn with OAuth (social network user accounts such as Facebook and Google and Twitter) [BUILD: Need specs from UX]
+
+Security Phases: https://docs.google.com/document/d/11O7yfXtqkObHSFfEOBQyR1cOkxVCVR8MbeWZCVMXAjo/edit#

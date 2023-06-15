@@ -1,0 +1,97 @@
+Updates:
+
+Sandra:
+     - Continuing to monitor progress towards an official HST build. 
+     - Catching up on Core 2 content and status
+
+Alfredo:
+	* Troubleshooting bugs at the CI
+	* Building Vagrant boxes: https://gitlab.com/amatas/packer-win/pipelines/7158697
+	* Some HST stuff
+	* Meetings
+		* Devops planning
+
+Antranig:
+	* Working on improving error support for the Nexus
+	* Meetings about web adaptation with the Chrome Extension, log collection and transmission
+
+Cindy
+	* GPII-2330: Created a list of how UIO enactors can work better with general websites including CalJobs
+	* Web personalization meeting
+	* Continuing researches and work on the chrome extension
+
+Giovanni
+	* Various maintenance tasks (confluence, jira, jenkins upgrades)
+	* Helped reproduce some issues with VirtualBox 5.1.16 (it seems 5.1.18 fixes the regressions)
+	* Deployed a Kubernetes test cluster on IDRC servers -- currently breaking it apart and comparing low-level components and researching best practices
+	* Deployed a Kubernetes test cluster on AWS cloud -- used as basis for comparison (not currently running to avoid costs, spinning it up on demand to investigate as needed)
+
+ Han
+	* Finished final investigations report for Sony Vaio Tap 21 systems
+		* https://docs.google.com/a/raisingthefloor.org/spreadsheets/d/1eJMgqDc0qwZYDTZGmufPbjvsx5l_1t5kEcKbWnzYuzs/edit?usp=sharing
+	* Keep maintaining Sony Vaio Tap 21 systems for AJC Pilot
+	* Prepare Deep Freeze software investigation (GPII-2308)      
+
+Javi
+	* HST'ing
+		* "Fixing" the tray icon for gpii-app GPII-2312 https://github.com/GPII/gpii-app/pull/10
+		* Created pull request for GPII-2334 https://github.com/GPII/gpii-wix-installer/pull/25
+	* Chrome extension work
+		* Research on GPII-2323 - Investigate Chrome extension options for web personalization
+		* Started taking a look at GPII-2342 - Alternatives to distribute/install a chrome extension
+
+JJ
+	* Still researching and development a first version of UI Automation service
+	* Trying to collecting notes during development, but no recopilation yet.
+	* Investigating how could fit the future version UI Automation for GPII during service
+	development.
+
+Joseph
+	* no GPII this week; working on IDRC Privacy project.
+
+
+Kavya:
+	* Testing new HST build from Javi and reported few issues
+https://issues.gpii.net/browse/GPII-2345
+https://issues.gpii.net/browse/GPII-2339
+	* Testing core 1 match maker
+	* Updating HST plan and core 1 Test plan.
+
+Michelle:
+	* P4A reporting
+	* Will continue on the app in April
+
+Simon
+	* Did some reworking of my Nexus Science Lab dashboard
+	* Trying out experiment ideas for our P4A demo video
+	* Working on documentation for recent Nexus work
+
+Steve grundell;
+	Making a service that ensures GPII is always running: GPII-2338
+
+Tony:
+    
+	1. Working with the Windows VM, after the discussion on Monday, tracked down two problems (with workarounds) and got the tests working, at least from my particular host VM.
+	1. Succesfully got the "code coverage" PR for infusion working: http://the-t-in-rtf.github.io/infusion-coverage-20170320/
+	1. Working on converting gpii-pouchdb to also use Windows for its tests (and also attempting to reproduce a Windows 7 problem Antranig is seeing).
+
+Tyler:
+    * Ansible work is done. We now have CI for Ansible roles. One example: https://ci.inclusivedesign.ca/job/ansible-ansible/
+    * Terraform. Learning about VPCs, SGs, IGWs, and other AWS TLAs
+
+
+
+Agenda:
+    Meeting about automation feature integration (JJ)
+	* Joseph, middle of next week.
+	* stegru
+    
+    Continue conversation about improved enactors for UIO in the Chrome extention (Cindy)
+	* where is the proper location on the web page for the table of content enactor to insert the container for rendering the toc
+		* Possiibly:  If the page uses a <main> element (or a role="main"), use that element as the basis for the ToC.
+			* the <main> is to desiignate the mian content of the page, not all the stuff around the it; not the banners, not the breadcrumbs, etc.
+		* Create a mapping table to map urls with their main content containers identified by css selectors or ids etc
+		* Javi points out an existing table of content chrome extension: https://chrome.google.com/webstore/detail/table-of-contents-crx/eeknhipceeelbgdbcmchicoaoalfdnhi?hl=en
+			* It doesn't work well with some websites but works with others
+			* It needs user interaction to trigger the show/hide of toc
+

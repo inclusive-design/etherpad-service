@@ -1,0 +1,49 @@
+UIO+ is a browser extension that enacts settings, on a GPII enabled machine, in the browser. These will only be settings for that could not be applied by the OS or other AT running on it. Which settings to apply via UIO+ will be determined by the “match maker”?
+
+(See: Browser Exensions wiki page https://wiki.gpii.net/w/Browser_Extensions )
+
+Browser extensions or UIO enactors:
+
+https://issues.gpii.net/browse/GPII-2323 
+https://issues.gpii.net/browse/GPII-2324 
+
+Settings: (in order of priority .... for now!! :o) - Ale: I suggest to align with current windows10 features onboarding priority list. -> https://docs.google.com/spreadsheets/d/1vhhzs0pLCYPyLDPXpWNVUrwVvTv8IoGhRHsUUiA7gJk/edit#gid=479045385 In that way we will have both windows feature and browser features at the same time, WOW effect++ (though this requires that the kasparnet actually gets his shit together wrt the matchmaker) Yes, there's many loose ends to tie :). Colin made the point that we should not drop items in the extension simply cause it's hard to do in windows - some features 
+1. Text Size - can we use the browsers zoom feature - ( see: "display.screenEnhancement.screenScale" term)
+2. Line spacing
+3. Colour contrast
+4. Character spacing
+5. Larger links and form controls
+6. TTS read and highlight all text on the page (with play/pause button and auto-read mode)
+7. TTS read and highlight selected text
+8. Table of contents - talk to the UX team about where on the page it should be put.
+9. Dictionary
+11. Simplification
+12. Syllabification - splits words into syllables - see onenote learning tools for an example, but there may be webservices we can use
+
+These settings are coming from this document (https://docs.google.com/document/d/1ZF6FPC-Lk-ocF8g_H63MDPl6G01FUyRWIBVsdYI_Sd0/edit#)
+
+Enacting with other browser extensions:
+	* can only change settings of other extensions that you own (ie. have developed and can make custom channels)
+		* could also work if the extension integrated with GPII
+	* extensions can enable/disable other extensions, so if an extension applies its feature on "enable" we can use it for enacting the setting 
+	* the user needs to initiate an extension installation, could possibly be done as part of the GPII app install.
+	* should be able to install encacting extensions on demand, but this will be lower priority.
+
+We want to get an Edge extension working, but depending on the ease/learning curve/justins mood, we might choose to make the extension work for google chrome first and then port it to Microsoft edge. Target latest MS Edge in the Creators update?
+
+Another potential case is for when the extension is run on a machine that isn't GPII enabled. In this case it could be like the standard UIO, including the adjuster panels and store locally, or connect to the cloud based flow manager. (this isn't priority for the work for the summer).
+
+The installation part of the extensions could be responsability of IoD.
+
+Timelines - Due Dates:
+    Pre-pilots: 3rd week of August at the latest ( should be done before hand so that it can go through testing and etc. first ).
+    
+Next steps:
+	* Look into Javi and Cindys extension
+	* Start by using other browser extensions for enacting on Chrome
+	* Add any additional enactors through the browser ( similar to how standard UIO works )
+	* Port to MS Edge
+
+
+
+

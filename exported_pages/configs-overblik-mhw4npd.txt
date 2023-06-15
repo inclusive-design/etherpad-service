@@ -1,0 +1,13 @@
+PS - Prefs server (OAuth from port X)
+	1. Reading from FS
+	1. Reading from URL (couchDB)
+
+FM - FlowManager
+	1. Base - fm, mm, onto
+
+DR - Device Reporter
+	1. Dynamic
+	1. From FS
+
+OAuth - 
+

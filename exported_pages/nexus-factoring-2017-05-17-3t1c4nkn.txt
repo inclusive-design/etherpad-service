@@ -1,0 +1,33 @@
+Move setModel / applyModelChanges functions from nexus-client into Infusion core
+
+https://github.com/simonbates/nexus-client/blob/master/src/NexusWebSocketBoundComponent.js#L144-L193
+
+- Move code to Infusion DataBinding.js
+- Can return array of changes rather than firing them forthwith
+- This array can then be sent to https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/DataBinding.js#L1041
+- Ancient lineage is to the primitive "fluid.receivedChangeToFirable" utility at https://github.com/amb26/fluid-authoring/blob/FLUID-4884/src/shared/js/AuthorUtils.js#L86
+- Perhaps a signature that looks like fluid.modelPairToChanges(value, oldValue, path) -> [Array of ChangeRequest]
+- We should take a look at the bind-model WebSockets endpoint in terms of its asymmetry - given it accepts ChangeRequest objects but simply receives model values
+-- This arose because of the corresponding asymmetry in the ChangeApplier API, which may indeed also be not quite what we want - bearing in mind that in future we expect to have a richer variety of change events that can account for changes in more subtle ways - e.g. array insertion and deletion events
+-- Note that this asymmetry is not complete - an array of changes do actually appear in the signature of modelListeners, it's just that they are not commonly used 
+-- TODO file JIRAs about these asymmetries
+-- final function name: "modelPairToChanges"
+
+Refactor co-occurence engine and Nexus
+
+Options for co-occurence engine:
+    1) Component added to Nexus
+    2) Mix-in grade
+
+nexusComponentRoot: https://github.com/simonbates/nexus/blob/GPII-2177/src/Nexus.js#L18
+
+As per https://github.com/amb26/fluid-authoring/blob/FLUID-4884/src/server/js/VisibleNexus.js#L55 , we find ourselves using option 1), and attaching these components as subcomponents to the machinery which they decorate. The pattern here also shows how the subcomponent and parent in these arrangements get to find each other.
+We suggest splitting the co-occurence engine work in two - 
+i) A pull request against the nexus proper which fixes it to focus on just a particular section of the component tree rooted at a "nexusComponentRoot"
+ii) A completely separate repository which then houses the co-occurence engine targetted at such a Nexus, which is expected to be deployed as a subcomponent (there can also be a helpful utility grade "nexusWithCoOccurenceEngine" which does just this)
+  - This only consumes its "target nexus" to the extent that it reads what its componentRoot is
+  - We simplify the "component root" concept to simply consist of a nominated path/component in the tree
+
+See: https://github.com/amb26/fluid-authoring/blob/FLUID-4884/src/server/js/VisibleNexus.js#L125
+
+

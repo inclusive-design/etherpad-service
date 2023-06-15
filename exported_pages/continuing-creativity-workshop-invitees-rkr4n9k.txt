@@ -1,0 +1,133 @@
+	* Dr. Antranig Basman
+	* "John and his partner from Paris, the composer guy who fiddles with OSC and the dancer"
+	* Philip Tchernavskij
+	* Amy Twigger Holroyd
+	* Clayton Lewis
+	* Luke Church "and his own dancer friend"
+	* Susanne Bødker bodker@cs.au.dk
+	* Olav W. Bertelsen
+	* Clemens
+	* Rasheedah Philips
+	* James Noble "and the other New Zealander"
+	* Taeyoon Choi  from the School for Poetic Computation
+	* Stephen Kell
+	* Dick Gabriel?
+	* Elizabeth Sanders
+	* Ramsey Ford - Founder of Design Impact (co-designing products and services with underprivileged communities)
+	* Sina Fallah - Ryerson Smart Lab (Music therapist for children with cognitive disabilities)
+	* Brooke Brandewie or anyone else from LiveWell Collaborative (design research for 65+ population)
+	* Izabella Pruska-Oldenhof
+	* Jeanne van Heeswijk 
+	* Jan Derbyshire
+	* Carolyn Van (https://twitter.com/CarolynVan)
+
+
+Performances/Exhibitions
+	* Adam Tindale
+	* Izabella Pruska-Oldenhof
+
+
+Simon's List
+
+From the academic end-user programming community:
+
+- I found these resources that might be helpful in identifying people
+   - "The State of the Art in End-User Software Engineering" http://repository.cmu.edu/cgi/viewcontent.cgi?article=1306&context=hcii
+   - EUSES (End Users Shaping Effective Software) Consortium http://eusesconsortium.org/
+- Alan Blackwell
+   - Or maybe some of his past/current students: http://www.cl.cam.ac.uk/research/rainbow/people/
+- Margaret Burnett
+   - http://web.engr.oregonstate.edu/~burnett/
+   - Though her GenderMag [http://gendermag.org/] project is maybe a little odd -- am I right in remembering that either you or Jutta had some interaction with her or her work during a visit to Microsoft?
+- Brad Myers
+   - Or one of his students
+   - http://www.cs.cmu.edu/~bam/
+- Andrew Ko
+   - http://faculty.washington.edu/ajko/
+
+Maybe someone from Mitchel Resnick's Lifelong Kindergarten group?
+
+- https://www.media.mit.edu/people/mres/overview/
+- https://www.media.mit.edu/groups/lifelong-kindergarten/people/
+
+- Natalie Rusk
+   - http://web.media.mit.edu/~nrusk/
+- Moran Tsur
+   - https://morantsur.github.io/
+
+Maybe someone from the Y Combinator HARC group?
+
+- Alan Kay and Bret Victor are here
+- This was the group that Vi Hart's eleVR group was part of
+- https://harc.ycr.org/member/
+- https://harc.ycr.org/project/
+- Recent work on Dynamicland looks pretty interesting
+- https://twitter.com/Dynamicland1
+- John Maloney
+   - https://harc.ycr.org/member/john_maloney/
+
+Evelyn Eastmond
+   - Was a member of eleVR with Vi Hart
+   - Worked on Scratch at MIT
+   - http://www.evelyneastmond.com/Evelyn%20Eastmond%20Full%20CV.pdf
+   - http://elevr.com/portfolio/future-programming-interfaces/
+   - http://elevr.com/democratic-design-in-anyland/
+
+Jie Qi
+   - Founder of Chibitronics with Bunnie Huang
+   - http://technolojie.com/
+   - https://chibitronics.com/about/
+
+Taeyoon Choi
+   - Co-founder School for Poetic Computation
+   - http://taeyoonchoi.com/
+   - http://sfpc.io/
+
+"Creative coding" world:
+
+- John Maeda
+   - Led the "Design By Numbers" project that Processing grew out of
+   - https://en.wikipedia.org/wiki/Design_By_Numbers
+   - Though it looks like he is not involved in academia much any more: https://en.wikipedia.org/wiki/John_Maeda
+
+- Daniel Shiffman
+   - Teaches Processing
+   - http://shiffman.net/about/
+
+Authorship/creativity within video games might be an interesting angle
+
+- Minecraft is a big thing right now
+   - Not sure who might be good to discuss Minecraft though
+   - I did find this edited book that might be a good resource to look at, if this would be interesting:
+   - "Understanding Minecraft: Essays on Play, Community and Possibilities (Minedraft) Paperback" by Nate Garrelts   http://www.mcfarlandbooks.com/contents-2.php?id=978-0-7864-7974-0
+
+- Noah Wardrip-Fruin
+   - https://games.soe.ucsc.edu/people/noah-wardrip-fruin
+
+- Gita Jackson
+   - Currently writes for Kotaku
+   - Writes on the topics of The Sims, game avatar creation tools, house decorating apps, fashion apps, and fan culture
+   - https://kinja.com/gitasj
+   - Recent example: https://kotaku.com/anime-fans-are-making-their-favorite-characters-out-of-1820507366
+   - She might not be the best person as she isn't from academia and her Kotaku posts are not super in depth but she has written longer pieces before Kotaku
+   - Example of longer-form: https://boingboing.net/2015/03/20/we-are-not-colonists-2.html
+   - There might be someone from academic games criticism that might be a better fit
+
+- Zack Barth
+   - http://www.zachtronics.com/
+   - Created Infiniminer, one of the games that influenced Minecraft
+   - He creates puzzle-solving games that involve creativity in their solving
+   - Though the creativity does tend towards creativity of the feel of engineering and computer programming
+   - I'm playing SpaceChem at the moment
+   - Talk at Google: https://youtu.be/Df9pz_EmKhA
+
+Algorithms/AI as authors/authorship assistants:
+
+- Mike Cook
+   - http://www.gamesbyangelina.org/
+   - http://ccg.doc.gold.ac.uk/michaelcook/
+   - Organises the annual PROCJAM coding jam
+   - http://www.procjam.com/the-procjam-team/
+
+- Gillian Smith
+   - http://sokath.com/main/

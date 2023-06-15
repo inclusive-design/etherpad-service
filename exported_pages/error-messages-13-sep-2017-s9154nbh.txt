@@ -1,0 +1,19 @@
+
+
+(Annoying note from Brendan: the NIST 800-53r4 requirement I mentioned is SI-11: "The information system generates error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries; and reveals error messages only to [...essentially they mean us and not users]." This is essentially in line with user-friendly errors that don't scare end-users, but I wanted to mention it.)
+     
+Where is the original requirement?
+
+Master Timeline -> Errors
+This is in a Spreadsheet -> in Google Drive -> https://drive.google.com/drive/folders/0B7GlZD-XKf0wblNWSDIyQVRJWGc
+Row 44 for the UX team (TBT means "deliverables to build team")
+     
+What are the error conditions of interest?
+	"Worst Case Scenarios": https://docs.google.com/document/d/1Z2ppb4zYrNjFaTfIb3ZAePb22h8BaT0MIUh-lhsekRs/edit
+What is the wording? Might not be important due to the NIST requirement - "Something broke, quote 5783983 to tech support"
+Implement in the GPII-app
+Making the architecture aware of which are the error conditions.
+Look at the doc we did for the HST
+They need to be translated.            
+
+https://issues.gpii.net/browse/GPII-1982

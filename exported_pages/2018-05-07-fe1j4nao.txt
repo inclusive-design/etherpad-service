@@ -1,0 +1,73 @@
+From last week: 
+	- Team will meet this week to start discussing estimation of the effort. 
+	
+	https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&view=planning&selectedIssue=GPII-2962&epics=visible&selectedEpic=GPII-2942
+	
+Agenda:
+    * Take-home test for Shadi?
+		* Reduces the stress of live exercises, gives a chance to show some conceptual knowledge
+		* The example Sergey shared might be (he thinks) too theoretical, but the idea would be to reduce theoreticality and introduce a Kubenetes exercise
+		* We need to decide if we should do this kind of test, and what the practical exercise should be
+		* https://raisingthefloor.slack.com/files/UACA9FSUT/FAHDHMTM3/sample_test.pdf
+			* Let's keep the questions 1,2 and 4
+			* Change question 3 by a test based on Kubernetes.
+		* Tyler wants to be clear about process changes: so, how is this better?
+			* Comfort—less drastic first step than diving into a hands-on activity
+			* 2 hours to finish the test
+			* Sergey's idea is that the technical test is the next thing a candidate gets immediately after speaking with Sandra
+				* Also, this gives us something we can ask questions to the candidate about in the first technical interview
+		* Split the take-home test in two parts: theoretical and technical. First part just after the first round, and the second part just after the practical part.
+		* ARE WE SURE WE'RE DONE? NO!
+			* Tyler has just volunteered to write the Kube question
+			* Alfredo is creating our own version of the questions doc (in Google Docs)
+				* https://docs.google.com/document/d/1C2Hy3rMG4K6iM9EldjRhbmY6FzXoRsTMXncpYA6qepQ/edit
+			* Once all three of us/them gives the thumbs up, Sandra will SHIP IT to Shadi and Valeriy
+		* ARE WE SURE WE'RE DONE? MAYBE!
+    * Questions about requirements / goals of estimation exercise
+		* We started doing an estimation exercise on the backlog
+		* HOWEVER, we have some questions about the goals here
+		* HERE IS our BACKLOG: https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&view=planning
+			* A lot of tickets at the bottom of the backlog created by Brendan regarding AWS
+				* Are all these tickets necessary to implement if we move to GKE?
+					* Who can decide this? Could we make recommendations ourselves? (or do we need to go back to Brendan?)
+						* 
+		* Suggestions:
+			* Write down assumptions, even if they're weak or premature
+			* Proceed with what we have, requirements-wise and process-wise. Evaluate as we go and consider changing process.
+    * Performance questions from Gregg
+		* What does it mean to express "expected community college load?"
+			* Colin's perspective:
+				* We need to create a use model for scaling
+					* This should express load as requests per second or other metrics that TAKES TIME INTO ACCOUNT
+					* This model should be determined between us and someone who is familiar with the full lifecycle of the application (from key in, through typical use, to key out)
+				* I believe this will represent significantly 
+		* Need more data from real deployment, e.g. pilots
+		* Need help from developers familiar with request lifecycle: Cindy, Javi, Antranig
+		* Local FM -> Cloud FM exists?
+			* Colin: ..............yes, it exists. 
+			* The connection between PSP and CLOUD flow manager, however, does not yet quite exist, so we may be missing some data regarding its load (however the integration lifcycle has been implemented)
+		* In general, there are serious concerns about the scope of the numbers Gregg has presented regarding scalability
+			* our recommndation is:
+				* a) we need a model of use that captures "typical use"
+				* b) we need to ensure that this model expresses expected use over a defined period of time
+				* c) we need to be realistic and incremental about testing scale
+	* New topic: Steve Githens sent a new task that he's working for an August deadline
+		* 
+Staffing update: Screened Valeriy Vislobokov, recommend technical interview. 
+
+BREAKING: ALFREDO SAYS COLIN CAN LIVE IN ALFREDO'S HOUSE WHEN ALFREDO HAS A HOUSE - HAHAHA now I have a baby sitter!!!
+
+
+Closed tickets:
+	* GPII-2797
+	* GPII-2798
+	* GPII-2799
+	* GPII-2800
+	* GPII-2801
+	* GPII-2991
+	* 
+
+Updated tickets:
+	* GPII-2947
+	* GPII-2802
+

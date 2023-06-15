@@ -1,0 +1,77 @@
+Preferences Service for FLOE
+13 Oct 2020
+Attendees: Joseph,Gregor, Cindy, Gio, Antranig, Javi, Justin, Colin
+
+Note: this is a copy of a pad.gpii.net
+	* The original: https://pad.gpii.net/p/preferences-service-meeting-13-oct-2020-esl4npk?&auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImNsb3duIiwia2V5IjoiY2tnODA5enphMDAwazRtcm43cTVxcHo0MyIsImlhdCI6MTYwMjU5NTk5NX0.8H2xDCfaxiVWKa2SlQzYNHn-NK0bCDi7we-YYkACe3A
+
+Wiki page reviewing the preferences service: https://wiki.fluidproject.org/display/fluid/Review+of+Preferences+Service
+
+Questions:
+	* What purpose(s) or project(s) need a Preferences Service?
+		* Two motivations
+			* UI Options should be portable -- you say what you need once, and computers set themselve up for you based on that
+				* exemplify the "write your preferences once model"
+			* Longer term, "Science of the self" (CC) https://wiki.fluidproject.org/display/fluid/FLOE+Infrastructure+for+Individualized+Learning
+				* Having the ability to create information about yourself and save them and use them everywhere
+				* Life Long Learning, for example
+		* (CC) SmartWork: needs a way to store (non-Morphic, i.e. no Morphic installed on your computer, but a website is integrated) preferences centrally
+	* Structure of the preferences
+		* Keys and PrefsSafes Data Model
+		* Old documentation: https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+		* We may want to consider a flatter structure, just key-value pairs
+		* Why multiple preferences sets? The idea was that an individual may have different preferences in different contexts, e.g. in the morning vs. in the evening
+		* (AB) AB thoughts - we can axe the outer layer of containment in the prefs document "ontologies"
+		* (AB We should probably keep the inner layer of containment since it can often be useful to stuff unexpected framing into a document later
+		* (AB) Suggested format from the start of the example:
+
+{
+    "prefsSets": { (JS) // was "contexts"
+            "default": {
+                "name": "Default preferences",   // user defined name
+                "preferences": { // At this point basically a key-value store, even if the values are pretty composite
+                    "common/highContrast": {
+                         "enabled": true // Fix this long-standing issue that was on the table when GPII closed - "enabled" should be an ordinary nested preference
+                    },
+                    "applications/com.freedomScientific.jaws": { // Note: we should still attempt to align here with the final format of the GPII solutions registry, e.g. win32.json5 since there is a lot of learning banked in here
+                        "ENU-Message.Rate": 140,
+
+
+
+	* What database?
+		* GPII used CouchDB, but wanted to move to something else
+			* (CI) The latest CouchDB database schema from GPII: https://wiki.gpii.net/w/Enhanced_Data_Model_for_NOVA
+			* (CI) The initial DB design and future plan from GPII: https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+			* (AB) This in outline under "Future Data Model" (from Githen's pull request) seems to pretty closely resemble what we will want at the database schema level since - 
+				* (AB) We will, for example, for "UIO portable preferences" to support the standard cases of authentication, either i) our own signup with a literal username and password, ii) OAuth from a well-known credential supplier such as Google or Facebook
+				* (AB) We have the basic algorithms and UI for this already written in basic work done by Atkins and Githens, although of course targetted at CouchDB
+		* Can one database satisfy?
+		* Or, should support multiple databases?
+		* (AB) The end result of our "Database Evaluation Exercise" - https://docs.google.com/document/d/1IB4CLtrEong6eBVNlaOaxXI2lM-Zd92hhOgomBMPs8Y/edit#heading=h.hcgqfr83yugz
+			* (AB) Our criteria are not necessarily the same now as they were then, but IMO (AB) the conclusion is still reasonable
+		* Multiple databases: one for the user accounts and one for the preferences.  But, they share the same codebase.
+	* OAuth2 machinery is integrated with the Flow Manager
+		* need to disentangle
+	* Serverless http  – suggested by Antranig in #fluid-work
+		* use kettle?  probably not.
+
+
+Actions:
+	* (JS) MOVE THIS PAD OVER TO FLUID WORK
+	* (JS) Cindy to update the diagram of the Keys and PrefsSafes data model
+			3. DONE: https://github.com/fluid-project/preferencesServer/blob/main/doc/dataModel.md#todo-list
+	* (JS) Set up a development space on Github for this effort, within fluidproject
+		* https://github.com/fluid-project/preferencesServer
+		* (JO) Is this a fork, or new repo?
+			* (AB) My suggestion (AB) is for a clean new repo, with some bits of cut and paste if necessary
+		* (JS) From the Zoom chat log, Javi said,"I'd say move things before the current GPII codebase is destroyed. (JH) - I was referring to anything gpii-related (wiki, pad), but don't think the repos will be destroyed
+			* (AB) I don't think (AB) there is any risk of the repos to be damaged, but I don't think we need continue to work with them (JH) +1
+	* (JS) Look at solutions registries for how to store preferences
+		* (JS) win32.json, especially use the UIO solutions registry entry as an prototype
+	* (JS) Find the web-based OAuth code and JIRAs that was deleted - (AB) https://gpii.atlassian.net/browse/GPII-2838
+		* (AB) Note that the OAuth code which is currently in master is "the wrong way round" - the wrong grant type to integrate with external OAuth providers such as Google/Facebook
+		* (JS) GPII-2838, is the primary source.
+	* (JH) Replace CouchDB with Postgres
+	* (JH) Will only have one preferences server on the cloud rather than having 2 servers (one is CBFM and the other is prefs server)
+		* (JS) My understanding was there were three servers: (1) CBFM that had an (2) OAuth2 service as a subcomponent, and a (3) prefs server
+	* (JH) Potential to reuse the same code base for the SJRK server if we use a more generic name than "prefsSets"

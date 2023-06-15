@@ -1,0 +1,35 @@
+gpii.express.user.verify.resend
+    id 396, at path "tests-bcg0f1bs-122.express.api.verify.resendRouter"
+ has 
+EXPANDER 1: invokeFunc
+            expander: {
+                funcName: "fluid.stringTemplate",
+                args:     ["%userDbUrl/_design/lookup/_view/byUsernameOrEmail?key=\"%email\"", "{that}.options.couch"]
+            }
+
+--> getForComponent (verify, options.couch)
+            
+Causes fetch for gpii.express.user.api - because this block arose through an options distribution
+id 304 at path tests-bcg0f1bs-122.express.api
+
+EXPANDER 2: invokeFunc - context is api
+    couch: {
+        port: 5984,
+        userDbName: "users",
+        userDbUrl: {
+            expander: {
+                funcName: "fluid.stringTemplate",
+                args:     ["http://localhost:%port/%userDbName", { port: "{that}.options.couch.port", userDbName: "{that}.options.couch.userDbName" }]
+            }
+        }
+    },
+    
+
+--> getForComponent(api, options.couch.port)
+    This triggers "get" for {that}.options.couch.port on the api component
+    
+
+EXPANDER 3: invokeFunc - THE SAME EXPANDER AGAIN
+
+
+

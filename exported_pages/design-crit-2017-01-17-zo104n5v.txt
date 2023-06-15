@@ -1,0 +1,95 @@
+Project Description: https://www.certifiedforaccess.ca/content/business-innovation-guide-inclusive-design-and-accessibility-bigidea
+
+
+=============== NOTE =================
+This document has been moved to the FLUID Wiki. Please make any changes on the Wiki - not on this document.
+https://wiki.fluidproject.org/pages/viewpage.action?pageId=122847260
+============= END NOTE ===============
+
+
+Summary:
+    "We are building a curated learning experience for business, obligated organizations, community groups* on Inclusive Design."
+    *for the exact wording of groups, see the Certified for Access project description.
+
+What do we mean when we say we are making an "OER"?
+* consolidation of content (like the Design Toolkit landing page)
+* reframing
+* better entry points - not buried in a thicket of the "Wiki garden"
+
+What do we already have?
+https://docs.google.com/drawings/d/1xIhesOQroKDmyQQmBFf2f7uBssZmM4GO_Lu_Wirb95Y/edit?usp=sharing
+
+Possible Entry Points:
+    - document accessibility (ADOD), WCAG, ARIA
+    - The ID Guide should be presented as a resource to be used - some thought may need to be given to re-present some parts 
+    - Engagement: Concrete -> Perspective Shift. How might we strcuture / present / strategize to guide them along the path?
+    - Tools section in the Guide may be the concrete things business audience are looking for immediately
+	    - In the Tools section there's little going back to other parts - perhaps enhance this.
+
+- ADOD:
+	- mostly up to date: includes Word, Acrobat
+	- the value is in its specificity. Keeping it up to date in important.
+	- perhaps a redesign at some point.
+	
+Specifications / Standards
+	- ARIA  -  https://www.w3.org/TR/html-aria/
+		- should we make something like this?
+
+Metadata - where does it fit overall? Do we want to make this more prevalent?
+
+DIY bubble:
+    - micro computers
+	- prototyping tools
+		- cardboard prototyping
+		- upcoming sonification prototyping tool
+		
+Other resources to include:
+	    - data visualization, sonification, dealing with big data
+
+Questions:
+	* Do we have any resources on dfinining "Customers"? (i.e. there may be no typical "customer" ... getting groups to think about their clients/customers/partners as a spectrum)
+		* customer service - personalised options e.g. chat vs. phone
+		* 
+    * How do our partner projects fit into this? i.e. Pressbooks under DIY? Sapling Learning  as a case study?
+    * How do we present the idea that going beyond the spec, standard, etc is good and encouraged?
+	    * it may be implicit in some of our resources (i.e. Design Guide) but it may need to be more explicit.
+	* How do we enable updating, adaptations, translations?
+		* Are there tools already that can be used?
+	How does this work with Razorfish?
+		Razorfish will be making the Big Idea website
+* Do we have a compiled list of examples of things like Good grips which are good examples of ID? Does one exist already?
+	* http://www.accessiblesociety.org/topics/technology/eleccurbcut.htm
+		
+* Look to quantify the benefits of ID:
+	Example:    http://www.martinprosperity.org/media/ReleasingConstraintsAccessible.html
+	- David Lawson
+
+What are we building:
+    * a resource / compilation in some digital form which will then be incorporated somehow into the Big Ideas website (which Razorfish is making).
+    * additional scaffolding and content required to flesh out obvious gaps.
+    * Changes to improve access:
+	* info re-architecture (i.e. for the ILDH?)
+	* Redesign (i.e. for ADOD?)
+
+	
+1. "Smaller" resources that can be integrated into our existing resources
+2. Stand-alone resources which need increased visibility e.g. re-design, or creation of doc site etc
+3. Consolidate/describe our resources from BIGIDeAS perspective (redefine entry points etc)
+	
+Other resource:
+    * presentations / slide decks / videos / other media?
+    * concrete examples are awesome
+	    i.e. web chat for customer service
+	* case / success studies: Oxford Properties (they were at DEEP talking about how there were changing)
+		*this would contribute to encouraging businesses to go beyond the standards etc
+	* Resource / idea sharing:
+		* how can this be done within groups: what tools are available? What are the benefits.
+	
+Links:
+    http://www.adaptivedesign.org/ - DIY 
+    http://edgelab.ryerson.ca/
+    
+    
+Do we have any Use Case Scenarios for our audience?
+* Talk to David and Jess
+

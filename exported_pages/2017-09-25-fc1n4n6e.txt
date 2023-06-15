@@ -1,0 +1,18 @@
+Agenda:
+    - Brendan's Security concerns with the "minimum of the minimum" (Colin and Brendan discussed last week)
+		* https://issues.gpii.net/browse/GPII-2017
+		* https://issues.gpii.net/browse/GPII-2014
+		* https://issues.gpii.net/browse/GPII-2015
+	for kops, there's an official addon for ELK: https://github.com/kubernetes/kops/tree/master/addons/logging-elasticsearch
+    - Tyler's demo
+    
+   
+   Notes:
+       - Summary of the logs as of today:
+           
+           
+           
+Next Steps:
+    - Colin and Brendan will define what logs need to be collected
+    - Will then need to estimate the effort
+    - Reset the schedule

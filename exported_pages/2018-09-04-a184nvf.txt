@@ -1,0 +1,39 @@
+Agenda:
+    - Reqs from Richmond library pilot (early draft, we haven't received the formal specs doc)
+	     - AWS is the backup in case GCP is not ready.  
+		- Sandra needs to check on the status of the dataloader from Joseph. 
+		- Checkpoint about go-nogo with GCP in next week's team meeting
+		- Even if staying on AWS, there's work that Javi needs to do to move code to master branch
+		
+    - Confirming schedule for FERPA-compliant
+	    - Nov 2nd will be the date to be FERPA compliant. 
+	
+    - SSP (-Lite?)
+       - Let's start writing up our security procedures/etc
+       - Team agrees to follow established workflow (write docs / README sections / etc as needed, avoid spending effort on more formal documentation)
+    - All the items left in the parking lot of the stand up
+
+
+
+Testing discussion started here: https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-meetings-iqt4nbr/pad/view/2018-08-27-j9h4n0j
+* Sergey is close to merging Locust-based smoke tests -- POSTPONED UNTIL THIS HAPPENS. Sergey's PR (https://github.com/gpii-ops/gpii-infra/pull/93) collects data that informs this discussion.
+* There's lots of high-level stuff to discuss but unclear when to do this, what it will impact
+
+GPII-3250 - Prewarming indices?
+* Yes, let's do something to make this work better
+* dataloader might be a good place to do it
+
+GPII-2865 - Testing Approach/Calico Network Policies
+- +1 for Calico
+  - Network security policies can be applied on a Pod level
+- Not sure about testing. Try to implement the simplest tests.
+- RSpec is too low level? Maybe serverspec? goss? (https://github.com/aelsabbahy/goss)
+- There are questions re: to integrating the automated testing framework with terraform code
+- Need another ticket for instance level security
+
+What next? (Stepan)
+
+Logging (formerly GPII-2954) next steps?
+* https://issues.gpii.net/browse/GPII-3324 GPII-3235 GPII-3236 GPII-3237
+
+Monitoring with Stackdriver Beta Kubernetes (or without it) (Sergey) -- MOVE TO OPS WEEKLY. Sergey is preparing a summary/mini-presentation about what he's learned so far and our options

@@ -1,0 +1,97 @@
+UPDATES:
+    
+Kasparnet:
+	* A couple of job interviews for an RtF QA position
+	* Updated the infusion docs pull request (left some questions for antwarning)
+	* Updated 2*infusion pulls to master
+	* Working on inverse transformation one - struggling with datasource not behaving (or well, more likely, me doing the wrong thing)
+
+Adewale
+ - Completed Vulnerability assessement functional and technical requirements analysis
+	 - Includes evaluation criteria for selecting vulnerbility scanners for code base as well as infrastructure (Containers, kubernetes etc)
+	- Criteria includes (Focus Images\Containers, Licenses cost structure, Languages, Community, and Scalability)
+- Started a presentation that'll go over NIST, FISMA and FedRAMP requirements for the extended APCP team (user experience, usability, stakeholder teams)
+
+Ale
+	* Review, meetings and decisions about installer.
+	* Meetings and work plan for Onboarding.
+	* Started to look into macOS and pending Windows vagrant machines.
+
+Alfredo
+	* Working on continuous integration system: GPII-1822, GPII-1876, GPII-1781
+
+Avtar:
+	* Worked on CI tasks as well GPII-1863 and GPII-1822
+
+Joseph
+	* Process Reporter, Windows edition (GPII-442/GPII-1826))
+		* https://issues.gpii.net/browse/GPII-442
+		* https://issues.gpii.net/browse/GPII-1826
+	* Attempted running existing unit tests with the current state of the windows proces reporter.
+	* Out of the box, 75% of the tests succeeded.
+	* Of the remaining, the failures were due to linux-isms.
+	* As of today, 39/40 of the tests pass.
+	* The last test requires more info from Windows system calls -- still working on that.
+	* Side effect -- dividing the unit tests into "universal" vs. OS-specific. 
+
+Michelle 
+	* interviewing
+	* overall planning
+	* QI specific planning
+	* task tray
+
+Simon
+
+	* Pushed early version of browser-compatible PouchDB data source work
+	* Got great feedback from Tony
+	* Meeting with Adewale and Gio about security and spending some time reading up on container scanning solutions
+	* Preparation for making a Nexus video for P4A on Friday
+
+TONY
+
+1.     Finished the P4A report due July 10th, just waiting for internal feedback.
+
+2.     Now that I'm free to code again, I'm continuing to work on UL API refactor.  
+
+        This week, updated the search to use the the updated gpii-location-bar library.  UL
+        searches will now be fully navigable, and an existing search state can be loaded 
+        from bookmarks, plain old links, or the browser history.
+
+3.     Still struggling with browser testing
+
+        For the UL API browser search tests, I now need to test navigation, which we can 
+        currently only do with Nightmare/gpii-test-browser. I would really rather only have 
+        one browser testing platform per project, and I already have testem/QUnit tests in 
+        the package. Thus, I researched options for resolving the impasse.
+        
+        First, I looked at parsing plain-old QUnit tests from within Nightmare.  Seems 
+        possible, but ill advised.  I also revisited navigation and keyboard input in 
+        various WebDriver solutions (Nightwatch/Intern/WebDriverIO/WebDriverJS).  If I can find
+        one that has good support for parsing the results of QUnit tests, I'll spike an 
+        approach.
+        
+4.     Reviewed first pass at browser-side PouchDB grades that Simon is working on.
+
+5.     Working to integrate the user review work being undertaken at Ilunion with the UL API.
+        
+        Their code requires tomcat and MySQL to be installed and configured.  Even though 
+        the project is not ready to put on the Quality Infrastructure yet, it's easiest to
+        take advantage of the new Vagrant + QI system and set up a configured VM using Vagrant.
+        
+6.     Evaluated the "Accessibility Plugin 2.0" for Confluence.
+
+	   Unfortunately, although it's  an improvement it doesn't meet our needs.  There is a new editor
+	   coming, will keep watching that.
+
+Giovanni:
+* Implemented mod_security 2.7 with OWASP rules as a Web App Firewall (WAF) for Jenkins
+* Static website is gone, https://ci.gpii.net is the live website
+* Need to review implementation to use mod_security 2.9 so the Trustwave Commercial Rules we bought can work
+* Hoping to get back to Kubernetes so we can start provisioning mini-clusters for developers
+
+
+Sandra:
+	*     Lot of activity with staffing, several interviews scheduled this week (QA specialist and Windows programmer)
+	*     Working on survey for IT at job centers
+	*     Michelle and I working on capturing information to enable the team to size the features/functions of GPII at first deployment
+     

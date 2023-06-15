@@ -1,0 +1,87 @@
+UPDATES
+
+Javi:
+	* Toronto F2F
+	* Built an installer for preliminary user testing of QSS
+	* Review/test a few pull requests that are pending
+	* Will be mostly in vacation mode, but can be on tap if needed ;)
+
+Alfredo:
+	* New Ops candidate interview
+	* Toronto F2F
+	* Working on new common parts of the GPII infrastructure
+		* GPII-2951
+		* GPII-
+
+Cindy:
+	* Toronto face to face
+	* GPII-2965: Save PSP updated preferences to GPII cloud
+		* The pull request is ready for review: https://pad.gpii.net/p/arch-2018-06-20-x5x4nxe
+	* GPII-1990: Clean up cloud endpoints and re-structure flow manager config files for dev and prod modes
+		* In progress
+
+JJ
+	* Working in GPII-2729, will be ready soon, just need review.
+	* GPII-2750, captions? hmm! almost ready to go, will be ready to review today.
+	* GPII-1053, brightness support, it'll require some more work
+	* Reviewing 1st wave again with Steve - most probably to have almost everything done very soon
+	* Thanks Steve for the fast reviews.
+
+
+Joseph:
+	* Toronto APCP face-to-face
+	* Create GPII-3120:  Use context awarness grade to implement the PlatformReporter
+		* Picked code already implementd in my branch for GPII-1939 (DeviceReporter reports screen resolutions)
+		* Created new branch and pull request: https://github.com/GPII/universal/pull/618
+		* Notified Antranig and Javi
+	* Working with Cindy learning the GPII data model (Keys, Prefs, Preference Safes)
+		* Studying docs and code
+		* Looking to see where I could make a contribution under Cindy's guidance.
+
+
+Kavya:
+    Working on  PSP3 and QSS Test plans
+
+Sandra:
+    - Good meetings in Toronto. Thanks to the team for your time. 
+    - Following up on every item in the August list of reqs first. Expect to have a schedule soon. Will follow then with MViP 2 and MVP (October).
+
+Steve Hens:
+	* Toronto IDRC Face to face was awesome.
+	* Created/updated a number of jira's with notes from the F2F
+	* Working on getting contacts at NOVA to find out more about SSO/CAS/Directory inf
+	* Currently working on
+		* Continuing to research draft json changes for settings capabilities to run past Antranig/Tony https://issues.gpii.net/browse/GPII-2839
+		* Continuing to draft the json changes for key/capabilities documents while working on: https://issues.gpii.net/browse/GPII-2980 and 
+https://issues.gpii.net/browse/GPII-2966
+
+
+
+Sergey:
+    * GPII-2960 – couchdb clustering 
+    * GPII-3122 – erb templating
+    * GPII-3123 – vault integration
+
+
+Steve Grundell:
+    Working on augusts priorities:
+        - GPII-2772, GPII-2212, 1716
+    - Finishing off IoD phase 0.5
+    - Looked at JJ's internationalisation PR
+
+
+Tyler:
+    * F2F
+    * Interview
+    * gcp rake code is merged
+    * Next is CI plumbing. gitlab parallelism is weird
+
+
+AGENDA
+
+What's the crack with the jsdoc parameter type ordering? no point without Tony and Antranig - yes, Antranig's not here today, neither Steve Githens (but Steve Hens has updates above?) yes,  Yes, he's doing it ahead of time. Gotcha.
+
+Quick question:  is there a Windows meeting tomorrow?
+	* If so, I won't be able to attend -- re-schedule? I already canceled it
+	* 
+	* I'm not here next thursday (stegru)

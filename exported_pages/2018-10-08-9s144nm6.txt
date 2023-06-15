@@ -1,0 +1,7 @@
+Agenda:
+    - End sprint
+    - New sprint
+    
+    - Should we try to track all the work in JIRA?
+	- Yes
+	- Tyler is creating a ticket for Sergio offboarding work

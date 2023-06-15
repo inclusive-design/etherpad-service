@@ -1,0 +1,23 @@
+We want you to create a simple guess the number type game.
+
+These are the requirements:
+
+The program chooses a random number between 1 and 100, then challenge the player to guess the number (in 10 turns).
+After each turn, the player should be told if they are right or wrong — and, if they are wrong, whether the guess was too low or too high.
+It should also tell the player what numbers they previously guessed.
+The game will end once the player guesses correctly, or once they run out of turns.
+When the game ends, the player should be given an option to start playing again.
+
+You have 2 hours to complete the exercise.
+
+When you are done with the program, share it with us so we can take a look at it.
+We may ask you for some clarifications about your code within the next two days.
+
+Remember:
+	* This is not a contest, do your best according to your skills and particular interests.
+	* Bear in mind that we aren't looking for a frontend rock star but a backend developer
+	* We do know that you can spend years working on this program, so balance between "Must have" vs "Nice to have"
+	* We need to be able to get and run the program locally
+	* Feel free to add code annotations, comments and/or even making a TODO list with things that you would add to your program for the long run, remember that you only have 2 hours.
+
+To Bryan: Any questions, doubts?

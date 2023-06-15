@@ -1,0 +1,47 @@
+Current Work, focused on supporting the PSP in pilot (feels like a month or two of work, some of which is going on in parallel)
+	* First, we're in the midst of protecting the settings endpoint of the Cloud-based Flow Manager using OAuth2, requiring that a local flow manager must have the appropriate credentials prior to making any requests to the cloud-based flow manager (should be done within a week or two)
+		* Also includes the addition of a new secure endpoint for updating preferences, which is used by Antranig's PSP API system
+		* Still need a mechanism by which local GPII installations receive this credential—should ultimately be integrated into the GPII installer (or at first startup, etc). Currently we're going to hard-wire this credential for all pilot machines, but we will have to do this.
+			* depends on a UX workflow from the UX team plus further development
+	* Refactoring our data model for keys, preference safes, and our authorization grants based on the latest version of Keys Their Role and Use document (feels like about a month or so)
+		* some issues include the optimal partitioning of user data and authorization grants
+		* this refactoring is required in order to support multiple keys being associated with a single preference safe
+		* also required for being able to eventually revoke the credentials of a local flow manager
+	* We will need to determine a mechanism by which we will:
+		* create new keys (based on those that have been written to NFC tags)
+		* authorize them by storing a reference to the keys in our authorization database
+		* associate them with a preference safe (either empty or pre-populated with the data from a snapset)
+	* Still significant work in the core of GPII for full PSP support: (looks like it will be about a couple more weeks)
+		* Final code review and merging of Antranig's PSP API branch (Kasper is reviewing on this)—this will enable the PSP to send change requests to the cloud-based flow manager to save them into the preference safe
+		* Kasper is currently working on core infrastructure for relaying change message coming from PSP via the API into changes in the current computer's solutions and settings ("mini matchmaker")
+		* Surveys
+	* UX improvements
+		* such as friendly names for preference sets—this includes the "copying" process when we load snap sets into an empty preference safe
+	* The idea is that we are working incrementally to be able to support use of the PSP with a baseline of security functionality in place
+
+Ongoing and Next steps
+	* Support for passwords/names or other second factor of authentication for preference safes (this is a good chunk of work)
+		* this includes new end points and security workflows for this
+	* Further metadata related to settings and preferences (such as information about whether or not a setting can be live applied and whether or not a setting is editable)—this needs to be reflected accurately in the Solutions Registry and sent by the core to the PSP
+	* Continuing to remove old code or endpoints that we no longer need, (post-Cloud4All etc.)
+	* Security walkthroughs to assess and identify next major security tasks
+	* Significant improvements to our cloud logging and monitoring functionality (we need to know the state of infrastructure, detect anomalous usage, etc.)
+
+
+In-Progress Technical Work
+	* GPII-2435 (done, merged): to add OAuth2 support for resource owner GPII token grant
+	* GPII-2538 (In progress, under code review): Protect the settings endpoint (which is currently, temporarily called untrusted_settings) using OAuth2, requiring that a local flow manager needs to have appropriate credentials prior to making any requests to the cloud-based flow manager
+	* GPII-2511 (In progress, coding): to add /untrusted-preferences to update preferences
+
+
+
+
+DOWN HERE
+
+
+Gregg's list of functionality for "the first version" of the PSP, from the meeting
+		* The ability for preference sets to specify which settings controls should be visible in the PSP
+		* Controls can be both application-specific or generic
+		* Ability to distinguish between whether a setting can be applied dynamically or only upon a restart
+		* Key-out and help buttons
+		* An API that allows an application (starting with UIO+) to notify the GPII when settings are made within its own control panel

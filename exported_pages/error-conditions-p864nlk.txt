@@ -1,0 +1,102 @@
+GPII Error conditions
+
+11-October-2017
+
+Operational
+Related to how the user interacts with GPII, when they hold it wrong. These are usually fixable by the user.
+	* Unrecognised key token
+	* Key de-bounce
+	* No card reader
+		* Card reader disconnected
+	* Another user is already logged in (ie. if user A is keye in and user B attempts to key in)
+	* Unable to restore settings
+	* User is not currently logged in (i.e. attempting to log a user out who is not logged in - only relevant when using URLs and USB)
+	* Error message for "covering" internal/system errors:
+		* "Auco configuration of the system was aborted due to an error. Please try again or contact support if the error persist" .. or along those lines --- this is relevant both for anonouncing failed configuration and restoration of the system (somewhat equivalent to login and logout)
+		* Include an "error ID" - some code generated when an error occurs, so support can look in the logs
+
+"Softer":
+	* Login in progress
+	* System successfully configured
+	* Logout in progress
+	* System successfully restored
+	* Particular AT tool is not installed? - yeah, that probably makes sense, like if the MM is not able to match the users settings
+
+
+GPII needs to know what it's doing, so it can say: "There was a problem doing <something>"
+We need a better fluid.fail
+
+
+System & low-level errors.
+These are exceptions that will have code and errno properties. Full list: http://man7.org/linux/man-pages/man3/errno.3.html
+These will have a generic error message (perhaps with a "Show details" thing), unless listed here:
+
+- EADDRINUSE: There is another application listening on port <e.port>
+- ENOSPC: Disk is full.
+- ECONNABORTED, ECONNREFUSED, ECONNRESET, EHOSTUNREACH, EHOSTDOWN, ENETDOWN, ENETRESET, ENETUNREACH, ENONET, EPIPE, ETIMEDOUT
+  - Network related errors: "Unable to contact 'some server'"
+	* Host not found
+	* Connection timeout
+	
+  - Errors related to configuration a specific application:
+      - Unsuccessful in writing settings file, writing to the systems registry, etc
+      - Unsuccessful in reading setting file, the registry, etc
+      - Unsuccessful in starting application
+      - Unsuccessful in stopping application (killing a process)
+
+Internal
+These are usually a result of GPII getting in to an undesired state - due to a bug, or another unhandled error.
+fluid.fail, and other exceptions.
+
+- A generic error message when all of these happen. (as listed under "operational")
+
+Example: SetWindowsHookExW did not work (keyboard). win32 error: 
+
+
+Next steps:
+    Discover more errors
+    Create a google doc where people can add messages as they're implemented
+     https://docs.google.com/a/raisingthefloor.org/spreadsheets/d/1d63BScq3yVXqopKEqlnPHZtH3Tb2SiT8DR3HCap4PPA/edit?usp=sharing
+    
+
+ Do we need any error messages for users's with PSP(when changing settings or anything)?
+ Any error message regarding security?
+ Any error message for UIO+ browser extension?
+
+Architecture meeting on 1-Nov-2017:
+      Errors:
+       https://docs.google.com/spreadsheets/d/1d63BScq3yVXqopKEqlnPHZtH3Tb2SiT8DR3HCap4PPA/edit#gid=0
+Do we have structured logging? EventLog
+Right now we have this: https://github.com/GPII/universal/blob/master/gpii/node_modules/eventLog/src/eventLog.js
+It is relevant because it is i) structured, ii) centralised, and iii) actually participated in the uncaughtExceptionHandler workflow
+But right now it just has responsibility for logging to a file
+Note that the gpii-app INDEPENDENTLY hooks into the uncaughtExceptionHandler 
+    https://github.com/GPII/gpii-app/blob/master/src/app.js#L235
+    We have a fairly strong architectural requirement to avoid actually triggering uncaught exceptions (although we should note that some routes for firing the event "onUncaughtException" don't actually correspond to there being one:
+        Node.js docs: https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly
+        "Note that 'uncaughtException' is a crude mechanism for exception handling intended to be used only as a last resort. The event should not be used as an equivalent to On Error Resume Next. Unhandled exceptions inherently mean that an application is in an undefined state. Attempting to resume application code without properly recovering from the exception can cause additional unforeseen and unpredictable issues."
+
+Note that eventLog is interesting/relevant because it does customise the firing of the fluid "failure" event - https://github.com/GPII/universal/blob/master/gpii/node_modules/eventLog/src/eventLog.js#L195
+However, it does this by adding an additional listener rather than by doing anything about the existing "fail" handler.
+
+Here is the central linkage between these two events: https://github.com/fluid-project/infusion/blob/master/src/module/fluid.js#L122
+
+
+JJ: Ask to the team about this error: https://ci.gpii.net/job/universal-browser-tests/550/console.
+-> this error seems impossible since the branch does not seem to hold any changes to the core framework or Infusion, and master presumably is passing its CI
+-> but this highlights the fact that we have no independent check on whether master itself indeed passes CI - a merge blunder can't be easily ruled out
+-> Kaspar thinks that this error may actually be caused by a crosslink between the os_win7 preferences file and its usage in a test
+
+
+
+Jan 24th
+
+Error messages from UX:  https://docs.google.com/spreadsheets/d/1ybyf9xoYoArjswWBhhBWECrrJdTPspI6FAuzjtcNmsM/edit#gid=0
+Style Guide for error messages: https://docs.google.com/document/d/1rTMjpwH8d9HQ6hXoG6-qlsuf9F7oX-s37MJclFHgCYE/edit
+
+Create a new mechanism for rendering PSP/gpii-app errors: https://issues.gpii.net/browse/GPII-2665
+
+
+
+
+

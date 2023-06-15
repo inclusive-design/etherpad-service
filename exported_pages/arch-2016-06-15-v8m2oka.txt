@@ -1,0 +1,80 @@
+UPDATES:
+
+Michelle:
+	* Attended F2F meeting in toronto: https://pad.gpii.net/mypads/?/mypads/group/technical-discussions-4g920a3/pad/view/2016-06-06-toronto-f2f-7ua2o9q
+	* Will be working on getting some of the LGS stuff into master (part time) - will be meeting with steve hens and first priority will be the task tray
+
+Alfredo:
+	* F2F meeting last week as well doing torontonian things
+	* Trying to purchase a license for mod_security, with the help of Sandra
+	* Updating GPII package for fedora, updating the ansible roles for this
+	* Also trying to help with GPII-1838
+
+Antwarning:
+	* Recovering from the return to civilization
+	* Working on fixing the main build structure (ie. getting universal via npm install as opposed to git clone)
+	* Next up is working on crash recovery - ie. journalling the system changes and restoring from the journal on startup in the event of a crash.
+
+Avtar:
+	* F2F meetings as well
+	* Worked with Joseph on GPII-1838
+	* Sent changes for https://github.com/javihernandez/windows/pull/2 GPII-1826
+	* Working on Infusion CI related changes for browser tests
+	* Working on QI video tasks
+
+Cindy:
+	* F2F meetings last week as well
+	* Creating gpii.oauth2.dbDataStore component that is an API for the auth server to communicate with ouch DBs (couch and pouch)
+		* Eventually got the first unit test working this morning, with the help from Antranig and lots of debugging. The test is to use gpii-pouchdb to test kettle.dataSource.CouchDB instances. YAY!
+		* Completed some API functions, need to add tests for them
+
+Colin:
+	* Reviewing and merging pull requests like a boss <----- \o/ Ganondorf?
+
+Giovanni:
+	* Researching how better deploy mod_security in our environment for GPII apps.
+	* mod_security 2.9 seems to work fine in tests but uses lots of resources and depends on Apache (which we don't use)
+	* libmodsecurity v3 is more modern/flexible and plays nicely with nginx <-- focusing here now as it shows more promise
+		still beta status, there are some compilation issues on CentOS7 I'm trying to fix now
+		need to figure out automated building and RPM package following new nginx module standards
+
+
+Joseph:
+	* Attended F2F meetings last week.
+	* Opened GPII-1838 for the ProcessReporter unit test failure only when run with Vagrant auto-provisioned F23
+		* Discussed with Avtar
+		* Avtar, Alfredo, and Giovanni are convergning on a solution.
+		* \o/
+		* https://issues.gpii.net/browse/GPII-1838
+	* Opened GPII-1839, "Acceptance tests should use the Dynamic Device Reporter".
+		* Nearly there by changing three config files to merge in the "production" version of the DR -- linux for now.
+		* Next to address the same issue on Windows
+		* https://issues.gpii.net/browse/GPII-1839
+
+KASPER:
+	* Got the first discovery tool up and running with the help of Cindy, the plan with it is something along the following lines:
+		* Test it with the full system to ensure that all the settings are actually applied on login
+		* Modify it to be useful for easily testing the system during development
+		* Pull in Mr. Hens' RFID work so we can create tokens - also very useful for easy testing during development.
+	* Interviewed a candidate for the QA taskorder from IBM
+	* Will leave on vacation on Friday and stay gone for 2 weeks
+
+Simon:
+	* Adding extra inputs and outputs to the Nexus Connector component for AsTeRICS
+
+
+Moving to a single repository model
+	* First step towards this is antranigs work on the module structure and npm.
+	* Work to do:
+		* Antranig is currently working on:
+			* Thinking more about or approach to publish artifacts on npm
+			* Throw away existing grunt scripts
+			* Moving to the standard use of NPM
+		* Future: (post July)
+			* Add new awesomererer grunt scripts related to publishing
+			* Merging several of our  repositories into universal (or whatever our new main repo will be called)
+
+
+GPII for linux issue
+
+

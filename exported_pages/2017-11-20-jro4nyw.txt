@@ -1,0 +1,62 @@
+
+Agenda:
+    - Update from Javi
+    - Review of Sprint 11
+    - Planning for Sprint 12
+    - Where are we against completion of AWS support for PSP with memory?
+    
+Notes:
+    - Javi tested gpii-infra and documented (almost) everything on this document: https://docs.google.com/document/d/1OKgoInyr9unBeWxYvffE_DdcSyfXAF0GHhqfNuU_sD8/edit?usp=sharing Needs more formatting, include a few more things, etc, but so far so good.
+    * Tyler would like more time to review this excellent doc
+    * Next step: figure out what we want to test / what tests we want to run
+    * Next step: figure out how to integrate those test runs with CI / Automation
+    * Next step: make it easier for developers to run. Figure out specific workflows (e.g. starting with Javi's notes) and make them easier.
+    * Next step: tests that affect global state, tests under load / involving load balancers
+	* These should probably wait until we have automation around existing tests.
+	* Hopefully we'll hire someone with a perf/scalability background who can help with this.
+	* What we need in order to have some integration tests
+		* https://github.com/GPII/universal/pull/558
+			* We think this PR is waiting on decisions that we will hopefully make in the production readiness meeting tomorrow
+		* We need to have config files that sets up a locally running flowManager that makes use of the cloud-based flowManager
+		* We need to have authorization data in the cloud in order to get access to np sets (and eventually update them)
+		* https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences#Data_Model
+  
+    - Review of Sprint 11:
+        https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&projectKey=GPII&view=planning.nodetail&selectedIssue=GPII-2544
+        Tyler: 2547, 49 and 51 completed. Hasn't started yet on 2552. Should be relatively simple. 
+        Alfredo: 2544 completed and merged. Started on 2647. For 2648 also started by reading documentation. 
+        
+        From 18-Sep:
+    Minimum of the minimum
+          2544 -Done
+        - 2545 - Done
+        - 2543- No longer on the minimum set
+        - 2542 - Done
+        - 2563 - No longer on the minimum set
+        - 2547 - Done
+        - 2548 - Done
+        - 2549 - Done
+        - 2550
+        - 2551- Done
+        
+Additional required JIRAs addressing logging that Brendan pointed out, Alfredo researched and opened them:
+    GPII-2651
+    GPII-2650
+    GPII-2649
+    GPII-2648
+    GPII-2647
+
+Additional prd readiness from Tyler emails:
+    GPII-2711
+    GPII-2712
+    GPII-2720
+    GPII-2719
+	    As you do this, btw, Tyler: let's change the EBS volume encryption key to one we can back up outside the AWS account (we can' do that with the default one for $AWS_Reasons). I've got a different key all ready to go. Filed as GPII-2718
+
+Sandra: 
+    Conclusion regarding schedule. From the backlog, it appears that in addition to the current Sprint (12) we have around 20 story points left of the MINIMUM tasks or JIRAs. The team has been averaging 10 points per sprint, the last 3 sprints. That leads me to estimate that it will take an additional 2 sprints to complete this work. 
+    
+    What are the requirements from the testing teams to test against the cloud AWS? Tyler: Production readiness tasks, the 2711 and 2712. 
+    Action items: Verify test requirements. 
+    
+    

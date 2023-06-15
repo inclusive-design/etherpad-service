@@ -1,0 +1,73 @@
+GPII Architecture Meeting Minutes, August 21st, 2019
+
+UPDATES:
+Sandra:
+    - Working on Morphic 1.2.1 candidate (JJ, Streve Grundell, Kavya, Antranig) which has fixes for wallpaper being reset at AJC3, and new issue found during installations at a library in Citrus, FL. New installer available this morning being tested. 
+    - Updates to status for Gregg. 
+
+Antranig:
+	* Have been away and ill a bit
+	* Meeting with HA to talk through updates
+	* Interview of Chris, MacOS dev candidate - quite promising
+	* Peripherally involved in looking at Citrus issue
+	* Good meeting with JJ and stegru talking through oustanding Windows work and catching up with old priorities - 
+		* Notes at https://pad.gpii.net/p/jjs-pull-status-67c4nr5?
+	* Helping Justin debug a relay problem
+
+
+Justin:
+	* PR for FLUID-6394 which is needed for GPII-3767
+		* https://github.com/fluid-project/infusion/pull/960#issuecomment-521271933
+	* Many of the upcoming priorities are related to page level TTS or pause/resume of selected text TTS, however these are all affected by the Chrome pause bug.
+		* https://issues.gpii.net/browse/GPII-3286
+		* these priorities will be on hold as we await a fix to chrome
+		* may investigate possibility of providing a fix to chrome
+	* Working on
+		* GPII-3322: Context Menu of preferences adjusters for on/off prefs
+			* https://issues.gpii.net/browse/GPII-3322
+		* GPII-2840: Reset method
+			* https://issues.gpii.net/browse/GPII-2840
+		* Investigating UIO+ model relay errors.
+			* appears to happen when there are many iframes on a page. Content scripts are loaded into each and spawn more portBinding components that setup additional model relays.
+			* setting fluid.relayRecursionBailout = 1000; will fix the issue. Is this an acceptable practice?
+				* AB: Seems astonishing - we should put in some trace statements to try to understand what on earth could be happening. I can't imagine any reasonable series of relays that would converge after 1000 relays that hadn't converged after 100.
+
+Kavya:
+	* Testing done on early versions windows - more testing on newly onboarded features - expected to finish and send update by Fri
+	* Created new MS VM and testing Morphic 1.2 - expected to finish and send update by Fri
+	* Testing new  Morphic 1.2.1 released this morning with below fixes
+		*  GPII-4087: AJC3 Wallpaper interaction with high-contrast fix
+		* GPII-4092: QSS failing due to no sound card
+		* Testing update: Issues fixed - continuing to do more testing today. A new Morphic 1.2.1 installer is expected soon from JJ with a fix for known issue..
+
+
+Sergey:
+    – CouchDB monitoring
+    – CouchDB seamless rollouts
+
+Stepan:
+    - working on GPII-4085 - [Action Required] Istio on GKE: CVEs require upgrade of your clusters
+      - Vulnerability in Envoy/Istio -> need to upgrade
+    - almost done GPII-2865 - Configure K8s Network policies
+      - 2nd part of network segmentation on Kubernetes level, PRs merged
+      - still to evaluate testing tools
+
+Steve Grundell
+	- Working with JJ on the wallpaper/high-contrast issue
+	- Fixed the QSS not working when there's no sound card
+	- Produced a hack to make it look like the auto-login works (for demo)
+	- Install on Demand.
+
+Tony:
+
+	1. Met with Gregg, Bern and others about the "presentation registry".
+	1. Wrote a replacement for the (gpii-pouchdb based) couchdb-lucene test approach used in the UL API and PTD.
+	1. Waiting to talk with Antranig about required performance work, universal releases, et cetera.
+
+Tyler:
+* GPII-4014 deploy and postmortem
+* Back to work on IR/DR documentation
+
+AGENDA:
+1. Sandra: Continue prioritizing the Areas for Improvement action items. https://docs.google.com/spreadsheets/d/1Yr6-JR2B5emXj-c5MPMUH6HlpT9vuIY0IfkZSAY_dj8/edit#gid=0
+

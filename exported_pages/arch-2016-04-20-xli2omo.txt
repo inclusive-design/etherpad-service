@@ -1,0 +1,102 @@
+	UPDATES:
+
+KASPER:
+	* Working on model transfomations: https://github.com/fluid-project/infusion/pull/701
+	* And documentation: https://github.com/fluid-project/infusion-docs/pull/86
+	* Will improve those two pull requests a bit further this week
+	* Will hopefully wrap up the remaining valueMapper work + documentation by next wednesday
+	* Back in GMT+1 timezone next week
+
+ALE:
+    * Preparing plan for incoming Windows installer work.
+    * Planning handover for this next two weeks.
+    * Writing about future GPII / APCP operational plan.
+
+Alfredo:
+	* Testing CI-dev instance
+	* Building and testing Linux packages (GPII-Linux)
+	* Writing some doc for Ale
+
+Antranig
+	* Working on pull requests from cindy (gpii-payloads), Joseph and Javi (gpii-linux for GPII-1318, GPII-1526), Tony (gpii-express, gpii-json-schema), Dipesh (GPII-1540), Kasper (model transformations, FLUID-5133)
+	* APCP meetings with IBM on security and core architecture
+	* Core framework bugs exposed by gpii-express work
+	* Meeting with preferences framework team on improving load times for the preferences UI (Michelle, Alan, Cindy)
+
+Avtar:
+	* More presentation content updates for the review
+	* QI related reviews with Alfredo (Jenkins changes) and Gio (PHP QI dev environment)
+	* Planned the next stages of QI work with Alan and Michelle
+	* Reviewing Infusion and GPII Express documentation to implement QI Dashboard backend service using the latter
+
+Michelle
+	* APCP and GPII meetings
+	* Planning for July
+
+Sandra:
+- Completed the wiki page with information about the project, what the team is working on, who's working on what, dependencies, milestones, etc As soon as I know where to launch it from, I will make it public. 
+- Continuing working logistics for face-to-face meeting in Toronto. 
+- Meetings with IBM and team. 
+- Updating schedule and assignments based on updated work items targeted for the summer. 
+    
+
+Giovanni:
+	* doing some work for integrating PHP apps in the QI infrastructure, similar to what we have for node.js with Ansible. also refactoring the nginx/php roles to avoid overlaps and improve their integration.
+	* continue to experiment with Kubernetes 1.2, still in early stages but a development cluster is up and running (although it gets broken from time to time). might update it to version 1.3-alpha next week. ping me if you want to use it.
+	* APCP meetings and other internal IDRC tasks
+	* Out of office this week: Thursday and Friday. Won't be able to attend Security meeting.
+
+Javi:
+	* Mostly working on https://github.com/amb26/linux/pull/2
+	* Started connecting the browser extension with the GPII
+
+Joseph
+	* Working through ANTVAAANIG's coments on packagekit and xrandr c++ node add-ons for GPII-1152 (port to nan).
+	* Some time on looking at how to get physical size of displays using X/XRandr.
+
+Katy
+-  Working on identifying security gaps through code and use cases.
+-  Looking through the GPII Code.  Authentication Server.
+
+Simon:
+	* Successful P4A Review last week
+	* Otherwise, off work on vacation and then sick
+
+Tony:
+    
+	1. There are a small handful of breaking changes in gpii-express, get in touch if you are already using it.  The remaining work should not break anything, including the followup work after this is fixed: https://issues.fluidproject.org/browse/FLUID-5893
+	1. Getting close enough on the gpii-express pull to start pushing the updates through other packages, already finished updating gpii-pouchdb, gpii-pouchdb-lucene, gpii-test-browser and gpii-handlebars
+	1. Working through gpii-json-schema issues tomorrow with Antranig, then moving on to gpii-express-user and finally the UL API itself.
+	1. Adding precommit lint checks to all my projects has thus far saved me from my own laziness and slopiness at least six times this week.
+	1. As part of the ongoing PRs, ran istanbul and improved test coverage based on those reports: https://github.com/gotwarlost/istanbul  It's super easy, and will save your bacon.  I found multiple problems with untested "failure mode" blocks as a result of running istanbul.
+	1. Also added Travis CI configuration files and set up my local forks to be tested while I'm working on the branches.  It's super easy, just:
+		2. Create an account:  https://travis-ci.org/
+		2. Make it aware of your github account.
+		2. Tick the button to sync the repo.
+		2. Commit a file like  https://github.com/the-t-in-rtf/gpii-express/blob/GPII-1682/.travis.yml
+		2. Bathe in the warm glow of your notification mails and dashboard: https://github.com/the-t-in-rtf/gpii-express/blob/GPII-1682/.travis.yml
+	1. Have been adding documentation to most code under review.  It's not easy at all, but is worth doing.  Here's an example of the newest format based on our ongoing discussions in various PRs:  https://github.com/the-t-in-rtf/gpii-express/blob/GPII-1682/docs/router.md
+
+OAuth server - availability (for internal use) [HENS]
+
+Open questions:
+	* To what extend do we feel ready to deploy the OAuth server?
+	* How do we go about credentials provisioning?
+
+From previous meetings:
+Got a complaint from a customer that the flowmanager didn't have OAuth support.
+We ofc., want to provide a good customer experience and deploy a 'semi-production' OAuth server.
+
+Cindy: It's not ready to be deployed in production mode (ie. open to the public).
+Antranig/Simon: we're not currently in production and the preferences server is open for everyone to POST/PUT to. 
+Hens: Where should the 'what used to be called the first discovery tool' be located?
+Simon: It can live anywhere - but it has to be registered as an application that is authorized. Each instance of the discovery tool should have its own credentials (so they can be revoked).
+Hens: So realistically you wouldn't ever run the discovery tool on a local device? 
+SIMON: Correct
+
+
+Matchmaker should provide settings for webpages (KASPER)
+
+
+Orca Settings Handler
+

@@ -1,0 +1,31 @@
+Infrastructure Meeting Notes, January 9, 2017
+
+Happy new year to all
+
+Updates
+    
+Alfredo:
+	* GPII-2067  - Create Vagrant GPII plugin
+	* Let's encrypt tasks are running in the control host, only need to update the LBs
+	* 
+
+Colin
+	* Nice chat with Tyler to give him a quick orientation to some of our stuff on Thursday
+
+Agenda Items:
+    
+Next steps for infrastructure development:
+	* aim for a working prototype running in a third-party cloud environment (probably AWS, but alternatively Azure or GCE)     
+	* need to make a plan for:
+		* which cloud will we do an early spike on?
+		* what will be our logging, monitoring, and metrics approach?
+		* will we definitely use Kube?
+		* what other tooling do we need for orchestration (Terraform, etc.)?
+		* how will we manage rolling upgrades?
+		* what tools do we need to provide to support developers doing their own testing/builds using the new production-style infrastructure?
+
+What everyone's doing this week:
+	* Alfredo: finishing up SSL tasks, fixing bugs in Ansible plugin and improving windows test automation
+	* Avtar: new UIs for the QI for P4A
+	* Gio and Tyler: Meeting to start the design and planning work for our infrastructure development project
+	* We'll meet again 

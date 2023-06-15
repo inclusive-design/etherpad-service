@@ -1,0 +1,109 @@
+Updates
+
+Kasparnet:
+	* Filed JIRA:  RFID listener disabled on faulty login .https://issues.gpii.net/browse/GPII-2768
+	* Pull request - removing device reporter from CB FM: https://github.com/GPII/universal/pull/579 - GPII-2769, Javi is reviewing
+	* Pull request - fixing filtering payloads from CB FM (https://issues.gpii.net/browse/GPII-2770 ) - pull request is here https://github.com/GPII/universal/pull/580 - Antranig should review
+	* Updated my big MM pull request with master, no longer conflicting so can be reviewed
+	* 
+
+Alfredo:
+	* Triaging issues with the metrics system
+	* Solving more issues of Kops to customize the deployment of the GPII cloud
+	* Researching how to automate the build of a landing page for the GPII installers
+	* Done some progress sending the logs of teh GPII to CloudWatch
+
+Brendan:
+	* Primarily working on AWS DS and related prep, which is going slowly.
+		* AWS documentation is amazing. And by amazing I mean... not amazing.
+
+Cindy
+	* Dropping off for IDRC Christmas party
+	* GPII-2630: Implement the new data model
+		* Refactoring the preferences server
+
+Javi
+	* Got a "man cold",  not sure if will survive (be strong my friend)
+	* https://www.theguardian.com/lifeandstyle/2017/dec/11/stop-accusing-men-of-overreacting-man-flu-really-does-exist-claims-doctor
+		* I just assumed it was covered in MOLLE straps or similar.
+	* Delivered an AWESOME installer on Friday for usability testing
+	* Still processing some of the reported issues during last week
+	* Started testing Stegru's in-process  user listeners and my VAIO decided to stop working -  so trying it to fix it right now before keep going
+	* Will review/test pull requests assigned to me
+
+JJ:
+	* Updating pull requests:
+		* GPII-2726: Onboards Typing Windows 10 settings.
+		* GPII-2729: Onboard Windows 10 Internationalization settings.
+		* GPII-2521: Merging of Morpher and Simplification into upstream.
+			* Had meeting with Javi about acceptance tests, thanks for the suggestions!
+	* Working into settings from row 10-19 and 78-92 from https://docs.google.com/spreadsheets/d/1vhhzs0pLCYPyLDPXpWNVUrwVvTv8IoGhRHsUUiA7gJk/edit#gid=409694249.
+
+Joseph
+	* IDRC Christmas party -- will give update on the pad, but then drop off call.
+	* Worked on GPII-2673, where npm 5.x install wipes out "..node_modules/universal/gpii/node_modules/" folder
+		* Replicated with the GPII linux master branch.
+		* But, properlay installed the universal's gpii node_modules with one of my branches
+		* Looking for the difference, but nothing obvious so far
+		* See details in comment on JIRA: https://issues.gpii.net/browse/GPII-2673?focusedCommentId=29905&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-29905
+
+Justin:
+	* UIO+ Phase 1
+		* Waiting on feedback from QA and UX
+		* GPII-2740 ( https://github.com/GPII/universal/pull/573 ) PR is ready for more review.
+	* UIO+ Phase 2
+		* Continuing to work on FLUID-6209 ( https://issues.fluidproject.org/browse/FLUID-6209 )
+
+Sandra:
+    - Interviewing candidates for Installation on Demand
+    - Made offer and accepted to new DevOps team member with expertise in scalability/performance, Yuval Yaari, from Israel but living in Barcelona. Should start soon. 
+    - Supporting Usability Test effort. 
+    - Meetings and status reports. 
+    - Out tomorrow Thursday
+
+Simon
+	* Worked with Gio to make a distribution of the Nexus
+		* Base Nexus API, Visible Nexus, and Co-Occurrence Engine
+		* With runners for Docker and Vagrant
+		* https://github.com/simonbates/nexus-dist
+	* Command line tool for loading configurations into the Nexus
+		* https://github.com/simonbates/nexusctl
+
+Steve Grundell:
+    GPII-2751 - fixed an awkward buffer over-run bug with the registry handler
+    Tidying up the metrics data dump
+    GPII-2663 - Making a small app that accesses the windows settings back-end
+    Couple of interviews for IoD
+    
+
+Tony:
+	* Put "updates" (diff) reports for the UL in production.
+	* Revisited open pulls against infusion, linux, windows, and universal with an eye to unsticking them.
+		* The linux pull should be ready for review.
+		* For the windows pull, I figured out a working configuration of "nyc" that now seems to be working.  Unfortunately there are now unique failures in CI that I can't reproduce.
+		* Also updated infusion to use nyc for instrumentation and fixed various sources of instability.  Currently working on some really odd instability issues in running the tests.  In both OS X and Windows, there are a varying number of tests run in successive successful test runs.  The linux VM has unique failures, but reports the same number of tests run in all runs.
+		* The universal pull will need to be updated once I confirm that my new approach with windows and infusion is viable there (may require new components in the gpii-testem package, depending).
+	* Will shortly be discussing with Colin, Antranig, Gregg, and Sandra the live solutions registry and my role in the larger project post-P4A.
+
+Tyler:
+    * Alerting and notifications with alertmanager
+
+Yuriy (for the Astea team):
+	* Working on Survey Pop-up Functionality:
+		* Created tasks based on the finalized breakdown, they can be seen in this board: https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=23
+		* GPII-2759, 2760: integrated a web survey into a PSP popup and working on handling actions within the content that have results outside of the survey
+		* GPII-2763: working on communication between the PSP client and the server, currently have a locally set up server
+		* GPII-2758: detecting elapsed time since key in and planning on supporting other triggers in the future. 
+		* GPII-2762, 2764: working on styling the popup and on the UX of the popup
+	* Reviewed Kasper’s PR on removing support for the previous API format. It looked good to the team
+
+
+
+Agenda:
+    
+Using Windows 10 VMs for infusion tests (KAS-PER.  PUT THIS ON NEXT WEEK'S AGENDA.)
+
+
+
+Pull requests walkthrough
+

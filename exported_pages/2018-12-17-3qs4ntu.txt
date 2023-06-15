@@ -1,0 +1,148 @@
+1. Anything to demo?
+	* Tyler will demo couchdb metrics
+	* Sergey will demo container login alerts, tracing actions to individual users
+2. Sprint planning
+3. CI discussion (notes below)
+	* Additional wrinkle I forgot to mention in initial context ramble: GPII product developer CI needs
+
+
+What to do about CI? Start the discussion
+– Move to CircleCI from GitLab? (Sergey)
+  - CircleCI has some HA issues :) just talked to a friend who worked with them and basically they have NO HA apparently (running their infra on Hashicorp Nomad btw.)
+- Consider Concourse - awesome CI which I love, but don't seriously propose as we would have to run it
+- Consider Drone - OSS CI, container based, interesting/good model for plugins - docker images, has support for secrets mgmt, run on bare-metal - packet.net -> https://blog.drone.io/drone-cloud/, free for OSS projects
+- Perhaps we should start listing what features (both functional and non-func.) we want to get first before talking about specific tools
+  - Secret management - support secrets, ideally in code repo (I like how Travis CI does this)
+  - Fast and simple UI
+  - Support PRs - Github flow
+  - OSS is a benefit - means I can fix issues that are important to me
+  - Container based - be able to use same build env (container) locally and server-side
+  - "CI as code" - ideally everything is managed in code (yaml or so), UI is optional
+  - Support more complex pipelines - ala Concourse - for example:
+    - start a build when new version of given docker image is released
+    - suport cron jobs
+
+Tyler: rambling about context. how big is the scope of this?
+Sergey: Doesn't like Gitlab, thinks it has problems, but now is not the time [I think I got this right?]. Move gitlab-runner to k8s cluster in gcp. Use that cluster to run Locust
+Alfredo: 1. Where to run it? 2. What to run?
+	1. No kubernetes complexity. Create new project, the utility project. Spin up VMs, easy. Inside VM, deploy agent of chosen CI.
+	2. Not a fan of Gitlab. But we're there, so continue as planned. Ansible, gitlab-runner, VM in dedicated project.
+Stepan: Gitlab sucks in many ways. Not impressed with CircleCI -- already seen some outages. Given deadline, stick with Gitlab. Agree with Alfredo, simplest way possible and move on to other things. Longer term, revisit because this is a bigger question. What workflow do we want to have? Do we want to test PRs? Do we want to spin up clusters per PR? Don't rush this decision. Evaluate some options. Interested in Drone. But we should start with what we want to achieve, what we hope to get from a CI technology.
+Tyler: Scar tissue around Gitlab
+Tyler: Don't underestimate complexity of ansible.
+	Alfredo: Vote for packer over ansible. Switch from centos to a more common template ilke ubuntu.
+Tyler: gitlab-runner in Docker container? How will it run our code which itself runs a docker container?
+	Stepan: Don't do it in kubernetes. Run Docker container on VM. Mount [something - docker socket?] into container. gitlab-runner
+	Sergey: https://docs.gitlab.com/runner/install/kubernetes.html This might be simpler than packer or ansible
+
+https://github.com/gpii-ops/ansible-gpii-ci-worker
+
+Tyler will move these notes to THFO ticket
+
+We need a decision about how to run gitlab. Stepan proposes we take some time to read about solutions and think about it some more.
+
+Gilab:
+- Executor:
+  - Shell -> executed in same env that is running the gitlab-runner
+    - no change to our build scripts (we don't use `image:`)
+  - Docker -> executed in docker containers
+    - need to modify travis-ci.yaml (use image)
+    - as we need further docker access, need either socket or DinD
+      - means building custom images with Ruby & DinD and/or docker deamon
+    - possibly leaking containers (local to given VM)
+  - Kubernetes -> executed in Kuber cluster
+    - need to modify travis-ci.yaml (use image)
+    - need DinD or sharing docker socket
+    - means custom images with Ruby & DinD and/or Docker
+    - possibly leaking containers across cluster
+  - Docker & Kube - Docker needs to be available not only to gitlab-runner itself, but also in the containers started by gitlab-runner (job images)
+    - Need to update gitlab-ci.yaml (add `image: `)
+    - DinD. vs. mount socket
+      - DinD - no caching -> slow
+      - Lot of issues with DinD
+
+How to run Gitlab-runner:
+- Directly on VMs
+  - pros:
+  - cons: how to deploy? Packer -> tight coupling
+- in Docker on VMs - docker vs. shell executor
+  - pros: easy setup? VMs + start Docker image (all with TF)
+  - cons: leave behind docker containers, limited to given VM
+- on Kube - only makes sense with Kube executor
+  - pros: easy setup - we have K8s infra
+  - cons: leave behind docker images across cluster, cluster re-creation
+
+- https://docs.gitlab.com/runner/configuration/advanced-configuration.html
+- https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+- https://docs.gitlab.com/runner/executors/kubernetes.html
+
+Goals & limitations:
+- Fast, minimal effort, possibly temporary
+- Keep it simple
+- Don't change how we run ruby/exekube code (disadvantage of requiring Ruby...)
+  - Need Ruby & need Docker
+- Automation to manage Gitlab worker(s) itself
+My preference:
+- No changes to our gitlab.yaml -> shell executor
+- Run in Docker -> easy to setup
+- Custom image with:
+  - Gitlab-runner itself, Ruby bits and Docker client
+  - shared docker socket
+- VMs. via Terraform
+  -> simplify problem of Automation to manage CI itself (recreate cluster - we can't do currently with Kube without killing workloads)
+- May complicate things security-wise (currently we don't have any custom-built VMs, only Google-provided K8s worker nodes)
+
+Alternatives:
+  - Packer - configuring machines (ruby, gitlab...) over building docker image -> tight coupling, heavy & slow, no other benefits
+  - Kube - ci cluster re-creation issue, need both to buid new images and update gitlab-ci.yaml, container leaking issue is worse
+	 - #1 benefit: we don't have to manage custom-built VMs and code to create them (Ansible? Packer?)
+	 - #2 benefit: K8s solves a lot of problems (resilience, monitoring, logging, etc)
+	 - #3 benefit: we are in need of utility K8s cluster anyway (to run locust tests, SCAP scans, etc)
+	    Stepan -> let's not talk about utility cluster -> we want to do something simple, and run just Gitlab runner atm.
+	 - #4: issues with parts of setup running outside / parts inside of exekube container can be solved for good
+		Alfredo: do we have time for this now? how to recover credentials when cluster is recreated? And how to store the credentials which need user interaction with the web browser?
+		Stepan: there are bigger questions that requre attention now, don't want to change CI stuff significantly, issues with cluster updates? it will open many new issues / questions.
+
+
+Decision:
+	* Try to do minimal changes while "forklifting" existing gitlab-runner setup into a worker instance in the cloud
+
+Proposal:
+	* Ditch ansible while doing this (simplifies a number of things)
+	* Replace with a gitlab-runner Docker image (gitlab-runner, ruby, docker-compose)
+	* Mount host Docker socket into containers to facilitate Docker-in-Docker
+	* Secret storage? (ssh key for github, ci-save-all GCP creds, also runner configuration)
+		* GS bucket? Encrypted. Use gpii-infra to get access to secrets
+			* Dedicated rake task to handle these ci-specific configurations
+		* Will require manual setup anyway -- creds and ADC to get access to GCP, and to create keyring/key/bucket (this is the custom rake task part)
+
+Tickets for this work:
+	* CI worker exists (Terraform code)
+		* GPII-3057 with some edits
+	
+	* CI/CD pipeline to deploy worker
+		* How can gitlab-runner upgrade itself?
+			* Two runners, A deploys B, B deploys A
+		* Adding more stuff to pipeline makes it slower
+	
+	* gitlab-runner Docker container needs credentials and gitlab-runner configuration somehow
+		* Where do they live?
+			1. Use gpii-infra secrets management. Requires some bootstrapping
+			2. Manually bootstrap from a checklist. Or minimal automation -- download and run this shell script. Goal of minimizing investment in a task that will hopefully be pretty rare (when instance gets re-provisioned).
+			3. Add this to provisioning, e.g. user-data.sh fetches files
+		* How do they get to the CI worker instance?
+	
+	* Write a Dockerfile to produce a Docker image capable of running gitlab-runner, gpii-infra code (GCP only), and Docker containers on the host
+		* We might be able to reuse/extend what seems to be official gitlab-runner image - https://hub.docker.com/r/gitlab/gitlab-runner/dockerfile, seems to already have docker in it
+		* Given: secrets (above), configuration for gitlab-runner host (above), Docker socket
+		* New gpii-ops/ repo
+		* Test: CI for this Docker image, regularly built and published
+		* Test: Gitlab pipeline for gpii-infra recognizes gitlab-runner in this container running somewhere (ideally CI worker, but maybe your laptop is sufficient for this ticket)
+		* Test: Docker container is capable of "running our build" == a deploy of dev cluster XXXa complete pipeline run of gpii-infra
+
+	* gpii-version-updater moves out of IDRC
+		* GPII-3065
+		* Replace with Gitlab Cron? https://docs.gitlab.com/ce/user/project/pipelines/schedules.html
+		
+GitLab app on K8s Marketplace:
+https://console.cloud.google.com/kubernetes/application?filter=solution-type:k8s&subtask=details&subtaskValue=gitlab-public%2Fgitlab&project=gpii-gcp-dev-natarajaya&authuser=1&organizationId=247149361674&orgonly=true&subtaskIndex=2

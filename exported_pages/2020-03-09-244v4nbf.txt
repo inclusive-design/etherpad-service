@@ -1,0 +1,26 @@
+1. Anything to demo this week?
+No
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+- could someone give kasper permissions to this: kasper@markus.dk <- Try now
+
+2a. If you are on top of the Standup list, prepare a browser with all Key Metrics loaded and ready to review.
+
+3. Kaspers stupid questions about the "state of everything"
+- How crazy is it to move our services from IDRC? (timeline, resources and all that stuff) -> all the issues with he label "IDRC migration" i.e: GPII-3057
+-- there hasn't been enough time/priority to get the move
+-- The security consultant recommended to move away from IDRC to e.g. ???
+-- JIRA, wiki page, pad, etc., is running in IDRC -- not clarity of who owns this stuff. Alfredo is maintaining but things like JIRA are shared amongst other projects. The constraint to moving this to a hosted solution is that we cannot set a specific domain (such as jira.gpii.net).
+-- Jenkins, CI, etc., is also running in IDRC (Alfredo is the only person from the ops team who can access the IDRC servers - IDRC is not willing to give access to give access to more people)
+------ https://issues.gpii.net/browse/GPII-2906
+
+- How crazy is it to set up CI to run agains multiple versions of windows? (timeline, resources and all that stuff) GPII-4195 <- please extend the issue with the new requirements
+  - We need to create Vagrant boxes for all the versions needed: https://app.vagrantup.com/inclusivedesign/
+  - Extend the current tests in order to perform the same steps with each Vagrant box: https://github.com/GPII/ci-service/blob/master/jenkins_jobs/windows.yml
+- What would be involved in setting up a CI to run agains mac (perhaps involving christopher to work closely together with devops on this)
+- 
+
+
+Kasper, can you access to these links?: yup! Thanks
+
+https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&view=planning.nodetail&issueLimit=100
+https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&view=detail

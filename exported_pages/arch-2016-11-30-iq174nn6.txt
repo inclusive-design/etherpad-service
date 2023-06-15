@@ -1,0 +1,101 @@
+UPDATES:
+    
+KASPER:
+	* Confusing myself with gpii-app provisioning scripts
+	* Bit of pull request reviewing
+	* Updating my JAWS pull <- Wow! great news.
+	* Made NP sets for kavya (dependent on JAWS pull)
+    
+Ale:
+	* Back from some "holidays" in the hospital.
+	* Digging on the way we can effectively onboard all accessibility options from Windows 10 into GPII.
+	* Starting to check our current listeners implementation to try to adapt to new architecture approach.
+	* Preparing and reading material for next week Maryland meeting.
+	* Meetings!
+    
+Alfredo:
+	* Moving the Vagrant vmenv module to a Vagrant plugin ( GPII-2067 )
+    
+
+Antranig
+	* We have merged Cindy's giant pull request enabling an auth server backed by Couch persistence
+		* https://github.com/GPII/universal/pull/464 for GPII-1274
+	* We also now have working provisioning of a production system with separated servers for the FlowManager and prefs server
+		* https://github.com/GPII/universal/pull/490 for GPII-1884
+	* Meetings with Cindy, Colin, ADTKINS, etc. on support for securing access to the preferences server
+	* More work implementing authoring infrastructure for P4A
+		* Thinking about new framework primitives generalising events/invokers and improved support for namespaces
+
+Avtar:
+	* Finished interviewing DevOps candidates
+	* Reviewed Gio's Yarn changes for the Node.js Ansible role used by GPII projects
+	* APCP infra meeting
+	* Writing docs for GPII-2133, will share instructions and a Docker image on the Arch list today
+	* Will be planning the next bit of APCP pilot CI/CD and P4A review work 
+
+Cindy:
+	* The status of the CouchDB work - has been merged into the master. YAY!! THANKS BOSMON!!
+	* Created GPII authorization workflows for 3 use cases: https://wiki.gpii.net/w/GPII_Authorization_Workflows
+	* Giving some thoughts on how to protect the preferences server based on these use cases
+	* The very first pull request to our new gpii-architecture-docs repo that will collect GPII payloads, diagram source files, architecture docs etc: https://github.com/GPII/gpii-architecture-docs/pull/1
+	* Will be back on creating data loaders: https://issues.gpii.net/browse/GPII-1987
+
+Colin:
+	* Interviews (more)
+	* Security discussions with the team (I love those diagrams, Cindy!)
+	* Suggesting lots of topics for the hackathon (I'm looking forward to it!)
+
+Giovanni
+	* Interviews (more)
+	* APCP infra meeting
+	* Yarn is now available in all our CentOS/Fedora VMs and Docker containers
+		* Quick throwaway container: docker run --rm -ti inclusivedesign/nodejs
+
+Javi
+	* Working on GPII-2125 - Windows tests fail when VM is resized
+	* Some more progress on GPII-1839 - Acceptance tests must use the dynamic device reporter
+	* Reviewing https://github.com/GPII/linux/pull/80 - had a problem, but not sure if it was my fault - the merge is imminent!!
+
+Joseph
+	* Dynamic DR in acceptance testing (GPII-1839)
+		* Added comment on the JIRA describing a way for testing when the DR incorrectly reports that a solution is installed or not, but the settings handlers act as if it is not installed or installed (very meta):
+		* https://issues.gpii.net/browse/GPII-1839?focusedCommentId=22706&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-22706
+	* Process Reporter (GPII-442)
+		* Added comment regarding the case where ANDing conditions determines if a solution is running.  Will modify code as Kasper suggested.
+			* https://github.com/GPII/universal/pull/355#discussion_r89853753
+		* Actuallly, started to develop a general state tracker component that might have a home in infusion.
+		* Just noticed that the current GPII-442 pull requests are (again) ouf-of-sync with master -- will merge in latest master changes.
+
+Kavya:
+	* Almost completed testing privacy settings and flow manager.
+	* NP sets are ready for  MM testing
+	* Hardware sensitivy testing and Test Automation
+
+Michelle:
+	* Refactored gpii-app a bit to support test writing. 
+
+Sandra:
+    - Back from a week-long vacation. 
+    - Focusing on agenda and preparation for next week's F2F meetings in College Park. MD.
+    
+
+Simon:
+	* Taking part in security discussions
+	* Continuing Nexus midi work
+
+Steve grundell
+	* GPII-1716 (fontsize/dpi): Windows 10 done
+	* About to start GPII-2145
+
+
+AGENDA:
+    
+GPII-app (tasktray tool) provision scripts:
+    
+	* Issues with the existing scripts in windows assuming a path
+		* https://github.com/GPII/windows/blob/master/provisioning/Build.ps1#L15
+	* Same with universal grunt script: https://github.com/GPII/universal/blob/master/Gruntfile.js#L42-L50 
+	* JIRA: https://issues.gpii.net/browse/GPII-2091
+	* JIRA for switching to PowerShell:  https://issues.gpii.net/browse/GPII-1993
+	* 
+

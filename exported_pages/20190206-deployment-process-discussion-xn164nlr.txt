@@ -1,0 +1,27 @@
+Meeting 6th Feb 2019
+Present: Sandra, Alfredo, Antranig, Bryan, Cindy, Javi, JJ, Kavya, Stepan, Tony, Tyler
+
+
+
+The issue we're discussing.
+
+https://issues.gpii.net/browse/GPII-3661
+
+
+The current process is triggered when changes are merged into universal master:
+
+https://ci.gpii.net/view/Docker/job/docker-gpii-universal-master/
+
+Tony argues for only having dev releases deployed to QA, and perhaps setting up a dev instance that pulls directly from master.
+
+Javi mentioned "time line in plain language" as the process of managing a Morphic release:
+https://docs.google.com/document/d/1bKqGA23KploQNN_TBzwziSUF40vVLs7NOEHFAYGoIFQ/edit#heading=h.ck8jcerjhpof
+
+Talking about two parallel processes:
+
+1. Releasing an updated client (gpii-app, installer, etc.)
+2. Updating the cloud with the associated versions of various services stored in master.
+
+Tony proposes tying #1 to versions of gpii-app, and tying #2 to versions of universal, and managing each separately, perhaps with issue types or sub-types.
+
+Talking about a "mesh" workflow where the issue might pass between QA, Dev, and DevOps.  The only "exit", i.e. transition to "ready to deploy" is in the QA-associate

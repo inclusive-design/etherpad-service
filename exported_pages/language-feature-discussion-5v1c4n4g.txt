@@ -1,0 +1,79 @@
+Language change discussion
+
+Atendees: JJ, Steve and Javi
+
+Windows display language
+
+	* For community colleges, yes, we can pre-install the "most popular" language packs and use IoD to install additional ones when possible
+	* Also, we assume that, since the original installation language will be English, we will be just fine for adding new languages in most cases
+
+Limitations to take into account:
+	* When we change the language, some of the apps/desktop components will take this change, but not all of them
+	* We need some apps (or even the session) to restart, hence the user experience may be a bit "odd" - we need UX to think about this
+	* Take into account that, if we, for instance, restart the session the GPII will quit, so we don't want this to happen - Can we just come with a UX-like "workaround" to minimize the impact on this? i.e.: a combination of telling the user what's happening under the hood and by fine-tuning the technical implementation
+
+JJ found tha there's a way to tell applications that the display language has changed -  https://msdn.microsoft.com/en-us/library/windows/desktop/ms632629(v=vs.85).aspx
+We might give it a try, but there's not a lot of expectations since we can't assume that every application will react to such call.
+
+It looks like all Editions of windows 10 support multiple language packs: https://en.wikipedia.org/wiki/Windows_10_editions#Comparison_chart
+From previous experience, we know that there could be versions of Windows that won't allow to add additional languages, but we assume that it will be mostly on Home editions or "Single language" editions. According to the link above, all official Windows 10 Pro versions allow to change the language. In any case, we must check the version of Windows that the Community College is using to ensure that this will work. 
+
+We also know that somtimes you can't install additional languages if you installed Windows with a different language than english, for instance, you can only install Maori if the original Windows language is english (US or proper).
+See here: https://support.microsoft.com/en-us/help/14236/language-packs#lptabs=win10
+
+Language packs are specific to the Windows build, for example the pack for build 1703 will only work on Windows build 1703. Also, the download links don't appear to be published by Microsoft. Example: https://pastebin.com/p43qP44S
+The impact of this is we'd have to maintain this list somehow.
+* There are about 110 language packs for each build (or 220 if you include 32-bit).
+* 20-40MB each
+* 2 release builds per-year
+
+
+MS Office
+
+https://support.office.com/en-us/article/language-accessory-pack-for-office-82ee1236-0f9a-45ee-9c72-05b026ee809f
+
+In theory, we can do it in a similar way with the windows display languages, but we need to test that:
+	* We can do it silently as with the other language packs
+	* IoD is in development, but is currently able to do this.
+
+
+MS Learning tools
+
+Some of them may work with the windows and ms office lang packs, but we need to test that (JJ said)
+JJ will be looking into this and report after it.
+
+
+Chrome
+
+We have to add the language packs too but still we need to ensure that there's an API or any other mechanism to do that.
+I assume that applies both to the interface and the "browsing settings"
+
+There are 3 elements to this:
+    1. The browser interface
+    2. What the browser asks websites to send
+    3. Translating the web page automatically
+
+Ask Justin about specific details
+
+First extension I found that does something: https://chrome.google.com/webstore/detail/language-switcher/cecgfmnogmdnfaaenheimdknaohcbcai/related?hl=en
+
+Firefox
+
+Apparently, there are extensions that change the user settings, but we need to check what is possible and what is not. It would be great to at least have some kind of a PoC, but still,  we need to spend some time looking into it, at least, for a minimal first research and "estimate"
+
+About changing the language of the content shown in the web browsers, in general, we assume that we can make use of the "accept language header" - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
+This will make the web page to return a "localized" web page if it has a version of it (let's say, Spanish). There's an add-on that makes this https://addons.mozilla.org/en-US/firefox/addon/quick-accept-language-switc/?src=search
+
+Also, all the language packs (those that make the UI to be presented in a specific language) can be installed as add-ons
+As Mozilla's website says:
+"Installing a dictionary add-on will add a new language option to your spell-checker, which checks your spelling as you type in Firefox.
+Language packs change your browser's interface language, including menu options and settings."
+
+Probably Justin or more people at IDRC may have more knowledge on this
+
+Questions about the community college(s)
+
+	* Aside from the one in Virgina ( https://www.nvcc.edu ) are we envisioning others? If so, how many?
+	* How are we going to install the gpii in the community college? Passing the installer to them?
+	* Who is going to perform the first installation (at least for the first one(s))?
+

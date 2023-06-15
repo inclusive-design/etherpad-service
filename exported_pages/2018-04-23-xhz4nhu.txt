@@ -1,0 +1,30 @@
+From Last Week's meeting:
+Discuss the following Jiras:
+    https://issues.gpii.net/browse/GPII-2942
+
+We decided to wait until next week (23-Apr) once Alfredo and Tyler have more hands-on experience with exekube. Alfredo will be working on how to manage the DNS using both providers (AWS and Google DNS)
+
+Agenda:
+* Welcome Sergey
+	* What will Sergey work on?
+	- Accounts created and configured. 
+	- Set up a cluster.
+	- Review the JIRAs/Tasks under GPII-2942.
+	- Discuss next steps abd where we're at with Tyler and Alfredo. Tomorrow morning?
+
+Update:
+    - Alfredo: started investigating Execube, hasn't deployed it yet. Investigation about managing DNS GPII-2951. Decide on whether this is completed and closed once the team has had time to discuss. Will continue exploring Execube. At the moment the GPII infra is the only code that is working. 
+    - Tyler: last week he found a Helm chart for Couchdb. Next step is to create Helm charts for GPII components (preferences serves and flowmanager).  GPII-2958 ?
+		* http://USERNAME:PASSWORD@couchdb-coudhb.gpii.svc.cluster.local/preferences/%userToken
+			* any visibility of this URL leaks db credentials (e.g. if the preferences server logs an error when it can't connect to it)
+			* right now this URL is configured as a whole via an env variable (as opposed to separate components for username/password/path)
+			* when deploying the couch helm chart, username and password will be generated automatically and stored into kubernetes secrets
+			* was not obvious how to make GPII app code accept this change (can ask Cindy)
+			* alternatively, we can set username and password and assembled the URL ourselves  in the wrapper code as we do in gpii-infra, and pass it into the helm chart
+			* or there's the possibility that a subchart could work?
+				* couchdb chart could pass username/password values down to the subchart ("preferences server") and the subchart could assemble the URL
+
+* Move (or remove from Gitlab) all the repositories to Github and start using CI/CD Gitlab integration: Alfredo will open a JIRA for this and will find out when the license expires. 
+	    https://about.gitlab.com/2018/03/22/gitlab-10-6-released/#gitlab-cicd-for-external-repos
+
+Meeting later this week with Colin to talk about the "architecture" of how we will automate our infrastructure as we move to GKE

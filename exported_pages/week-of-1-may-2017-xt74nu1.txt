@@ -1,0 +1,18 @@
+1-May-2017
+
+Meeting skipped. Holiday in most of the world. 
+
+3-May-2017
+
+Tyler: Continuing on Terraform testing (GPII-2388). Yesterday he finished looking at kitchen Terraform. Today he will integrate it. Not blocked. Might start looking at GPII-2389.
+
+Alfredo: Continuing to fix errors reported from VMs. Metrics work on hold while Steve Grundell investigates the formatting from the logs and implements the solution. 
+
+Gio: Continuing to work on GPII-2319. 
+
+5-May-2017:
+    Alfredo: Finishing all of the work on VMs. Steve Grundell added a comment about the logging format, he posted output from the unit testing, looks good. He wants to talk to Gio about the instances of the Swarm, is he going to shut them down. No blockers. 
+    
+    Tyler: Still working on 2388, good progress, feature added, he was able to run the Kitchen tests. Today he plans to clean up so we can talk about it next week. 
+    
+    Next sprint planning is week from Monday. We'll have the restrospective, suggest we write down any thoughts or feedback. 

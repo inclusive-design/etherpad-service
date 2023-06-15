@@ -1,0 +1,56 @@
+The motivation behind these features are that we want to be able to configure the PMT (which will be on the web) and implemented
+
+Several issues here:
+	* Communicatiing with the local flow manager in order to enable the so-called "5-layer adaptation"
+		* Via one of the facilities of the upcoming chrome extension YES!
+	* "Anticipating what web pages the user wants to visit"? Perhaps no longer necessary now we have a matchmaker (some or all of which) can execute offline
+		* How could we? Why would we?
+	* Subsetting the matchmaking process to account for whatever adaptations have been performed on the local machine
+		* I can imagine that part of the requirement will be for a matchmaker to contend with needs/preferences that have been "claimed" by "native" ATs/access features and ensuring that these don't get passed along to web-pages so we don't have "double application" issues
+	* Security and privacy:
+		* Ensuring that the webpages are who they claim to be -- how is this done in this type of workflow?
+			* First, the requirement that we only personalize pages that are using https://
+
+
+APPTOLOGY!
+
+Kasper's use case
+	* AWESOME_KASPER keys into his STUPID_MACBOOK
+		* Launches screen reader and increases font size
+		* Prefers high contrast, but hates Mac OS's implementation of it
+	* Goes to his bank web page, which implements UI Options
+		* AWESOME_KASPER expects that the web page should display its content in high contrast
+
+Colin's basic assumptions:
+	* All personalizable web applications still need to be registered (with a web-specific solutions registry)?
+	* Only preferences that match a page's capabilities will be shared via the "browser channel"
+	* Preferences will only be shared to a site that is using https
+		* validity of a site will be verified by the domain of the site's URL (which with TLS is unlikely to have been subject to man in the middle attacks, etc.)
+	* Browser channel will expose an API for web pages to query the "currently unmet needs and preferences" for a user
+
+Three big high-level tasks:
+	1. Review and determine if the current browser channel does what we need in the way we need it
+		2. (ensure tests, code quality, all that stuff)
+		2. Note that the browser channel will in time be replaced by the NECKSUS so we shouldn't lavish too much time on the current impl
+	1. Determine the requirements and approach for Matchmakers to determine which settings should be sent via the browser channel to a web page
+		2. (taking into account the avoidance of "double application" problems and clearly determining a) which needs haven't been accommodated yet, and b) which needs can be multiply accommodated)
+		2. "double application" will require "yet another ontology"
+		2. Note that this topic was covered in our Spring 2014 architecture meeting at San Diego: https://wiki.gpii.net/w/Architecture_Ideas,_Sketches,_and_Meeting_Notes#Supporting_Web_Applications
+	1. Work with Tony to determine an API and mechanism for registering solutions (including web applications) in a simple and relatively automated way
+		2. (including UIs for "committee" review and approval)
+
+Tasks:
+	* Solutions Registry format should be improved:
+		* Get rid of "inverse solutions stuff" -- how?
+			* Everything in SR should be "keyed by ontology" via "shards of ontologies"
+		* what else?
+	* Work with Tony Atkins to implement the Solutions Registry so that it is closely connected to the Unified Listing
+		* 
+	* Brainstorm on further work in the browser channel/browser plugin required to support this (JAVI)
+		* Needs to meet with Simon/Colin, etc. - we may as well do this at the F2F session we have allocated for this
+
+Immediate blockers (which are priority before we can start on this work)
+	* We need to get rid of the static "inverse solutions file" in the core architecture (Will discuss at F2F)
+	* Canopy matchmaker needs to be finished and merged into trunk (in progress by kasper/antranig)
+	* Browser channel needs to be basically functional (with tests, etc.) (In progress by Javi)
+	* Get the PMT designed and implemented (theoretically in progress by the UX team)

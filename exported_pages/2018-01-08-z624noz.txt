@@ -1,0 +1,15 @@
+Agenda:
+    
+    - Centralized Logging - status?
+    - Where does https://github.com/gpii-ops/gpii-infra/blob/master/modules/k8s/Rakefile#L25 come from?
+    
+    
+    Notes:
+        - Centralized logging: 
+            
+            
+	- Onboarding for Yuval:
+		1. clone gpii-infra, spin up a dev environment
+		2. Focus on what is left to support the Pilots (for PSP with Memory), review the backlog and assign tasks, then proceed to plan a sprint focusing on performance planning/scalability testing. 
+		3. Email address (Gregg). 
+		4. IDRC access (Gio, Colin will talk to him re. email address)

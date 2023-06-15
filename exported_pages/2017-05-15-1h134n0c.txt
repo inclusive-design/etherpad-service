@@ -1,0 +1,33 @@
+Agenda:
+    - Retrospective of Sprint 2
+    - Sprint 3 planning
+    
+    
+	*     Retrospective of Sprint 2:
+		2.     What did we do well, that if we don’t discuss we might forget?
+				* Good that Gio did both the exploration for Swarm and Kubernetes. 
+		2.     What did we learn?
+				* Probably overcommitted during Sprint planning. 
+		2.     What should we do differently next time?
+				* Planning should more closely reflect what can actually be completed in 3 weeks. 
+		2.     What still puzzles us?
+				*   What are we getting from the standups? 
+				* Discussion whether we can conduct the standups through a channel. Agreement to use the pad: https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/week-of-15-may-2017-ug144n45. Updates will be written in the pad by 10AM Central Time.  <-- I can't access this link (Colin)
+ 
+		*    Demo of what was accomplished to Colin (Product Owner):  Done during the F2F last week. 
+	
+	* Feedback on F2F: Not enough time to work together. 
+
+Sprint 3 Planning:
+    Alfredo: Keep 2390 on his backlog. We'll talk to Steve Grundell tomorrow about next steps. And GPII-2023 and 2024. 
+    Tyler: Continue with 2388, then 2389. Remaining effort on 2388 is around 2-3 points. 
+	    Gio: 
+		* GPII-2411: Work with Antranig & Kasper and others to figure out the GPII config with env vars
+		* GPII-2312: Research how to get kops configuration into Terraform format (how feasible it's to work with that, etc)
+		* GPII-2413: Research what's needed to get Terraform working with libvirt (to work with IDRC's servers)
+	Alfredo additional issues from the F2F:
+		GPII-2405
+
+Sandra will figure out how to run the Velocity and other reports. 
+
+

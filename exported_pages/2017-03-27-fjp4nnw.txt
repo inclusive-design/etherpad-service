@@ -1,0 +1,21 @@
+Infrastructure Meeting - 3/27/2017
+
+Updates
+
+Alfredo:
+    Working on building vagrant boxes https://gitlab.com/amatas/packer-win/pipelines/7231429
+
+Giovanni:
+    https://kubernetes.io/docs/getting-started-guides/kubeadm/
+
+Sprint Planning
+
+Logging is now the top priority because it's needed for the Pilot Stage 1. 
+
+Content of Sprint 1:
+List of JIRAs or action items required to support Logging:
+Logging - https://issues.gpii.net/browse/GPII-2010
+	* Approvals - https://issues.gpii.net/browse/GPII-2012 (Justfication for purchasing for ElasticSearch.) Gio will provide to Sandra.
+	* Create cluster - https://issues.gpii.net/browse/GPII-2013 (Host the collector of the logs. All of the clients send the logs to the cluster.)
+	* Windows Logging - https://issues.gpii.net/browse/GPII-2346  (Alfredo) From the list of requirements (Antranig's list).
+	Write documentation about how to deploy FileBeat and how to set up against the cluster.

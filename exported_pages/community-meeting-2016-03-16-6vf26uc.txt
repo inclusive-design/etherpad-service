@@ -1,0 +1,50 @@
+	* Examples of communities that have a good process
+		* http://hood.ie
+			* well designed site, specifically contribution page
+			* dashboard of recent work
+			* code of conduct
+		* http://code4lib.org/
+			* well organized
+			* concise about page
+			* code of conduct
+			* Indoctrination document: https://docs.google.com/document/d/1m-9VtL7L_fUxl2hTF_YZSdFRfucaLtmHvLSzom6XPVM/edit?pli=1#heading=h.99orczg96qj5
+				* inside jokes
+		* https://www.adafruit.com/about
+		* jquery.com
+			* single contribute page that collects all the necessary information in one simple loation
+				* http://contribute.jquery.org
+	* How do we do things now
+		* http://idrc.ocadu.ca/about-the-idrc/getinvolved
+	* How did you get involved
+		* word-of-mouth
+		* attending community meetings
+		* mailing lists
+		* hired
+	* What we could do better
+		* distinction / overlap of our various projects
+			* so many links to lots of projects can be overwhelming
+			* easier if have a single project to start with
+			* fluid wiki doesn't provide enough information
+		* could have wiki page that links all the info for GSoC students (e.g. related to development)
+		* could use an introductory level tutorial to infusion and etc.
+		* lots of web sites, not sure where to look for what
+		* not sure what type of contributions are needed for the various projects (e.g. develompent, design, research, etc.)
+	* Who is in our community/Who isn't?
+	* GSoC Specific
+		* having time to code review
+		* need wiki gardening for resources that are useful
+		* need to have clear language for how to do things, may have language barriers
+		* should students use the fluid-work mailing list for introductions or stick to the IRC channel
+		* keeping track of CLAs
+		* Ask past students to provide feedback on their experience, and to provide information about how they learned to use the various tools and etc.
+	* Possible solutionsf
+		* Think of Fluid as the umbrella community, and other things like FLOE as projects that are contributed to by it
+		* Can have getting involved guides that are specific to the various levels, IDRC, Fluid, etc. and interlink as needed
+	* Concrete next steps
+		* Getting started page specific to GSoC, expectations.
+			* if this is more generic it can be used for interns and other volunteers
+		* Looking to Get Involved pages for IDRC, Fluid, etc
+		* Wiki gardening
+		* Glossary of community specific terminology (e.g. inside jokes, inside knowledge, etc.)
+		* Timeline of projects
+

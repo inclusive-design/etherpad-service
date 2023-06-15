@@ -1,0 +1,9 @@
+5-Apri-2017:
+Alfredo: He has been trying to work around the issues that were detected in the last meeting. He commented the JIRA, https://issues.gpii.net/browse/GPII-2346. By Friday, get information about the execution of GPII in the machine. He'll request feedback to see if that information meets the requirements for the developer to debug. Another task, adding captcha to the wiki.
+Tyler: He’s been largely traveling, but looking at Terraform issues, setting up a Docker registry to improve the performance when downloading Docker.  Talked into the last meeting about doing a Terraform demo. Not blocked. 
+Gio: Still working on getting the kubernetes cluster on AWS. No blockers. 
+
+7-Apr-2017:
+   Gio: Kubernetes cluster is running, using the US East region 3 masters, 3 nodes, HA cluster. Now he's working on the deployment definition for the GPII components. No blockers. 
+   Alfredo: Working on the testing side, using the vagrant machine he created. Testing new ISO file to boo the latest version of Windows 10. Closed the issue about the logging collection. Waiting on Steve Grundell to start working on the metrics/logging. Blocked by GPII-2346. 
+   Tyler: Continuing to work on Teraform, goal to have something to demo to the DevOps meeting on Monday. Cleanup and organization.  

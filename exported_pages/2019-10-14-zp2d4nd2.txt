@@ -1,0 +1,6 @@
+1. Anything to demo this week?
+  - No
+	
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+
+3. Review Tony's PR and push forward the merge.

@@ -1,0 +1,37 @@
+User Review Meeting Minutes - September 1st, 2016
+
+Introductions
+
+Simon explained the use case for the existing OAUTH2 implementation used with the GPIi and provided details about how it works.
+
+Talked through the use case for the user review widget.  Asked for solutions people were familiar with, got:
+
+
+https://disqus.com/
+https://www.discourse.org/
+
+    
+    Comment moderation, managementt & tooling to do so - v. important
+	    vendors need to be verified
+		vendors need to be able to respond to comments
+		
+
+Talking about the authentication part of the problem:
+    
+    http://openid.net/specs/openid-connect-core-1_0.html
+    https://shibboleth.net/
+    OpenAM  -> https://backstage.forgerock.com/#!/docs/openam/13.5/getting-started (that's the one SILO is using)
+    https://wiki.gpii.net/w/GPII_OAuth_2_Guide
+    
+    https://en.wikipedia.org/wiki/OpenID#OpenID_vs._pseudo-authentication_using_OAuth
+
+Current OAUTH libraries used in the GPII.
+https://github.com/GPII/universal/blob/master/package.json#L21
+
+Current GPII OAuth2 implementation with supported grant types: https://wiki.gpii.net/w/GPII_OAuth_2_Guide
+
+http://hybridauth.sourceforge.net/
+
+Need to gather information about use cases throughout the GPII as well.
+
+Need to document the use cases for both the SAA and the User Review Widget.  Assistance on Demand (uses OpenAM).  Developer Space has talked about associating with a third-party account (github, etc.).

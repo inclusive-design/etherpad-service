@@ -1,0 +1,22 @@
+* Sergey starting next Monday. Sandra is working on getting him an @rtf email so she can start giving him permissions for things.
+
+Agenda:
+    
+    From last week's meeting: 
+        
+   Next:
+    4. Deploy GPII to GKE cluster
+    5. Operational requirements: Monitoring, Alerting, Backups, Logging
+    6. Kubernetes hardening, IDRC Separation :(
+    7 Other security requirements
+    
+    Next steps:
+        - Continue investigating exekube
+        - Open JIRAs on the high-level tasks starting line 29 through 40 above. 
+
+Discuss the following Jiras:
+    https://issues.gpii.net/browse/GPII-2942
+
+-> Update on exekube: Tyler proposing to use exekube after investigation. Not throwing away anything for either side. 
+
+Regarding JIRA discussion, decided to wait until next week once Alfredo and Tyler have more hands-on experience with exekube. Alfredo will be working on how to manage the DNS using both providers (AWS and Google DNS)

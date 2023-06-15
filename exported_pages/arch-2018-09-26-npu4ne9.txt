@@ -1,0 +1,105 @@
+GPII Architecture Meetinng, September 26, 2018
+
+UPDATES:
+
+Javi
+	* Reviewed/merged a few pull requests from Steve and Antranig
+	* created several pull requests
+		* against universal
+			* minor tweaks after last updates and moving pieces out of feds-audit into master
+			* load uuid-based empty prefs sets - already received  link to PR? https://github.com/GPII/universal/pull/668
+			* oh, Cindy, FYI I just created https://github.com/GPII/universal/pull/671  -  the maavis one
+		* gpii-app - morphic branding - needs last update
+		* gpii-wix-installer - morphic-banding - already merged
+	* Meetings, ad-hoc calls ...
+	* Will continue creating pull requests to accomodate everything before building a new installer
+
+Alfredo:
+	* Fix small issues related to the deployment of the base infrastructure of GCP
+	* Working now improving the security of the CouchDB cluster - GPII-3346
+	* Helping Javi with some questions about the deployment of the dataloader
+
+Antranig:
+	* A lot of merges - 
+		* Cindy's GPII-3378, GPII-3388 listed below
+			* Note the total abolition of the historical "canopy matchMaker" - in theory a sad day
+			* Our new model combines the old "flat matchMaker" plus Kaspar's "apptology" which is all that is promised for the upcoming pilots
+		* GPII-3382, GPII-3202 bringing solutions registry back in sync between QSS/PSP
+		* Rolled new releases of universal and gpii-universal for testing wrt. Astea's current releases, these have some bugs currently being worked out
+	* Getting ready for meeting tomorrow with NOVA IT to discuss how single signon works at this site
+	* Reviewing and planning work with Justin for UIO+ and underlying library work for cross-process port binding
+
+Cindy
+	* GPII-3378: Apply new prefs that are not in keyed-in user's prefs set
+		* Done
+	* GPII-3388: Swtich GPII to use flat matchmaker + apptology
+		* Done
+	* GPII-3364: reset all
+		* In progress
+	* GPII-3400: QSS issues using latest universal and windows repo
+		* In progress
+	* GPII-3396: an acceptance test failure on windows
+		* Next to work on
+
+JJ
+	* .
+
+Joseph:
+	* GPII-3138: dataloader that updates the snapsets and views documents in the dababase.
+		* Tested with AWS and made some tweaks.
+		* Ready for another review.
+		* universal:  https://github.com/GPII/universal/pull/626
+		* gpii-datalodaer: https://github.com/gpii-ops/gpii-dataloader/pull/6
+
+Justin:
+	* Addressing code reviews as they come in
+	* Cut a Beta 8 of UIO+ and published to the chrome web store
+		* this addresses https://issues.gpii.net/browse/GPII-3386
+	* Word Spacing preference
+		* merged into infusion
+		* PR for onboarding ( https://github.com/GPII/gpii-chrome-extension/pull/14 )
+		* Will add PR for UIO+ once GPII-2914 PR has been merged
+	* Starting work on Syllabification preference
+		* https://issues.fluidproject.org/browse/FLUID-6240
+		* based on results from previous testing, going to use to the hyphen library for separating words into their parts. 
+			* https://www.npmjs.com/package/hyphen
+
+Sandra:
+    - Tracking progress towards completing the work for the October pilots. Deadline is 1-Oct-2018, after which Javi will build a new installer for testing. Pilot is scheduled to start on 15-Oct. 
+    - Meeting with NoVa (Community College pilot site) IT personnel tomorrow Thursday. For those of you attending, please enter your questions https://docs.google.com/document/d/11H7IpPXdtHO57uxJOTCk7rhtcFLB6J3x9H0gQVpZO7A/edit
+    - Met with Steve Grundell, Javi and Kavya to define plan for testing early Windows versions. Notes: https://docs.google.com/document/d/1H1e5B7RmMQMOVgfbrSDNGSxrK_f2bFQjs16rR5q0mJY/edit
+    - Reposted job for backup for Kasper. Reviewing resumes. Forwarded 4 of them so far to Javi and Antranig. 
+
+Kavya:
+	*  Back from short time off
+	* Testing UIO+ latest version
+	* Started working on monthly regression Test plan and also investigating MS build versions insider program
+
+Stepan
+- Closed GPII-2783 High-Level Task: Key Material Handling / Encryption Everywhere
+- Done GPII-3339 - Disable Kubernetes Dashboard
+- Working on - GPII-3340 Disable basic auth and client cert auth on Kubernetes API
+- Usual PR reviews, design discussions & ad-hoc issues
+
+Steven Githens:
+1. Continuing work on gpii-express-user and preferences server
+2. Reviewing some of the capture tool and morphic website designs that are going through UX testing this week
+3. Starting another round of UI changes to the PPT
+
+Tony
+
+	1. Reviewing "generic terms" (flat.json) and windows data (win32.json) with an eye towards completing schema coverage and adding validation tools.
+	1. Continued working on various pulls.
+	1. Researching and outlining solutions for express-pouchdb problems blocking Steve Githens' work with gpii-express-user
+
+Tyler
+* GCP logging
+
+AGENDA:
+
+From Sandra: 
+	    Questions from Gregg:
+	    1) where is there a list of all the GPII settings?  
+	    2) how many of these are in the Solutions Registry? 
+	If there isnt a page - then lets just use this one in the onboarding section.
+	https://drive.google.com/drive/folders/1jbpt5p3RjvkiBc_eQIK9tvhqwD99ueis

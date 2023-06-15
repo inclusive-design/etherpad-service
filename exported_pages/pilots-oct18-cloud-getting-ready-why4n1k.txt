@@ -1,0 +1,26 @@
+Getting ready for APCP October pilots (October 18th 2018)
+
+This pad was created to describe what needs to be done in order to get ready for the pilots (item #1 in https://docs.google.com/spreadsheets/d/1aYZp6ymzK1yinVEHqVP6PMklNy_gMd-I1kS47769PtI/edit#gid=0 )
+
+Background:
+For the last demo (feds-audit), we used Javi's AWS cluster because we were deploying code that was not part of master branches. (Now we are in a good position to start using the code that is in master)
+Also, we created a bunch of empty users in the preferences server that were used for the feds-audit demo (see https://docs.google.com/spreadsheets/d/1rZEwGamZ4f7BcLo3xYBBwPkDywkMdpeotgW25ZRDQSg/edit#gid=0 ) and they are being used in demos and need them for the upcoming pilots. Thus, we need to move all them into production.
+
+TODO:
+	* Check with DevOps the readyness of GCP for these pilots, if not, we'll be just fine to use AWS
+		* UPDATE: We need to figure out how to deal with the prefs server - this is, adding users to couchdb
+		* (Tyler) We'll probably stick with AWS for this release, but if we switch to GCP the interaction with CouchDB will be the same or very similar
+	* Check that the cluster we are going to use is using the last code from master (related to the question I made the other day on slack, I already know how to do it)
+	* Moving users out from Javi's AWS cluster:  We will follow this process (https://github.com/gpii-ops/gpii-infra/blob/master/aws/README.md#manual-process-generating-db-data-of-user-preferences-and-load-it-into-a-clusters-preferences-server ) and Javi can provide the json files ready to be pushed.
+		* I'm concerned about the fact that the users will be destroyed every time the dataloader runs. It's true that the dataloader needs to be run manually, but we would need to have a mechanism in place to backup these users and load them back in the database
+		* (Alf) I think that Joseph is working on this https://issues.gpii.net/browse/GPII-3192 -  https://github.com/gpii-ops/gpii-infra/pull/83
+			* Yes, but in case that the pr doesn't make it to master in time, we need to figure out the process.
+				* (Tyler) We have known about this problem (and at least one solution) for months. If that solution doesn't land, I don't have any suggestions other than "we must be careful not to destroy the data, and hope nothing else goes wrong".
+				* That said, we take a backup of CouchDB every 5 minutes in production, so we could roll back. However, that would be an invsaive operation that would cause downtime and may lose user data.
+		* (Tyler) Do we really need to "move users" from dev-jhernandez to prd? Or is it sufficient to create a new set of empty Preferences Safes in prd? If the latter, this plan looks fine. If the former, how do we plan to create empty Preference Safes with known UUIDs (AFAIK this is not possible with either the August demo's manual-manual process nor with Javi's updated manually-run-a-script process)?
+			* Yes, we need to move those users, mostly,  because Maureen has already received the USBs for the pilots and all them are using UUIDS that I created by that time and in my cluster. We can only insert those for Maureen and create a bunch of empty ones for the people to test and demo.
+			* The process to insert the users for Maureen will be quite similar to the one described in the gpii-infra repo.
+	* After everything is in place, Javi has to update the installer to make the GPII point to the production cluster, it's just a matter of updating this line: https://github.com/GPII/gpii-wix-installer/blob/feds-audit/staging/start.cmd#L2
+	* Question to DevOps. Before going to real production, I can perform tests against my dev cluster but, how if we want other developers to test it without having them to deploy their own clusters? Can we use "staging" as an environment for early testing before going live?
+		* (Alf) I think that STG is a good place to test any new functionality before it's moved to production. Right now we "click" on the "promote to production" button if all the tests passed. But we can add an additional check with QA team in order to be sure that everything works as expected before it goes to production. +1 this is one of the things stg (and manual promotion to prd) is designed for
+	* UPDATE: FYI, I have been asked whether we can reset users that are already in the cloud. This is, again, something that we may want to have a process in place for, until the users can do it through a UI. In any case, this is not a requirement at this moment and will raise if I'm asked again.

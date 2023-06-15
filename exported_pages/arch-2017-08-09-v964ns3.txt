@@ -1,0 +1,96 @@
+Updates:
+    
+Alfredo:
+	* Working on CI migration - GPII-2448
+	* Troubleshooting some issues
+	* Trying to figure out why the tests run so slow at the CI host 
+    
+
+Antranig
+	* Working with Javi to solve GPII App CI issues
+		* Further updates to a dependent library pouchdb-all-dbs pushed through our stack
+		* One remaining issue with respect to huge slowdown in CI for GPII App
+	* Meeting with Colin, Sandra, Gregg about Chrome OS support
+	* Talking with JJ about support for his new solution's transforms
+	* Merged in Steve Grundell's DPI support, metrics logging as well as Javi's pre-pilots snapsets
+		* We now have CI performance issues as the only remaining cause of test failure
+
+Georgi:
+	* Infusion exploration
+	* PCP API exploration 
+	* Sent questions about PCP API
+	* Adding features to the existing GPII app (global shortcut, edit preferences)
+
+Giovanni:
+	* GPII-2470 - Finshed work and ensuring CI continued to work
+	* Maintenance work (security updates, fixes to CI, etc)
+	* GPII-2464 (Kubernetes ingress) - new focus on AWS deployments
+    
+Javi:
+	* Trying to create an official build
+		* Merged pull requests into gpii-app, pushed updates on windows
+		* CI is still failing - looks like a performance problem makes the tests to fail
+		* Created pull request with snapsets (merged)
+
+Justin:
+	* Waiting for FLUID-6174 PR to be merged before I can finish the GPII/UIO+ integration
+		* https://github.com/fluid-project/infusion/pull/838
+		* https://issues.gpii.net/browse/GPII-2501
+	* Existing UIO+ work is available for code review
+		* https://github.com/GPII/gpii-chrome-extension/pull/2
+		* also sent out a build of the UIO+ extension for others to try
+			* see GPII-2424 ( https://issues.gpii.net/browse/GPII-2424 ) JiRA and GPII architecture mailing list ( http://lists.gpii.net/pipermail/architecture/2017-August/004628.html )
+			* have been making small updates based on feedback, e.g. adjuster order
+			* filed some new issues like:
+				* GPII-2523 ( https://issues.gpii.net/browse/GPII-2523 )
+				* GPII-2525 ( https://issues.gpii.net/browse/GPII-2525 )
+				* FLUID-6180 ( https://issues.fluidproject.org/browse/FLUID-6180 )
+	* Working on FLUID-6176 to add highlighting of words as they are being synthesised
+		* https://issues.fluidproject.org/browse/FLUID-6176
+		* Trying to synchronize the text highlight and synthesizer, highlighting is being added, but on the test site it's not accurate. I think it may be related to difference in how the synthesizer and my own parser handle whitespace.
+    
+JJ:
+	* GPII-2521: Researching about setting mapping, and finishing the work in the upstream onboard of Morpher and Simplification. After Javi corrected me about several parts of the work. 
+	* GPII-2508: Make some research about Chrome UI support of accesibility API.
+	* Talking with Antranig about my doubts with the mapping of SR.
+	* Talking with Steve Grundel about the localization strings issue.
+
+kavya:
+	* Done regression testing on GPII.170802.050055 installer version
+	* Done testing pre pilot snapsets - No issues.
+	* Done testing internal vaio listeners
+	* Performing regression testing on unoffical build version GPII.170807.115353 for prepilots
+    
+    
+Michelle:
+	* Ready for review: https://github.com/GPII/gpii-app/pull/18
+	* Ready for review: https://github.com/GPII/gpii-app/pull/15 (already merged in https://github.com/GPII/gpii-app/pull/19, which is the pr we're using for this round of updates)
+	* Working on tests: https://github.com/GPII/gpii-app/pull/17
+
+ Sandra:
+     - Working with team to get ready for the start of the pre-pilots on Tuesday, Aug 15. Not quite there yet. Using an unofficial build, currently being tested.
+     - Lots of Y3 planning work.   
+    
+Simon:
+	* Finished tests for nexus-client repo
+	* Doing some code review
+
+Stgggeve Grundell
+	* Got the metrics logging in.. 
+	* Screen scaling also in
+	* Helping with the pre-pilots
+	* 
+
+Tyler
+* GPII-2520: GPII components on Kubernetes in AWS
+    
+Yuriy:
+    * Reviewing the scope of the PCP project and coming up with JIRA tasks that suit the development plan    
+
+    
+Agenda:
+    - Vacation plans for next week include: Javi is out all of next week; Steve Grundell is out 15-Aug through 17-Aug. Michelle out starting tomorrow for a week. (Kasper and Ale should be back next week. Cindy back later this week.) Antranig is out Aug 10th through Aug 15th
+	* GPII-2515 - CI has been changed to use the new `npm run test` commands - PR review is blocking (https://github.com/GPII/linux/pull/94)
+	* Our naming of preference sets is becoming very problematic - they are all just thrown into a top-level garbage bin as we now had with https://github.com/GPII/universal/pull/535 - and we still have https://issues.gpii.net/browse/GPII-502 open as a task to organise these properly. We were unable to rename the snapsets since there are already NFC tags out in the wild that use these names, and the framework has no means of indirection against these files. We need to support some kind of hierarchical/configurable resolution of preferences from the filesystem together with JSON5 support
+	* We have problems in our CI for the GPII app that cause it to run unacceptably slowly (17 seconds to process a logon) - we could increase the timeouts in the framework but it seems better to understand what kinds of resources constraints could cause the GPII to run so slowly and how we can alleviate them
+	* Data that is needed for the Morpher and simplification feature: https://gitlab.com/gpii-demos/gpii-app/tree/demo-mainstream/provisioning/demo-data

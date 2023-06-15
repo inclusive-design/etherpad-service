@@ -1,0 +1,12 @@
+Attendees:
+	* Alan
+	* Antranig
+	* Cindy
+	* Michelle
+
+Steps:
+    
+	* resolve FLUID-5698, FLUID-5052 to get rid of jquery and infusion from the iframe
+	* use minified js for jquery and infusion
+	* upgrade jquery
+	* start loading UIO after the rest of the page is done

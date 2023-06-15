@@ -1,0 +1,22 @@
+Auditing requirements:
+    
+    - auditing trail: who when where
+    - level of details in the log file - payloads, timestamp
+    - Be able to extend the log details
+    - Be able to config to point all log files from GPII components to one central location
+    - Where certain auditing requirements can be tied to elements of a NIST requirement emerging from the fact that the GPII is storing and transmitting information (preferences) which have been assessed at a certain level (say, level 2) in the HIPAA hierarchy, we should document these requirements together with references to the appropriate parts of the NIST standard
+    - These requirements may relate to storage or non-storage of certain fields (e.g. time, identifying information tied to a user token, etc.), or a retention policy that audits/logs be retrievable for a certain period of time (e.g. longer than 7 days, shorter than 6 months)
+    - NIST section 4300-A contains guidelines on audit trail contents and retention policy
+
+Further requirements imposed on us should we find ourselves storing level 3 sensitive information:
+    - The use of YUBIkeys or similar 2-factor authentication to secure login/keying in
+    - PIV(Personal Identity Verification) card as an identification card to login to the system
+    - HSPD - 12 Homeland Security Presidential Directive #12 also applies to such systems holding level 3 sensitive information
+    - Payment Card Industry Data Security Standard (PCI DSS) compliance will be required if credit card information is being stored or transmitted
+    - FIPS 140-2 is a requirement on accredited cryptographic modules
+    - Our plan is not to store any such information for this phase of the GPII (APCP)
+
+Next steps:
+    - Have finished the review of key in process and identified 3 possible security gaps: auditing requirements, database credential, requirements should we store level 3 info
+    - Will continue to identify more security gaps and document those
+    - To continue with OAuth login flow in the next meeting

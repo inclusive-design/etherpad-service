@@ -1,0 +1,172 @@
+GPII Architecture Meeting Minutes, March 25th, 2020.
+
+UPDATES:
+
+Javi
+	* Learning how to become a father - the hard way :P Congrats!
+		* Recommended: https://www.amazon.com/Baby-Owners-Manual-Instructions-Trouble-Shooting/dp/1594745978 hahah thanks for the link!
+	* Gradually getting back to business
+		* Had a few calls with Kasper on different topics
+		* Catching up on email
+		* Trying to remember what I was doing before leaving
+	* WIll shepherd the "get 1.3.x stuff into master branches" thing
+	* Resume work in a few PRs
+	* Take over installers creation if Grundell is fine with it :) - he is
+	* 
+
+Alfredo:
+	* GPII-4219: Create a vagrant box of Windows 10 LTSC
+		* Big issues solved: the latest Windows 10 LTSC Evaluation ISO from M$ can not be activated. Previous release has the 90 days license available. - Alfredo rocks!
+		* Trying to solve now why the cleanup script 
+
+Christopher:
+	* GPII-4356: Build Morphic for Windows for both x86 and x64 architectures
+		* Talking with author of node-ffi-napi about potential future ARM64 support
+	* Morphic for ChromeOS (future-looking)
+		* Set up "placeholder" apps for Morphic and Morphic Lite in ChromeOS Chrome Apps store (unlisted)
+	* Morphic Lite for Windows
+		* Finished building/porting display enumeration and screen resolution get/set (Win32 API) for C#
+			* https://drive.google.com/open?id=1jKe3jRaGXhXNLfZxZE_dlh5c4s1UqqZh
+		* Worked through some WPF DPI-awareness issues, including mapping of hWnd to display (coordinating with Owen)
+		* Per-display screen zoom level
+			* Researched custom scaling functionality (e.g. "432%" instead of "+4 zoom levels")
+			* Identified registry entries and two methods to adjust screen zoom (both the current +/- DPI private API and using public APIs)
+	* Misc.
+		* Helped get Owen set up with Apple developer role access
+		* Misc. meetings
+
+Cindy (not present)
+	* Help to answer Joseph's questions about his GPII-4273 pull request
+
+Joseph:
+	* GPII-4273 LFM downloads the solutions registry from source code repository on system start
+		* (ii) Add a GET '/revision' endpoint to CBFM
+			* PR: https://github.com/GPII/universal/pull/837
+			* Ready for another review
+		* (iii/iv/v) LFM uses new '/revision' endpoint to compute the full github url to the solutions registry and download solutions regsitry from github
+			* Finished modifications base on review comments; ready for another review
+			* Added new documentation of the SolutionsRegistryDataSource to 'gpii-universal/documentation/'
+			* Working on suppessing output "FATAL ..." error mesage in some tests where the CBFM does not support the /revision endpoint, but not important to the test case.
+				* Found code in testing framework that forces the output of these messages to the log: https://github.com/GPII/universal/blob/master/gpii/node_modules/testing/index.js#L8
+			* PR:  https://github.com/GPII/universal/pull/840
+	* GPII-4400: Remove/retire the 'web' solutions registry and related material
+		* Updated to latest master that include Tony's latest work
+		* Revealed dependency of some snapsets and other preferences sets on some web solutions
+		* Documented these dependencies in the JIRA
+		* Email to architecture list asking if anyone knows about these solutions and how relevant they are to the snapsets (https://lists.gpii.net/pipermail/architecture/2020-March/005053.html).
+		* Documented use of these solutions in tests
+		* https://issues.gpii.net/browse/GPII-4400
+
+Justin:
+	* Open PRs
+		* GPII-4267: Removing the Captions prefernce and related code.
+			* https://github.com/GPII/gpii-chrome-extension/pull/41
+			* https://github.com/GPII/universal/pull/838
+		* GPII-4269: Re-organizing directories and related clean up
+			* https://github.com/GPII/gpii-chrome-extension/pull/44
+	* Working on
+		* PSPChannel read API cannot read UIO+ setting
+			* https://issues.gpii.net/browse/GPII-4218
+		* Generate both a UIO+ and UIO+ for Morphic extension
+			* https://issues.gpii.net/browse/GPII-4345
+		* BYOB URL button to open existing tab for a site.
+			* https://issues.gpii.net/browse/GPII-4410
+	* Other
+		* Reviewing PR from GSoC candidate
+			* Updated manifest.json for issue GPII-4241
+				* https://github.com/GPII/gpii-chrome-extension/pull/49
+
+Stepan (might be late today):
+    - Done - GPII-4414 - Stackdriver Monitoring expenses raised since the last deployment
+    - Done - GPII-4396 - Imvestigate intermittent missing snapshots in stg
+    - In progress - GPII-4395 - Create cluster-wide alerts for Deployments and StatefuleSets
+
+Steven Githens
+    - Added a couple more dataType fixes to GPII-4340
+    - Built yet another Morphic Capture installer fixing the reported issues from last
+    - Wrote some command line scripts to test fetching access_token's and then all your settings from the cloud, to verify the capture stuff
+    - Writing up detailed protocol for us to remotely install, run, and wrap up capture case studies
+    - Added some widget to the capture page 4 to allow keying in there by pasting in a key token (rather than having to use USB or folder etc, since these are happening on folks home machines), working on this workflow with Bern
+
+
+Steve Grundell:
+    - Released 1.3.4
+    - MYOB launchers now activate the running instance of an application, rather than starting a new one
+    - Looking into the high contrast thing at login (if it wasn't reset at logout)
+    - MAde the uninstaller not hang
+    
+
+Tony:
+
+	1. No childcare.  Working reduced hours, roughly 15 per week.
+	1. Working on the LSR, currently testing the replacement "context files" (win32.json5, etc.) in universal and windows.
+
+
+
+AGENDA:
+
+404s found in preferences of gcp cloud production at a rate of 1 per second:
+
+Sample logs:
+    
+    method:  "GET"     
+    protocol:  "http"     
+    received_bytes:  "946"     
+    referer:  ""     
+    request_id:  "62527174-f905-4912-8a67-42cedd4cfadf"     
+    request_operation:  "GET"     
+    request_size:  "0"     
+    response_code:  "404"     
+    response_size:  "86"     
+    response_timestamp:  "2020-03-25 02:48:28.109327 +0000 UTC"     
+    sent_bytes:  "366"     
+    service_authentication_policy:  "mutual_tls"     
+    source_app:  "flowmanager"     
+    source_ip:  "10.17.0.26"     
+    source_name:  "flowmanager-769fd64897-fvp48"     
+    source_namespace:  "gpii"     
+    source_owner:  "kubernetes://apis/apps/v1/namespaces/gpii/deployments/flowmanager"     
+    source_principal:  "cluster.local/ns/gpii/sa/default"     
+    source_uid:  "kubernetes://flowmanager-769fd64897-fvp48.gpii"     
+    source_workload:  "flowmanager"     
+    url:  "/preferences/7442ff9a-c392-79d8-b463-ebd01d8145f0?merge=%merge"
+
+    request_id:  "943eb6c6-45fa-451b-b231-6d8a19b14cee"
+    request_operation:  "GET"     
+    request_size:  "0"     
+    response_code:  "404"     
+    response_size:  "86"     
+    response_timestamp:  "2020-03-25 13:59:20.424574 +0000 UTC"     
+    sent_bytes:  "293"     
+    service_authentication_policy:  "mutual_tls"     
+    source_app:  "flowmanager"     
+    source_ip:  "10.17.0.3"     
+    source_name:  "flowmanager-769fd64897-rt5ts"     
+    source_namespace:  "gpii"     
+    source_owner:  "kubernetes://apis/apps/v1/namespaces/gpii/deployments/flowmanager"     
+    source_principal:  "cluster.local/ns/gpii/sa/default"     
+    source_uid:  "kubernetes://flowmanager-769fd64897-rt5ts.gpii"     
+    source_workload:  "flowmanager"     
+    url:  "/preferences/locust1031?merge=%merge"    
+    
+    method:  "GET"     
+    protocol:  "http"     
+    received_bytes:  "919"     
+    referer:  ""     
+    request_id:  "312dbe6d-751a-43b6-a36d-b1f655490244"     
+    request_operation:  "GET"     
+    request_size:  "0"     
+    response_code:  "404"     
+    response_size:  "86"     
+    response_timestamp:  "2020-03-25 13:59:28.96195 +0000 UTC"     
+    sent_bytes:  "365"     
+    service_authentication_policy:  "mutual_tls"     
+    source_app:  "flowmanager"     
+    source_ip:  "10.17.0.3"     
+    source_name:  "flowmanager-769fd64897-rt5ts"     
+    source_namespace:  "gpii"     
+    source_owner:  "kubernetes://apis/apps/v1/namespaces/gpii/deployments/flowmanager"     
+    source_principal:  "cluster.local/ns/gpii/sa/default"     
+    source_uid:  "kubernetes://flowmanager-769fd64897-rt5ts.gpii"     
+    source_workload:  "flowmanager"     
+    url:  "/preferences/locust1721?merge=%merge"    

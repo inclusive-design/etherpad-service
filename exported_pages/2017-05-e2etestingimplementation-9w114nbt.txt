@@ -1,0 +1,38 @@
+Containers and Orchestration
+	* Physical servers -> VMs -> containers
+	* Often with VMs, especially when loads are shared on them, there is resource inefficiency—CPUs are allocated to a machine but not necessarily used by the services running on it (e.g. as bad as 30% average utilization)
+	* KVM hypervisor has a big reliance on the kernel scheduler
+		* KVM is two parts: a kernel extension and QEMU in userland (don't confuse it with Keyboard-Video-Mouse) (what's a mouse? - it's like a small rabbit)
+		* "Kernel-based Virtual Machine" (https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine)
+	* With containers, instead of VMs the boundary is the application process—the application is the scheduling unit, which allows us higher CPU utilization (as much as 70% currently)
+	* The Linux kernel has added built-in support for containerization, including isolation of container processes—networking, process namespacing, etc.
+		* Linux Containers are orthogonal to KVM or other hypervisors
+		* We share a single kernel and scheduler
+		* Docker is built on top of the Linux kernel's container support, focusing on making it easier for developers to use
+		* there are a number of competing container runtimes: Docker (prob. the best for dev. machine), Rkt, ContainerD, Container Native Computing Foundation (CNCF) (branch of Linux Foundation to help standardize containers) 
+		* The name of the format being pushed by CNCF.io: "OCI" - Open Container Initiative
+		* When talking about containers - where talking about Linux. Each container will have their own (Linux) OS, filesystem, processlist, etc. But it will share a kernel with the Host OS.
+	* The big issues: dependency management
+	* Containers are designed to be immutable: you build an image with all the dependencies baked in (via automation)—the image is a single unit that you just deploy and run
+	* MORE UNITS THAT HAVE TO BE MANAGED
+	* Linux kernel and Docker don't enforce any requirements for mapping between processes and containers, but in general they're not like VMs: you want more or less one process per container
+	* Containers are generally immutable: you don't upgrade them, you don't ssh into them. you just build a new one and replace the old one with it
+	* Container images are typically built from a recipe: Docker provides a Dockerfile, which is essentially a recipe outlining the scripting steps required to build the image
+	* Containers intersect with CI/CD ("continuous integration/continuous deployment"): images are typically rebuilt every time new code is pushed to the repository (and can be deployed automatically to production as part of the workflow)
+	* When you run something like Docker on, say, a Mac, you're actually running an Xhyve virtual machine running Linux, and then the Docker container runs inside that VM (since macOS doesn't have native support for Linux Containers)
+		* Xhyve: https://github.com/mist64/xhyve
+
+Orchestration Layer: 
+	* Responsible for scheduling and enforcing how things should work at the cluster level
+	* the tools responsible for automating the process of handling the containers
+	* Ideally highly declarative
+	* Will handle things like reacting if a container uses crazy amounts of CPU, crashes, gets under too much load on some resource, scaling (spinning up and down boxes)
+	* Several options for container orchestration with Docker (e.g. Kubernetes (https://en.wikipedia.org/wiki/Kubernetes), Swarm, etc.)
+
+Data persistence and containers
+	* Examples...
+		* Docker: https://docs.docker.com/engine/tutorials/dockervolumes/
+		* Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/
+
+
+

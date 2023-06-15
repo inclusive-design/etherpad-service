@@ -1,0 +1,13 @@
+
+Agenda items:
+	* We need a process for how items should enter the backlog—some way that a developer, for example, could file an issue for ops team and then it would be triaged and enter the planning process (from previous meeting)
+		* A proposal could be:
+		* Process should apply to all tickets (i.e., regardless of their shource)
+			3. Assign the issue to the "Triage user" with cc to the operators involved. Need to workout the logistics. We'd like for the triage user id to be the default. 
+			3. Triage the issue. Who? DevOps team and Colin
+			3. Set the story points by the opers involved Goal is to do the estimation during the triage. There will be cases where they will have to be taken offline. 
+			3. The PO should set the priority of the issue, Colin sets the priority with input from the team. 
+			3. Inject the issue in the backlog. Sandra does this. 
+
+	* When to hold next sprint planning meeting, which is scheduled for next week while we're in Toronto. Team agreed to push out the planning meeting to week of 15-May. 
+	* Tyler: demo for this week, Colin suggested it's done next week with the team on site. 

@@ -1,0 +1,129 @@
+Agenda:
+    A. Impact of team going down to two members or time it will take to replace.
+
+From Sandra:
+ 
+I've done a "back of the envelope" estimates based on the current backlog on the scrum board. 
+
+1. There are currently 66-69 story points of effort on the backlog. 7 JIRAs do not have estimates. For this exercise, I'm going to assume "worst case" of 5 points to each or 35 points. That's a total of around 101 points of effort remaining. 
+
+2. The team's velocity was around 20 points with 3 members. I'm going to assume 13 points for 2 members. 101 / 13 = ~ 8 sprints x 3 weeks = 24 weeks. I'll round it up to 30 weeks estimate. Starting the next sprint on 9-Oct + 30 weeks = around 11-May-2018.
+
+3. Backfilling Gio would allow the team to finish sooner. How soon? If depends on how quickly we find the right person and how quickly he/she gets up to speed. 
+
+   B. Impact of Brendan and Colin's logging requirements. 
+   
+	* Logs should be stored centrally in a logging system (hosted by elastic.co unless we have a better option)
+	* Logs need not be highly structured—yet—let's just get them into a central service and refine this over time
+	* Logs should consist of:
+		* Any application logs from the server software.
+		* Syslogs and similar from the containers.
+		* Kubernetes logs.
+		* Syslogs and similar from the Kubernetes hosts.
+		* S3 bucket access logs.
+		* Cloudtrail logs: Route53 changes, API usage, anything that looks good really. (API key usage is a biggie, it's startlingly helpful, especially when combined with S3 bucket access logs.)
+
+GPII-2015 - Logging - Automate deployment of log shipper
+GPII-2017 - Logging - Identify log formats and necessary configuration
+GPII-2019 - Logging - Set up alerting                - for this one, we should do whatever is simplest now, and continue to add and restructure as needed
+GPII-2321 - Identify log formats for various system components
+GPII-2600 - Send ELB logs to S3 bucket
+
+
+Next Steps:
+	* File as many JIRAs for the tasks we know about as possible with as much detail as possible (Alfredo and Tyler)
+	* Research appropriate technical solutions for these tasks (Alfredo in consultation with Tyler)
+	* Meet as a team to discuss the technical recommendations and or/architectural issues that arise from the above (whole team) — on October 10 
+	* Estimate JIRAs (whole team)
+
+Possible solutions:
+    
+    - Use of FluentD as privileged container to collect the logs of each node. (Syslogs VMs, Kubernetes)
+    - What use for Amazon components? (Route53, S3, ELBs)
+
+   Hi devops team, 
+
+Brendan and I met last week to discuss the minimum logging requirements for going into the phase 2 pilots with editable preferences sets (via the PCP with memory). For our MVP, we will need centralized logging. It need not be highly structured (and thus not necessarily highly queryable), but it should be separate and centralized—our plan to use elastic.co for now seems wise, and Brendan has also suggested the prospect of logging to an S3 bucket.
+
+Below is a list of the kinds of things we should be logging centrally. Sandra, can you work with Alfredo to break these tasks down into actionable JIRAs and estimate them?
+
+Thanks,
+
+Colin
+
+---
+Colin Clark
+Lead Software Architect,
+Inclusive Design Research Centre, OCAD University
+http://inclusivedesign.ca
+
+Begin forwarded message:
+
+From: "Brendan O'Connor" <brendan@raisingthefloor.org>
+Subject: Logging Targets
+Date: September 26, 2017 at 7:41:58 PM EDT
+To: "Clark, Colin" <cclark@ocadu.ca>
+
+Things I can think of as a first pass: 
+
+* Any application logs from the server software.
+* Syslogs and similar from the containers.
+* Kubernetes logs.
+* Syslogs and similar from the Kubernetes hosts.
+* S3 bucket access logs.
+* Cloudtrail logs: Route53 changes, API usage, anything that looks good really. (API key usage is a biggie, it's startlingly helpful, especially when combined with S3 bucket access logs.)
+
+I'd like to be able to trace an attacker with an AWS key making changes to our infrastructure, and also trace an attacker breaching a container and doing Terrible Things from the host. So anything else you think would aid those, throw it in; the marginal extra cost is low.
+
+As we discussed, logging the things that don't already go to an S3 bucket to an S3 bucket is great, we can throw them into ELK from there. (We can also configure the bucket to be append-only via key and auto duplicate to another S3 account, which gives us "audit-grade" logging really quickly.)
+
+---BFO
+
+
+Elements of the Cloud that create logs:
+	1. Amazon CloudWatch
+		2. EC2 virtual machines (hypervisor logs)
+		2. EBS
+		2. IAM
+		2. ELBs
+		2. S3
+		2. DynamoDB
+		2. Route53
+		2. VPCs
+		2. CloudTrail (API usage)
+	1. VMs
+		2. Masters System/Kernel Logs
+		2. Nodes System/Kernel Logs
+	1. Kubernetes
+		2. GPII Containers logs
+		2. Nodes containers Logs- how does 3.1 differ from 3.2 and 3.3?
+		2. Master containers logs
+
+How to ship logs to external ES
+	1. Send CloudWatch metrics to the external ES: 
+		2. https://github.com/blueimp/aws-lambda/tree/master/cloudwatch-logs-to-elastic-cloud - looks AWS-centric (dependent on Lambda). Have you thought about what this would look like in GCE or Azure? Looks like GCE has an equivalent (Cloud Functions) but Azure currently does not.
+	1. VMs
+		2. Filebeat https://www.elastic.co/products/beats/filebeat
+		2. Filebeat + Logstash (pre-filter logs after shipping)
+	1. Kubernetes
+		2. Fluentd https://docs.fluentd.org/v0.12/articles/kubernetes-fluentd
+
+The following tasks requieres automation, in order to perform each individual task everytime a new GPII cloud is created:
+	1. Setup ES to create a user per cluster (GPII cloud deployment) and give it permissions to create the indexes assocciated to it - looks like User Management APIs (and all Security APIs) are part of X-Pack, a proprietary ES add-on that we probably can't use long-term.
+		2. Create the indexes needed by a GPII cloud deployment.
+			3. https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html
+		2. Create an user that only can write to the above indexes and give permissions
+			3. https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html
+	1. Automate the grouping in a resource group? of the resources of each GPII cloud deployment - I don't understand this
+		2. Or group all the resources of one deployment someway in order to make that CloudWatch only monitor and send the logs of those resources - I don't understand this
+	1. Setup CloudWatch to monitor all the resources of a resource group.
+	1. Setup CloudWatch to send the logs to the ES instance to a particular index
+	1. Setup the shipping of the logs of the VMs to either CloudWatch and/or ElasticSearch - how is this different from 4? - why would we ship logs to CloudWatch instead of to ES? - CloudWatch appears to be focused on monitoring, not logging. Isn't this out-of-scope? Are we still planning to use Prometheus for monitoring?
+	1. Setup FluentD daemonset manifest to ship the logs of Kubernetes to a particular index of the ES
+
+GPII-2651
+GPII-2650
+GPII-2649
+GPII-2648
+GPII-2647
+

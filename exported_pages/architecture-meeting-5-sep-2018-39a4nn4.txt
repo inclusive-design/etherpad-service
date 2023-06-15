@@ -1,0 +1,78 @@
+Architecture meeting, Sep 5, 2018.
+
+Updates:
+    
+    Sandra:
+        - Some team members worked on a build for a demo to Microsoft by Gregg. It hasn't been scheduled yet. I don't think it's likely to take place on Monday.
+        - Started to receive information about the scope of the pilot to the library in Richmond, but no official specs yet. It appears there's a requirements to 
+        support up to 200 users with "accounts" through USB stick (similar to what was used in the audit demo). Since Antranig and others are out, I'll schedule a meeting next week to determine what
+        the actions on our side will be to support (if any). 
+        - DevOps targetting 2-Nov to be FERPA compliant, i.e., able to deploy to the community college.  
+
+Alfredo:
+	* Working on tasks related to the GCP infrastructure GPII-3125
+
+Cindy
+	* GPII-3193: noUser keyin
+		* Addressed code review comments and has been merged
+		* George from Astea team hits some errors with using this work with QSS. Some are expected and some are not. Investigating unexpected errors.
+	* GPII-3316: Modify solution registry condition for applying high contrast themes to UIO+
+		* merged
+	* GPII-3318: snapshotter for QSS
+		* Need more disucssion with Antranig, but in progress.
+
+JJ:
+	* Finished GPII-2809 and GPII-2810. Both of them ready for review.
+	* Created pulls and updated work done in May for demo regarding to Onboarding Learning Tools. Work now live in pulls GPII-3320.
+	* Updating current openned pulls and working into Steve suggestions, I will be working full time now into this.
+		* Right now with GPII-3131 and GPII-3145.
+
+Joseph:
+	* Working on the dataloader (GPII-3138)
+		* Addressing Antranig's comments.  Some addressed; working on migrating the code to use fluid.promise.sequence()
+		* Thinking about how to handle updating of views so that it works every time.  Discussion with Cindy about this.
+		* Tyler notified me of other work on the database regarding "warming it up" -- GPII-3250. Wondering about the overlap.
+			* https://github.com/gpii-ops/gpii-dataloader/pull/7#issuecomment-418545415
+
+
+Justin:
+	* Spoke with Gregg about priorities for UIO+ work.
+		* Updated the planning page based on these
+		* No specific timeline for the work yet
+	* Working on GPII-2914 ( https://issues.gpii.net/browse/GPII-2914 )
+
+Sergio
+ - GPII-3250: Pre-warm indices on couchdb
+     - https://github.com/gpii-ops/gpii-dataloader/pull/7
+     - Need to coordinate with Joseph  (GPII-3138)
+     - https://github.com/gpii-ops/gpii-dataloader/pull/6
+ - GPII-2865: Investigating security testing and network security policies
+ - GPII-3248: Test GPII End-To-End
+
+
+Stepan:
+    - GPII-3209 - Unify components naming, GPII-3214 - Remove GPII_FLOWMANAGER_MATCHMAKER_URL
+    - GPII-3296 and GPII-3125 - Testing GCP infra code
+    - GPII-2783 High-Level Task: Key Material Handling / Encryption Everywhere
+
+Steve Grundell:
+    🖤 Bundling filebeat with GPII installer, GPII-3315
+    🖤 Away most of the week
+    🖤 Fixed ini file writing an empty object to a new file
+
+Tony:
+	* Developed a new "globbing" library and updated gpii-grunt-lint-all to use that instead of Grunt's built in globbing.
+	* Used that to create a pull to address the slower linting times in Infusion master, which reduces the time from 60 seconds to 9.
+	* Addressed options merging issues raised by Justin in using gpii-grunt-lint-all with infusion-docs.
+	* Continued working on JAWS settings onboarding and version support, now seeing empty INI files when I key in.  Will pair with stegru on this later in the week.
+
+
+
+Tyler:
+    * Keeping logs - https://issues.gpii.net/browse/GPII-3324
+    * Throwing away logs - https://issues.gpii.net/browse/GPII-3327
+
+
+AGENDA:
+
+Please enter any agenda items here.

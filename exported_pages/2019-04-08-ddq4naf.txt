@@ -1,0 +1,7 @@
+Agenda:
+    1. Anything to demo?
+	- Sergey will demo code that shows universal image info
+	- will be short - 10m, can be part of the arch meeting
+	
+    2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+

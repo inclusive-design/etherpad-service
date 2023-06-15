@@ -1,0 +1,84 @@
+UPDATES:
+    
+Kasparnet:
+	* Fixed up GPII-1230 (matchmaker) for windows, which was causing a lot of smaller issues.. Now I hit a bigger one, GPII-2777 where the windows magnifier would occassionally cause an error. This was reproduceable every 2-4 logout/login cycle. After calling in the heavy cavalry (Mr. Grundell himself), we found the issue had to due with multiple processes taking place as part of the magnifier startup. This was the same issue as GPII-2668, for which Joseph already made a fix, applying that made everything work: https://github.com/GPII/windows/pull/156
+	* Josephs pull request has my blessing (functionality wise) for being merged - if Steve Grundell is happy with the code, I can do the merging of it.
+	* 
+
+Alfredo:
+	* Created the testing VM for Astea's survey app
+	* Adding the last deatils to GPII-2648. Tons of logs to parse
+	* Reading documentation of Amazon's Lambda service which will be used to send the logs to Elastic Search.
+
+Brendan:
+	* Mostly standards work that comes out of NIST:
+		* Acceptable Use (will likely be out for comment on the Arch list by this meeting next week)
+		* Hardening (in progress)
+		* Security Engineering (in progress)
+		* Personnel Screening (will start this week)
+
+Colin
+	* Write D201.5 for Prosperity4All, consisting of updates about the status and progress of the Nexus and Quality Infrastructure
+	* Giving a GPII demo as part of a talk tomorrow about the future of assitive technology (the latest builds with UIO+ and the PSP look great!)
+
+Georgi (for the Astea team):
+	* Integrated the simple survey server that Alfredo created
+	* Created a PR for the survey pop-up related work: https://github.com/danailbd/gpii-app/pull/22
+	* Set up a branch so that Javi can create a GPII installer for testing the survey pop-ups
+	* Tried to migrate to electron 1.4.16
+		* An issue related to the “workArea” is present in this version: https://github.com/electron/electron/issues/6312
+		* Reverted back to electron 1.4.1
+	* GPII-2776: Support for more complex survey pop-up trigger rules
+	* Test configurations for the PSP integration tests. Added some more tests, too.
+	* Improved documentation
+	* Some refactoring and code improvements
+
+Joseph
+	* Just back from the holiday break, not much new.
+	* Following Kasper's use of my fix for the windows process reporter (GPII-2668/GPII-2777/GPII-1230)
+		* https://github.com/GPII/windows/pull/156#issuecomment-355015840
+	* Was working on mock process reporter for integration testing way back in good 'ol 2017; will continue with that work.
+
+
+Justin:
+	* UIO+  0.1.0-beta.2 available on the Chrome Web Store ( https://chrome.google.com/webstore/detail/ui-options-plus-uio%20/okenndailhmikjjfcnmolpaefecbpaek )
+		* Video of a demo of the GPII/UIO+ integration ( https://www.youtube.com/watch?v=SjnXy0Iplvs&feature=youtu.be )
+	* UIO+ Phase 2
+		* Submitted PR for FLUID-6209 - https://github.com/fluid-project/infusion/pull/867
+			* Antranig is reviewing
+		* Did proactive work to integrate work from FLUID-6209 into UIO+ but will need to wait for FLUID-6209 before a PR can be submitted
+			* https://github.com/jobara/gpii-chrome-extension/tree/GPII-2559
+
+
+Sandra:
+    - Happy New Year!
+    - New DevOps team member joins Monday, 8-Jan. Yuval Yaari. He's Israeli living in Barcelona. 
+    - Steve Grundell, Gregg and I are working on finding a SW option for Installation on Demand.
+    - Working on updates. 
+
+Steve Grundell:
+    - Windows system settings handler: GPII-2772
+    - IoD discussions with WaveAccess
+	    - Got a proposal, seems reasonable
+   - First-pass review of JJ's I18N PRs: https://github.com/GPII/windows/pull/158
+
+Tony:
+    
+	1. Like everyone else, just coming back from Christmas/New Year's.  My schedule is more or less back to normal from tomorrow on.
+	1. Continuing to work on gpii-testem improvements to help with collecting code coverage in projects like universal.
+
+
+Tyler:
+    * Address APIServerLatency alerts (upgrade Kubernetes masters to larger instance type)
+    * Recover from Prometheus filling its disks
+    * Next is monitoring for GPII Preferences
+
+
+
+AGENDA:
+    
+Antranig gone for two weeks - dependencies?
+	* Kasper: Discussions on componentizing the solutions registry - Tony/Hens might be able to help ->Tony and Kasper will get together. 
+	* Justin: Review of FLUID-6209, and upcoming PR for GPII-2559 -> Not blocking Pilots. 
+	* Astea: Review of the survey pop-up functionality branch: https://github.com/danailbd/gpii-app/pull/22 -> Kasper and Javi will look at this and give some feedback
+		* Antranig's suggestion is that the first priority is to address the feedback he left in the "original branch", prior to moving on to review of the survey popup work

@@ -1,0 +1,106 @@
+Attendee list: Javi, Alfredo, Antranig, JJ, Joseph, Justin, Kavya, Stepan, Steve and Tyler
+
+UPDATES
+
+
+Javi
+	* Been working on August demo
+		* Putting everything together
+		* Apply some minor tweaks, finding and reporting problems to the right people
+		* Testing
+		* Ad-hoc calls
+	* I will keep integrating and performing testing as soon as things get into our branches
+	* BTW, our branches are called "feds-audit", and we such branches on universal, windows and gpii-app
+	* We're using this pad to keep track of things -> https://pad.gpii.net/p/feds-audit-august-2018-lye4n8z
+
+Alfredo:
+	* Wrapping up GPII-3125
+	* Reviewing PRs
+
+Antranig
+	* Reviewed and merged a bunch of stuff for the demo and other work
+		* Stegru's Windows Language work
+		* Stegru's new structure-preserving INI file parser (required for NVDA)
+		* Most of Justin's UIO+ pulls - waiting on some help from ADTKINS on how to make its browser tests run as part of "npm test"
+		* Justin's "removed onboarding of dictionary"
+		* Justin's Onboarding of captions/low contrast
+	* Working with Cindy to patch over the core's mismatch in expectations about QSS settings which don't correspond to preferences
+		* We shelved the existing "noUser" work in favour of emergency work implementing a very dim hard-coded matchMaker that compensates for the fact that the QSS tries to change settings which have no data structures output by the matchMaker, which are ordinarily used to understand how to bridge the gap between their position in the prefs document and how to apply them to the system
+	* Attended the usual meetings about QSS, the demo checkpoint, etc.
+
+JJ
+	* Working into last settings from Windows 10 first wave, rows 34, 37 and 38.
+	* Taking a look to new requested settings for Windows 10 osk.
+	* Finished up pull GPII-3246.
+	* Fixing some issues in GPII-3145.
+
+Joseph
+	* GPII-3138 update snapsets in database
+		* universal, gpii-dataloader, and gpii-infra
+		* new feature: convert the demo user preferences and upload resulting Prefs Safes/GPII Keys
+			* roy, quint, and a set of empty prefs
+		* Meeting with Tyler, Cindy, and Alfredo to coordinate this work with ops
+			* Learned that the code will only change snapset Prefs Safes and leave any other data in the database untouched
+			* But, leads to problem that static data views record are not always updated -- working on it.
+				* Brute force:  one time flush of the database and reload will load the new views record and everything that depends on that works.
+				* Finesse:  check the views record and update if different.
+		* Deployed an AWS private dev cloud up and using it to test.
+		* Addressed Antranig's comments on universal pull.
+			* https://github.com/GPII/universal/pull/626
+		* Away for two weeks beginning next week.
+
+
+Justin:
+	* Antranig has merged most of the UIO+ related pulls
+	* Published a new beta release to the Chrome Web Store ( https://chrome.google.com/webstore/detail/ui-options-plus-uio%20/okenndailhmikjjfcnmolpaefecbpaek )
+		* Includes
+			* renaming text size to zoom
+			* adjusting zoom range from 0.5 - 4.0
+			* adds low contrast themes
+			* updates TTS to use the one from infusion, click2speech no longer used
+			* removed dictionary
+			* This also means no more managed 3rd party extensions - yay!
+	* Still working on YouTube captions in UIO+ ( https://issues.gpii.net/browse/GPII-3154 )
+		* filed a JIRA for issue with binding multiple instances of YT.Player to a single embedded video https://issues.gpii.net/browse/GPII-3264
+	* Working on updating testing for UIO+ in GPII-3053 work.
+		* need to talk to Tony as I'm having difficulty getting testem setup
+
+Kavya:
+	* Continued testing on  MM and PPT testing
+	* Started testing on new installer for upcoming feds Audit demo. Logging issues here 
+		* https://docs.google.com/document/d/1OB4XxVcuAj92LqkH5KxdmBO5xhmV5fH48Om9Rem44ig/edit?ts=5b69c32b
+
+Stepan:
+	- GPII-3242 - Spike on pure TF infrastructure automation
+	  - demoed last Thursday, proposal PR https://github.com/gpii-ops/docs/pull/1
+	- GPII-3196 - [AWS]: Improve post-deploy cert checks -> merged
+	- GPII-3241 - [GCP]: Leftover resources after cluster destruction
+	- PR reviews & discussions
+
+Steve Grundell:
+	* Various things for the deemo:
+		* Finished app zoom, GPII-3236
+		* Fixed DPI scale so it works on hi-dpi displays, GPII-3230
+		* Fixed other things I broke
+		* Currently going through the bugs reported by Kavya, Bern, and Gregg
+	* Returning to IoD when this is done
+
+
+
+Tyler:
+    * Work with Joseph and Cindy on dataloader changes
+    * Ops team things
+
+AGENDA
+
+
+
+
+
+
+
+
+
+
+
+

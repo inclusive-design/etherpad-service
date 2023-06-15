@@ -1,0 +1,7 @@
+Agenda:
+    1. Anything to demo this week?
+	Sergey?
+	– Sergey will demo monitoring and alerting on GCP
+	
+	Alfredo on vacation:
+		GPII-2865 - Not much progress on this, feel free to tackle this issue during my vacation.

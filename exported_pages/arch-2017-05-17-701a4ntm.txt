@@ -1,0 +1,107 @@
+Updates:
+    
+Kasparnet:
+	* Pull request for RFID changes we discussed in Toronto - there are now events in the flowmanager that gpii-app can use and a /user/:token/proximityTriggered that the RFID listeners should call: https://github.com/GPII/universal/pull/513 
+	* Quick pull request for luminance environmental term: https://github.com/GPII/universal/pull/514
+	* Will look at isConfigurable and makeConfigurable (https://issues.gpii.net/browse/GPII-1885 ) in parallel with planning out the details of the upcoming MM work - Count me on this
+	* One of my pull requests seem stuck on the CI: https://github.com/GPII/universal/pull/507 -> https://ci.gpii.net/job/universal-tests/267/
+	* More JIRA scrubbing
+	* Have to leave arch. meeting early :( Michelle has agreed to chair the remainder
+
+Ale:
+	* Reviewing, searching and defining requirements for IoD contracting.
+	* Planning onboarding.
+
+Alfredo:
+	* GPII-2410 - Updated the GPII HST landing page
+	* Published the rest of the VMs in Atlas
+	* Tested Tyler's work about Terraform GPII-2388. Everything works as expected.
+	* Talked with Steve Grundell about following up the GPII-2390 GPII metrics issue.
+	* Received a fix for GPII-2065 "Windows Creators update VM" and testing it.
+	* Met with Javi and we did the initial steps of the Release Process of GPII, F2F topic.
+	* F2F
+
+Antranig:
+	* Helped Fish with GPII app unit tests
+	* Chat with Simon about improving factoring of Nexus work
+	* Filed some JIRAs about updating Kettle to use the sequence grade IoC Testing system (KETTLE-60)
+	* Issued a Kettle pull for the "pull" part of contextualised configs
+
+Cindy
+	* Created a new wiki page that lists the approaches that native GPII apps can request client credentials: https://wiki.gpii.net/w/Workflows_to_Request_Client_Credential
+	* Planning implementations I can start for protecting the communication btw LFM <> CBFM
+
+Giovanni
+	* New CentOS 7 and Fedora 24 vagrant boxes - tested with VirtualBox 5.1.22 and vagrant 1.9.5
+		* vagrant box update --box inclusivedesign/fedora24
+		* vagrant box update --box inclusivedesign/centos7
+		* vagrant box prune
+	* GPII-2411 - Tested Antranig's PR to kettle - https://github.com/fluid-project/kettle/pull/33
+		* Strings worked fine. Booleans failed. According to Antranig, we got lucky with numbers.
+		* Partially blocked by GPII-2409 ("Validate options using JSON Schema")
+		* Work can still be conducted on standardizing env var names, etc (will raise topic in GPII arch meeting and continue with testing ideas for container simplification) -- http://lists.gpii.net/pipermail/architecture/2017-May/004558.html
+	* Planning on reading more about Terraform for GPII-2412 and GPII-2413
+
+JJ
+	* Attending F2F meeting, really great experience to meet all the team for first time.
+	* Continue with the UIAutomation work.
+	* Created styleguides with Ale for Onboarding projects.
+
+Javi
+	* Started working on a Build/Release process doc with Alfredo
+	* Being doing a bit more research on chrome extensions - mostly, in terms of accessing 3rd party's local storage
+	* Making some space in my laptop so I can review pending pull requests from Joseph GPII-8?
+
+
+Joseph
+	* Attended a very important face-to-face meeting all of last week...
+	* Finished changing the Windows Display Settings Handler to provide all available screen resolutions.  But an acceptance test failing -- working on it.
+		* https://issues.gpii.net/browse/GPII-2404
+		* https://github.com/GPII/windows/pull/121
+
+Michelle
+	* Forked some Kettle test utils for the electron tests with Antranig https://issues.fluidproject.org/browse/KETTLE-60
+	* Working on https://issues.gpii.net/browse/GPII-2401
+
+Sandra:
+    - Started to collect next steps and follow-ups from topics discussed last week. 
+    https://docs.google.com/document/d/1VYNu4dBDV5couwvZT0i26KCZ-hu9oWNsYlFZ3_FF1QA/edit
+    - Updating Core 2. 
+    - Looking forward to receive updates regarding onboarding priorities next week from UX, Usability, Pilots and Gregg.
+
+Simon
+	* Updated https://github.com/GPII/nexus/pull/9 -- thanks Gio!
+	* Chatting with Antranig about code factoring
+	* Nexus code cleanup
+
+Steve Grundell
+	* The RFID listener stuff
+		* Adjusted the RFID listener to work with kasper's update (proximityTrigger)
+		* Got the vaio, githens's shitty code built and worked first time
+
+Tony:
+	1. Continued researching and breaking down the options for representing component options using JSON Schema in detail for further review at upcoming PCP API meetings.
+	1. Will prepare a similar breakdown of UI hint approaches for the following meeting.
+
+Tyler
+* F2F: Poutine Is Delicious, Toronto Is Awesome
+* GPII-2388: Got kitchen-terraform and terragrunt playing together. Sent my initial proof of concept out to devops team for feedback. They can spin up an AWS environment on their local machines!
+* Next is GPII-2399: kitchen-terraform tests under CI
+* Terra-skynet
+	* Planned for v2
+
+
+Agenda:
+
+Security meeting scheduling (Cindy)
+	* Internal reviews of whether or not (or how) to talk about these workflows with UX team:
+		* Workflows to request client credential: https://wiki.gpii.net/w/Workflows_to_Request_Client_Credential
+		* Section 2.1 (Manage OAuth 2.0 client credentials at central GPII website): https://wiki.gpii.net/w/Designs_of_Using_a_Dedicated_Process_to_Protect_the_Client_Secret_Assigned_to_GPII_Local_Installation#Manage.2FCreate.2FEdit_OAuth_2.0_client_credentials
+	* Other implementations I can start
+
+Participants: Cindy, Colin, Simon, Steve Grundell, Antranig
+
+Pull Requests:
+	https://github.com/GPII/universal/pull/514 Javi
+
+	

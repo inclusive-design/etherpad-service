@@ -1,0 +1,41 @@
+# GPII Infrastructure Meeting - 2016-11-21
+
+
+Avtar
+	* Testing out Gitlab-related plugins, including one for web hooks GPII-2133
+	* Can mirror Github repos to Gitlab using the commandline, but a Python script to help with this doesn't look very promising http://workbench.dachary.org/dachary/github2gitlab/merge_requests/1
+	* Will write a Node.js script to do this mirroring task
+	* Cindy encountered a Vagrant 1.8.7 on OS X issue https://github.com/mitchellh/vagrant/issues/7969#issuecomment-258878970
+
+Alfredo
+	* Working on GPII-2123
+	* Tried to get the Gitlab CI definition to run in the runner
+		* different from Jenkins because the workspace is cleaned every time
+		* this is an issue with Vagrant because the vagrant directory is cleaned up at each step—thus vagrant can't find the VM
+		* found an ugly workaround, discussed on the ticket
+	* Also setting up the Let's Encrypt solution for GPII domains; gpii.net's (Digicert is expensive) certificate will expire in 2 months
+
+Giovanni
+
+	* Worked on cleaning up my JIRA queue (closed some issues that were done or not relevant anymore, removed my name from GPII-2009 child tickets to make it clear they need to be assigned)
+	* Worked around an issue in VirtualBox 5.1.8 and OSX on Cindy's work laptop (used https://www.virtualbox.org/wiki/Testbuilds). She's still having a different issue on her personal machine at home, which I wasn't able to fix (it's an issue with npm links that I can't reproduce on Linux/Win10 here)
+	* Spent some time updating Fluid's JIRA and Confluence and other sysadmin-y tasks
+		* Gio will also take a look the GPII JIRA
+
+Colin
+	* Interviews
+	* Responded with some thoughts regarding simplifying the QI—we need less high level feedback
+
+
+	* https://issues.gpii.net/browse/GPII-2133
+	* https://issues.gpii.net/browse/GPII-2123
+
+Actual qi.yml file: https://github.com/amatas/vagrant-vmenv/blob/master/samples/gpii-universal/.qi.yml
+https://github.com/avtar/qi-config/blob/master/files/.qi.yml.example
+Gitlab vml file: http://git.alfredomatas.es/amatas/nexus/blob/master/.gitlab-ci.yml
+
+Describe scenarios in the Jira issue about the Vagrant plugin: GPII-1876, GPII-2067, GPII-2068
+	One good scenario is the production environment for GPII-universal
+	The scenarios should be described here: https://issues.gpii.net/browse/GPII-2068
+	
+

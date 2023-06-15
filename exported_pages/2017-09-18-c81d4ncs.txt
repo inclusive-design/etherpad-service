@@ -1,0 +1,67 @@
+Agenda:
+    - Discussion with Javi re. End-to-End testing
+    - Update/Retrospective on Sprint 8
+    - Go/no-go checkpoint for October
+	* Update from Sandra: ASTEA doesn't need cloud infra until first week of November. Actually, it is needed 4 weeks before their completion date in order to test with the cloud. 
+    - Planning Sprint 9
+    
+    Notes:
+
+E2E
+	* https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-meetings-iqt4nbr/pad/view/2017-08-15-3ke4nn8 line 90
+	* From the pad
+		* What is the minimum that we need for the October 1st deadline?
+			* Right now we're not using the cloud infrastructure - no remote prefs server, no security, no trusted/secured online flowmanager
+			* As of October 1st, we should start using the cloud based flowmanager - in order to support PCP with memory, this means that we will need to create testing for
+				* cloud-based flowManager
+				* cloud-based prefs server
+					* we need to be able to update NP sets (securely) to support PCP with memory
+		* Existing e2e tests may be sufficient. Or a subset of e2e tests (with a separate target)
+			* need to look at what existing production tests include - Antranig indicates that existing tests must be updated (and/or even improved)
+				* https://github.com/GPII/universal/blob/master/tests/ProductionConfigTests.js
+				* 
+
+We need to ensure that pull requests work in local and with the cloud infrastructure
+	* deploy a temporary testing infrastructure (ideally, identical to the "real" cloud infrastructure that will be deployed) so the production tests can run against this cloud
+	* this can also be solved by spinning up local vms/docker images
+
+Types of Production Tests (both available to a developer and happening automatically in CI)
+	* Development end-to-end tests (What we (almost?) have): the ability to automatically spin up Docker containers for the Preferences Server, Cloud-based Flow Manager, and CouchDB and to run the test suite that GPII developers call "production"
+	* Development end-to-end tests (What we want): tests that can automatically provision a temporary testing cluster, using the exact same mechanisms as used in a production deployment, and run the test suite that the developers call "production" on it automatically
+	* Deployment Smoke Tests: a test suite that the devops team can run prior to "releasing" a newly-deployed cluster, which verifies that the GPII services are running correctly (and which must have no lasting effect on those services)
+
+ACTIONS:
+	* Javi will determine what, if anything, needs to be done to enable "interim" end to end tests automatically. If any requirements are determined, Alfredo will finish the end-to-end tests, allowing (a developer && the CI system) to test their changes against "remote" cloud-based infrastracture (i.e. infrastructure running in Docker containers as identically as possible to how they run in the cloud)
+		* https://github.com/GPII/universal/blob/master/package.json#L75
+		* https://github.com/GPII/ci-service/blob/master/jenkins_jobs/universal.yml#L109
+		* 
+	* Javi to start looking at production tests to determine if they are all appropriate for deployment smoke tests, and work with devops team to update them and prepare them for use in this way
+
+Follow-up on 19-Sep-2017:
+    Sprint 8:
+        - Gio: 2543 and 2563. Gio has technical dependencies not easily solvable. Need more time for them. 
+        - Tyler: 2542, waiting for code reviews. Gio and Alfredo. He will pick up 2545 for next sprint. 
+        - Alfredo: 2544, not finished, reading documentation. 
+    Retrospective:
+        - Alfredo: Plan for Sprint 8 too ambitious for the learning curve. 
+        - Gio: Technical solutions not mature enough. Also learning curve. 
+        
+Go-No/Go for supporting PCP with memory:
+    - Alfredo: From talking to Javi, there seems to have a lot done already by Gio. E2E not complex, maybe 2-3 tests to ensure the cloud is working properly. But not ready to test yet. 
+    - For cloud to be ready (minimum criteria): 
+        - 2544
+        - 2545
+        - 2543
+        - 2542 - Deploy GPII components to the Kubernetes cluster (what is left). Waiting for code review. 
+        - 2563. Needs story points.
+        - 2547
+        - 2548
+        - 2549
+        - 2550
+        - 2551
+        - 2553
+    Etc. See the backlog. 
+    
+    Next steps:
+     2. Colin will write a description for Gregg about what will be available in November, and what will be implemented later.   
+

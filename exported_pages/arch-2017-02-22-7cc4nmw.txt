@@ -1,0 +1,96 @@
+Updates:
+    
+    
+
+Antranig:
+	* Adding keyboard accessibility to our Nexus P4A demo
+		* This is an interesting exercise, revealing buried civilizations of ancient JIRAs such as
+			* https://issues.fluidproject.org/browse/FLUID-305
+			* https://issues.fluidproject.org/browse/FLUID-1854
+			* https://issues.fluidproject.org/browse/FLUID-1313
+		* Reminding ourselves that we never really addressed the issue of how to implement keyboard-a11y, merely abandoned it for a while
+		* Have a sketch implementation of some grades that work somewhat more the way we would have done had we not
+			* Initially tried to do this in 2008
+			* In a format in which we dreamed it might be contributed back to the jQuery community, which was clearly a fool's errand
+		* As well as not understanding in 2008 what might be denoted by the term "declarative", we had 
+	* Have issued pull request https://github.com/GPII/universal/pull/505 for HST logging payloads issue https://issues.gpii.net/browse/GPII-2283
+		* This is under review by KASPARDNITT
+
+Cindy
+	* Addressing comments for the data loader pull request: https://github.com/GPII/universal/pull/503, ready for more reviews
+	* Creating diagrams for GPII security approaches
+	* Security meeting: https://pad.gpii.net/p/protect-btw-lfm-and-cloud-feb-16-2017-8z74n89
+	* Review and merge infusion pull requests
+	* gpii-architecture-docs pull request: https://github.com/GPII/gpii-architecture-docs/pull/1 to add diagrams and payloads into a github repo
+		* Javier will send a pull request to my branch with diagrams created by him
+
+Han
+	* Finished revision how to instructions for Windows 10:(https://docs.google.com/a/raisingthefloor.org/document/d/1d4asa_3IQRdfrI6GdM_JPdS_iTccssA6Grk-NrwTEbw/edit?usp=sharing)
+	* Writing how to instructions for Windows 7
+	* HST
+
+Javi
+	* HST
+		* merged pull requests from Ale and Michelle
+		* gpii-app now is on CI - yay!!! Thanks Alfredo
+		* right now there's a pull request that should make it pass (aka green) - (https://github.com/GPII/gpii-app/pull/8) Kasper is reviewing it
+		* these are the pulls against windows that should make gpii-app/pull/8 pass
+			* https://github.com/GPII/windows/pull/112
+			* https://github.com/GPII/windows/pull/111
+		* this one (against gpii-app) does logout before quitting the application https://github.com/GPII/gpii-app/pull/6 (Michelle, can you take a look at it?)
+	* Helping JJ on his crusade with the onboarding of the PoC
+	* Implementing the feature of the installer that will put some files on the desktop for HST
+	* Javi will send a pull request with the sources of our archie diagrams
+
+JJ
+	* Learning about new Microsoft Accesibility APIs we will use for UI Automation.
+	* Learning about the onboarding process and infusion itself with the (awesome) help of Javi.
+	* Polishing details about Word PoC, and OneNote PoC to be ready for the onboarding process.
+	* Updating the documents in the Google Docs [GPI-2238] with details about the Onboarding process.
+
+
+Joseph
+	* GPII-442 ProcessReporter
+		* Bringing up-to-date with GPII master branches (universal, linux, and windows)
+		* Removing the static ProcessReporter
+		* Email request from JJ to restore the process state tracking functionality to the ProcessesBridge
+
+Kavya
+	* Configured Windows 10,8.1 and 7 32 bit VM - Thanks Alfredo
+	* HST Testing on Windows versions 32 bit - Done
+	* https://docs.google.com/spreadsheets/d/12BmGgXqRjXnDCPkp7flJRtbE0F9IayqvHZFQpB099JQ/edit#gid=441977635
+
+Simon:
+	* Continuing on with Nexus development
+
+Steve Grundell
+	* GPI-2226 screen scaling: done, but unit tests not passing due to resolution
+	* Started proof of concept for starting GPII from a service
+		* Installing service is very easy
+		* Able to start process as the current user
+		* Just need to do the anonymous pipe
+	* re-starting GPII-1716, font-size (without dpi)
+
+Tony:
+	1. Started working on gpii-testem, a new project to help expand the usefulness of gpii-testem: https://issues.gpii.net/browse/GPII-2296
+	1. Came up with a proof-of-concept client-side dataSource grade.
+	1. Wrote up the available options for URL parsing for the client-side dataSource as a technical evaluation.
+
+Agenda:
+
+	* (Joseph, JJ) GPII-442:  Bring back process state tracking functionality to the ProcessesBridge
+		* JJ would like to use it for Onboarding.
+		* Bring back "asi-is" vs. infusion StateTracker vs. something else
+		* Would like Kasper's perspective here
+	* In Microsoft Word Learning tools, there is no way to trigger settings like line spacing - there are no persistent settings - using UI Automation API
+	* You are given a list of UI element Ids - but these are not published for the Learning Tools
+	* This can be done in an event driven way, without polling
+	* So this doesn't look like a use case for Joseph's state tracker, since we can deal with an autonomous asynchronous process
+	* 
+	* Javi, on behalf of Kasper: Regarding merging the pull requests for HST
+		* Kasper has tried the gpii-app pull and it worked, but ... how do we feel about merging the gpii-app pull even if it's not CI passing? The only blocking one is https://github.com/GPII/windows/pull/112 (the one about the nearest screen resolution)
+
+
+
+
+

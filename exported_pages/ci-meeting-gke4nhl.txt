@@ -1,0 +1,13 @@
+CI meeting
+
+Tasks:
+    
+* Container synchronization: GPII-2473, GPII-2449
+	* Issues:
+	- Manual triggering is not working
+	- Queuing of multiple PRs
+* h-0005 gitlab-ci provisioning - GPII-2443
+	* The ansible role needs to use our own instance of Gitlab EE (seems that it's ready for that)
+* Deploy our own instance of Gitlab EE - GPII-2439
+	* We need a place to deploy Gitlab EE
+	* One license for one user.

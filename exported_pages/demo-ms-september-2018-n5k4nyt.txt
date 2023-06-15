@@ -1,0 +1,40 @@
+demo MS - September 2018
+
+Requirements:
+	* Based on feds-audit branches
+	* And on the requirements from https://docs.google.com/document/d/1YFO57tWpiqxgKRCB2hiQLHRH7U6M6XyCxzP2kMJ972k/edit
+
+Bits that need to be included (we assume feds-audit as the base line for this demo)
+	* universal 
+		* merge in updates from master
+			* https://github.com/stegru/universal/commit/587f23a1b49ee3e15d24ca4069f110913c2a0a1c - this is the last one to go in, if really makes sense (given that there are some work around the hc stuff)
+		* Steve's https://github.com/GPII/universal/pull/643 - already into feds-audit
+		* JJ's learning tools https://github.com/GPII/universal/pull/655 - done (https://github.com/javihernandez/universal/commit/a8d0b6bf43238e1478b117c88d834597ad797475 )
+	* windows
+		* merge in updates from master
+			* https://github.com/GPII/windows/pull/194 - done
+		* JJ's learning  tools https://github.com/GPII/windows/pull/195 - done
+	* gpii-app
+		* build from feature/QSS1.1 (https://github.com/danailbd/gpii-app/tree/feature/QSS1.1 )
+	* gpii-wix-installer
+		* Add reset icon on the desktop
+
+Cloud-side (We will use Javi's AWS cluster for this demo too)
+	* Include Javier NP set
+	* Include NP sets for learning tools
+	* Check Livia's speech rate and increase it a bit
+
+
+From JJ:
+Learning Tools pull-requests:
+	* Windows: https://github.com/GPII/windows/pull/195
+	* Universal: https://github.com/GPII/universal/pull/655
+
+Pull requests have been tested against last Microsoft Word Home 365 and Onenote 2016 + last Learning Tools add-in.
+
+From Steve Grundell:
+    All of my things from the feds-audit are in master now, apart from universal/643
+
+
+
+

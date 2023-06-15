@@ -1,0 +1,29 @@
+1. Anything to demo this week?
+- nothing
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+- 404s found in preferences metrics
+
+3. CouchDB / DB future -> @Weekly
+- staying with COuch for forseable future, but might move away
+  - balance between keeping it alive and not investing too much time
+- Scaling is not a priority (at all)
+
+4. gpii-universal or gpii-app?
+ - Universal broken for too long
+   - Antranig might roll back universal, and start re-merging...
+ - meeting tomorrow
+ - gpii-app-test has been fixed after a long period of failures
+ - probably nothing Ops team needs to worry about
+ 
+5. Migrate the CI out of the IDRC
+-> Alfredo is going to work on migrating Jenkins CI out of IDRC
+  - meeting this week to discuss further with devs
+  - consider moving away from Jenkins - Gitlab?
+
+
+
+
+
+
+

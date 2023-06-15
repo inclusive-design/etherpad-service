@@ -1,0 +1,19 @@
+Nexus chat 2017-02-28
+
+Simon's work:
+	* Nexus Co-Occurrence Engine branch: https://github.com/simonbates/nexus/tree/GPII-2177
+	* https://github.com/simonbates/nexus-demos/tree/master/science-lab
+		* https://github.com/simonbates/nexus-demos/blob/master/science-lab/atlas-scientific-driver/AtlasScientificDriver.js
+		* https://github.com/simonbates/nexus-demos/blob/master/science-lab/ConstructScienceLabPeersAndRecipes.js
+	* https://github.com/simonbates/nexus-client
+
+Antranig's work:
+	* "Visible Nexus" branch: https://github.com/amb26/fluid-authoring/tree/FLUID-4884
+	* Sample "Visible Nexus" decorated Nexus Kettle app config: https://github.com/amb26/fluid-authoring/blob/FLUID-4884/src/server/configs/fluid.visible.nexus.config.json
+
+Atlas Scientific sensors:
+	* https://www.atlas-scientific.com/
+	* https://www.atlas-scientific.com/product_pages/probes/ph_probe.html
+	* https://www.atlas-scientific.com/product_pages/circuits/ezo_ph.html
+	* https://www.atlas-scientific.com/product_pages/components/usb-iso.html
+	* 

@@ -1,0 +1,11 @@
+Capture Tool Work for March 2019
+
+Testing notes from Bryan and Steve 2019-02-25
+
+- Which tests and where? We need some tests for the following:
+    
+- The capture tool api in universal, in capturetool.js
+- How do we test specific settings handlers? We need to test at least one case for each of the supported settings handlers.  Those tests may need to go in gpii-windows, gpii-linux,etc.
+- The GUI part of the capture tool, inside of gpii-app. Do we have any tests in gpii-app yet that actually click through interfaces?
+
+Bryan to explore UI tests to see what they cover (e.g. click through wizard)

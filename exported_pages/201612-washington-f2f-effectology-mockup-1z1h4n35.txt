@@ -1,0 +1,133 @@
+Matchmaking discussion
+
+https://issues.gpii.net/browse/GPII-1998
+
+Support the following AT:
+	* Windows 10 built in AT features
+	* JAWS (incl. braille)
+	* Chrome: zoom, contrast, vox
+	* Edge: font-size, contrast, voice
+
+Use cases:
+	* (A) User wants high contrast, turning this on in windows doesn't affect the chrome browser, so we would need to turn it on both in the chrome extension and windows 10
+	* (B) User wants zoom, turning this on in windows DOES affect the browser, so we should only turn it on in windows 10.
+	* (C) User has a chromebook at home and is used to the chrome vox settings. They would like to use chrome vox when at the AJC
+	* (D) Volume - system volume vs headphone volume vs screenreader volume
+
+5 Layers:
+	* OS built-in features
+	* AT
+	* Browser
+	* Web based AT (eg. webanywhere)
+	* Webpages
+
+
+Previous mockups:
+    * Toronto: https://pad.gpii.net/p/solutions-registry-overlay-oic2o6o
+	* FWIW: pad for the toronto f2f:  https://pad.gpii.net/p/2016-06-06-toronto-f2f-7ua2o9q
+
+POINT 1:
+    Everything in the solutions registry will become a grade
+POINT 2:
+    Not every grade in the solutions registry corresponds directly to a solution
+    
+This is why the problems of solutions entry inheritance and multi-layer adaptation are related.
+
+i) A solutions registry entry may refer to an "abstract solution" defining a common skeleton that multiple concrete versions of the solution can inherit from
+ii) A solutions registry may encode a relationship between the co-occurrence of other "solutions" (or parts of an OS/built-in AT, etc.)
+FOR EXAMPLE
+Consider the case of a high contrast setting/preference:
+    It may be that in some situations an OS-level preference is inherited by a particular browser, and in others not
+    Say, for example, that "Chrome 64 bit on Windows 10 64 bit" is a situation where high contrast inherits
+    This implies there must be an entry which is activated when these two solutions co-occur on the same system
+    (Co-occurrence is something that Simon is working on expressing for the Nexus for the current P4A demo)
+    So this implies that there is a way of representing, using a single solutions registry "grade", that the effect (in the EFFECTOLOGY) of having high contrast activated in "the OS", will also cause the same setting (high contrast) to be activated in "the browser"
+    
+
+
+About effects:
+     (note that the difference between settings and preferences becomes more complex when considering an effectology - we essentially have three levels now:
+    i) What the user's preferences actually are
+    ii) What can be done to request those preferences to be set in a particular situation
+    iii) What actually happens when we request those settings (i.e. correlations between functions in a single AT, or correlations between multiple ATs in the same system)
+     
+
+TASKS:
+	* Think about how we can represent generalised versions of solutions so that we can match ranges of them
+		* Let us assume that semver will be good enough for now, since it is widely available and well-supported, and it would be too appalling to implement or look for something more sophisticated
+		* https://semver.npmjs.com/
+			* https://en.wikipedia.org/wiki/Software_versioning#Degree_of_compatibility
+		* Let assume that a crucial part of the functionality of the platform/solution/device reporter is to map whatever random string it gets from the system into a semver-compatible version
+		* Example challenge: Chrome versions look like this: Version 55.0.2883.87 m (64-bit)
+		* This consists of 4 numbers, a letter and a random flag
+		* We could imagine shoe-horning this into semver, say, by sticking 55 into the major field, and then packing all the rest into minor as a giant number, etc. - this is an example of the kind of juggling a solutions reporter will have to think out
+		* 64-bit could then be a separate flag which denotes an essentially separate solution - Chrome 64 bit and Chrome 32 bit would be counted as different solutions, inherited from the same common grade skeleton in an "abstract" solutions registry entry
+	* Think about how to write rules which express co-occurence of things - 
+		* This is currently under development for P4A
+		* In discussion with Simon it seems reasonable for now for co-occurence rules to talk about particular ranges of versions of different solutions ANDed together, expressing that they have been all found on the same system at the same time
+		* But also - each solution creates a VENUE WHERE SETTINGS MAY BE OBSERVED IN THE EFFECTOLOGY - 
+			* Noting that each of the things in the 5 levels are kinds of solutions
+			* And so correspond to places "where effects can be observed" - given that you have already established that they have co-occurred
+			* This gives rise to an even closer correspondence with the Nexus work, in that we imagine that each of these co-occurred solutions will have concrete Nexus components constructed for them, whose models correspond to the observed effects in the effectology
+			* Given that our model for the new solutions registry is for its entries to correspond to grades which can actually be instantiated in order to discover what the resulting settings/preferences are, the idea of Nexusification only takes this one step further by imagining that they continue to hang around in memory for the remainder of the user's session
+			* This is just a reasonable extension of what the LifecycleManager does already - for the user's session, there is a kind of fairly dumb model-type area corresponding to the settings in the system, organised by solution. What we need to do is extend this to consist of separate components, each whose model area corresponds to an area of the effectology for that solution.
+		* Matchmakers will "think" by carrying out simulations in a private area of instantiating solutions with different settings and then observing the results
+		* These problems are in a sense "duals" - in one case, we set one setting (e.g. start a solution) and end up with two effects - (e.g. you end up with both screenreading and magnification)
+		* What we really need to encode is TWO LEGS of mapping. Firstly, there's the idea that the user wants a certain set of effects (e.g. high contrast in a particular app). Secondly we come up with a set of settings that we think will achieve that effect. Thirdly, we map these settings back into effects again to see what has happened ACROSS THE SYSTEM. 
+	* Real examples of screwed-up solutions - Supernova is both a screenreader and magnifier (and a braille display.  for that matter ZoomText is a screen reader/magnifier)
+
+https://uploads1.wikiart.org/images/rene-magritte/the-man-of-the-sea-1927(1).jpg
+
+	* Implement support for solution registry entry overlay - depends on ^
+	* Make sure that Simon is included on subsequent meetings
+
+    "com.microsoft.windows.highContrast": {
+        "name": "Windows High Contrast",
+        "contexts": {
+            "OS": [
+                {
+                    "id": "win32",
+                    "version": ">=5.0"
+                }
+            ]
+        },
+        "settingsHandlers": {
+            "configure": {
+                "type": "gpii.windows.spiSettingsHandler",
+                "options": {
+                    "getAction": "SPI_GETHIGHCONTRAST",
+                    "setAction": "SPI_SETHIGHCONTRAST",
+                    "uiParam": "struct_size",
+                    "pvParam": {
+                        "type": "struct",
+                        "name": "HIGHCONTRAST"
+                    },
+                    "verifySettings": true,
+                },
+                "capabilities": [
+                    "http://registry\\.gpii\\.net/common/highContrastEnabled"
+                ],
+                "capabilitiesTransformations": {
+                    "HighContrastOn": {
+                        "transform": {
+                            "type": "fluid.transforms.value",
+                            "inputPath": "http://registry\\.gpii\\.net/common/highContrastEnabled",
+                            "outputPath": "value"
+                        },
+                        "path": {
+                            "transform": {
+                                "type": "fluid.transforms.literalValue",
+                                "input": "pvParam.dwFlags.HCF_HIGHCONTRASTON"
+                            }
+                        }
+                    }
+                },
+                "inverseCapabilitiesTransformations": {
+                    "http://registry\\.gpii\\.net/common/highContrastEnabled": "HighContrastOn.value"
+                }
+            }
+        },
+        "configure": ...
+        "restore": ...
+        "isInstalled": ...
+},

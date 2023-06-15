@@ -1,0 +1,72 @@
+UPDATES
+
+Antranig
+	* Interviewing another candidate
+	* Code review for Justin's UIO+
+	* Working through linting with ADTKINS
+	* Mega-meeting with Gregg on Monday "stabilising the QSS"
+		* In theory this is stabilised (https://media.giphy.com/media/z2ximIXM4LEsg/giphy.gif), at least in terms a minimal definition of what is required for "August"
+		* This has been shown to Astea, and they have determined that it will take at least until September
+		* It raises a collection of issues we need to deal with in the core, one of them pretty urgently
+		* https://issues.gpii.net/browse/GPII-3088
+
+Alfredo
+	* Interviewing new candidates for Ops Team
+	* Fixing Cindy's dev GPII cluster
+	* Fixing Ansible roles that we use
+	* Working on tasks related to the migration from AWS to GKE
+
+Javi
+	* Last week worked on recovering myself from being sick https://en.wikipedia.org/wiki/Spanish_flu
+	* Been working on installing UIO+ from our GPII installer
+	* Will continue going through the last updates on windows/master and check whether we can update gpii-app with current windows/master. We need to start creating installers for Kavya to test new functitonalities
+	* Meetings, Interviews
+	* Will try to update/review/merge some pull requests
+
+JJ:
+	* Working in more pulls for first wave of settings:
+		* Mouse additional features: https://issues.gpii.net/browse/GPII-3145
+		* Finishing keyboard aditional features: https://issues.gpii.net/browse/GPII-3139.
+		* Took some time to look to again to pending settings from onboarding doc due to priority change to high priority:
+			*  https://docs.google.com/spreadsheets/d/1vhhzs0pLCYPyLDPXpWNVUrwVvTv8IoGhRHsUUiA7gJk/edit#gid=409694249&range=75:75
+		* Started with https://issues.gpii.net/browse/GPII-3148 by Gregg petition.
+		* Meeting with onboarding team in Monday.
+
+Joseph:
+	* Created GPII-3138: Upload/Modify snapset Prefs Safes into CouchDB (https://issues.gpii.net/browse/GPII-3138)
+	* modifying gpii-dataloader repository
+		* created new script to find and delete snapsets (Prefs Safes and GPII Keys) from CouchDB
+		* next step is to load in the latest snapsets
+		* depends on Cindy's GPII-3138 branch of universal where she added two new views for accessing the database
+		* likely have a pull request by the end of the week
+
+Justin:
+	* Sorry to have missed everyone at the F2F
+	* Just getting back from a long time off (welcome back and congratulations!)
+		* Thanks :)
+	* UIO+
+		* Looking into setting captions on embedded YouTube videos
+		* Spoke with Antranig today about the FLUID-6175 PR ( https://github.com/fluid-project/infusion/pull/898 )
+			* Will address those issues in my FLUID-6177 PR ( https://github.com/fluid-project/infusion/pull/903 )
+
+Simon:
+	* Another week of no GPII work
+
+Steve Grundell:
+    - Had time off (eating tea?) (I thought one drank tea) (brits do eat tea, or at least Steve told me that :P) (in Northern Ireland, tea = dinner and dinner = lunch) (I know, I was just trolling you, sweetheart)
+    - Working on changes for service review
+    - Need to write a special handler for the windows language solution.
+    - Reviewed one of JJ's PRs Thanks :)
+    - Thought about the metrics work I'm about to do. 
+
+Tony:
+	1. Started pairing with Gio to explore additional options for CI, will report back to the group.
+	1. Continued work on linting plugin.
+	1. Continued working on and discussing issues surrounding JAWS onboarding and solutions/prefs data in general. (If you need some help to understand JAWS/or other onboarding stuff or just want me to help you with "early" testing, count on me)
+
+AGENDA
+
+(Probably should save for later) Talk about the competing Git integrations on GPII JIRA (thanks Justin for reminding me!). SAVED FOR LATER
+
+Debug logs containing sensitive information
+

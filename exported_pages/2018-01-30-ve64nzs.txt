@@ -1,0 +1,8 @@
+Agenda:
+    - Retrospective on Yuval aftermath, hiring practices
+    - Updates
+    - Moving from Elastic Cloud
+	* we need alerting
+	* proxy that allows authentication
+
+

@@ -1,0 +1,46 @@
+* locust flowmanager and locust preferences dashboards
+	- https://console.cloud.google.com/monitoring/dashboards/custom/10929930954431642073?project=gpii-gcp-prd&timeDomain=1m
+	- https://console.cloud.google.com/monitoring/dashboards/custom/10150992811830444288?project=gpii-gcp-prd&timeDomain=1m
+* couch various metrics dashboard
+	- https://console.cloud.google.com/monitoring/dashboards/custom/5252464485969725191?project=gpii-gcp-prd&timeDomain=1m
+		* Can we improve things like httpd_requests by making them RATES instead of COUNTS?
+		
+* GPII Services - Flowmanager & Preferences
+	- https://console.cloud.google.com/monitoring/dashboards/custom/15862930818294152011?&project=gpii-gcp-prd&timeDomain=1m
+	
+* Overall utilization of cluster: cpu, memory, etc.
+     https://console.cloud.google.com/monitoring/dashboards/custom/5776109756551813086?project=gpii-gcp-prd&timeDomain=1m
+
+	
+* Trace in prd:
+    - https://console.cloud.google.com/traces/list?project=gpii-gcp-prd&pageState=(%22traceFilter%22:(%22chips%22:%22%255B%257B_22k_22_3A_22LABEL_3Alatency_22_2C_22t_22_3A10_2C_22v_22_3A_22_5C_222s_5C_22_22%257D%255D%22),%22traceIntervalPicker%22:(%22groupValue%22:%22P7D%22))
+
+* Alerts in prd and stg
+	* Look at Open and Resolved
+	- https://console.cloud.google.com/monitoring/alerting/incidents?project=gpii-gcp-prd
+	- https://console.cloud.google.com/monitoring/alerting/incidents?project=gpii-gcp-stg
+
+* GCR image security scans
+	* https://console.cloud.google.com/gcr/images/gpii-common-prd?project=gpii-common-prd&authuser=1&orgonly=true
+	
+	- rake display_image_vulnerabilities
+
+* Security center
+	- rake display_scc_findings
+	- rake display_scc_assets_changed
+	
+* Exported logs
+	* https://console.cloud.google.com/storage/browser/gpii-gcp-prd-exported-logs?project=gpii-gcp-prd&authuser=1&organizationId=247149361674
+		* Verify new logs are being written
+* Billing
+	* https://console.cloud.google.com/billing/01A0E1-B0B31F-349F4F/reports?authuser=1&organizationId=247149361674
+
+* More metrics from user side. Ask for insights from Pilot team, ES metrics, etc.
+* Alfredo will ask Yao about this
+	* DO NOT USE until further notice (it depends on a fragile ES cluster)
+   https://yaoding.shinyapps.io/gpiimetrics/
+* Raise it in arch weekly?
+
+
+
+

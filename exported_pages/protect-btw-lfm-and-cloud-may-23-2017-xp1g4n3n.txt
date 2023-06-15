@@ -1,0 +1,38 @@
+Date: May 23, 2017
+
+Participants: Antranig, Cindy, Colin, Simon, Steve Grundell
+
+	* Internal reviews of the workflows listed in the wiki page below, as well as whether or not (or how) to talk about them with UX team. The finalization of these workflow will affect our implementation.
+		* Possible workflows that native GPII apps can request client credentials from GPII Cloud: https://wiki.gpii.net/w/Workflows_to_Request_Client_Credential
+		* how to manage OAuth 2.0 client credentials at a central GPII website: https://wiki.gpii.net/w/Designs_of_Using_a_Dedicated_Process_to_Protect_the_Client_Secret_Assigned_to_GPII_Local_Installation#Manage.2FCreate.2FEdit_OAuth_2.0_client_credentials
+
+Option1: Client credentials are generated on a website on the browser, then copied into the app via clipboard
+Option2: Client credentials are generated on a website in the electron app (embedded browser), then copied into the app automatically by inspecting the embedded browser
+Option3: Client credentials are generated on a website on the browser, then copied into the app via redirecting the browser to localhost (where the app is listening)
+	* redirect urls could be kept in the browser history, so:
+		* The cloud redirects to localhost with a link/token (via a http redirect, or putting the url in an img tag, or ajax via js).
+			* this might mean the client would have to be listening on httpS
+		* The client uses that token to receive the client credentials from the cloud
+
+	* Implementations that are not dependent on the UX so I can start working on them, based on this design: https://wiki.gpii.net/w/Designs_of_Using_a_Dedicated_Process_to_Protect_the_Client_Secret_Assigned_to_GPII_Local_Installation#Request_Access_Token_via_GPII_Access_Requester_Module
+		* JIRA 1: Auth server 
+			* add the support for OAuth2 resource owner grant type
+		* JIRA 2: accessRequester module
+			* Add as a separate GPII module
+			* Expect the receiving of a GPII token -> send resource owner grant request to the auth server -> receive an access token from the auth server -> response
+		* JIRA 3: Integration
+			* Untrusted flow manager: 
+				* send a GPII token to the accessRequester module and receive a response of access token
+				* Use received access token to request life cycle instruction
+			* Cloud based flow manager
+				* Verify the access token sent from the untrusted flow manager
+			* Questions
+				* how to connect "Untrusted flow manager" and "accessRequester"
+					* Windows will use IPC or anonymous pipes for this connection. Can the integration test use http requests?
+					* Start 3 kettle servers for: GPII untrusted flow manager, access requester and GPII cloud
+					* The communication btw the GPII untrusted flow manager and access requester will be via http request. An http data source as a subcomponent will be used for this task. The platform specific integration test should override this subcomponent with its own communication strategy.
+				* shall a flag be added to support both cases of having and not having the access token
+					* No, use the new way of having to send in the access token once in place
+
+
+

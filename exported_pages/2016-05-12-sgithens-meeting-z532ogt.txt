@@ -1,0 +1,41 @@
+Action item 1: 
+2.Native application for starting all appropriate GPII components.
+	* A Task tray icon so you can see that it is running and see its status (using Atom Electron) (final version of this requires designs)
+		* Needs to be productized (i.e. tests) and moved to GPII organization on Github
+		* Get plumbing in place for launching, killing and getting status (ie. running, not running, current user) for the GPII framework
+	* B Context menu for selecting demonstration personas easily (developer builds only) (requires designs)
+		* Create the NP sets for the demo personas  (depends on the essential AT list below under Item 2)
+		* Get plumbing in place for logging out (and in) users
+	* Current version has:
+		* Look and feel of a regular windows task tray menu
+		* Right click menu that shows if anybody if logged in or not, if someone is logged in they can be logged out
+		* If no one is logged in an expanding menu of demo personas is displayed
+		* Icon in task tray
+	* Pending work:
+		* There are no tests for it
+		* There needs to be a code review 
+		* Pull request made - ie. initial review: (STEVE FOR MAY 20th)
+			* A few hard-coded things that should be moved to a config or something
+			* General cleanup - prep. for initial code review (removing comments, remove config)
+		* It's currently not using infusion
+		* Roll the tray icon into our installer
+
+Action item 2:
+2.Provision an NFC tag
+	* A Have cross-platform standardized API for writing/reading tags, detecting NFC availability 
+	* B Implement NFC tag reader and writer in Windows (and update Linux one)
+	* C Implement interface between Flowmanager/PCP/PMT for writing tag
+	* Current version has:
+		* The current work coudl theoretically work in any system with pcsc
+		* node js code that will read and write tags (in the NDEF format - which is a big improvement over the current plaintext)
+		* there is no code detecting whether a reader is plugged in
+		* Currently in the branch of the first discovery server
+		* Right now the tag-writing/flowmanager interface is hacked into the first discovery tool
+	* Pending work:
+		* Should be moved from first discovery server into its own module (https://github.com/sgithens/first-discovery-server/blob/lgs-r3/src/js/nfcUtils.js)
+		* Needs a spring cleaning (ie. remove comments, etc)
+		* Made into a pull request (STEVE FOR MAY 20th)
+		* Needs tests (and figure out how to test it)
+		* Needs to be part of the installer
+		* Discuss and plan how to flash tags from PCP and Discovery Tool in toronto
+

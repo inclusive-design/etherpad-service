@@ -1,0 +1,16 @@
+1. Version of the package.
+	Start from nightly snapshot.
+	Version: https://github.com/fluid-project/fluid-publish (this code can be reused to generate a development snapshot version for the packages)
+	
+2. Ansible roles
+	- Will not be used ATM, only will try to avoid any duplication of the package list to install
+	- How to pick particular versions of the git repositories
+		- universal (will pick the latest version of the repo in the snapshots)
+		- gpii-linux (will pick the latest version of the repo in the snapshots)
+	- provide some means to specify a  'version' == [ branch, hash, tag_name ]
+     - update variables and split tasks by environment [ vagrant, buildrpm ]
+     Package dependencies:
+         - BuildRequires
+         - Requires
+         Make a script that excludes -dev packages and adds to the Requires statement
+	    Write down where the dependencies of packages lists are stored in the README.md    

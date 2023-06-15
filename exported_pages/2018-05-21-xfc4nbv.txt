@@ -1,0 +1,16 @@
+`Agenda:
+    - Review of backlog estimates. 
+    - Priority of CI changes tasks:
+		* GPII-3055
+		* GPII-3047
+
+- Tyler did some stuff in Jira
+- Third round for Valeriy?
+
+Notes:
+    - New JIRAs were opened to cover the work to migrate off IDRC, still need to be estimated. Probably another couple of hours. They will be prioritized along the other tasks. 
+    - Priority of CI changes tasks and other requests from development team. We'll check with Colin about the priority of GPII-3055 and 3047. 
+    
+    - Tyler did some cleanup in JIRA, creating a new version or release for the CC Pilot. 
+    
+    - Will tell Valeriy he's no longer considered a candidate. About 25 new resumes came in since Friday. 

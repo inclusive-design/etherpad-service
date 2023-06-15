@@ -1,0 +1,40 @@
+22-May-2017
+
+	* Giovanni
+		* Taking a sick day (Monday)
+		* Tomorrow: GPII-2413
+		* Blocked: GPII-2411
+
+* Tyler
+	* Yesterday: GPII-2389. Good progress
+	* Today: GPII-2389
+	* Not blocked
+
+	* Alfredo
+		* Today GPII-2390 - Metrics issue
+			* Adding the features listed in the GPII-2398 issue
+		* Not blocked
+
+24-May-2017
+
+	* Giovanni
+		* Yesterday: GPII-2413. Not a lot of progress (had other help other JIRAs and CI issues)
+		* Today: GPII-2413
+		* Blocked: GPII-2411
+
+	* Alfredo
+		* Writing the GPII Release process with Javi GPII-2331
+		* In progress GPII-2390 - Metrics issue (Stegru added most of my code to the feature branch)
+		* Not blocked
+
+* Tyler
+	* Yesterday: GPII-2389. Discussed some open questions with Alfredo on Monday; need more discussion about where CI is going.
+	* Today: GPII-2389: Thinking about CI/CD strategy.
+	* Not blocked.
+
+26-May-2017
+
+	* Giovanni
+		* Nothing to report today, busy with non-Sprint maintenance work.
+		* Monday: GPII-2413
+

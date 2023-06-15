@@ -1,0 +1,8 @@
+31-Mar-2017:
+Gio: Got the cluster up and running. Got the credentials for the AWS account. Working next on getting the kubernetes up and running, could be done by Monday. Alfredo: Doesn’t have to wait for Eugene, Gio can go ahead with Kubernetes.
+Alfredo: Almost done with setting up the virtual machines, working on logging for the clients on Windows using the credentials Gio sent him. He was talking with Javi because the logs of GPII are a bit of a mess, will make it hard for elastic.co to parse. Will document in a JIRA ticket and communicate the issue to the architecture email address. (Sandra: this sounds like a show-stopper until the logs are restructured.)
+
+29-Mar-2017:
+Alfredo: kept building the virtual machines for the VMS, updated the GPII JIRA, concerns about an old instance for testing; chocolatey package, he just install it. For Friday, all the virtual machines published, update JIRA. 2346 blocked by 2013. Concerns about it. 
+Gio: Since Monday, approval for elastic.co, created an account and created the cluster, on the 14 day trial. Cluster is running most of it troubleshooting something with logstash wanted to get some data from the cluster first, by Friday wants to deliver it to Alfredo. No blockers. 
+Tyler: continued to work on Terraform, he’s at the point with a few workaround he’s able to run ansible against an instance in AWS that does the deploy of a GPII container. Appears to run couchdb, continue to make progress. Won’t work again until Monday, he’s not blocked. 

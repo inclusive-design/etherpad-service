@@ -1,0 +1,72 @@
+PRESENTATION REGISTRY DISCUSSIONS:
+
+Previously met on Sep. 10.
+
+Participants: Antranig, Cindy, Sgithens, Tony, Javi H.i
+
+Tony explained that the presentation registry is a layer on top of the solutions registry that describes how to present a UI to end users, including grouping solutions/settings in different ways.
+
+Antranig suggested reviving the "aux builder" stuff to handle this, will need to flesh that idea out a bit further.
+
+Date: Sep 12, 2019
+
+Participants: Antranig, Cindy, Sgithens, Tony
+
+Topic: 
+1. the solution for https://issues.gpii.net/browse/GPII-4036
+2. new PSPChannel APIs: https://pad.gpii.net/p/2018-09-10-new-pspchannel-api-p51c4nky
+
+	* Discussion 1: the solution for https://issues.gpii.net/browse/GPII-4036
+It's decided that PSPChannel continues to send the full stack of settingControls to lifecycleManager. Lifecycle Manager sends the full stack thru the matchmaker to get the lifecycle instructions. However, when applying lifecycle instructions, loop thru solutions, do a fluid.model.diff() to find out if there are new changes for this solution and only apply ones that got changed settings.
+
+	* Discussion 2: new PSPChannel APIs: https://pad.gpii.net/p/2018-09-10-new-pspchannel-api-p51c4nky
+
+We have big problems here with respect to the LifecycleManager's representation of the system state.
+Right now, SessionToPSP has a strange and blunderous workflow based on the fact that the LifecycleManager has no central representation of its best knowledge of the current system state. As a result, sessionToPSP iterates over the current preferences in order to discover what settingsControls to emit.
+On the other hand, the LifecycleManager *DOES* have a very strange block named "appliedSolutions" which is used (apart from metrics) in only one place - 
+
+    gpii.lifecycleManager.processUpdate = function (that, finalPayload) {
+        var gpiiKey = finalPayload.gpiiKey,
+            lifecycleInstructions = finalPayload.activeConfiguration.lifecycleInstructions;
+        var userSession = that.getSession(gpiiKey);
+        if (!userSession) { // if user has logged out since the update was added to action queue
+            var msg = "User with GPII key " + gpiiKey + " has no active session, so ignoring update request";
+            fluid.log(msg);
+            return fluid.promise().resolve(msg);
+        }
+        var appliedSolutions = userSession.model.appliedSolutions;
+
+        var promises = [];
+        fluid.each(lifecycleInstructions, function (solution, solutionId) {
+            var sol = fluid.copy(solution);
+            if (appliedSolutions[solutionId]) {
+                // merge already applied settings with the updates
+                sol = fluid.extend(true, {}, appliedSolutions[solutionId], sol);
+            }
+            promises.push(that.applySolution(solutionId, sol, userSession, [ "update" ], "update"));
+        });
+        return fluid.promise.sequence(promises);
+    };
+
+    
+This mysteriously merges the last applied value of a solution's settings with the current one - which is quite likely a recipe for data loss if the user has changed the underlying settings value in the OS.
+
+What we need to do is - 
+i) Trash "appliedSolutions"
+ii) Create a new LifecycleManager model block named "currentSettings" which is a direct peer to "originalSettings" which is updated BOTH during executeSettingsAction's "gpii.lifecycleManager.recordSnapshotInSession" AND during the new "pullModel" API which we will implement
+iii) Rewrite the PSPChannel's "SessionToPSP" so that it no longer iterates over preferences but over the "currentSettings" block - this will then be able to generate SettingsControls blocks for settings which were read as a result of a read or a write on equal terms
+iv) Fix up processUpdate so that, if necessary, it issues reads of its own for solutions (or reads them from currentSettings) rather than using appliedSolutions, but actually it would be preferable to just trash this logic completely if it isn't used via the current QuickStrip updates - we should do some research to try
+to understand why appliedSolutions was ever introduced for this workflow
+[v take care of the metrics stray use of appliedSolutions]
+vi) actually document in detail EVERYTHING which ends up in LifecycleManagerSession's model!!
+
+As part of this, we had the discussion about the reset to standard snapshot and its route into SessionToPSP. Note that SessionToPSP will get rewritten anyway as part of this work - we will send the reset to standard snapshot through a round of matchmaking so that it becomes per-solution structured, just as the new "currentSettings" block is in the LM session, and then send both of these into the emitSettingsControl function to perform the relevant computation. Note that the LifecycleManager's "processRead" method will need to be updated to ensure that it throws out solutionsRegistryEntries for each solution for which we end up issuing a read.
+
+
+Presentation Registry use cases for the capture tool:
+    - On the page that lists settings that have been captured, we are currently listing them grouped by the solutions and then their settings below them as stored in the solutions registry.
+    - Currently there is a json list in the capture tool that specifies the order that solutions show up in on the capture page.
+    - What we need is a json tree that shows both the top level groups and the settings within them.  The top level groups may or may not be actual solutions from the solutions registry.
+    - For instance, you may want to combine a number of the builtin Windows solutions into a grouping that looks like one application.
+
+Steve will make a draft of a JSON structure that would fulfill this need for the capture tool, and we can see how it fits into the other use cases.

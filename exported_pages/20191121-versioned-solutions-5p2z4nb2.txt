@@ -1,0 +1,7 @@
+"Versioned Solutions" Discussion, November 20, 2019.
+
+Present: Tony
+
+As part of the work on the upcoming "live solutions registry", it seems time to address adding support for multiple versions of a solution.  I would like to review some prepared notes and discuss.
+
+https://the-t-in-rtf.github.io/lsr-versioning-part-one.html

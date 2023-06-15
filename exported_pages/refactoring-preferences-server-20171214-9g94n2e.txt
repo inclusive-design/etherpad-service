@@ -1,0 +1,27 @@
+Date: 2017-12-14
+Participants: Antranig, Cindy, Colin
+
+Goal: Refactor the preferences server to use the new GPII data model: https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+JIRA: Covered by https://issues.gpii.net/browse/GPII-2630
+
+Tasks:
+	1. The auth server and the prefs server will share the same database
+	1. Get rid of "rawPreferencesServer" module
+	1. The dev config of the prefs server will use pouchdb instead of reading/writing from the file system; the production config will continue to use couchdb
+	1. Replace http endpoints provided by the prefs server with internal invokers
+		2. The prefs server will then no longer be a standalone server. It will become a subcomponent of the flow manager
+		2. Colin's questions: https://botbot.me/freenode/fluid-work/2017-12-13/?msg=94607327&page=1
+		2. API changes
+			3. GET /preferences/:token[?view=:view] -> getPreferences(gpiiKey, toView)
+			3. POST /preferences/[?view=:view] -> createPreferences(preferences, toView)
+			3. PUT /preferences/:token[?view=:view] -> updatePreferences(gpiiKey, preferences, toView)
+	1. gpiiKey.prefsSafeContext is not useful at the moment because retrieving preferences always returns the entire preferences block, which then be converted based on the ontology rule defined for "view"
+		2. Is it correct that gpiiKey.prefsSafeContext should be defaulted to "gpii-default"
+		2. prefsSafeContext -> prefsSetName
+
+Works for Joseph
+	* The process and APIs needed for creating GPII keys, in bulk and in individual
+		* Refer to https://docs.google.com/document/d/1UoJzaEVFXEVA_CBfA5WNUHn9Y3j4JSy3tHvqeg19N1k/edit about the creation of individual GPII keys
+
+Reminder for Antranig:
+	* A final review on https://github.com/GPII/universal/pull/558

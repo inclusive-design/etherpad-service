@@ -1,0 +1,70 @@
+Plans for Bryan
+
+Nov, 29th, 2018
+
+Present: Antranig, Bryan and Javi
+
+New member doc: https://docs.google.com/document/d/1Hexs2JV8yLO_Oy94DxgzrFCkJevD1_ZFtLf7nlND5Mw/edit
+
+Bryan has set up his dev environment, and checked out all the major projects and run their tests ok.
+
+The structure is gpii-app -> gpii-windows -> gpii-universal
+                               ^
+                       Astea's work is mostly there
+                       
+Very top-level structure: This config file and its friends:
+    https://github.com/GPII/gpii-app/blob/master/configs/app.base.json
+    
+This is a "config" whose packaging is read by another library, Kettle: ;https://github.com/fluid-project/kettle
+Fine-level detail: Config loader is in this file: https://github.com/fluid-project/kettle/blob/master/lib/KettleConfigLoader.js
+
+On this line, it brings in the whole rest of the architecture via this include: https://github.com/GPII/gpii-app/blob/master/configs/app.base.json#L25
+
+On this line, it defines the base grade for the entire App and "distributes" it deep into the architecture: https://github.com/GPII/gpii-app/blob/master/configs/app.base.json#L7
+
+The main driver: https://github.com/GPII/gpii-app/blob/master/index.js
+
+The main app is in here! https://github.com/GPII/gpii-app/blob/master/src/main/app.js
+
+The appWrapper is here: https://github.com/GPII/gpii-app/blob/master/src/main/app.js#L595
+
+Defines the app as a subcomponent so that its definitions are not plastered onto the main architecture via grade composition
+
+The app itself
+
+https://github.com/GPII/gpii-app/blob/master/src/main/app.js#L62
+
+Many of these definitions here: https://github.com/GPII/gpii-app/blob/master/src/main/app.js#L344
+represent direct function call coupling with the core architecture
+
+The main (official) source of communication/IPC between the UI and the core process: 
+    https://github.com/GPII/gpii-app/blob/master/src/main/app.js#L134
+    
+Definition of that: https://github.com/GPII/gpii-app/blob/master/src/main/gpiiConnector.js
+
+A schema for all of the JSON messages that slosh over this bus can be inspected in this JSDoc comments: 
+    https://github.com/GPII/gpii-app/blob/master/src/main/gpiiConnector.js#L401
+
+A probably hugely out of date client sketch for what goes over this bus is in the main architecture at https://github.com/GPII/universal/tree/master/examples/pspChannelClient
+
+Major upcoming work described in this doc:
+    https://docs.google.com/document/d/1cG4jErACrPJxBNBzK2RDLPsvTdlxNJjPiYp684JubFk/edit?ts=5bcf5f0a
+    Currently under discussion re. security/authentication/UX requirements
+    
+Another important thing that the app does is field these surveys to users:
+    https://github.com/GPII/gpii-app/tree/master/src/main/surveys
+    These are fielded to a UI hosted by a "Qualtrix" survey system on Gregg's institution at UMD
+    
+
+
+Perhaps dusting off this very nearly finished pull of JJs' might be a good "first task"
+
+https://github.com/GPII/universal/pull/611
+
+i) clone the core arch repo
+ii) make your own fork and add it as a remote
+iii) add JJ's fork as another remote and check out his branch locally
+iv) push the branch to the same-named branch in your own repo
+v) finish off the pull
+vi) close JJ's pull and add your own variant of it, with a comment pointing back to the original pull
+vii) ping us for review!

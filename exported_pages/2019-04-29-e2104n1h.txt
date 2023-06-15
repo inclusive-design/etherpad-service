@@ -1,0 +1,8 @@
+1. Anything to demo this week?
+	* Tyler can demo GCR and dev workflow
+	* Sandra will ask Gregg to give a demo next week. Emphasis on functionality.
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+   - Alerts - not paying attention to stg alerts -> clean up?
+3. Review of Sprint 24
+4. Planning for Sprint 25
+

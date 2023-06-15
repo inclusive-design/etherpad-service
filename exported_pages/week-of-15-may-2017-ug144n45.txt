@@ -1,0 +1,39 @@
+17-May-2017:
+
+	* Giovanni
+		* GPII-2411 - Tested Antranig's PR to kettle - https://github.com/fluid-project/kettle/pull/33
+			* Strings worked fine. Booleans failed. According to Antranig, we got lucky with numbers.
+			* Partially blocked by GPII-2409 ("Validate options using JSON Schema")
+			* Work can still be conducted on standardizing env var names, etc (will raise topic in GPII arch meeting and continue with testing ideas for container simplification) -- http://lists.gpii.net/pipermail/architecture/2017-May/004558.html
+		* Planning on reading more about Terraform for GPII-2412 and GPII-2413
+
+	* Alfredo - No blockers
+		* GPII-2410 - Updated the GPII HST landing page
+		* Published the rest of the VMs in Atlas
+		* Tested Tyler's work about Terraform GPII-2388. Everything works as expected.
+		* Talked with Steve Grundell about following up the GPII-2390 GPII metrics issue.
+			* He uploaded the working branch of his code, I'm going to try adding more logging functions to match the metrics required
+		* Received a fix for GPII-2065 "Windows Creators update VM" and testing it.
+		* Met with Javi and we did the initial steps of the Release Process of GPII, F2F topic.
+
+	* Tyler
+		* Yesterday: GPII-2388. Feedback from team. Seems it works.
+		* Today: GPII-2389
+		* No blockers
+
+19-May-2017:
+
+	* Giovanni
+		* GPII-2411 - On hold until Antranig's and Tony's work advances more (GPII-2176, GPII-2103 and KETTLE-59).
+		* GPII-2412 - Uploaded sample Terraform config from kops but have not evaluated it, still reading more about Terraform
+		* GPII-2413 - Tested terraform-libvirt-provider successfully. Updated JIRA with a few considerations and will continue on this task.
+		* Only blocked on GPII-2411
+
+* Tyler
+	* Yesterday:
+		* GPII-2388. Incorporate feedback from team. Give team a little demo of direction I'd like to take the terraform architecture.
+		* Start on GPII-2389. Get set up with gitlab (thx alfredo). Use rvm to install ruby on h5. Start debugging.
+	* Today: Continue GPII-2389.
+	* No blockers.
+	
+	

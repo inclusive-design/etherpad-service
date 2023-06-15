@@ -1,0 +1,84 @@
+Updates
+
+Kasparnet:
+	* Match maker. Pull request made, some work remaining:
+		* Get the windows acceptance tests working properly again
+		* Add integration tests for stopping already runnning applications that are conflicting
+
+Alfredo:
+	* Connecting Filebeat windows client to Elasticsearch to collect GPII logs
+	* Testing the Windows VMs boxes with GPII-Windows at the same time: https://gitlab.com/GPII-test/windows/pipelines/7457829
+		* 64bits works well, but 32bits failed, perhaps some path definition is wrong.
+	* Added a Captcha to Wiki's create user page: https://wiki.gpii.net/index.php?title=Special:CreateAccount&returnto=Main+Page
+	* Published a new installer of GPII HST
+
+Colin
+	* In Brussels with Javi and Antranig
+	* Presented a paper at the Programming 2017 conference with Antranig on the Nexus—it was fun and people seemed to like it
+
+Giovanni
+	* Working on getting a Kubernetes 1.6.1 cluster running on AWS
+	* Experimenting with new features in Kubernetes 1.6
+	* Submitted some PR's to K8S project
+	* Got the ElasticSearch up & running and accepting data from logstash (Alfredo worked on FileBeat for Win hosts)
+
+Han
+	* Implemented Deep Freeze Standard, Enterprise and Cloud editions
+	* Prepared to write GPII-2308
+	* Maintained Sony Vaio Tap 21 Systems for 1st pilot
+
+Javi
+	* In Brussels with Colin and Antranig
+	* HST
+		* Finished merging last changes in
+		* We have a new internal testing build at get.gpii.net
+	* Google Chrome investigations
+	* Back to PCP API work
+
+JJ
+	* Finished the first design for the UI Automation interaction API.
+	* Keep working on the first implementation.
+	* Started creating documentation before continuing with the implementation, so anyone can review the design. Work
+	about this will be done in this folder https://drive.google.com/drive/folders/0B_YyjfBc4PBUdVBhWWFtdjNla3M.
+
+Joseph
+	* ProcessReporter pull requests (GPII-442)
+		* Asked about one of Kasper's requested changes, and discovered he's already implemented it
+		* Looking at his code (GPII-1230).
+		* Updated all three of my pull requests to merge in latest master code.
+			* Only windows is presenting a problem, and it seems to be the version of universal that it uses.  From package.json:
+				*  "universal": "gpii/universal#b58d1859e4d53303a1fdc4d74640e0c43af345e5"
+	* What next?  Dynamic Device Reporter work? (using the dynamic device reporter in acceptance tests). this (https://github.com/GPII/universal/pull/494) one? Possibly -- it looks like it.
+
+Kavya:
+    Smoke testing on new HST build from Javi on all windows versions with latest fixes and also HST testcases-Report to team by EOD
+    Working on Automation Scripts.
+    
+Sandra:
+    - HST build almost ready to be released for testing. 
+    - 
+
+Simon
+	* Continuing to work towards Nexus demo
+
+Steve Grundell:
+    Cracking on with the gpi windows service GPII-2338
+
+Tony:
+	1. Still working on generating consistent code coverage reporting for universal and infusion, running into problems find a solution that works for both the Scylla (Testem) and Charybdis (QUnit composite).  Need to pair with Antranig.
+	1. Started work on the documentation and core test infrastructure for the "Live Solutions Registry" (hence the JSON5 question).  Need to review with Antranig and HENS and then discuss more widely.
+
+Tyler:
+    * PTO
+    * Terraform
+
+
+Agenda
+
+JSON5
+We are using JSON5 more widely.  I see it used in universal and that we have an approach for linting, but I wanted to ask about requiring it.  See these two libraries that offer options for making node's require support JSON5:
+    https://github.com/json5/json5
+    https://github.com/duzun/require-json5
+    
+
+

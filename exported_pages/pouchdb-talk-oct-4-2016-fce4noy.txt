@@ -1,0 +1,15 @@
+	* Issues with using recent changes of cleanup() with /reset-pouch, which calls cleanup() then restarts the pouch harness to bring the pouchDB back to the initial state with the initial data set
+		* Please continue to return a promise for cleanup() Needs to be tested and committed
+			* https://github.com/the-t-in-rtf/gpii-pouchdb/blob/GPII-1897/src/js/pouch-express.js#L185
+		* Delete the entire system temp dir instead of a sub-directory for a specific DB.   // Tony has fixed this issue. 
+		* Futon shows the data has been reset to the initial data set, however, the database seems pointing to a replication of the old database because old data changes are still retrievable.  Tony to write tests on this and confirm.  Purge isn't supported with express-pouchdb, need to talk about other options, for example setting the express-pouchdb instance to memdown, dropping and recreating the db, and then setting the express-pouchdb instance back to the normal one.
+	* Data loaders (https://issues.gpii.net/browse/GPII-1987)
+
+Where should the new work live?  I'd suggest gpii-ouchdb for the loader and perhaps a generic "cleaner".
+
+express-pouchdb 2.0.0 adds compatibilitiy with the new endpoints for CouchDB 2.0, including Mango (_find).
+
+https://github.com/npm/npm/issues/9953
+closed as a duplicate of https://github.com/npm/npm/issues/10776 --> needs repro --> we can help here
+ 
+However, 9953 does include a workaraound that might allow us to eliminate the use of the --no-bin-links option

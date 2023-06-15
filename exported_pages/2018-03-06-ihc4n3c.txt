@@ -1,0 +1,10 @@
+Agenda:
+    
+	* Clean up Sprint 16 (done)
+	* Tyler: Could you please set up a 2FA credential for GPII-Bot on GitHub? (Then I can flip the bit to enforce 2FA on gpii-ops.)
+	* AWSRoot@ Account discussion (brief)
+	* GPII-2888
+
+Approach: Antranig, Tyler, Colin and Alfredo will discuss next steps/approach and scoping of the technical researching of adopting hosted cloud components. 
+
+

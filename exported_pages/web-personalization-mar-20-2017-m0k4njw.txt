@@ -1,0 +1,150 @@
+WEB PERSONALIZATION (2017-03-08)
+
+What were the goals of this experimentation?
+
+Goal 1:
+When a preference is adjusted in the panel, it should be able to use UIO enactors to apply to all tabs.
+
+We have two Chrome extensions:
+	* Old extension: https://github.com/GutiX/chrome4cloud: has a panel for adjusting preferences - no longer working with current GPII
+		* Cindy gave a brief demo, showing that its preferences only apply to its own panel
+		* Cindy asks - can I carry on using this, since it is the only one which has a panel? In order to experiment with the enactors
+			* Javi notes that the old extension is not written using Infusion
+		* The old extension is not based on "enactors", it just has "a bunch of functions to apply its settings to the panel"
+		* Originally written by Nacho, taken on by Guti. It is missing some features and integration, neither of these people are working on this project any more.
+	* New extension: https://github.com/javihernandez/gpii-chrome-extension/tree/initial-implementation: at the early stage of the implementation
+		* will not have a panel for adjusting preferences
+		* This extension will use web sockets to retrieve preferences from GPII and apply to chrome tabs
+
+Q: which extension should Cindy use?
+A: Use the new extension code
+
+Q: How can we use the new extension if it has no panel for adjusting the settings?
+A: Could experiment just with changing variables in the extension code
+You can just trigger changes on the model: https://github.com/javihernandez/gpii-chrome-extension/blob/initial-implementation/extension/src/lib/chromeSettings.js#L95
+
+Q: (Cindy) Apparently the old extension worked by injecting CSS and HTML into the individual pages, can you show me where is the implementation code for this:
+A: (Javi) Yes, I can show you:
+    [16:57] <jhernandez> cindyli: here you can see how we apply highContrast https://github.com/javihernandez/gpii-chrome-extension/blob/3540d6d279cf72495f89b0ea9f05c1f018251da2/extension/src/lib/highContrast.js
+    [17:00] <jhernandez> in this particular case, we have already injected new CSS into the webpage, so we make use of content scripts that apply the changes on the DOM
+ie, to enable high contrast we execute this content script https://github.com/javihernandez/gpii-chrome-extension/blob/3540d6d279cf72495f89b0ea9f05c1f018251da2/extension/src/content_scripts/highContrastEnable.js
+
+Q: Does the new extension have any enactors?
+A: No, it doesn't
+
+Javi: Not all settings are applied in the same way - e.g. ChromeVox.
+In order to adjust the pages, you can disable or enable a 3rd party extension, or inject CSS or HTML code.
+
+Antranig: Where an enactor fufils a similar function to one in UIO, we should expect to share a substantial part of the implementation. We should cast any such facilities as enactors, even if they correspond to a new function such as "enabling and disabling a Chrome extension".
+If there is some part of the UIO enactor implementation which can be shared within the Chrome extension, we should factor such things into their own files so they can be shared more easily.
+
+
+
+https://issues.gpii.net/browse/GPII-2324: "Investigate if enactors from UI options can be embedded in Chrome extensions" - Assigned to Cindy
+https://issues.gpii.net/browse/GPII-2323: "Investigate Chrome extension options for web personaliztion" - assigned to Javi
+https://issues.gpii.net/browse/GPII-2330  "evaluate CalJobs CSS for suitability for being transformed by one of our approaches" - assigned to Cindy.
+
+
+Web Personalization, March 20, 2017
+
+Attendees: Sandra, Alfredo, Antranig, Cindy, Colin, Gio, Javi, JJ, Steve, Tyler
+
+1. https://issues.gpii.net/browse/GPII-2323
+
+Example extension: MercuryReader. It requires additional tweaking from the user before it will run - e.g. pressing a button - it will not run "out of the box". This will be confusing to use unless we can provide additional rubric for the user.
+
+Colin: It seems reasonable to me to exclude extensions which require additional setup from the user.
+
+For this reason, Javi recommends only the following extensions (listed in a JIRA comment https://issues.gpii.net/browse/GPII-2323?focusedCommentId=25200&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-25200 ):
+    
+	* TTS read and highlight all text on the page (with play/pause button and auto-read mode) - Candidate: ChromeVox
+	* TTS read and highlight selected text - Candidate: Click2Speech
+	* Dictionary - Candidate: Google Dictionary and GoodWordGuide.com's Instant Dictionary
+	* Syllabification - Candidate: GoodWordGuide.com's Instant Dictionary
+
+What is the next step to onboarding?
+
+E.g. for Google Dictionary, enable/disable it in our own Chrome extension like what we've done for ChromeVox
+
+Thinking about install automation for extensions - we currently have no information about this.  Javi will do this investigation
+
+Action: file a JIRA for this and investigate it
+
+2. https://issues.gpii.net/browse/GPII-2324
+Branch https://github.com/cindyli/gpii-chrome-extension/tree/GPII-2324 adds 5 UIO enactors into the chrome extension:
+	* high contrast
+	* font size
+	* line space
+	* larger links
+	* table of contents
+
+
+
+3. https://issues.gpii.net/browse/GPII-2330
+See JIRA comments for the issues and possible solutions of using UIO enactors with general websites and CalJobs
+
+
+Cindy demonstrated her branch running against CalJobs and other sites. This applies the UIO high contrast enactor applied as a content script within the Chrome extension.
+
+The basic rendering, e.g. yellow on black, looks pretty good - however there are problems of these kinds:
+    
+    i) There is an "initial flash of unstyled content" which may be distracting
+    ii) Background images are set to null and so removed
+    iii) Naturally, imaged-based and video content is unchanged by this enactor
+    
+
+Action: We should compare this UIO approach with the builtin approach in Javi's plugin (the approach from Ignacio), as well as situating it within a wider space of different approaches which may be appropriate for different sites
+
+Cindy thinks there are some specific ways we can make CalJobs work better. Currently all the menu text is wiped out by the enactor.
+
+Suggestions from Steve Grundell:
+    
+	* hmm, what's wrong with * { color: ... }?
+	* there's a "filter" css rule
+	* https://css-tricks.com/almanac/properties/f/filter/
+
+Cindy believes that high contrast and larger inputs could be made to work pretty well with the CalJobs site.
+
+Cindy forsees problems with font spacing and line spacing: Some CSS would need to be rewritten to use rem rather than px for measurements.
+
+We looked at a font-size: larger directive written as a markup inline style rule. Steve Grundell noted that this probably means "larger than the parent". But Cindy noted that there are similar literal directives which are hard-coded in pixels, e.g. to 12 pixels.
+We expect that it may be hard to deal with this without some DOM manipulation - this will be a slow operation with plenty of FOUC.
+
+
+We talked about the "zoom" CSS property - which we are using for zooming in our Chrome extension.
+
+Notes from 27-Mar-2017:
+    
+Report from CIndy:
+    Using UIO enactors in the chrome extension
+
+1. compare highContrast.css and enactor.css
+not much difference
+
+2. matching caljobs site to apply the css for it - done
+specify in manifest.json
+
+3. color filtering: https://css-tricks.com/almanac/properties/f/filter/
+works well. Good for black white combination themes. What about yellow black themes?
+https://css-tricks.com/basics-css-blend-modes/
+
+4. dom manipulation before the element gets rendered on the page
+Mutation Observer: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+
+An existing chrome extension for the table of contents: https://chrome.google.com/webstore/detail/table-of-contents-crx/eeknhipceeelbgdbcmchicoaoalfdnhi?hl=en
+
+Next steps:
+    - Colin and Sandra to consult with Gregg on whether Cindy should shift back to Security.
+    - Cindy will summarize her findings.
+    - Colin asked Cindy to create a short and simple video to visually summarize her findings. 
+    
+Email from Colin to Gregg summarizing the investigation on 27-Mar-2017:
+* Javi has investigated the feasibility of configuring third-party Chrome extensions. He found that while we should be able to successfully  install, enable, and disable Chrome extensions, there is no API for changing their settings. As such, we will need to rely on third-party Chrome extensions that "do one thing well" by default without requiring additional user interaction. Extensions such as Click2Speech and Instant Dictionary look like they will work well for several of the required web adaptions for the pilots. This may require a new settings handler, but on-boarding Chrome Extensions, according to Javi, should be fairly straightforward.
+
+*  Cindy has done some research to assess the viability of some of the "Cloud4Chrome" extension's adaptions in the context of real-world websites such as CalJobs, and to determine the technical viability of combining features of Cloud4Chrome with the existing UI Options enactors. In practice, many of UIO's features look like they are comparable to or better than Cloud4Chrome's, and they can be reasonably quickly integrated into a Chrome extension. At very least, Cloud4Chrome's zoom feature is quite useful and should be reused as-is. However, the bulk of the hard work for "UI Options Plus" will be to develop multiple adaptation strategies that can be used for different types of sites (including ones that use a lot of background images, have fixed pixel-sized layouts, etc). There will also be a lot of user experience refinement required to avoid startling changes or "flickering" as we adapt a page while it loads.
+
+We may not be able implement the full list of every personalization feature in time for the first pilots, but it looks like a combination of using third-party Chrome extensions, reusing parts of Cloud4Chrome, and extending the UI Options enactors should get us close. Practically speaking, I think we should probably focus our efforts on refining the existing text/line/character sizing, contrast, control enlargement, and table of contents features from UI Options, make them more robust for less well-coded/designed sites, and to augment them with third-party Chrome extensions for the TTS, click-to-read, and dictionary and syllabification features for the pilots if we cannot implement our own cross-browser enactors in the time we've got left.
+
+
+    
+

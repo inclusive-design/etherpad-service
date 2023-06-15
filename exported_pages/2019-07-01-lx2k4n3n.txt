@@ -1,0 +1,30 @@
+Agenda
+1. Anything to demo this week
+ Nothing to demo this week
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+Nothing unexpected
+
+3. Brendan with us? - should we disable his Slack/GSuite (and/or other accounts)
+"Brendan is watching"
+
+4. Backup test
+- started 18:16 :)
+To get the latests snapshots:
+for i in `seq 0 2`; do gcloud compute snapshots list --sort-by=~creationTimestamp,STATUS --limit=1 --format="value[separator=';'](name,status)" --filter="name~'pv-database-storage-couchdb-couchdb-$i-*'" | cut -f1 -d\; ; done
+- unable to parse secrets ERROR
+  - grant_project_admin step missing
+- no replicas listed when running command in step 3.
+- when creating disk - the disk had different name (copy/paster error)
+- Step 9 - failure with one of the couchDb instances
+  - did work after Kube doing 2 restarts
+- [Alfredo]: Add a check to check membership in the cluster
+- Uptime check recovered 18:42
+- Done 18:48 -> took 32m
+- Add a step to announce in #ops ?
+- Add a line to env description
+
+Q:
+- as this means downtime on staging, should we mention/notify somewhere?
+https://github.com/gpii-ops/gpii-infra/blob/master/gcp/README.md#service-level-objective-1
+* Alfredo took an AI to communicate this / update rest of the team / update README

@@ -1,0 +1,59 @@
+Agenda:
+    - Discuss 
+GPII-3199
+GPII-3200
+GPII-3136: Are volume backups sufficient for couchdb?
+	* Sergey is adding notes about his questions/concerns to the ticket about couchdb destructive testing (GPII-2599)
+
+Starting from the beginning:
+	* All users on AWS have the same permissions—i.e. any developer can destroy the production instances
+		* So should we change our granularity of permissions? Alfredo says yes :)
+		* Sergey wonders what steps, what changes, are required to do this? — this could be complicated in AWS to have more granular permissions for each user
+			* Create new roles and associate them with AWS instances
+				* Perhaps we need to make a list or proposal of the simplest possible approach?
+			* Will we have to relabel the nodes?
+		* Not clear how we will handle the ability to give developers the powers to affect dev but not prod  using AWS IAM
+	* Should we leave this until Cloud 2?
+		* Sergey: scope isn't clear; we know it's difficult but we have no details to determine this. Should we spend some time determining what's involved?
+	* So, instead of implementing any changes, should we do some small research?
+		* Tyler: what information do we not have that would help us make this decision?
+	* Colin: what's the risk, and does it motivate the research time required?
+	* Sergey: When are we planning to switch to GCP?
+	* Colin: Can we, for at least Cloud 1, simply come up with a response plan? Such as, if someone makes a mistake, who and how do they talk to someone to get help? What are the procedures for restoring/rebuilding/fixing?
+	* Tyler: WHAT CAN COLIN DESTROY? (the answer: ABSOLUTELY EVERYTHING, INCLUDING USER DATA)
+		* Sergey: we should at least try to mitigate this risk at the rake level?
+			* Tyler: warnings may not be enough
+			* But we could have some kind of additional action required—such as an additional environment variable that needs to be unlocked
+				* Sounds like everyone agrees that this could be good and relatively simple
+		* Other risk: we can control things in rake, but if a developer is using the AWS dashboard they can potentially also destroy prod there
+			* this may be difficult to do accidentally, fortunately
+			* e.g. could just destroy a DNS zone
+				* gpii.net is managed partially in code and partially manually (ffs!)
+			* devs should be discouraged from using the AWS dashboard
+	* Sergey: can we export zones as a text file and dumps it into an S3 bucket or terraform code or something that we can back up in case of a big issue?
+		* Alfredo: I have a script that can do this
+		* Sergey: should we automate this? 
+			* general consensus was that the rate of change is so low that this isn't particularly necessary yet
+		* Colin: can we put this into source code
+
+Decision Points:
+	1. We will implement "guard rails" in rake to reduce the risk that someone accidentally destroys prod (Tyler will do this)
+	1. We will re-run Alfredo's script that exports zones and commit this file to source control (Alfredo will do this)
+	1. Draft a very simple process for what to do in the case of disaster (tyler will do this)
+
+
+GPII-3200:
+    
+	* Latest kubernetes to 1.8.X - Easy to implement, valuable, aws only
+	* Resize the nodes to larger nodes - Easy to implement, valuable, aws only
+		* 
+	* GPII-2550 - hard to implement?, valuable, aws specific
+		* 
+	* GPII-3188 - Smoke testing - not so hard to implement, aws + gcp
+	* GPII-2553 - hard to implement, aws only
+	* GPII-2651 - hard to implement, aws only
+
+
+
+
+

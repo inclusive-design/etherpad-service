@@ -1,0 +1,17 @@
+Notes from call with Gregg on 2-Aug-2017
+
+Topics
+1. Implementing GPII Core on ChromeOS
+2. Strategies for handling or setting a reading and writing the settings of other extensions
+3. Apps.
+- UIA equivalent
+- Google created mechanism
+- Extension creator adds API for us
+- Other
+
+Conclusion:
+- Take the API approach and ask/send/assist in implementing our API. 
+	https://developer.chrome.com/extensions/accessibilityFeatures
+- Implementing the NFC listeners in ChromeOS. Ability to key-in. 
+
+

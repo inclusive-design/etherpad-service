@@ -1,0 +1,146 @@
+UPDATES:
+
+Kasparnet:
+	* Mostly fixing https://github.com/GPII/universal/pull/513
+		* Implemented queue on the lifecycle manager and addressing antranigs other comments - almost ready for another round of review
+	* Reviewed Grundells Narrator pull request
+	* Will continue focusing on addressing comments on my own pulls and reviewing others
+
+Ale:
+	* Mostly working on Onboarding planning.
+	* Meetings.
+
+Alfredo:
+	* Wrapping up GPII-2024 and GPII-2023 System metrics using Prometheus
+	* GPII-2390 - GPII Metrics
+	* Made paella with sausage and chicken -- yummy!
+
+Antranig:
+	* More code review - Kaspar's pull 513 for RFID debounce
+	* Dealing with candidates for security and scalability
+	* Spent a day trying (and failing) to get "vagrant up" to work on my laptop
+	* Spoke with Cindy and Simon about the new OAuth grant type
+	* Moved my office to London
+	* Will be away Friday, Monday and Tuesday
+
+Avtar:
+	* Away last week, away next week
+	* Worked with Tony on ironing out remaining GitHub <-> GitLab issues
+	* Documented notes, possible next steps: https://issues.gpii.net/browse/GPII-2473
+
+Cindy:
+	* GPII-2435: addressing review comments
+	* Dealing with candidates for security and scalability
+	* Review pull requests
+	* Will be away from Thursday afternoon to July 7
+
+Giovanni
+	* GPII-2391 - As a result of K8s automation, other focus areas where defined. Working on GPII-2464 (Ingress controller)
+	* GPII-2470 - Started this week, resuming what was done at F2F
+	* CI changes: https://github.com/GPII/ci-service/pull/26
+
+Javi
+	* PCP API implementation
+	* I'll try to review prs assigned to me
+
+Joseph:
+	* Finishing up privacy preferences work last week; just getting back to APCP work.
+	* GPII-1939 - Device Reporter should report available screen resolutions.
+		* updated code to merge in lastest master from windows and linux, and tested
+		* tests pass as does CI
+	* GPII-1882:  Use ProcessReporter in Acceptance testing.
+		* Asked question on the JIRA.
+		* Starting looking at testing code to see where the PR would fit.
+
+Justin:
+	* Was off last week due to a sports injury
+	* Working on GPII-2466 to add the UIO+ panel to the browser extension
+		* puzzling through some issues with the JS concatenation in the plugin that is causing issues loading in UIO
+		* still lots of work to do to hook up the functionality with the rest of the plugin once it initializes
+	* Need to arrange a time to chat with Kasper about UIO+ and GPII integration
+
+JJ:
+	* Meetings with Ale about some onboarding plans.
+	* Working cross-plaftorm-toolchain for Native code, and setting up dependency management (testing, etc...).
+	* Working in solving the window identification problem.
+	* Developing the framework architecture and the first window handler (UIAutomation Backend) by necessity.
+	* Research about the localization approach. Details on Localization section: https://docs.google.com/document/d/1y7G56ZFYVgSCA2Pm7rvtoXqYMMGB8NUkkoyfGzJ9jr8/edit#.
+
+Sandra:
+    - Focusing on planning for Year 3 of funding. Collecting next steps from development team. 
+    - Reviewed resumes for candidates from the solicitation through the UMD.
+    - Lots of meetings. 
+    - On vacation from noon today until Monday, 3-July.
+
+Simon:
+	* Helping with the review of Cindy's security resource owner OAuth 2 grant implementation
+	* Nexus refactoring
+		* https://issues.gpii.net/browse/GPII-2414
+		* https://issues.gpii.net/browse/GPII-2415
+
+Steve Grrundell
+	- Getting old prs to pass CI
+	- Created test personas for recently implemented windows AT
+	- REsponded to Antranigs' review of font-size.
+	- Started on Kaspers review of narrator.
+	
+
+Tony:
+    
+	1. Continuing to work on UL imports, this week on monitoring for outdated content. 
+	1. Still working on the universal "code coverage" pull:  https://github.com/GPII/universal/pull/508
+		2. There were some oddities in running the new universal browser tests in Windows that were resolved earlier this week (down to the output of fluid.module.resolvePath not matching the output of process.cwd on Windows closely enough for Testem's tastes).
+		2. As agreed last week, now that the tests pass in individual environments, the universal CI configuration has been updated.  Tests pass, as far as I can see we're ready to merge. 
+		2. All open pulls that have not already brought in my changes will now appear to have failing builds.  Happy to help anyone who needs to update their pull if there are issues, just reach out. 
+	1. Per feedback from early adopter Steve Githens, working on dynamic reloading of templates in gpii-handlebars: https://issues.gpii.net/browse/GPII-2474
+	1. Continued to test Avtar's excellent work with Docker, GitLab, and Vagrant.
+	1. Moving to a new collocation space on Monday (WeWork).  You should come visit.
+
+
+Tyler:
+    Finished GPII-2443: automated configuration of CI build node
+    Starting on GPII-2412: terraform/kubernetes integration
+
+
+AGENDA:
+
+Onboarding flow (Ale Draft)
+	* What does the onboarder need to provide with the solution?
+	* What's the review process like?
+	* How do we get test versions of the software getting onboarded?
+	* How do we go about periodical testing?
+	* What can we do to help support automated testing? (e.g. some kind of "mega AT" virtual machine that contains every application that we support)
+		* how would we manage licenses for this? would we need some kind of special CI-only process and buy licenses just for that VM, or could developers use this VM on their computers?
+	* WE SHOULD CREATE A WORK GROUP FOR THIS INSTEAD -- ALE WILL TAKE CARE OF CREATING THIS GROUP!
+
+Next steps for multi-server CI environment setups ==> Gio started to work on this (GPII-2470)
+	* Our currently failing "canary in the mine" pull request https://github.com/GPII/universal/pull/510
+		* Giovanni comment: https://github.com/GPII/universal/pull/510#issuecomment-310130663
+	* GPII-2411, GPII-2103, and more
+	* Background information on why this is stuck:
+		* Kasper's PR depends on a new preference set (mike|Vargas) that doesn't exist in the master branch
+		* The tests depend on external services (preferences.gpii.net) and they are spin up from the master branch
+		* We need better end-to-end tests that spin up an environment and point the tests to the right location (in other words, the tests need to run against an instance of Preferences server that was conjured from the same branch)
+		* Another issues is that some tests are hard-coded to point to 'localhost' and that created a conflict with a separate Preferences server we wanted to spin up locally (see gist below)
+		* This last issue (hardcoded localhost) could in theory be solved with the new work merged into fluid-project/kettle/pull/33 and modification to the GPII config files
+		* Work done on the F2F to get this running (and then we got stuck with the hardcoded localhost tests) https://gist.github.com/gtirloni/eb38a8a031efea5e610ff12d31f52c0b
+	* GIO IS WORKING ON THIS AND WILL BRING THIS UP AT A FUTURE MEETING IF NECESSARY
+
+Device Reporter information for model transformation
+How do we make the (available) screenresolution(s) (and other device reporter information) available to the model transformation of the settingshandlers? https://issues.gpii.net/browse/GPII-1939
+The Nuclear Deterrent - WHOM does it deter?
+If the user asks for, say, "high" screen resolution, what do we imagine they will think they are asking for?
+Simon has noted that high screen resolution may not necessarily correspond to having more things visible on the screen.
+Isn't this in fact the job of the matchmaker?
+Or indeed, more precisely, the job of the effectology - the user may be more interested in "how big things on the screen look to me", which is actually an EFFECT, compound of numerous other settings in the system, such as screen scaling, font scaling, etc.
+
+We agreed that this is indeed the job of the effectology as described above. Since the matchmaker _does_ have access to the device reporter information, this is a non-issue. We just need to make sure that the available screen resolutions is reported as part of the device reporter payload.
+
+http://recite.com/quotes/recite-ozphnx.png
+
+
+Include GPII-2448 related tasks in the DevOps backlog
+The devops team will schedule a meeting - Amatas will send an inviation to the sysop team
+
+
+

@@ -1,0 +1,142 @@
+Outline of the GPII Preferences Service
+
+This is brainstorming about what the service does now, and what might be hiccups.
+
+The Parts
+	* Preferences Server
+	* Preferences Framework
+	* OAuth2
+	* Database
+
+Location (Code)
+	*  https://github.com/GPII/universal
+	* part of the whole GPII universal repository, including the flowmanager and other GPII components
+	* there is a docker image that, depending on how you launch it, you get either the flowmanager endpoints, or the preferences endpoints
+		* done via a configuration file
+		* on the plus side, the preferences service is a standalone entity at run time.
+	* tease out the prefs service code and make it stand-alone?
+	* fork the code to the fluid-project on github?
+
+What it Does
+	* Documentation:
+		* How to install and run: https://github.com/GPII/universal/tree/master/gpii/node_modules/preferencesServer
+		* Preferences Framework:
+			* Translating preferences between ontologies, for example., ISO-24751 "Access For All" and the flat
+			* https://github.com/GPII/universal/blob/master/documentation/PreferencesServerFramework.md
+			* Sets of preferences are keyed by ontology
+			* A "Preferences Safe" can contain multiple ontologies; hence, multiple sets of preferences
+			* Ontology handler handles above (need more detai about what that means)
+				* is not RESTful
+				* transformations are currently in "%universal/testData/ontologies"
+			* no documentation on the ontology handler in universal.  Look in arch wiki?
+		* PreferencesServer API: 
+			* https://github.com/GPII/universal/blob/master/documentation/PreferencesServer.md
+			* The actual preferences sets stored for an individual
+		* Preferences Safes and Keys (Database):
+			* https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+			* The structure of and relationships among GPII Keys, Preferences Safes, Client Credentials, GPII Application Installation Clients, and GPII Application Installation Authorizations
+			* Future model includes the above, as well as GPII Cloud Safe Credentials and Users structures
+		* OAuth:
+			* authorization and access control
+			* https://wiki.gpii.net/w/GPII_OAuth_2_Guide
+			* this is currently hooked into the cloud-based flow manager (CBFM)
+				* one can set up a preferences server with a couchDB and get/modify preferences without any secure OAuth access control.
+				* in GPII, an OAuth service is a subcomponent of the CBFM
+			* GPII supports a custom grant type for a GPII app installation to access a user's preferences from the GPII cloud.
+				* the "GPII app installation" is the client that is added to the Cloud based GPII as a trusted entity to share users' preferences with. (?)
+				* Work flow:
+					* 1. The OAuth client (GPII app installation on client machine) authenticates with the authorization server, and receives an access token
+					* 2. Any subsequent requests -- read or write -- use this access token to access the user's preferences
+					* In GPII, these are routed through the CBFM
+				* A more detailed technical description:
+					* 1. POST a request to <CBFM>/access_token
+						* the body of the request:
+							* grant_type: "password",
+							* client_id: OAuth2 client id,  (e.g., "pilot-computer")  // The GPII app installation?
+							* client_secret: OAuth2 client secret, a confidential shared secret that verifies the identity of the OAuth2 client (client_id), e.g. "pilot-computer-secret"
+							* username: GPII Key, (e.g, "carla", but normally a UUID)
+							* password: any string (usually, "dummy" in the cases I've worked with, e.g. "carla")
+						* the return value:
+							* "access_token": "1ab47092a3fc6cc9f30729aa4581796c", an random 16 bytes
+							* "expiresIn": 3600, seconds before expiring
+							* "token_type": "Bearer", used in "Authorization" field of future requests regarding the user (GPII Key) in the original request
+			* There is an "authServer" subcomponent of the CBFM, of type gpii.oauth2.authServer
+				* hasa subcomponent dataStore of type {gpii.dbOperation.dataStore}
+				* hasa member of type {kettle.server}.expressApp -- allows routes to the underlying express app
+				* code is "%universal/gpii/node_modules/gpii-oauth2/gpii-oauth2-authz-server/src/AuthServer.js
+Perferences Server API:
+		* RESTful API, 
+		* Kettle:
+			* with respect to the GPII implementation, the preferences service uses kettle
+			* can use curl or a browser form to issue the API requests
+		* GET  /health
+			* Is the preferences server running?
+			* 200 { "isHealthy": true } or 500 { "isHealthy": false }
+			* note: health handler, while standalone, is part of the flowmanger source code base  
+		* GET /ready
+			* Is the preferences server properly connected to the database server, and is the database server ready
+			* 200 {"isReady": true} or 500 { "isReady": false } (not sure this error is correct, see below)
+			* note that the code to determine this uses a findAllViews() call to query the database.  This is provided by "gpii.oauth2.dbDataStore"
+				* it's looking for the _design views structure.  This is dependent on the way couchdb works.
+			* Error 503, {"isError":true,"message":"Problem with the database connection"}
+		* GET /preferences/:gpiiKey[?view=:view]
+			* Retrieve the preferences set for the GPII Key `gpiiKey`
+			* view is optional and specifies an ontology, e.g. ISO-24751, defaults to "flat"
+			* Example with onlly a GPII Key -- no view parameter -- http://preferences.gpii.net/preferences/sammy
+			* returns a JSON structure whose root is "contexts"
+				* It's better named as "prefsSets"
+				* it's a container of preferences sets (currently)
+				* note that "condTest" snapset has multiple contexts
+			* Example with a view:  http://localhost:9081/preferences/condTest?really-bright
+			* Error 500 { isError: true, message: "GPII key does not exist", errorCode: "GPII_ERR_NO_GPIIKEY" } What are others errors?
+		* POST /preferences/[?view=:view]
+			* upload new preferences to the server
+			* generates and returns a new GPII Key for the preferences
+			* the optional view parmeter to use to interpret the given preferences structure (ontology); defaults to "flat"
+				* this entails that the format of the payload must match the given view. 
+			* POST body contains a JSON structure that is the same as returned by the GET /preferences/:gpiiKey request
+				* that is, a "contexts" container containing a number of preferences sets.  Zero sets are allowed.
+			* Output is a JSON structure with a new key, and echoing the preferences passed in:
+				* e.g., {  "gpiiKey": "fac425a5-1cea-453f-af61-b0b557dc34b9", "preferences": { "contexts": ... } } }
+			* Error, e.g., 400 {  "isError": true, "message": "Unexpected end of JSON input", "expose": true,  "status": 400,  "body": { input-json-structure }, "type": "entity.parse.failed" }
+		* PUT /preferences/:gpiiKey[?merge=:mergeview=:view]
+			* modify existing preferences for the given GPII Key
+			* also, create preferences if none exist
+			* optional view parameter to define the ontology of the given preferences (e.g., flat or ISO).  Defaults to "flat"
+			* optional boolean merge parameter specifies if the given preferences are to be merged with existing ones, vs overwrite them.  Defaults to "false"
+				* combined with a view, merging means ??? (something about ontologies other than that specified in the request are affected)
+				* only changes the named prefsSet ("context").
+			* Return value is an echo of what was passed in within a container with GPII Key and a preferences block.
+				* e.g., { "gpiiKey": "fac425a5-1cea-453f-af61-b0b557dc34b9", "preferences": { "contexts": { ... }}}
+			* Example:  PUT  http://preferences/aGpiiKey?merge=true&view=flat
+			* What's stored in database: e.g., { "flat": { "contexts": { ... } } , "ISO24751": { "contexts": { ... } } }
+
+	* What's actually stored/displayed:
+		* Depends on the layer
+		* Layers are (1) preferences server and (2) data base
+		* Preferences server shows the one ontology asked about either by getting a user's preferences, or modifying them.
+			* The ontology is not given in the return value
+			* The base container is not named, and its first field is "contexts:" (prefsSets)
+		* Database stores PrefsSafes
+			* Container whose top level has a number of atomic fields and a "preferences" container
+				* atoms: id, type (always "prefsSafe"), schemaVersion, prefsSafeType, username, password, email, creation and modified time stamps
+				* preferences container of ontologies, in turn, contain named sets of preferences ("contexts")
+					* Each context (prefsSet) contains a set of named containers each of whose name is internally generated.  Each named container has a user defined "name" field.
+					* Beyond that, is there an specific internal structure to the preferences?  Is that defined by the ontology?
+			* This corresponds to a Preferences Safe "preferences" field.
+			* Put another way: a Preferences Safe contains multiple ontologies; an ontology contains multiple sets of preferences (prefsSets), currently called "contexts" (prefSets)
+
+
+
+Other topics:
+    - Untrusted vs trusted servers
+    
+
+
+
+
+
+
+
+
+

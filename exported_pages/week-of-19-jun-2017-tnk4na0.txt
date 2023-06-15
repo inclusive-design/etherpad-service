@@ -1,0 +1,31 @@
+# 19-Jun-2017
+
+	* Giovanni
+		* Yesterday: GPII-2391
+		* Today: GPII-2391
+		* Not blocked
+	* Alfredo
+		* Landing from vacation, catching up some mail threads
+		* Today: GPII-2023,GPII-2024,GPII-2390
+		* Not blocked
+	*  Tyler: am close to wrapping up GPII-2443. I just need some time and a deploy buddy (which might be hard to schedule this week). Next I will start on GPII-2412: figuring out how to integrate terraform and k8s/kops.
+
+# 21-Jun-2017
+
+	* Giovanni
+		* Yesterday: GPII-2391
+			* Worked on some improvements for 'kubeadm' to make automation easier/safer
+			* Tested failure modes and discovered the need for some safeguards in a production cluster
+		* Today: GPII-2391
+			* Planning to test http://github.com/kubernetes-incubator/cri-o (cluster-centric container runtime) as a lightweight alternative to Docker
+	* Alfredo
+		* GPII-2390, Building visualizations for metric reports
+		* Reading ELK and Kibana documentation
+
+# 23-Jun-2017
+
+	* Alfredo
+		* GPII-2390, Building the latest visualizations. Perhaps we need additional metrics because ELK is not able to make complex aggregations
+		* Continue reading docs
+		* Searching a way to import/export the JSON data of each visualization, filter and dashboards to set a git repository with all these files.
+

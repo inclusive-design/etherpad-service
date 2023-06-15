@@ -1,0 +1,28 @@
+Dear Wouter,
+
+I am writing to ask whether you could lend some of your time to be interviewed about your work in biodiversity data infrastructure, particularly with respect to the GBIF and its constituent datasets. 
+
+Philip and I are carrying out a research project mapping out how platforms such as the GBIF and iNaturalist support or fail to support small-to-middle scale biology projects, and what opportunities and barriers exist to improving the technological supports for this kind of scientific work. We found your details listed in the set of Biodiversity Open Data Ambassadors for the GBIF and with relevant areas of expertise and hence our interest in interviewing you.
+
+The interview is intended in the short term to support our work on a paper to be submitted to the Computer-Supported Collaborative Work conference, and in the long term to support the development of new technologies to help smaller communities consuming and producing biodiversity data. You will be fully informed about how we intend to use data you provide us and receive copies of any resulting publications.
+
+I am a software developer with the Inclusive Design Research Center at OCAD University, recently working on inclusive software development and data visualization tools. Philip is a PhD student at the ExSitu research group at Université Paris-Sud, studying how software might be made more malleable and ownable.
+
+The interview would be done over Skype (we are based in the UK and France) and last approximately an hour. Do you think you can make time for it in the near future?
+
+Thank you,
+Antranig Basman and Philip Tchernavskij
+
+
+
+
+===================================================
+
+Letter to kueda
+
+Dear Ken-ichi - 
+Thanks so much for your response. We would love to set up an interview with Carrie, but if you could fit it in we would be very happy to have a separate interview with you as well, since a core part of our remit for the paper is getting a more detailed understanding of the development economics faced by data-oriented projects, and the problems they face balancing the costs of feature requests against project goals.
+I believe you are in PST and so if you had any time during your mornings next week we would be very grateful for a slot. Carrie, are you in PST as well, and would you have any time to talk to us next week?
+
+Cheers,
+Antranig and Philip

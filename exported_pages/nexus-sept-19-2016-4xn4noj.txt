@@ -1,0 +1,30 @@
+Nexus Planning Meeting September 19, 2016
+
+	* Write up documentation on using the Nexus with AsTeRICS
+		* Basic overview of AsTeRICS and its parts, and how they can be deployed (full vs packaged environment)
+		* Creating a model that uses the NexusConnector
+		* Using the AsTeRICS Packaging Environment
+		* Add documentation to the Nexus source repo -- a docs/connectors directory containing Markdown
+	* Orientation sensor
+	* Discovery: Two main components
+		* 1. Daemon process which listens on all buses and creates and destroys "avatars"/peers in the IoC system matching things which have been detected on the buses
+			* bluetooth
+			* existing iot protocols
+			* USB
+			* RFID
+			* thunderbolt
+			* All of the model contents of an Asterics process
+		* 2. The "Co-ocurrence engine" which recognises simultaneous appearance of components which are capable of participating in a "recipe" or integrated Nexus solution, and orchestrates the process of either automatically doing so or presenting the user with a list of possibly deployable recipes from which they can select (one option is that the user issues "standing instructions" that whenever such things co-occur, the recipe is automatically deployed)
+			* User-specific recipes
+			* Perhaps organised into 3-ish levels of immediacy - 
+				* 1. A "hard core" of recipes which are unconditionally and automatically deployed whenever their conditions are met
+				* 2. A periphery of recipes which could be deployed easily based on supplying a prompt to the system (perhaps just selecting from a numbered menu)
+				* 3. A wider periphery of recipes which the user could explore opportunistically - perhaps to elevate them to one of the previous categories if they are favorable
+	* Security
+		* Likely to need substantial work in the IoC framework
+		* Initally we are sandboxing the Node.js process in a virtual machine (Vagrant)
+			* Could do some work here to make a specialized box for Nexus:
+				* Minimal Linux distro (such as Atomic) with dependencies installed
+		* Operating system sandboxing: xhyyve, Hyper-V, Linux containers
+		* Document threat models for Nexus
+

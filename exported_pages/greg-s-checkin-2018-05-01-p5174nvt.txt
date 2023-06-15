@@ -1,0 +1,34 @@
+Date: May 1, 2018
+Participants: Antranig, Colin, Cindy
+
+Summary, in Simple Terms, of Cindy's Recent Work on "CloudSafes"
+	* Implemented the new data model for CloudSafes:
+		* Documented in the wiki: https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences#Data_Model
+		* CloudSafes can now store multiple preference sets -> used to be called "contexts", renamed and rationalised old function
+			* Our private term "preferences document" refers to "the contents of a preference safe"
+		* Can now associate a GPII key with a preference set within a CloudSafe -> entirely new
+		* We can now associate multiple GPII keys with a (preference set within) CloudSafe -> in the past there was a 1:1 mapping between keys and preferences documents -> entirely new
+			* The data model supports reference to a non-default preference set, but not implemented in code yet
+		* CloudSafes can now be associated with a safe name, email address, and password (these are all optional)
+			* Future work - expandable scope for "pluggable authorization integration" with local single sign-on schemes
+			* This will be required very soon for the CC MVIP
+		* Implemented a secure channel and associated credentials to validate a local flow manager in communication with the cloud-based flow manager
+			* is this fully implemented or still in development? - fully implemented
+		* The data model is now able to support the data of these features, but they are not implemented in code yet:
+			* the ability to revoke GPII keys
+			* the ability to revoke GPII app installations
+			* the ability to revoke client credentials for computers that may have been compromised and shouldn't be allowed to access the GPII cloud anymore 
+			* the ability to revoke authorizations granted to GPII app installations
+			* the ability to keep track of computer types that have GPII app installed. This will allow the support of a future feature: Ability to specify that some preferences should not be available in some venues
+
+	* Current work (first two items are on MVIP critical path)
+		* Defining a process where cloudsafes can be created and pre-populated with snapset data by administrators
+			* The process where new cloudsafes are created and initialized (in the database) with preferences from a snapset, and which a user can then adopt as their own and customize
+		* GPII-2965: In the process of connecting the PSP to the Cloud-Based Flow Manager
+			* What has been done: Refactored lifecycle manager to handle the transformation of preferences from PSP to lifecycle instructions
+				* Tidy-up of complex functionality which had been implemented in the channel rather than in core
+			* Still needs to be done: Convert PSP payload back into a preferences update
+			* Time estimate: 1-2 weeks
+		* Provide new preferences server APIs for PPT
+			* Steve, Antranig and Cindy will discuss new APIs
+

@@ -1,0 +1,22 @@
+Issues to address:
+    * Need to store TLS certificates in Vault ASAP
+
+Suggested namespace:
+    
+    * "gpii" mount (type: generic)
+	    * Generically, we're going to want to put stuff here. We can decide a bit how we'd like to do this, but a common way:
+		* Three folders: "prod", "ci", "dev"
+			* Then duplicate subfolders under each
+    * "tls" mount (type: generic)
+	    * Each folder under it: dot-to-underscored name (e.g., "foo_gpii_net")
+		* Two keys under it: "key" and "cert"
+			* Each with the document stored as "value"
+	* "aws" mount (type: aws)
+		* Under here will be where we can do machine keys and user keys. Suggestion: let's spec this more later.
+		
+Example bashism to read a TLS cert for foo.gpii.net:
+    vault read -field=value tls/foo_gpii_net/cert > foo_gpii_net.cert #-field=value makes it read the raw value and not metadata
+    vault read -field=value tls/foo_gpii_net/key > foo_gpii_net.key
+    
+Bashism to write a TLS cert:
+	vault write tls/foo_gpii_net/cert value=@foo_gpii_net.cert

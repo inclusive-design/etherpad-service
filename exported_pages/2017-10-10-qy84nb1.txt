@@ -1,0 +1,65 @@
+
+Sprint 9 report:
+    - 2543: More discussion required. Back to the backlog. 
+    - 2563: Related to the above. 
+    - 2544: Alfredo worked on it, not quite done yet. 
+    - Rest were completed, 2542 and 2545 (Tyler)
+    
+Sprint 10:
+    - 2544: For Alfredo to complete.
+    - Tyler: 2548 and 2549
+
+Further discussion, Tyler is of the opinion that we don't need to focus on SSL (2543 and 2563) at this point. So we changed the plan: When Alfredo is done with 2544, he will start opening JIRAs for the logging to discuss on Monday. 
+    
+============================================================================
+From 18-Sep Meeting:
+    Next steps:
+        1. Minimum of the minimum. Included in Sprint 9 which ends on Oct 6.
+            2542 - Done
+            2543 
+            2563 
+            2544 - Will be done this week
+            2545 - Done
+            2546 - Done
+     2. Colin will write a description for Gregg about what will be available in November, and what will be implemented later.   
+
+
+From Alfredo for this meeting:
+
+Elements of the Cloud that create logs:
+	1. Amazon CloudWatch
+		2. EC2 virtual machines (hypervisor logs)
+		2. EBS
+		2. IAM
+		2. ELBs
+		2. S3
+		2. DynamoDB
+		2. Route53
+		2. VPCs
+		2. CloudTrail (API usage)
+	1. VMs
+		2. Masters System/Kernel Logs
+		2. Nodes System/Kernel Logs
+	1. Kubernetes
+		2. GPII Containers logs
+		2. Nodes containers Logs
+		2. Master containers logs
+
+How to ship logs to external ES
+	1. Send CloudWatch metrics to the external ES: 
+		2. https://github.com/blueimp/aws-lambda/tree/master/cloudwatch-logs-to-elastic-cloud - (only for AWS)
+	1. VMs
+		2. Filebeat https://www.elastic.co/products/beats/filebeat
+		2. Filebeat + Logstash (pre-filter logs after shipping)
+	1. Kubernetes
+		2. Fluentd https://docs.fluentd.org/v0.12/articles/kubernetes-fluentd
+
+The following tasks requieres automation, in order to perform each individual task everytime a new GPII cloud is created:
+	1. Setup ES to create a user per cluster (GPII cloud deployment) and give it permissions to create the indexes assocciated to it - looks like User Management APIs (and all Security APIs) are part of X-Pack, a proprietary ES add-on that we probably can't use long-term.
+		2. Create the indexes needed by a GPII cloud deployment. ( https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html )
+		2. Create an user that only can write to the above indexes and give permission ( https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html )
+	1. Automate the grouping in a resource group? of the resources of each GPII cloud deployment or group all the resources of one deployment someway in order to make that CloudWatch only monitor and send the logs of those resources
+	1. Setup CloudWatch to monitor all the resources of a resource group.
+	1. Setup CloudWatch to send the logs to the ES instance to a particular index
+	1. Setup the shipping of the logs of the VMs to either CloudWatch and/or ElasticSearch
+	1. Setup FluentD daemonset manifest to ship the logs of Kubernetes to a particular index of the ES

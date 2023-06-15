@@ -1,0 +1,64 @@
+GPII Architecture Meeting Minutes, January 2nd, 2019
+
+UPDATES:
+      Sandra (Javi is out):
+        - Just back from vacation. Checking on status of new installer. Javi indicated there are a couple of merges that need to be tested. 
+        - Will work on updating the roadmap/Timeline with Gregg. 
+        - Document requirements for demo at ATIA end of this month. 
+        - Initiating relationship with new company subcontracted by ASTEA to take over their work. Company is called Hyperaspect. Main people we will interarct with are:
+            Pavlina Dzhartova <pavlina@hyperaspect.com>,
+		Andrey Glavchev <a.glavchev@hyperaspect.com>,
+		Nikolay Furnadzhiev <n.furnadzhiev@hyperaspect.com>
+  
+
+Alfredo
+	* GPII-2802 - Determine least privileges
+
+Bryan
+	* GPII-3596 - refactoring appZoom to break methods onto smaller, testable chunks
+	* Writing tests 
+
+Cindy
+	* Pull requests ready for reviews:
+		* GPII-3584: https://github.com/GPII/universal/pull/719
+		* GPII-3424: https://github.com/GPII/universal/pull/722
+	* GPII-3594: Replace the dynamic session component in the lifecycle manager with standard sub-components
+		* In progress
+
+JJ
+	* Just back from vacation!
+	* Finishing up GPII-3130 Narrator pull. Found some issues with some settings.
+
+Sergey:
+    - Audit logging configuration for GCP infra
+    - SCAP scanner
+
+Stepan:
+    Slowly making progress on enabling intra-cluster encryption (Istio) - GPII-3347
+    Mostly smaller fixes and/or dependencies, CI issues:
+        - GPII-3609 - Missing IAMs issue
+        - GPII-3392 - Removed administration-tasks module (was failing after updates)
+        - GPII-3617 - Failing Exekube build
+        - GPII-3601 - Failing destroy of CouchDB pvcs
+        - GPII-3606 - Flapping IAM iam.googleapis.com
+
+Steven Githens:
+    - Off for a week or so from the holidays
+    - Capture Tool Prototype nearing readiness
+    - Revisiting some issues with SPI settings snapshotting, and user accounts
+
+Steve Grundell:
+    Stopped languages from persisting after being changed (GPII-3558)
+    Fixed high-contrast + wallpaper 
+    Thinking about implementing a utility to install languages
+    Blowing the dust of the Windows Service (GPII-2338)
+    
+Tyler:
+    * Holidays etc. (The skiing has been good :))
+    * Various performance experiments with different configurations. No smoking gun on occasional very slow requests
+    * Wrapping up an alert if couchdb metrics stop updating
+    
+    
+AGENDA:
+    
+    

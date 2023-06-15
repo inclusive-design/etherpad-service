@@ -1,0 +1,40 @@
+1. Anything to demo this week?
+	- CouchDB issues when the maintenance procedures are executed
+	Sergey can demo rotation of CouchDB credentials (or version upgrade, or limits / requests change) and issues caused to client by it.
+	
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+
+3. Tyler offboarded? ID's in Gregg's email
+- taken care of
+- Offboarding doc
+  - https://docs.google.com/document/d/1cOjjm6dl5ulFFsL2dSYMLh0M2CmMiC8Jmugel3hbCN4/edit#
+	
+4. Planning for next goal: Scalability tasks. 
+      - We need to replicate a normal user behavior, in order to test the rps properly
+         https://issues.gpii.net/browse/GPII-3328
+	- What do we already know?
+	   - 100.000 -> 1.000.000
+	   * Total of users in the system (storage capacity)
+	   * how many users per minute in a peak time do we need to support.
+      - What is our current status
+        * how many users do we have?
+        * how many rps are currently supported?
+    What are the usage profiles or scenarios that should be simulated for scalability testing?
+
+From Bern:
+There were two scenarios that would impact scalability.
+(1) Beginning of the workday across different time zones (which would probably be a broad peak)
+(2) Hourly class changes at many universities taken together (were there might be 5 minute peak activity windows)
+We don't really have numbers to attach to those events at this point.
+	
+5. Test IR/DR Plan: https://docs.google.com/document/d/1LQHKsRdh8m4oAu-b3tz29cK5ggMv6bdueUa5s6Hyg_I/edit#heading=h.jvejvz2o01ns
+
+6. CouchDB meeting agenda this week
+- Show some current failures
+- What we have done in order to mitigate those errors.
+- What do we want to achieve?
+   - Maintainable (upgrades), zero-downtime DB
+   - (automatically) Scalable - one of the major topics
+   - Production "ready" - lack of monitoring, lack of community
+   - Try to move to another more reliable (hosted?) db
+   - Do not talk about alternatives of db at the beggining, suggest at the end.

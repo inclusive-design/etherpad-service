@@ -1,0 +1,22 @@
+19-Jul:
+    
+Alfredo:
+	* Testing the changes made in GPII-2333 for GPII-2390 and 2398 -> Metrics
+	* Completed the changes for https://github.com/idi-ops/ansible-grafana/pull/5
+	* Not blocked
+
+Tyler:
+    * Yesterday: 
+        * Wrap up GPII-2412. Spin off new tickets as discussed in planning meeting.
+        * GPII-2504 one dns zone per environment
+    * Today: GPII-2505, GPII-2506
+    * Not blocked
+    
+21-Jul
+
+Tyler:
+    * Yesterday: GPII-2505 merge repos, update docs, send out for others to try
+    * Today: GPII-2506
+    * Reminder: PTO next week
+    * Not blocked
+

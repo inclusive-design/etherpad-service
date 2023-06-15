@@ -1,0 +1,5 @@
+Agenda:
+    – Estimate on FERPA for GCP
+       Team is going to revisit backlog and fix ticket tags to represent proper stages
+       We fixed all the issues and now the backlog for the filter settings_nova-ferpa is more accurate:
+           https://issues.gpii.net/secure/RapidBoard.jspa?projectKey=GPII&rapidView=27&view=planning

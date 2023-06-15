@@ -1,0 +1,48 @@
+* Discuss technical hands-on session with Yuval this week (when? what time? what is the exercise?)
+	* Be explicit about what we want: you will use minikube, you will screen-share with us to demonstrate
+	* Another idea: internal load balancer to mitigate errors with load balancer retries: https://issues.gpii.net/browse/GPII-2676/
+	* Good problems are collaborative. Learn what it's like to work with someone. Problem is open-ended enough that candidate can engage some different strategies and we have a conversation about it.
+	* Schedule Colin for last 15-20 minutes to follow-up. OOO Friday. 2pm-onward
+	
+	
+	* Couple of minor updates from Brendan:
+		* Vault scripts/packer/terraform/etc
+			* Remaining: how do we want to do unlocks? Via a bastion or directly over the Internet?
+			* SGs etc. that can talk to Vault
+		* Snapshot backup
+			* Remaining: I swear, I will destroy AWS with its apparently-nondeterministic APIs
+		* Dynamo backup (needed for Vault)
+			* Likely do that today, there are some Lambda-based Dynamo dumpers
+				* If you didn't know (I didn't), the official Dynamo backup solution is to spin up an EMR Cluster
+					* So... lol, no.
+				* Eventually this will be "something, something, dump to S3, autoreplication to audit bucket"
+
+Probably one Vault with path determination for dev/stg/prd - things coming from this [instnace profiile | iam role] can only access [env]/*
+
+Colin's availability for interview this week
+	* Wednesday 1 pm EST onward
+	* Thursday all day
+	* Friday at lunch time 12:45-2 pm EST
+
+This is the email that Gio sent Tyler prior to the hands-on interview, in case it helps:
+    
+Hello Tyler,
+
+   You've probably been in talks with Sandra Ellet-Salmoran about a
+technical position with Raising the Floor, right? Avtar and I will be
+the ones interviewing you today.
+
+  <Perhaps a little description here of what we'll do e.g. "We'll be collaborating on a task to do x. We'll do this remotely using screensharing...etc.">
+   If you could ensure your computer has the following tools installed,
+it would be great to avoid any issues before the interview starts:
+
+- Skype (for screen sharing and group call)
+- VirtualBox (a recent version, 5.0.28 or 5.1.8)
+- minikube (https://github.com/kubernetes/minikube/releases/tag/v0.12.2)
+- kubectl (https://coreos.com/kubernetes/docs/latest/configure-kubectl.html)
+
+  Sorry for the short notice. Looking forward to meeting you today!
+
+Regards,
+Giovanni Tirloni
+Inclusive Design Research Centre, OCAD University

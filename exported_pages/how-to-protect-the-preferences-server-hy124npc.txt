@@ -1,0 +1,56 @@
+Topic: How to protect the preferences server
+
+Attendees:
+	* Antranig
+	* Cindy
+	* Colin
+	* Simon
+	* Tony
+
+Last meeting notes: https://pad.gpii.net/p/gpii-security-next-step-nov-17-2016-p0m4nmb?
+
+Our current OAuth2 implementation: https://wiki.gpii.net/w/GPII_OAuth_2_Guide
+
+OAuth2 spec: https://tools.ietf.org/html/rfc6749
+
+The authorization of the undeveloped PCP
+	* Ensuring that Preference Sets can't be written to except by authorized clients (i.e. for now, the as-yet-undeveloped PCP)
+		* Could potentially use OAuth2 "Resource Owner Password Credentials Grant" - https://tools.ietf.org/html/rfc6749#section-4.3
+
+
+What Applications Read From the Preferences Server?
+	* Is the local flow manager the only app that reads using gpii token?
+	* Cloud-Based Flow Manager
+	* (First Discovery Tool) - this will probbaly be folded into a locally-installed Electron app?
+	* PMT
+	* Other preferences editors, either running on a web server somewhere or locally installed, that have been reviewed and vetted by THE GPII
+	* A third-party, non-locally integrated Web Appication (e.g. BrowseAloud or UIO or something integrated into some website)
+
+Three types of preferences clients:
+	* CBFM
+	* Editor
+		* Local (in electron)
+		* Web
+	* Directly-Integrated Web Applications (i.e. that connect to the CBFM, not the local one)
+
+We THINK the only differences between a "locally-integrated web application" and "directly-integrated web application" are:
+	* the direct application knows the GPII token
+	* the direct application contacts the CBFM directly, rather than relying on an API that is available in JavaScript (injected by the GPII extension)
+	* the direct application must use the OAuth 2 Authorization Code flow to receive an OAuth2 Access Token and the user must:
+		* provide a user name and password for authentication
+		* authorize the direct application
+
+PICTURES
+	* Local FM <> CBFM
+	* Locally-integrated web applications <> LFM
+	* Directly integrated web applications <> CBFM
+
+Protecting the Preferences Server
+	* Ensure that only the above-listed three types of preferences clients can read settings from the CBFM
+
+How do we authenticate a local flow manager with the cloud based flow manager?
+	* Per installation secret (or private/public key pair)?
+		* Will require infrastructure to provision and revoke installations
+		* http://superuser.com/questions/1061638/where-are-certificate-private-keys-stored-in-windows-7
+
+

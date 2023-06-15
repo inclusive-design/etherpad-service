@@ -1,0 +1,71 @@
+Solutions Registry Migration Meeting - 3rd June 2020
+Present: Owen, Chris P, Owen, ADTKINS
+
+Documents:
+    
+Chris P's Doc: https://docs.google.com/document/d/1AJ5zZ2MaBOOqUQasMkmOomWWM6z1U7PgXIvHnXBHu8A/edit#heading=h.24ap6n5zux05
+Gregg's Doc: https://docs.google.com/document/d/1g1kb3FwHUSRvaK3QAM_B8AR0m-YfQeC6qBo_DF-Wgns/edit
+Antranig's Doc: https://docs.google.com/document/d/1gXMEMA8jyfGBlYZjSEqTRzq0LOZnPBipzAhwdXGCy9E/edit?ts=5ed67c9e#
+
+Settling questions - what is in scope for "this" SR?
+
+Answer 1: All solutions in Classic are in scope (windows and macOS only)
+Answer 2: 
+    Launch/shutdown/isRunning in scope? yes, it is in scope
+    Liveness in scope?
+Subquestion: Does "capture" include capturing whether an AT is running or not?
+Answer - today, no. In future yes.
+Cross platform- never prevent, but don't hold up release to ensure it is in place
+Need to make sure that dat
+
+
+8th June, 2020
+Present: Owen, Chris P., Tony, Antranig, Javi, Kasper
+
+Diagram: https://docs.google.com/drawings/d/1ETAjaXY3Wzgr3gpM3bLBA0PXcG4hE__c7_OXd-26Xso/edit
+
+Question: What granularity of export do we want?
+Owen: The client expects any number of json files, in 1-1 correspondence with each yaml file
+We expect validation to take place during the YAML->JSON conversion
+
+Capture and restore:
+    What to do about mismatched AT
+    What to do about 
+    
+    What if we restore and there is no JAWS?
+       --> We will turn on Windows narrator with default settings (expect no translation)
+       Consultation with 3 JAWS users - "When I come to a new computer, I immediately set up narrator, and then I use that to download and install JAWS".
+       JAWS personal version saves your licence up in the cloud - you can transfer licence
+       There will be a constructive API in place. Vispero will let us do an IoD using their back end.
+    What about support?
+	    In the case of a brick - "not working is a big question".
+	Should we apply settings to a 3rd party software and in not work, "we'd be engaged in a support triage with those individuals"
+	Gregg is saying "You have no ability to look at user settings". A support ticket is granted. We don't have a remote PC capability (nor do we want it) nor a very accurate method to validate or replay the settings process. It would literally be a headscratching moment.
+    
+    
+
+24th June, 2020
+Present: Owen, Tony, Antranig, Kaspar
+
+Recap from last meeting
+Q: is "isRunning" in scope for capture?
+Owen: capturing the running state of an application is not currently in scope for MVP2 so these blocks will not be needed for now, although the system will need to know, e.g. for JAWS whether it is running in order to apply settings.
+
+Q: it seems like the "per settings handler" organisation of the Classic registry could be helpful in getting the foresight that a collection of settings handled by the same handler are upcoming. Chris Walker mentioned at arch meeting
+last week that the system automation handler could benefit from opening dialogs as few times as possible.
+Owen: There is the notion of an "apply session" in Lite in which we could recover that foresight so there doesn't seem to be a need to encode this at the SR level.
+
+Owen asked some questions about the strategy for starting and stopping JAWS and why it was asymmetric - we agreed this was just for brevity in the SR.
+
+Any upcoming changes to the Morphic Lite SR format beyond what is currently in master?
+Owen was thinking of adding support for inter-setting dependency, although we had concluded last time that this was probably unnecessary, assuming that the application of any individual setting was properly isolated (e.g. for example, with desktop contrast that this takes care to stash away any system state that is going to get trashed by the update).
+Note that we now have a 2nd instance of this in classic wrt. desktop theme and cursor size.
+
+Owen will continue to review Classic SR and determine what format we want data transformed into.
+
+
+Next meeting, Wednesday July 1st 2020
+
+The Agnostic Solutions DataBase is new nomenclature (according to Antranig)
+
+

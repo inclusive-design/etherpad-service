@@ -1,0 +1,164 @@
+GPII Architecture Meeting, April 4, 2019.
+
+
+UPDATES:
+
+Bryan
+	* Working on acceptance tests in gpii-windows for capture tool
+	* Updated GPII-3119 branch with possible fix for capture tool SPI settings handler
+
+
+Javi:
+	* Morphic 1.1.0
+		* Been fixing things here and there
+		* Delivered a nice candidate last Friday
+		* We are trying to replicate/fix a few issues we're still having
+	* Created a pull request with a script to generate the credentials
+		* https://github.com/GPII/universal/pull/769 - thanks for the feedback Tyler
+
+Sandra:
+    - Still trying to achieve a final 1.1.0 installer. 
+    - 29-Mar installer given to IT at NOVA for their testing. Waiting to hear from them. Deployment next week is not confirmed yet by NOVA.    
+    - Task for this week is to collect all of the issues reported in the 1.1.0 candidate installers that have not been fixed. Need to open JIRAs and prioritize.  
+    - FYI, for the technical face-to-face in Toronto, Gregg plans to attend the first day, he has a list of items he wants to discuss with the team. 
+    - I'm taking vacation the week of 22-April. 
+
+Alfredo:
+	* GPII-2782 - Secure Backups
+		* Solved the SA assignement
+		* Created the chart
+		* Fixed permissions of the cloudbuild process involved
+
+JJ:
+	* Tracing down and fixing GPII-3839 with Bosmon and Cindy, bug in the transformation rules. 
+	* Updating pulls GPII-3821. Ready for review.
+	* Hunting GPII-3811 with Steve Grundell, we got him. yay! :)
+
+Joseph:
+	* GPII-3333: Production configuration tests cloud based flowmanager endpoints
+		* Cindy did one last review and recalled that testing the /settings endpoint created access token records in the database
+			* Desirable to remove these tokens when testing is finished
+			* Modified the database cleanup code to remove these test access token records.  Ready for review (https://github.com/GPII/universal/pull/718)
+			* Relates to GPII-3646, access tokens in CouchDB (see below).
+		* Teleconference with Tyler, Cindy, Antranig, Tony, and Alfredo about how to handle in AWS and GCP -- Created GPII-3832 (see below).
+	* GPII-3646, The archive process for access tokens in CouchDB
+		* Javi and Alfredo noted back in January that the database was "filling up" with access token records.
+		* Need a way to flush these periodically.
+		* But, also want to archive them for analysis
+		* Currently assigned to Javi, but I could take on the flush aspect as I've started doing that with the production config tests (GPII-3333) (you're a liar, GPII-3646 is assigned to you :P ) (you're a spy, assigning it to me when no one was looking) :) 
+		* Need help from ops team regarding archiving the current access tokens.
+		* https://issues.gpii.net/browse/GPII-3646
+	* GPII-3832, Handle production tests in cloud deployments.
+		* Currently run in AWS deployments, but AWS is deprecated.  Have removed the rake instructions to run the tests, and will make a pull request soon.
+		* Next:  how to run in GPC deployments.
+			* An issue is that the tests modify CouchDB directly and thinking about how or whether to do that beyond a cloud dev environment.
+		* https://issues.gpii.net/browse/GPII-3832
+
+Sergey:
+    - GPII-3642: Security command center integration
+    - GPII-2862: Inventory monitoring with Forseti
+
+Stepan:
+    - PR open for GPII-3781 - Istio - Move certificates validation to DNS01 challenge
+      - along with couple of smaller related issues - change email, failed http cert-challenge, refactor
+    - Getting back to - (pull master in PRs & test) GPII-3671 - Istio - Move Flowmanager and Preferences to Istio
+
+Steven Githens:
+    - Tried to get as much review done last week before Cindy headed out to Holiday
+    - Mostly wholey focused on the Capture Tool demo for this week with Gregg/Bern/others
+    - Review status of settings Amarja has working/notwork ing with the PPT and her agenda of settings/solutions to work through
+    - Going to use staging tomorrow for a demo, I don't believe we're planning and Db refreshes tonight
+
+Steve Grundell:
+    - With JJ's help, we've cracked the 1809 high-contrast theme problem - GPII-3811
+    - Various fixes for the deployment
+    
+Tony:
+
+	1. Continued working on adding validation to endpoints in universal.  Finished with the flow manager, nearly finished with the prefs server.
+	1. Working to import AbleData records into the UL API.
+
+Tyler:
+* Google Container Registry
+* Write up and respond to issues from stg incident postmortem (see bottom of pad)
+
+
+AGENDA:
+
+
+Emails exchanged with Gregg about the stg incident:
+
+
+1. 2019-03-19
+
+Here is some more information about the outage in stg. This is copied from our internal notes, so pardon the jargon (and let me know if you'd like a more comprehensible explanation of the finer details):
+
+While working on GPII-3707, I inadvertently destroyed stg's KMS Keys while looking at how something was configured
+* I must have run `rake sh` in stg while I had code that changed the Keyring path from `global` to `$infra_region`. `rake sh` triggered secret-mgmt, which "destroyed' (disabled and marked for deletion) the global KMS keys
+* Had I realized this (my action triggered an error email about encryption settings for exported logs in stg), I could have restored the Keys immediately.
+* Since I didn't notice the problem for >24 hours, the Keys (and any data encrypted with them) are irrevocably lost
+
+Impact
+* Since stg is a development environment, impact was trivial. There was never danger of a customer-facing outage.
+    * Production is susceptible to the same bug, i.e. the production Keys would have been marked for deletion if I had looked at the configuration in production instead of in stg. But, I adhered to the Best Practice of avoiding running commands in production, which prevented the first error in the chain in that environment.
+    * It is possible that I or someone else would have reacted more strongly to the error email if it had come from production rather than stg
+
+* The affected Keys are used to manage metadata about the environment and to encrypt system logs for archival. Customer data was never at risk. The stg environment continued normal operation until we shut it down for maintenance.
+    * We were, however, in a state where it was not possible to deploy new code to stg, nor to production.
+    * We also lost all archived logs for stg.
+
+* It turned out that some testers were using stg for testing. They were impacted for about 4 hours while we re-deployed stg.
+    * Had this incident happened in production, we would have scheduled and communicated downtime for the re-deploy
+
+Next steps
+* The Ops Team will hold a postmortem meeting where we discuss what happened, learn from the experience, and identify steps to prevent similar problems in the future.
+
+Thanks,
+t
+
+
+2. 2019-03-29
+
+Hello everyone,
+
+The Ops team discussed the incident and made a few changes in response. I'll mention a few of them while responding to Gregg's questions.
+
+> Thanks Roscoe,
+
+You're welcome Vanderheiden.
+
+> To whom would you be communicating?
+
+The outage@ mailing list: https://groups.google.com/a/raisingthefloor.org/forum/#!forum/outage
+
+See also: https://github.com/gpii-ops/gpii-infra/blob/master/gcp/README.md#downtime-procedures
+
+> We can’t have the system offline for users without serious impact on those who need AT to access their computers.
+
+In this case, I recommend investing in client-side mitigations (e.g. an offline backup mode) as no computer system or Internet connection has 100% uptime.
+
+> Will we have a system we can roll over to if something like this (or similar) were to come up again?
+
+There are various things we can do to improve our availability and resilience (e.g. blue/green deployment). All of them add complexity and will require engineering effort to implement.
+
+I believe we have reasonable infrastructure in place for the current state of the project. I believe the current infrastructure forms a good foundation for future availability/resilience improvements, if/when we need them. We do not have any work like this in our short-term plans.
+
+> Also I assume in production that multiple people would have gotten an instant alert - and - as you mentioned - jumped right on it.    
+
+We would have received an email from production similar to the one we did receive from stg. The difference in response is psychological: production is production; staging is a development environment.
+
+We created a ticket for producing a real alert if KMS Keys go missing: https://issues.gpii.net/browse/GPII-3833. Because this situation is rare, we do not plan to act on this ticket in the short-term.
+
+Note that we do not have 24x7 on-call support at this time. We do have a system for manual escalation to Ops team members in case of emergency: https://github.com/gpii-ops/gpii-infra/blob/master/CONTACTING-OPS.md
+
+We also created some initial Service Level Objectives (SLOs) for GPII Cloud infrastructure. These will evolve over time as the organization's processes and infrastructure mature, but they are a starting point: https://github.com/gpii-ops/gpii-infra/blob/master/gcp/README.md#what-are-all-these-environments
+
+> Did you mean that if you had seen it - you could have cancelled the delete before it happened?
+
+Yes.
+
+Let us know if you have any more questions!
+
+Thanks,
+t and the Ops team
+

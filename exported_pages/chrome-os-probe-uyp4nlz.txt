@@ -1,0 +1,73 @@
+Chrome os probe
+
+Javi's Chrome OS initial research
+
+From https://issues.gpii.net/browse/GPII-2624
+
+Determine whether or not the Chrome NFC library is sufficient for implementing a User Listener
+
+In theory, yes, I installed a demo extension from Google and I can read content from nfc cards (I guess that writing shouldn’t be a problem), but I don’t see a lot of people making use of it. https://github.com/googlearchive/chrome-nfc/ seems to be a proof of concept from 3 years ago.
+Also there’s the alternative of using the pcscd library as we have used on both Linux and Windows.
+https://ludovicrousseau.blogspot.be/2017/03/pcsc-sample-in-smart-card-connector-on.html
+This example uses an extension from Google that makes use of pcscd library. The extension acts like the pcsc-lite client, which deals with the low level stufff (usb interface, system libraries, etc). 
+I could also connect with my reader and read the content of a card, and I’d say that, given that Google made this in March, I think this should be our way to go when implementing our user listener. This test needs another extension to be used, so I assume that we must take that extension and modify to fit our needs, because I had to:
+* Enable the Smart Card Connector extension
+* Manually, select the reader we want to use
+* Go to the other extension and perform the read
+
+Learn how to implement a USB listener
+
+There’s a chrome.usb API (https://developer.chrome.com/apps/usb), which allows us to listen to both usb “add” and “remove” events, but so far, I couldn’t get it to work. In addition to this, we won’t be able to access to the filesystem through the chrome’s storage API (due to security restrictions) and we will probably need to implement a low level interaction with the usb device.
+
+Determine which (if any) portions of the GPII need to be ported from Node.js to the Chrome APIs
+
+This is the point where I’ve spent more time exploring our possibilities.
+There are people running node.js apps inside chrome, but of course, little apps. Why? Although there are techniques and modules that help us to fill the gap between node.js and chrome, there’s nothing that allows us to run the gpii as it is right now. One of the biggest problem is creating a server that listens in a particular port. The other one is that the access to the filesystem inside a chrome app/extension is “very” limited, as in Android.
+I think that this deserves a technical discussion between some of us. Right now, my impression is that we need to make substantial changes in the architecture in order to make this happen. Given my knowledge on the GPII, we should be able to run the minimal expression of an untrusted flowManager that is able to communicate with a cloud-based flowManager. For this to happen, we need to be able to first:
+* Be able to use the node modules (or the required parts of them) that we use to set up the flowManager.
+* Substitute the HTTP endpoints that the gpii sets up with chrome’s message passing mechanisms.
+* Be able to re-use the current approach when consuming files from the local filesystem.
+And this is (I guess) only the tip of the iceberg.
+Another alternative would be to implement a super small chrome-based flowManager, that is able to communicate with a cloud-based one.
+Another alternative would be to just pull the preferences from the cloud, which is not very powerful but may work for a demo build.
+
+Learn as much as possible about the Chrome Management Console and what is capable with it (this will likely several Chromebooks and access to a demo/purchased version from Google)
+
+Here are the highlights of the Chrome Management Console: https://eduproducts.withgoogle.com/products/281/management-console-education
+Here’s a youtube video with a demo of it: https://www.youtube.com/watch?v=cPEha24hWlw
+
+I’m not worried about this, since it seems to work pretty well and fit our needs.
+We can manage:
+	* User settings
+	* Public session settings
+	* Device settings
+	* Devices
+	* App management
+
+Using the UIO+ extension
+
+I’ve successfully tested the UIO+ extension and right, we can only modify the content inside the chrome browser although I was able to turn system-wide accessibility features manually and from within the context of the extension. That means that the extension must be improved in order to check whether we can set system-wide accessibility settings.
+
+How can we test this?
+
+In terms of getting the work on Chrome OS, I also took a look at the potential approach in order to test our developments on Chrome OS. Since Google and OEMs do the same thing with Chromebooks as with Android devices (They build a device-specific version of the OS), we won’t have any guarantees that the code works on all devices.
+As an alternative, we can include chromebooks (on developer mode) in our data centers and perform tests on them, but this approach isn’t very “realistic”. Another option would be to use Vms with a custom image of Chromium OS (the open source form of Chrome OS). I’ve been taking a look at this too, and got an image of chromium os up & running, but it needs a lot of time in research even by knowing that our ability to perform tests is very limited.
+
+Next Steps:
+    Topic: Chrome OS
+    Tentative conclusions: 
+    a) we need to get more concrete data about Chrome and the CC. 
+    b) we need to get more concrete info about Chrome and HS
+    c) if no real Chrome in CC, then postpone Chrome deeper investigation until we have less pressure on key people. 
+    
+    Topic: Windows 10S
+    d) Ditto for Windows 10S as a, b and c above. 
+    
+    Topic: generic (belongs in Strategic section of the Master Timeline)
+    e) Developing a Windows/Generic autopersonalization API
+    f) Shopping that with AT vendors
+    
+    Topic: VMs preparedness for demos:
+    1. Mac to Kavya (Gregg)
+    2. Instead of giving installers to Gregg, maybe create an image for him to install?
+

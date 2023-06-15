@@ -1,0 +1,123 @@
+Updates:
+
+
+Alfredo:
+	* GPII-2333 Testing the metrics data collection
+	* GPII-2544 Tell CouchDB 1 to do primary-primary replication
+	* GPII-2548 Prometheus controller running in k8s
+
+Antranig:
+	* Helping to get gpii-app branches and tests in
+	* Meeting with Astea team about PCP implementation and API
+	* Meeting about CouchDB design document management
+	* Meeting on Keys and KeyTokens
+	* Merged Joseph's pull to correct GPII-442 process reporter impl
+
+Cindy
+	* GPII-2435: Addressed code review comments
+	* GPII-2538
+		* Created the access requester module
+		* Refactoring the untrusted local flow manager to handle the retrieval, storage and use of access tokens that will be sent along with /untrusted-settings requests
+	* Attended the "keys and key tokens" meeting, will have a technical team follow up meeting this Friday (when?)
+
+Colin
+	* Lots of reading, meeting and thinking about Keys, KeyTokens, Preferences, Safes, etc.
+	* Will meet to discuss new architecture requirements for the above
+	* Working on a high-level overview of infrastructure activities and status
+	* Will do the same for Joseph's work on device/process reporters
+
+Danail
+	* making signifiant progress on the PCP visual tasks
+		*  refactor to follow the infusion concepts
+	* started integration of the PCP Channel
+		*  using Antranig's draft PCP API branch
+		*  parsing of currently supplied response
+		*  integration with the PCP
+			* visualize the settings received from the PCP Channel
+			* PCP notifies for changes over the WebSocket
+			* updating setting values from the outside (e.g. when the value set by the PCP exceeds the maximum value allowed by the flowManager)
+
+Giovanni
+	* GPII-2464 - Facing some issues with DNS and integration of Ingress controllers, looking for workarounds
+	* GPII-2543 - Learning about Hashicorp Vault, now trying out Kubernetes integration
+	* Gio, let's talk (this is Brendan) offline re: Vault. I'm working on the same thing from another perspective.
+
+Javi
+	* Been reviewing, merging, testing and created an installer with the last updates in universal and windows
+		* Kavya, Han and others have already started testing all the new functionalities
+		* it's unofficial until we get CI passing
+		* We need to get the tests passing again
+			* problems with the processReporter tests
+			* problems with the eventLogger tests
+	* I'm planning to review/merge a few pull requests
+		* Will submit a pull request for https://issues.gpii.net/browse/GPII-2589
+
+
+JJ:
+	* Keep working in MiMiC service.
+	* Updating the https://issues.gpii.net/browse/GPII-2521 issue.
+
+
+Joseph:
+	* Process Reporter (GPII-442)
+		* Pull request that sped up the Windows implementation:  Merged (thanks Antranig!)
+		* Pull request to fix uniit tests in gpii-app (and conitinue to pass in windows master)
+			* https://github.com/GPII/windows/pull/146
+	* Device Reporter and screen resolutions (GPII-1939)
+		* Email to Sandra to give a synopsis of this work.
+		* Updating all pull requests -- universal, windows, and linux -- to use the latest master and make sure there are no regressions.
+
+Justin:
+	* Working on UIO+ bug fixes
+		* Fixed
+			* GPII-2560
+			* GPII-2580
+			* GPII-2581
+			* GPII-2577
+	* UIO+ integration work
+		* Request Antranig and Javi to review the GPII-2424 PR ( https://github.com/GPII/gpii-chrome-extension/pull/2 ) Javi's really looking forward to test the extension :) :)
+
+Kavya:
+	* Done testing unofficial build version GPII.170907.070334 - https://issues.gpii.net/browse/GPII-2589
+		* Remove "Exit GPII" as the default on the GPII-App
+		* NFC proximity listener updated
+		* GPII default launches after installation and reboot 
+	* Started testing UIO+ with snapsets
+
+Michelle:
+	* The app integration tests are working! but can't yet be merged due to other test failures.
+	* Need some feedback and clarification on error and status messages before I can continue.
+
+Sandra:
+    
+    - Focusing on readiness for Pilot 1, which will start on 25-Sep. Team is working on a few last updates and fixes. 
+    - Several meetings re. PCP with memory. 
+    - Continue planning activities with Gregg. 
+    
+Simon
+	* Attended meeting on CouchDB design document management and document schema/structure evolution
+		* We will meet again in 2 weeks and I will prepare technology evaluation notes on document structure evolution and data migration
+	* Attended meeting on Key, KeyTokens, and Preferences
+		* Started a wiki page to summarise and formalise the new data model: https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+	* Merged in Cindy's pull request to address GPII/universal linting failures
+	* Continuing to review Cindy's GPII-2435
+
+Steve Grundell
+	Mostly metrics/spyware: GPII-2583
+	Made the gpii-app icon always visible: GPII-2554
+	Fixing my crappy tests (that the gpii-app broke)
+
+
+Tyler:
+    * PRs are out for GPII -> Cloud CI/CD (GPII-2542)
+
+Yuriy:
+    * working on defining remaining tasks for the PCP client amid changes to the API and some other updates to the requirements
+    * next important thing is to focus on the styling of the PCP since we only have wireframes
+    
+Brendan (Late):
+    * Spun first full draft of policy set. They're awaiting comments round 1 right now.
+    * Started working on getting documentation/tooling set up to supportably deploy Vault. Encountered hidden side quest (see next).
+    * We don't have a unified user store. I had intended to handle this later, but I think it'll help w/ Vault etc., so I'll probably try to get that supportably up and syncing with relevant things, then move on to Vault.
+
+Agenda:

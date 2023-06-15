@@ -1,0 +1,170 @@
+WHAT WE ARE LOOKING FOR
+	* 5+ years of experience in designing QA test plans and executing an open source testing and release cycle
+	* Experience building static HTML pages developing sophisticated, interaction-layer code as well as other technical aspects of front-end and user interface development
+	* Strong command of JavaScript
+	* Clear communicator (written and verbal)
+	* Ability to focus on deadlines and deliverables 
+	* Experience in an open source and global development environments?
+	* Experience with JavaScript, JSON and Node.js libraries?
+	* Understanding of IoC
+	* Writing acceptance tests
+	* Experience with Git and Github.
+	* Experience using JIRA and Agile development methodology.
+	* Highly motivated and self-directed.
+
+Kavya
+
+8 years experience as QA analyst 
+understanding user requriements
+write test plans
+developed a testing framework on .net using Selenium webdirver
+introduced Kanban and agile
+wroked on an open source tool related to SOAP and RESTful web services
+front end testing and REST endpoints
+developed automated test with Groovy scripts
+has been responsible for complete QA process
+collborated in global environments
+understand cloud based systmes
+excited about GPII - it's a great vision
+
+Q: Open source: What are the challenges and how would you overcome them?
+	* open source is totally different
+	* collaboration is key
+	* used to work in a global delivery environmnet, where she worked in india and the rest of the team was in the U.S.
+	* status meetings at the beginning and end of the day
+	* testers should work off pull requests
+	* after going through the architecture documents is to understand the different components, to understand user preferences and the flow manager and matchmaker and how the data flows to and from the cloud
+
+Q: Walk us through the process of learning how the GPII architecture works and each of the components so you can test them? Who would you talk to, etc.
+	* Go through the wiki, get a high-level understanding
+	* start with basic testing of high level functionality testing
+	* start with existing test plans and automation scripts and the way things are currently tested 
+	* collaborating with the developer or the supervisor to understand the requirements
+	* share the scripts with the team to make sure she understood the requirements and everyone is on the same page
+
+Coping with more fragmented requirements process
+	* I would try to generate high-level, basic test cases; for example, if we have a login functionality, i'd create the high-level features, not the intricate details, of the test plan first. I'd get this information by interacting with the different users (stakeholders?)
+	* If I have the high-level, I can test the basic features fo the application and make sure that it isn't broken
+	* Summary: test high-level, critical, most basic features, and then collaborating with the team and refactoring and adding to them
+
+Q: Summarize your experience and approach with automation
+	* My approach would be to create a comprehensive testing framework
+	* Since requirements change, the framework is key. With Selenium Web Driver, I'd separate the framework from the browser
+		* The framework should be built so that we don't interact with the browser direction; the framework should sit in between
+		* If there are breaking changes, we can just change the framework and everything else will continue to work
+
+Q: What platforms/tools have you tested on?
+	* Most of my experience is web applications
+	* I have used the .NET framework, and PyDev and Eclipse
+
+
+Q: How would you test native applications? How would you do full-on native apps
+	* I used Selenium Grid, which works as a hub and creates different nodes
+	* Each node has configuration, so we can set it up with mac, windows, etc
+	* I'd use Selenium Appium or similar tool
+	* As for native applications, we should consider Appium (runs on Android and the Mac); for testing Windows-based applications, I've done manual testing and we can use something like (SOAP UI?), and there is a tool called Dogtail
+	* We can also determine what open source solutions are available and slowly introduce them into the project
+
+Q: What kinds of things would you need to do and how would you interact with the infrastructure team if you need things like Selenium Grid, etc.?
+	* When I first started, I was able to set up all my development environment requirements—SQL Server, etc.
+	* I would install .NET and test the codebase locally
+
+Q: Our system is mainly JavaScript. Do you have any experience with it?
+	* the web apps I test are mostly client side js. very comfortable and have participated in code reviews of JavaScript code
+
+Q: Have you heard of Inversion of Control?
+	* Yes. IoC is a design pattern used to help support reusability.
+
+Q: You talked a bit about Kanban and agile. Tell us about what your process would look like in terms of testing and finding defects and feeding it into the requirements process. The whole development cycle and how you'd be involved.
+	* Experienced with two-week sprints, development user stories
+		* At this stage, the job of testing is to understand the user stories and the expectations that are part of them
+		* Then come up with test strategy
+	* As the developers develop, the testers work on writing automated test scripts
+	* Once the developer is done coding and it's been pushed into the main branch, the tester is responsible for running all the tests and making sure that nothing is broken from previous requirements
+	* If there are defects, the tester needs to log the defect; to do this, they will need to make sure it's reproducible so that they can write a report that a developer can understand
+	* Once there's a fix, the tester needs to verify the fix
+	* I like Kanban because we need not wait for the developer to finish development; the testers can work on testing backlogs and automation
+		* in Kanban there isn't a two-week sprint; whenever there are enough user stories, the software can be released
+
+Q: How would you fit into a less formalized process, and how would you try to change that process?
+	* she introduced Kanban after understanding the project goals and culture
+	* after undergooing a coupel sprints she found a serious bottle neck that Kanban could address
+	* she can easily adapt into an agile environment and provide comprehensive solutions
+
+
+Q. an experience of a conflict or problem you've had with a co-worker; for example, a developer who refused to acknowledge a bug, or a manager who asked you to do something you thought didn't make sense. Can you tell us how you handled that situation, and what the situation was?
+	* a defect was raised and not accepted by the developer
+	* feels all the team members should work towards the benefit of the software
+	* she did the trouble shooting and then interacted with the developer to talk about the defect 
+	* found that the bug was actually related to a browser version difference
+	* she found a solution and talked to the defect manager and the team
+
+
+	* she would go through the existing plan and try to understand the other perspective and strategie and then compare them to her design goals and plan. If hers are better, she would intereact with Michelle to say that she felt hers was better. 
+
+
+
+Her questions:
+	* gone trhough GPII architecture and understood the high level; i want to know what your approach for testing for the whole project?
+		* response: we have automated unit and acceptance tests and we want to improve that over time
+		* cross-platform is really important
+	* what would be the top skills required for this position?
+		* 
+
+
+
+Tell us a bit about what you know of the GPII and how it is developed? How will you fit into this process, and what will you contribute?
+
+
+
+** What techniques and strategies will you use to determine, in the context of an open source community, which features and parts of the GPII will most need to be tested, and in which order? Have you worked in open source?
+
+
+
+Which platforms and devices will you test the GPII with first? And why those ones? Any experience with cross platform testing automation (in particular on windows and/or mac)?
+
+
+
+* Describe some techniques and strategies you have experience with to help maximize the value and impact of QA testing, especially within the context of a small team such as the GPII’s?
+
+
+
+** What kind of experience do you have with writing automated acceptance tests? What tools have you used, and what challenges or difficulties have you faced when using these tools?
+
+
+
+How do you organize your work? (we are looking for self directed)
+
+
+
+Do you have experience with agile development? 
+
+
+
+* Most of our framework is written in javascript (with some windows/linux bindings). 90% of our unit tests and acceptance tests are run using jqunit (javascript). Seeing your resume only mentions experience in Java programming, do you have any non-formal experience with other programming languages? (Javascript, JSON, Node, IoC)
+
+
+
+What is your strategy for learning?
+
+
+
+What strategies have you used for testing a system that is still in very active development, especially when it may lack end-to-end integration of some components? What kinds of things can you do to do deal with this kind of situation?
+
+
+
+* Test reporting - what's your experience there, which tools have you been using/which approach? (JIRA)
+
+
+
+What do you know about Testem (CI?) and Nightmare (browser automation library of JS)?
+
+
+
+Have you used git and github? 
+
+yes
+
+
+
+

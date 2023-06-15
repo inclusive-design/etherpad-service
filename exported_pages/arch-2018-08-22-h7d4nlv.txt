@@ -1,0 +1,102 @@
+Attendees: Alfredo, Antranig, Cindy, JJ, Justin, Sandra, Sergey, Stepan, Steve Grundell, Steve HENS, Tony, Tyler (no Sergio today?)
+
+UPDATES
+
+Javi
+	* Been having some rest after the long past week and successful demo :)
+	* Started moving stuff from feds-audit branches into master, but didn't really have the time to actually submit any pull request :/
+	* Will be on vacation as of tomorrow and until September 10th
+
+Alfredo:
+	* GPII-3125 testing the changes in a separate GCP organization
+	* Triage tasks related to the IDRC migration
+
+Antranig
+	* Was away a couple of days
+	* Starting to work through "get feds_audit out of trunk" list from last week's meeting ( https://pad.gpii.net/p/arch-2018-08-15-e084ni5 - starting on line 83 )
+	* Merged 1 pull of stegru's, several others from windows are close
+	* Merged ADTKINS update to linting
+	* Core team meeting about account signup, Githens is close to having a working RESTful interface for securing cloud safes via l/p credentials (YAY!!!)
+	* Spoke with Sandra about our upcoming pilot deployments, there will be a meeting with Maureen immediately after this one
+
+Cindy
+	* GPII-3191: The proper implementation for noUser keyin
+		* Issued a pull request: https://github.com/GPII/universal/pull/653
+		* half way thru addressing review comments
+	* Meeting about PPT and gpii-express-user
+
+JJ:
+	* Looking into Steve review from my pulls.
+	* Refine more work for my last pull for settings of the first wave.
+	* Researched for new requested settings, positive results.
+
+Justin:
+	* Open PRs:
+		* https://github.com/GPII/gpii-chrome-extension/pull/11 (updating test infrastructure to use testem)
+		* https://github.com/GPII/gpii-chrome-extension/pull/13 (allowing youtube captions to work with dynamically injected videos)
+	* Investigation
+		* Looked into YouTube captions with auto-generated captions. The iframe API doesn't support it. (GPII-3293)
+		* Looked into GPII-2914 ( https://issues.gpii.net/browse/GPII-2914 ) need to talk to Antranig about this
+	* Current Work
+		* FLUID-6253 ( https://issues.fluidproject.org/browse/FLUID-6253 ) moving to pull in dependencies from NPM. This is needed for the future syllabification preference.
+
+Sandra:
+    - Next major deployment is the start of AJC Pilot 3 the end of September. Meeting with Maureen after this call.
+    - Followed by pilot at a library branch in Richmond, VA. Only then we'll deploy to Community College. 
+    - Gregg is updating the roadmap. 
+
+Sergey:
+    - GPII-3188 Smoke testing for GCP infra
+    - GPII-3251 Destroy indempotence
+    - GPII-3299 SA keys issue
+    - GPII-2955 Monitoring for GCP
+    - Code reviews
+
+Stepan
+- GPII-3296 - GCP infra testing - created and setup test org, running tests with GPII-3125
+- GPII-3241 - Unique IDs and cleaning up after GCP projects - addressing PR comments
+- GPII-3125 - Helping with testing GCP infra code, still hitting issues
+- GCP Support subscription activated & shared account setup
+
+Steve Grundell
+- Reviewed JJ's pull requests, thanks :)
+- IoD
+- Looking into explorer restart
+
+
+Steve Githens
+- Continuing work on cloud safe logins, integrating using gpii-express-user with the preferences server to manage usernames and passwords, and creating credential records for them attached to the prefssafe.
+- Consuming these endpoints in the PPT
+- Other work and planning around the work in flowmanager to use these endpoings in the prefs server to allow signing up with a username/password at the end of getting setup with the QSS
+
+Tony:
+
+	1. Got the tests working in my JAWS onboarding universal branch, pull ready for initial review.
+	1. Currently manually testing my work in a Windows VM with JAWS 2018.
+	1. Will soon need to discuss version detection in more detail.
+	1. Met with Hens/Ant/Cindy about user management.
+	1. Worked to leave feedback on Steve's related pull against gpii-express-user.
+	1. Worked on various testing/code quality issues in gpii-testem, gpii-grunt-lint-all, windows, infusion.
+
+
+
+
+Tyler:
+    * GCP infrastructure is now exercised in CI: https://gitlab.com/gpii-ops/gpii-infra/pipelines/28397222 (let me or someone on the Ops team know if you can't view this and would like to. You'll need a Gitlab account.)
+
+
+
+AGENDA
+
+Why do we need c:/vagrant vs. v:/ in Windows VMs?  We don't, Tony to document the work to be done.
+
+Also, here's a report of the isame issue: https://github.com/istanbuljs/nyc/issues/741
+
+
+Can we upgrade the windows vagrant boxes to 1803?
+
+https://github.com/idi-ops/packer-windows
+https://github.com/idi-ops/packer-windows/commit/3cd4433db0093b695f33cd6f0f5683458197a963
+
+
+

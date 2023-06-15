@@ -1,0 +1,27 @@
+Date: Sep 11, 2017
+
+Participants: Antranig, Bern, Brendan, Cindy, Colin, Greg, Maureen, Sandra, Simon
+
+Agenda:
+	* Original questions: https://docs.google.com/document/d/1_W-QeCGhB2oPTpY2ESaDkCsylCpC82sn33Qz8i7DPcU/edit
+		* shall all keys be generated and kept track of by GPII Cloud
+		* If the answer to the above question is yes, is the workflow of keyToken creation able to support talk to GPII Cloud for 1
+	* Keys & keyTokens: https://docs.google.com/document/d/1_W-QeCGhB2oPTpY2ESaDkCsylCpC82sn33Qz8i7DPcU/edit
+	* The short term plan for supporting PCP with memory in November
+		* Need to provide a web service API that performs the key generation, which might be an UUID creator
+	* The long term plan
+
+Background:
+	* The support of anonymous keys case by /untrusted-settings, the API use by GPII app installations to request settings commands from GPII Cloud
+		* This use case doesn't require the anonymous key to have an individual key record in the authorization database
+		* It only requires the anonymous key has a preferences set defined in the preferences server database
+		* This brings up the question of whether all keys should be generated and tracked in the cloud
+
+New technical doc:
+	* Simon has started the data model of keys, keyTokens and preferences based on the "Keys & KeyTokens" google document
+		* https://wiki.gpii.net/w/Keys,_KeyTokens,_and_Preferences
+
+Next steps:
+	* Schedule a follow up meeting with the same set of participants to go thru 
+		* 1. questions with "keys and keyTokens" doc, if there's any
+		* 2. possibly the time estimate from the technical team to support the use case 1 & 2 listed in the "keys and keyTokens" doc

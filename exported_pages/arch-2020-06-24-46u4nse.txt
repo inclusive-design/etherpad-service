@@ -1,0 +1,108 @@
+GPII Architecture FINAL Meeting Minutes, June 24th, 2020.
+
+UPDATES:
+
+Alfredo:
+	* GPII-4195: Secrets management in TF 0.12 
+	* GPII-3057: Update ci-service definitions to fit in the new Jenkins
+
+Antranig:
+	* Have been moving house back again
+	* Fixing bugs in /enabled raised by capture tool
+		* https://issues.gpii.net/browse/GPII-4468
+	* Meeting and research for solutions registry migration
+
+Christopher
+	* MorphicLite > MorphicClientLiteMac
+		* Apple WWDC
+			* We will need to test against macOS 11.0 (Big Sur) (to be released this autumn)
+			* No known breaking security features in macOS 11.0 (Big Sur)
+			* macOS is moving to ARM; we should not need to do more than update our project settings--but we need to verify that's for sure
+			* First ARM-based ("Apple Silicon") Macs will ship this fall; new Intel machines too; full transition will take about two years; macOS for Intel (64-bit) will continue to be updated for several years to come
+		* Issue #14: Create Swift wrapper for System Automation ("Accessibility") API
+			* https://github.com/oregondesignservices/MorphicLiteClientMac/tree/feature/christopher-a11yui/MorphicSettings/MorphicSettings/AccessibilityUI
+			* Accessibility UI (UI automation) Swift wrapper can: attach to process by bundle ID; enumerate and navigate UI elements; get/set values/titles/other attributes; press buttons
+		* Issue #12: Native code or plist to support High Contrast
+			* Can now get state of "Increase contrast" feature via user's Property Lists
+			* Can now set state of "Increase contrast" via Accessbility UI (UI automation) of System Preferences
+				* Will be optimizing/refactoring
+				* Note: System Preferences updates property list files with a slight delay (<= ~7.5 seconds)
+			* Next: Will be adding support for related "High Contrast" features (e.g. Invert Colors, etc.)
+		* Issue #23: Native code to support Night Mode ("Night Shift")
+			* Reverse-engineered macOS private framework "CoreBrightness" using nm and Ghidra
+			* Can now get state of "Night Shift" (BlueLight filter) via reverse-engineered CBBlueLight framwork class
+			* Can now set state of "Night Shift" (BlueLight filter) via reverse-engineered CBBlueLight framwork class
+			* Next: will be adding support for related "Night Shift" features (e.g. Color Temperature)
+		* Issue #25: Native code to support Color Filters
+			* Can now get state of "Enable Color Filters" feature via user's Property Lists
+			* Can now set state of "Enable Color Filters" via Accessbility UI (UI automation) of System Preferences
+				* Will be optimizing/refactoring
+				* Note: System Preferences updates property list files with a slight delay (<= ~7.5 seconds)
+			* Next: will be adding support for related "Night Shift" features (e.g. Filter type, Intensity)
+		* Next up:
+			* Continue adding support for more native settings handlers
+				* https://docs.google.com/spreadsheets/d/1FK6RZKjxN1qN3NTcFCAvletQwbhbw5QKmMf8JupT2gI/edit#gid=872165138
+			* Add support for detection of Accessibility permissions (so that we can prompt the user, etc.)
+			* Explore additional private frameworks for more direct/faster access to get/set native settings
+	* Misc. meetings
+
+Javi
+	* 1.3.5-r2
+		* Troubleshooting and following up on problems reported - no showstoppers so far
+	* Working on producing a last custom build for a pilot site that is opening soon
+	* I guess that this issue still a tech debt that we all have to pay https://issues.gpii.net/browse/GPII-501
+
+Joseph (away today):
+	* GPII-4218: PSPChannel read API cannot read UIO+ setting
+		* Last week, noted that:
+			* Fixed PSPChannel reading UIO+ settings issue by providing inverse transformations for the UIO+ solution in the solutions registry
+			* To work with UIO+ for Morphic, modified the BrowserChannelHandler/WebSocketsSettingsHandler to handle "changeSettings" message types.  Responds with a "changeSettingsReceived" message.
+			* Pull request ready for review: https://github.com/GPII/universal/pull/877
+		* Antranig noted similarities with Hens' changes to the Windows high contrast theme transformation (GPII-4492: Changing high contrast logic to respect enabled setting) 
+			* Modified the UIO+ contrast theme transformation to use similar logic, but could use a second pair of eyes.
+	* GPII-4273: Local FlowManager retrieves latest solutions registry from github on startup
+		* Maintenance:  keeping up-to-date with changes to master branches
+
+Justin:
+	* Draft PRs
+		* GPII-4218: Send UIO+ settings to Morphic
+			* https://github.com/GPII/gpii-chrome-extension/pull/52
+	* Other
+		* gpii-open-same-tab-extension
+			* waiting on GPII-4410: Making links work without the extension
+				* https://github.com/GPII/gpii-open-same-tab-extension/pull/2
+		* Need to publish uio+ and uio+ for morphic after all of the GPII-4218 PRs have been merged
+	* Notes:
+		* While an official release of Morphic Classic that contains the necessary changes for GPII-4218 may never be released, we should still release and publish the changes to UIO+ for Morphic. And note that it includes a breaking change.
+
+Kasper
+	* Lots of meetings
+	* Following up on QA, designs, 1.3.5 release, etc
+	* Maja is sick today, so my presence has been sporadic today
+	* Will work tomorrow instead of friday - expecting to work full time, but if maja is sick it will be a bit sporadic as well.
+
+
+Steven Githens:
+    - Capture tool fixups GPII-4489, GPII-4511, GPII-4488, GPII-4497
+    - Tech debt GPII-2966
+    - Investigating some zoom text defaults that are outside our schemas, haven't jira'd yet
+    - It's been a pleasure everyone. This wednesday slot has been one of the highlights of my week for the past decade. I will catch you... on the flip side!
+
+Stepan:
+- GPII-4508 - Investigate OPA & Gatekeeper as BinAuth replacement
+  - Gatekeeper deployment PoC
+- GPII-4514 - Changed GCP resource monitoring is not working
+
+Steve Grundell;
+	DPI c# implementation (half done, got bored)
+	Making text to speech work more reliably
+	Looked into high-contrast related issues
+
+Tony:
+
+	1. Working with Antranig and others on issues encountered trying to onboard Fusion.
+
+
+AGENDA:
+
+

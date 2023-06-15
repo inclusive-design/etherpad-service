@@ -1,0 +1,49 @@
+1. Anything to demo this week?
+	* Tyler will demo IR/DR Plan, quarantining
+	* Alfredo backup exporter, but it's long/boring. How can we make it a good demo?
+	* Break something in couchdb to see how fm/preferences throw errors (503->404 thing, not responsive)
+	
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+	* Total time: 11 min
+
+3. Sprint 34 planning
+
+4. IR/DR Plan: "demo" and questions
+	* Sandra: we don't have a privacy officer. Yes we do. I have not heard from him at all. It was a requirement for RtF-I. We have one on retainer.
+		* Decision: Sandra will identify this person and update the documentation to reflect this new knowledge.
+    * Security vs Non-Security Incident types?
+        * Decision: Sandra thinks we should go ahead and do it.
+    * Implementation of Information Security Program Policy?https://docs.google.com/document/d/1I4WdQxQyPG6Us9no2z24vTnmXQ6uvDzCLPf9EsrZV6E/edit
+        * Decision: Sandra will determine if more actions are needed to implement Info Sec Program
+    * Printing IR/DR Plan - new ticket, assign to Gregg?
+        * Decision: Tyler will create a ticket for this and assign to Gregg. Acceptance Criterion: attached photo of printed docs to ticket
+    * Contacting law enforcement?
+        * Decision: Sandra will find out more about this and add to the documentation.
+    * Additional "major tasks"?
+        * Decision: Tyler will circulate doc for review by ops team
+
+5. Thanks
+
+Either in this meeting or the next, I'd like to review with the team what the goals should be the next 6 months, maybe prioritize this list:
+    
+
+Security
+* For FERPA compliance:
+    * The tickets in the current sprint: https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21
+
+* Security patching, incident response, and other routine maintenance will be long-term needs
+    * Some of these processes can be better automated or otherwise improved, e.g. alerting for some security scan results vs regular review during Ops team meetings.
+
+Scalability
+* The team's focus has been building the Cloud Infrastructure (see document) and meeting the Security requirements.
+* We have a capable platform (Google Cloud, Kubernetes) for supporting web-scale traffic.
+* The Ops team believes the current production GPII Cloud can support expected levels of traffic for the near future, and can be scaled to support significantly higher levels of traffic with little effort.
+    * Currently, we are using as few computing resources as possible to minimize costs. When we have more traffic, we can scale up to more / more powerful resources.
+* Performance experiments and real-world experience from Pilots will lead to tuning at the infrastructure and application levels, which will determine how much we can practically scale.
+
+Cloud Infrastructure
+* Move CI/CD infrastructure to the cloud
+    * We are currently taking advantage of computing resources generously provided by the IDRC, but this is not a sustainable solution.
+
+* Technical debt
+    * The Ops team has tracked numerous non-critical issues during development, many of which impact maintainability and sustainability.

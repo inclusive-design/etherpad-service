@@ -1,0 +1,30 @@
+1. Anything to demo this week?
+	Not yet.
+	
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+
+- Security findings filters do not work anymore
+- And there's command line util - https://cloud.google.com/sdk/gcloud/reference/alpha/scc/
+
+
+3. Test IR/DR Plan: https://docs.google.com/document/d/1LQHKsRdh8m4oAu-b3tz29cK5ggMv6bdueUa5s6Hyg_I/edit#heading=h.jvejvz2o01ns
+Alfredo is going to create a checklist to follow
+Go through this document on monday and check if everything is met
+
+4. https://docs.google.com/document/d/1DC2JyxRjQDdKbN_BNeqj3utGFdywZX4Zyuy7FpXgeFw/edit
+Gregg: "We DO need to do a deployment in Europe this next year as part of our grant"
+	Sandra: Nobody is assigned to work on this project yet.
+	Ops: EU security (GDPR) may require additional effort, new system architecture (cross-region UIIDS registry) needs to be addressed together with core team.
+	
+	GDPR: https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en
+
+5. New DB Doc
+Fill the document about New Databases:
+https://docs.google.com/document/d/1Ji3Ibt_vGVxTk_YCudyJKzQ0yCoklahDPbDlH4NuV9E/edit
+
+Suggestions:
+ 1 - Firestore
+ 2 - Stay with CouchDB
+
+6. Planning yeey :)
+https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-meetings-iqt4nbr/pad/view/2019-09-17-planning-d91q4nck

@@ -1,0 +1,17 @@
+
+
+Alfredo:
+
+	* Fix some issues about TLS/SSL certificates for raisingthefloor.org
+	* Organize and uploading new roles and playbooks for Ansible
+	* Write a plan for the continuous integration of UL
+	* Automate the building of Linux packages of GPII
+	* Split the jobs between two slave servers, one for IDI tasks and other for GPII tasks
+	* Trigger windows and linux testing when a commit is done on their repositories. (GPII-linux, GPII-windows)
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+Agenda:
+	* IBM team to discuss the security gaps that we've identified based on last week's discussions
+
+Feedback and clarifications:
+	* #1: Be able to trace each requirement to a link of which standard/doc that brings up the requirement; be precise of what needs to be logged based on what's defined in the standards
+	* #2: Evaluate the store of what kind of data that leads GPII to FISMA high (level 3).
+	* #3: database credentials: the crendentials used by GPII application to access databases
+	* #5: Open to evaluate other framework and protocols other than OAuth2 for protection

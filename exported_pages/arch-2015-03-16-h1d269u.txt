@@ -1,0 +1,83 @@
+Updates:
+
+Michelle:
+	* Talking with Simon about the APCP security work
+	* WIll be taking over some of the coordination aspects of that from Simon
+
+Ale:
+	* Survey for AJCs execution -> Will give us AT tools list and preferences and things.
+	* Recovering TT/Onboarding Team, had a meeting with Steve Lee.
+	* Reviewing GPII mac status - I need some hints.
+	* Give to Alfredo the baton to attend to core security meetings.
+	* Contract controlling with SILO about Windows installer.
+	* Trying to figure it up all the Windows installer bunch of work.
+	* OH YES, Process definition cooperation.
+	* ┬─┬﻿ ノ( ゜-゜ノ)
+
+Cindy:
+	* APCP meetings
+	* Creating diagrams that show different GPII modes by running in one single node instance or multiple node instances
+		*  Hybrid production configuration - having node instances running separately
+		*  all-in-one at local, in one single node instance
+		*  all-in-one at local, with several node instances
+	* Will continue to collect GPII payloads
+
+Colin:
+	* zomg
+	* Helping with: security, PGA, APCP metrics "dashboard," P4A Design Guidelines, P4A Nexus demo, APCP design/development process planning with Sandara and The Alejnator <- Your golden hammer for anything.
+	* Really, really, really want to finish reviewing the BIG GPII PULL REQUEST and merge it Go Colin! (assuming GPII-1318) <- You can make it.
+	* Why did all the colour leave our world? Is this the apocalypse? The zombie apocalypse?? AAARRGGHHHH!!!! This viking pad is the colour of my soul No panic, stay calm!! No panic here.
+
+KASPER
+	* Finished up the C4A deliverable <- So you can breath now.
+	* Had expected to wrap up the Canopy work by today, but ran into an issue with the flat matchmaker -- se Flat MM topic on agenda
+	* Volunteered to do a draft of a simple/minimal PMT requirements from the developer teams (and C4A experience) perspective. Will work on this with michelle.
+    
+Avtar:
+	* Collaborating with Alan on a QI Dashboard prototype of the upcoming review
+	* Wrapping up work on a backend service that consumes GitHub endpoints
+	* Jenkins integration work to be planned later this week
+
+Giovanni:
+	* APCP and security meetings
+	* Deployment automation for Unified Listing and Terms Registry websites
+	* Cleared pad's authorship colors <- bold move!! (actually, it's the opposite of bold.  "bland move"?)
+
+Sandra:
+	*  Focused on defining process and flow for collaboration between UX/Design team, Core Team, Stakeholders Team, Pilot Team, etc. for the APCP project. 
+	* Updating schedule for the 31-Jul-2015 Basic Functional Product (Minimal Functional Set)
+	* Doing follow-ups on meetings with IBM
+
+JOSEPH
+	* End of last week: Finished enough edits for the ARIA documents to pass along to the W3C publishing process.  New drafts are imminent.
+	* Beginning of this week, ProcessReporter (GPII-442)
+		* Meged in latest master branches from universal and linux
+		* Made changes as necessary.
+		* Added the ability to report a single solution/rprocess.
+
+Simon:
+	* APCP meetings and planning with Michelle, Cindy, and Giovanni
+	* Little bits of Nexus work and working towards P4A Review meeting in April
+
+HENS Steve:
+	* Spending waynes TT-5 work out (Jaws)
+	* Hanging out with Antranig
+	* playing around with PCSC lite for node - got it to write - still pending to get it to write
+
+    
+ TONY:
+	* Finally started breaking the legacy UL (all 10,000 lines!) for code review.  Using as many of the new libraries and approaches as possible.
+	* Keep extracting new libraries as I find things I did as one-offs previously, this week:
+		* Sketched out as much as I can for my new wrapper around the kettle CouchDB dataSource as I can until Antranig is back.
+		* Made an improved combination of the gpii-express "content aware" router and the JSON Schema "gatekeeper" middleware.  What the heck does that mean?  You can use a JSON schema to validate incoming user input and deliver a success or failure response that matches the user's  "Accept" headers.  One endpoint to rule them all!
+		* Updated the wrapper around the "static" router module in gpii-express to work with multiple directories. Makes it much easier to overlay your static content on content from your dependency packages.
+	* Coming Soon:  A "location bar" relay that makes model changes bookmarkable and navigable using the browser back and forward buttons: https://issues.gpii.net/browse/GPII-1674
+
+Wanted? The Flat Matchmaker - dead or alive?
+We decided that the flat matchmaker still has a purpose, as an "as simple and predictable matchmaker" as possible. And while it probably will never be used in the real world, it is useful when writing tests/manuel testing and want to eliminate any uncertainties/unpredictabilities coming from the MM.
+
+Kasper will look into how much work it is to get the flat matchmaker working properly with the new codebase shared with the canopy matchmaker - if this is not too significant, he will update the flat matchmaker to work again.
+
+
+Current status of the First Discovery and PMT
+

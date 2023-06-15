@@ -1,0 +1,8 @@
+Agenda:
+    - Based on the story points history I sent earlier today, is the team comfortable estimating the average amount of story points that can be completed each sprint?
+    
+    
+Notes:
+- Team agreed that at this point, we could use an estimation for average number of story points completed in each sprint to be 16. As we complete additional sprints and have more data points, this estimate can be revised.
+
+- Follow-up from Gio regarding talking to Cindy, Gio sent out an email to the team. When we consider the deployments, they should take into account that the data we need to include in disaster recovery is the data from CouchDb. (GPII-2327, 2328 and 2329).

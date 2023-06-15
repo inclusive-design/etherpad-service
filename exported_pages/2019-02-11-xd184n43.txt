@@ -1,0 +1,78 @@
+Agenda:
+1. Anything to demo?
+2. Things that can go wrong document
+	* https://docs.google.com/spreadsheets/d/1TRwx6F8cPQupxclF-17mHb5BnZw-BPXUrKCpPPtFGIQ/edit#gid=0
+	* Worst case scenarios v1.0: https://docs.google.com/document/d/1Z2ppb4zYrNjFaTfIb3ZAePb22h8BaT0MIUh-lhsekRs/edit
+	* Gregg should know about these scenarios. Probability column should help mitigate his concerns (catastrophic failures with low probability of occurrence)
+	* ASTEA will do customer support via email and chat (keeping this responsibility though they have handed off development work)
+		* We did something similar during HST, but no questions from users. We expect this to change with the (much larger) NOVA Pilot
+		* How will ASTEA escalate questions they can't answer?
+			* Typically escalate to Javi and/or stegru, who can pull in whoever is needed. So they are level 2 support.
+
+* Let's brainstorm some ops team-specific failure modes:
+	
+* Device side / connectivity issues
+	* No internet connection OR connection is too slow/flaky to allow good communication with GPII Cloud
+		* Ops team can't do much in this case. Device-side team may want to think through this. Also, test device with no internet / poor internet.
+	* Related to above: Firewall prevents connectivity. What does device side do if requesting CBFM returns a captive portal page
+	* Proxy, filtering proxy - what might these return?
+	* What if proxy does something invasive with HTTPS certificates?
+		* For this one, we might focus on what NOVA does specifically
+	* DNS - e.g. an enterprise that blocks DNS resolution to google.com because it's not whitelisted
+	* Any unusual http(s), e.g. websockets?
+		* We don't think so - CBFM is vanilla REST API calls
+
+* flowmanager.prd.gcp.gpii.net is DOWN
+	1. Ops responsibilities: how do we know it's down, do we have sufficient monitoring?
+	2. What does device do with this failure mode?
+	* Document a method for first-level support to know if we think the cloud is working properly
+		* Go to /health, if you see json and "ok" it's probably good
+		* Stackdriver allows us to export individual graphs, use that to share Uptime Checks directly?
+		  - so it seems you can't export chart directly from the "Uptime checks" tab, but you can create a Chart from metrics explorer, save it and then there's option to "Share" a chart that generates public URL like:  https://public.google.stackdriver.com/public/chart/1955097968669078167?drawMode=color&showLegend=true&theme=light
+
+* Service is overloaded (web service or database)
+	* How would we know that service is overloaded?
+		* Additional monitoring for: average request time (latency)? spike in 400s/500s (error rate)?
+			* When does latency start affecting device, e.g. are there timeouts on the device side and if we go over that time, what happens?
+		* We do have some metrics for this, if not monitoring/alerting
+			* Manually review cluster performance now (with no users), and periodically 
+	* Have a plan for how to (manually) scale-up?
+		* ...and Google doesn't have resources available for scaling up?
+
+* What if we have more users than expected / we can't handle load from everyone logging in at once when classes start?
+	* Scaling?
+	* How can we detect and monitor this?
+	* Growth rate of users as more keys are handed out at NOVA?
+	
+* What if Google region is down?
+
+* Deeper problem involving app that is not exposed via /health
+
+
+
+* User data problems
+	* First-level support has an account they can use to key-in and verify they get some expected preference set back
+	* We expect that first-level support will have access to a device with GPII installed, where they can key-in and do other simple tests to see if things are working as expected
+	
+	* User gets "wrong" (or unexpected) Preference Set
+		* Likely reason: user error, e.g. forgot to save last time, changed that setting before and I forgot
+		* What if user saves a preference (e.g. zoom = 5%) that makes it impossible to fix? Can first-level support do anything about that (admin view? admin preferences edit?)? Sufficient to escalate this (likely rare) case to second-level supports/ developers?
+		* How to differentiate between problem on user side, or an ops problem like "something is wrong with the database" that triggers a restore from backup?
+
+	* What will users do if we have to restore from backup, a situation that will likely cause us to lose some data (e.g. the last 5 minutes of updates)
+	
+	* How will we communicate a known or planned outage to users?
+		* Can we push a banner?
+		* There are some labs that are open 24/7 (maybe only M-F)
+		* How does NOVA IT handle / schedule / communicate their planned outages?
+			* Can we use their comms system to communicate GPII outages to NOVA users?
+
+* What if we publish an installer that is not backwards-compatible?
+* What if we need to roll back a change that is not rollback safe?
+	* These may be related to versioning of the application
+	* These kinds of changes must be tested (how do we ensure this happens)?
+
+* "Knowledge Base" for first-level support for common and/or previously-encountered problems + solutions
+	* Checklist of steps to try
+	* Escalate only after searching KB
+

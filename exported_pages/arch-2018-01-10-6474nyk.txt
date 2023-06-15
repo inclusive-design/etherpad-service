@@ -1,0 +1,101 @@
+
+Kasper:
+	* Mostly pull request related stuff - updating my own and reviewing Grundells and Asteas
+	* 
+
+Ale:
+	* Working on Zoomtext integration/onboarding into GPII.
+	* Creating a new branch for integrate all current work for next pre-pilots deployment.
+	* Working on the incoming demo of ATIA.
+
+Alfredo:
+	* GPII-2651 Setting up the loggin component at the GPII Cloud
+	* Updating PR for the gpii-infra
+
+Brendan:
+	* GPII-2784 Hardening Standard: to Infra list for comments
+	* GPII-2786 Acceptable Use Standard: to Arch list for comments
+	* GPII-2789 Personnel Screening Standard: heading to second comments
+	* GPII-2785 Security Engineering Standard: second part of drafting
+	* GPII-2790 Vendor Security Standard: first part of drafting
+	* GPII-2781 https://github.com/gpii-ops/gpii-security-vpc/pull/1 - waiting for comments
+	* Other: spent some time doing the draft data impact assessment required under FedRAMP (sadly, nothing got better, but nothing got worse)
+		* The "real" data impact assessment will happen when we contact a 3PAO for initial FedRAMP audit discussions
+
+Cindy:
+	* GPII-2630
+		* Refactored the prefs server and auth server. 
+		* In progress: modify config files, fix acceptance tests, make sure the production VM works and documentation
+	* Review Antranig's pull request
+
+Colin
+	* Finished P4A report on nexus/quality infrastructure
+	* Excited about our ops team growing
+	* Have some work on reviewing pull requests and reviewing docs from Brendan
+	* Did a demo of the GPII last week which people really liked—had some flakiness with the PSP not working, but not sure why
+		* Could it be an instance of this, colin: https://issues.gpii.net/browse/GPII-2768
+		* 
+
+JJ:
+	* Working in getting ready pulls for the new demo branch.
+		* GPII-2726: Minimal updates.
+		* GPII-2521: Some tests for custom functions in processHandling.
+			* Reviewing Steve Grundell pull GPII-2212, which is used for this one.
+		* GPII-2729: Updating the pull with all Steve suggestions.
+		* GPII-1053: Minimal updates for being able to have it into the build.
+	* Past week: Keep with the work on the new settings wave from SPI.
+
+Joseph:
+	* Working on GPII-2775, a mock Process Reporter for integration tests, using the ProcessReporter work that was merged into master last fall.
+		* In progress, partially working, but tracking down bugs.
+		* Currently branched latest universal master, but trying to keep Kapser's work on the new MatchMaker in mind (new solutions registry entry, etc.) [GPII-1230].
+		* https://issues.gpii.net/browse/GPII-2775
+
+Justin:
+	* UIO+ Phase 1
+		* Addressing reviw comments for FLUID-6209 PR (https://github.com/fluid-project/infusion/pull/867)
+		* Starting to write documentation for the changes from FLUID-6209
+	* UIO+ Phase 2
+		* Will start looking into letter (chacter) spacing adjuster
+
+Kavya
+	* Testing and retesting issues with last version of PSP internal testing installer
+	* Testing UIO+ options 
+	* Peparing for upcoming pilot testing and also Gregg's demo
+
+Sandra:
+    - Driving the prep for two big efforts for technical team this month: Pre-Pilot 2 and a Demo by Gregg to the ATIA. People involved include: Ale, JJ, Kavya, Steve Grundell and others as needed. 
+    - Meetings, updates to Gregg.
+
+Simon
+	* Back from holiday + being sick
+	* Working on Visible Nexus UI updates
+		* https://issues.gpii.net/browse/GPII-2811
+	* Reviewing Cindy's GPII-2511
+		* https://github.com/GPII/universal/pull/563
+
+Steve Grundell
+	- Responding to reviews
+		GPII-2295: User listeners
+		GPII-2751: Memory corruption
+		GPII-2212: Language support.
+	- GPII-2554: Locking tray icon. No longer possible
+	- GPII-2772: Windows system settings handler
+	- Discussed the IoD proposal
+
+Tony:
+	1. Finished up a quick spike to improve gpii-testem to better support complex repos like universal, and to more cleanly support both simple use cases (only browser tests, seamlessly instrumented and reported on) and complex use cases (code instrumented elsewhere, creating combined reports for both node and browsers).
+	1. To exercise the work on gpii-testem, resumed work on the universal and infusion pulls.
+		2. Infusion seems in better shape, we now have a much better report than before: http://the-t-in-rtf.github.io/coverage-reports/infusion/20180110/
+		2. The universal pull is still stuck until I can figure out how to make our codebase work with nyc (or perhaps the older istanbul).  May need to review with Antranig, depending.
+	1. Working on automating UL API imports as an early part of the handover of P4A work to maintenance.
+	1. Will shortly begin revisiting conversations regarding the live solutions registry and some of the pieces we need (IMO) to achieve that.
+
+Yuriy (for the Astea team):
+	* Completed work on initial survey pop-up functionality: added further tests and documentation and updated the PR last week.
+	* Reviewed initial requirements for the PSP updates as a result of the usability testing and started work on the white theme
+	* Fixed issues from the first PSP build: GPII-2813, GPII-2814, GPII-2815
+	* Addressed remaining comments from the original PSP PR and will work on PSP survey pop-up PR comments with priority when ready
+
+
+Agenda:

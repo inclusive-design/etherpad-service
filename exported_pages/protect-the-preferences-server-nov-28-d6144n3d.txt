@@ -1,0 +1,39 @@
+Topic: Review GPII authorization workflow diagrams
+
+Attendees:
+	* Allen
+	* Antranig
+	* Cindy
+	* Simon
+	* Tony
+
+Last meeting notes: https://pad.gpii.net/mypads/?/mypads/group/gpii-security-v5l4nxl/pad/view/how-to-protect-the-preferences-server-hy124npc
+
+GPII authorization workflow diagrams: https://wiki.gpii.net/w/GPII_Authorization_Workflows
+
+Things in diagrams to improve:
+Diagram 1: 
+	* Split into 3 parts:
+		* remote web server hosting the integrated web application
+		* user's local machine running web browser
+		* GPII cloud (what we already have in the diagram on the right with the auth server, perferences server, and so on)
+	* details for the login process - retrieve and verify user id/pwd from the OAuth2 data store
+	* remove the vertical line in btw step 13 and 14
+	* 4 parellel processings on 7 - 14
+Diagram 2:
+	* remove the vertical line in btw step 6 and 7
+	* 4 parellel processings on 2 - 7
+Diagram 3:
+	* Missing step 3, which should be step 4
+	* The filtering and matchmaking process also happens with the local flow manger in this diagram. confirmed which one, diagram 1 or 2, is more likely the equivalent
+
+Questions
+1. Where to save the source graffle files
+Answer: github repo: gpii-diagrams
+	
+Tony said: just looking, lucidchart is cross platform and supports omnigraffle import. lucidchart has a free lite version. if we mention that in the README, it's less important to author an open format.
+
+Authorizations to think about:
+	* use case 2: No verification on client.
+	* use case 3: The client id is saved in the unsecured web appliation client code
+

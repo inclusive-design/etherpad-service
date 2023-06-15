@@ -1,0 +1,70 @@
+Tech debt from 1.1.0
+
+Here's the document
+https://docs.google.com/spreadsheets/d/1csR1weQs1OoMmP1R_YbuEcWt017fFKJaikkaw7BAQPQ
+
+There are more things on the doc, but I think we should focus on figuring out the next items:
+
+	* Most of the installer-related things are "straightfoward" since it's mostly either on Steve or Javi's plate - Easy one
+		* we can do this when an installer is required
+	* Add the "don't remove language packs" fix to the installer
+	* https://issues.gpii.net/browse/GPII-3844 Prevent system wallpaper corruption when setting high-contrast mode (It's on JJ's roof atm)
+		* https://github.com/GPII/universal/pull/772
+		* https://github.com/GPII/windows/pull/261
+		* Ready to be reviewed - JH to follow up on this - Ask Antranig to give it another round of review
+	* https://issues.gpii.net/browse/GPII-3845 Wrong localization retrieval for high-contrast theme name id (it's assigned to JJ BUT JH can help on this)
+	* Provide our version of Windows' builtin high contrast themes - Shall we just skip it?
+	* https://issues.gpii.net/browse/GPII-3759 Sort lifecycleInstructions into an application priority order to account for interdependence of solution settings
+		* JH: I think we still need this - should ask/confirm with Antranig about it
+	* The windows service - It's almost there ... but I'd love to seeing it merged ASAP - Some of our installer-related pulls are tight to this
+	* https://issues.gpii.net/browse/GPII-3955 - This is the JIRA ticket that we will use to incorporate the service-fix.msi that Steve created
+		* Steve, are there any other thing that I'm missing from the last rough fixes? 
+	* Also, related, what do we do with
+		* ShareX module?
+		* All the language pack installers (and scripts) that Steve made?
+			* I mean, I think it's not of our business BUT we should think about getting all this stuff somewhere
+
+Onboarding/new features coming or in progress
+
+Onboarding status and priorities document: https://docs.google.com/spreadsheets/d/1vhhzs0pLCYPyLDPXpWNVUrwVvTv8IoGhRHsUUiA7gJk/edit#gid=1519274796
+
+Timeline in PLAIN LANGUAGE doc: https://docs.google.com/document/d/1bKqGA23KploQNN_TBzwziSUF40vVLs7NOEHFAYGoIFQ
+
+
+	* Office simplificationn (high priority - HA waiting on it) +1
+	* Mouse settings
+		* JH: Are we finally including this in the next release?
+	* AFAIK, Volume and Brightness are out of our way
+		* Danail asked me something about brightness but I forgot to reply. Need to check.
+		* JH: Last time I checked with him it was working fine
+	* Upcoming DocuMorph?
+		* I've asked Gregg several times to send us the DocuMorph.exe - will we do the same as with ShareX?
+	* What else is in progress/requested by Gregg?
+		* Desktop Icons / Taskbar / Windows start menu - SPECS?
+		* Tool for capturing settings to USB - SPECS?
+		* Metrics improvments https://issues.gpii.net/browse/GPII-3853 (required for next release) High priority (In progress)
+	* Fusion (JAWS + ZoomText)
+	* Documorph
+
+
+DRAFT PLAN
+	* Office simplification FULLY WORKING, which means:
+		* Steve's stuff is reviewed/merged
+		* HA's stuff is reviewed/merged
+	* Windows service
+		* it's a matter of updating with last improvements - We have already tested this (it's released! :P)
+			* Move the site name (domain) from the secret file to the siteConfig file
+			* Making an npm package of the whole service
+				* We need to create a fork of node-os-service in the GPII organization
+				* Steve to create a PR with his changes
+				* Update Steve's PR to point to a npm-released version of node-os-service
+	* Create a repo to put all "hacks/snippets/etc" that make our lifes easier
+		* Steve has some of this
+		* And JH probably have some too
+	* JJ's fix to retrieve localised strings of HighContrast themes names
+		* JJ already has a new "improved" version
+		* JJ to create a PR against SG's GPII-3811 branch
+		* SG to review/integrate when possible and have everything in the same branch
+	* Metrics improvments https://issues.gpii.net/browse/GPII-3853 (required for next release) High priority (In progress)
+
+

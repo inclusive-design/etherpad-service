@@ -1,0 +1,31 @@
+1. Anything to demo this week?
+	No.
+	
+Investigate Aiven (hosted Postgress)?
+	Team is planning to pick up the task this week.
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+
+3. Backup restore https://github.com/gpii-ops/gpii-infra/blob/master/gcp/README.md#data-corruption-on-all-replicas-of-couchdb-cluster
+
+Sergey is taking break off GPII starting Feb 10
+
+Morphic credentials for Locust:
+  – For static envs can be set via env variable from secret
+  – For dynamic envs secrets are being rotated, default values?
+  – Sergey figured how to make dataloader load newly added jsons with credentials
+    – How about static envs?
+	Stepan: generate credentials while spinning the cluster, store in TF state
+
+Post-test cleanup:
+  – Access tokens going to be removed by flushtokens cron
+  – Couple extra thousands preferences is ok?
+	Alfredo: add another dependency to Locust that is going to remove all the created prefsets
+	Sergey: what if we run this from another "utility" cluster?
+
+
+
+
+
+
+

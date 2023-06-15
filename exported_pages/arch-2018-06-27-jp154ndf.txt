@@ -1,0 +1,113 @@
+UPDATES
+
+Javi
+	* Back from vacation
+	* Mostly, catching up on stuff
+	* Will review/test pull requests
+
+Alfredo:
+	* Working on the automation of the first steps to recreate the GPII-cloud, the changes are made manually. GPII-3125
+	* Fixing the builds of some components
+	* Trying to figure out what's going on in the Cindy's GPII cloud
+	* Candidate interviews
+
+Antranig:
+	* Meetings about QSS and its evolution - it has been apprehended that we need to stabilise its function pretty soon if we actually mean to deliver it, on which topic there will be a meeting on Friday
+	* Review of some of stegru's pulls - merged in "system settings handler" and night solution, which revealed a bug with the enableRegisteredAT launch handler < GPII-3140
+	* Review for Justin's self-voicing code
+	* Short meeting with Githens/Adtkins continuing to plan solutions registry format update
+	* Meeting about MVIP roadmap in general, in which we talked about
+		* Authentication workflow when hitting "save" on the QSS
+		* Institutional SSO
+
+Cindy
+	* GPII-1990: clean up cloud endpoints and restructure config files
+		* Working on the last item to restructure config files. fixing tests
+	* Tested the cluster deployment with Tyler to debug the issue reported at GPII-3103
+	* Discussion with Joseph about splitting work for snapset data loading
+	* Meetings about pending items for MVP MVIP, schema etc
+
+JJ:
+	* Updating pull GPII-2729 after Steve review.
+	* Send pull GPII-3130 with extra settings for Narrator.
+		* This pull needs update for its demo user.
+	* Finished up pull GPII-2750 with closed captions for Windows 10.
+	* Onboarded settings from GPII-3131, need to send pull for this one.
+	* Finishing working into GPII-3139, need to send the pull for this feature too.
+
+Joseph
+	* Created GPII-3138: Upload/Modify snapset Prefs Safes into CouchDB
+		* https://issues.gpii.net/browse/GPII-3138
+		* discussions with Cindy to see who does what
+		* she will work on modifying the views into the data base
+		* I'm modifying the script in the gpii-data-loader to:
+			* delete the keys and associated snapset prefs safes
+			* load in the new snapsets.
+
+Sandra:
+    - Lots of updates; action items from the F2F. 
+    - I'm trying hard to nail down the content of MViP and MVP, and ensuring those impacted are aware of changes or updates. 
+    - If you haven't already, please review this doc and let me know if there are issues or concerns: https://docs.google.com/document/d/1SUhLxPCrUFmvMp8cMM_iF5u4n_F0qjNwbxdlMM-YZkI/edit#heading=h.m7lwpsobi4wm
+
+Sergey:
+    * Secrets management, integration with Google KMS
+    * CouchDB scaling / clustering issues
+    * Interviews
+
+Simon:
+	* No GPII work this week
+
+Steve Grundell:
+    PR Polishing:
+        - Windows Sysem Settings handler merged.
+        - Windows Service had a nice review
+        - Finished Windows languages
+        - Updated font-size
+    Off for the rest of the week. :D https://media.giphy.com/media/Xjo8pbrphfVuw/giphy.gif
+
+Steven Hens:
+    Working on GPII-2966 / GPII-2980, preferences server and couchdb work
+    Reviewing capture tool specs
+    Finishing phase II of the ppt for end of June
+    Meetings and drafting json formats for GPII-2839
+
+
+Tony:
+	1. Started onboarding 50+ new JAWS settings from Google Sheets / JAWS Docs.
+	1. Reviewed and discussed that work with Antranig, Steve and Cindy, to reconcile the short term goals with the medium-to-long term registry/schema improvements we discussed in Toronto.
+	1. Wrote a grunt "lint all" plugin that standardises the combined use of all the Javascript, JSON(5) and markdown checks we use.  More on that after the updates.
+	1. Wrote up my initial experiences with GitLab for the group.
+	1. Tried out other services comparable to GitLab (BitBucket Pipes)
+	1. Will be talking with Gio on Friday to get more info about the current state of Jenkins in preparation for a discussion here next week.
+
+Tyler:
+    * Interviews
+    * Debugging dev cluster problems with cindyli. We figured out why she couldn't create a cluster from her work laptop, but the investigation unearthed a bunch of weird stuff that we're still debugging (GPII-3103)
+
+AGENDA
+
+"lint all" plugin, which standardises checks for:
+	1. Code linting based on our common ESLint configuration.
+	1. JSDocs linting
+	1. Markdown linting, as used in infusion-docs and with various README and package-specific docs.
+	1. Linting of code blocks within markdown, including JSON and Javascript examples.
+	1. checks for JSON/JSON5 validity.
+	1. Linting of JSON/JSON5 content for indentation, trailing commas, et cetera.
+	1. Adds checking for trailing line spaces. (That will be beautiful)
+
+What's the crack(deal) with the JSDocs?  Happy to discuss.
+It was good crack
+
+Celebrating newest COMITER(TM) - Stegru!
+	* http://www.gifbin.com/bin/122009/1260795401_pig-rider.gif
+
+Considering handling bad settings from users as errors. As Steve detected, now Phil demo user is failing in master branch, the fix should be the following:
+	from:                     "http://registry.gpii.net/common/slowKeysEnable": true,
+	to:                     "http://registry.gpii.net/common/slowKeys/enabled": true,
+This change was introduced to master without triggering any 'acceptanceTests'. We should talk about how to prevent that situation.
+
+We already have a couple of JIRAs open for this:
+    https://issues.gpii.net/browse/GPII-1049
+    https://issues.gpii.net/browse/GPII-3009
+    https://issues.gpii.net/browse/GPII-502
+    DO IT, DIPPLOTACKSIS!

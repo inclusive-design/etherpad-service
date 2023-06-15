@@ -1,0 +1,62 @@
+Agenda and Notes:
+    - Update from Tyler and Alfredo.
+
+Alfredo:
+		- Spent couple of days solving problems with CI.
+
+exekube:
+    - Should we conitnue down this path? Not enough information yet. Need to be able to depoly it. 
+    - Both Alfredo and Tyler investigating exekube. 
+
+
+status of stackdriver logging
+	* Alfredo made a fancy kubernetes cluster using the dashboard, 
+	* Using the dashboard was very easy to install
+	* Doing it programmatically so that we can support CI/CD will be more difficult
+	* The services like Stackdriver and its logging service are good, at least equivalent to AWS', and worth using wherever possible
+
+
+
+Summary of Where We're At
+	1. Our goal is to come up with strategies for moving fast overall, rather than moving fast over the next week
+	1. We're in the midst of planning for the move to Google's Cloud
+		2. Reading and learning about the differences between AWS and Google
+		2. Considering third-party tools/frameworks that will allow us to reduce the amount of "glue code" we have to rewrite/port over from AWS to Google (e.g. Exekube)
+		2. Reviewing the menu of available managed services on Google and mapping them to what we use/were planning to use on AWS
+	1. We're bootstrapping a basic deployment to understand Google, then we'll figure out how to deploy the GPII components, then we'll be able to focus on security hardening tasks, etc.
+
+
+1. exekube? gpii-infra? something else?
+	* We're are going to use a mix of them
+	* Split the terraform code into modules
+		* Create network , VPC, subnet, routes, DNS Zone
+		* Create K8s cluster
+		* Create additional resources (i.e AWS ES)
+		* Setup IAM
+		* Initialize Helm
+		* Deploy Helm charts
+		* Tests
+	* Unify the "terraform apply" into only one step. All the terraform code will be executed at this step
+	* Drop Kops to simplify the code and the process
+	* Move the manifests to Helm Charts
+(2* and 3* can be addressed somewhat concurrently with #1)
+2a. DNS in both Route53 and Google Cloud DNS
+	* Create/dump from kops the code to create the DNS records for AWS
+	* Create/dump from kops the code to create the DNS records for GCLOUD
+	* Move the DNS management to Google Cloud.
+2b. IAMs created automatically, integrated with GKE and other GCE products
+	* Move the IAM settings to terraform module for AWS
+	* Move the IAM settings to terraform module for Gcloud
+3a. CI/CD: Gitlab, Buildkite, or Other? Getting creds from IAMs in 2b
+	* Create a CI user with enough privileges to manage the cluster, and create a API token to be used at the CI
+3b. Credential management: getting automatically-provisioned creds (infra developers, CD deployment) to individual developers and CI Worker machine (h5 in IDRC)
+
+Next:
+    4. Deploy GPII to GKE cluster
+    5. Operational requirements: Monitoring, Alerting, Backups, Logging
+    6. Kubernetes hardening, IDRC Separation :(
+    7 Other security requirements
+    
+    Next steps:
+        - Continue investigating exekube
+        - Open JIRAs on the high-level tasks starting line 29 through 40 above. 

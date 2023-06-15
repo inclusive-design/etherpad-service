@@ -1,0 +1,74 @@
+Getting master of all repos passing CI
+	* Universal vs Windows issue (Tony) - Atkins is working through the issue - going through contract for transformations/contracts for the various settings handlers.
+		* Will keep chipping away on it until the EOD. If he's not done by then, he'll ping various people in the pulll request that might be able to take over fixing it.
+	* Universal vs gpii-app (Cindy)
+		* there are two issues: 
+			* PSP channel API changes on input (flowmanager communication with PSP channel). 
+			* PSP channel output issue: a rename of a path in the PSPChannel output payload
+		* Both issues have been addressed in this pull request: https://github.com/GPII/gpii-app/pull/184
+			* The commit to fix the first issue: https://github.com/GPII/gpii-app/pull/184/commits/4a506169d98caba1382ec3031345e32278570fa3
+			* The commit to fix the second issue: https://github.com/GPII/gpii-app/pull/184/commits/42b3353576492bc6d7a086ce873da8d17ccd56e7
+			* If other pull requests run into these issues, 2 commits above can be referred on how to fix
+	* Windows vs gpii-app (Grundell)
+		* Antranig will know what this one is.
+
+Creating GPII branches from Javis release branches (and update references)
+Who, how and where?
+	* Senor Hens has heroically volunteered to create these branches
+	* He will create a branch called 1.3.x
+		* then specific tags for 1.3.1, 1.3.2, etc based off the hashes from the installers
+
+JIRAs associated with the items from Timeline 1.4 in plain language
+	* Quickstart - CINDY (or someone else)
+		* There is not much work to do for quickstart in universal. If we want to turn off that the system tries to reset the application of preferences when the USB is pulled out in the middle of adapting to the users need, there is some work to do.
+		* To apply Quickstart, one just needs to turn off a flag (e.g. in siteconfig)
+		* The decison regarding what to do with QuickStart spec at College Park face to face meeting - https://pad.gpii.net/p/college-park-f2f-march-2020-9i4s4n4u, line 6-10 GPII-4290, GPII-4379
+			* Shutdown issue - settings hanging
+			* 1) Have a flag to control reset-to-std at the system start
+			* 2) Figure out what the blacklist of things that actively crash the shutdown process through having the request for additional resources (e.g. a new process) denied by the OS
+			* 3) figure out where to store the blacklisted information - potentially in the solution registry
+			* 4) it might be useful to be able to add this to the site config
+	* Individual Install JAVI and GRUNDELL
+		* Making the installer work (Grundell) - GPII-4292
+		* Javi is working on the part of writing the key to a file (Javi) - GPII-3496: https://github.com/GPII/universal/pull/839
+	* IoD for languages
+		* GPII-2971 (general IoD jira)
+		* A week or two (of focused effort - not calendar time)
+	* User folder key work: GPII-3496 https://github.com/GPII/universal/pull/839
+	* User registry Key-in: Grundells work
+	* Onboard morphic: Get JIRA numbers from HA meeting
+	* More panel: Get JIRA numbers from HA meeting
+	* Capture tool
+		* Universal already merged in - GET STATUS FROM HENS
+	* Shuts down promptly (quickstart resolves?)
+	* re-install works
+	* Electron 7 (if possible)
+
+Important work for 1.4 / stability:
+
+FROM JAVIs NOTE
+There are lots of things that are happening at this moment - see the "Timeline in plain language sheet" but, there are things that are not being taken into account and here's a tiny selection of things that, to me, need to be addressed ASAP
+ 
+- GPII-3958 - Implement new API and core function to allow reread of settings during session
+ 
+Although this is currently merged into universal/master, gpii-app needs to be updated.
+ 
+- GPII-3828 - PSPChannel should report schema default values taken from reset to standard file
+ 
+This is also something that is in universal/master and that gpii-app needs to be updated.
+ 
+- GPII-3934 - Allow Morphic to work with several users logged in on Windows at the same time
+ 
+There are a few ideas, but need time to actually implement/test
+ 
+- Improvements around the installer:
+  - GPII-4292: Morphic updates itself
+  - Put the installer on a diet/Re-work installer - Maybe we can have a breakout session or have a call within the next few weeks
+
+We should figure out how to test the siteconfigs
+
+JIRA Backlog
+
+Outstanding pulls
+
+1.3.2 Bugs

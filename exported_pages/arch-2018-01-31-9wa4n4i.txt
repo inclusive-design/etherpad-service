@@ -1,0 +1,66 @@
+UPDATES:
+    
+Most of IDRC are out today. Antranig and Steve Githens will not be present either.
+
+KASPER:
+	* Unexciting pull requests updating
+	* More documentation work of code
+	* Going through MM and more noting down loose ends, such as: https://issues.gpii.net/browse/GPII-2839
+
+Alfredo:
+	* Updated Windows Vagrant box
+	* GPII-2833 - Fix an issue with the credentials of the CouchdDB at the cloud
+	* Working on using new Kubernetes Helm to deploy the services
+	* Working on integrate the secrets with Vault
+	* Fixed some issues on the Jenkins and the CI
+
+Brendan:
+	* ISO27002 Assessment
+		* I love this, you won't love hearing about it so I'll skip describing the current status (basically, it's just in progress)
+		* Will contact several of you today for meetings later this week
+
+Javi
+	* Being working on the demo for the ATIA conference
+	* Highlights
+		* PSP
+		* In process user listeners
+		* Support for ZoomText 11, Win10 to Win7 morpher (sven) and Simplified tablet mode  (simi)
+		* Also, it includes support for changing the windows display language
+	* Found some issues during our work, but in general, it works nice
+
+JJ:
+	* Working with Steve and Javi on the demo of the ATIA conference.
+	* Working into GPII-2521 changes.
+
+Sandra:
+    - Big push by Javi, JJ, SGrundell and Kavya to get a new and extensive demo to Gregg. Thanks!!
+    - Interviewing candidates for DevOps
+    - Second week of Pre-Pilot 2 in progress
+    
+    
+Steve Grundell:
+    Helping the Javis with the demo for Gregg
+    IoD design: https://docs.google.com/document/d/1oUQJ1XxJkXD9BpNgPgsf-PjdbWUCHIueNmhSoDpm5bg/edit?usp=sharing
+
+Tony:
+	1. Continued working on i18n effort, starting with a pull against infusion to improve fluid.stringTemplate.
+	1. Tested the vast majority of my work with npm@5 with no problems thus far.  Will continue working with npm@5 and working my way closer to core libraries
+	1. End of P4A and new contracts.
+	1. Updated gpii-testem instrumenter to work properly with Windows paths.
+	1. Wil resume work on the universal coverage pull shortly.
+
+Tyler:
+    * terraform and friends are upgraded- GPII-2826
+    * Investigating CIS Kubernetes Benchmarks - GPII-2827
+    * Studying techniques for blue/green deployment with terraform, packer/terraform integration - GPII-2829
+
+Yuriy (on behalf of the Astea team):
+	* Created the first pass of the technical evaluation document (https://docs.google.com/document/d/1gTdJFvGODpYDz8wPIbptRc3VW3DEZXzlQfyq9zvKzds/edit ) and a PoC for the Infusion-based evaluator
+	* Addressed all PR comments on the PCP-client branch, which Antranig has since merged
+	* Migrated to using Steve Grundell’s approach for fetching machine id
+	* Reviewing future work, including grouping of setting in PSP, smarter survey server and error dialog updates.
+
+    
+AGENDA:
+
+Quick poll regarding JSDoc linting. (SAVE FOR NEXT WEEK)

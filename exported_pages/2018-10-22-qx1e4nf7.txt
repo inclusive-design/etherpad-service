@@ -1,0 +1,11 @@
+Agenda:
+    - Question back from Colin, does the team want him to attend? There's a risk regarding communication with the Core team that could be lost. But team agreed to continue without his attendance and see how it goes. If the team feels in the future that we need his intervention, we can ask him to come back to the team meetings. 
+    - Anything to demo this week? No. 
+    - Sprint planning
+    - FERPA compliance review/certification? process
+	- No one knows what this looks like
+	- Current estimates assume there is zero cost for any kind of compliance auditing
+	- Estimate: 4 sprints + 1 buffer sprint - 1 week Thanksgiving - 1 week Xmas = 21 Jan 2019. Would someone plz confirm? Tyler agrees that the math checks out; it's worth repeating that estimates are estimates and no guarantee
+    - Comms between Ops and Core team about issues like https://issues.gpii.net/browse/GPII-3309 and https://issues.gpii.net/browse/GPII-3310 - Logging - leaking credentials and multi-line
+
+

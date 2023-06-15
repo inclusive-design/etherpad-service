@@ -1,0 +1,7 @@
+* Phone screen questions for devops position
+	* 
+
+Alfredo: Status on 2544, replication is working, but have work to do. Testing the backups and restoring the data. Checking the health of the cluster. 
+
+
+

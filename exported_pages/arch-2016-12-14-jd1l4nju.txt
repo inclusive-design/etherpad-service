@@ -1,0 +1,117 @@
+UPDATES:
+
+Kasparnet:
+	* Washington F2F https://pad.gpii.net/p/201612-washingtonf2f-ih1b4nns
+	* Started looking at scripts for gpii-app
+	* Being whiny about backpains
+
+
+Alfredo:
+	* Vagrant-gpii-ci plugin 0.0.1 released
+	* Adding support of Windows 10 to Vagrant-gpii-ci
+	* Building a playbook to deploy the ansible-jenkins-master role in the testing VMs i-0037,i-0038,i-0039
+	* Letsencrypt stuff
+	* F2F meetings
+
+Avtar:
+	* F2F meetings last week
+	* Throughts regarding Gitlab next steps https://issues.gpii.net/browse/GPII-2133?focusedCommentId=22940&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-22940 
+	* Worked with Tony on moving his CI jobs over to using Alfredo's vagrant-vmenv work
+	* Working on a P4A QI demo widget for CI results using chartAuthoring's multi-dataset chart
+	* Testing Gio's new CentOS box with Vagrant 1.9.1 and VirtualBox 5.1.10
+
+Cindy
+	* Face to face last week
+	* Created a wiki page to collect ideas from last security meeting at College Park: https://wiki.gpii.net/w/Protect_communication_between_Local_Flow_Manager_and_Cloud_Based_Flow_Manager
+	* Created a doodle to schedule the next security meeting: http://doodle.com/poll/bubbn64rmvs8z2iq. Please fill it up if you are interested, ladies and gentlemen!
+	* Looking at a bug that was discovered from Kavya's question. Will create a JIRA and start to work on it once it's confirmed as a bug.
+
+Colin
+	* Also F2F
+	* Helping Sandra and Gregg with planning—working on getting to the point of more fine-grained sprint planning
+
+Giovanni
+	* Attended some F2F meetings remotely
+	* Testing VirtualBox 5.1 and vagrant 1.9 with CI build node
+	* Updated Fedora 24 and CentOS 7 box (`vagrant box upgrade` to fetch them)
+	* Updating internal CentOS VM template to v7.3 (used in our virtualization cluster)
+	* Spent quite some time troubleshooting i-0044 (GPII's Jenkins-DEV instance)
+	* Reviewing Kubernetes 1.5 release and associated tools and sketching some deployment scenarios
+
+Javi
+	* Recovering from Maryland - Nice meeting!
+	* Shortly, got back to GPII-2125
+		* I can't set the screen resolution to something that is not "supported" from the list of Windows' available screen resolutions
+		* Looked at what VBox does (https://www.virtualbox.org/browser/vbox/trunk/src/VBox/Additions/WINNT/VBoxTray/VBoxDisplay.cpp) but I can't get it to work. 
+	* Started to draft the API for the PCP
+	* Provided some review to Avtar's https://github.com/GPII/linux/pull/80
+
+kavya
+	* MatchMaker Testing - Need to discuss with kasper on my observations
+	* worked on test automation framework-Gone through Lettuce behave BDD approaches LETTUCE!
+	* Trying out on Robot framework - Successfully able to install and run. file:///C:/sikuli/results/log.html
+	* Have Written GPII smoke tests with sikuliX 
+	* Right now going through series of discussions  to integrate Robot framework with sikuliX - https://answers.launchpad.net/sikuli/+question/261208
+
+
+Sandra:
+- F2F meetings last week. 
+- Now harvesting the notes for action items and other follow-ups. 
+- Need to translate the list of new function for 2018 into tasks and subtasks. The goal is to have JIRA tickets with work sized so that it can be included in Sprint planning. 
+
+Michelle
+	* F2F
+
+Simon:
+	* Working on Nexus hardware integration using the CHIP single board computer
+	* Have a setup working with 2 CHIPs and a Braille display
+	* One CHIP running Nexus and hosting a network and the other connecting over wifi and relaying updates to the Braille display
+		* https://github.com/simonbates/nexus-demos/blob/master/docs/NexusOnCHIP.md
+		* https://github.com/simonbates/nexus-demos/blob/master/docs/BrlapiOnCHIP.md
+		* https://github.com/simonbates/nexus-demos/blob/master/braille-display-driver/braille_display_driver.py
+	* Started work on Nexus dynamic configuration
+		* https://github.com/simonbates/nexus-experiments/blob/master/dynamicInjection.js
+
+Steve Grundell
+	* GPII-1716 PR: https://github.com/GPII/windows/pull/102 (broke)
+	* GPII-2134: Investigating (no repro)
+
+AGENDA:
+
+	* Vikingpad is down (or misbehaving) (or not?) http://pastebin.com/b318AzNn
+	* Cancel next 2 weeks' meetings?
+	* Logging
+	* Do we need a Windows meeting tomorrow 15-Dec?
+		* Javi: Let's do it! I guess we won't talk again until January
+		* stegru: I don't mind either way
+
+
+                   ____
+                  ;`    `'-._
+                 / \        /\
+               /`   \      |  ;
+              /      \     |  |
+             /        `\   |  |
+            /           \_ /  |
+           ;            / `\  |
+          ,|_  __       \__/  |
+          _\_o/_(             |_
+         /`"=/\==""=="=="=="=="`\
+         |   )/                 |
+         \                      /
+         /';=""==""==""==""==";`\
+         |  /`   /~\  /~\   `\  |
+         |  \  _ \o/  \o/ _  /  |
+         \  ; (_)   __   (_) ;  /
+         /  |\_.-""(__)""-._/|  \
+        |   \       /\       /   |
+       /     '.___.'__'.___.'     \
+      |             \/             |
+      |                            |
+      \                            /
+  jgs |                            |
+       \                          /
+        '.                      .'
+          '-.__            __.-'
+               '---'--'---'
+

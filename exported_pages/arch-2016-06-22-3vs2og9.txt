@@ -1,0 +1,101 @@
+GPII Architecture Meeting June 22, 2016
+
+
+	1. Updates
+	1. Discussion topics
+		* Latest state of Windows integration and builds
+			* 3d acceleration
+				* no pull request yet, but javi is going to try out the change with Linux to verify that it works before we make a GPII-wide change to our virtual machines
+				* related to virtual box running on a linux host where there's no desktop environment (e.g. on our continuous integration servers in the data centre)
+				* once Avtar hears back from Javi, he'll make a PR What is the JIRA?
+			* FFI for SPI and process stopping
+				* Javi and Ale found bugs related to how we define data types when accessing win32 APIs via node-ffi
+				* Ale is aiming for a fix by early next week at the latest—PR by next archi meeting
+			* quiet test failures and removal of grunt-gpii
+				* Done, updated, ready for review (by Colin)
+			* what else?
+				* nothing!
+		* Device reporter and process reporter
+		* Should we keep our installer for the user listeners? https://issues.gpii.net/browse/GPII-1851
+		* Moderator for next week's Archi meeting: GIOVANNI TIRLONI! +1
+
+
+Colin:
+	* Working with an amazing team (Avtar, Antranig, Ale, Javi, etc.) [clearly the A Team] to triage Windows 10-related build and test issues related to different architectures and, ultimately we think, our node-ffi code for SPI and process stopping
+	* Reviewing and merging pull requests related to user listeners, CI, etc.
+
+Sandra:
+	*     Catching up with recording updates and action items from the Toronto F2F meeting
+		* Need help mining the notes for action items. What's the most efficient way of identifying who can help me? I can, but probably not until Friday (or 4 pm tomorrow if that timeslot is free now) (Colin)
+	*     Working on staffing needs: Windows programmer, QA specialist and PCP UX implementation
+	*     Defining what can and will be delivered this summer. 
+    
+Ale
+	* Windows GPII implementation testing and fixing. (64bits and n bits)
+	* Meetings with Wayne about how to make progress with JAWS onboarding.
+	* Progress with Onboarding process.
+	* Moved AJCs survey and AT on demand to Sandra.
+
+Michelle
+	* Starting to write some tests for the task tray :)
+	* QI planning with Avtar
+	* Will help with the Nexus video
+
+
+Alfredo:
+	* Wrapping up the gpii-linux package, merging the latest changes of the repo
+	* Working on Vagrant QI for developers
+	* Other stuff that is not non-related to GPII
+
+Adewale
+Meetings with Colin and Gio, discussing an approach to building a threat modeling solution
+	* 
+	* Talked through identified gaps
+Development of threat modeling template for risk asssessment 
+	* 
+	* Target operating environment
+	* Knowledge base summaries 
+	* Software design and development
+	* Identification of advisories 
+
+Avtar:
+	* Troubleshooted gpii/windows CI issues
+	* Helped review Gio's Fedora 24 changes
+	* Currently tackling QI video related work
+
+Cindy
+	* Half way thru implementing gpii.oauth2.dbDataStore which will act as an API for the auth server to communicate with CouchDB/PouchDB. On the 11th API function of the total 24
+	* Issued two pull request to move the resource loader out of the infusion preferences framework into the core framework as well as the documentation for the resource loader. The infusion pull has been merged. Antranig added to the doc pull to add docs of the underlying implementation of the resource loader
+
+Giovanni:
+	* Continue to work on mod_security+nginx and creating a Docker image for it.
+	* Some meetings about security with Colin and Adewale
+	* Created a Fedora 24 vagrant box and submitted a few PRs so the QI automation targets it
+		*  `vagrant init inclusivedesign/fedora24; vagrant up`
+		* https://issues.gpii.net/browse/GPII-1855
+		* https://github.com/GPII/linux/pull/82
+		* https://github.com/GPII/universal/pull/460
+	* New CentOS 7 Vagrant box updated (v0.9.5) with latest packages and Ansible 2.1.0
+		* `vagrant box update --box inclusivedesign/centos7`
+
+Javi
+	* Helping on triaging the problems with tests on windows
+	* Browser extension - Addressed most of the comments from Antranig and Justin, now working on tests
+
+Joseph
+	* GPII-1838: PR unit test failure with vagrant provisioned VM.
+		* Tried Avtar's solutions and it worked (https://issues.gpii.net/browse/GPII-1838?focusedCommentId=19519&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-19519)
+		* Need to check out Alfredo's solution (https://github.com/idi-ops/packer-fedora/pull/8)
+	* GPII-1839: Accpetance tests should use the Dynamic Device Reporter 
+		* Nearly there.  Changed configuration files, and a number of testSpec files (History view: https://github.com/klown/universal/commits/GPII-1839/tests ) AWESOME!
+		* Need to test some more, but nearly ready for review.
+
+Simon
+	* Finished switch over to new WebSockets library for my Nexus Connector AsTeRICS component
+	* Implemented component properties for Nexus hostname, port number, and component path
+	* This week working again with Cindy on security
+	* Looking into approaches for mocking and stubbing Infusion components for unit testing
+	* Yesterday made an initial spike with sinon.js
+	* https://github.com/simonbates/universal/blob/b40628c90b3e64603b44d9114eaf2fc355e8c9d4/gpii/node_modules/gpii-oauth2/gpii-oauth2-authz-server/test/js/AuthorizationServiceTests.js
+
+

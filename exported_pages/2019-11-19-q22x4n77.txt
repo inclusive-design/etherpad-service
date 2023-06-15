@@ -1,0 +1,6 @@
+1. Anything to demo this week?
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+ - The percentile representation doesn't make sense, perhaps changin to lines it is better (there were no lines, only dots, since the UI upgrade...)
+
+3. New sprint

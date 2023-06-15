@@ -1,0 +1,66 @@
+Build Site
+
+Goals: 
+	1. Show current status of work in master branches
+	1. Internal team work
+	1. Testing
+	1. Funding agencies
+	1. End Users
+	1. Reports
+	1. Demos, based on latest development code, i.e. master branch in github repository.
+
+Issues/Assumptions:
+	1. These links are not stable
+	1. The demos are not stable
+		2. some demos are deleted as time goes by
+	1. We might be trying to do too much with this page
+
+Similar sites:
+	1. Showcase on the IDRC site
+	1. Featured work on the fluidproject site
+	1. Archive of work - in the IDRC site redesign - not just demos, archive of all work
+    
+
+
+Suggestions:
+
+An Archive that links out to demos 
+- timeline of all work on IDRC site
+
+
+What we use the build site for:
+	1. Check if something is failing on a particular browser.
+	1. Check if something is broken in master or in working branch
+	1. Send to external people as an example of our work
+	1. To see what has been done in the past
+	1. Release testing
+	1. To show people who come by on tours
+	1. To see the latest work - review it and talk to the developers
+
+Missing from the current build site:
+	1. Infusion examples
+	1. Descriptions of the demos - especially for the prefs framework
+Note: we have descriptions in the overview panel on most of the demos
+	1. Context
+	1. Description of the site at the top - intended use
+	1. Links to stable demos and where to find them
+	1. Status 
+
+Actively worked on
+Not actively worked on
+Deprecated
+
+
+
+Proof of concepts
+Design exemplars
+Production code
+
+
+Audience:
+
+
+
+
+
+

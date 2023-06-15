@@ -1,0 +1,36 @@
+QS Button for Mouse settings
+
+Material/docs
+	* Specs: https://docs.google.com/document/d/1-eIN-95icvGMxYwofthdiTbTmJb1Q23z1f0YdF4DLbU/edit#
+	* HA branch of gpii-app that includes this implementation: https://github.com/GPII/gpii-app/pull/87
+	* JIRA ticket: https://issues.gpii.net/browse/GPII-3722
+
+14 Feb 2019
+
+Present: JJ and Javi
+
+Settings that we need to support
+
+	1. SwapMouseButtons
+		2. TODO
+			3. Update the schema to be an enum rather than a boolean - PR sent
+	1. Easier double click
+		2. This involves setting 3 settings:
+			3. DoubleClickSpeed - MouseDoubleClickTime
+				4. TODO
+					5. Update the type in the schema - JJ needs to ask Tony - PR sent
+			3. DoubleClickHeight - Needs to be implemented - "Looks easy" - JJ already taking a look at it - PR sent
+			3. DoubleClickWidth - Needs to be implemented - "Looks easy" - JJ already taking a look at it - PR sent
+		2. Since the Qs mouse button is only referring to one single preference "Easier double click", can we consider setting all these 3 settings with a made-up "generic term" called "EasierDoubleClick"?
+	1. Larger mouse pointer - supported as cursorSize (see: https://github.com/GPII/universal/blob/master/testData/ontologies/flat.json5#L142-L150)
+		2. When "Larger mouse pointer" is "on", the Qs needs to pass http://registry\\.gpii\\.net/common/cursorSize: 1
+		2. When "Larger mouse pointer" is "off", http://registry\\.gpii\\.net/common/cursorSize: 0
+	1. Mouse speed - Supported as pointerSpeed - Looks ready
+
+In addition to these:
+	1. We are actually experiencing the problem reported as https://issues.gpii.net/browse/GPII-3653 when setting "SwapMouseButtons" from the QS. There is a pull request in place: https://github.com/GPII/universal/pull/740
+		2. Workaround for reported issue in case pull-request can't be ready on time: https://pastebin.com/SmeFLZTd
+	1. Currently the ranges for DoubleClickHeight and DoubleCLickWidth will be: { min: 1, max: 32, default: 4 }. The function doesn't present any valid range as we've successfully changed these settings to use weird values such as -10, 0 and 10000 and Windows seem to be swallowing these values without any reservation. We should decide on the range for these two.
+	1. Shall we consider retrieving these settings from the system in the same way we do with screenDPI or language?
+
+

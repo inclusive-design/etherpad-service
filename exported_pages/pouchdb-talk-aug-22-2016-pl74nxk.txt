@@ -1,0 +1,26 @@
+1. The new Cloud based dev config file
+https://github.com/cindyli/universal/blob/GPII-1821/gpii/configs/gpii.config.cloudBased.development.all.local.json
+
+Issues: 
+	* When restarting the cloud based GPII server, the data saved from the last run no longer exists. 
+		* Specify "dbPath" at settings dir - https://github.com/GPII/universal/pull/463/files, search for SettingsDir.js
+	* Need to include gpii-pouchdb within index.js. gpii-pouchdb is a dev dependency so this requires a better solution.
+		* https://github.com/cindyli/universal/blob/GPII-1821/index.js#L38
+		* Solution: 
+			Use "require" option in the config file to include gpii-pouchdb
+			    https://github.com/GPII/universal/pull/463/files
+	* Need to fix acceptance tests that have "gpii.test.pouch.harness" instantiated in own test environment
+		* Don't need to worry about the "singleUse" grade used at https://github.com/the-t-in-rtf/gpii-pouchdb/blob/GPII-1897/src/test/test-harness.js#L16
+		* Clean up the database at every test sequence end: https://github.com/the-t-in-rtf/gpii-pouchdb/blob/GPII-1897/src/test/caseHolder.js#L18
+
+Discussed what branch and tag for Cindy to use until things are merged:
+git://github.com/the-t-in-rtf/gpii-pouchdb#7cd6165d57bae5d16fe5ca29ef1d72ad7cddbc50
+
+Cindy's persistence problems appear to be down to the default behavior of creating a new directory for each run.  She needs to pass in a persistent dbPath setting:
+https://github.com/the-t-in-rtf/gpii-pouchdb/blob/GPII-1897/tests/js/persistence-tests.js#L155
+
+
+Simon should already be able to use a later tag:
+    
+    git://github.com/the-t-in-rtf/gpii-pouchdb#4cabff95d8a5ab0b96d3a634258188773d320aea
+

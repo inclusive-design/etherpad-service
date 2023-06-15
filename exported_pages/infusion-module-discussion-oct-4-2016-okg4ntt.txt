@@ -1,0 +1,61 @@
+Infusion Modularization
+
+Some VERY VERY ANCIENT prior art: https://wiki.fluidproject.org/display/fluid/Notes+on+Modularisation+of+Infusion
+https://issues.fluidproject.org/browse/FLUID-5579
+
+Interestingly this ancient prior art doesn't include any of the options that we are now interested in - e.g. monorepos in the "lerna" style
+--> Just as well we didn't decide to do anything about it at the time
+
+The Issue
+	* How do we source Infusion in a "third party" application?
+		* concatting builds
+		* moving "resources" (html, css, etc.) into the correct spot
+		* building style sheets using Stylus
+	* Alan's strategy:
+		* Within a "third party" application, a grunt script invokes Infusion's grunt script in order to produce a custom build
+		* Copy the custom build + (other assets?) into somewhere in the application's directory structure
+		* Requires a "double npm install" in order to avoid being blasted by grunt's idiotic module loading strategy
+			* Not sustainable in a wider context
+	* WHAT ANTRANIG DID
+		* Wrote a utility that will load a grunt plugin using npm's module resolution strategy—this avoids having to recursively call "npm install" on all the dependencies we want to build
+		* What I would like to do, is to consume chartAuthoring as an npm dependency, and, in practice, run its demo application
+		* Even if I don't actually want the results of the postinstall script (which I actually sort of do), as it stands, I cannot consume chartAuthoring as a dependency at all without its postInstall concluding successfully - if it fails, current npm will just blow the module away completely
+	* Alan's argument:
+		* The postinstall script does nothing "to the contents of chartAuthoring itself" and so could be considered inessential to consuming it
+		* Its purpose is to prepare a static file layout suitable for hosting the chartAuthoring demo "from the filesystem"
+
+THINGS WE WILL TAKE AWAY FROM THIS:
+    
+    i) postInstall is the wrong place to put such material <-- leaves many important questions unanswered
+    ii) prePublish is probably a better time - this is problematic for Infusion with its numerous build configurations
+	    -> Does nothing for people who want to consume a module as a git dependency
+	       -> This could be fixed up via a big "index.js" at the root of the monorepo that forcibly loads all of the dependencies and thus registers all of their base paths into the fluid module registry - even if they ordinarily wouldn't be resolvable via npm
+	        -> THis would require further special intelligence inside fluid.require such that it would know that, say, an attempt to require("inlineEdit") needs to be converted first into an attempt to load infusion first (ability to pre-inspect its package.json - this implies
+	             we need some kind of pre-publish step which registers all submodules into the package.json of, say, Infusion, before it gets published)
+	    -> However, note that a "monorepo" style will ALSO make it essentially impossible to consume a module as a git dependency (even if it comes with a suitable index.js which loads EVERYTHING, the module as a whole has a different identity to any of its contents and so switching between the use of npm and git dependencies will require changes at the code level (for as long as we continue to use plain "require").
+
+SOME GIZMOS WE COULD IMPLEMENT TO FIND A WAY OUT
+
+a) (FOR APPLICATIONS?) Cease to rely on "the filesystem" morally as a deployment area - in practice we do this anyway because of the strict SOP policies in Chrome etc. for apps hosted from the filesystem
+--> Instead produce a self-contained kettleish hoster that allows the use of material in <head> such as 
+<script src="%infusion/src/framework/js/Fluid.js">
+etc.
+This could be run in two modes - either i) a "live" mode which does such things in place
+OR/AND ii) a "publish" mode which runs a build step which produces a static site which allows such a thing to be taken away (in effect, a kind of "browserify lite")
+
+b) A kind of "lerna lite" which is an improvement to our existing fluid-publish plugin that allows it to work with the module layout that we currently have in the GPII (swapping out the path "gpii" for "packages")
+--> This would be greatly simplified because we would bypass all the complex "bootstrapping" workflow and simply allow the inbuilt use of "node_modules" relative resolution to allow each of the submodules to mutually find each other where they have mutual dependencies
+--> The hard problems are the ones which lerna doesn't really answer, which are - HOW do we assign version numbers to things? Lerna has two policies, a "fixed" one where all packages update in lockstep and an "free" one where each module can declare its own version. Neither are really a great universal solution, e.g. particularly for Infusion which contains a heterogeneous mixture of things, some of which might want to be versioned together (parts of the framework) and some of which might want to be versioned separately (the components). 
+
+c) Move over where we can to a prepublish/dist model
+
+
+iii) for alan's case, this is actually a DEPLOYMENT STEP
+
+Chart Authoring's current work flow to use Infusion:
+https://github.com/fluid-project/chartAuthoring/blob/master/Gruntfile.js
+	* npm install Infusion A SECOND TIME ( installs Infusions dev dependencies, to enable the following grunt build script ) 
+	* run Infusion's grunt build script
+	* copy out the build directory structure
+
+

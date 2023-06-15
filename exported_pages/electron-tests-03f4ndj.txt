@@ -1,0 +1,12 @@
+
+
+
+
+
+
+
+Tasks
+
+	1. Writing the acceptance tests GPII-2092
+	1. Change the app so you can specify the config file on the command line GPII-2097
+	1. Logging needs to be put behind a flag GPII-1596

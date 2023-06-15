@@ -1,0 +1,77 @@
+Agenda
+	* Sprint planning
+		* Status of current issues
+		* Create new sprint plan by carrying over, dropping, or adding tasks (we'll do so here)
+	* Anything else?
+
+Status of Current Issues
+	* Alfredo's update
+		* 2648, 2649, and 2650 can be closed in favour of the work being done in 2651
+		* Will look for a suitable Helm chart for fluentd daemonset rather than rolling our own
+		* received comment from avtar, asking to fix a couple of issues that are easy to fix
+			* BUT, he's also requesting major changes
+		* the approach we'll take to issues reported is:
+			* fix the little, easy stuff
+			* file tickets and encourage contributions for the big stuff
+	* Tyler's update
+		* Sprint was fully occupied by onboarding, offboarding, and looking at new priorities
+		* 2826: Dealing with fallout of destroying our clusters—top priority, because we don't currently have a stg or prod environment (not a big deal, but still)
+		* 2827: Reviewing the CIS hardening standard for k8s
+			* found a set of scripts that can automatically check the hardening issues
+				* automating them looks like it could be possible, but it may not be trivial—haven't though much about the prospect yet
+			* ran them and got some preliminary results—will share after some further assessment
+			* Just as a note: the Hardening Standard requests only L1 Scored items as the baseline (though being able to do more is wonderful :-) )
+		* 2828: kops has tightened up their IAM role priviledges; we need to implement this; currently we're using the legacy mode because we need extra priviledges to do snapshotting with k8s-snapshots
+			* 2826 and 2766 are prerequisites—will take a look
+		* 2829: looking into the challenges of integrating vault work into gpii-infra, specifically around blue-green deployments and automation of packer->terraform handoff
+			* will look at the prospect of upgrading to terraform 0.11 as part of this work; if it's non-trivial, will file a new ticket for this
+		* 2830: we weren't monitoring disk usage for EBS volumes
+			* had a prototype which had to be put aside
+			* this ticket is for minor fix-up for that work
+		* All five tickets—2826, 2827, 2828, 2829, 2830—should probably take precedence over everything else
+		* code review of alfredo's ci vagrant
+		* resume screening
+		* reviewing Brendan's LDAP-S proposal
+	* BrendanStuff
+		* Got closed
+			* GPII-2784, GPII-2786, GPII-2789, GPII-2790
+		* This week
+			* Do a code review for Alfredo on gpii-ops/vagrant-gpii-ci
+			* Answer a holdover tech question I had from last week's informal code review
+			* GPII-2785, GPII-2787, GPII-2791 (likely draft-complete 2 of 3, will try for all 3 moving to a comments phase)
+		* Next week
+			* GPII-2812 (will extend past sprint end)
+
+Last Sprint's Plan
+	* https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&view=planning
+	* Tyler has closed this
+
+This Sprint's Plan
+	[Tyler has opened this plan]
+	
+	Alfredo
+		* https://issues.gpii.net/browse/GPII-2651
+		* will open a new ticket for moving secrets from environment variables into vault
+			* it is possible to integrate Kube Secrets with Vault—but it's something we'll need to discuss if it's necessary/wise/appropriate
+			* Alfredo will make a proposal to the list, but the essential question is if we should move temporarily to kube secrets just to get secrets out of env variables, or if we should just wait until the Vault work is in
+			* Alfredo will do some quick research into the potential relationship between kube secrets and vault, and report back
+	Tyler
+		* https://issues.gpii.net/browse/GPII-2828
+		* 2826, 2827, 2828, 2829, 2830
+		* (these add to a LOT of points, but should be doable this sprint by virtue of their granularity)
+	Brendan (story points not included)
+		* GPII-2785
+		* GPII-2787
+		* GPII-2791
+		* GPII-2812 (will not be complete by this sprint)
+	
+Questions
+	* Is there a Helm Chart for fluentd daemonset that is suitable for us to use?
+	* Will we introduce the use of Helm Charts throughout the infrastructure?
+		* Tyler's proposal: yes, but only for new stuff, rather than things that are already working and stable
+
+Time Off
+	* Tyler: Feb 19-24, heliskiing PIX OR IT DIDN'T HAPPEN
+	* Colin: Feb 20 to March 1, panama
+	* Alfredo: same days as Tyler (i think this was a joke ;)) Yes, It was a joke :D
+

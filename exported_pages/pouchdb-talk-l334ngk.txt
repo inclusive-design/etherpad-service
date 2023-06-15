@@ -1,0 +1,41 @@
+Agenda:
+    
+1. The testing infrastructure for using pouchDB in browser based tests
+2. Changes required for gpii-pouchdb for running in for GPII development configuration
+
+1. The testing infrastructure for using pouchDB in browser based tests
+
+What functionality of CouchDB do we use?
+
+	* Get
+	* Put
+	* Load views
+	* Load test data
+	* Fetch by views
+	* Fetch by document ids
+
+Work to do:
+
+	* Make a new PouchDB data source grade in gpii-pouchdb
+	* Finding uses of require
+	* Investigate options for interfacing with PouchDB
+		* We currently use express-pouchdb to provide a REST API for gpii-pouchdb
+		* https://github.com/pouchdb/express-pouchdb
+	* Can we use views without express-pouchdb?
+		* investigate design document support
+		* looks like there are some differences between CouchDB and PouchDB reduce functions
+		* https://pouchdb.com/guides/queries.html
+		* https://github.com/pouchdb/pouchdb/blob/master/tests/mapreduce/test.mapreduce.js
+		* https://github.com/pouchdb/pouchdb/issues/2941
+
+Other options to consider:
+
+	* Mixed browser / Node.js testing (gpii-pouchdb under Node.js)
+	* Node.js only
+
+2. Changes required for gpii-pouchdb for running in for GPII development configuration
+
+Work to do:
+
+	* Make a separate base grade that does not do clean up
+

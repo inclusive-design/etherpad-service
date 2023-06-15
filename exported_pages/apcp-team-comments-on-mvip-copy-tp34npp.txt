@@ -1,0 +1,174 @@
+APCP Team Meeting for commentary on MVIP of 2+3 May 2018
+Present: Sandra, Alfredo, Antranig, Cindy, Colin, Javi, JJ, Joseph, Justin, Stegru
+
+Original MVIP document is at https://docs.google.com/document/d/1SUhLxPCrUFmvMp8cMM_iF5u4n_F0qjNwbxdlMM-YZkI/edit?ts=5adfcfdf#
+Snapshot archived at https://docs.google.com/document/d/1Pqhgh6afaazDC0rRFnU1gK897JkXjEdJksa8UFZUTws/edit#heading=h.shqut17ywvn7 as of today
+
+This document will only consider MVIP features listed in the base document
+
+Function Benefit View
+	1. (a) Language personalization (browser)
+		* Justin notes that UIO+ does not yet have the ability to translate the native language of a web page
+			* until now, this was not listed as a priority in UIO+'s requirements and hasn't yet been estimated
+		* Also notes that language packs may need to be loaded in order to change the language of the web browser itself 
+			* This is not something that UIO+ can do, will have to be done by OS-level language customization
+			* Depending on the behaviour of Chrome, we may need a settings handler to be able to set its own language features (we don't currently have one)
+	* Language personalization (Windows OS)
+		* When you change the language of Windows, most (or all) applications do not respond to the language setting. That means that we can't have the language setting apply globally without either:
+			* a) restarting all open applications on the fly (risking data loss or confusion about dialogs in the original language, etc)
+			* b) logging out and back in (more complex, more disruptive UI) -> (Unique supported mechanism by Microsoft)
+		* This will have the biggest impact on users who are using the Quickstrip, because they may have already opened a lot of applications and expect them to change on the fly (which is impossible)
+		* Is this presentation language or text editing, or both (input vs output)?
+			* Question to Gregg: Should we attempt to do anything about input methods, e.g. IME, and/or keyboard layout, etc.
+		* Stegru (may) unimplement the restarting of applications - but there doesn't seem to be a lot of point since this will just cause the applications to ignore the setting
+		* There are two options - either the application ignores the language change setting, or it needs to be restarted. There are no known examples of applications which are dynamically reponsive to language changes. 
+		* We could also implement a desktop relogon required as a result of a language change.
+		* Stegru recommends: "Don't put language on the quickstrip"
+	* (c) Word spacing in the browser
+		* Until now, this was not a requirement for UIO+. This is a new requirement, so hadn't been estimated yet.
+	* (d) Joseph asks: This is more general than the items above. Or, is this emphasizing the automatic configuration of language, scaling, font size, and line/word spacing preferences?
+
+2. (a) Is there a list of each of these features and mainstream applications that must be onboarded? Which "other mainstream educational, training, or productivity programs" must be onboarded?
+    (b) Which assistive technologies? We need a list of all of these before we can estimate the scope of work required to support this feature.
+
+3, 4 and 5 are out of scope for 1st pass MVIP
+
+High Level View
+
+1. IN THE CLOUD
+  a: "Secure Reliable Servers": This needs to be quantified and specified properly. What is meant by this?
+	*     i We will meet FERPA- is there anything more to this requirement?
+	*     Is there a "minimum viable FERPA" list? While security requirements have been articulated in different manners and forms, we need a clear list of the security requirements for this MVIP.
+
+  d: Account:
+    Lists: "Create Account", "Manage Account Access", "View Preferences", "Edit preferences via Preference Tools"
+	*     We need UX designs for all of these, and a plan for how to integrate them with whatever SSO is present on the site. Otherwise this feature cannot be estimated.
+	*    This requirements document, entitled "Keys, Preference Sets, and Preference CloudSafes" (https://docs.google.com/document/d/1UoJzaEVFXEVA_CBfA5WNUHn9Y3j4JSy3tHvqeg19N1k/edit ) says specifically, "There are no 'accounts'  - just CloudSafes." Is this still the case, or has it changed? If so, we need a clear set of requirements for how accounts will work.
+	* Education Pilot Lead: Duane - have not yet had permission from the College Administration to go onsite yet. Will visit Manassas - perhaps next week.
+2. ON THE LOCAL COMPUTER
+	* c. QuickStrip Set: we need a list of requirements and wireframes for this functionality before we can assess the amount of development work it will require. We think it may have a substantial impact on some aspects of how the core system funtions
+	* d. Installers: What does "via images" mean?
+	* e. Noone knows what is meant by G-AP authentication. "Windows log-in" as listed under point 1d is still unspecified. By "Windows log-in" Gregg presumably means "Some particular institutional single-sign on at use at the Community Colleges" but noone yet knows what this is. This is likely a significant source of new development work.
+
+3. Preference Tools
+	* b. PPT is in white and so presumably part of the MVIP, but that doesn't reflect our understanding. Is it just intended to be available for use internally? If so, what are those use cases?
+	* c. Capture tool
+		* The wireframe - https://docs.google.com/presentation/d/1NUFl-K52wYeD1v9w7siWYZMp04BRO9cmptqsLK2wPgM/edit#slide=id.p
+		* Are these wireframes comprehensive of the functionality required for the MVIP?  We don't currently have enough information to make technical estimates for this tool.
+	* d. What is meant by "Explore Tool"? Are there wireframes, specifications, and requirements available for this tool? Without these, we can't estimate the work involved in making this tool.
+	* e. See above for QuickSet Strip. More details are needed before we can estimate.
+
+5. Onboarding
+	* Need definition of "onboarded".
+	* a) Microsoft Windows access and key usability features. Specifications are posted here: https://docs.google.com/spreadsheets/d/1vhhzs0pLCYPyLDPXpWNVUrwVvTv8IoGhRHsUUiA7gJk/edit#gid=409694249
+		* Is it correct that all of the features in the "1st Wave" tab must be completed for the MVIP? Do any of the settings in "2nd Wave" need to be complete? If so, which ones?
+	* b) Key assistive technologies
+		* Blindness/Low Vision
+	* Hearing
+		* YouTube
+			* Which features are in scope? We do not know if YouTube provides any kind of API for its Video Player, and if it does, it will have to be enacted by UIO+. More information and research is required.
+		* Media Player
+			* Which one? The "Movies and TV" application on Windows 10? Or "Windows Media Player"? Or another one?
+			* https://support.microsoft.com/en-us/help/17615 ?
+				* "Windows Media Player 12" for Windows 10, 8.1, and 7.  "Included in a clean install of Windows 10"
+	* Cognitive
+		* Read/Write Gold has changed significantly since it was onboarded during Cloud4all. We will have to revisit this.
+
+MVIP By Component
+	* "DevOp"
+		* Secure server: See above; need list of MVIP-level security functions
+		* Scalable implementation: 
+			* does this mean 20,000 user keying in at exactly the same moment? or staggered? How many key-ins per second should be be able to support?
+			* what other activities will they do, and with what frequency? (e.g. adjust preferences with PSP or QuickSet Strip)
+			* does this also mean that we anticipating 20,000 unique GPII keys and CloudSafes in the preferences server?
+				* Presumably many more than this [AB]
+			* We'd like to build some tests which replicate a real situation.
+			* The Costing Report from 2014, which includes some guesses about requests per second based on number of users: https://docs.google.com/document/d/1MmshoyrHqXeVjzRfaWtyphvxMWkIXbo1nz5YgTyEyAo/edit#heading=h.pmbymgrzjpj
+	* Cloud Architecture
+		* A preference server/CloudSafe format
+			* Mechanism to Authenticate
+				* Which tool will be used to authenticate and manage keys?
+				* What functions are involved in managing keys?
+				* We will need wireframes and requirements prior to being able to estimate the work involved in this task.
+			* Accounts
+				* As above. Are we introducing a new concept of accounts into the system, or do we mean a name and password associated with the CloudSafe?
+			* Use OAuth to login
+				* We don't understand the requirement for OAuth here, can you clarify? Is this social media login or something else?
+				* Are there other tools that need to use OAuth to login
+		* Matchmaker
+			* Capable of handling exact matches between preferences and AT and features
+				* Will we need to more general handle settings that apply to multiple AT or solutions? e.g. "high contrast" or "captions on" etc.
+			* Current matchmaker failure: Cannot resolve situation with high contract and wallpaper
+				* After discussion we decided that this is not a matchmaker issue, and probably not an improtant functional issue either, once we remove "read after write" from the core as decided in GPII-2986
+				* We should write up this settings handler conflict as an issue in itself and double-check that it does not cause a fault when attempting to restore the system to its original configuration
+	* Local Architecture
+		* Launch and settings handlers
+		* Direct activation handler
+			* This is a name for the part of the GPII which transmiits PSP settings changes to the configuration of the system ("User Update Handler")
+			* See below for questions about the QuickSet Strip
+		* Local Server with demo prefsets and default quickset strip data
+			* Description largely of what we have currently implemented - with the possible addition that demo prefsets should be available offline - this may be done via having a demo installer install a local CBFM in addition to the local FM
+			* "The thought was that when you did the key... if the key wasn't a U-Key, if it was just a demo key, it would go straight to the demo, and if it was a U-Key, it would go to the cloud"
+				* this is significant new effort and the functionality needs to be specified in detail
+			* two options:
+				* two different versions of the system, one for local demos, one for the live cloud -> this one is likely easier since it's the status quo but it is 
+				* local key resolution such that a key can be identified as a "demo key" vs. a "u-key" and handled appropriately
+		* Pings local Community College server 
+			* What is this server?A "Pre-GPII" uKey identifying service?  Who builds this? What local app communicates with the Community College server (if not the gpii-app/cloudgear icon)?
+			* This sounds like new work. We need significantly more detail about the requirements and motivations for this feature before we can estimate this task.
+
+Followup meeting for commentary of MVIP
+11th May 2018
+Present: Gregg, Sandra, Antranig, Bern, Colin, Javi, Tyler
+
+
+UIO+ requirements: We have decided to retroactively produce a "document to build" for updated UIO+ specifications
+
+Language and OS restart issues: You will key in before you launch your apps
+Bern: If you change language, you obviously have a need to do it - people would like to see that at the beginning
+Some people might change halfway through - we should say to people that they will have to restart applications
+As UX goes through its next iteration on the QSS, they will consider UX for warnings, and add to the next specs
+Gregg: This is the most desired feature on our slate as far as the schools are concerned, so we will supply it somehow
+Gregg: Note that language packs for other apps might need to be onboarded
+The CC supports numerous versions of Windows 7, Windows 8 and Windows 10.
+Network traffic is a new topic which may raise an issue for IoD.
+
+2a. We do not yet have a list of mainstream apps or AT that need to be onboarded, we will visit the campus 24th May and by the end of the month should have a list of 80-90% of the applications that are relevant here.
+
+There are three categories of things that we need to onboard
+1. Things for students
+2. For political reasons - ZoomText, etc. - compelling for people who make decisions
+	Captions - Captions on YouTube, its always embedded in a web page so it doesn't have a settings file.
+3. For demonstration purposes
+
+Amarja will coordinate what gets onboarded and what the priorities are.
+
+Gregg says, "FERPA, to my knowledge, is binary". There is also an ISO/IEC standard 27002 - "a popular, internationally-recognized standard of good practice for information security". ISO includes prohibitive requirements such as moving development inside the firewall.
+We are doing research with Steve Githens to find a checklist, and whether it went through a formal review. 
+
+High level view:
+    
+    We have decided to call these things accounts. Instead of saying "you log in to your CloudSafe" we will again say "You will log in to your account"
+    We will table this
+    
+The PPT will be used by three people
+	One of them is us
+	Any user who is sufficiently powerful could decide to use the PPT on theirs
+	Power clinicians
+
+Yes, we are planning to bundle the PPT into the MVIP
+Instead of having a live connection Instead of this, we could have an "Refresh" button on the PSP/QSS to pull these form the cloud
+
+Explore tool: We do not have a definition of this
+
+Scalability:
+    We don't have a model of what "a user" means. We have the scalability report from a while ago.
+    After you key in, how much traffic is there? Very little.
+    We are going to concentrate mainly on keyin. These may happen synchronously since classes will change at the same time and a large number of people may sit down simultaneously.
+    Let's assume that "on the hour" we have 20,000 people keying in, and say they all occur withiin 5 minutes. This will generate c. 66 requests/second.
+    Preliminary performance testing simulation shows 500 request/second. These were just at the surface of the preferences server.
+    Cluster of 3 low-powered worker nodes, 3-6 preference servers, 3 CouchDB servers.
+	    Some details here: https://issues.gpii.net/browse/GPII-2366
+"Use OAuth to login"
+	This means "the option to log in via Facebook/Twitter" etc.
+	This can be kicked out of the MVIP - it is the MVP that will allow them to "take it home"

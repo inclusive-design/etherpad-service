@@ -1,0 +1,60 @@
+Personalized device to control and interact with a public system such as a kiosk (for example at the Canadian Museum for Human Rights)
+
+Keypad
+https://wiki.fluidproject.org/display/fluid/Canadian+Museum+of+Human+Rights+%28CMHR%29+Kiosks
+
+Gesture controlled kiosk (large-scale motions, like Kinect) at CMHR, large-scale interactive maps and timelines -- instead control with a personal device using smaller, personalized gestures.
+
+Fluide Engage https://wiki.fluidproject.org/display/fluid/Fluid+Engage+Design
+
+Voting
+
+Consumer-grade Internet of Things devices with public API:
+
+	* Controlling a lightbulb with sip-and-puff
+		* http://www.developers.meethue.com/philips-hue-api
+	* Locks controlled by mobile phone (be careful with security here)
+	* 
+
+Show use of consumer-grade devices integrated without the need to modify them.
+
+Existing use of personal devices in museums:
+
+	* Guided walking tours
+	* Call number to get commentary
+	* Scan QR code to to go website content
+
+Detroit Institute of Arts
+http://www.dia.org/
+
+CMHR -- they were interested in and investigating letting folks use their own devices. Not sure if they do this or not.
+
+In Boston the Institute of Contemporary Art lets folks use their own devices to call or scan a barcode to get audio or additional information. Also have done work with alternative modalites and art creation.
+
+Museum of the Moving Image -- they were interested in having all their artifacts in a digital app
+
+McCord
+http://www.musee-mccord.qc.ca/en/
+We did a lot of work with Hugh (oog) there.
+
+Newseum in DC does some great work with very up-to-date technology
+
+Smithsonian has historically been the bar wrt a11y that other museums have measured themselves against. Now CMHR is surpassing them and trying to push the boundaries farther.
+Scott Gillam and Corey Timpson are the leads on technology and web and such. We have worked with them and have an opportunity to work with them further.
+
+San Fransisco Art Museum
+http://www.flysfo.com/museum/exhibitions/celebrating-vision-art-and-disability
+http://www.flysfo.com/media/press-releases/celebrating-vision-art-and-disability
+
+Alternative modalities for digital art creation. For example, alternatives to pressure-sensitive pens.
+
+Bodies in Translation project? yes definitely
+- https://www.engadget.com/2016/07/29/broods-used-the-microsoft-band-to-create-music-video-magic/
+
+Use in education, such as with PhET
+
+Smithsonian:
+    https://www.si.edu/Accessibility/SGAD
+    http://accessible.si.edu/pdf/Smithsonian%20Guidelines%20for%20accessible%20design.pdf
+    https://www.si.edu/Accessibility
+    http://www.sifacilities.si.edu/ae_center/design-accessibility.html

@@ -1,0 +1,17 @@
+Aug 07
+* End of sprint, no standup
+
+Aug 09
+
+Tyler:
+    * Yesterday: GPII-2520. Got DNS to work
+    * Today: GPII-2520
+    * Not blocked
+    
+    
+Aug 11
+
+Tyler:
+    * Yesterday: GPII-2520
+    * Today: GPII-2520
+    * Not blocked

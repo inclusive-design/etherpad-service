@@ -1,0 +1,26 @@
+Agenda:
+	* "Design proposals" proposal [stepan]
+		* Discuss design of "non-trivial" projects before implementing: spikes, research. Instead of rushing into implementing code. Easier to argue about design and approaches before we start writing code. Provides paper trail for future, why did we decided to use this technology/strategy.
+		* E.g. Kubernetes project does this. Dedicated folder for design docs. Add in PR (markdown). Others can read it, share their thoughts, propose changes, etc.
+		* Why are you doing this? What are you trying to do? What are the requirements for a viable solution? Scalability? Security?
+		* Sergio: likes idea. Maybe use etherpad for discussion (more flexible).
+		* Sergey: we were doing this before. Stepan: can you provide an example? Sergey: it's in the pads for each weekly meeting.
+		* Colin: if you want to be more formalized, keep proposals closer to the code (markdown in repo, not pads from meetings). But maybe a sufficiently organized archive of pads accomplishes this goal.
+		* Stepan: can organize proposals by topic, rather than time (as would be the case if we use meeting notes) - plus Github PRs could provide a built-in mechanism for comments
+		* Tyler: an "ok approach." we should be biased towards action—so maybe not spend more time on research and design proposals, because it could slow us down. Recognize the value of having an archive. 
+			* if we think it's important, so let's model it informally first and see how it works
+			* design discusses have occurred; sometimes in ops meetings, but we don't have a scribe (hi!); so our institutional memory lives in human brains
+			* not opposed to it, just want to see if it takes too much time, so let's model it and see
+		* Sergio: timebox these design discussions to prevent long periods of discussion without action
+		* Sergey: we may not have all of the decisions in a pad somewhere, but we mostly follow the same routine during our development flow
+			* so, for example, an open PR includes the design decision conversations there often (as well with few implementation options)
+		* Stepan: could allow us to move faster because we won't have to spend time on throw-away implementations; will make a proposal proposal
+		* Tyler: a lot of design discussions are abstract, but then when you write code you realize it won't work; hard sometimes to see which of two competing strategies will work without writing some code
+			* I tend to bias towards code
+		* Decision point: we won't formalize the use of written proposal in the repo yet, but we will try it out and reflect in a few weeks (or at the appropriate time) on how well it is working
+			* Stepan has agreed to take the lead on modeling this (but others should feel free to do so as well)
+	* Finish Sprint, Plan new Sprint
+		* Alfredo will close obsolete tickets 3126 3127 3128 and consolidate the work under 3125, which will have its story points updated to reflect that all the work happened under 3125. (Done), commented 3125
+		* Stepan and Sergio are having permissions problems trying to edit tickets so they appear in the backlog. They will follow up with Tyler or someone else (done)
+		* Stepan and Sergio want to discuss Scrum vs Kanban
+	* Sergey is giving a demo today

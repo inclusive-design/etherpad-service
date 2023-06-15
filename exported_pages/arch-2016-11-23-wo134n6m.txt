@@ -1,0 +1,90 @@
+UPDATES:
+
+Kasper:
+	* Doing a few pull request fix-ups
+	* Celebrating that antranig merged some
+	* Started reviewing josephs pull - looked into my chunk of that work
+	* Started working on getting the tests working for the gpii-app (electron, task tray thingy)
+		* stuck on an issue with on windows when trying to run the unit tests:
+		* FATAL ERROR: Uncaught exception: %1 is not a valid Win32 application. (module compiled against wrong/different platform) :) <-- hmmm... I ran npm install inside the VM.. Got any leads on how to deal with it, Javi?
+		* \\?\UNC\vboxsrv\vagrant\node_modules\ref\build\Release\binding.node
+		* Error: %1 is not a valid Win32 application.
+
+Alfredo:
+	* Moving the vagrant vmenv node module to a vagrant plugin
+	* Testing Gitlab CI
+
+Antranig
+	* Merged various marvellous pull requests of KASPARDNITT - 
+		* Removal of hardwired "inverseCapabilities" file (widespread celebrations!) (GPII-1809)
+		* Introduction of POSITIVE ONTOLOGY DESCRIPTIONS necessary to fix tendency of "any application to match any application" (GPII-2074)
+	* Various code review (gpii-express, gpii-pouchdb)
+	* Meetings on protecting prefs server, Windows group meeting
+	* Planning how to destroy invokers/events and function calls in general
+
+Cindy
+	* The ouchdb pull request is ready for another look - https://github.com/GPII/universal/pull/464
+	* Working on creating data loaders: https://issues.gpii.net/browse/GPII-1987
+	* GPII security meeting: will start to create diagrams of authroization flows for a few use cases
+	* Helped with the infusion release
+
+Colin
+	* Working to define next security steps for our upcoming milestones with Cindy, Simon, Antranig, Tony
+	* Coordinating with our ops team on next steps for QI and automation
+	* More interviews
+	* Helping Simon with the next Nexus demo
+
+
+Giovanni
+	* Interviewed another candidate (hands-on session)
+	* Upgraded GPII's JIRA
+	* Reviewing items in GPII-2009 and researching in preparation for assigning JIRAs
+
+Javi
+	* GPII-2125 - not as easy as expected
+	* GPII-1839 - we need to define what do do with tests
+	* About to merge https://github.com/GPII/windows/pull/99 (GPII-2090)
+
+Joseph
+	* Back from vacation.
+	* GPII-442 - ProcessReporter
+		* Dealing with Kasper's magnificent review
+			* Reduced functionality of the processesBridge component to no longer track the state of the solution/process
+				* "mothballed" state tracking code into new branch "GPII-442-trackstate"
+				* Updated all three pull requests (universal, linux, windows) to the new reduced processesBridge.
+			* Working on always using a PR in production mode even when running in development mode.
+	* GPII-1839 - Always use dynamic device reporter in acceptance testing.
+		* Commented on the JIRA to use mock DDR when running integration tests in universal.
+		* Need to look at what Javi's doing in this regard. - not finished but I can push it for you to check ;) okay-dokay.
+
+Kavya
+	* Testing on Journaling feature,demo personas and just started testing with Flowmanager and Privacy settings
+	* New JIRA's
+	* https://issues.gpii.net/browse/GPII-2145
+	* https://issues.gpii.net/browse/GPII-2160
+
+
+Michelle:
+	* Writing Tests!
+        
+
+Simon:
+	* Continuing to work with Colin on Nexus MIDI
+	* Attended APCP security meetings
+
+Steve Grundell
+	* GPII-2073 complete - yipee!
+	* GPII-1716 progressing. Looking good for win10
+
+Tony:
+	1. Finished UL front end tests (just need to update the docs before submitting PRs).  Only took a year!
+	1. Resumed work on all open PRs, focused on areas where other people were blocked, such as gpii-pouchdb.
+	1. Submitted new model transforms and docs in separate PRs.
+	1. Evaluated the new versions of Confluence and JIRA (see the list).
+	1. Talked with Cindy, Colin, Antranig on security planning.
+	1. Anyone interested in working together to exercise the work Antranig submitted for https://issues.fluidproject.org/browse/FLUID-5903?  ("grade budding" for test sequences).  I plan to identify a relatively isolated package that uses complex IoC tests, if anyone else is already building on this new concept, we can compare notes and/or combine forces.
+
+AGENDA:
+    cats (pictures, stories, etc.) - how about dogs?! ok sasquatch? definitely (ok: https://en.wikipedia.org/wiki/Bigfoot) "some claim it shows a Bigfoot, and others a man in a gorilla suit" maybe it's a cat in a gorilla suit. like this? https://www.youtube.com/watch?v=niVI1Cy2x2c
+    
+    

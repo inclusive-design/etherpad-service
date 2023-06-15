@@ -1,0 +1,48 @@
+	* snow-theme was manually (copied or cloned) from the big-idea-theme
+
+
+	1. ideally, we would create a base theme repository that represents the "starting point" for any new IDRC Wordpress site:
+		* this would involve some work paring back the big-idea-theme snow-theme to remove its  branding, etc.
+			* e.g. remove background images
+			* replace BI branding with placeholder images such as masthead, logo, etc. (which are designed to prompt users of the theme to replace them with their own?)
+			* need to refactor the big idea stuff from the parent theme
+				* anything common across big idea and snow should stay
+				* anything not common should be moved into either the big idea or the snow theme
+					* Example: https://github.com/jhung/wp-a11y-theme/tree/foundation/images
+					* also some PHP code, but Jon will need to crawl the code and find it
+		* gut feel estimate is probably about 3 weeks to do so
+	1. a lot of these themes are in personal github spaces, and should be moved to the inclusive-design (or maybe fluid-project) org
+		* wp-a11y-theme (lives in jhung right now?) -> move to fluid-project org IDI
+		* big-idea-theme (lives in jhung) -> move to inclusive-design org
+		* snow-theme (lives in grrrerro) -> move to inclusive-design org
+		* big idea feedback plugin (lives in jhung) -> needs to be generalized before it can be used in other sites, then migrated to inclusive-design
+		* UIO wordpress plugin lives in fluid-project already (yay!)
+			* might need some updates to work with the very latest UIO, but it's relatively up to date
+			* should come up with a simple release process -> upgrading version numbers, tagging
+			* we don't currently publish this plugin to the larger wordpress.org repository -> should consider if we want to do this, or if it should be more informal
+		* there are some code quality issues with some of these repositories, but can we move them anyway?
+			* Document issues and todos, file Jiras as needed
+			* and then let's just move 'em!
+			* question of governance: who gets to review, who's allowed to push directly?
+				* for now, let's keep it super informal:
+					* every change gets submitted as a PR
+					* contributors ask for review whenever they can
+					* submitters can push directly if needed
+			* everything except the uio-plugin will move to the inclusive-design org
+	1. wp-a11y-theme improvements
+		* we have A BRANCH—the Foundation branch
+			* it should be merged into master and users should start to use it (LET'S DO IT!)
+
+
+
+
+Next Steps:
+    
+    Jon will plan 1.
+    2. will be done soon->let's pick a free afternoon and just do it
+    3. we will form a team for the IDRC site
+	    another design iteration emphasizing resources and learning about inclusive design
+          improving themes and workflows for our WP sites prior to starting full implementation
+          colin will talk to vera about lisa's availability
+          team of (hopefully) lisa, jon, eloisa to do the idrc site redesign-build
+          

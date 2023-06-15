@@ -1,0 +1,62 @@
+20180709 Pairing on BlueOcean and GitHub PIpelines
+
+Testing out Jenkins with gpii-express.
+
+Can't get PR monitoring to accept Jenkinsfile as coming from someone authorised unless I allow pulls from everyone, even if we add the user submitting the PR as a contributor.
+
+Need to evaluate the pipeline-based GitHub plugins.
+
+20180629 CI Catch Up
+
+Attendees: Colin Clark, Giovanni Tirlioni, Tony Atkins
+
+Topics:
+
+Fluid CI current state of play
+
+Some builds with Jenkins, PR builds with BuildKite:
+https://github.com/fluid-project/infusion/blob/master/.buildkite/pipeline.yml
+
+
+To-Do:
+Jenkins walkthrough
+
+20180702 Jenkins/BuildKite Walkthrough
+
+jenkins job builder YML files, stored in a common repo.
+
+use the multjob plugin, currently to ensure that the VM is destroyed, we have to execute all preceding steps between VM creation.  This results in multiple steps that are run when they cannot succeed.
+
+Runing 3.28 of the multijob plugin.
+
+Now there is a configuration as code plugin, what new options does that give us better options when configuring Jenkins itself.
+
+Previous Jenkins pipeline investigation: https://issues.gpii.net/browse/GPII-1870
+https://issues.gpii.net/browse/GPII-1986
+
+We reviewed the current BuildKite and Jenkins setups.  Notably, BuildKite doesn't solve the problem of a failing build, the steps between provisioning and destruction need to run for the teardown to be reached.
+
+We agreed to set up a test project (ideally something that doesn't require a browser, like gpii-express), and to use that to explore the current version of Jenkins Pipelines.
+
+Jenkins Pipelines PoC Server: 
+    http://i-0045.tor1.inclusivedesign.ca:8080/blue/organizations/jenkins/
+    http://i-0045.tor1.inclusivedesign.ca:8080
+Installed Plugins:
+	* Build Timeout (https://plugins.jenkins.io/build-timeout)
+	* Timestamper (https://plugins.jenkins.io/timestamper)
+	* Workspace Cleanup (https://plugins.jenkins.io/ws-cleanup)
+	* Pipeline (https://plugins.jenkins.io/workflow-aggregator)
+	* GitHub Branch Source (https://plugins.jenkins.io/github-branch-source)
+	* Git (https://plugins.jenkins.io/git)
+	* GitHub (https://plugins.jenkins.io/github)
+	* SSH Slaves (https://plugins.jenkins.io/ssh-slaves)
+	* Matrix Authorization Strategy (https://plugins.jenkins.io/matrix-auth)
+	* Email Extension (https://plugins.jenkins.io/email-ext)
+	* Mailer (https://plugins.jenkins.io/mailer)
+	* SSH (https://plugins.jenkins.io/ssh)
+	* Blue Ocean (https://plugins.jenkins.io/blueocean) (too many dependencies. is there a less intrusive way to install?)
+
+TODO:
+    Figure out if the "Trust" configuration for a job means it won't even show the PR or if it will discover the PR and someone has to trigger it (we want PRs to be discovered by CI, but not run automatically if they don't come from people we trust)
+    Figure out how PR comments are allowed or not. Need to understand how the permissions work.
+    Figure out if the JIRA integration for Pipelines will work

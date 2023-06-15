@@ -1,0 +1,104 @@
+GPII Architecture Meeting Minutes, October 30, 2019.
+
+UPDATES:
+
+Javi
+	* The windows vagrant box was updated two weeks ago - along with changes on windows and gpii-app - merge with master
+	* Continued working on node12/electron6 update - https://issues.gpii.net/browse/GPII-4140
+		* Created repos for deps and PRs
+			* https://github.com/GPII/ref/pull/1
+			* https://github.com/GPII/ref-struct/pull/1
+			* https://github.com/GPII/ref-array/pull/1
+			* https://github.com/GPII/node-pcsclite/pull/1
+		* We still need to figure out what's going on on electron 6 (blank window)
+	* I created an installer (1.2.3) that is now under testing and supposed to be deployed at chickasaw
+	* Supported Matt in troubleshooting an error at NOVA
+	* I have been trying to reproduce the problem reported at the Prince William Job Center about Morphic interfering with eTests (https://www.casas.org/product-overviews/software/casas-etests)
+	* Meetings with different people/teams about different topics
+
+Alfredo:
+	* GPII-2951 - Deployed the changes that allows the migration from AWS to GCP (sadly we had some minutes of outage)
+	* GPII-3718 - Tunning some alerts to be more precise
+	* Messing with morphic.org domain due to Gregg's request this weekend
+
+Christopher
+    - Morphic for macOS
+        - Wrapped display (screen resolution, "Screen Zoom") native Swift code in C APIs (to bridge from node-ffi-napi)
+        - Created “System Preferences” links to match corresponding new feature in Morphic for Windows
+            - Started conversation with Antranig and Steve G; we need to create universal tags which can map to control panel/preference panes on an OS-specific (and OS version-specific) basis
+            - Option #1 (now): system URLs (e.g. "x-apple.systempreferences:com.apple.preference.security”)
+            - Option #2 (now): shell launch via direct path (e.g. /System/Library/PreferencePanes/Security.prefPane)
+            - Option #3 (future): use AppleScript bridge or automation APIs; this will also allow us to select individual sub-panes (such as selecting “Accessibility” within the “Privacy” tab of the “Security & Privacy” preferences pane)
+            - NOTE: the "open System Preferences" feature is designed to be used in two scenarios: (a) Build Your Own Button; (b) to re-prompt user for permissions as appropriate/possible
+        - Continuing refactoring efforts (working towards a cross-platform gpii-app)
+   - macOS API Test Mule
+        - Implemented system URL (option #1) and shell launch (option #2) features, as an easy test bed for new URLs
+        - Wrote documentation (currently inside test mule source) on how to discover the system URLs and file (shell) paths for System Preferences panes
+
+Cindy
+	* GPII-3958: Implement the new PSPChannel read API
+		* In progress
+	* Meetings and discussions about database alternatives
+
+JJ:
+	* Addressing issues found by Antranig in pull GPII-3810.
+	* Keep working into GPII-4152.
+	* Some minor work into failing pull GPII-4183, received feeback from Tony, I need to update with it.
+
+Joseph:
+	* Update to latest windows box
+	* GPII-3832:  Run production tests in the cloud (GCP)
+		* waiting in queue
+		* https://github.com/gpii-ops/gpii-infra/pull/347
+	* GPII-3117: Remove the environment reporter and adjust the ContextManager as appropriate
+		* As per last week's discussion and resolution,
+			* removed code that handled "conditions" blocks in preferences, and
+			* removed actual "conditions" blocks from anywhere within the universal repository
+		* Issued a pull request: https://github.com/GPII/universal/pull/823
+		* Responded to review comments
+		* Next step is to remove the ContextManager entirely, and migrate what little functionality remains to the LIfecycleManager
+		* Working on a new test failure
+
+Sandra (out today):
+    - With Javi's help, created this sheet to track content of Morphic 1.3. We may have a first candidate end of next week.
+	     https://docs.google.com/spreadsheets/d/16gj9lRhWUrgdjSbPMkMyw_YjdCrbk6xy3iEuLinki30/edit#gid=0
+     - We expect Kavya back on Monday, 4-Nov.  First task is to create test plan for Morphic 1.3.
+     - Waiting on update from NOVA. Focus now for next major pilot site is UMD-College Park, libraries there. Gregg wants to start deploying for test purposes by end of November (Morphic 1.3) and deployment in January 2020. 
+
+Sergey:
+    - DEPLOYED: cert-manager v0.11
+    - DEPLOYED: k8-snapshots
+    - TLS certificate validation and monitoring
+
+Stepan
+- GPII-4102 = Control egress traffic - net policies & Istio (post 1.1)
+- DB evaluation stuff
+
+Steven Githens:
+   - Finished writing up my long educause notes/report
+   - Made another capture tool build: https://github.com/sgithens/gpii-app/releases/tag/2019-10-24
+   - Triaging and investigating issues that have been discovered so far with it
+   - Might be out part of tomorrow depending on how some dental work goes.
+   - Meetings
+
+Steve Grundell:
+    - IoD - making it work for real
+    
+
+Tony:
+
+	1. Continued investigating 503 errors revealted by preferences "write" tests.  Will review and discuss later.
+	1. Attended the meeting regarding a CouchDB replacement.
+	1. Worked on Unified Listing imports.
+
+
+AGENDA:
+
+	1. Universal performance issues.  Quick review of latest research into universal 503 errors and discussion of how to move forward: https://issues.gpii.net/browse/GPII-4201#comment-41209
+
+2. Network mapping / Kiali UI demo [Stepan]
+
+
+
+
+

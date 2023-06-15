@@ -1,0 +1,15 @@
+Configs
+
+1.-gpii-windows builtIn acceptance tests
+
+gpii.tests.acceptance.windows.builtIn.config
+	* %gpii-universal/configs/shared/gpii.config.development.local ---> gpii.config.untrusted.development.local (tests pass after applying this change)
+		* %deviceReporter/configs/gpii.deviceReporter.config.static.json5
+		* %gpii-universal/gpii/configs/shared/gpii.config.development.base.local.json5
+
+
+2.- gpii-app integration tests
+
+
+
+gpii.configs.untrusted.production.dynamicDR

@@ -1,0 +1,53 @@
+ATIA Demo 2019
+
+Jan, 22nd 2019
+
+Meeting notes: https://docs.google.com/document/d/1b3eyUucnntiZkA6g3_4uuJprxS37-YZbQ6b1T8-ViAs/edit
+These are the requirements for the ATIA demo:
+
+	* The system will run everything locally
+	* OFFICE simplification Item for QuickStrip https://issues.gpii.net/browse/GPII-3448 [Targeted for 1.1.0, there’s an implementation that is good enough for a demo]
+	* If possible, from Morphic 1.1.0:
+		* [ASTEA] GPII-3546: NEW LOOK to the QuickStrip  (smaller keys on right) 
+		* [ASTEA] GPII-3573: New keyboard navigation for QuickStrip 
+		* [ASTEA] GPII-3521: Folding of the QuickStrip when it gets to large
+		* [ASTEA] GPII-3574: Read Aloud is a Menu
+		* [ASTEA] GPII-3575: Direct control dots in Screen Zoom menu  
+	* Updated and new implementations of:
+		* RWG
+		* ZoomText (https://docs.google.com/spreadsheets/d/1Rv1JrRLgU9hT8RgJhi2IwPBmWDcH6_XQn_1l-JvlbhQ/edit#gid=46751502)
+		* JAWS
+
+We need:
+	* Keys that we are going to demo
+		* Office simplification
+		* RWG
+		* ZoomText
+		* JAWS
+	* Also, make sure that we add a bunch of empty UUIDS in the installer for demoing the "Save" functionality
+	* We also need to know exactly the version of ATs we are going to use:
+		* Office
+		* RWG
+		* ZoomText
+		* JAWS
+
+Preference sets RWG:
+	Each preference set changes the default values for a section of the configuration of RWG, following the natural order of the application UI:
+		* David: https://github.com/GPII/universal/blob/e438fba90938ae93c716a9c0168e44f232a598f0/testData/preferences/david.json5
+		* Davey: https://github.com/GPII/universal/blob/e438fba90938ae93c716a9c0168e44f232a598f0/testData/preferences/davey.json5
+		* Rebecca: https://github.com/GPII/universal/blob/e438fba90938ae93c716a9c0168e44f232a598f0/testData/preferences/rebecca.json5
+		* Rachel: https://github.com/GPII/universal/blob/e438fba90938ae93c716a9c0168e44f232a598f0/testData/preferences/rachel.json5
+		* Ryan: https://github.com/GPII/universal/blob/e438fba90938ae93c716a9c0168e44f232a598f0/testData/preferences/ryan.json5
+		* Rosehttps://github.com/GPII/universal/blob/e438fba90938ae93c716a9c0168e44f232a598f0/testData/preferences/rose.json5
+
+Preference sets ZoomText:
+		* Samuel: https://github.com/GPII/universal/blob/6f5f60ee8e3d4690d47b5a319242ddb2187b1294/testData/preferences/samuel.json5
+		* Zacarias: https://github.com/GPII/universal/blob/6f5f60ee8e3d4690d47b5a319242ddb2187b1294/testData/preferences/zacarias.json5
+		* Zack: https://github.com/GPII/universal/blob/6f5f60ee8e3d4690d47b5a319242ddb2187b1294/testData/preferences/zack.json5
+		* Zanya: https://github.com/GPII/universal/blob/6f5f60ee8e3d4690d47b5a319242ddb2187b1294/testData/preferences/zanya.json5
+
+Jan, 23rd 2019
+
+Created a "demo-ATIA-2019" branch for every repo (universal, windows, gpii-app and gpii-wix-installer) in my personal github account.
+These, already include everything expected. 
+

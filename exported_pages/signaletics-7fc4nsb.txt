@@ -1,0 +1,130 @@
+Signaletic
+
+Types of Things
+https://github.com/colinbdclark/signaletic/blob/gh-1/docs/types-of-things.md#web-audio-api-nodes
+	* AudioParams are named, modulatable parameters that may be specified by value, connected to an AudioNode, or both. If both a value and an AudioNode are specified, they are summed. AudioParams also do double duty as per-parameter schedulers, via the various set...AtTime() methods.
+	* Properties are static or modifiable object properties that configure a Node (e.g. the type property of a BiquadFilterNode, which can be changed at any time to a different type of filter.)
+
+
+Types of References
+
+1. Ordinary reference - "source this value from that thing over there"
+
+        ampEnv: {
+            type: "signal.asr",
+            startLevel: 0.0,
+            attackTime: {someGuyOverThere}.attackTime,
+            attackLevel: 1.0,
+            sustainTime: 1.0,
+            releaseTime: 0.25,
+            releaseLevel: 0.0
+        },
+
+2. "Live" reference - "every time this value changes, regenerate that buffer and set it on the appropriate node"
+	
+	
+https://en.wikipedia.org/wiki/Waveshaper
+https://webaudio.github.io/web-audio-api/#WaveShaperNode
+https://github.com/Tonejs/Tone.js/blob/master/Tone/effect/Distortion.js#L60-L77
+https://github.com/mmckegg/soundbank-reverb/blob/master/index.js#L110-L113
+
+// An example of a "push rule" - maybe we want to support these - we do at least with modelRelay
+
+	properties: {
+	    distortionAmount: {
+	          relayRule: {
+	                func: "signal.buffer.distortionCurve",
+	                target: "{waveshaper}.buffer"
+	          }
+	    }
+	}
+	
+	
+	---- PULL RULE ---
+	
+	distortion: {
+	    type: "signal.waveshaper',
+	    curve: {
+                func: "signal.buffer.distortionCurve",
+                args: "{that}.amount"
+	    }
+	}
+	
+	    buffers: {
+	        distortionCurve: {
+	            type: "signal.buffer.functionSource",
+	            funcName: "signal.buffer.distortionCurve",
+	            // TODO: How do we express a dependency on a property?
+	            args: ["{that}.amount"],
+	            numChannels: 1,
+	            length: 8192
+	        }
+	    }
+	
+3. "Connection" reference - invoke connect() on one node in order to set up an "invisible" association betwen the output of a node and the inputs of another node(s)
+		    connections: {
+		        // Connection descriptions, as per the Web Audio API,
+		        // can explicitly specify which input number should be
+		        // connected to which output number,
+		        // or they can be implicit, defaulting to input/ouput 0.
+		        "{carrier}.0": "{ampEnv}.0",            // Output to input
+		        "{amplitude}": "{ampEnv}.gain",    // Output to AudioParam
+		        "{ampEnv}": "{audioContextDestination}"
+		    }
+^^^ This style is like the one used in "modelRelay" - we could use this style or "materialised input/outputs" or both, but the reasons motivating a separate block (e.g. the 
+requirement for bulky configuration for transformation rules to be split out of line of the rest of the configuration) don't seem to be as strong here
+
+	components: {
+		sine: {
+		    type: "signal.oscillator",
+		    shape: "sine"
+		},
+		
+		square: {
+		    type: "signal.oscillator",
+		    shape: "square"
+		},
+		
+		amplitude: {
+			type: "signal.value",
+			inputs: {
+			    value: 1.0 // Here we are directly setting an AudioParam value
+			}
+		},
+		
+		envelope: {
+		    type: "signal.adsr",
+		    inputs: {
+			  // Note here that we are intentially conflating AudioParams and Inputs—since they both support connections to other Nodes 
+		        "0": ["{sine}.outputs.0", "{square}.outputs.0"],
+		        gain: "{amplitude}.outputs.0"
+		    }
+		}
+	}
+	
+	
+Simplest Possible Infusion
+	* Options merging (via $.extend)
+	* A thing that implements the Nexus API: i.e. fluid.create()
+		* https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidIoC.js#L1496
+		* given some stuff to create, it creates it
+	* There is a tree of things that are being created:
+		* References refer "up tree" hierarchically
+		* Given a location in the tree, and a context reference, we need to be able to resolve it - 
+			* Implement fluid.resolveContext
+			* https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/FluidIoC.js#L833 - obviously not like this!
+			* Deep, deep in my branch this is just a little simplified, but not in a way that really helps here - in "real Infusion" we note in the shadow where children are - https://github.com/amb26/infusion/blob/b6db163ca1ce444a0d08e264203c387bb5017d9d/src/framework/core/js/FluidIoC.js#L26
+			* In "Infusion lite" we'll just do this all in its "tiny instantiator"
+			* You will need to make a very lightweight one of these: https://github.com/amb26/infusion/blob/b6db163ca1ce444a0d08e264203c387bb5017d9d/src/framework/core/js/FluidIoC.js#L905
+			* Basically a "idToComponent" and "pathToComponent" lookup
+			* Since noone is ever going to see the "real components" they can just be the same as their shadows - just stuff any bookkeeping you need in them directly
+	* Implementation strategy:
+		* DON'T TRY TO DO EVERYTHING ALL AT ONCE
+		* Implement a very gradual "phased" strategy in which you increasingly work out things about the tree
+		* Phase i) is simply to determine the location and types of all component shells (as it is in my upcoming FLUID-6148 branch) https://github.com/fluid-project/infusion/pull/824
+		* phase ii) is to trawl across this skeleton, perform primitive options merging with $.extend and then resolve any {context} references to shells using the data structure you built in i)
+		* "they can be the same as their shadows" means we can do really blunt and direct things like writing the path to each component as a member of each component
+			* [Note that it's not enough to simply substitute the value of the references in place, since "funky things" will ultimately happen based on what the type of the reference is - e.g. whether it is a connection reference, a datasync reference, etc.]
+		* phase iii) [data synchronisation and consistency stuff that belongs in "our universe"]
+		* phase iv) Trawl over the whole tree again and instantiate real WebAudio nodes corresponding to those shells that require them and wire them together in the appropriate geometry
+		* phase v) profit https://www.youtube.com/watch?v=tO5sxLapAts

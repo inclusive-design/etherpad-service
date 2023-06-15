@@ -1,0 +1,22 @@
+31-Jul-2017
+Agenda:
+    - Review and Update the backlog
+    - Requirements for PCP with Memory
+    
+    
+    Notes:
+	*         GPII-2463, moving to next pilot, Gio will update. 
+		* this assumes that we will move our development infrastructure to AWS within the next couple months
+ -  GPII-2386, move out to next pilot. 
+ - GPII-2329, keeping in Pilot 2 Stage, Antranig will consult. 
+- GPII-2010, move off the scrum board (Sandra)
+ - GPII-2014, move to Pilot 3
+ - GPII-2017, need Alfredo 
+ - GPII-2321, also need Alfredo
+ - GPII-2015, ditto, same bucket as 2017 and 2321.
+ - GPII-2325, 2326 and 2327 move to Pilot 3
+ - GPII-2123, need to discuss with Alfredo. 
+ - 2025, need to discuss with Alfredo
+ - Action item for Sandra: Move the roll-up JIRAs out of the backlog.
+ 
+ We got as far as 2035. 

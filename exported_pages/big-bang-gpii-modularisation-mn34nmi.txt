@@ -1,0 +1,52 @@
+Our rate of revisiting this issue is slightly improving:
+    
+https://wiki.fluidproject.org/display/fluid/Notes+on+Modularisation+of+Infusion
+
+It has been less than 18 months since we abandoned it the previous time - whereas on that occasion we had previously abandoned it for more than 2 years.
+
+Now we have to do something, since
+
+i) We cannot build the GPII with npm 5, and
+ii) Adtkins cannot get coverage tools working with our module structure.
+
+
+Questions:
+    
+1. What to do? What tool/workflow shall we move over to?
+
+2. How much to do? Shall we just reorganise universal or else go BIG BANG and merge all of our repositories?
+
+3. Who can do it?
+
+
+
+Colin: 
+    Hasn't thought of this recently.
+    Wanted to make time to spike "lerna" in a simpler situation.
+    Problem: You want to be able to make inter-repo references easily. So that you can develop and test.
+    At publish time you publish them all with appropriate versions.
+    
+    
+Some other art: "Why we dropped Lerna from PouchDB": https://gist.github.com/nolanlawson/457cdb309c9ec5b39f0d420266a9faa4
+    
+"For lerna run, we were originally using it to run Rollup in each sub-package, but quickly realized that with ~30 packages, running 30 Node processes for each one (i.e. doing npm run build 30 times) was too slow. It made more sense to just write one big build.js script that built each sub-package inside of a single Node process. I can't remember the speedup, but it was something like 60 seconds vs 5 seconds (those numbers are completely made up)."
+
+The "Alle" proposal: https://github.com/boennemann/alle
+An implementation: https://github.com/Aldlevine/comptroller
+
+It appears that the PouchDB repo still has node_modules directories committed to it! How can they get away with that and we can't?
+
+https://github.com/pouchdb/pouchdb/tree/master/packages/node_modules/pouchdb-core
+
+This still references "lerna"/Babel as its reference for monorepos!
+
+Q: Is it not possible that the problem with npm 5 and node_modules directories has resulted from trying to resolve universal from git?
+--> If this is so, then we will have to stop caring what the result is when people bind to our projects via git references, so this will be a problem which our monorepo tools (fluid-publish, lerna or whatever) will not need to handle.
+
+It has to somehow be so, since otherwise PouchDB could not survive.
+
+Q: It sounds like we should experiment with doing Javi's big bang of universal -> gpii-universal, and then resolve all our modules from npm, and then regroup.
+
+
+Pouchdb uses a thing named "coveralls" - a paid service for rendering coverage data. "Free for open source projects"? Could we make any use of this?
+	A thread where Avtar mentioned looking at some code coverage tools briefly: https://lists.idrc.ocad.ca/pipermail/fluid-work/2018-January/010594.html

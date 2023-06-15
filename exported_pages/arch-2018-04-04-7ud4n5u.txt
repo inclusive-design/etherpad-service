@@ -1,0 +1,114 @@
+UPDATES:
+
+Javi:
+	* Bughunting with Bern
+	* Created a workaround to include a file in the installer with current version of the gpii
+	* Reviewed and tested Justin's GPII-2429
+	* Faced a problem with vagrant "again", just in case you happen to face it too: https://github.com/hashicorp/vagrant/issues/9595
+
+Antranig:
+	* Merged some major updates of Kasparnet's including his MM upgrades - 
+		* This will cause conflicts with a lot of current work including data model work so please update
+		* Some comments left for remaining work on Windows pull
+	* Meeting with Astea team about PSP3 and continuing I18N work
+	* Continuing to talk with ADTKINS about schema support
+	* Left some comments on "code coverage for Windows" pull https://github.com/GPII/windows/pull/131
+		* Some issues with moving to "npm test" model  
+
+Alfredo:
+	* Research about how to migrate the GPII infra from AWS to GKE
+	* Cleaned up the Elasticsearch intance where all the data from the pilots is stored
+	* Updated the mail gateways for wiki.gpii.net and raisingthefloor.org
+	* Solved the IAM issues that didn't allow to send the logs of the clusters to AWS ES - GPII-2651
+	* Solved issues related to the RtF's applications for Gregg's demoing
+	* Discovered a bug in the new release of the Vagrant-CI plugin, writing the patch
+	* Read about Kubernetes hardening: tested some patches using Calico networking, kube2iam (for interaction with AWS services like elasticsearch) and RBAC
+
+Cindy
+	* GPII-2630: Addressing review comments and fixing test failures occurred after merging in the master
+	* Created 2 wiki pages for Capture Tool and Account setup APIs:
+		* https://wiki.gpii.net/w/Capture_Tool_APIs
+		* https://wiki.gpii.net/w/GPII_Account_Setup_APIs
+
+Colin
+	* Interviewing dev ops candidates with Tyler
+
+
+Georgi (on behalf of the Astea team):
+	* GPII-2894: I18n of the PSP
+		* Components can now receive messages via different grades
+		* Documentation (including summary of the architecture decisions) and code improvements
+		* Added some further tests
+		* PR comments will be more than welcome: https://github.com/GPII/gpii-app/pull/43
+	* GPII-2890: PSP does not preserve its aspect ratio when DPI is changed
+		* Added a comment in the JIRA ticket about the new improvements
+		* PR ready for review: https://github.com/GPII/gpii-app/pull/42
+	* Researching how to update to Electron 1.8.4 (needed for security reasons)
+		* An issue with determining if an object is an Array emerged
+	* Reviewing and discussing the PSP 3 specifications
+		* Started implementing some of the new features
+
+JJ:
+	* Moved/Searching new office with Alfredo.
+	* Updating pulls GPII-2521, with new work from Steve.
+	* Updating list of settings from 1st Wave.
+	* Updated pulls:
+		* GPII-2726.
+		* GPII-1053.
+		* GPII-2729 -> Windows
+		* GPII-2729 -> Universal (needs a couple of changes).
+
+Joseph
+	* Short week -- Easter holiday weekend.
+	* GPII-2927:  Fix code coverage for web-based unit tests for the process reporter components (https://issues.gpii.net/browse/GPII-2927)
+		* Discussions with Tony, who found the problem
+		* Fixed and a pull request:  https://github.com/GPII/universal/pull/604
+	* New linux Vagrant VMs from Giovanni
+		* Noted that PackageKit was needed for the linux VM used by GPII
+		* Updated an tested all my linux pull requests with the new machines -- all good.
+
+
+Justin
+	* GPII-2429
+		* Need to update universal PR from master and fix merge conflicts
+		* Need to investigate some issues with UIO+ on Linux
+		* Planning on releasing a new Beta vesion after the PRs are merged
+	* FLUID-6276: highlighting TTS
+		* FIled a PR ( https://github.com/fluid-project/infusion/pull/892 )
+
+Simon:
+	* Continuing code review of GPII-2630
+		* https://github.com/GPII/universal/pull/591
+	* And chatting with Cindy about Capture Tool
+
+Steve Grundell:  Aww, I was trying to change places with you!  So nice. I tried to sit on you
+    - Updating old PRs to work with a more modern GPII
+    - GPII-1716 fontsize change requests
+    - Getting Windows service to build nicely - GPII-2338
+    - 
+
+Tony:
+	1. Continued thinking about the upcoming schema work, started sketching out:
+			3. A new Fluid Schema Lite (FSL) metaschema with a transform to/from JSON Schema Draft v7.
+			3. How we might represent the core options (invokers, listeners, events, etc.) in FSL.
+	1. Met w/ Simon & Colin about creating environments to teach K-8 kids CS concepts.
+	1. Worked through some code coverage issues Joseph reported with his branch/pull.
+	1. Spiked code coverage with gpii-app, will loop back round to that when the JSON Schema work is waiting for input.
+
+
+
+Tyler:
+    * Migration to Google Cloud
+    * Interview an Ops candidate
+    * Preparing GPII Cloud Demo
+
+
+AGENDA:
+    * State of the GPII Cloud Demo [tyler]
+	    * Some links:
+		* Presentation slides: https://docs.google.com/presentation/d/1l8qQEvFaml_qgc0fynHScVhWseu0loytcYaFP_m0tBs/edit#slide=id.g3150fb0231_0_0
+		* gpii-infra deploy pipeline: https://gitlab.com/gpii-ops/gpii-infra-fake-component/pipelines
+		* Fake infra component, stg: https://infra-fake-component.stg.gpii.net/
+		* Fake infra component, prd: https://infra-fake-component.prd.gpii.net/
+		
+    

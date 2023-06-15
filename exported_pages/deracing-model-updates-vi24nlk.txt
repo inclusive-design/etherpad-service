@@ -1,0 +1,105 @@
+Meeting about deracing model updates (debouncing, throttling, data sources, etc.)
+06/11/17
+Present: Antranig, Justin
+
+
+Sketch: https://docs.google.com/drawings/d/1KUIRNQO2MaXbfToY6EcxRd8LpxjaQ9VmLWirCLZiC9U/edit?usp=sharing ( may not match the idea compiled below )
+
+Workflows:
+    
+Synchronous Workflow, all requests handled ( similar to current model which encounters a race condition with the read/write between local and remote sources )
+==================================
+
+		* Components “Local Model” is changed
+			* Model listener on “local” triggers the Write method
+				* compares local to remote model
+					* if the same, do nothing
+					* if different
+						* fire Write Impl function to send change to remote source
+							* if request fails
+								* throw error
+							* if request succeeds
+								* trigger Fetch method to update “remote model”
+		* Call the Fetch method to update model from Remote source
+			* Fire Fetch Impl function to request model from Remote Source
+				* if request fails
+					* throw error
+				* if request succeeds
+					* update Remote model
+					* update Local model
+
+
+One inflight request at a time
+======================
+
+State sketch:
+    
+Current request: (read or write)
+Upcoming "queue" - consists of READ [0 or 1], and WRITE [0 or 1]
+
+
+We will always do a read in preference to a write if both are pending 
+   - see earlier discussion on transactionality - an idea backing store will support a "transactional write" which guarantees to do a read either immediately before or after a write
+   - e.g. a common pattern with a CouchDB dataSource is to do a "read immediately before write" in order to head off the possibility of a write conflict, whereas a GPII settings handler will do this transactionally (if the underlying technology supports it)
+   - our aim in all cases is to minimise the chances of data loss for the user
+	   - a mature architecture would allow the user a chance to manually resolve any lost updates if we could work out that they had lost a race
+
+		* Components “Local Model” is changed
+			* <--> This direct linkage here is optional - it may be possible to make changes to the local model without immediately scheduling a write - based on configuration policy
+			* Model listener on “local” triggers the Write method
+				* if request in flight
+					* if a write request is waiting
+						* return existing promise
+							* Note that whilst we piggy-back on the existing pending request, its action once it starts will have been updated - that is, it will write whatever is the current model NOW, not what the model was when it was initially queued.
+							* This means that we don't have a clear "task" architecture (in terms of CUJO's terminology as in https://github.com/cujojs/when/blob/master/docs/api.md#infinite-promise-sequences) where "a task is a function which returns a promise".
+					* if no write request waiting
+						* create write request
+						* add to a wait queue
+						* return promise
+				* if no request in flight
+					* compares local to remote model
+						* Here we have a further race worry - the remote model may have changed - but this is not the concern of this algorithm.
+						* One possibility here is to insist on a "read before write" in order to minimise the chance that our remote model is stale - another matter of configuration policy and "quality of service"
+						* Note that this worry is lessened if we have a "live" remote model which is being constantly updated by requests coming in the other direction, as with a WebSockets or suitable Chrome Extension message bus etc.
+						* if the same
+							* resolve request
+						* if different
+							* fire Write Impl function to send change to remote source
+								* if request fails
+									* throw error / reject promise
+								* if request succeeds
+									* EITHER i) immediately update the remote model via its ChangeApplier to reflect our opinion about its updated contents
+									* OR (if we hadn't triggered a read immediately before the write) trigger a read manually
+										* [trigger Fetch method to update “remote model”]
+		* Call the Fetch method to update model from Remote source
+			* if request in flight
+				* if a fetch request is waiting
+					* return existing promise
+						* There is a sort of (unimportant) subtlety here - the "request in flight" MAY OR MAY NOT be the fetch which we are trying to trigger. But whether it is or not, we still return the promise which represents it in the queue, whether it has been started or not.
+				* if no fetch request waiting
+					* create a fetch request
+					* add to a wait queue
+					* return promise
+			* if no request in flight
+				* Fire Fetch Impl function to request model from Remote Source
+					* if request fails
+						* throw error / reject promise
+					* if request succeeds
+						* update Remote model
+						* update Local model
+							* Further risk of races here - the user may have made further changes to the local model since the fetch was requested.
+							* This is a matter of the same policy as on line 48 <--> - if all local write as always being written back, we will ALREADY have a write queued at this point to write them back. But properly, we should do the "merge" described in "Scheme 2".
+								* For example, in UIO+ this is exactly what we would do - if the user has successfully used the UI whilst a read was in progress, they clearly must have meant to do so
+								* NOTE: Here we have a point where we need a significant extension to the semantics. We need AT ALL TIMES when we talk about "the local model" to be able to distinguish what contents are there because the user has requested them, and what contents are there because we read them from the backing store.
+								* There are several ways to achieve this, none of them enormously straighforward
+									* Scheme 1: Using a modelListener which is attached only to the user's "change source", keep a list of all changes which they have requested up to a point in time - only when we successfully write these changes to the remote store do we clear this queue out.
+									* Scheme 2: At this point when we have done a read and found a discrepancy between the local and remote model, do a "diff" between the old and new contents of the remote model, and a separate "diff" between the contents of the local model and remote model, and apply one on top of the other - a kind of "merge" in effect.
+										* NOTE: Scheme 2 is only valid if at the time we issued the fetch, the local and remote models had the same value.
+										* the components defaults should be treated as a separate source and not considered "user" initiated model changes.
+										* We have functions fluid.model.diff and fluid.modelPairToChanges() https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/DataBinding.js#L1537 that will help with this - the latter is what we will use to convert a diff into a stream of changes, these could then be fed into fluid.fireChanges (which is simply a loop to apply multiple changes) https://github.com/fluid-project/infusion/blob/master/src/framework/core/js/DataBinding.js#L1055
+											* apply these changes in a single transaction
+								* IN GENERAL we have a requirement to account for the "provenance" of any data in the model. We could most simply encode this as a "provenance map" which has the same structure as the data but encodes the source - but the problem with this structure is that it doesn't allow us to account for the provenance of deletions.
+								* This therefore inclines us to Scheme 1 - we will capture streams of changes, labelled with their source, and will consider any "local defaults" as simply one more such change, just a large one covering the whole model.
+					* QUESTION:
+						* Can we use the remote model as a baseline for the local model? That is, when we do our "diff" for Scheme 2, is it ok to use the "stale remote model" in both diffs as in (fresh remote model, stale remote model) <--> (stale remote model, local model), or do we need to keep a separate checkpointed record of the state of the local model?
+						* It seems that whenever we do a read, we will update the local model to be in correspondence with the remote model. This is what leads to the idea that the remote model can act as this baseline. At the end of a write, we have also done this. All the same, CHECK THAT WE HAVE REALLY CLEARLY UNDERSTOOD THIS.

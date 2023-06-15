@@ -1,0 +1,19 @@
+Adewale presents the docs created for security compliances as well as identifying the GPII security requirement: 
+	* Google drive for the security doc: https://drive.google.com/drive/folders/0Bzk83ip2K5sqRm1pTTluaG9rWVE
+	* Task 1 Model: https://docs.google.com/document/d/1z5Uz3X47c-pdoWrCRTuw907_EClezIGCS2vH92kSs0Y/edit
+		* Our goal is level 2 compliance (Note that level 1 & 2 in this doc map to level 0 & 1 in the security priority doc)
+		* Adewale suggests to add an identity management system to be able to create and manage users with a backend database 
+		Should talk to Tony in terms of 
+			* Tony's pull request for user management system: https://github.com/GPII/gpii-express-user/pull/1
+			* what backend database should be used as Tony recently switched from using couchDB to nodejs
+			* discuss about pbkdf2 vs bcrypt for password digests and salts
+	* GPII security compliance matrix: https://drive.google.com/drive/folders/0Bzk83ip2K5sqRm1pTTluaG9rWVE
+		* We are currently at step 2: select security controls
+		* Adewale to provide a glossary for acronyms used in the doc
+
+Next steps:
+	* IBM: Sort out the final details and share
+	* IBM: Deep diving into security solution and come up with the final solution
+	* Adewale & Sandra to discuss and decide on the level information
+	* Adewale, Katy, Gabriel, Tony, Cindy, Antranig to discuss about the user management system
+

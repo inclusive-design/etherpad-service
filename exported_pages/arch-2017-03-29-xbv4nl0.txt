@@ -1,0 +1,116 @@
+UPDATES:
+
+KASPARNET:
+- Still struggling with wrapping up the MM work. Have made preliminary pull requests against universal and linux
+- Am planning on a major harrassment campain against antranig sometime tomorrow probably, asking annoying questions and causing confusion and chaos.
+
+Alfredo:
+	* Building Vagrant boxes and fixing issues related to the builds
+		* See how the boxes are building: https://gitlab.com/amatas/packer-win/pipelines/7276138
+	* Updating Jira, but there are some concerns about the upgrade:
+		* http://lists.idrc.ocad.ca/pipermail/fluid-work/2017-March/010346.html
+		* Created a "test" jira to check the new features: https://staging-issues.gpii.net
+	* meetings
+	* working on Windows ELK client
+
+Antranig
+	* Continuing work on error handling for the Nexus, making reasonable progress and have about half the framework tests running again
+	* Preparing to make Nexus presentation in Brussels on Tuesday
+	* Attended infrastructure meeting on logging, where we spoke about our plans to make a relatively vanilla deployment of elasticSearch plus "FileBeat" for HST plus the first pilots
+	* Attended Nexus planning meeting with Simon, Colin, Fish and Colin
+	* Attended APCP meeting just now on requirements for PCP API and its relationship to the preferences framework
+
+Avtar:
+	* Working on P4A review tasks
+	* Refactoring QI Dashboard backend and switching to gpii-express
+	* Will plan any remaining work for review video
+
+Cindy
+	* Researches on ways of making UIO enactors within GPII chrome extension to work better with calJobs website
+	* Created a video to show the experiment and research results of using UIO enactors with GPII chrome extension, uploaded to youtube as a private video and shared with Colin and Han
+	* meetings
+
+Giovanni
+	* Kubernetes 1.6 release yesterday, revisiting architecture design and what can take advantage of the new features
+	* Created an ElasticSearch cluster (search engine and database)
+	* Spent some time working with Logstash (data transforming pipeline)
+
+
+Javi
+	* HST
+		* Released a first version to Kavya
+		* Some issues were reported and will work on them for the rest of the week
+	* Google chrome extension investigations (https://issues.gpii.net/browse/GPII-2342)
+		* https://developer.chrome.com/extensions/external_extensions
+
+JJ
+	* Keep working on UI Automation API
+		* Finalized the initial research work on how to address the Service implementation in C#.
+		* Designing the first version of the API, which first details will be soon in this github repository. https://github.com/JavierJF/UIAService
+		* Start creating Docs about the implementation, and generic information about the Microsoft API. 
+
+Joseph
+	* No GPII work; all privacy, all the time.
+	* Starting to get back into GPII today;  update vagrant machines, repositories, and remembering how to do things.
+
+Kavya
+	* Receivedl HST build for QA - Thanks Javi
+	* Have done with Final HST QA and reported issues https://docs.google.com/document/d/1ElIbInA9fw_vpOGx2dyjDnJKNjzGBW1OpFd_ACSlFbY/edit
+	* Almost done updating HST Instruction Document with new changes 
+
+Sandra:
+    - Meetings to define requirements for several items, including logging, updating requirements for first pilots, etc. 
+    - Started scrum standup meetings with DevOps team, M-W-F, for work required to support Pilot Stage 1.
+    - Monitoring fixes to HST build. Hopefully we'll have a new one by this Friday. 
+    - Updating Core 2 documents. 
+    - Out this Friday afternoon and Monday (3-Apr).
+
+Simon:
+	* Continuing with Nexus
+	* Wrote up some documentation at https://wiki.gpii.net/w/Nexus_Discovery
+	* Integrated temperature sensing using a Raspberry Pi
+	* Working towards P4A review late April
+	* Working with Alan on sonification and visualization
+
+
+Steve GRundell
+	* Some fixes for the HST
+	* GPII windows servive
+
+Steven Hens: 
+- Working on GPII-2343 and wrapping up enough of the M3 tasks to package it up and get request an initial PR Review.  ( https://docs.google.com/document/d/1JilpzDNb1LNf0foGcwtofcg9c99wdoa75gz0eLAu2vE/edit )
+- Meeting with Bern each week to go over the UI
+- Spent some time triaging old Jira tickets and reading through my backlog of Arch meeting minutes and email since I've been heads down digging in to the devpmt work the past month.
+- Next steps may require some matchmaker review with Kaspar and touching base with Tony about the UL work.
+
+Tony:
+	1. Refactored the new gpii-testem library to use the same kind of "pseudo-event" promise chains used with dataSource grades.
+	1. Continued work on a "code coverage" PR against universal.  You can see a sample coverage report here: http://the-t-in-rtf.github.io/universal-coverage-20170329/index.html
+	1. Submitted a PR against istanbul to add the ability to link directly to line numbers: https://github.com/gotwarlost/istanbul/pull/787
+
+
+AGENDA:
+    
+Where did the wiki signup page go?
+	* Where was the wiki signup page? on the wiki!! WHERE WAS IT ON THE WIKI??? The was a link to it on the login page, I think Possibly:  https://wiki.gpii.net/w/index.php?title=Special:UserLogin, but that 404s
+		* It's disabled because we had an attack some time ago that created tons of spam users
+			* Ah, I see... how does one create new users? I'll tell you when you're 21
+		* Alfredo will check to see if a good captcha or perhaps using email confirmation (for better accessibility)
+
+Is it advisable to update to Viirtual Box 5.1.18?
+	* CI build node is using 5.1.18
+	* Giovanni has been using 5.1.18 on Linux and Win10 without issues
+	* Thanks, everyone.
+
+Jira update (Alf) (https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSkbTZaC0xqGNKXLNHt7K-pFUUU9vrlqkDmIZ7apz4cHqIaZjuG) <- this is my most used avatar :D
+See line 11 of this pad for a link to an email description the new version!
+
+The discussion concerning JIRA will continue on the mailing list http://lists.idrc.ocad.ca/pipermail/fluid-work/2017-March/010346.html
+
+
+Alignment of "PCP API" work by Javi and Kasper with the existing "primary and auxiliary schema" approach used in the preferences framework. Notes from the APCP meeting an hour ago are here:
+    https://pad.gpii.net/p/pcp-api-7g124ngs
+
+In future we will have a semi-regular set of meetings, desired attendees will include Cindy, Javi, Kaspar, Steve Githens, ADTKINS (Antranig and Colin if available)
+Javi will send a doodle poll to schedule this set of meetings
+

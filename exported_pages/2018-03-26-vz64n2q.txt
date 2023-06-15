@@ -1,0 +1,9 @@
+ Agenda:
+    - Update from Tyler and Alfredo. 
+    
+    - Discussion with the team, recommendation from Tyler to move to GKE. 
+    - Next step: Spike with GKE (learn some stuff and try some stuff). 
+    
+    Alfredo:
+        - Centralized logging: 
+		* Spike of Stackdriver Logging, and see how we can use this approach to our infrastructure

@@ -1,0 +1,5 @@
+Agenda:
+    - Metrics review
+    - Is there a demo for this week?
+      - No demos this week.
+    - Sprint planning

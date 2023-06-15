@@ -1,0 +1,98 @@
+ARCHITECTURE MEETING MINUTES, 10 OCTOBER, 2017
+
+Kasparnet:
+	* Back after vacation
+	* My computer died on monday, and my flight home was drawn out with an overnight stay in paris due to delays, so I've only now slowly catching up on everything
+	* Will focus on PCP requirements and upcoming matchmaker work specout
+	* XPS13 vs Lenovo X1C - thoughts?
+		* I have the XPS15 and very good components but I think that the Lenovo is better. cool, cheers alfredo
+		* Become North American and buy a Macbook :)haha -- already had mac... I've been trying hard to get away from it... why? Well, for one, they last a couple of years and then die...my 2013 MBP says hi :) I've been having the air... so that might be why they're less sturdy ... I must admit I know a lot of people with very old MPBs (MacPookBro?) that run well still.... And secondly, they're evil.. can't argue this one really ;) So I was almost excited that my macbook died... I would like to add a "third" and say something about the price.. but I'm not sure that'll hold up if I get either of the XPS13 or X1C :) this is why you must become North American first :p haha, indeed... I just checked the lenovo website... the price is literally HALF in the US #ThanksObama
+		* Which OS? linux - probably Arch, great option. I don't know about the lenovo, but probably I will go for it. ok - cheers
+		* Just saw the price, and for the same price you can get the double of memory and screen resolution with the XPS13
+
+Tony:
+	1. Working to synchronise the UL API with the SAI as reviewers update and cull existing records.  Once I figured out the docker.for.mac.localhost "feature", made good use of the docker CouchDB 2.0 image in replicating the live data and testing various update scripts.
+	1. Speaking of which, the main blocker in the stack in updating to CouchDB 2.0 is this sorting bug/feature with couchdb-lucene:   https://github.com/rnewson/couchdb-lucene/issues/248  Will keep track and push forward as the issue is fixed or a workaround is available. 
+	1. Released gpii-json-schema 1.0.3, which adds improved "schema link" handling.
+	1. Working on various pulls, including the code coverage pulls for infusion, windows, and linux. 
+
+Ale:
+	* Focused on onboarding.
+		* Looking for a new member for onboarding.
+		* Planning.
+		* Preparing new demo of simi/sven and others.
+		* Working on current solutions.
+
+Alfredo:
+	* Wrapping up the CouchDB cluster
+	* Collecting Prometheus knowledge
+	* Helping Javi with the E2E tests
+	* Babysitting the ElasticSearch instance
+
+Georgi:
+	* Created a consolidated PR for the first phase of the PSP - YAY!!!!!
+	* GPII-2608: Select preference set (available in the PR)
+	* GPII-2593: Populate menu items and handle interaction with them (available in the PR)
+	* GPII-2610: Display action buttons in PSP and handle actions (available in the PR)
+	* GPII-2629: Research frameworks for native look and feel of UI components (decided to go ahead with Winstrap as its styles had the best resemblance to the Windows 10 components)
+	* GPII-2634: Implement design for UI components (WIP, in a separate branch)
+	* GPII-2642: Changes to PSP buttons (available in GPII-2634 branch)
+	* GPII-2636: Implement additional tests (WIP)
+	* Refactoring and code cleanup
+
+Javi
+	* Been working on config files for our future deployment in AJCs and e2e testing
+	* Reviewed/merged Justin's https://github.com/GPII/universal/pull/553
+	* Reviewed Tony's https://github.com/GPII/linux/pull/94
+	* Been taking a quick look at the survey pop-up document
+	* Will review JJ's https://github.com/GPII/universal/pull/554
+
+JJ
+	* Talked with Ale about GPII-2617. Scripts installations policy fix.
+	* Updating pull request for GPII-2521, and adding several fixes for demos. Simi and Sven.
+	* Finished work with GPII-1053. Brightness support for Windows 10.
+	* Finished work with GPII-2503. Dictionary support for Windows (Wordweb dictionary). Currently blocked until pull request GPII-2106 is finished.
+	* Started moving MiMiC work to new Github repository, thanks to Steve Githens for the new repo.
+	* Finished with some aditional work doc (README) for MiMiC.
+	* Keep evaluating and researching about the future settings for onboarding in the following list: https://docs.google.com/spreadsheets/d/1vhhzs0pLCYPyLDPXpWNVUrwVvTv8IoGhRHsUUiA7gJk/edit#gid=479045385&range=B51.
+
+
+Kavya:
+    - Going through open JIRA issues
+    - Started testing new build on other windows versions
+
+
+Sandra:
+    - Continue to work on detailed planning for next year. I've been updating this document, in case anybody is interested. It's work in progress. https://docs.google.com/document/d/1MhK9FEq2ImjvvNJybITJqNTDvepyeioSBpm-ul2p_WA/edit#
+
+Simon:
+	* Meetings
+	* Updating the Visible Nexus to view the Nexus component root https://issues.gpii.net/browse/GPII-2643
+
+Steve Grundell:
+	* Built-in user listeners: GPII-2294
+		* Got PoC for external listener, works well: https://github.com/stegru/listener-poc
+		* PoC for internal VAIO reader almost works
+		* USB may be problematic
+	* Started working on error messages: https://pad.gpii.net/p/error-conditions-p864nlk
+
+    
+
+
+
+Tyler:
+    * Wrapped up CouchDB EBS volume backup/restore
+    * Starting on monitoring/alerting in the cloud with Prometheus
+
+Yuriy:
+* still working mostly on finalizing requirements
+* pretty much everything is set for the first version of the PSP, just need to wrap up how we should display error dialogs
+
+
+AGENDA:
+
+PSP or windows this week?  Sounds like Windows.
+It's PSP now, and not PCP? "Personal Settings Panel"
+
+Decide the official uniform for all IDRC members since they're not around to vote. Devo hats? Cool with me... https://www.google.dk/search?q=devo+hat&dcr=0&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiYsZmZ_ujWAhXFaVAKHTetAR0Q_AUICigB&biw=1920&bih=969
+

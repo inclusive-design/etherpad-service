@@ -1,0 +1,51 @@
+UPDATES:
+    
+KASPARNET:
+	* Now located in Ireland
+	* Working on sequence diagrams - they are done now
+	* Currently working on text to supplement the diagrams
+	* Still havent finished up the matchmaker, but hoping to do so tomorrow('ish) 
+
+ALE
+* Defining survery with Maureen for AJCs technical details acquisition.
+* Defining Projects Team processes.
+* Finishing SILO (Windows Installer contractor) contract.
+* Enjoying awesome days in Sevilla, pretty sunny!
+
+Alfredo:
+	* Developing Jenkins roles
+	* Other GPII ops issues
+	* At the cloudy part of Seville :-(
+
+ANTVARNISQUE:  (ANTVARNISH) <- Suggestion
+	* reviewing work by tony
+	* helping P4A debugging 
+	* Model relay work and fixing
+	* APCP meetings
+    
+Giovanni:
+	* Diagrams
+	* Working again with InfluxDB and metrics
+
+Javi:
+	* Mostly diagramming, APCP planning, etc
+	* Once diagrams are out of the way, will keep working on the browser extension
+	* As a side note, been supporting Kostas in getting the GPII running on Android - Looks like they would like to use it for P4all
+
+Sandra:
+	* Focusing on preparations to hold kick-off meetings with IBM next week to start the collaboration on topics such as Security, Windows Programming and Architectural Review. 
+
+
+Tony:    
+	* Using my nickname so that I'm always last alphabetically. ;-)
+	* Submitted new gpii-binder package for review (it binds model variables to DOM elements).
+	* Hopefully nearing completion on the review of the JSON Schema validation library, including the new "error binder" that presents validation errors onscreen in real time.
+	* Working through various other pull requests with Antranig, including working on communicating client-side events to the test framework using IPC.
+	* After all that, moving on to:
+		* Sketch out various components to assist in working witih CouchDB coming out of the summit with Antranig.
+		* Refactor the UL API and frontend using all the new techniques and libraries produced as a result of previous PR reviews.
+
+Githens:
+	* Working on the next LGS release
+		* Updating all the devices to windows 10. GPII is still working well, with the exception of the magniifer.
+	* Planning to spend next week looking at the first discrovery and bundling that with LGS

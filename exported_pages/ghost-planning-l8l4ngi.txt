@@ -1,0 +1,32 @@
+CI and CD convergence Meeting - 2016-07-19
+
+Two topics to consider:
+	* Building Docker images using (preferably) existing QI configuration
+	* Deploying containers somewhere, most likely Kubernetes
+
+Examples of how Docker images are created for a Node service:
+	* https://github.com/amatas/GPII-universal/blob/master/gpii/configs/gpii.config.untrusted.development.all.local.json
+	* https://github.com/GPII/first-discovery-server/tree/master/provisioning
+
+Kubernetes - CD
+	* Just like with Vagrant, using a local mini-cluster for Kubernetes will allow developers to use something that is similar/exactly like a production deployment
+		* Community still figuring out best way to make this easier (kube-up, kube-deploy, minikube, kope, etc.)
+		* Virtualization needs to be tackled (Docker for Windows uses Hyper-V, Docker for macOS uses xhyve, we use Virtualbox in our Vagrant workflow --> they can't coexist on the same machine)
+		* Docker for Windows seemed like a huge undertaking for Docker Inc. The Kubernetes community is not going to support k8s running on Windows, unless it's inside a Linux VM (and then it comes with networking challenges). Still doable and it's something the minikube project is trying to achieve. Linux is easier, a mini-k8s cluster can be fully started from Docker containers.
+	* Dev/Test Cluster for Continuous Deployment looks more doable right now
+		* Single datacenter OS: Linux/CentOS, less variation
+		* Not many requirements around high-availability (still being worked on in k8s for critical workloads), so it's not a blocker
+		* Even a single-node cluster will suffice for our current workload (so no need to stress about choice of shared storage / pod network solution, etc)
+		* ConfigSet, Secrets and PetSet API (alpha) can be leveraged
+	* Production clusters
+		* Still a work in progress. GKE (google container engine) uses Kubernetes in production. More work being done for AWS/Azure by the community.
+		* We still need to figure out our requirements, contrains, etc.
+		* Goal is to migrate everything into a k8s cluster (need basic master-master HA, storage HA, pod network overlay tech, external load balancers --> community is working on making nginx/haproxy fully functional Ingress endpoints)
+
+Closest example of Travis configuration for deploying to Kubernetes (based on OpenShift): https://docs.travis-ci.com/user/deployment/openshift
+
+Example of basic k8s configuration that manages deployment of containers: http://kubernetes.io/docs/user-guide/configuring-containers/
+* too complex for end user / developer (need to be further simplified through .qi.yml file a-la Travis)
+
+For the future:
+    * Tony is preparing the first package (ul-website) that would be a good test case for the process.  Should be ready by the time everyone gets back from holidays.

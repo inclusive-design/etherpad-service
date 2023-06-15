@@ -1,0 +1,55 @@
+Agenda:
+    * More backlog estimation (GPII-2009) [tyler]
+    ** Next: GPII-2322 Convert GPII Docker containers to Alpine
+    ** Next time: prioritize backlog. Then determine if we have enough detail to begin sprint planning.
+        * Revised docs covering the Vagrant CI plugin https://github.com/avtar/qi-development-environments/tree/GPII-1865 How much configuration management should be introduced to people using these tools? How much automation should be managed just in the .vagrant.yml file?
+        ** Feedback for Alfredo about GPII-CI plugin
+          * Can we protect developers from running CI with outdated box versions? (can we protect Alan from himself?)
+
+
+
+
+Vagrant CI release mail:
+    
+Hi all,
+
+as some of you have heard the Ops team are working on providing a CI system that makes easier for the developers to test and run their code in several operating systems such Windows and Linux.
+
+Until now our CI uses Virtualbox and the wrapper Vagrant to create the testing environments, which are the "glue" between the tests of the applications and the CI.
+
+Vagrant uses the definition of the VM specified in a file called Vagrantfile[1]. In addition to that we have been using Ansible[2] to provision the Linux based VMs and some Powershell[3] scripts in the case of the Windows VMs. This required storing some additional files in the repository of a project, and sometimes the purpose of them wasn't clear enough.
+
+Another downside of the actual approach is that it is difficult to maintain the environment for only one VM, and it also makes it very difficult to create and support environments with multiples VMs.
+
+Keeping in mind the above we have developed a plugin for Vagrant called Vagrant-GPII-CI[4] that tries to simplify all the files, definitions and commands needed for the testing.
+
+The plugin covers the following features:
+
+- Only use one YML file to define the environment [5]
+- The Vagrantfile is no longer required
+- Multi-VM support, all the VMs are connected among them
+- Windows and Linux support within the same file
+- Separate Vagrant command to execute the stages ( vagrant ci test [--stage STAGE] [vm] )
+- Tagging of stages in order to select the tasks that will be executed in only some VMs
+
+If someone wants to give it a try, we have published some complete CI pipelines using this plugin for some projects [6] with the files needed to use the new approach.
+
+For most of the projects,  the definition of the Gitlab-CI (.gitlab-ci.yml) and the Vagrant-GPII-CI (.vagrant.yml) alone are enough to run the tests with CI.
+
+If you check out a project you will only need the .vagrant.yml at the root of the repository, the plugin, and to exec the following commands to run the tests:
+
+- vagrant up
+- vagrant ci test
+- vagrant destroy
+
+The plugin is in a very early development but the actual features are pretty stable. Any feedback is appreciated. If you want to do so, please reply this email or send a new email to alfredo@raisingthefloor.org, or for a fast response we can talk at IRC as well.
+
+[1] https://github.com/GPII/windows/blob/master/Vagrantfile
+[2] https://github.com/GPII/linux/tree/master/provisioning
+[3] https://github.com/GPII/windows/tree/master/provisioning
+[4] https://github.com/amatas/vagrant-gpii-ci/
+[5] https://github.com/amatas/vagrant-gpii-ci/blob/master/vagrant.yml.template
+[6] https://gitlab.com/GPII-test
+
+-- 
+Alfredo

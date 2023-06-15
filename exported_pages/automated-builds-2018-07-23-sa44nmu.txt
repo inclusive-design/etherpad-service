@@ -1,0 +1,40 @@
+Talk on automated builds - 23rd July 2018
+
+Attendees: Alfredo and Javi
+
+Motivation: https://pad.gpii.net/p/apcp-meeting-2018-07-18-56t4nv7
+
+Workflow:
+	* Every time a pull request is merged or a commit is pushed into the "cloud-one" branch, Jenkins triggers a job that runs the new code through the regular CI process (the same as with PRs). In addition to this, we want to:
+		* Rename the resulting installer by following the same conventions that we are already using when publishing dev versions of universal and windows
+		* When the job is finished, send an email to gpii-commiters and QA. In this email we will also get the link to the job with the installer.
+	* When the dev team agrees that a particular build is ready to be tested a notification will be sent to QA.
+		* At this point, the person who is "producing the release" should create some Release Notes that let QA know what has been introduced (TBD later) 
+	* QA will perform the functional tests using the installer
+	* The QA will generate a report based on the result of those tests
+	* The installer and the report will be published, in order that anyone can download it
+	* If is needed, new tickets in Jira will be opened based on the results of the report
+
+We need:
+	* That the version number gets bumbed in the package.json, this can be done either manually or automatic
+		* manual: the person who pushes to cloud-one increases the version in the package.json
+		* automatic: the person just pushes and CI will update the package.json file according to the version number it needs to have in the way of 0.3.0-dev.20180713T125916Z.3aecce7. This can be done in an npm script and should be the first thing to do before in the jenkins job even before running npm install
+	* A new npm script that renames the resulting installer to the right version, this is, GPII-0.3.0-dev.20180713T125916Z.3aecce7  instead of GPII.180719.072216.msi
+	* A new task in Jenkins that sends an email to inform that the job is finished (even if the result is not ok - this is fine)
+		* Q to Alfredo: How can we trigger the job again (without adding new commits to cloud-one)?
+
+Tasks:
+	1. Create a new branch of the gpii-app repository for Cloud 1 release (cloud-one)
+	1. Create a new Jenkins Job to build the above branch every time a new change is made in cloud-one
+		2. Set the schedule for nightly builds (needs to be evaulated - very optional) (low priority)
+			3. Pin the installer dependencies in order to avoid surprises when a particular package changes (i.e msbuild extension pack) (https://issues.gpii.net/browse/GPII-3219) MUSTHAVE, when this is done, nightly builds probably won't make sense.
+	1. Extract the triggering of the build installers from the Vagrantfile and move it into an npm script
+		* https://github.com/GPII/gpii-app/blob/master/Vagrantfile#L33-L34
+
+To the question, "as a Morphic user, if I want to get the last installer that is available to download, where should I look?". Answer, in this case, all the installers will go into a public location but probably not easy to find for a member outside of our team, so we will put the installers that are production ready in a well known location, i.e.: a google drive folder, linked from get.gpii.net, etc (still TBD, I guess that probably UX might be involved in this decision). In case that a member (let's say from UX or the pilots team) wants to get the last "internal build", even if it's still under QA review, the installers will be available to download from a google drive location/document.
+
+Estimations:
+	* Once Javi is done with changes on gpii-app npm scripts (implementation can be a day-ish task, two days max)
+	* Alfredo can set this up very fast, but let's say that doing the full integration might take one day max (and occasionally, some minor fine tunning over the next few days)
+
+

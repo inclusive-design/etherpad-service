@@ -1,0 +1,27 @@
+Date: Oct 30, 2017
+
+Participants: Antranig, Cindy, Tony
+
+The use of "nock" library: https://github.com/cindyli/universal/blob/GPII-2538/gpii/node_modules/accessRequester/test/AccessRequesterTests.js#L33
+
+Nock: https://github.com/node-nock/nock
+
+Other options:
+	* sinon: http://sinonjs.org/
+		* Doesn't work well with node.js tests
+		* works great with browser tests
+		* https://github.com/sinonjs/sinon/issues/174 - 
+		* Justin's use of it in fluid-publish tests: https://github.com/fluid-project/fluid-publish/blob/master/tests/publishTests.js#L185
+	* mock-socket: https://github.com/thoov/mock-socket
+		* work with mocking up web sockets
+		* doesn't work with http mockup
+
+Requirements to consider at picking a node.js mock library:
+	* be able to mock up http requests
+	* be able to mock up web socket requests
+	* be able to use for browser tests
+	* support for redirects, where an initial request is replied to with a 301 status and the headers indicating the new location, and where a secondary request is presumed to be immediately conducted against the new location.
+
+Next steps:
+	* Write a technology evaluation to explore the strengths and weaknesses of various mockup libraries
+	* Use nock in a more infusion way: 1. set it up at the start of the test sequence or the onCreate of the tested component; 2. tear it down at onDestroy of the tested component

@@ -1,0 +1,60 @@
+19-Jul-2017 call:
+Where does the log need to be placed, so Deep Freeze can keep it?
+- It doesn't matter, the log uploader is "real time"
+
+Will the machines be uniquely identified?
+- Yes, using the installID
+
+The place GPII puts its stuff in can be configured by setting the APPDATA environment variable in the launcher .bat file. GPII_EVENT_LOG can be set to specify the log file name
+
+Steve will provide the step-by-step instructions for Han. 
+https://issues.gpii.net/browse/GPII-2502
+
+Metric JSON sample :
+    
+{
+  "_index": "gpii-2017.07.19",
+  "_type": "log",
+  "_id": "AV1a5pNrTvyF_SdCsFdt",
+  "_version": 1,
+  "_score": 1,
+  "_source": {
+    "@timestamp": "2017-07-19T12:50:17.748Z",
+    "beat": {
+      "hostname": "vagrant-10",
+      "name": "vagrant-10",
+      "version": "5.4.1"
+    },
+    "input_type": "log",
+    "json": {
+      "data": {
+        "exe": "C:\\Program Files (x86)\\GPII\\node.exe"
+      },
+      "event": "app-launch",
+      "installID": "mKg9wMoTx9",
+      "level": "INFO",
+      "module": "metrics",
+      "timestamp": "2017-07-19T12:50:05.126Z"
+    },
+    "offset": 1213,
+    "source": "C:\\Users\\vagrant\\AppData\\Roaming\\gpii\\gpii-2017-07-19T124950.079Z.log",
+    "type": "log"
+  },
+  "fields": {
+    "json.timestamp": [
+      1500468605126
+    ],
+    "@timestamp": [
+      1500468617748
+    ]
+  }
+}
+
+
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: ["6fc09c0895.us-east-1.aws.found.io:9243"]
+  protocol: "https"
+  username: "filebeatuser"
+  password: "filebeatpass"
+  index: "gpii-%{+yyyy.MM.dd}"

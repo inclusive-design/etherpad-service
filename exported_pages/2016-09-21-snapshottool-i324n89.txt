@@ -1,0 +1,83 @@
+"Capture Tool" meeting of 21/09/2016
+Formerly known as the "Snapshotter"
+
+AS A URL!
+
+
+Modern JIRA: https://issues.gpii.net/browse/GPII-1911
+Old JIRA: https://issues.gpii.net/browse/GPII-228
+Old pull request: https://github.com/GPII/universal/pull/224
+
+Architecture list thread:
+
+An Ancient summary of some challenges from the archictecture list, Feb 2014: http://lists.gpii.net/pipermail/architecture/2014-February/001970.html
+Followup from Javi with one possible strategy: http://lists.gpii.net/pipermail/architecture/2014-February/001974.html
+
+In the event, we weaseled out of this by looking at specific wording in the requirements for the C4A pilots. Achieving this properly is one of the several things that
+a production-worthy snapshotter will need to do.
+
+For example, here is (part of) the ORCA solutions registry entry: https://github.com/GPII/universal/blob/master/testData/solutions/linux.json#L369-L386
+
+We have a significant problem with respect to the mismatch between a solution's own attempt to have per-user information and our own user account system.
+For example, the line which reads 
+                    "user": "${{userToken}}"
+is problematic in several respects.
+
+Firstly, in some GPII use cases, the userToken doesn't directly correspond to a user account - it may an opaque token good for just one session. This gives us the task of cleaning up these "junk profiles" once the token is deallocated.
+Secondly, our current proposal for the snapshotter would have us read one profile (the "active profile") and write another (the "userToken" profile). We could just adopt this as a standard practice in any case - if the profile is only ever
+for the use of the GPII system, we may as well clean it up when the session ends just on general principles.
+
+ONE consistent way out of this would be to say that the GPII *only* ever deals with some incarnation of the solution's idea of the "active profile" - both for snapshotting and for writing settings.
+It seems reasonable to expect a tool has such a concept at least when it is running.
+
+If it is not running, or has never run, we might need to prod it into this condition via our "makeConfigurable" actions.
+
+However, this is just one way out of the problem - although it seems the easiest. Other solutions involve setting up some kind of mapping between solution's accounts and GPII accounts - which would involve an entirely new architecture component.
+
+However x2, doing this is only consistent with the approach with adopted so far with respect to the OS. We've so far positioned the GPII purely as a "userland process" which implies it deals with whatever user session is currently logged in to the OS.
+In future we will need to do more, but this involves a lot of ambitious architectural work. In the meantime, saying for solutions/tools that "we will only deal with the active profile" is consistent with the approach we adopt towards the builtin solutions in the OS.
+
+
+ACTION AB: Write up JIRA summarising that for all solutions and all settings handlers, where the solution permits multiple profiles, we only address the active profile. This JIRA will be assigned to Javi since ORCA will be the first incarnation of it, but we
+expect a JAWS incarnation too.
+DONE: Written up as https://issues.gpii.net/browse/GPII-2046
+
+There are a few principal "user stories" for the snapshotter.
+
+Firstly, as a form of "onboarding" - they've used a favorite tool for some time, have it configured the way they want, and then want to import that into a GPII preferences set.
+
+Secondly, as a more long-term way of working with profiles. They may prefer to use a solution's own UI for setting settings rather than a preferences tool, and may wish this to be synchronised into a prefs set at any time.
+
+
+CHALLENGE: there is no implementation of "get relevant all settings" methods in each of the settingshandlers. And it is unclear what constitutes relevant settings (for settings in files, this might be straight forward.. It becomes less so when dealing with eg. the windows solution registry.
+
+A way of stating this challenge is in terms of the mismatch between i) the settings which we know how to set via a GPII UI, and ii) the space of relevant settings which a user may configure themselves using a solution's own UI.
+
+Q: Was it primarily ORCA that reminded Kaspar of this challenge during the original impl?
+
+A: Looks like it was the Windows Registry - for example, the magnifier - there is a registry key correponding to this app but it has all kinds of irrelevant child nodes. Some of them may even be dangerous to try to restore.
+BUT - what are examples of settings that lie outside our prefs transforms that nonetheless might usefully be snapshotted?
+Well, currently we just accept arbitrary application-specific terms that we just pass on to the solution. There is no schema for these, and so we could have no idea what to snapshot.
+Another issue coming up is the "multiple settings handler" problem - when a solution supports multiple settings handlers, without this work:
+https://issues.gpii.net/browse/GPII-1891
+https://issues.gpii.net/browse/GPII-1223
+
+https://github.com/GPII/universal/pull/471
+
+ACTION AB: Give feedback on this pull to position it as preparing for this snapshotter work.
+DONE
+
+we would have no idea which settings handler needs to receive particular application-specific prefs.
+
+This is a good place to leave space for encoding schematic information such as default values, JSON schema type, and leave further yet room for expansion.
+It looks like we can encode the default value within the JSON schema block itself: http://json-schema.org/latest/json-schema-validation.html#anchor101
+
+CHALLENGE: What about things like "default setting values" - should we only record the non-default valued settings, or record everything.
+
+An important architectural goal is to only record *user intentions* - that is, where a value differs from a default as a result of an explicit user action. This requires architectural and UI work which we have so far not done.
+Relevant, spuriously closed JIRA: https://issues.fluidproject.org/browse/FLUID-4686
+
+Snapshotting raises the stakes for this since it would be hard to determine what values we find in the tool's persistence really do correspond to values the user explicitly changed - without, perhaps, hugely more info in the
+solutions registry again..
+
+

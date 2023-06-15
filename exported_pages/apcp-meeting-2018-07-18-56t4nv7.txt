@@ -1,0 +1,28 @@
+It would be great if there was an automated build of master.
+
+We need a way for a user (like Gregg) to identify the build they are using, to aid in creating meaningful bug reports.
+
+Cloud One Installer and Builds
+	1. We need to create our "release integration branch" asap
+	1. We need a simplest possible way that someone can find "the latest (proposed) version(s) of the next release"
+		2. for QA testing
+		2. for demonstration and acceptance testing
+	1. 
+
+Change process
+	1. Developer tests, thinks their stuff is awesome, makes PR
+	1. Our existing CI process (thanks Alfredo) will automatically build the PR, and the installer artefact will be available for download
+	1. Kayva or other tests can take the installer for each PR, test it, and verify it—and comment accordingly on the PR
+	1. Reviewer reviews and merges
+		2. What happens now?
+			3. A manual process: the person who pushes a change to the release branch will post the resulting installer - to..?
+				4. for now, this is going to be our working process
+			3. An automated webhook process: when code gets pushed to the release branch, the installer will be built and posted to our website
+				4. javi will estimate how long this implementation will take
+
+
+
+https://help.github.com/articles/creating-releases/
+For automation: https://developer.github.com/v3/repos/releases/#create-a-release
+
+

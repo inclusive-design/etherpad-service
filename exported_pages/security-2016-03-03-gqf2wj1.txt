@@ -1,0 +1,45 @@
+Attendees
+
+	* Adewale
+	* Cindy
+	* Dipesh
+	* Gio
+	* Katy
+	* Sandra
+	* Simon
+
+Agenda
+
+	* OAuth 2
+	* HTTPS termination
+	* Next steps
+
+OAuth 2
+
+	* User access to GPII
+	* Use of OAuth 2 for access for user/admin roles
+	* Defining roles
+	* Mechanisms
+
+For Wednesday, next week we will have preference sets and payload snapshots.
+
+Could the Device Reporter expose unintended data to the Cloud Based Flow Manager?
+
+Email with summary of GPII security resources:
+
+http://lists.gpii.net/pipermail/architecture/2016-March/003873.html
+
+Presentation from November 2015:
+
+https://wiki.gpii.net/images/7/7b/GPII_Security_November_2015.pdf
+
+Next steps
+
+	* HTTPS termination
+	* Encryption of storage and in transit
+	* oauth2orize and passport
+	* For next Wednesday, we will have payloads
+	* Determine authentication mechanisms
+	* Different levels of privacy levels
+	* Access rights and role-based authentication
+

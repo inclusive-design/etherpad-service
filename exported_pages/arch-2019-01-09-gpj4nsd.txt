@@ -1,0 +1,135 @@
+GPII Architecture Meeting Minutes, January 9, 2019.
+
+UPDATES:
+
+Javi
+	* Back to business after 20 degrees celsius holidays in Spain :) - now 5 :(
+	* Working to get 1.0.1 out of the way ASAP
+	* Will start early testing of 1.1 if there's time for it
+
+Alfredo
+	* GPII-2802 - Determine Least Privileges
+		* Remove unused permissions
+		* Refactoring some TF and Ruby code
+
+Bryan
+	* GPII-3596 refactoring appZoom into smaller methods
+	* Writing tests
+	* PR expected today
+
+Cindy
+	* Pull requests ready for reviews:
+		* GPII-3584: https://github.com/GPII/universal/pull/719
+		* GPII-3424: https://github.com/GPII/universal/pull/722
+	* GPII-3594: Replace the dynamic session component in the lifecycle manager with standard sub-components
+		* Getting close
+
+JJ
+	* Submited pulls for Narrator:
+		*  https://github.com/GPII/windows/pull/231
+		* https://github.com/GPII/universal/pull/622
+	* Submited pull for OSK: 
+		* https://github.com/GPII/windows/pull/233
+		* https://github.com/GPII/universal/pull/726
+
+Joseph
+	* Back from vacation since Monday
+	* Working on production tests of cloud based flowmanager endpoints
+		* GPII-3333 (https://issues.gpii.net/browse/GPII-3333)
+		* PR https://github.com/GPII/universal/pull/718
+		* Working on sharing already defined development tests, but using them in a production configuration, namely "get settings" and "set settings" tests.
+		* "Get settings" mostly working
+		* "Set settings" ongoing
+		* Dealing with an issue:  the development testdefs include crendentials and user key/prefs that don't exist in the base production environment.
+			* Using snapsets for the "get settings" tests.
+			* Pondering what to do for the "set settings" tests (there are no 'user' preferences at this stage).
+
+Justin:
+	* Will be away for parental leave starting Jan 21
+	* Open PRs:
+		* https://github.com/fluid-project/infusion-docs/pull/142
+
+
+Kavya:
+	* Back from vacation
+	* Done Test plan for Early windows testing
+		* https://docs.google.com/document/d/1cALIVuUWkBMxndTRDO4t0UPFUIPwcHz5oJxGZrPGt-o/edit
+	* Started first Early windows testing on Sony vaio
+
+Sandra:
+    - Continued focus on Morphic 1.0.1. Couple of PR reviews pending. 
+    - Reviewing and updating the Timeline with Gregg: https://docs.google.com/document/d/1bKqGA23KploQNN_TBzwziSUF40vVLs7NOEHFAYGoIFQ/edit#
+    - Next big deliverable: MyMorphic Sign-in proposal. 
+
+Sergey
+	- SCAP scanner
+	- Number of fixes for Stackdriver client
+
+Stepan
+	- Intra-cluster traffic encryption - Istio (GPII-3347)
+	
+Steven Githens:
+    - Capture Tool
+
+Steve Grundell:
+    - Bug fixes to language and wallpaper/high-contrast
+    - Experimental speed/size improvements to installer
+    - Blew some dust of the windows service
+    - Currently on
+	    the hide/show metrics switch (GPII-3572)
+		Automatic key-in (GPII-3496)
+    
+
+Tony:
+
+	1. Started the major effort of replacing gpii-pouchdb in universal with the new gpii-couchdb-test-harness.  Required before we can safely merge further large onboarding pulls such as MAGic, JAWS 2019, NVDA, et cetera.
+	1. As part of this, I am replacing various outdated test sequence munging strategies with sequence elements and sequence grades: https://docs.fluidproject.org/infusion/development/IoCTestingFramework.html#example-of-sequence-building-using-sequencegrade
+
+Tyler
+* Wrapped up performance investigation. Summary of my findings here: https://issues.gpii.net/browse/GPII-3394?focusedCommentId=36605&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-36605
+* Next: moving developers from AWS to GCP
+
+
+
+AGENDA:
+    
+Updates on:
+    
+- Migration to GCP (Javi?)
+	- GPII-3588 - Update Morphic to point to CBFM in gcp-prd
+	- GPII-3589 - Migrate production user data from aws-prd to gcp-prd
+	- Should be happening by the end of this week
+	
+- Liveness/readiness checks progress: (Joseph?/Alf)
+	- GPII-3432 - Add liveness / readiness checks to preferences, flowmanager deployments
+	  (added JIRA linek from GPII-3432 to GPII-3551)
+	- (Joseph:) Bug fixes for /ready and /health flowmanager/preferences/couchdb endpoints were pushed to master in Dec
+		- GPII-3551 pull request https://github.com/GPII/universal/pull/713
+		- the tests are run in a development configuration
+		- https://preferences.prd.gcp.gpii.net/ready is returning an error even though preferences seems healthy. So it doesn't seem that the /ready endpoint is ready for use.
+		- https://flowmanager.prd.gcp.gpii.net/ready
+		- https://issues.gpii.net/browse/GPII-3551
+		* How did these items get marked finished if they're not working in the cloud in production?
+			* Maybe it worked in local Docker-based dev? Maybe it worked in production config tests?
+		
+	- GPII-3333 is for running analogous tests in a production configuration
+		- tests for /health, /ready, /access_token, /%gpiiKey/settings/%device, and /%gpiiKey/settings working, but only using snapsets
+		- https://issues.gpii.net/browse/GPII-3333
+	
+- Also leaked creds in logs: (Antranig?)
+	- GPII-3309 - Flowmanager and Preferences logs leak credentials
+	
+- Start planning the implementation of  "Best idea" proposal: Antranig is out today. Will schedule a separate meeting. 
+	1. Secret (installation secret )
+	1. Hash the UserName
+	1. Limit where it can come from  (DOMAIN of NOVA)
+	1. Limit how much can be saved before we ask for authentication
+		2.  See above for limitations
+	1. Validate data against the Solutions REgistry
+
+Demo of Capture Tool Progress
+	- https://vjv8j9.axshare.com/#g=1&p=capture_tool
+	- https://docs.google.com/document/d/1mAP3sZYVV1extBQ3f3HwEPgb3K-S7PFn5BNBBH2aFRo
+
+
+

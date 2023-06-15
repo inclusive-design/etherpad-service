@@ -1,0 +1,49 @@
+Work for remaining time on P4A:
+
+We would like to clean up the existing Nexus protocol, in light of the following problems
+
+	* In case the current value of a model is undefined, on connection, we can't validly encode this as a JSON message
+	* We can't multiplex together changes from more than one component source - this became a clear problem when working on the "visible Nexus" where we want to subscribe to every component in the tree simultaneously, and needed an entirely new endpoint for this
+	* We would like to explicitly encode all current messages as 'type: "modelChanged"' to leave the possibility of multiplexing other kinds of messages without hogging the same WebSockets bus
+
+This would create a "v2" Nexus protocol and we can update all clients and demos to match.
+Unfortunately this creates no useful user-visible features and is a poor candidate for showing anything off for P4A.
+
+	* Visible Nexus
+		* Show data (model relay) relationships
+		* UX for this is challenging as well as the actual implementation
+			* How can we avoid the graph becoming hopelessly cluttered as we try to superimpose two essentially unrelated hierarchies/graphs onto the same space
+	* Dealing with streams in the Nexus/ChangeApplier (perhaps too ambitious for P4A)
+		* Right now the Nexus has no conception of a "historical state" of a stream
+			* Relay rules can only operate on the "here and now", assuming the stream has already been integrated to a model/"behaviour"
+		* We have "back of the envelope" proposals for enriching our vocabulary of ChangeApplier messages to incorporate insertion and deletion from streams/arrays
+		* We could then model arbitrary streams as being integrated to a 0 or 1-element buffer which receives INSERT/DELETE messages in sync
+		* We then need to enrich our space of modelRelay primitives to start to be able to usefully encode "rules with history"
+			* Currently these are done "ad hoc" by misusing back-to-back modelListeners
+			* c.f. PETTRICHECK's "Coeffects playground" which features a "simple dataflow language" which he just invented ad hoc to be reasoned about by his type system
+				* http://tomasp.net/coeffects/
+				* Look at the panel labelled "Experiment with dataflow programming here" - "prev e accesses the previous value of e"
+				* Try it out in the example labelled "Write simple dataflow computations"
+				* We need some kind of declarative encoding of such things possible in relay rules
+					* Is "prev" as much as we need? Do we need to introduce explicit ways of thinking about time, separate simply from sequence? Do we need "next" as well?
+
+Do a heuristic evaluation of the Visible Nexus to identify usibility issues and features that we could like to add.
+Perhaps Simon and Sepideh. Pick a task and work through the task, identifying issues and opportunities.
+https://wiki.fluidproject.org/display/fluid/Heuristic+Evaluation
+https://wiki.fluidproject.org/display/fluid/User+Experience+Walkthroughs
+
+Notes from yesterday's meeting on MyL3, SJRK, and Nexus:
+
+https://pad.gpii.net/p/myl3-nexus-sjrk-qk1i4nc2
+
+Early integration likely to be a body tracker:
+	* Sleep, heartrate, and such
+
+APCP Dashboard:
+	* MyL3 and use of GPII preferences
+
+SJRK:
+	* Likely to begin with community tracked data (for example grassroots tracking of 'carding' stats)
+
+ALERT CAT
+

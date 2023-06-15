@@ -1,0 +1,24 @@
+OpenID Connect
+	* Core spec: http://openid.net/specs/openid-connect-core-1_0.html
+	* Work flow: http://openid.net/specs/openid-connect-core-1_0.html#rfc.section.1.3
+		* Does 2 things: 1. authenticate users; 2. authorize OpenID clients (apps) to access part of all users' profile/account information
+		* Applications (Unified listing etc) don't have their own signup, login pages. They all share ones on the OpenID provider
+	* Compare the authorization code flow in OpenID requests and regular OAuth2 requests
+		* The first request to OpenID provider has a parameter "scope". It must contain a value "openid". The regular OAuth2 in-requests don't need this parameter. This parameter can be used to distinguish whether the request is a OpenID request or a regular OAuth2 request. The "scope" has other values to indicate what user information that this client is interested to get user's permission.
+		* The last response from OpenID provider contains a JWT (JSON web token) named "id_token". Once decoded, it turns into a JSON object that has a "sub" element. Its value is the unique user identifier in OP. It will never change across any OP clients.
+
+IAM developed by SILO: https://wiki.gpii.net/images/e/eb/Integrate_IAM_with_your_app_v1.2_web.compressed.pdf
+	* Developed using OpenID 2.0: https://openid.net/specs/openid-authentication-2_0.html#requesting_authentication
+		* Without "scope" parameter in the request. "Scope" is hardcoded
+	* Why manage an application specific "role" in IAM? Is it because that's the only user-dependent information that applications need to store
+	* New users need to register in an application and select a role
+		* If not registered, cannot use that application?
+
+GPII use cases: https://pad.gpii.net/p/iam-requirements-nov-3-2016-e794n9q
+
+TODO for extending our current authorization server with authentication
+	* End users: signup and manage account information - each end user needs to have an account with OP
+	* OP clients (apps): signup and manage their information. Generate client ids and secrets
+	* Be able to distinguish OpenID and OAuth2 requests/access tokens
+		* OpenID access tokens need to be associated with "scope"s that tokens have permissions to access
+

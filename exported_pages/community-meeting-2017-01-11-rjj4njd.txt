@@ -1,0 +1,51 @@
+GSoC 2017 Ideas:
+    
+    
+	* Game to teach keyboard shortcuts
+		* http://ss64.com/osx/syntax-keyboard.html
+		* https://support.microsoft.com/en-ca/help/12445/windows-keyboard-shortcuts
+		* perhaps a tool to teach digital literacty
+	* Automate a11y tests for Infusion using gpii-webdriver
+		* Some of the groundwork will be in place via https://issues.gpii.net/browse/GPII-2205
+	* interactive accessible multi-colour palette tool 
+		* https://www.dropbox.com/s/6eqqrjlwi7aob8i/Colour%20palettes%20.pdf?dl=0
+		* Accessible colour palettes that have more than two colours (most current ones only have two)
+		* This could be a useful widget to be able to connect to projects like Chart Authoring ("choose accessible palette")
+		* could add colours as desired
+		* Export to CSS / Stylus / swatches, etc.
+		* Include a contrast mode for monochrome themes
+	* AChecker
+		* Upgrade AChecker to work with the latest PHP version - http://www.atutor.ca/atutor/mantis/view.php?id=5547
+		* Choose a PHP test framework and add a test suite for AChecker
+		* A bug fix - http://www.atutor.ca/atutor/mantis/view.php?id=5726 (small one)
+	* Video player? does this need work?
+		* see "Video Player" section https://wiki.fluidproject.org/display/fluid/Post+Infusion+2.0+Review+Meeting+Notes
+	* WCAG Game
+		* Learn each principle beyond just accessibiliy - how WCAG can help make for better designs in general.
+		* i.e. How the "Understandable" principle is a good design principle, not just for accessibility.
+	* Interactive "Flowers and Petals" Inclusive Design tool
+		* define petals
+		* print off an empty template
+		* web-based for collaborations
+	* Inclusive design guide adaptations:
+		* features to allow adaptations of the Guide for different audiences
+		* allow a user to pick and choose cards to adapt or print
+		* student can even create an adaptation if there's time.
+	* Game to teach about privacy concepts? This could extend from current privacy work and wireframes
+	* Responsive program that observes what you are doing on the computer and gives you hints -- digital literacy
+		* something related, but smaller scale could be things like the "mini assessments" for sticky keys and etc in the first discovery tool
+	* Poetry Map a11y
+		* https://torontopoetry.ca/
+		* build accessible mapping components for infusion
+	* Sonification prototyping tool
+		* quickly share, iterate, and collaborate on sonfications of data
+	* Something related to Math accessibility?
+	* Accessible business way finding tool
+		* integrate AXS maps and Google reviews 
+		* Sort of like: http://tech.aph.org/ne_info.htm
+		* Aggregate accessibility venue data.
+	* Expansion of the first discovery tool into a game -- targeted for the Oak project populations
+	* Remote co-design tools
+		* Multiplexing audio streams (so a remote user can hear another participant's screen reader and mic)
+		* Maybe even a list of tools and practices a co-design newbie can follow to use it
+		* 

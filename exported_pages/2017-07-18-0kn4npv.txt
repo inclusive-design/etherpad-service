@@ -1,0 +1,29 @@
+# GPII Infrastructure Meeting - 2017-07-18
+
+
+
+Agenda Items:
+	1. Update from last sprint.
+	1. Retrospective.
+	1. Planning for Sprint 6.
+	1. Based on a team velocity of around 16 points per sprint (to which y'all agreed), I looked at the backlog and there are currently 88 points worth of work, but some JIRAs do not have an estimate. 88 / 16 = 5.5 sprints x 3 weeks per sprint = 16.5 calendar weeks of work, which puts us around November. I'd like to discuss should the team take time to re-review the backlog and update the points if needed. 
+	1. Is there a way to get a report of all of the JIRAs merged per week every week?
+
+6. * vagrant-plugin vs. Vagrantfile and GPII/universal vs. GitLab
+
+7. * Metrics tests, should I use the HST branch for the tests?
+
+Notes:
+    1. Update from Sprint 5. GPII-2390 (Metrics) still pending. Alfredo needs to test Steve's latest code, he has been blocked. GPII-2470 pending, Gio had to work on dependencies. GPII-2464, not able to work on it this Sprint. GPII-2412, needs additional work, agreed to close this and open a new one. Alfredo worked on a couple of other JIRAs:  GPII-2476, GPII-2405, GPII-2344
+    
+    2. Should we add the additional JIRAs worked during the Sprint period after the planning session? Team seems to be in agreement. 
+    
+    3. :
+        2390 moved to Sprint 6
+        2470 and 2464 moved to Sprint 6
+        New subtask under 2412. 
+        
+    4. Re-review the Backlog on 31-Jul-2017.
+    5. Tyler out next week. Giovanni out July 24-28. Alfredo out also sometime in the next few weeks.
+    
+    

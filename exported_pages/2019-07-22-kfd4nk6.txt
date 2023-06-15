@@ -1,0 +1,13 @@
+1. Anything to demo this week?
+	* Tyler can demo binauth
+	* Stepan thinks the couchdb UI stuff will be merged by Wednesday, and will be a short demo, but can wait a week depending on time available
+	* Sandra says we are still doing Jira reviews, so suggests doing demos as part of Arch Weekly
+	* Sergey can demo Tracing one more time, but Sergey is out this Wed, so maybe next week?
+2. Review key metrics
+	* Why did preferences response times go down dramatically around Jun 24. Why?
+		* Not when we changed to internal-only preferences locust tests
+	* Small change in network traffic around Jul 16. Maybe related to ingress change (nginx -> istio)?
+	* Why did prd have both a deleted and a created istio-ingress?
+	* prd Trace data was not exactly as we expected. Are we getting everything? Istio traffic confusing us vs "real" traffic and locust test traffic?
+	* Total time: 20 minutes
+

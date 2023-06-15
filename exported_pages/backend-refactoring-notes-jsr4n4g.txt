@@ -1,0 +1,9 @@
+	* Create a GitHub repo validator middleware that can be used for commits or contributors requests
+	* New component for constructing common response layout -- two properties, one summary, one events
+
+Use kettle dataSource to send a request and receive a response: https://github.com/GPII/first-discovery-server/blob/master/src/js/preferencesRouter.js
+
+Questions:
+1. should kettle dataSource(kettle.dataSource.URL) be used to send requests to the remote github for fetching results?
+2. If kettle dataSource needs to be used, shall the entire backend use kettle? or the backend uses gpii.express but the handling for sending github requests uses kettle dataSource
+

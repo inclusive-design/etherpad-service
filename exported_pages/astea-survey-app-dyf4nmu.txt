@@ -1,0 +1,29 @@
+Survey server
+----------------
+
+Q what kind of application do we want to serve?
+A a simple node app with a simple websockets server
+
+A it's a custom app made by ASTEA
+
+Q Can we have this in a git repo?
+A sure https://github.com/danailbd/gpii-app/blob/feature/survey_manager/src/main/surveys/surveyServer.js <- this is the current server that we use. We'll probably extract it to a dedicated repo, that we'll create
+
+Q what kind of data are we going to handle?
+A The data will be static data, payloads, etc
+
+
+Astea will provision the VM and will make the backups as needed
+
+https://aws.amazon.com/ec2/instance-types/
+
+for example: surveyserver.gpii.net (perhaps it can change, ASTEA will send the final name by email)
+
+Date to be ready: ASAP ¬¬
+
+Specs of the VM:
+    
+    - t2.nano
+    - Ubuntu
+    - (we need the TCP/UDP ports for security)
+    - (we need the SSH public for login)

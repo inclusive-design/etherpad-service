@@ -1,0 +1,26 @@
+May 5, 2020
+
+JAWS Onboarding Stuff
+
+we started looking at the Jaws pull request and it includes a lot of settings that was previously not implemented due to one or more of:
+	* Not knowing what the value range is (e.g. integers where we're unaware of min and max, strings that we dont know values of, etc)
+	* Not knowing the defaults
+	* The settings are obscure
+
+These things are all issues wrt to the capture tool and in consideration of which and how to restore them.
+
+There are some important features in JJs branch that are important for the capture functionality, such as finding an reading the active profile used in jaws (using the settings there).
+
+
+We will comment out settings from JJ's JAWS pulls that:
+    a) Do not have default values
+    b) Do not have reasonable bounds for their value space.
+    
+This will be to ensure that - AKA plan of action:
+	* Tony will submit a small PR against githens branch (which will add a validation tweak which will highlight the settings that fails the above requirements) - https://github.com/sgithens/universal/pull/3
+	* Hens can see the failed settings by running this: https://github.com/GPII/universal/blob/e603edca362df591f76445d8d2b0406b81ca7c74/gpii/node_modules/solutionsRegistry/test/SolutionsRegistryFileTests.js#L1
+	* Hens will remove the settings in question and update his PR 
+
+
+
+https://github.com/GPII/universal/blob/e603edca362df591f76445d8d2b0406b81ca7c74/gpii/node_modules/solutionsRegistry/test/SolutionsRegistryFileTests.js#L1

@@ -1,0 +1,96 @@
+Meeting on upcoming implementation of Infusion
+
+Pull request at https://github.com/fluid-project/infusion/pull/824
+JIRA at https://issues.fluidproject.org/browse/FLUID-6148
+Paper at https://github.com/amb26/papers/blob/master/ppig-2016a/ppig2016a.pdf
+Docs pull at https://github.com/fluid-project/infusion-docs/pull/136
+
+Other JIRAs:
+    
+https://issues.fluidproject.org/browse/FLUID-6146 Mutual reference between createOnEvent components
+https://issues.fluidproject.org/browse/FLUID-6147 Transactional units for component creation
+https://issues.fluidproject.org/browse/FLUID-4925 "wave of explosions"
+https://issues.fluidproject.org/browse/FLUID-5519 Problematic timing of model init transaction
+https://issues.fluidproject.org/browse/FLUID-5614 "double deep trees" (in progress)
+https://issues.fluidproject.org/browse/FLUID-6145 Make component options immutable (not quite yet)
+
+The bottom line:
+    
+	* Everyday users of the framework should notice no change
+	* In terms of documented, stable features, this release is 100% compatible with the old one
+	* There are several subtleties relating to inspection of subcomponents
+		* No longer suitable to introspect on options.components
+		* Look at the actual components themselves
+			* fluid.visitComponentChildren has existed in the old and new frameworks, and is a backwards-compatible way of doing this introspection
+			* We need to get a small docs pull to document this
+	* Enables numerous important upcoming use cases
+		* The "new renderer" https://issues.fluidproject.org/browse/FLUID-4260
+		* A more stable Nexus that can back out messages that result in failure
+		* Validation of component options before they can have side-effects
+		* New "speculative execution" within the upcoming super-powerful Infusion authoring UI
+		* Others
+
+There are some new supported component options, that allow authors of "mini-frameworks" to contribute new "workflow functions".
+
+Example from the docs (and the implementation)
+    
+    fluid.defaults("fluid.component", {
+// ...
+        workflows: {
+            local: {
+                concludeComponentObservation: {
+                    funcName: "fluid.concludeComponentObservation",
+                    priority: "first"
+                },
+                concludeComponentInit: {
+                    funcName: "fluid.concludeComponentInit",
+                    priority: "last"
+                }
+            }
+        }
+    });
+    
+    
+Discussion and questions:
+
+Alan: Will existing users of dynamic components be disturbed?
+A: Generally not, no. There will be a small subtlety in that the creation of all dynamic components which are intended to be created on the back of the same event is deferred to a later point in the firing of the event.
+You can still depend that all components which were due to be created from the same createOnEvent event will be fully constructed once that listener has fully finished firing.
+
+
+What we don't have yet: Asynchrony during construction, but we will have it soon.
+
+"Wave of promises": https://issues.fluidproject.org/browse/FLUID-4982
+The bulk of the work needed to implement this has been done, but it will cause great upheaval and violation of assumptions if one can no longer depend that code like
+
+    var that = fluid.createSomething();
+    that.doSomething()
+
+can work.
+
+Roadmap from here:
+    
+    i) immutable options - FLUID-6147
+    ii) sketch work on the "new renderer" (yay!!! this will make justin's day)+1
+    iii) asynchrony with FLUID-4982
+    iv) the "infusion compiler" that makes this stuff actually performant and usable
+    
+Tidyups:
+    a) abolition of FluidRequests.js
+    b) abolition of the "old renderer"
+    
+v)-ish - replacement for dynamicComponents which will allow subcomponents to be "imaged into existence" based on model material
+
+Renaming of fluid.defaults
+
+Yes it is on the cards, but there is a problem with the obvious front-runner, fluid.define in that it is not very "noun-y", such that in a REST-like endpoint named /nexus/Xxxxxs we would want to name Xxxxx after a noun rather than a verb.
+This leaves "grade" as our obvious noun but this name has never been so great either.
+In theory we would name a new noun Xxxxx that would replace both "gradeNames" as "parentXxxxx" and also fluid.Xxxxxx in the same step.
+
+Will we do a full release now or soon?
+
+In theory yes, but since it consumes so much community resources this time might be better spent on improving fluid-publish so that we can make future releases in a more fine-grained way from a mono-repo.
+
+
+
+

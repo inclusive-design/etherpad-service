@@ -1,0 +1,116 @@
+UDPATES:
+
+Kasparnet:
+	* Mostly just struggling with the damned gpii-app provisioner.. Things are now installing properly, etc. BUT there are two remaining issues:
+		* Universal fails with a weird "FATAL ERROR: Uncaught exception: string.indexOf is not a function" from FluidIoC
+		* Electron test script is not properly exiting after tests are done running
+	* Doing the MM work on the side
+	* Some meetings on the MM (https://pad.gpii.net/p/201612-washington-f2f-effectology-mockup-1z1h4n35 )  and PCP API
+
+Alfredo:
+	* Wrapping up some JIRA issues listed in the GHOsT items
+	* Mettings
+	* Rebuilding windows vbox images because the license is expired. "slmgr /rearm" can workaround this issue (thanks Stegru!)
+
+Antranig
+	* Logging for Hardware Sensitivity Testing (review and impl)
+	* Meeting about HST in general
+	* Review for gpii app
+	* Documentation updates
+	* Workings on beginnings of new markup renderer/parser to support P4A deliverables
+
+Avtar:
+	* Working on GPII-2205, going through webdriver docs and using gpii-json-schema and gpii-location-bar-relay as examples
+	* Will address Javi's feedback on GPII-1833 today
+
+Cindy
+	* Reasearch on approaches to protect the communication btw LFM and CBFM
+		* Learning the last approach on my list of using Yubikeys
+	* Worked with Michelle on gpii-app
+	* Issued a gpii pull request to add a GPII customization example back to the universal repo - https://github.com/GPII/universal/pull/496
+	* Review of infusion pull requests
+
+Colin
+	* Helping corral the HST release with Sandra
+	* Planning for some training for our team
+	* Working with Sandra to help clarify scope for the Pilot Stage 1 release (our next big milestone after HST)
+
+Giovanni:
+	* Testing Alfredo's modsecurity PR
+	* Testing latest CentOS bug/security updates
+	* Updates to VirtualBox (5.1.14) and Jenkins
+
+Javi
+	* Working on the PCP API - Refactoring a few things before keep going with the real implementation
+	* Had a nice discussion with Kasper about the PCP API
+	* I'd say that GPII-1839 is almost ready but would like to confirm how do we want to run Acceptance/Integration tests - WIll comment on the JIRA/pr and ask for feedback
+	* I'll promise to do some pr review - Also, will update of my pull requests
+
+Joseph
+	* Matchmaker meeting last week (Thu).
+	* GPII-442:  Working on removing the static ProcessReporter and adding unit tests for the dynamic ProcessReporter.
+	* GPII-1839 Dynamic Device Reporter for acceptance testing.
+		* took quick look at Javi's pull requests, but want to look closer.
+	* FLUID-6090: Modelize the StateTracker component
+		* reading infustion documentation.
+		* will switch to Alan's infusion tutorial (and give him feedback).
+
+kavya
+	* Issues with Setting up framework with sikuli
+	* Working with whitney sandra and Han on HST
+	* https://issues.gpii.net/browse/GPII-2229 is Done.
+	* Following up with whitney and waiting for her response for " Write user instructions for GPII-2229 and GPII-2230"
+
+Michelle:
+	* GPII-1596 branch https://github.com/michelled/gpii-app/tree/GPII-1596
+		* is now responding to events from the GPII (started, session start, session stop)
+		* is logging to a file
+		* currently working on pull request review comments
+
+Sandra:
+	* Lot of time in meetings and follow-ups on tasks to support HW sensitivity testing. https://issues.gpii.net/issues/?filter=13300
+	* Updated the proposed content of Core 2 release, the one to support the Pilot Stage 1 in September. Targeting items that can or should be completed by mid-May to allow testing. https://docs.google.com/document/d/1ntH1WHfCATjVk9wb8Qeb7Y7p56RhwtSV4L832wdSMZ0/edit
+
+Ste grundell
+	* Implemented Narrator for windows 10 - GPII-2053
+		* Works slightly differently for windows 7, so GPII-2049 (differentiate between different windows versions) is needed.
+		* just need to check windows 8
+	* Various HST things, including:
+		* Logging debug info (GPII-2197)
+		* Started the multiple instance detection (GPII-2235)
+	* 
+Han
+	* GPII-2199/2202/2232/2239/2240: working on it
+	* Prepare meeting for GPII-2232 (Determine how/where to collect everything required for HW sensitivity testing)
+	* Prepare meeting with possible first pilot location's tech people and Maureen
+
+Tony:
+	* Still working on the UL Image API.
+	* Just finished a modernized set of sync scripts to bring in data (image and product records) from EASTIN and the SAI.
+	* Moving on to writing front-end handlebars templates and components tomorrow.
+	* Reviewed Alan's excellent effort to write an up-to-date intro tutorial.
+
+Tyler:
+    * Onboarding / reading / conversations
+    * Outsider feedback on QI for Avtar
+    * Finding my way around IDRC datacentre
+    * Next: start playing with Terraform
+
+
+
+AGENDA:
+
+PCP API - https://docs.google.com/document/d/1b4wN60cRjSZcR7cTJjIhrYrhkghg24wbKyQCYa-TEhM/edit
+	* Javi will put this document into the wiki
+	* People will comment on the proposal/draft of the PCP API
+
+Suggestions for topics for scalability and performance workshop/training 
+* Use of JavaScript/Node.js/Chrome debugging and profiling tools for tracing bottlenecks and hotspots in code
+* Modern strategies for scaling and clustering CouchDB
+* Node.js/microservices-based security techniques
+* Operational concerns for scaling node.js SOA - what tools did you use? what problems did you encounter? how did you do logging and metrics and graphing and alerting?
+* Strategies for shipping and maintaining Electron-based desktop apps
+* Maybe ideas from Node.js Performance Workshop - https://nodesource.com/resources/presskit/services/training/nodesource_training-performance_datasheet.pdf
+  * or this workshop itself? :)
+* strategies for automated performance testing
+  

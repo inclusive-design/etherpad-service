@@ -1,0 +1,24 @@
+1. Anything to demo this week?
+	* No.
+	* Alfredo is finishing backup-exporter deployment. Next week!
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd"
+	* Total time: 23 minutes (a couple short discussions: response times got a little worse with mTLS for couchdb, we have some traces that are like 350k ms (/ready check from preferences to couchdb, from flowmanager to preferences, security scanner scanning /health but can't find anything else; should we have more urls?)
+		* https://github.com/GPII/universal/blob/master/documentation/FlowManager.md
+
+3. First contact
+* Estimate on scalability experiment
+	* https://docs.google.com/document/d/1GZKftB0VKM3IwUba7KvugPkOtDnL7lOL7DmmfFxS1D0/edit
+	* Team agrees 1-3 weeks for basic experiment is reasonable
+		* Stepan points out that this kind of experimenting and tuning gets complicated fast.
+* Team is bearish on New Relic
+
+4. Backup restore testing
+* Tyler leads (Sergey lead last time)
+	* We need a link to the backup process documentation.
+	* 1st find a files to restore - missing in a readme
+		- go to test org - common-stg - ...
+		- bucket is empty -> next time
+	* sort the commands of moving the replicas to 0, flomanager -> preferences -> couchdb
+	* N is N-1 in the for loops
+* ^ copied to Parking Lot for further triage

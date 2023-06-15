@@ -1,0 +1,91 @@
+Agenda:
+    - Update on Sprint 7
+    - Planning for Sprint 8
+    - Projection for completion of migration and security tasks. 
+    - Logging tickets for product dev: [tyler]
+	- https://issues.gpii.net/browse/GPII-3309
+	- https://issues.gpii.net/browse/GPII-3310
+    - Testing! (parking lot item)
+
+* What do we have?
+	* GPII components - https://github.com/GPII/universal/blob/master/package.json#L72-L78
+		* Unit tests
+		* Integration tests
+		* Browser tests
+		* "Production configuration" tests (Docker images in a Vagrant VM talking to one another)
+	* gpii-infra
+		* Unit tests (one -- for vars.rb)
+		+* "Smoke tests" / E2E test
+			* curl in AWS; currently unimplemented in GCP
+			* "Production config" test in AWS; currently unimplemented in GCP
+		* Performance tests
+			+* Stress testing (try to break system to find its limits)
+			+* Load testing (can we perform at a specific amount of traffic, establish baseline for future changes)
+			* Availability testing (uptime remains through e.g. different deploys)
+			* Sergey's Locust work
+				* Locust can handle both smoke tests and various of these performance tests
+				* Continue working on python locust profile for flowmanager
+				* Wants input from a frontend developer to build a profile of what typical traffic will look like
+				* Calculate X RPS, run over long period of time to flush out any problems from long-running traffic
+				* Basic Preferences / Flowmanager functionality covered
+				* Tests should never run from the same cluster 
+				
+* What are the gaps?
+		X More unit tests?
+			* All ruby code? Do later?
+			* rake code?
+			  - No dedicated ticket needed.
+			  - No Test Coverage standards for the team
+			  - Test most valuable when you do tests-first
+			  - Testing for simple wrapper code isn't worth testing
+		X Integration tests
+			* Terraform code? (terratest, kitchen-terraform -- take another look)
+			  - No dedicated ticket needed
+			  - More valuable to have end-to-end tests for the application
+		X Terraform Linting
+			 - Deserves its own ticket (GPII-3334
+			 - terraform fmt (in check mode)
+			 -  git hook?
+			 - Add it to pipeline
+		X helm charts have no tests
+			 - Deserves its own ticket
+			 - How do we test this? Get yaml output of helm and check for expressed strings.  (GPII-3335)
+			  - eg. Check http vs https in the expressed yaml file
+			 - Most of these charts are obtained from upstream
+			 - But it's worth it to test our own custom charts
+		X End-to-end tests
+			GPII-2865
+			* Security, e.g. check for ssh logins to Instances; port 80 isn't open (serverspec)
+			* Functional, e.g. "the thing is up and responds" (serverspec)
+			GPII-2539?
+		X Security vulnerability scanning
+			* On-system, SCAP scanner: GPII-2864
+			* Open port scans
+			* Docker images scans (twistlock?, registry-level tools like [stepan said one])
+			* Docker container monitoring of syscalls, network accesses, etc.
+			* Kubernetes cluster for vulnerabilities
+			* Library vulnerabilities (Snyk)
+			  - Let's create one overall security ticket to cover most of the above as a placeholder to come back later after FERPA
+		X Running product tests against product running in real infrastructure, i.e. re-using node-based tests
+		X No tests that integrate front end (gpii/windows, QSS) with backend (flowmanager, preferences in public cloud)
+			* "Production config" tests kind of does this, but only in limited environment. Could be expanded?
+			GPII-3333 exists to cover the above
+			  * When and where in the pipeline do these tests execute on?
+			  * What will these tests cover? 
+			    - Stepan to add these comments to the ticket
+		X Alerting!
+			* How to leverage other tests to get alerting "for free"? Or vice versa?
+			- Doesn't need its own ticket
+			- Just something to consider as we continue work on testing
+			- GPII-2967
+
+* How do we implement?
+    
+    
+    
+    
+    
+    
+    
+    - Monitoring! (parking lot)
+    

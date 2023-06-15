@@ -1,0 +1,94 @@
+Infusion Post 2.0
+
+Infusion
+		* Make use of github contributions doc
+			* https://issues.fluidproject.org/browse/FLUID-5959
+			* https://help.github.com/articles/setting-guidelines-for-repository-contributors/
+				* Move it to the repo, so that different repos can have different coding and commit standards / governance strategies, e.g. for emerging projects
+					* e.g related to unit testing, design standards, commit access, etc. 
+				* have templates for governance policies 
+					* possible outline for mentorship for emerging projects
+		* Figure out what to do about CLAs ( use a digital CLA or remove the requirement )
+			* https://cla-assistant.io
+			* https://sfconservancy.org/blog/2014/jun/09/do-not-need-cla/
+			* https://botbot.me/freenode/fluid-work/2016-11-25/?msg=77009195&page=1
+		* Consider moving to a centralized copyright notice, e.g. an Authors or Copyright file
+			* https://softwarefreedom.org/resources/2012/ManagingCopyrightInformation.html
+			* https://botbot.me/freenode/fluid-work/2016-11-29/?msg=77196617&page=3
+		* Action: Team of 2 to investigate CLA assistant or some other more lightweight option
+			* Consider some kind of UI which operates within github whenever a pull request is opened, indicating that the contributor agrees to the repo-wide licence
+			* Simon and Colin have indicated interest
+				* Survey other inclusive communities that we respect (e.g. hood.ie)
+			* None of this work looks like a huge priority compared to other immediate projects - it will be done "in the corners"
+			* Informal deadline - before GSoC starts up again Februaryish
+		* What to do about Infusion Components? ( Update, Retire, Archive, etc )
+			* need to separate the lifecycle of compenents from the lifecycle of the framework
+			* Remove:
+				* jQuery Slider
+				* Progress - depended on by the Uploader - can't be removed without redesign of the Uploader
+			* can remove the jQuery Slider support 
+			* Updates
+				* inline edit, all varieties
+					* Newest umbrella JIRA: https://issues.fluidproject.org/browse/FLUID-6098
+					* Please link any recently filed InlineEdit Bugs to this
+					* look into removing the uploader specific progressive enhancement for the no js version.
+				* fix grid reorderer a11y issue
+				* redesign Uploader
+			* Action: Consider refactoring our repo into a monorepo so we can separate lifecycle of core framework and components
+				* Every now and then we will make a form of "LTS" release where we sync up and QA framework and components
+				* Will each component be a separate repo in the mono repo?
+		* Infusion framework dist doesn't include contextawareness 
+			* TELL ME IT ISN'T TRROOO!
+				* sadly it is because it isn't part of core
+				* Because of this, I guess? https://github.com/fluid-project/infusion/blob/master/Gruntfile.js#L270
+				* Doesn't include any of the prefs framework either, I imagine
+				* 
+		* What to do about project structure ( e.g. split into separate repos?, builds, etc. )
+		* Establish and publish a code of conduct
+			* Michelle to follow up with
+				* contributor covenant
+				* code4lib
+				* 
+		* Releases
+			* automated testing for all components needed
+				* look at Tony's webdriver work
+Infusion Docs
+		* Deploy versioned documentation as well as in development
+			* two versions of the documentation
+				* Stable - corresponds to latest actual release
+				* Development - what's currently in master
+				* This requires some kind of fix to our docpad plugin, at that time we may as well fix it to enable us to publish particular versioned docs
+					* This was clearly always the intention since there is a term in the URL representing this
+					* We might be able to get a simplification of the workflow by removing our reliance on github-pages
+						* What could we replace this reliance with? Web DAVE?
+						* "There's an nginx container which is used at least for the QI dashboard, and potentially something that Gio did"
+			* Potentially split off component docs
+		* Establish a practice for tagging new changes in the docs
+			* E.g. “Changed in infusion-dev”
+		* How do we make fixes to Infusion-Docs when they are tied to a release?
+			* use a branch for the release, make fixes to the branch
+		* Strategies for ensuring that as content changes in the docs, all the pages are updated appropriately.
+			* add an automatic link checker as part of the build, or use a tool pointed at our site.
+			* 
+VideoPlayer
+		* VideoPlayer does not work with any recent version of Infusion
+			* This is a risk since we still have a demo site deployed which features an old version of UIOptions linked to it which cannot itself be updated
+			* Action: Migrate the VP and everything it depends on to a "mothballed repo" which is then deployed in a way which makes it clear it is a demo
+			* Consider future evolutions of more advanced requirements for the VP
+				* WebGL-based filters for those with special vision requirements
+				* Ways of personalizing the YouTube player
+			* When / How should we upgrade to latest Infusion
+			* Don't upgrade - change the story around it to show that it's a demo
+		* Should we remove VideoPlayer from use on our sites? 
+			* http://inclusivedesign.ca
+			* Are there comparable or better solutions now?
+			* Move our videos to YouTube, make sure we've got captions for it. 
+			* Update the video entry on the ILDH to help people who want to embed video
+
+
+
+
+
+
+
+

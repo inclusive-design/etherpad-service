@@ -1,0 +1,46 @@
+WEB PERSONALIZATION (2017-03-08)
+
+What were the goals of this experimentation?
+
+Goal 1:
+When a preference is adjusted in the panel, it should be able to use UIO enactors to apply to all tabs.
+
+We have two Chrome extensions:
+	* Old extension: https://github.com/GutiX/chrome4cloud: has a panel for adjusting preferences - no longer working with current GPII
+		* Cindy gave a brief demo, showing that its preferences only apply to its own panel
+		* Cindy asks - can I carry on using this, since it is the only one which has a panel? In order to experiment with the enactors
+			* Javi notes that the old extension is not written using Infusion
+		* The old extension is not based on "enactors", it just has "a bunch of functions to apply its settings to the panel"
+		* Originally written by Nacho, taken on by Guti. It is missing some features and integration, neither of these people are working on this project any more.
+	* New extension: https://github.com/javihernandez/gpii-chrome-extension/tree/initial-implementation: at the early stage of the implementation
+		* will not have a panel for adjusting preferences
+		* This extension will use web sockets to retrieve preferences from GPII and apply to chrome tabs
+
+Q: which extension should Cindy use?
+A: Use the new extension code
+
+Q: How can we use the new extension if it has no panel for adjusting the settings?
+A: Could experiment just with changing variables in the extension code
+You can just trigger changes on the model: https://github.com/javihernandez/gpii-chrome-extension/blob/initial-implementation/extension/src/lib/chromeSettings.js#L95
+
+Q: (Cindy) Apparently the old extension worked by injecting CSS and HTML into the individual pages, can you show me where is the implementation code for this:
+A: (Javi) Yes, I can show you:
+    [16:57] <jhernandez> cindyli: here you can see how we apply highContrast https://github.com/javihernandez/gpii-chrome-extension/blob/3540d6d279cf72495f89b0ea9f05c1f018251da2/extension/src/lib/highContrast.js
+    [17:00] <jhernandez> in this particular case, we have already injected new CSS into the webpage, so we make use of content scripts that apply the changes on the DOM
+ie, to enable high contrast we execute this content script https://github.com/javihernandez/gpii-chrome-extension/blob/3540d6d279cf72495f89b0ea9f05c1f018251da2/extension/src/content_scripts/highContrastEnable.js
+
+Q: Does the new extension have any enactors?
+A: No, it doesn't
+
+Javi: Not all settings are applied in the same way - e.g. ChromeVox.
+In order to adjust the pages, you can disable or enable a 3rd party extension, or inject CSS or HTML code.
+
+Antranig: Where an enactor fufils a similar function to one in UIO, we should expect to share a substantial part of the implementation. We should cast any such facilities as enactors, even if they correspond to a new function such as "enabling and disabling a Chrome extension".
+If there is some part of the UIO enactor implementation which can be shared within the Chrome extension, we should factor such things into their own files so they can be shared more easily.
+
+
+
+https://issues.gpii.net/browse/GPII-2324: "Investigate if enactors from UI options can be embedded in Chrome extensions" - Assigned to Cindy
+https://issues.gpii.net/browse/GPII-2323: "Investigate Chrome extension options for web personaliztion" - assigned to Javi
+https://issues.gpii.net/browse/GPII-2330  "evaluate CalJobs CSS for suitability for being transformed by one of our approaches" - assigned to Cindy.
+

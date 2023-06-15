@@ -1,0 +1,36 @@
+CI Strategy Meeting
+
+Purpose: improving the current CI situation - addressing the following goals
+	* Having multiple versions of Windows in CI
+		* LTSC (1809) and current
+		* Nice to have the preview
+	* Having a mac instance in CI
+	* Making life easier for the devops team (moving things from IDRC?, using different tools)
+	* Doing the above within a reasonable timeframe
+
+https://the-t-in-rtf.github.io/ci-requirements-and-candidate-evaluation.html
+
+To the extent possible, we should reach a decision on this stuff today, capture the tasks and assignees in JIRA and have some sort of estimate wrt time.
+
+Option 1: The quickest: leave it alone
+
+Requirements
+- Hook to run builds on specific branches/pull requests
+- Control who can force a build to run
+- Participate in github flow (trigger a new build via comment)
+
+Ideally something at the top level of the repo specifies the required environment in CI (dependent applications, tools, versions, etc)
+
+The plan for mac:
+- Christopher will look into whether macincloud/macstadium/other providers works directly with github via webhooks, or what the options/strategies are for using Jenkins to make the connection between github and the providers CI.
+
+PASS/FAIL guidelines:
+  - the ability to run all the tests and retrieve  
+  - 
+
+
+Proposal moving forward.
+
+We discussed holding off on creating a pipeline to build the installer/client, and also not trying to standardise between our CI and CD pipelines.  For now we would focus on coming up with a solution that a) can run our existing tests for other packages and b) can run tests against Christopher's work on OS X.
+
+We agreed that Christopher would research the mac-specific issues over the next two or three weeks (and hopefully share notes on the arch mailing list).  Need to write up the top candidates and compare them to our requiirements for OS X / linux / windows.  Should test the top candidates both with Christopher's work on OS X and (as a separate work item) with a representative repository that uses Windows to run its tests.  We also agreed to meet in 2/3 weeks to review the candidates and agree on a way forward.

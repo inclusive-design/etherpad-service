@@ -1,0 +1,69 @@
+May 8, 2019
+
+Bryan is working on:
+	* GPII-3119: Refactor SPI settings in the solution registry
+		* Antranig suggested to issue a self contained pull request without Githens' snapshotter work 
+		* The changes are in gpii/node_modules/flowManager/src/Capture.js which only exists in sgithens' 228 branch. 
+		* Bryan fixed this one as part of 3677 that includes the snapshotter work. Need to clarify with Githens and Antranig about "self contained pull request"
+		* Question posed in IRC: sgithens: my fix for 3119/3677 involved changing Capture.js instead of changing the solutions registry like the ticket suggested. I did this because the SPI settings worked in the app but not the capture tool so I made my fix capture tool specific. Bosmon suggested making an isolated PR with just this fix (implying it should be moved out of capture tool code). Thoughts?
+	* GPII-3677: Fix SPI Settings Snapshotting
+		* Bryan will issue a pull request with fixes for both 3677 and 3119 based off Githens' branch - https://github.com/sgithens/universal/tree/gpii-228-2018
+	* GPII-3675: Windows Acceptance tests for Capturing windows specific settings
+		* I will point my windows branch for GPII-3675 to point at my new universal branch based on sgithens' 228-2018 branch to run the tests and get them to pass
+	* GPII-228: Implement snapshotter
+		* Clarify with Githens that this is an umbrella JIRA of the above 3 tickets. There's no extra work needed once these 3 are addressed.
+
+May 9, 2019 onwards
+
+	* GPII-3119: Refactor SPI settings in the solution registry
+		* May 9: Issued a pull request: https://github.com/GPII/universal/pull/780
+
+	* GPII-3677: Fix SPI Settings Snapshotting
+		* May 9, May 10: Bryan is going to try GPII-3119 fix in windows repo to find out if it fixes this issue
+		* Here is the fix i proposed a few weeks ago: https://github.com/sgithens/universal/compare/gpii-228-2018...byoung2:GPII-3119
+
+	* GPII-3675: Windows Acceptance tests for Capturing windows specific settings
+		* May 8: I will point my windows branch for GPII-3675 to point at my new universal branch based on sgithens' 228-2018 branch to run the tests and get them to pass
+		* May 11, May 13 rebuilt VM and tests are running and failing. Trying to figure out why they are failing and trying to get them to pass...check dev release 9bb0ce92 which is in package.json to see if tests pass (they should). Then check latest universal master to see if the tests pass.
+		* May 14 
+			* dev release 9bb0ce92 of universal works, the latest master of universal fails. It's a big diff https://github.com/GPII/universal/compare/9bb0ce9298be4c5ebbdb47f8ea48ba8a3db3538c...master
+			* Antranig gave me a pointer that helped...the latest dev release (I rebased off the latest gpii/master) is based on master, so I can apply my change here. Tests are still failing though
+		* May 15 
+			* destroying and recreating the VM fixed the test failures...PR up for 3675: https://github.com/GPII/universal/pull/781. Bryan will investigate the CI failures on this pull request
+			* Please make sure the capture tool works fine with the fix for 3675
+			* Will confirm with sgithens that the snapshotter SPI settings are fixed by 3119 and see if I need to work further on 228 or if that is done
+		* May 16
+			* Working on fixing the test failure for 3675, verifying that 3677 works with from 3119, addressing comments from 3119
+		* May 20
+			* Verified fix for 3119 (https://github.com/GPII/universal/pull/780) works the same as previous fix in 228 branch, 3119 breaks tests when extra path is removed. Applied new win32.json5 file to 228 branch for universal running inside gpii-app and ran capture tool. Spi settings that previously did not show up now appear
+			* Gpii-app: https://github.com/sgithens/gpii-app/tree/GPII-1908
+		* May 21 Will confirm specific tests for 3675 with sgithens 
+			* Create branch for gpii-app based on 1908 branch for testing universal and windows with my branches
+		* May 22
+			* Improved GPII-3119 pull request https://github.com/GPII/universal/pull/780. The universal CI passes. Will test it with windows and gpii-app repos
+			* Will check Jaws test for GPII-3675 with sgithens - reached out to sgithens to ask which test he needs
+		* May 23 (out May 23-27)
+			* sgithens provided the following list of tests:
+				* Message rate 
+				* Menu and Dialog rate & pitch
+				* JAWS cursor pitch & volume
+				* Global Volume
+				* Active VOice Profile 
+				* Active Voice Profile Rate & Punctuation 
+				* Typing Echo 
+		* May 28
+			* working on list of tests provided by sgithens
+			* will run tests for 3119 win32.json5 changes (https://github.com/GPII/universal/pull/780) in universal under windows
+			* use capture tool to verifiy that correct settings are pulled in
+		* May 29
+			* running tests in windows with my universal 3119 branch pulled in...failing on a permissions issue, rebuilding VM now
+			* Additional tests using capture tool pending Windows testing success
+		* May 30
+			* rebuilt VM again and permissions error went away, now addressing other test failures that seem more straightforward
+
+	* GPII-228: Implement snapshotter
+		* May 8: Clarify with Githens that this is an umbrella JIRA of the above 3 tickets. There's no extra work needed once these 3 are addressed.
+
+
+
+

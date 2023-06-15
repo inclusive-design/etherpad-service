@@ -1,0 +1,31 @@
+Notes for Javi
+
+
+High-contrast
+-------------
+
+Fixed the problem where the wallpaper always gets reset to the default in reset to standard.
+The fix is in https://github.com/GPII/windows/pull/276 
+It's been released, but not good enough for master (had to hack windows.rm to do nothing, due it being called by the SR).
+
+I think high-contrast needs a rewrite: https://issues.gpii.net/browse/GPII-4097
+
+
+Auto-login
+----------
+
+At chickasaw, people logged in using their library card - but it was the same Windows account.
+
+See https://issues.gpii.net/browse/GPII-4099
+
+I've put the following things into siteconfig:
+- The blacklisted users (it was hardcoded)
+- A location where the current user id
+
+    autoLogin: {
+        blockedUsers: ["admin*", "guest*", "student*", "visitor*", "volunteer*"],
+        userIdSource: "reg:HKLM/SOFTWARE/MYPC3/Service/Username"
+    }
+
+(and updated the chickasaw siteconfig msi)
+

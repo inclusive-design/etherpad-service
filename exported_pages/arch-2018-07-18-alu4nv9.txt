@@ -1,0 +1,123 @@
+UPDATES
+
+Alfredo
+	* Reviewing PR's
+	* GPII-3125 - Setting up the automated process to create the initial infrastructure for GCP
+	* GPII-3147 - Fixing CouchDiscover container to work inside a Helm chart.
+	* Added the ability to save the installers of each GPII-app PR's
+
+Antranig
+	* Meetings about QSS 1.0, 1.1 and other impending milestone plans
+	* Meeting with Cindy planning her work in core to support the QSS 1.0
+		* Notes written up at https://pad.gpii.net/p/plan-to-save-the-world-gpii-3088-etc-ssp4n03
+		* and the work described in the following JIRAs: 
+			* https://issues.gpii.net/browse/GPII-3088
+			* https://issues.gpii.net/browse/GPII-3193
+			* https://issues.gpii.net/browse/GPII-3213
+	* Meeting with Hens, Cindy and Adtkins on support for accounts in core - 
+		* Notes written up at https://pad.gpii.net/p/20180717-account-management-oeo4nwn
+		* We will be integrating Adtkins gpii-express-user with its native schema together with some refactoring of Cindy's current core schema to move out the credentials
+	* Meeting with Gregg and Adkins about onboarding approach for JAWS, the LSR, etc.
+	* Review for Justin's UIO+ work
+	* Review for Adtkin's gpii-express-handlebars work
+	* Filed a fix for an issue reported by JJ to model transformations in Infusion - GPII-3201
+		* https://github.com/fluid-project/infusion/pull/912 - reviewer please? 
+
+Cindy
+	* GPII-1990: Clean up cloud endpoints
+		* Completed
+	* GPII-3213: Support settings with memory
+		* In progress with learning the connection btw matchMaker and lifecycle manager
+	* GPII-3138: snapset data loading
+		* Study couchdb views to figure out how to write a view to return all snapset GPII keys in one shot
+	* Meetings:
+		* With Antranig on QSS support
+		* With Antranig, Tony and Steve on account management
+
+Javi
+	* Working with JJ to deliver an installer to Kavya for testing the onboarding of the first wave
+		* Been testing last versions of gpii-app, windows and universal, and I'm having difficulties to build something that works
+		* That's why this installer was created using ASTEA's QSS branch and the bits from windows and universal that we needed to test
+	* Produced a frankenstein installer for Gregg - Which version? QSS+language, no need to go through QA ;) ok..just checking if its Demo MS 0.6 version
+	* Worked with Alfredo to get the resulting installer after passing CI
+	* Been testing universal/master after the last PR from Cindy was merged and tested the new configs. They worked so nice.
+	* Working on and planning some fixes/improvements around the installer
+
+JJ:
+	* Working with Javi into getting a document with the proper instructions for testing.
+	* Worked into updating several open pulls I have open for reviwing, fixing issues for them too:
+		* GPII/windows - GPII-3139
+		* GPII/universal - GPII-3139
+		* GPII/windows - GPII-3131
+		* GPII/universal - GPII-3131
+		* GPII/universal - GPII-3130
+		* GPII/universal - GPII-2750
+		* GPII/windows - GPII-2729
+		* GPII/universal - GPII-2729
+		* Mention Steve help for debugging some of this issues, and his first review.
+	* Created a small pull for infusion with a test (first contribution).
+	* Finishing my work into pull GPII-3145, adding info to JIRA issue, it should be ready today or tomorrow.
+
+Joseph:
+	* Working on two pull requests for snapset data loading (GPII-3138, https://issues.gpii.net/browse/GPII-3138)
+		* gpii-dataloader:
+			* responded to Cindy's and Tyler's comments and pushed.
+		* universal:
+			* refactoring to handle race conditions by using promises,
+			* hope to finish and push the latest by midday tomorrow.
+			* suggested to Cindy the idea to not looping to get each GPII key one at a time, but get them in batch. 
+
+Justin:
+	* Waiting for more code review for FLUID-6177 PR ( https://github.com/fluid-project/infusion/pull/903 )
+	* Working on YouTube captions prefernce FLUID-6296 ( https://issues.fluidproject.org/browse/FLUID-6296 )
+
+Kavya:
+	*     Done QSS Test plan 
+		* https://docs.google.com/document/d/1VzbDCkOXi5iphXlb7tN2Mg-KDL2J9CcXujTv42VVUtc/edit 
+	* Started working on PSP 3 test plan
+	* Breifly Done testing on onboarded features new installer 
+
+Sergey:
+    GCP: persistent volumes for couchdb
+    GCP: volume snapshots
+    GCP: secret management
+    AWS: pre Cloud1 release tasks
+
+Steve Grundell:
+    - Done the metrics that work with the QSS (GPII-3102)
+    - Fixed some installer issue
+    - Fixed an acceptance test fault
+    - Now taking a look at some problem with high-contrast
+    - Going to resume IoD sometime later
+    - Set Sergio off with some IoD info, but forgot about him :/
+
+
+Tony:
+	1. Worked with Antranig on the gpii-handlebars pull that adds i18n message handling.  AFAIK ready for review.
+	1. Continued working with onboarded JAWS data.
+		2. Wrote a quick script to pull usable settings data out of the Google Sheet, which added another 50 or so settings.
+		2. Also sketched out part of a transitional approach for reuse/inheritance.  Need input here especially.
+	1. Meeting with Cindy, Ant, and Steve about user management requirements.  Still waiting for review of gpii-express-user.
+	1. Will continue conversations with Gio re: CI next Monday.
+	1. Still need someone to pair on setting up DVCS for devops.
+
+Tyler:
+    * Accounts and training for sgithens, our newest gpii-infra customer
+    * Helping not build a complex system for email signups in Cloud1
+    * A lot of code reviews
+    * Working on small cleanups for Cloud1 and I really want to finish CI/CD for GCP
+
+
+
+AGENDA
+
+From Steve Githens: Go over the server topography again, and which endpoints are open to who.
+
+I believe that the preferences server is ultimately meant to be a private server behind our firewall, and then the Flowmanager or PPT must connect to it, while all outside traffic goes through one of them, or any other services we add.
+
+The preferences server is still wide open on AWS, which is why I'm bringing it up, and wondering at what point we'll need to close it down to public access.
+
+
+
+
+

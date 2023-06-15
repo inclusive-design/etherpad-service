@@ -1,0 +1,8 @@
+Agenda:
+    
+    
+    Notes:
+        - Brendan working on integrating the feedback from the vault demo, moving it to the GitHub repository. 
+        - Update from Alfredo, also tackle 2647. 
+        - Sandra will add the landing page JIRA to the backlog and sprint. 
+        - Tyler: 2552 almost done. 2553, then 2550, then 2596.

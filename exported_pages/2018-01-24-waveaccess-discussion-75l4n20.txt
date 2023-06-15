@@ -1,0 +1,58 @@
+https://docs.google.com/document/d/1eQgKX6Hm9APfLlBlzWr2SM6KsuvBn4dp2sLwBbvO7vw/edit
+
+* Maintenance of site servers ("buffer boxes")
+  * Package updates (to the AT we need installed)
+  * Contacting proposed management interface
+    * We're going to need external accessibility
+  * Software/security updates to the box
+    * Same
+  * Antivirus
+    * Who pays? Client? Us? WaveAccess?
+  * Personnel requirements / ongoing cost
+  * Potential liability
+    * If we're a source of breach---or the pivot point in a breach, since we'll be communicating with client processes with root and have the ability to force install malware....
+
+* Security Requirements
+  * TLS (encryption of data and authentication information in transit, and command integrity checking)
+    * Where?
+      * Management interface
+      * Buffer box to client process
+      * Buffer box to upstream (e.g., installer fetching)
+    * Certificates
+      * Certificate distribution
+      * Server naming
+    * Ciphersuite specs, etc.
+      * Qualys makes a decent checker for this
+    * Certificate validation, private key pinning
+      * Understand these are things that even dedicated development teams mess up, all the time
+  * Authentication to Management Interface
+    * Separated users
+      * User storage?
+      * User management itself
+    * 2FA
+      * Steve also pointed out that we will need to specify password storage requirements: e.g., SHA512 with a randomly-generated salt
+  * Encryption of data at rest
+  * Assessment? Who pays? (Was their suggestion)
+  * Codesigning
+    * Not supported by NuGet, so we're paying them to invent a solution? Needed by NIST
+  * Software Supply Chain Transparency
+    * I noticed they were seriously worried about this, which concerns me
+
+* Other Issues
+  * IP agreement: do we own all the resulting source code?
+  * IP agreement: do they indemnify us if it turns out they stole the code? (Copyright/patent issues)
+  * Code quality
+    * I'm deeply concerned here, since I asked them for details on things in their proposal and they had none
+    * I have worked with code from outsourced dev groups before; there is often a huge cost of fixing the software, particularly when security issues are found
+    * Proposal as Prologue: it's littered with typos
+      * Package providers from package manager PackageManagement can be changed in the future that can affect the functionality of the current solution.
+      * Provision of only trusted software packages.
+      * Not included to the estimation
+      * The most modern project management and execution methodologies are used that allows us
+to achieve high quality results and impressive performance.
+
+Outcome:
+    1. Provide them with more requirements and potential approaches or methods. (Steve and Brendan)
+    2. Asked them to develop a design for which we'll pay. 
+    3. Once they deliver it, we can assess whether they have the right set of skills and approach and understanding to implement it. 
+    

@@ -1,0 +1,70 @@
+JIRA CREATED FOR THE SUPPORTEDSETTINGS CHANGE: https://issues.gpii.net/browse/GPII-2839
+	* Kasper has a sandwich
+
+Matchmaker output, today: https://github.com/kaspermarkus/universal/blob/GPII-2297-2/gpii/node_modules/flowManager/test/data/matchmaker.output.payload.json#L1348
+Example of a current snapset: https://github.com/GPII/universal/blob/master/testData/preferences/snapset_2c.json#L12
+
+
+FILTERED PRE-IMAGE OF PREFERENCES (aka "Gregg's Settings") (aka the thing the PCP uses)
+
+FILTERED PRE-IMAGE = the generic and non-generic "settings" (Gregg's) that are appropriate for the current device's solutions, but which hasn't yet been transformed into a format suitable for the Settings Handlers
+
+SPINAL MATCHMAKER, when the PCP has issued updates to the filtered pre-image, will go through the (cloud) matchmaker's original output, interpolate where the new updates should go, and then it will run the transformer again—to convert the PCP's updates into SettingsHandler blocks.
+
+TERM = A generic or application-specific setting
+	* this name is probably dangerous because of the possibility of Greggly namespace collision :P
+
+All entries in a preference set must be schematized—no more random blocks of settings, mixed in with settings handler-specific "metadata" which makes it harder for the PCP to find values appropriately
+
+Every entry in supportedSettings defines the schematic space of an application-specific term
+
+(we need some terminology to distinguish between "Antranig Settings" (i.e. the data used by a settings handler) and "Gregg Settings" (i.e. a "term" as above, a defined application-specific term), eep!)
+
+The supportedSettings block MUST, going forward, be defined for every solution in the system, and must contain the totality of settings supported by that application—this will allow us, for security reasons, to filter and validate input as necessary
+
+THE CONFUSION OF THINGS YOU CAN ASK FOR, AND THINGS YOU CAN GET
+
+
+Things we need:
+	* A picture that shows the process from having a Preference Set full of Preferences, to Matchmaking which produces to the Filtered Pre-Image and the RAW Settings COMMANDS
+	* Example payloads, as soon as possible:
+		* new supporteSettings entries
+		* example of the the filtered pre-image
+		* <what else?>
+
+Next Steps
+Before Pilots Phase 2:
+	* Fix up the worst issues from Kasper's discovery that common terms can be nested inside an application block in a preference set 
+		* Find out where this happens in the code, and ensure that common terms dont get dispatched to the settingshandlers
+	* Common term for Screen DPI
+		* After this, we may tell the Astea team to ignore application-specific terms/settings for their work for the pilots, since all Snapsets will have values expressed in the space of common terms
+	* Implement the Spinal Matchmaker
+After Pilots Phase 2:
+	* Refactor the preference set/solutions registry entries universe
+		* Changing the meaning (and possibly also the name) of a solution's "supportedSettings" so that it instead defines schemas (and names) for application-(specific) terms
+		* The change of meaning is that this block now refers to the space BEFORE capabilitiesTransformations have acted, rather than before
+		* That is, "in the space of the ontology of preferences" rather than "in the space of the ontology of settings"
+		* This means that unontologised, arbitrary settings may NO LONGER APPEAR in a preferences set
+
+
+Examples:
+    {
+    "flat": {
+        "contexts": {
+            "gpii-default": {
+                "name": "Default preferences",
+                "preferences": {
+                    "http://registry.gpii.net/applications/com.microsoft.windows.screenDPI": { 
+                        "screen-dpi": 1.75 // this is equivalent to writing: "http://registry.gpii.net/applications/com.microsoft.windows.screenDPI/screen-dpi:" 1.75"
+                    },
+                    "http://registry.gpii.net/applications/net.gpii.uioPlus": {
+	                    "http://registry.gpii.net/common/highContrastEnabled": true // scoped common terms,
+                          "http://registry.gpii.net/applications/net.gpii.uioPlus/fontsize: 12
+                    },
+	               "http://registry.gpii.net/applications/net.gpii.uioPlus/highContrastTheme": "white-black", // application specific setting
+                    "http://registry.gpii.net/common/cursorSize": 1.0 // non-scoped common term
+                }
+            }
+        }
+    }
+}

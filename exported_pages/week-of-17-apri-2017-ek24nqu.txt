@@ -1,0 +1,13 @@
+19-Apr-2017
+Continuation of Sprint 2 Planning.
+Alfredo: Opened JIRA GPII-2390 for the metrics work. Alfredo needs to discuss with Steve Grundell on Monday, and then do a sizing. Need to conclude the work on the logs before moving to selecting the reports from Kibana. In the meantime, he's solving issues with the VMs and other system related work that is pending. 
+
+Tyler: GPII-2386, GPII-2387, GPII-2388 and GPII-2389. Is it worth continue to polish the demo? Currently working on GPII-2388. His plan is to work through the these tickets in this Sprint. 
+Update: He will complete 2388 and then pick up the Swarm ticket (GPII-2319, 2320). Then go back to the 2389. 
+
+Gio:He would prefer to work on logging infrastructure. GPII-2014, GPII-2015, GPII-2321, GPII-2017, and GPII-2019. He will add the estimates to them. Next he would work on Kubernetes automation, GPII-2391. As a stretch goal if there is time, he will also try to reproduce the performance benchmarks from 2 years ago. Needs automation on the Kubernetes for this.
+
+21-April-2017
+
+Tyler: Made progress on 2388 isolating dev environment, he's working on a wrapper for Teragrunt to Kitchen can use Teragrunt to bring back the integration testing. 
+

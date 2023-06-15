@@ -1,0 +1,26 @@
+Friday, 28-Apr:
+Alfredo: working on issues related to the VMs, found an issue with the CI, applying patches today. Talking to Steve Grundell, he's developing some features for the GPII, tracked in 2390. No blockers. 
+
+Gio: Since Wednesday, hasn't done much for APCP tasks because of visitors at the IDRC. Plans to resume the work on Monday. 
+
+Tyler: Working on GPII-2388, working with the Terragrunt folks, he's now an official contributor to it. Got the lead to agree on a new feature he needs. On Monday he'll provide a demo at our weekly meeting. Not blocked. 
+
+
+Wedneday 26-Apr
+
+Gio: Switched to Docker Swarm. Learning. Working on comparison table vs Kubernetes.
+
+Alfredo: Waiting for stegru (talked to him, he's very busy). Working on VMs. Plan to send new VMs next week.
+
+Tyler: Continuing on GPII-2388. Filed a PR and an Issue against Terragrunt yesterday; got responses this morning; will follow up. No blockers.
+
+
+Monday 24-Apr
+
+Alfredo: Caught up with stegru re: GPII-2390. He will work on it today and ping Alfredo when he's started. Also working on VMs for CI (bunch of minor tickets). Blocked by Steve's availability.
+
+Gio: Logstash sending logs to elastic.co ELK instance. Config so it can process syslog. Working on other formats (e.g. nginx). No blockers.
+
+Tyler: Still working on resurrecting kitchen integration tests (GPII-2388). Made progress on terraform wrapper: can create and converge, working on verify and destroy.
+
+

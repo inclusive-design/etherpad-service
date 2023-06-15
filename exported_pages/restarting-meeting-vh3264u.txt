@@ -1,0 +1,55 @@
+Participants
+
+	* Alejandro Leiva
+	* Alfredo Matas
+	* Steve Lee
+
+Agenda
+
+	* Presentation
+	* Current status
+	* What worked in the past?
+	* Wasn't?
+	* Hints for continuation
+	* Main AT tools
+
+Scenario
+	* Windows 80% and 20% the rest in AJCs
+
+Opportunities for improve
+	* Wiki is not the correct place for storing all the infromation related to the onboarding process.
+	* Separation between "Community" and "Technical" onboarding process.
+	* Tiger Team / Onboarding team members need an special set of skills: a11y basic knowledge and gpii technical knowledge.
+	* Costly to integrate / connect with upstream (meaning gpii core)
+	* Implementation of new settings handlers have a lack of tool to develop real tests or behaviural/functional tests. (a full user process, in example)
+	* UL isn't well documented about how is integrated or how it is supposed to be used from Onboarding team.It
+	* It's hard to implement the settings handler for some solutions. Typical problem is that we need to restart tools to apply new settings, because these tools don't support live changes.
+	* Lack of technical contact with principal propietary software.
+
+Hints for the reboot of TT/Onboarding Team
+	* Landing page needed for begginers
+	* It's key to have an stable product defined by "Product Manager" and CD'ed.
+	* We have contacs with them but it's hard to maintain the technical communication with them and make progress.
+	* CD/CI on.going / was part of TT <- Need to continous testing with the new AT tools integration
+	* A management profile is needed in order to focus on the process, and to contact with third party providers
+
+Main AT Tools we should consider 
+	* See Solution tracking link
+
+Interesting Links
+
+	* Jira project - https://issues.gpii.net/projects/TT
+	* Wiki page - https://wiki.gpii.net/w/Imp_Tiger_Team
+	* http://www.cloud4all.info/ ask Manuel
+	* Solution compatibility roadmap - https://wiki.gpii.net/w/Solution_Compatibility_Roadmap
+	* Procedure - https://wiki.gpii.net/w/DETAILED_PROCEDURE_DIRECTIONS_HERE
+	* Create solutions Tutorial - https://github.com/sgithens/universal/blob/authoring-solutions-tutorial/documentation/AuthoringSolutionsTutorial.md
+	* https://wiki.gpii.net/w/Contributor%27s_Emporium
+	* https://wiki.gpii.net/w/Building_A_Simple_Solution probably out of date
+	* https://drive.google.com/a/raisingthefloor.org/folderview?id=0B7GlZD-XKf0wU293bUk1MXlJT2M&usp=sharing
+	* Solution tracking - https://docs.google.com/spreadsheets/d/1Tn6CCMCzan08CoGmJ3oqnCcqFdaXuTpVZrEbcKa470M/edit#gid=0
+
+
+
+
+

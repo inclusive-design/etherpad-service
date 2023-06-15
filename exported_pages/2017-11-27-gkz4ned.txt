@@ -1,0 +1,14 @@
+Agenda:
+    - Hands-on technical interviews status (Tyler)
+    - Clarification on action item from last week re. test requirements from developers
+    - Update on current Sprint. Any issues?
+    - Action item from bring this up in a later meeting (now): AWS access
+    
+Notes:
+    - Interviews: Both interviews had to be rescheduled. Talking to them this week, Tuesday and Wednesday. 
+    - No issues in current sprint. 
+    - Regarding AWS access, look at notes from 
+https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-meetings-iqt4nbr/pad/view/2017-11-07-oh64nq4
+		    Decision: postpone discussion to Jan. 
+	- Question about requirements or where we are or where we will regarding testing PSP with memory with AWS. 
+		- Fron Tyler: 1. At the end of this sprint we should have a production environment that is usable. Should be able to run GPII code, which is probably what is needed for UX to do testing. Is there's someone that wants to tested today, they can use Stage environment (which currently is not working). 2. By end of December or early January should have structure in place for testing. 3. From meeting with Cindy last week, there are issues about loggin in that prevents us from using data loading. 

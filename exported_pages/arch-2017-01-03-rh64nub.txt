@@ -1,0 +1,93 @@
+UPDATES:
+    
+Kasparnet:
+	* Santaclaus and rockets
+	* Catching up on emails, and old todos
+	* Made some good progress with the provisioning scripts - if everything goes well I expect to have a pull request tomorrow AHA
+	* Next priority is matchmaker work.
+
+Ale:
+	* Christsmash and rocket :D and Happy new year!
+	* Reviewing all pending work for previous Quarter and want I should work in this month:
+		* Want to speed up the multi windows version boxes.
+		* Want to speed up the onboarding of more AT Tools into GPII.
+		* Want to speed up the integration of current work of gpii-app into macOS implementation.
+	* Updated a bunch of spreadsheets and docs.
+
+Antranig:
+	* Some code review (Javi's chrome plugin, ADTKINS Unified Listing)
+	* More P4A work
+
+Alfredo:
+	* Trying to finish the spanish xmas with rockets
+	* Update GPII wiki to the latest version
+	* Configured the backend to allow SSL certificates using Let's Encrypt
+	* Adding tests to Ansible roles to use them with Gilab CI
+	* Adding tests to Virtualbox boxes to use them with Gilab CI
+	* Adding tests to the Vagrant-GPII-ci plugin and giving support of windows boxes
+
+Cindy
+	* Happy New Year, everyone
+	* Working on data loaders: https://issues.gpii.net/browse/GPII-1987
+		* Implemented two data loaders for loading authorization and preferences data
+		* Remaining works: tests, be able to configure loaders from the node command line by using config files etc
+	* A kettle pull request for KETTLE-51: https://github.com/fluid-project/kettle/pull/29. Has addressed Antranig's code review comments and ready for more reviews
+	* Security meeting for protecting the communication between the local flow manager and the cloud based flow manager
+		* As the next step, to come up with a list of requirement details relating to protection/security use cases, then research...
+
+Colin
+	* holy napping
+	* this week, I'll be writing D30x.y for Prosperity4All, about FLOE's contribution to the project
+	* next week, I will embark on a mission to help organize our work sufficiently to start regular sprints
+
+Joseph
+	* Just back from Christmas break today. Drowning in email. 
+	* FLUID-6090:  State tracker component; need to create the documentation.
+	* GPII-442: working on unit tests for dynamic process reporter (and excising the static process reporter code).
+	* GPII-8:  re-openend JIRA and pull request for GSettingsHandler, just before the break.
+
+Michelle:
+	* Doing some 2017 planning 
+    
+    
+Sandra:
+    - Welcoming Tyler Roscoe to the APCP team, new DevOps expert. 
+    - Just back from holiday vacation. Happy New Year to all of you!
+    - Focusing this month on planning efforts for 2018 deliverables. Will work with Colin to schedule meetings. 
+    
+
+Simon:
+	* Attended the security meeting this morning
+	* Working on our Nexus demo for Prosperity4All
+		* https://issues.gpii.net/browse/GPII-2182
+		* https://wiki.gpii.net/w/Nexus_Dashboard -- general information about the Nexus
+
+Steve Grundell
+	* Christmas :)
+	* GPII-252: high contrast themes
+		* https://github.com/GPII/universal/pull/495
+	* Looking at GPII-2155 Ease of access opens after acceptance tests.
+
+
+kavya:
+	* Good Progress On Test Automation
+	* Successfully Integrated Robot Framework with Sikuli
+	* Automated scripts failing with RFW - resolved 
+	* Working on Tags and more functional scipts
+	* Automated scripts for all demo personas without AT - Done
+
+Tony:
+
+	1. Working on the UL Image API for the upcoming user testing.  The proposed library for image resizing (sharp) works fine.  Finished all "read" API endpoints.  For the user testing, still need to build the initial data set and write the front end templates and components.
+	1. To build the working data, working on import scripts from the SAI (Shopping and Alerting Interface).  Currently blocked by: https://issues.fluidproject.org/browse/KETTLE-53
+	1. Will move on to the rest of the image data import while waiting and work on the front end templates and components.
+    
+Tyler:
+    * Reading tickets and learning stuff :)
+    
+AGENDA ITEMS:
+
+	* Setting up a series of Technical Matchmaker meetings - who is interested? Any preferences on time?r
+		* Joseph can't make it:  Tue afternoon (20 UTC for an hour) and Thu noonish (17:30 UTC for an hour)
+		* Alew
+		* Tony:  Not available Tuesdays.  Prefer before 17:30 CET, but can make arrangements to attend until as late as 19:00 CET. :D o/

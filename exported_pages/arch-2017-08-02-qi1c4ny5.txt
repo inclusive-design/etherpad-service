@@ -1,0 +1,111 @@
+Updates:
+    
+Sandra
+- PCP project with ASTEA kicked-off on Monday. 
+- Driving needs and requirements for a new build for the Pre-Pilot, which is scheduled for Aug 14th.
+- Worked on planning requirements for Y3 funded year from Kate and Gregg.
+- Had a meeting with Gregg and others regarding the support for GPII in ChromeOS.
+
+Antranig
+	* Merged in fix for https://issues.gpii.net/browse/GPII-2456 after validation from Gio
+		* This also includes fix for UNC paths and bare drive resolution on Windows
+	* Meeting about Self-Voicing in UIO+ with Justin + Colin
+	* Meeting about ChromeOS
+	* Investigated test failure in stegru's pull https://github.com/GPII/universal/pull/515 for GPII-2333 - cause was a little fruity
+	* Justin's pulls for model transformations - one more in the queue
+
+Cindy
+	* GPII-2435: Ready for more reviews
+	* Research on whether it's possible to automate the process to request client credentials by GPII installations
+		* This OAuth2 spec looks promising: https://tools.ietf.org/html/rfc7591
+		* Meetings with Simon, Javi, Steve Grundell to discuss the options to use this spec
+	* Plan to start on GPII-2512
+	* Will be away Aug 3-9
+
+Colin
+	* Interesting meeting about ChromeOS support today—will create a list of next steps
+	* Worked on a new contribution document for GPII—will post to the wiki
+
+Javi
+	* Pushed changes into my pcp api pull request
+	* Mostly, preparations for creating an hst build for the pre-pilot
+	* pull requests that we're willing to incorporate into this upcoming build
+		* universal
+			* screen dpi (needs review) - https://github.com/GPII/universal/pull/504 - Javi can review it
+			* new snapsets (received the snapsets, will create a pr with them)
+		* windows
+			* screen dpi (needs review) - https://github.com/GPII/windows/pull/110  - Antranig will review this one
+			* nfc enhancements (almost there) - https://github.com/GPII/windows/pull/122 - Javi already tested it and just waiting for another quick look from Antranig
+		* gpii-app
+			* nfc enhancements (needs review) - https://github.com/GPII/gpii-app/pull/15 - MIchelle is waiting for windows/122 to be merged
+				* Javi will give a first pass to it - and merge it into hst-2017 if we're happy with it
+	* Attending to different meetings: PCP kickoff, chromebook, pre-pilots, pcp with memory security, etc
+	* Will be on vacation (more or less) two weeks from August 11th
+
+
+JJ
+	* Going back from vacation.
+	* Doc from previous work in https://issues.gpii.net/browse/GPII-2508
+	* Doc from previous work on settings mapping from Aria to UIA.
+	* Working in getting Morpher and Windows simplification into upstream.
+
+Joseph
+	* GPII-1939:  DeviceReporter reports all screen resolutions as part of its payload
+		* Modified universal code to do some of this work.
+		* Added OS specific code to the windows and linux branches to do the actual work.
+		* Testing all the above code; hoping to generate three pull requests by end of week.
+	* Need to merge in Antranig's latest changes (pull 531/ GPII-2456) to all my branches to make sure they are up-to-date.
+	* Will be on vacation for next two weeks.
+
+Justin:
+	* Filed a PR for current UIO+ work
+		* https://github.com/GPII/gpii-chrome-extension/pull/2
+		* Javi and Antranig to review
+	* Had been workin on GPII-2501 to integrate UIO+ and GPII however ran into a model transformation issue.
+		* Filed an Infusion JIRA: https://issues.fluidproject.org/browse/FLUID-6174
+		* Filed an Infusion PR: https://github.com/fluid-project/infusion/pull/838
+		* Antranig to Review
+	* Starting to work on Self Voicing and TTS. 
+		* This will improve infusions current implementation with the goal to support play/pause, highlighting text being read, and read selection.
+		* Implementation Discussion notes: https://pad.gpii.net/p/self-voicing-pad-5t174nou
+
+
+Kavya:
+	* Done testing Sony vaio with AT software for compatability and no issues identified.
+	* Continue working on Testplan for UIO+ web personalization for pilots
+	* Start regression testing on GPII.170802.050055 GPII build for prepilots
+	* Start testing on prepilot snapsets 
+
+Simon:
+	* Continuing to refactor, write tests, and write documentation for Nexus:
+		* https://github.com/simonbates/co-occurrence-engine
+		* https://github.com/simonbates/nexus-client/tree/GPII-2468
+	* Meeting with Cindy, Javi, and Steve regarding installer security
+
+STeve Grundell:
+    - Windows Language is done: GPII-2212
+    - Hacked the VAIO proximity listener to work with the recent NFC bounce related fixes: https://github.com/stegru/gpii-proximity-listener
+	    - I'm going to begin capturing the requirements of the new listener
+	- Helped Han make GPII put the logs somewhere else
+	- Starting to fix/implement new metrics things.
+	  
+
+Tony:
+	* Updated the i18n tech eval, need feedback from the group (see agenda).
+	* linux code coverage pulll submitted.
+	* Found another gpii-testem bug that broke the tests in my infusion pull.  Came up with a workaround, already, will work on a proper fix shortly: https://issues.gpii.net/browse/GPII-2518
+	* Looking at inconsistencies in universal code coverage results per feedback for Cindy and Antranig, hopefully gpii-testem updates will address most of this.  Will confirm.
+	* On vacation from August 5th, returning on the 28th.
+
+Tyler:
+    * PTO last week
+    * Finishing initial kubernetes/terraform integration (GPII-2506 is the last step)
+
+
+
+    
+Agenda:
+- Do we need a meeting tomorrow Thursday, Windows or PCP?
+https://wiki.gpii.net/w/Technology_Evaluation_-_Internationalising_and_Localising_UI_strings
+
+

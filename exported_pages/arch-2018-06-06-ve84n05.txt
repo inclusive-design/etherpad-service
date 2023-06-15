@@ -1,0 +1,94 @@
+UPDATES
+
+Javi
+	* Short week
+	* Kept testing the last updates I received on my VAIO (Windows version 1803) - not too stable, still having serious performance problems (not related to the GPII)
+		* We have problems with anything that needs to restart the explorer
+		* Live updates of high contrast theme from PSP not working anymore
+		* Whenever I key-in with a user that changes the DPI, I receive a notification "Fix apps that are blurry?"
+	* Been testing the new windows vagrant box - had a test failure on windows: 
+		* Not getting any coverage reporting
+		* Unhandled Exception: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.AccessViolationException: Attempted to read or write protected memory. This is often an indication that other memory is corrupt.
+		* Will keep testing after pairing with JJ on the recent updates and pull requests opened from Steve and him
+	* Attending the "onboarding reboot" meeting yesterday
+
+Alfredo:
+	* GPII-2951 - GKE migration - DNS setup
+	* GPII-2995 - GKE migration - CI authentication
+	* GPII-3091 - Fixing the Windows VM to address the testing errors
+
+Antranig:
+	* Dependency updates and fixes for Kettle, updating to latest coverage and linting
+		* Issued kettle 1.7.3 which is now merged into trunk
+	* Cindy has now merged my "User Errors" branch including various other updates as GPII-2831
+	* Meetings: onboarding reboot, MVIP reviews, Astea's further updates to QSS
+	* Interviewing further candidates for dev position
+
+Cindy
+	* GPII-3087: Remove duplicated prefs sets between testData/preferences and tests/data/preferences
+		* Issued a pull request that has been merged
+	* GPII-2985: Connect PSP with Cloud
+		* Functionality code in place. Working on integration tests
+	* Review pull requests
+
+JJ:
+    - GPII-3066: Hunting acceptance tests bugs with Steve Grundell, we got them.
+    - GPII-3091: Working also with Steve and Alfredo, into solving the CI issue when application crashes.
+    - GPII-2729: Updating pull with Steve suggestions, waiting for GPII-3066 to be in master for pushing.
+    - GPII-2521: Updating pull and working in suggestions, pulls comming with GPII-3066.
+    - Meetings about onboarding reboot.
+ 
+ Joseph:
+	* Generally updating vagrant boxes and branches merging in relevant master branch.
+	* New JIRA GPII-3093: Enable packagekit service on Linux VMs (https://issues.gpii.net/browse/GPII-3093)
+		* service used by Linux DeviceReporter
+		* vagrant box "inclusivedesign/fedora27" has it disabled by default (ditto for inclusivedesign/fedora28)
+		* service not needed by other uses of this box (e.g., infusion)
+		* added script to linux Vagrantfile to enable the service (pull request: https://github.com/GPII/linux/pull/99
+		* Giovanni reviewed: +1
+		* assigned JIRA to Javi (should it be?) - Sure ;) Merci beaucoups! Avec plaisir!
+	* - GPII-2404, GPII-1939 Changes to Windows DisplaySettingsManager, DeviceReporter (PlatformReporter) to report avialable screen resolutions
+		* updated with respect to Master
+		* Passing locally, but CI fails.  Steve G has a patch for a misuse of ref() that causes randoms failures in acceptance tests and likely fixes my issue
+	* Updating various linux branches to the latest master and working through the merge and tests. 
+
+Kavya:
+	*     Done testing MS demo version 0.6 - No major issues identified
+
+ Sandra:
+     - Last week in DC, short week this week. 
+     - Reviewed updates to MVP and MVIP made last week with the team. I have several follow-ups. 
+     - Per last week, GPII's official name is now "Morphic".
+ 
+Sergey:
+    * Finalazing initial GPII components deployment setup on GC infrastructure
+    * GPII-2958
+    * GPII-2959
+    * GPII-2960
+    * GPII-2989
+
+
+Steve Grundell:
+    IoD + Language pack install
+    PRoblems with acceptance tests GPII-3091 - if node crashes, CI passes
+    Random crashes GPII-3066 :)
+    Removiong installer from gpii-windows: GPII-3092
+    Stopping narrator in acceptance tests: GPII-2992
+
+Tony:
+	* Met with Sandra/Gregg/Colin and others to agree on the timeline for the Live Solutions Registry, which wiill be my major focus moving forward.
+	* Submitted the "schema validated component" and "GSS" version of gpii-json-schema for review: https://github.com/GPII/gpii-json-schema/pull/11
+	* Reviewed a minor linting and code coverage pull against Kettle.
+
+Tyler:
+    * rake is mostly glued. Awaiting code review and testing from team to verify things are working
+    * Next is putting the glue in CI
+
+AGENDA
+
+	* Discussion on package-lock files (Tony)
+		* https://github.com/fluid-project/kettle/pull/42#discussion_r193029633
+		* Data point:  fresh clean install of gpii-windows, followed by normal vagrant provisioning and npm install.  Then package-lock.json has changed.  What to do about this?
+			* Destroy it down to the last atom Ah, the nihlistic approach.
+
+

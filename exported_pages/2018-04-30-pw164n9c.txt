@@ -1,0 +1,25 @@
+Agenda:
+    - Tomorrow is a holiday in Spain. Should we reschedule the restrospective meeting?
+    - how do i get an emoji on my slack name (its easy, just set your status emoji)? cool, so fancy
+    
+Updates:
+        - Staffing: Screening 3 candidates today and tomorrow. 
+	        * Sandra, can you update us on the changes to the number / type of open positions? One DevOps posting, 6-month contract (option to extend if needed to complete the tasks for security).  One developer for IoD, 6-month contract. About to re-post position for Kasper's backfill. 
+	
+	Alfredo: 
+	 * GPII-2951
+	 * GPII-2962
+	
+	Sergey:
+	- GPII-2959. Load balancing.
+	- GPII-2973 RBAC (lower priority)
+	
+	Tyler:
+	- Preliminary versions of 2944, 2945, 2948, 2949 are in master
+	- Working on 2960 now
+	- 2958 next
+	- 2963 - Get official RtF GCP account set up
+	
+	- Team will meet this week to start discussing estimation of the effort. 
+	
+	https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&view=planning&selectedIssue=GPII-2962&epics=visible&selectedEpic=GPII-2942

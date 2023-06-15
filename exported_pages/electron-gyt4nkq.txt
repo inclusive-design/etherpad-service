@@ -1,0 +1,62 @@
+
+
+Should we use the .npmrc strategy? 
+we should probably just write a "build for electron" script that sets npm commandline args (since using an .npmrc would mean we'd never be building properly for node)—assuming electron-rebuild can't easily be made to work and is as simplistic as it seems
+
+Here's what Colin got working: 
+target=0.34.0
+arch=x64
+disturl=https://atom.io/download/atom-shell
+runtime=electron
+build_from_source=true
+
+
+It doesn't really look to me like electron-rebuild is particularly useful. I'm not sure why it's much more advantageous than, say, a script that sets some npm_config environment variables
+		*  https://github.com/electron/electron-rebuild/blob/master/src/main.js#L108-L129   
+		* or command-line flags when invoking npm
+
+atom node ships the headers in a different location than plain node. the version of node may not (as in our case) be the same as the version you are otherwise using. 
+
+
+Will we eventually move to a situation where we always run the GPII inside Electron?
+	* user listeners
+	* EVERYTHING?
+
+What structure do we envision our code base to have? 
+
+
+
+How can we manage builds between plain Node.js (for unit/acceptance testing) and Electron?
+
+How do we unit test stuff in the task tray?
+
+test that the menu is there at an API level.
+
+Run the existing unit tests from electron
+Electron test app that when it runs it (better to make a component that could be plugged into the existing electron app)
+	1. requires all the universal and windows tests and runs them. 
+	1. programmatically tests that the task tray UI works (i.e. that the right menus are built, containing the expected menu items and that, when those menu items are activated the right tokens are keyed in, etc.)
+
+Next steps:
+	1. Check the state of our org repository for the "gpii-app" (currently called gpii-electron) and get set up to be able to make pull requests against it and avoid chaos of the kind steve wants
+	1. Get help from avtar to vagrantize the gpii-app repo
+	1. Start writing basic tests that show that the universal and windows tests pass within an electron app
+	1. Determine how to test an Electron UI and DO IT
+	1. Infusionize the existing code
+	1. Remove the hardcoding in the existing code
+
+When will we upgrade to newer node.js versions, and how awful will it actually be?
+
+Electron has changed massively between 0.34 and 1.x
+	Look into security updates
+	Might be ok to stay on .34 until gpii is upgraded to node 6.
+	
+	
+Starting up servers
+	version matching issues of the version of node for our modules versus electron when starting things programatically
+
+WHERE SHOULD THIS LIVE?
+	1. In its own repository (electron-gpii), which depends on
+		2. universal
+		2. a cross-platform repo (windows for now)
+	1. 

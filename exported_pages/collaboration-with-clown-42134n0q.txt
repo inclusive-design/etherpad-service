@@ -1,0 +1,122 @@
+Date: Jun 26, 2018
+Participants: Cindy, Joseph
+
+	* Where are the snapsets?
+		* If there are none, who is making them?
+		* If there are none, what do they look like?  Is there an example anywhere?
+			* the answer could be:  just like the json files in the testData/preferences
+	* I have been playing with gpii-dataloader (https://github.com/gpii-ops/gpii-dataloader) which was suggested in a face-to-face pad.
+		* https://github.com/gpii-ops/gpii-dataloader/blob/master/loadData.sh
+			* the current script purges and recreates "gpii" database, which should not happen in the new CD (continuous deployment) due to the existence of live user data
+			* need to remove only the existing snapsets from the current DB, then (re)load them.
+				* that is, do not touch other prefs sets in the data base.
+			* see also:  https://github.com/gpii-ops/gpii-dataloader/blob/master/Dockerfile#L13
+		* can this be adapted to "load the snapsets"?
+		* how is gpii-dataloader used in the CI process, given that we are testing gpii-universal?
+	* How much do I need to know about CouchDB/PouchDB?
+		* Need to know a lot about CouchDB; but very little (nothing?) about PouchDB
+		* when GPII runs in the production mode: CouchDB,
+		* integration tests or when GPII runs in the development mode: PouchDB
+		* Given that all I know is that it is a data base (and I know little about data bases in general)
+		* Is gpii-pouchdb relevant? (https://github.com/GPII/gpii-pouchdb)
+		* Is the gpii-db-operation module in universal relevant? (https://github.com/GPII/universal/tree/master/gpii/node_modules/gpii-db-operation)
+			* likely don't need to know anything about this.
+		* I know that Alan and Gregor's fluid-couch-config may be helpful, but not sure yet where it fits (https://github.com/BlueSlug/fluid-couch-config)
+			* then again, no one does really.
+			* might be more work to use
+	* Was what I suggested at the floe iteration meeting this morning useful?
+		* Namely, stating what "Work with Tyler to set up a continuous deployment step that loads snapsets into CouchDB" actually involves.
+			* not the "work with Tyler" part, but the
+				4. "loading snapsets into CouchDB" part, and
+				4. "continuous deployment" part (which means? possible answer: loading for a development testing (local CouchDB) and then for production testing (cloud based CouchDB).  Aside:  is "local CouchDB" what PouchDB is for?
+
+Goal:  upload JSON files into CouchDB
+		* every time a snapset is changed (add to, delete fromor  otherwise modified), it has to be reloaded.  This is part of the goal/work.
+		* If someone wants to change snapsets, he/she will issue a pull request to gpii/universal repo by modifying files in testData/preferences
+		* when the pull request is merged, a continuous deployment step will be triggered to 
+			* remove old snapsets from couchdb database named "gpii"
+				* how to remove was discussed at the face to face: https://pad.gpii.net/p/torontof2f-june2018-hyd4nt9 at line 202
+					* "create a CouchDB view that finds out all GPII keys that use prefs safes that have prefsSafeType === "snapset", remove them"
+					* "create a CouchDB view that finds out all prefsSafes that have prefsSafeType === "snapset", remove them"
+					* couchdb view examples: https://github.com/GPII/universal/blob/master/testData/dbData/views.json
+						* two new views need to be added to these to find and elimenate the prefSafesTypes = snapset  (removeGpiiKeysReferencingPrefsafesSnapsets)
+							* first, remove all gpii keys whose prefsSafeId reference prefSafeTypes === "snapsets" (removePrefssafesSnapSets)
+							* second, remove all prefs safes whose prefSafeTypes === "snapsets" from couchdb.
+							* The actual deletion is a two step process:
+								* 1.use the view above to get an array of records that are to be removed
+								* 2 issue a "delete" command to remove these records (one at a time, or as a group depending on the CouchDB API).
+									*  Couchdb bulk deletion: https://stackoverflow.com/questions/10404178/how-can-i-delete-multiple-documents-in-couchdb
+			* load all snapsets in testData/preferences into couchdb database named "gpii"
+
+Oct 3, 2018
+Participants: Cindy, Joseph
+
+GPII-3333 (https://issues.gpii.net/browse/GPII-3333): extend the production config test
+
+	* The production config test
+		* located at https://github.com/GPII/universal/blob/master/tests/ProductionConfigTests.js
+		* can be run using the command: npm run test:vagrantProduction - https://github.com/GPII/universal/blob/master/package.json#L78
+		* It does:
+			* Start the cloud based flow manager using a docker container in the universal VM
+			* Start the local flow manager in the universal VM
+			* Send login/logout HTTP requests to the local flow manager that will trigger the entire workflow to talk to the cloud based flow manager and preferences server
+				* Only test the GET /settings endpoint on the cloud
+		* Need to do:
+			* test the PUT /settings endpoint for updating prefs
+			* Reference: The local integration test for the save: https://github.com/GPII/universal/blob/master/tests/UntrustedPSPIntegrationTests.js#L204
+				* there are 2 types of save:
+					* auto-save
+					* manual save
+			* 07-Nov-2018:  also test the flowmanager's "health" and "ready" endpoints.
+
+	* Notes
+		* npm run test:vagrantProduction runs ../scripts/vagrantCloudBasedContainers.sh
+		* the production tests are the last command in that shell script https://github.com/GPII/universal/blob/master/scripts/vagrantCloudBasedContainers.sh#L104
+			* runs the universal docker image flowmanager with the command "node tests/ProductionConfigTests.js"
+			* as noted above, running the universal docker image flowmanger ...
+				* ... starts a cloud based flowmanager in the docker container
+				* ... starts a local flowmanager on the VM (or local machine).
+
+	* References:
+		* Flow manager (the local and the cloud based) supported endpoints: https://github.com/GPII/universal/blob/master/documentation/FlowManager.md
+
+	* Questions 08-Nov-2018:
+		* The current prod tests do a login/logout sequence using "testuser1", and test the response message
+			* pirate pad states that login/logout triggers "... the entire workflow ..." and tests the GET /settings endpoint on the cloud (beginning line 62).
+			* there are no "testuser1" preferences.  How does this test GET any preferences?
+			* where is testuser1 defined in the code?  Answer:  DevelopmentTestDefs.js
+				* In the testData/preferences/testUser1.json5
+		* login/logout appears in the test definitions as:
+			* "{loginRequest}.send"
+			* "{loginRequest}.send"
+			* where are these defined?
+				* Answer:  in .../gpii/node_modules/testing/src/Testing.js as components of a TestCaseHolder (grade "gpii.test.common.testCaseHolder").
+				* Testing.js only has most common requests defined. I usually define other requests in the test files that do need those requests
+			* where are "health", "ready" GET requests defined, if at all?
+				* An example: https://github.com/GPII/universal/blob/master/tests/platform/cloud/CloudStatusTests.js#L47
+			* where are PUT requests defined, if at all?
+				* An example: https://github.com/GPII/universal/blob/master/tests/platform/cloud/SettingsPutTests.js#L45
+			* might have to define these three requests from scratch
+			* or, might be defined in UntrustedPSPIntegrationTests.js
+		*  Do the "health" and "ready" requests need a login?
+			* They don't need a login
+			* Is GET http://flowmanager/health sufficient? (look for valid response code)
+				* via GPII_CLOUD_URL at https://github.com/GPII/universal/blob/master/scripts/vagrantCloudBasedContainers.sh#L104
+			* curl works: "curl -s -w "\nhealth:\n%{http_code}\n" http://localhost:9082/health"; returns 200.
+			* is GET http://flowmanager/ready sufficient? (look for valid response code)
+			* curl fails:  "curl -s -w "\nready:\n%{http_code}\n" http://localhost:9082/ready"; returns 404
+				* {"isError":true,"message":"Cannot connect to Preferences Server at http://preferences:9081"}
+		* Trying to PUT using, say, carla gives an error:
+			* "Cannot update:  GPII key \"carla\" is a snapset while executing HTTP PUT"
+				* 1. we could test this, i.e., the expected result with a snapset gpiikey is failure.
+				* 2. is there a user gpiikey to test here?  (It might be in UntrustedPSPIntegrationTests.js).
+					* where are the "user" gpiikeys defined?
+					* answer:  in tests/data/preferences
+					* A test reference: tests/platform/cloud/settingsPutTests.js
+
+
+
+
+
+
+

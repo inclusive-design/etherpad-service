@@ -1,0 +1,79 @@
+UPDATES:
+    
+    
+Kasparnet:
+    
+	* JIRA (GPII-2393) and pull request (https://github.com/javihernandez/universal/pull/12 ) for issue related to failing maavis tests when using the dynamic device reporter (https://github.com/GPII/universal/pull/494 )
+	* GPII-1802 fix (consistency in use of enabled vs enable in our flat and ISO24751 ontologies) - https://github.com/GPII/universal/pull/510
+		* Some failing tests - working on those
+	* GPII-2297: Got the functionality working. Fixing the tests (https://issues.gpii.net/browse/GPII-2297 ) Expecting pull request by tomorrow
+
+Ale:
+	* Last week, working building a demo of GPII with current onboarded features.
+	* This week, keep reviewing resumes for the IoD position and working in the AUI project of Onboarding. 
+
+Alfredo:
+	* Last week worked on the demo of GPII
+	* This week working on fixing VMs issues
+	* Reading Kibana documentation to create reports for the logging of the metrics
+
+Antranig:
+	* "Network diagnostic client" is available for GPII-2349 at https://github.com/GPII/gpii-app/pull/12
+	* Helping ADTKINS with pull requests
+	* More Nexus/framework work
+	* Being ill/moving house
+
+Cindy
+	* Working on GPII security to create design docs for using dedicated process/service to secure the communication between the local GPII app and GPII cloud: https://wiki.gpii.net/w/Designs_of_Using_a_Dedicated_Process_to_Protect_the_Client_Secret_Assigned_to_GPII_Local_Installation
+	* Updating the data load pull request (https://github.com/GPII/universal/pull/503) to use the latest gpii-pouchdb
+	* Review and merge UIO pull requests
+	* Integrate the new UIO into floeproject.org
+
+Giovanni
+	* Initial work with Logstash sending operating system logs to ElasticSearch (deployed on i-0001 server)
+	* Switched to working on Docker Swarm (container orchestration system) to evaluate its capabilities
+		* GPII-2319 - Deploy Docker Swarm in public cloud
+		* GPII-2320 - Deploy GPII containers with Docker Swarm
+
+JJ
+	* Past week working on the onboarding of features for a GPII demo.
+	* This week resuming the work with the UIAutomation service project with Ale.
+
+Joseph
+	* Finished work on XRandR bridge for linux to report the available screen resolutions.
+		* Created GPII-2395 (https://issues.gpii.net/browse/GPII-2395)
+		* Refactored XRandR bridge (made it into a fluid component) and its unit tests
+		* Pull request:  https://github.com/GPII/linux/pull/92
+		* Next:  determine how to integrate this with the Device Rerpoter itself.
+			* changes to solution registry entry?  All that's currently avaialbe for DR is isInstalled block, but that just returns a boolean.
+
+Justin
+	* Will start on UIO Plus next week
+		* likely starting with an MS Edge extension
+
+Michelle:
+	* Ummm... have I mentioned integration tests? 
+
+Simon:
+	* Mostly Nexus video and P4A review preparation
+
+stEvE grUndEll
+- Started metrics/logging
+- Finishing windows service
+
+Tony:
+	1. As part of the push to upgrade to a "root safe dedupe" version of infusion throughout my work, Antranig and I have been working through a murder of PRs (and I propose that as the collective term moving forward  a "tug" of pull requests?).
+	1. While there, I have set up and started testing my work with the Vagrant CI plugin and GitLab.  Having the ability to consistently test in Windows 10 (and to a certain extent Windows 7) is very helpful.
+	1. Where possible, also addressed security problems highlighted by snyk.
+	1. To speed up long-running universal tests, updated gpii-pouchdb to force "rimraf" calls to eventually timeout.
+	1. Also addressed additional cleanup concerns with gpii-pouchdb.  There are two more small PRs coming that clean up additional temp directories created by gpii-pouchdb and gpii-testem.
+	1. Continued discussing JSON Schema and live registries on the mailing list.
+
+
+Tyler:
+    * Terraform! https://issues.gpii.net/browse/GPII-2388
+
+
+AGENDA:
+    
+    Where does the group want me (Tony) to sketch out my proposed structure for JSON Schemas and settings?  (see mailing list)

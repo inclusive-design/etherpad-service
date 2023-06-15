@@ -1,0 +1,38 @@
+Meeting 2017/02/09 to discuss deploying versioned documentation for Infusion
+
+Present: Alan, Antranig, Dana, Giovanni, Jonathan, Joseph, Justin, Simon, Tony
+
+We have decided to move away from our implementation based on docpad plugins and github pages.
+We will instead run some kind of CI task which automatically monitors all branches and tags in the infusion-docs repository, and runs the docpad task WITHIN each branch to generate one directory per branch/tag
+We don't particularly trust either docpad or Jenkins plugins - the initial implementation should just use a basic technology such as shell scripts/Python/Grunt etc.
+
+WHAT WE WANT
+    - deploy documentation for all branches and tags
+    - low friction, probably simple enough to roll our own with Grunt or shell script rather than using plugins
+    - initially, a very simple index page like the following: https://nodejs.org/docs/
+    - in time, a properly styled (and UIO-enabled) landing page like the following: https://nodejs.org/en/docs/
+    - the Python docs are an example with a menu to select between versions using a drop-down: https://docs.python.org/3/
+
+CURRENT URL: http://docs.fluidproject.org/infusion/development/
+
+DESIRED URL STATE:
+http://docs.fluidproject.org/infusion/development
+http://docs.fluidproject.org/infusion/v.2.0.0 <-- many of these older tags are misnamed. We should retag using a standard scheme where the tag name is simply the "version" field from package.json of the corresponding version of Infusion
+http://docs.fluidproject.org/infusion/v.1.5.0
+
+SAMPLE STRUCTURE
+- /development - master
+- /v2.0.0 - from v2.0.0 tag
+- /v1.5.0 - from v1.5.0 tag
+
+Noone particularly has time to work on this. Gio says if someone can work on the build scripts, he will find it easy to implement the CI for this
+ALAN will spike something that generates a build for each branch and tag
+	- 1) MAKE JSON FILE OF BRANCHES AND TAGS
+	- 2) FEED TO A THING
+	- 3) MAKE A DIRECTORY STRUCTURE
+	- 4) PUT STUFF IN THAT DIRECTORY STRUCTURE
+	- 5) ?!?!??
+	- 6) PROFIT
+ADTKINS will write a "version picker" - "2nd nail in the coffin"
+A "spike quality solution" will be fine
+My spikes have tests (at least the good ones do).

@@ -1,0 +1,28 @@
+Testing session 2018-05-04
+
+Testing session by Kavya and Javi to troubleshoot the problems that Kavya has found during the testing of GPII-1.0.0-demo-MS-0.2.msi
+
+	1. Sven - not applying the right color for the title bars
+		2. Found out that if you disable "Automatically pick an accent color from my background" the title bars and other colors won't change when using sven
+	1. Simi - The layout for the menu is not the expected one (I'm also experiencing this on my VAIO)
+		2. On Kavya's VAIO the custom menu layout doesn't get restored
+		2. On Kavya's laptop, menu doesn't change to custom layout
+		2. On Javi's VM we're getting a "closer" menu, but stlil not the expected one
+		2. On Javi's VAIO, after setting the SetExecutionPolicy to Bypass, now we're getting https://snag.gy/UnaqxQ.jpg
+			3. The only difference from the expected behavior (https://snag.gy/8TjaZV.jpg ) is that the icon doesn't appear inside the red box
+	1. Zak
+		2. On Kavya's laptop, the magnification settings of 1.2 didn't apllied at all
+			3. Checked that the settings file under appdata/gpii/ZoomText are fine
+			3. The logfiles aren't showing any problem
+		2. On Kavya's VAIO, the magnification level is being applied, but there's no speech output at all
+	1. Microsoft Edge language changes with catalina,jiwoo and geeta
+	1. We both are experiencing random hangs of Google Chrome after several key-in/key-out cycles - it's worth further investigation
+	1. Kavya is experiencing GPII hangs after changing the way she keys-in - this is, first with nfc cards, then she uses usb and so on ... but not 100% reproducible
+		2. Not sure if related, but during some testing on Javi's VAIO I could experience the following
+			3. If I key in using NFC (it keys-in)
+			3. If I try keying in with the USB drive, it doesn't work
+
+NEXT ACTIONS:
+	1. Javi will continue debugging problems with user listeners on line 21
+	1. JJ will take a look at the problems we're having with Simi and Zak
+	1. Kavya will continue testing on laptop windows 10 pro machine

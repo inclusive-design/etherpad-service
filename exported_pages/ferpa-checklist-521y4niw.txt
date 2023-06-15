@@ -1,0 +1,28 @@
+https://studentprivacy.ed.gov/sites/default/files/resource_document/file/Data%20Security%20Checklist_0.pdf
+
+
+We have:
+	* Inventory list
+	* TFA
+	* Layered defense
+	* Secure configurations:
+		* Security scans
+		* Process of deploying changes, Pipelines, reviews
+		* Inventory and alers based on it
+		* Access control, minimal IAM permissions
+	* Athentication between services
+	* IDS implemented in the cloud security center
+	* Automated vulnerability scaning
+	* Patch management
+	* Shut down unnecessary services
+	* We don't have mobile devices
+	* Emailing encrypted data, we use gpg or other service to send p2p data
+
+
+
+
+We don't have or it's not completed:
+	* Incident handling, we have documented a lot of things in our readmes, but this is not well structured.
+
+
+Anyway we need to cover tasks left directly writed by Brendan which we can not map directly to the checklist , but it seems that they are requried to pass the FERPA auditory

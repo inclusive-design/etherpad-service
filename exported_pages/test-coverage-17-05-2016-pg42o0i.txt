@@ -1,0 +1,27 @@
+	* Test coverage tool integration within a project
+		* Node
+			* Nexus
+		* Browsers
+			* gpii-binder
+	* Integration with a CI server
+		* http://docs.openstack.org/infra/jenkins-job-builder/publishers.html#publishers.html-publisher
+		* http://docs.openstack.org/infra/jenkins-job-builder/publishers.html#publishers.cobertura
+	* What data is available using Jenkins' REST API
+
+
+Anyone have experience with Karma or other coverage tools?
+	* Avtar: "It didn't fit in because of the way it expected HTML documents to be used. The tool itself would work if you were using those documents fairly minimally and relying on tools like webpack to bring other JavaScript into each test or scenario, whereas the way that Infusion has QUnit set up, especially with QUnit-composite, we needed something more like testem that was less opinionated about "
+
+
+Example of loosely-coupled "integration" between Travis CI and a repo's README page:
+    
+https://github.com/dwyl/repo-badges
+
+
+That page includes details about codecov.io:
+    
+    https://codecov.io/#features
+
+Also we should be able to check is a PR is fine: https://github.com/blog/1935-see-results-from-all-pull-request-status-checks
+
+Do you like soul music? yes, a lot

@@ -1,0 +1,18 @@
+Agenda
+	* User creation, identity management.
+	* The evaluation of StrongLoop's "LoopBack" framework
+	* GPII deployment structures
+
+Requirements for accounts and identity management:
+	* auto-logging
+	* roles
+	* Compliances for security level 0 & 1
+	
+The evaluation of StrongLoop's "LoopBack" framework
+	* Be specific with our requirement
+	* Find out how modular the LoopBack framework is to see if we can make use of all or some features
+
+Next actions:
+	* Adewale: Document functions and requirements with LoopBack 
+
+

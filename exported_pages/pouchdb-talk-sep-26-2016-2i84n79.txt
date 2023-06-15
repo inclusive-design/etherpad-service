@@ -1,0 +1,12 @@
+	* Issues with cleanUp() changes
+		* Please continue to return a promise
+		* CleanUp() no longer removes the physical db files on the disk. Compacting the database does not result in smaller file sizes.  May need to reinstitute the directory cleanup based on a declarative option.
+		* Restarting the pouch harnes doesn't reload the data.  This is because the old system checked only for the existance of the directory to determine if the content exists.  We need a new and better check.
+		* Cindy suggests closing the db before attempting to remove the content.
+		* If compacting doesn't remove any content, might as well skip that in favor of close -> delete.
+
+	* Couch 2.0
+		* http://docs.couchdb.org/en/2.0.0/api/database/find.html
+		* https://cloudant.com/blog/enable-full-text-search-in-apache-couchdb/#.V-kdXJN975Z
+
+Summary, CouchDB 2.0 find interface looks interesting, but no option for that in express-pouchdb.  Full text searching just another variant on what we already have, but without the option to test it.

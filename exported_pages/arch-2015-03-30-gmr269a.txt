@@ -1,0 +1,97 @@
+UPDATES:
+    
+ALE:
+	* Close procedure of work / UX Stories and development stories. (Creating Windows Installer / SILO dev stories)
+	* Close Survey with Maureen.
+	* Close SILO contract/project.
+	* Work more in the mac project. We are going to implement a basic version asking for access to the Accessibility API, showing in the top bar using electron? and listening to the a11y events. First final proof of concept will be an installable .pkg, an runnable app/service that launch voiceover or change any of the fonts size/contrast settings.
+	* Meetings and that usual stuff too, yes :-(
+	* At 50% progress of "The way of kings" book from Brandon Sanderson.
+	* Question: ¿Any problem to update the wiki at my own? ʕ •ᴥ•ʔ <- Seems that not.
+	* Question: "Are we going to use electron for creating multi-platform desktop apps?" <- Seems that yes.
+
+Alf:
+	* CI related tasks
+	* Cleaning and troubleshoting GPII Mediawiki (╯°□°）╯︵ ┻━┻ (after fix) -> ┬─┬﻿ ノ( ゜-゜ノ)
+	* APCP meetings
+
+Avtar:
+	* Working on setting up a VM config for serving frontend work and for building/running containers for this type of workload
+	* CI tasks related to the upcoming demo
+
+Cindy:
+	* Will study Tony's pull request for the user management system, then hopefully talk to Tony and Antranig to discuss about the approaches for creating the user management system for APCP
+	* Updating the README in unival example folder to include the instructions of using the sample client with the cloud based configuration. This is the example that works and can be tried by APCP team. Will send this as a pull request to Antranig's GPII-1318 branch
+	* Working on the last bit of gpii-payload. Is it ok to use the context manager integration test for capturing payloads for the context change?
+	* APCP meetings
+
+Colin
+	* APCP meetings
+	* Reviewed BIG PULL REQUEST for universal, waiting for updates from Antranig
+	* 
+
+
+Giovanni:
+	* APCP meetings mostly
+
+JAVI
+	* Catching up on things after holidays
+	* APCP meetings
+	* Browser extension
+		* high contrast themes and CSS
+		* build system and code structure
+	* Will update my pull requests to universal
+
+JOSEPH
+	* Small holiday (Easter)
+	* Looking into processes and signals for gracefully shutting down solutions (linux).
+		* wondereing if PR should determine/track child processes associated with the main process for a solution.
+	* Providing "debug traces" to Alfredo regarding edit blocking in the gpii wiki.
+	* Didn't attend ACPC meetings.
+
+
+KASPER:
+	* Easter - so short week since last arch meeting
+	* Initial pull for canopy MM is ready: https://github.com/GPII/universal/pull/445 - pending #425 (see https://github.com/amb26/universal/pull/4 for a boiled down version)
+	* Working on updating Windows Virtual Magnifier (https://github.com/GPII/universal/pull/301). Have run into an issue with permissions
+	* Meeting about windows work with Dipesh, Antranig and Sandra
+
+Michelle:
+	* APCP meetings
+
+Simon:
+	* APCP meetings
+	* Nexus demo preparation for P4A review
+		* Initially pulling apart the work that we did for the face-to-face -- Colin's Flocking based synth
+		* And connecting them via the Nexus
+	* This morning I starting looking at a P4A project for retrieving mobile sensor data to see if I can integrate it
+		* https://github.com/teco-kit/p4a-sensorAPI
+
+Sandra:
+	* Continue working on the process flow to deliver functionality. 
+	* Meetings with and monitoring collaboration with IBM. 
+	*    
+
+
+PULL REQUEST STATUSESES/STATZ: ¯\(º_o)/¯  <--- much fancy ASCII artz
+	* Grunt will run tests: https://github.com/GPII/universal/pull/444 - needs reviewer I can review this one (colin)! Thanks colin!
+	* Detect running solutions (ProcessReporter) - next steps: https://github.com/GPII/universal/pull/355 - will be replaced by a new version targeted towards #425, pending #425
+	* Always installed support - https://github.com/GPII/universal/pull/407 -- pending #425
+	* Solutions creation tutorial: https://github.com/GPII/universal/pull/325 -- Steve Githens not present at the meeting - kasper will ping him and potentially take over this JIRA
+	* Giant pull: https://github.com/GPII/universal/pull/425 - Colin is reviewing the last OS specific parts (expecting to get to that this week). Antranig has work to do, addressing the comments.
+	* Windows screen resolution - next steps: https://github.com/GPII/universal/pull/280
+		* We're able to retreive the available resolutions in linux (and set them)
+		* We're uncertain of the status of how to retrieve resolutions in windows
+		* We're lacking suppport from the core architecture to use this information (only provided by linux' xrandr module) in order to come with a right value for screen resolution on different displays.
+		* ACTION ITEM: Kasper will set up a meeting about this
+	* Windows Virtual Magnifier - https://github.com/GPII/universal/pull/301 - needs work (see next agenda item)
+ 
+PERMISSIONS FOR SETTINGS IN PROGRAM FILES (WINDOWS)
+https://github.com/GPII/universal/pull/301
+
+Actions:
+	* Kasper will create a JIRA with the issue of writing in Program Files without escalated privileges and bring this to Dipesh, to see if we can get around this issue in a window'ish way
+	* Simon to make note of need to run some GPII actions with elevated privileges and the need for a solution for handling
+		* examples: system configuration changes that require elevated privileges or installing software
+		* an example to look at on Windows would be to see how Mozilla separates and coordinates the Firefox browser (user process) from the Firefox updater (elevated privileges)
+

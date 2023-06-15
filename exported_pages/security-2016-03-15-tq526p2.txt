@@ -1,0 +1,43 @@
+Agenda
+
+	* Review actions from last meeting
+	* Simon and Michelle working on gathering requirements and planning
+	* Component deployment configuration -- microservices in the cloud?
+
+Actions from last meeting (9-Mar-2016):
+		* Adewale to lead work on risk assessment framework
+		* Simon to add link to Cindy's https://github.com/cindyli/gpii-payloads/ to the GPII wiki Security Dashboard page
+		* Sandra to continue on documenting ATs targeted for American Job Centers (based on survey list from Maureen Kaine)
+		* Alejandro to continue on preferences gathering looking towards what we will cover going into the future (5 years) - my work is getting updated here https://issues.gpii.net/browse/GPII-1586
+			* Working with Maureen to collect the most we can about the AJC center that we are going to pilot soon. <- This could be an interesting input for security reasons, maybe.
+		* Adewale volunteered to create a draft of actionable items that need to be prioritized and planned for (schedule)
+
+Risk Assessment Framework
+
+Is is reasonable to describe GPII as microservices?
+
+What do we mean by "microservices"?
+
+	* standalone "app"
+	* unique URL
+
+GPII consists of parts, components, communicating through REST. GPII supports different deployment profiles. A Node.js instance may run one or more GPII components, depending on deployment configuration.
+
+Adewale: we will need to come up with a framework for governing Node.js deployment security. Existing best practices or standards focus on "monolithic" applications rather than the loosely coupled systems like GPII.
+
+Next steps:
+
+	* Systems Security Plan -- documentation framework for system security
+	* Diagram of end-to-end workflow detailing authentication
+
+Viewing local system changes made by GPII
+
+Rich: GPII changes the user's system when applying settings, such as changing registry values. Does IBM have tools to determine if another person is viewing those changes? QRadar
+
+Use case: deployed in public places, other persons are accessing registry values to spy on user's preferences.
+
+Actions
+
+	* Send out GPII deployment diagrams, mapping of components to Node.js instances
+	* Team (Michelle/Cindy/Simon) to work with Adewale on authentication workflow diagram
+

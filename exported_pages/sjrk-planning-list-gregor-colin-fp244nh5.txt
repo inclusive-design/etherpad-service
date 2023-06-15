@@ -1,0 +1,54 @@
+In Progress
+
+Easy Wins
+	* Add code of conduct and contributor guidelines
+		* SJRK-75
+		* SJRK-76
+		* SJRK-77
+		* SJRK-78
+	* Review and normalize CSS class names
+	* Review story model fields and tidy up
+		* SJRK-132
+	* Fix welcome screen button styling
+		* SJRK-145
+	* Update UIO documentation related to locales
+		* FLUID-6311
+
+Things We're Stuck On
+	* CI-related race condition in FLUID-6300
+	* 
+
+
+Things Need to Figure Out
+	* Are we already using partials-within-partials?
+	* Why is SJRK-61 still in the backlog? Is it fixed or is there more work to be done?
+
+
+A Path Forward
+	1. Crush as many easy wins as possible, fast 
+		2. Spike until November 30
+	1. Prioritize test coverage
+		2. Sprint December 3-14 
+		2. Goal: as much test coverage improvement as possible within the spring timeframe
+	1. Short research spike on video uploading and capture
+		2. Spike December 17-21
+	1. Coordinate with Justin, Cindy, Antranig to solve the bigger UI Options-related JIRAs
+
+Multilingual UIO
+	1. Can UIO be localized statically (i.e. provided with a set of languages bundles etc. that fully translate its UI)?
+		* Yes, but it has to be statically configured (e.g. provided with language bundles for your site's default (i.e. only) language
+			* There may be some parts that aren't localizable or are not easily done.
+	1. Will it respond to the user agent's specified language?
+		* No
+	1. Can it support dynamic locale switching?
+		* Either by a site's own language change widget or via an enactor provided within UIO
+		* No (until FLUID-6300 is done)
+
+Three Things to Do
+	1. Have a conversation and make some estimates regarding the UIO work in the Storytelling Tool (Justin and Gregor)
+		2. Do any of the "easy wins" or high priority tasks to UIO as needed
+	1. Create a "community governance a la carte" document in the wiki
+		2. Then move the Storytelling Tool into the fluid-project org based on the above
+	1. Implement audio and video storytelling without compromising our existing state of test coverage if possible
+		2. Organize any existing Jiras into a list of tasks, prioritized, required to achieve this
+

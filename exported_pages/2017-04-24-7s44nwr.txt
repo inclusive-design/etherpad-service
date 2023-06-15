@@ -1,0 +1,17 @@
+DevOps meeting
+https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=19&view=planning
+	* We need a process for how items should enter the backlog—some way that a developer, for example, could file an issue for ops team and then it would be triaged and enter the planning process
+	* 
+
+Agenda Items
+	* How is the process going so far? (Colin)
+	* Swarm-related comparison tasks with Kubernetes (Colin)
+		* How to measure 
+		* (Initial suggestion) Compare major areas broadly:
+
+* Revisit when Sandra is back: how do tickets (especially from "external" colleagues (GPII developer)) get into backlog?
+	* Assign to "unassigned" or some other dummy to prevent confusion on what Tyler is working vs what Tyler is assigned because he is the default?
+
+
+
+

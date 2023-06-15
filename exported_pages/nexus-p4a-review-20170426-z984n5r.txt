@@ -1,0 +1,17 @@
+https://github.com/simonbates/nexus-demos/blob/master/science-lab/ConstructScienceLabPeersAndRecipes.js
+
+sendPhSensor Recipe:
+
+https://github.com/simonbates/nexus-demos/blob/master/science-lab/ConstructScienceLabPeersAndRecipes.js#L289-L312
+
+• the model relay system is a data flow system
+• a model is a "behaviour" in the Functional Reactive sense, and a stream of changes is a Signal
+• externalized state transfer—that it enables a UNEXPECTED MULTILATERAL RELATIONSHIPS
+	- accessibility is an example of such things (traditionally this is mediated by very limited, very visually-oriented platform AT APIs)
+• to talk about previously uncharacterized aggregates in the world
+        - a particular set of cooperating devices could start to be seen as a "unit"—a dynamic "façade-forming pattern"
+        - supports the taking of a collection of different things in the world and repackage them as a new component
+        - the creation of entirely new categories of things is opened up to other contributors, not just first-party developers (e.g. authoring tools)
+        - an integration domain and an integration "publishing" system
+        - further goal: "synthesize your own AT" —recipies allow you to create your own orchestration of components and to share them as "GPII solutions" 
+• developer ease-of-use—based on web standards, graphical authoring supports,  

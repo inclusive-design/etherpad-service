@@ -1,0 +1,71 @@
+Meeting on database issues, 18/9/19
+Present: Javi, Sandra, Alfredo, Antranig, Chris, Colin, JJ, Joseph, Justin, Sergey, Githens, Stepan, ADTKINS
+
+Example of CouchDB instability during stateful set restart:
+(run rake test_flowmanager in background, change cpu requests and deploy couchdb module)
+
+Trace:
+
+https://console.cloud.google.com/traces/traces?authuser=1&organizationId=247149361674&project=gpii-gcp-dev-natarajaya&start=1568652936048&end=1568656536048&q=%2Faccess_token&tid=a66f52c9ec2449c1b68e5a9e8911714b&rc=5
+
+CouchDB error:
+
+https://console.cloud.google.com/logs/viewer?minLogLevel=0&expandAll=true&timestamp=2019-09-16T18:09:49.011000000Z&interval=PT6H&project=gpii-gcp-dev-natarajaya&authuser=1&organizationId=247149361674&customFacets=&limitCustomFacetWidth=true&dateRangeStart=2019-09-16T12:10:11.775Z&dateRangeEnd=2019-09-16T18:10:11.775Z&scrollTimestamp=2019-09-16T17:49:26.628187830Z&resource=k8s_container%2Fcluster_name%2Fk8s-cluster%2Fnamespace_name%2Fgpii%2Fcontainer_name%2Fcouchdb&advancedFilter=resource.type%3D%22k8s_container%22%0Aresource.labels.cluster_name%3D%22k8s-cluster%22%0Aresource.labels.namespace_name%3D%22gpii%22%0Aresource.labels.container_name%3D%22couchdb%22%0A%22%2Fgpii%2F_design%2Fviews%2F_view%2FfindClientByOauth2ClientId%3Fkey%3D%2522pilot-computer%2522%26include_docs%3Dtrue%20500%22
+
+CouchDB log records with same ID:
+
+https://console.cloud.google.com/logs/viewer?minLogLevel=0&expandAll=true&timestamp=2019-09-16T18:15:50.434000000Z&interval=PT6H&project=gpii-gcp-dev-natarajaya&authuser=1&organizationId=247149361674&customFacets=&limitCustomFacetWidth=true&dateRangeStart=2019-09-16T12:20:32.012Z&dateRangeEnd=2019-09-16T18:20:32.012Z&scrollTimestamp=2019-09-16T17:54:28.813225310Z&resource=k8s_container%2Fcluster_name%2Fk8s-cluster%2Fnamespace_name%2Fgpii%2Fcontainer_name%2Fcouchdb&advancedFilter=resource.type%3D%22k8s_container%22%0Aresource.labels.cluster_name%3D%22k8s-cluster%22%0Aresource.labels.namespace_name%3D%22gpii%22%0Aresource.labels.container_name%3D%22couchdb%22%0A%222c7c502b72%22
+
+How CouchDB MapReduce works:
+https://www.slideshare.net/okurow/couchdb-mapreduce-13321353
+
+Involved parts:
+https://github.com/apache/couchdb-fabric
+https://github.com/apache/couchdb/tree/master/src/rexi
+
+
+If we use retry policy on network mesh level:
+
+409 - Conflict :(
+
+https://console.cloud.google.com/traces/traces?authuser=1&organizationId=247149361674&project=gpii-gcp-dev-natarajaya&rc=4&tid=26ccc3bb333e40a38f4a904beb6a2bbb&start=1566502755873&end=1566506355873
+
+This happens when initial request timed out, but data was updated in DB and replicated to other nodes.
+In this case retry request may cause a confict, trying to create a divergence in doc's revision history.
+
+- Seamless rollouts are difficult to perform without errors in the requests
+- It Is hard to make a CouchDB cluster reliable
+- Monitoring is hard
+- Scaling is hard
+
+Issue for tracking issues related to the communication between Morphic apps and CouchDB
+https://issues.gpii.net/browse/GPII-4106
+
+Other links from chat:
+	* Couch missing metrics: https://github.com/apache/couchdb/issues/2120
+	* General Couch help: https://couchdb.apache.org/#mailing-list
+	* Node maintenance: https://docs.couchdb.org/en/stable/cluster/nodes.html
+	* Sharding: https://docs.couchdb.org/en/2.2.0/cluster/sharding.html
+
+Next Steps:
+    - Improve situation with CouchDB maintenance: https://github.com/gpii-ops/gpii-infra/pull/489
+      * https://issues.gpii.net/browse/GPII-4068
+    - Need to decide regarding using timeouts or network-level retries, because both may lead to the need of extra-handling on client side (example with 409s)
+    - Investigate alternatives (Firestore? Couchbase?) closer
+    
+Meeting on 25-Sep-2019
+Attendees: Antranig, Cindy, Javi, Alfredo, Stepan, Christopher, Jake, Javi, JJ, Sergey, Joseph, Tony, Steve Githens, Steve Grundell, Sandra
+    
+Next steps:
+    - Compile each operation that is performed against the CouchDB
+    - List possible candidates for DB software
+    - Evaluate each candidate
+   Technology Assessment Criteria: https://docs.google.com/document/d/1LGrskCDh5V6ekb0s3MRfGd36kf0nZEPxtI03aVPcO34/edit#heading=h.u6hr8a57ooin
+   Related Document:
+https://wiki.gpii.net/w/Technology_Evaluation
+
+New Database Requirements:
+https://docs.google.com/document/d/1Ji3Ibt_vGVxTk_YCudyJKzQ0yCoklahDPbDlH4NuV9E/edit
+
+Meeting on 2-Oct-2019
+Attendees:  Cindy, Christopher, Alfredo, Javi, Tony, JJ, Antranig, Joseph, Stepan, Steve Grundell

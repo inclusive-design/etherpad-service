@@ -1,0 +1,56 @@
+# GPII Infrastructure Meeting - 2016-12-05
+
+Alan Harnum
+- cat capture
+
+Alfredo
+	* Sorted the files of Vagrant-QIenv? (is that name good for the plugin?)
+	* https://github.com/amatas/vagrant-qienv
+	* Trying to publish the Gem in order that everyone could do "vagrant plugin install vagrant-qienv" vagrant-ci-env gpii-vagrant-ci-env!
+		* https://rubygems.org/gems/vagrant-qienv
+	* Troubleshooting Tony's QI repository setup
+		https://github.com/yarnpkg/yarn/issues/2123
+
+Avtar
+	* Finished up work on https://github.com/avtar/docker-push-ref-gitlab
+	* Need to set up one of Tony's projects that contains gpii-webdriver and aXe work with Gitlab CI so that it can be used for P4A demos
+	* Planning APCP and P4A tasks today
+	* Will be spending majority of time on P4A review tasks but still available for infra calls
+
+Giovanni:
+    - Worked on investigating the yarn issue reported by Tony last week
+    - More work on Polymer build container, not much progress there (still issues sharing volumes and not a good way to make it easy for developer without making the commands more and more complicated)
+    - Working on a Docker entrypoint script to manage volume permissions
+    * Time permitting, will try to tackle some tasks in GPII-2009
+
+
+Agenda:
+
+	* Name the "Vagrant QI plugin":
+		* Vagrant-ci-env
+		* Vagrant-qi-env
+		* GPII-vagrant-ci-env
+		* gpii-vagrant-ci
+		* Other plugin names (for reference): https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
+		* vagrant-gpii-ci <---- WINNER! (to follow the pattern ^^^ )
+	* Path towards multi-vm and archs
+		* Windows
+			* One option would be to use a small Ansible Linux control host that talks to Windows VMs
+			* Or Vagrant mult-machine support https://www.vagrantup.com/docs/multi-machine/ (preferred option)
+				* Would need to make sure one host (win8.1) is brought up first, jobs run, output gathered on a console, before another host (win10) is made to do the same
+					* "autostart: false" for each vm in a Vagrantfile could be a starting point, and then use "vagrant up win8.1" to bring up one env before proceeding to the next
+				* Example: https://github.com/coreos/coreos-vagrant (see how config.rb works)
+				* https://github.com/amatas/vagrant-vmenv/blob/master/envs/production.yml
+		* Concerns about migrating Windows Powershell scripts over to Node.js -- need stronger case made about this, benefits are not clear, drawbacks are somewhat clearer.
+	* Giovanni will be away from Dec 26 until Jan 9
+	* Tyler's induction - what will be his scope?
+
+
+https://issues.gpii.net/browse/GPII-2009
+	* Deadlines ?
+	* Kubernetes 1.5 will not have CentOS packages in the near future
+		* Rebuild existing rpm packages?
+		* Use a playbook to place binaries on hosts, create users, directories, etc?
+
+
+

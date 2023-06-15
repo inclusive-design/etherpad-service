@@ -1,0 +1,52 @@
+
+
+Agenda Items:
+
+* Agile project planning decisions [tyler]
+	* Scrum vs Kanban -> Scrum
+	* Iteration length -> 3 weeks
+	* Standups -> 3x/week. Sandra will send a doodle
+* Want separate space for high-level technical discussion (not clobbered by iteration planning)
+	* Maybe keep regulary devops weekly for planning, use APCP Core Weekly for high-level discussion
+* Demos: include in Architecture meetings? APCP weekly meetings?
+
+Some loose ends from the mailing list discussions (if we have time to tie them up) [gio]:
+
+	* Ansible tags and how to test them (deploy/configure/test/install)
+		* http://lists.inclusivedesign.ca/mailman/private/ops/2017-March/000353.html
+		* http://lists.inclusivedesign.ca/mailman/private/ops/2017-March/000364.html
+		* If there's no way to test, should we remove them?
+		* If they add extra code, should we remove them?
+
+	* Version pinning
+		* Idea was proposed but there are unaddressed concerns (and we have started to follow this strategy in new roles)
+			* http://lists.inclusivedesign.ca/mailman/private/ops/2017-February/000323.html
+			* http://lists.inclusivedesign.ca/mailman/private/ops/2017-March/000345.html
+		* How new versions for the following apps will be addressed?
+			* CentOS base packages
+			* CentOS updates
+			* EPEL packages
+			* Docker
+			* Jenkins
+			* InfluxDB
+			* nginx
+		* Is it acceptable to have optional version pinning?
+			* https://github.com/gtirloni/ansible-nginx-common/blob/molecule/defaults/main.yml#L3-L4
+			* https://github.com/gtirloni/ansible-nginx-common/blob/molecule/vars/main.yml#L3-L4
+			* https://github.com/gtirloni/ansible-nginx-common/blob/molecule/tasks/main.yml#L8-L11
+			* How about testing it? molecule doesn't seem able to do that at this point.
+			* Is adding extra code acceptable?
+		* Latest batch of upgrades also upgraded supposedly pinned packages. How do upgrade system-level packages now?
+			* http://lists.inclusivedesign.ca/mailman/private/ops/2017-March/000343.html
+		* What existing Ansible roles need fixing (and when)?
+
+	* Ansible Style Guide
+		* Is there any interest in this?
+		* http://lists.inclusivedesign.ca/mailman/private/ops/2017-March/000346.html
+		* http://lists.inclusivedesign.ca/mailman/private/ops/2017-March/000365.html
+
+	* AWS Credentials
+		* Per person credentials today have wide permissions
+		* IDRC cannot handle extra charges except for the Route53 ones at this point, be careful with any testing using IDRC credentials
+		* Should we have R/W and R/O credentials for different services?
+

@@ -1,0 +1,80 @@
+GPII Architecture Meeting Minutes, April 24th, 2019.
+
+UPDATES:
+
+Alfredo (not here?):
+	* GPII-2782: 
+		* Moving containers used by the backup exporter to the private GCR
+		* Minor changes to make the script more human readable
+		* Testing the code that creates the destination GCS bucket
+
+Antranig:
+	* Have been mostly away
+	* Code review for GPII schema system
+	* Tracking current pilot rollouts to see if any support is required
+
+Bryan
+	* Tried to get tests working for capture tool...need to connect with Steven Githens as he may have some insights  I'm always an email/irc/skype away :) sorry about the spelling 
+
+Cindy
+	* Review pull requests
+		* Merged Joseph's GPII-3333 pull request that adds production config tests
+		* Merged Antranig's infusion pull request for fixing priority keyword misparse
+		* Reviewed Joseph's GPII-3646 pull request that cleans up expired access tokens
+		* Reviewing Githens' pull that adds preferences server APIs for PPT
+
+JJ:
+	* Rescuing old implementation for new settings Windows 10 Taskbar and TrayIcons.
+		* Will be needed some work into LifeCycleManager because the need of explorer restart for this settings.
+	* Finishing details into:
+		* GPII-3863: Device reporter should detects the availability of "display brightness" setting for Windows 10 
+		* GPII-3864: Onboard Windows 10 volume 
+	* Giving Danail details about previous features.
+	* New installer testing.
+
+Joseph:
+	*  GPII-3333:  Production configuration tests.
+		* Final review and merged into gpii universal
+		* https://issues.gpii.net/browse/GPII-3333
+	* GPII-3646:  Delete expired access token records from Couch
+		* Last week decided to not archive expired access tokens and just delete them -- modified code as appropriate
+		* Cindy reviewed and code was refactored -- ready for another review
+			* https://github.com/GPII/universal/pull/777
+		* Will test in a cloud environment
+
+Stepan 
+- GPII-3843 - Investigate Locust/DNS failure - fixed by moving away from wildcard to individual DNS records
+- Finally merged Istio - GPII-3781 - Move certificates validation to DNS01 challenge
+- Another issue - slow response times - GPII-3883 - Fix slow max response time
+
+Steven Githens
+- Trying finish up the universal portion of GPII-228 for review
+- Pushed up quite a lot of changes from reviews on GPII-2452
+- Excited for the return of Cindy Li - haha, thanks
+- Preparing for another capture tool review tomorrow
+
+Steve Grundell
+- Making language pack installers
+- Tidying up bug fixes
+- USB drive eject
+
+Tony
+
+	1. Started spiking Infusion docs search using Fuse.js.  Finished the back end work, now "just" have to build a UI.  The approach seems promising, the full set of docs and tutorials typically takes less than 1ms to index and less than 50ms to search.
+	1. Submitted two pulls to update CI.  Now working on the first one (for Infusion) with Alan.
+
+Tyler:
+* GCR/version-updater improvements. Dev workflow is shipping today-ish. Shortly is good.
+* Upgrading images, including couchdb (thanks Tony for confirmation on versions). Shipping this week-ish.
+
+AGENDA:
+    
+- Given the status of the pilots and whatnot, are we still holding back on merging major items into universal/windows/gpii-app, or can that resume now?
+* https://issues.gpii.net/browse/GPII-3221
+
+Here's javi's branch he's been using for the latest releases: https://github.com/javihernandez/gpii-app/tree/GPII-3806.loginSolution
+
+- New features requires collapsing lifecycle actions of different solutions. TaskBar and TrayIcon needs to restart Windows Explorer, same as Language feature. This action should be done at most one.
+
+Decision: Tony scheduled a meeting to discuss how Steve's work can be merged and deployed
+

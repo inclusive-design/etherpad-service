@@ -1,0 +1,79 @@
+Dec 19th 2018
+
+Remaining PRs and issues
+
+	1. Merge Astea's morphic-1.0.1 branch
+	1. GPII-3540: Finalize TrayButton (there are prs for both windows and gpii-app - that need updating)
+		2. Not big deal
+	1. GPII-3455: Merge the reset desktop shortcut thing
+		2. Review/merge - it needs a quick update https://github.com/GPII/gpii-app/pull/71
+			3. ready
+	1. GPII-3597: Slowness and SVG - what do we do?
+		2. use new svg (looks nicer)
+		2. https://github.com/GPII/gpii-app/pull/76
+			3. Ready
+
+Other stuff:
+	* Move to GCP
+		* Javi's working on the migration script - almost ready, it needs a last update
+		* Javi will do the switch in the installer once the data migration is completed
+	* Take a look at the bugs reported against the installer delivered on Friday - Steve and I already on it
+
+We're targetting Friday to build a new installer - BUT let's wait until we go over the bugs reported against the last interim installer
+
+Jan 7th 2019
+
+See reported issues against last installer: https://docs.google.com/document/d/1Ls7OAZ6l5pi_FHiGJo9Z3NiIL-WPh6Bv4NzJtXGyOpk/edit#
+
+PRs
+
+	1. Tray Button (GPII-3540)
+		2. https://github.com/GPII/windows/pull/222
+		2. https://github.com/GPII/gpii-app/pull/70
+	1. Fix for "Reset desktop shortcut" (GPII-3455) Sandra: GPI-3455 is not listed in Timeline in PLAIN LANGUAGE.  Javi: This appeared after the move to electron 3
+		2. https://github.com/GPII/gpii-app/pull/71
+	1. Slowness and SVG (GPII-3597) Sandra: Gregg didn't consider this a show-stopper for 1.0.1.
+		2. New SVG merged but still causing slowness
+		2. Only animate the spinner when it's shown https://github.com/GPII/gpii-app/pull/76
+		2. Bern asked to replace the SVG animation with an animated GIF 4 days ago (https://issues.gpii.net/browse/GPII-3597?focusedCommentId=36502&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-36502)
+			3. @SteveGrundell, shall we do this and abandon the idea of showing the animation at startup?
+				4. yes - it might not work anyway, since everything is loading - but the SVG will look smoother than a GIF, so I'd suggest merge 3.2 and keep the SVG (okay)
+	1. Language persists in some places (GPII-3558)
+		2. https://github.com/GPII/universal/pull/723
+			3. @SteveGrundell, do you think it isn't really needed and that https://github.com/GPII/windows/pull/230 fixes the issue for sure?
+				4. It's also needed - the UWP applications use that key (and I think browsers? I think so )
+	1. Wallpaper not restoring after high contrast change (GPII-2618)
+		2. https://github.com/GPII/universal/pull/724 <- ignore
+		2. https://github.com/GPII/windows/pull/234
+
+Other issues:
+	1. The QS "Screen Zoom" and the PSP "DPI Scale factor" settings' ranges differ (GPII-3608) - Can be bumped to 1.1
+	1. Installed language codes should be provided with capitalised region (GPII-3605) - Can be bumped to 1.1
+		2. Discussions happening on IRC at this moment
+		2. https://github.com/GPII/windows/pull/232
+
+Jan 9th 2019
+
+	* Last tested:
+		* GPII-2618: https://github.com/GPII/windows/pull/234 works great - [MERGED]
+		* GPII-3558: Hard to reproduce/test and even harder to fix, but let's say it's "mostly" fixed - There might be cached leftovers that go away within minutes or eventually after a reboot
+			* https://github.com/GPII/universal/pull/723 - [MERGED]
+			* https://github.com/GPII/windows/pull/230 - [MERGED]
+		* GPII-3605: https://github.com/GPII/windows/pull/232 works good - Antranig can review Sandra: Please don't hold up 1.0.1 new installer for this one. Gregg indicated it's not a show-stopper. 
+	* Still under review (and tested before):
+		* Tray Button (GPII-3540) (Review in progress)
+			* https://github.com/GPII/windows/pull/222 [MERGED]
+			* https://github.com/GPII/gpii-app/pull/70 [MERGED]
+		* Fix for "Reset desktop shortcut" (GPII-3455)
+			* https://github.com/GPII/pii-app/pull/71
+
+Jan 21st 2019
+
+After going through the Morphic 1.0.1 Reported Issues  (https://docs.google.com/document/d/1MGpFf70ViEZhv34cJmBGB-gv7oSWbIR88-_mHPv0rQ0/edit?ts=5c4241e7#) - We decided that the following ones are showstoppers:
+
+	* GPII-3605: https://github.com/GPII/windows/pull/232 [MERGED]
+	* GPII-3597: https://github.com/GPII/gpii-app/pull/76 [MERGED]
+
+We also need to create a batch script that removes the "Reset to STD" file with the old format. 
+We also identified the following issues that need to be reported and assigned to the right person
+

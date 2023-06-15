@@ -1,0 +1,24 @@
+1. Anything to demo this week?
+	* Tyler could demo region moving
+	* Stepan could demo node pool migration stuff (mostly no downtime)
+	* We could also wait another week if people are still heads down on Morphic 1.1
+	* Stepan and Tyler will demo Wednesday
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+3. Retrospective (since we will use the retro slot tomorrow for two postmortem items that Sandra wants to attend (Sandra is out for this meeting))
+4. Update from Sandra on deployment status?
+	* When do testers start hitting our system?
+	* When does Nova IT start hitting our system?
+	* When do students start hitting our system?
+	
+	* Schedule is day-to-day
+	* Latest installer dropped last Wednesday
+	* As of Friday morning, there are a few showstoppers. stegru and Hyperaspect worked this weekend to address them. Javi is building installer today (Tuesday).
+	* Still one showstopper without a fix
+	* New installer today, but we will need at least one more for that showstopper
+	* I think by Friday we should have a reasonable release candidate for Nova, plan to release early next week
+	* Gregg plans to drive down while IT installs it
+	
+	* When will it hit the 72 computers? Optimistically, maybe a week from Friday = Apr 5 -> IT
+	* Nova hasn't made it clear how long they want to test it -- a day, 2-3 days. At that point they deploy it to the 72 computers
+	* This will be towards the end of their semester. Last week of class is first week of May. Finals start after that. IT says no continued deployment during summer, as they use that time for maintenance. But this could change if things go smoothly, deploy to more labs and classrooms.
+	* Most students bring their own device, so perhaps we won't see a big uptick in users. So the next big push will be a version of Morphic can be installed on those devices, "individual installs". I think we will be testing this during the summer.

@@ -1,0 +1,35 @@
+
+Exact resolutions vs. coarse grained:
+	* We think there are too many variables influencing screen resolution to express it precisely. So distance from screen, DPI, and resolution would all affect the user experience.
+	* Generally there is an agreement that coarse grained resolutions might be useful - eg. a preference in the value range of "low", "medium", "high" might be helpful.
+		* e.g. "high" would be "device native", "medium" would be "1080p maximum" and "low" would be something like 640x480 or 800x600 (whatever the lowest capability was)
+	* Device classes become very important when making the interpretation of low, medium, high.
+	* At the settings handlers level we WILL be dealing with exact pixel dimension settings.
+
+
+We need to:
+WINDOWS
+	* Merge the node-ffi pull-request that is able to set the screen resolution.
+	* Extend the node-ffi code to be able to detect the screen resolution and the best solution for the device (if one such exist)
+	* Implement a resolver that can:
+		* use the node-ffi code (or device reporter info) to get information about the screen resolution capabilities
+		* It looks like half of this is already written in Steve Lee's node-ffi based windows resolution settings handler - which will take care of one significant part of the problem in decoding any C-style structs encoded in win32.h into node-ffi "struct" entries
+
+CROSS-PLATFORM
+	* Potentially extend the device reporter to do automatically detect and report available resolutions
+	* This depends on timing relative to merging of the BIG BRANCHES. We have the GPII-1318 branch to go in first, and then after that a round of "dynamic device reporter work". In theory after the 2nd round of merges we can consider re-architecting this area so that all the contents of the device reporter become "resolvable" using variables written in solutions entries. If we want to do this work sooner, we should just write the screen resolution reporter directly as a resolver since
+		* We already have architecture for integrators to dynamically contribute arbitrary resolvers into the system
+		* We already have architecture for resolving references to these resolvers from solutions registry entries
+	* Create solution registry entries that can translate from our screen resolution common term, to valid specific settings.
+
+ACTION ITEMS:
+	* Review the node-ffi screen resolution pull request (HENS will reclone the branch and see if he can get it to work, ANTRANIG can do a second round of review)
+	* Write some kind of "complex transformation rule" that can interpret the output of the resolver + the "low/medium/high" value to actually select the particular resolution setting that should be sent to the device reporter
+
+
+{ 
+   rule: "crazyResolutionTransformer",
+   resolutions: "${deviceReporter.screenResolutions}",
+   outputPath: "resolution",
+   inputPath: "http://registry.gpii.net/common/screenResolution"
+}

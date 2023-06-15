@@ -1,0 +1,11 @@
+1. Anything to demo this week?
+	Nope.
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+	Nothing unexpected.
+	
+3. Security assessments
+https://docs.google.com/spreadsheets/d/1d8B4nMh8J5fQ0WWdZXlaCEVtQ1i28-JiyfSbKKwRhw0/edit#gid=1769011929
+https://docs.google.com/document/d/11O7yfXtqkObHSFfEOBQyR1cOkxVCVR8MbeWZCVMXAjo/edit?ts=5db31665#
+
+4. Database evaluation

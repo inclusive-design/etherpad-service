@@ -1,0 +1,83 @@
+Updates
+
+Avtar:
+	* Tested Gio's updated Vagrant boxes with GPII/linux and GPII/universal -- can get VMs provisioned and all tests pass. The nexus repo needs a PR so that the correct version of nodejs is installed, currently what is in the master branch will not result in a correctly provisioned VM.
+	* Tested https://github.com/GPII/ci-service/pull/23 but could not get it to work as-is. Backslashes in paths need to be escaped.
+	* Playing with the chartAuthoring multiline chart [0] to create a CI widget for the P4A meeting, was using test data before and now going to move forward with mock CI results [1] for all of Infusion's commits.    
+
+[0] https://github.com/fluid-project/chartAuthoring/blob/master/tests/html/lineChartTimeSeries-Tests.html#L70
+[1] https://gist.github.com/avtar/6ee61e0b549155923c95c1a2840d7080 
+
+Cindy
+	* The new doodle for the next security meeting: http://doodle.com/poll/g5zsg9q2mbvwf2ny
+	* Confirmed a possible bug mentioned last week isn't an issue. Have contacted Kavya in terms of that.
+	* Working on data loaders: https://issues.gpii.net/browse/GPII-1987
+
+Colin
+	* Spoke with Antranig about logging requirements for GPII—need to have a follow-up discussion
+	* Ramping up for a big planning sprint in the new year
+	* Helping Simon with the Nexus demo—SCIENCE IT UP
+	* Away Dec. 24-Jan 3
+
+Giovanni
+	* Upgraded all servers to CentOS 7.3
+	* Upgraded Jenkins, nginx, VirtualBox and vagrant in our CI infrastructure
+	* Finished testing CentOS 7.3 VM template image
+	* Ton of fixes to Ansible roles, playbooks and inventory files
+
+kavya
+	* Working on integration RFW with SikuliX
+	* Resolving issues with integration
+	* Working on Automation scripts simultaneously
+
+Michelle:
+	* Working on other projects
+	* Will be away Dec 24-Jan 4th
+
+Simon:
+	* Planning Nexus demo for April -- we have made a decision! And are going to go with a science lab style demo
+	* Switched Nexus auto configuration over to using expanders
+	* Will be away from Dec 23, returning Jan 4
+
+Steve Grundell
+	* GPII-1716 Fontsize for windows 10:
+		* https://github.com/GPII/universal/pull/493
+		* https://github.com/GPII/windows/pull/102
+		* The CI fails because they both depend on each other
+		* Will do other windows when this one is settled
+	* GPII-2073 AT still returns at lock screen:
+		* https://github.com/GPII/windows/pull/104
+	* GPII-252: Different high-contrast settings
+		* Just started
+	* GPII-2134: "fixed" it by asking for a re-test
+	* Off next week
+
+Joseph
+		* Opened FLUID-6090: Provide a state tracking component that signals changes in state.
+			* abstracted from the GPII Process Reporter's state tracking functionality.
+			* code ready for a pull request, but need to write the documentation.
+			* JIRA: https://issues.fluidproject.org/browse/FLUID-6090
+			* Code: https://github.com/klown/infusion/tree/FLUID-6090/src/components/stateTracker/
+			* Unit tests: https://github.com/klown/infusion/tree/FLUID-6090/tests/component-tests/stateTracker/
+		* GPII Process Reporter, universal pull request -- addressing Kasper's comments
+			* refactored code to handle multiple criteria for determining if a solution is running -- pushed.
+			* removing the static Process Reporter -- ongoing.
+		* GPII-8 GSettingsHandler can core dump when passed a non-existent key.
+			* re-opened the JIRA since finding another way that the non-existent key can occur.
+			* Pull request that fixes it:  https://github.com/GPII/linux/pull/90
+		* Some discussion on arch list with Tony and Alan about automated validation of ARIA markup.
+		* Christmas/New Year holidays:  Fri Dec 23 - Tue Jan 3.
+
+Tony
+	1. Working on the UL Image API for the upcoming user review in January.  No major objections to my proposed technology choices, so I will proceed as outlined on the list.
+	1. Still need input on scanning incoming file content, didn't see anything from the team.  Mentioning it here in case Gio, Avtar, et cetera have comments. https://www.rfxn.com/projects/linux-malware-detect/
+	1. Started working with test sequences, discovered a problem with in npm/yarn when combining release versions with git hashed versions.  Basically an older githash with the upcoming release version can end up being resolved as the "root" version, even if it comes from a dependent project.  Best practice is to use fluid-publish and tagged versions rather than githashes.
+	1. Out of the office on the 23rd, 26th, 27th, and 30th.
+
+AGENDA:
+
+	* Giovanni has been running latest VirtualBox 5.1.x and vagrant 1.9.x without issues (time to upgrade to VB 5.1?)
+		* CI build node has been using that as well
+		* Latest Fedora 24 and CentOS 7 vagrant boxes have already been built with VBox Guest Additions 5.1 (`vagrant box update` to fetch new ones)
+		* Carefully suggesting people might want to upgrade
+		* If you're on Windows / OSX, please apply these changes: https://github.com/GPII/linux/pull/89

@@ -1,0 +1,96 @@
+GPII Architecture Meeting, November 7, 2018
+
+UPDATES:
+
+Javi:
+	* Been working in upcoming deployments
+		* Documentation
+		* Triaging problems
+		* Meetings
+
+Alfredo:
+	* GPII-3267: Dockerize UL
+	* GPII-3354: Restrict the permissions used at the cloud
+
+Cindy
+	* GPII-3435: Simplify structure of "reset all" settings file using standard preferences
+		* The pull request is ready for review: https://github.com/GPII/universal/pull/706 - sweet!
+	* GPII-3434: Combine settings action on any keyin with "reset all"
+		* In progress
+	* Reviewing Githen's universal pull request for adding endpoints for PPT
+
+JJ
+	* GPII-2750: Updating with suggested changes. Ready for review again.
+	* GPII-3491: During the udpate of GPII-2750 solution was not working, so this issue arised. Now it's solved and shipped in this pull request.
+	* GPII-3511: Finished up research about Windows 10 privacy settings.
+	* GPII-3509: Small pull for SoundSentry/ShowSounds.
+
+Joseph
+	* GPII-3483:  Docker image construction of universal fails on postinstall script
+		* Reason:  running with root privileges, but not when running npm install scripts
+		* Use "--unsafeperms" option with "npm install"
+		* Pull request reviewed by Stepan
+		* Both of us leery of the unsafe permissision flag; tried various ways to avoid it.
+		* Stepan found a way.
+		* Tested on CLI and my AWS dev cluster
+		* Also tested flowmanager and preferences server on AWS since the same docker image is used for them.
+		* https://github.com/GPII/universal/pull/704
+	* Starting on GPII-3333, Improve production config test to cover more functionality.
+
+Justin:
+	* Will be off for parental leave in the new year: January to May 
+	* Working on:
+		* Syllabification: https://issues.fluidproject.org/browse/FLUID-6240
+			* Got the preferences working, but exploring how to make it work in conjuction with the TTS preference
+			* Uses script injection for pattern files, will need to explore how to make this work inside 
+
+Kavya:
+	*     Testing Installer for pilots(No show stoppers) - Reported issues 
+		* https://docs.google.com/document/d/1j_t27Wt8T4PhTKBRP0SUHxLyCjsTq3bHRT8Mwv3XMDY/edit#heading=h.p14qjxsrves1
+	* Not succesful with ISO image but testing done with all softwares as pilots on my Optiplex
+
+Sandra:
+    - Getting ready to deploy to the pilot sites next week. Met twice this week with Pilot leads (Maureen and David) to review our state of readyness. Looking good so far. We're releasing Morphic 1.0.0 for these pilots. 
+    - Continued interview process for candidate for developer position. 
+    - Updates to Gregg, who is in Microsoft this week. 
+
+
+Sergey:
+    – CouchDB disks recovery after forceful cluster re-creation
+    – CouchDB issues caused by missing membership check during finish cluster action
+    – Various fixes for alerting and load testing
+
+Simon:
+	* Nothing GPII this week
+
+Stepan
+- Finished Dataloader (GPII-3391 & co.)
+- CouchDB issue (GPII-3421)
+  - Testing affects of updates and discovered issues with pod restarts/scaling -> investigating
+- Staging cluster recovery & usual ops & PR reviews
+
+Steven Githens
+- Closed and merged GPII-3255 - YAY!!! 
+- Fixed up the CI tests except one remaining pouch for GPII-2966 and Cindy is reviewing it
+- Reviewed the account meetings and notes from the past week
+- Cleaning up ptt for 1.0 - we want A DEMO!
+
+Steve Grundell
+	1. Looking into some issues with the desktop wallpaper and high-contrast - GPII-3501/3
+		2. Know the cause, but no fix
+	1. Updated the standalone metrics capture to be the same as the normal one
+	1. About to dust off the windows service, GPII-2338
+	1. May have worked around the tray icon not being lockable.
+
+Tony
+
+	1. Created a quick fix to avoid problems when reusing temp directories with pouch tests in universal.  Pick up the latest dev release of gpii-pouchdb if you're seeing intermititent errors in the pouchManager tests in your own branches.
+	1. Revised my work on the Docker-based CouchDB test harness per feedback from Antranig, need to review with Cindy and Steve.
+	1. Figured out the "undefined ms" problems when running browser tests and submiitted a pull against infusion (QUnit), now merged.
+	1. Now that the UL API is back, working to figure out why imports from our largest federation partner aren't working.
+
+
+AGENDA:
+
+https://issues.gpii.net/browse/GPII-3221 - Move preferences server out of public cloud
+

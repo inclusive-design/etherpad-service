@@ -1,0 +1,10 @@
+Agenda:
+
+	* Giovanni
+		* Yesterday: GPII-2391
+		* Today: GPII-2391
+		* Not blocked
+	* Alfredo
+		* Landing from vacation, catching up some mail threads
+		* Today: GPII-2023,GPII-2024,GPII-2390
+		* Will create an issue to tackle the Hashicorp Vault integration

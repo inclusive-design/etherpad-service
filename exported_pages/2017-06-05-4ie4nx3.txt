@@ -1,0 +1,36 @@
+05-Jun-2017
+Attendies: Gio, Tyler, Alfredo
+
+Status of the issues:
+	* GPII-2389: work done, ready for a demo. Issue Closed
+		* Demo on thursday 8-Jun
+	* GPII-2090
+		* Blocked by Steve Grundell GPII-2398
+	* GPII-2023, GPII-2024
+		* Reading documentation
+		* Building a demo applied for our environment
+	* GPII-2411
+		* Blocked by Antraning and Tony Atkins: GPII-2176 , GPII-2103
+	* GPII-2412
+		* Didn't spent much time working on this.
+
+This Sprint
+
+Alfredo:
+	* GPII-2023, GPII-2024
+	* Keep tracking of GPII-2090 (blocked)
+
+Tyler:
+	* GPII-2443
+	* GPII-2412
+
+Gio:
+	* GPII-2391
+	* GPII-2411 (blocked)
+
+Retrosprective:
+
+	* We have blocker issues: GPII-2411, GPII-2090 and we don't know how to unblock both situations. And we don't know if it's worth to have these tickets in the sprint.
+	* Jira reports don't work
+	* A good improvement could be to have a block status at the issues to have a good view of the status and progress of the tasks of the sprint
+

@@ -1,0 +1,123 @@
+UPDATES
+
+Javi:
+	* Delivered a new installer to Kavya for testing - This is for the demo at MS next month. It's mostly the "demo ATIA" branch that includes also
+		* The creation of a text file wit the the installed version
+		* The USB user listener now works in toggle mode
+		* Workaround for network issues
+		* A couple of new np sets to switch the default system display language
+	* GPII-2884: Updated https://github.com/GPII/windows/pull/166, how do we proceed?
+	* Supporting JJ on his bughunting
+
+Alfredo:
+	* Adding a new provider to the GPII-infrastrucutre: Google Kubernetes engine
+		* Working on trace a plan
+		* Reading documentation
+		* Implementing new changes on the DNS management GPII-2951
+		* Uploaded a new Windows Vagranb box
+		* Fixed some issues with the elastic.co indexes for the GPII log collector of the AJC pilots
+
+Antranig:
+	* Meetings with Cindy, Colin, Adtkins, Simon, etc. about data model work and the status of the preferences server
+	* Meeting with Astea, Gregg about PSP3, I18N work and important new feature - the "QUICKSET STRIP" https://docs.google.com/presentation/d/11yHnbwhtatRrGG3mUJlmMhGRVGDZr1nKPCl85cGpcbM/edit#slide=id.p18
+		* Note that this is going to be a TOP PRIORITY for upcoming deployment to the Community Colleges starting 3rd week in August, since they are not planning to go ahead with installation of RFID readers/tags, so this will become the primary means of keying into the GPII for this deployment
+		* This will be tasked to Astea as a PSP extension, but we will need to take care of any core issues that it raises quickly (probably just more versions of the schema issues that are already in progress)
+	* Talking to Astea about https://issues.gpii.net/browse/GPII-2516 signalling when GPII is offline, we are going with electron API's rendition for this as a first pass
+	* Work on errors for JIRAs
+		* https://issues.gpii.net/browse/GPII-2831 - new error signalling, this will come with new "exploding settings handlers" and new preference set personas that will trigger these errors for manual testing
+		* https://issues.gpii.net/browse/GPII-2957 - fire "user error" on failed settings handler - relates to JJ's investigation below
+		* https://issues.gpii.net/browse/GPII-2565 - should display something when finding crashed journal - this might become gateway to UI on triggering restore (or we might try to do this automatically)
+	* Talking with JJ about issue of errors within settings handlers/acceptance tests
+
+Cindy
+	* GPII-2630: 
+		* The decision from the last week was to have the prefs server continue to be a standalone server so it can provide private APIs for privileged apps like PPT
+		* In progress
+	* GPII-2965: connect PSP with GPII Cloud
+		* Started but put on hold as it's based off GPII-2630
+	* Meeting about creating snapsets and user writable keys
+
+Danail (on behalf of Astea - Georgi and Yuriy)
+	* Mostly finished
+		* GPII-2932: Image associated with preference set
+		* GPII-2941: Modify PSP application restart behavior
+		* GPII-2928: Login screen for the PSP
+		* GPII-2940: Settings grouping functionality
+			* Uses grouping template situated in the PSP for now
+			* Working on tests
+	* GPII-2937: Update Electron to version 1.8.4
+		* Logged issue to Electron - https://github.com/electron/electron/issues/12698
+			* that has already been resolved resolved - will be out with the next release
+	* GPII-2969: Allow multiple survey triggers - created a PR
+
+JJ:
+	* GPII-2938: Talked with Antranig several times about the issue. It's confirmed and needs further research.
+	* GPII-2521: Fixed acceptance tests problems due to settings incompatibility, this is something we should talk in the Windows meeting about matchmaking.
+	* GPII-NOTCK: Confirming issue with SPI settings that provokes a segfault when running AcceptanceTests.
+	* Talking a lot with Javi and Antranig about this issues. Thanks both.
+
+Joseph
+	* GPII-2927:  Improve code coverage reports in universal
+		* noticed that the "userListeners" gpii module was not included -- no coverage report for that code
+		* added to my pull request: https://github.com/GPII/universal/pull/604
+		* needs final review from someone with commit access'.  Tony reviewed everything just prior to the latest userListeners addition
+	* GPII-2943:  Improve code coverage reports in gpii windows
+		* was based on Tony's GPII-2943, but Tony's was merged last week
+		* rebased my GPII-2943 and re-issued pull request (https://github.com/GPII/windows/pull/172)
+
+Justin:
+	* TTS / Self Voicing
+		* https://issues.fluidproject.org/browse/FLUID-6175
+		* Currently writing tests, but have run into a failng test for TTS in the vagrant vm
+		* Todo:
+			* fix tests
+			* some renaming / cleanup
+			* fix some timing issues with rapidly hitting play/pause
+			* fix to work with multiple languages ( may require restructuring of how the text is parsed )
+
+Kavya:
+    - Testing first installer for demo with MS
+	    _Toggle mode , new users jiwoo(korean) and geeta(hindi), text file with version
+		_ found few issues with language npsets , network issues when keyed in with external nfc reader
+
+Sandra:
+    - Interviews and resume reviews. Three openings: IoD (6 month contract), DevOps (6 month contract) and Developer (Kasper's backfill). 
+    - Finally received first draft ot minimal requirements for Community College (this summer). UX and Pilot teams are reviewing. Will send out to this team when no more updates from their side. 
+    - Demo for Microsoft in May in progress. 
+    - Reminder to those of you traveling to the Face-to-Face meeting in Toronto week of 11-June, if you haven't already, please enter your date of arrival and departure so I can book the lodging: https://docs.google.com/spreadsheets/d/1e2A7eMSKmmkNNJCpPCBcaedzso-1tomu8H6DLd6vzYA/edit#gid=1923534327
+
+Simon:
+	* Joined meetings on data modelling and preferences server API
+
+Steve Githens:
+	* A number of productive of technical meetings with Core, and going over items with Bern, Sandra and others.
+	* While the UX changes from the previous round were completed, I'm continuing to make improvements and changes based on code review.
+	* Based on the discussion from our Gregg/Sandra/Me walkthrough of the PPT, I'm fast tracking the plumbing work in order for specific users to login in to their safe and see just their preferences and keys.  This involves implementing the following simplified screens in order to work on the plumbing:
+		* Logging in to a specific safe: https://jwoaql.axshare.com/#g=1&p=sign_up_from_nothing
+		* Creating a new safe based on email or anonymous: https://jwoaql.axshare.com/#g=1&p=sign-up_anonymously
+		* View to see the current keys for the safe: https://jwoaql.axshare.com/#g=1&p=keys_-_table
+	* All the database schema for this is new in the GPII-2630 branch which is under review and I'm working off for this.
+	* This week I'm:
+		* Finish the basic 3 views above.  ( I realize the UX designs are in the flux, but the basic plumbing is the same ).
+		* Contribute more to the organization about the architecture features needed for the requirements coming down the pipeline.
+		* Review the notes Bern put together this week after reviewing the most recent version of the PPT.
+
+Steve Grundell:
+    - Automatic language installation (HOW? I'll let you know when I find that out -  I thought you made it happen already :P)
+
+
+Sergey:
+    – Onboarding
+    – Learning current state of things
+    – Migration from multiple K8S LBs to Nginx-based Ingress GPII-2959
+    – Other AWS -> GKE tasks GPII-2942
+
+
+Tyler:
+    * Onboarding Sergey
+    * Interview
+    * AWS -> GKE
+
+AGENDA
+
+

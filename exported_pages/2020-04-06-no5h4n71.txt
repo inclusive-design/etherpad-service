@@ -1,0 +1,16 @@
+Reminder: Add Ops Weekly agenda items to the Pad
+https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-meetings-iqt4nbr/view
+
+1. Anything to demo this week?
+  -> None
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+2a. If you are on top of the Standup list, prepare a browser with all Key Metrics loaded and ready to review.
+  -> Done
+
+3. Sprint planning
+  -> Done
+
+4. Backup testing
+  - Done
+

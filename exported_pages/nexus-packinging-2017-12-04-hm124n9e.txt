@@ -1,0 +1,69 @@
+Contents of packaged release:
+
+	* Visible Nexus with Co-Occurrence Engine
+		* Node.js web service
+			* REST API for managing Infusion components
+			* HTML UI
+	* Command line tool to load configurations
+		* https://issues.gpii.net/browse/GPII-2670
+	* Demos?
+
+Desirable qualities:
+
+	* Nexus running in sandboxed/isolated environment
+	* Just download and run
+		* No need to npm install
+		* Minimal dependencies
+	* Cross-platform (Windows, Mac, Linux)
+
+Nexus executable options:
+
+	* Vagrant configuration
+		* Alan created for Visible Nexus
+			* https://github.com/amb26/fluid-authoring/compare/FLUID-4884...simonbates:GPII-2305
+		* Benefit to making custom Vagrant Box?
+	* VirtualBox image
+	* Docker image (good for Linux, not so great for Windows and Mac?)
+		* On Windows and Mac, runs Linux VM to host containers -- is this true?
+		* https://www.docker.com/docker-windows
+		* https://www.docker.com/docker-mac
+		* https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/linux-containers
+		* https://www.hanselman.com/blog/DockerAndLinuxContainersOnWindowsWithOrWithoutHyperVVirtualMachines.aspx
+	* Electron App (no isolation?)
+	* Windows APPX (Windows only)
+	* Linux RPM or DEB packages with SELinux for isolation
+
+Cannot run VirtualBox and either Docker for Windows or Docker for Mac at the same time:
+
+	* Hyper-V
+	* Xhive
+	* It's possible to run on the same machine, but need to restart between
+
+Distribution options:
+
+	* A GitHub project called nexus-dist that contains packaged artifacts
+
+Questions:
+
+	* What's the best packaging format?
+	* If it's something that is built, how to orchestrate the build?
+	* How to distribute the packaged version?
+
+Proposal:
+
+	* Docker image running Nexus
+	* Vagrantfile:
+		* Minimal headless Linux image with Docker (we maintain this already: inclusivedesign-centos image)
+		* Runs Nexus Docker image at boot
+		* Makes Nexus network port 9081 (port for REST and UI) available to virtual machine, and on to host machine
+
+TODOs:
+
+	* Simon to send Gio instructions to run Visible Nexus
+		* https://github.com/amb26/fluid-authoring/tree/FLUID-4884
+		* https://github.com/amb26/fluid-authoring/tree/FLUID-4884#remote-demo-based-on-bare-gpii-nexus
+		* npm install
+		* node visibleNexus.js
+		* http://localhost:9081/visible-nexus/visibleNexus.html 
+	* Simon to finish Co-Occurrence integration
+

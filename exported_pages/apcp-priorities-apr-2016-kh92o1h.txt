@@ -1,0 +1,108 @@
+Core 1 Content (or Minimal Functional Set) Deliverable on 31-Jul-2016
+
+Item 1. Easy to install
+	* Installer enhancements (SILO - in progress)
+	* Native application wrapper for starting all appropriate GPII components  (possible: Javi, Alejandro, Githens)
+		* task tray icon so you can see that it is running and see its status (using Atom Electron) (final version of this requires designs)
+			* Needs to be productionized (ie. tests) and moved to GPII organization on github
+			* Get plumbing in place for launching, killing and getting status (ie. running, not running, current user) for the GPII framework
+		* context menu for selecting demonstration personas easily (developer builds only) (requires designs)
+			* Create the NP sets for the demo personas  (depends on the essential AT list below) (anyone could make sets)
+			* Get plumbing in place for logging out (and in) users
+		* Designs and UX implementation 
+			* Designs should be created (UX TEAM)
+			* Designs should be implemented (including any extra backend work resulting from this)
+
+Item 2. Can appropriately configure a computer that is running different AT
+	* Basic, working Canopy Matchmaker (KASPER - in progress) 
+		* Set the canopy matchmaker to be the default matchmaker of the system (GPII-403)
+		* The valueMapper transform should be invertable and clearer semantics (GPII-1753)
+		* The matchmaker should support inverse transformations (GPII-1751)
+		* Ensure that input paths are correctly collected in the model transform functions (GPII-1752)
+	* Supports a variety of “essential” AT (Alejandro and Sandra - in progress)
+		* Decide what we consider essential ATs (and essential built-in OS features)
+			* Including which settings are essential for each
+			* Once done, these should be broken out into specific tasks and assigned and prioritized
+		* Add support for the essential AT (IBM or other subcontractors, or anyone from the GPII team)
+			* Including deciding common terms 
+
+Item 3. Agile development – Quality Infrastructure (ALFREDO - with support from AVTAR)
+	* Test automation and continuous integration
+	* Docker container automated provisioning/deployment (for testing/staging)
+	* Continuous, automated builds of the Installer
+
+Item 4. Won’t “damage” a user’s system if errors occur
+	* Settings journaling so that we can roll back in failure cases and compare system state to journal on restart of a crashed flow manager
+		* Basic journaling and restoration support using our current settingshandler implementations (ANTRANIG - in progress)
+		* Improve each settingshandler to split up the get and set process (depends on the basic journaling support) (possible: Antranig, Kasper, Javi)
+	* using process detection/stopping applications as part of the configuration/restoration (possible: Antranig, Kasper, Javi, Joseph)
+		* Detecting any running applications on startup, and ensuring that they're running on logout
+		* Enhance the MM to actively close any conflicting applications
+	* Ensuring that an application is started/stopped when we request it: (potentially Joseph, alternatively Javi, kasper, antranig)
+		* Currently we dont attempt to detect whether we were actually successful in starting/stopping processes. This feature would be helpful both when restoring and configuring the system 
+		* This would also be helpful for writing/running cleaner acceptance tests.
+	* Windows issue with theme and mouse cursor being set simutaneously (Dipesh - In progress or similar windows developer)
+
+Item 5. Comprehensive Advanced Preferences Management Tool (CAPMT)
+	* Basic interface for the development teams to be able to edit any preference on anything that works with GPII preferences  
+		* Reads data in from the solutions registry and presents (all of)  it to the person creating or editing a preference set.
+			* Link the CA-PMT to the preference terms dictionary (common terms registry) and the solutions registry
+				* Ensure that PTD and UL (or solutions registry) has an API to get the desired data (possible: Tony Atkins?)
+		* Design and UX implementation:
+			* Designs should be made (and UX decided)  (UX TEAM)
+				* If creating a preference set - all settings are default
+				* If editing a preference set -- the preferences from that preference set would override the default
+				* In both cases saving changes / creates the pref set.
+			* Designs should be implemented (potentially someone subcontracted for this task, alfredo, IDRC) (requires designs)
+	* Configure the CAPMT according to the user settings
+		* Fix up the C4A browser plugin (probably for Firefox and Chrome both) for linking the installed GPII with web-page content. (Javi - in progress)
+		* Ensure that UIOptions are able to retrieve settings from the plugin. (possible Javi, Alfredo, ???)
+		* Matchmaker should provide settings for webpages (either by default or on-demand) (possible Kasper, Javi) - Blocked: requires group discussion
+
+Item 6. Personal Control Panel
+	* The PCP, or personal control panel, is a small panel of controls that is customized by each individual to meet their needs.
+		* Design and UX should be made (UX TEAM)
+		* Implementation of backend support for PCP (possible javi, kasper, subcontract)
+		* Implementation of UI of the PCP (potentially someone subcontracted for this task, alfredo, IDRC)
+
+Item 7. GPII User Access
+	* Account setup
+		* Designs and UX flow planned (UX TEAM)
+		* First pass at backend aspects of security/privacy implementation (cindy and IBM)
+		* Implementation of UX designs (cindy)
+	* Provision a NFC tag
+		* Have cross-platform standardized API for writing/reading tags, detecting NFC availability (full team decision/discussion)
+		* Implement NFC tag reader and writer in Windows (and update linux one) (Dipesh or Steve Lee for windows, Javi or Steve Githens for Linux)
+		* Implement interface between Flowmanager/PCP/PMT for writing tags (possible: Javi, Kasper Antranig, Githens)
+
+================================================================================================================================
+
+
+In Progress:
+	* Basic journaling and restoration support using our current settingshandler implementations (ANTRANIG)
+	* Basic, working Canopy Matchmaker (KASPER) 
+	* Decide what we consider essential ATs (and essential built-in OS features) (Alejandro and Sandra)
+	* Agile development – Quality Infrastructure (ALFREDO)
+	* Fix up the C4A browser plugin (probably for Firefox and Chrome both) for linking the installed GPII with web-page content. (Javi)
+	* Windows issue with theme and mouse cursor being set simutaneously (Dipesh)
+	* Installer enhancements (SILO - in progress)
+	* Atom Electron wrapper needs to be productionized (ie. tests) and moved to GPII organization on github (Alejandro)
+	* First pass at backend aspects of security/privacy implementation (cindy and IBM)
+
+
+BLOCKED:
+	* Native application wrapper for starting all appropriate GPII components (possible: Javi, Alejandro, Githens) (Blocked by lack of UX designs and stories)
+	* Add support for the essential AT (IBM or other subcontractors, or anyone from the GPII team) - Blocked by decision of what constitutes "essential AT and settings"
+	* Matchmaker should provide settings for webpages (either by default or on-demand) (possible Kasper, Javi) - Blocked: requires group discussion - HIGH PRIORITY
+	* Item 5. Comprehensive Advanced Preferences Management Tool - (Blocked by lack of UX designs and stories)
+	* Item 6. Personal Control Panel (Blocked by lack of UX designs and stories)
+	* Account setup (Blocked by lack of UX designs)
+	* Improve each settings handler to split up the get and set process (depends on the basic journaling support) (possible: Antranig, Kasper, Javi)
+
+Highest Priority and can be worked on:
+	* Provision a NFC tag (possible: Javi, Kasper Antranig, Githens)
+	* Implement NFC tag reader and writer in Windows (and update linux one) (Dipesh or Steve Lee for windows, Javi or Steve Githens for Linux)
+
+Lower Priority and can be worked on:
+	* using process detection/stopping applications as part of the configuration/restoration (possible: Antranig, Kasper, Javi, Joseph)
+	* Ensuring that an application is started/stopped when we request it: (potentially Joseph, alternatively Javi, kasper, antranig)

@@ -1,0 +1,105 @@
+UPDATES:
+
+KASPARNET:
+	* Updated a few pull requests
+	* Worked on the developer prefs editor
+	* Will discuss with antranig about:
+		* Limitations of the canopy MM: https://github.com/GPII/universal/pull/450 
+		* Support for multiple SHs: https://issues.gpii.net/browse/GPII-1223
+	* Priority next week is supporting multiple settings handlers (GPII-1223)
+
+ALE
+	* Finished all my windows PRs (And they are integrated!, thanks Antranig)
+	* Creating new job positions for helping us with AT Onboarding Team
+	* Starting inception phase of new potential project AT Install On Demand (IoD)
+	* Meetings and lot of stuff
+
+Alfredo:
+	* Working on GPII-1876, trying to make the code simpler.
+	* Meetings
+
+Antranig:
+	* Testing and merging pull requests on Windows and core framework
+	* We now have trunk on Windows that actually passes! Thanks, Ale
+		* All Windows pull requests should now be updated against trunk
+	* Meeting with *ouchBD team
+	* Fix for https://issues.fluidproject.org/browse/FLUID-5940 raised by GPII tasktray work
+		* Caused by https://github.com/substack/node-resolve/issues/106 in a 3rd party library
+		* Raised https://github.com/fluid-project/infusion/pull/738 as a core fix
+
+Avtar:
+	* Returned from vacation on Monday
+	* Met with Alfredo, Gio, and Tony earlier this week regarding QI updates
+	* Built a new Windows 10 Vagrant box and ran into a few issues:
+		* The Packer provisioning process takes a LONG time now https://github.com/joefitzgerald/packer-windows/issues/217
+		* Chocolatey changed their default behaviour for packages fetched over HTTP resulting in failures unless a checksums requirement is disabled https://github.com/chocolatey/choco/issues/910 Affects numerous build tools packages provided by Microsoft, innosetup, Oracle's JRE. I reached out to the package maintainers but for now we've disabled the checksums requirement.
+	* Working with Cindy on GPII-1821 to get Preferences Server and Flow Manager running in a CentOS VM using production configs
+	* Use 'refreshenv' when working with the Windows Vagrant box to avoid having to restart Windows after a box has been first created https://github.com/GPII/windows/pull/85
+	* Going to leave some notes for GPII-1876 after this call
+	* Will be working on a CI script that Gio started while I was away last week
+
+Cindy:
+	* Working on using CouchDB as the backend DB for the auth server when the GPII server runs in the production mode
+		* Working with Avtar on setting up the VM
+		* Having problems with the flow manager that may need Kasper's help
+	* Working on using pouchDB for the auth server when GPII runs in the development mode
+		* Using Tony's new pouch harness components for this work. Will update the components to use Tony's latest update on gpii-pouchdb
+		* Need to fix acceptance tests that instantiate a pouchdb instance in the testing environment which is in conflict with the pouchdb instance from the cloud based dev config file
+
+Colin:
+	* Planning and roadmapping with Gregg and Sandra
+	* Making lists of skills and requirements for upcoming hiring and contracting positions
+	* Hoping to knock off a few pull request reviews prior to leaving on vacation (starting this Friday, back on Sept. 6)
+
+Giovanni:
+	* Worked on integration script to simplify Jenkins jobs (move from multijob to freestyle jobs)
+	* General server maintenance (updates, fixing small Jenkins/VirtualBox issues, improving some Ansible roles)
+	* Sent the "Local development environment survey" -- please answer if you haven't: https://docs.google.com/forms/d/e/1FAIpQLSdKaSfLaynECHN-dLY2ig6XZPVNEAX0YuYd_-GSeFJLysKN7w/viewform
+		* We need a better picture about what's being used while planning CI features
+
+Simon
+	* Back from vacation (WELCOME BACK, SIMON!)
+	* Looking at Antranig's journaling work https://github.com/GPII/universal/pull/463
+	* Ran into inconsistently failing acceptance tests under Windows VM (failed 2 times out of maybe 10-15 runs)
+	* https://gist.github.com/simonbates/9b17490f03cd66eb3655bd061f3f9391
+	* Looks like it's the same issue as that captured in https://issues.gpii.net/browse/GPII-1108
+	* TODO: Run acceptance tests against https://github.com/GPII/windows/pull/83 and see if still get failures
+
+Steve Grundell
+	* Progressing with GPII-1540 - where AT re-appears after wakeup, login/lock screen
+		* Due to the AT software being killed without allowing it to unregister itself
+		* Solution is to send WM_QUIT to the windows owned by the process
+		* Fix is complete, just testing it
+	* GPII-581 finished off.
+
+Kavya:
+	*     Drafted down core1 Testplan for team comments. Reviewed and updated
+	https://docs.google.com/document/d/1WlTNw4wsln5BwuXKdBk_lSjEaLQnsYODP2at5kf8KDg/edit
+	* Worked on powershell script for Hardware Inventory
+	* Worked on HW testing testplan 
+https://docs.google.com/document/d/14mgD-cIjR1UpdAmVERSYgQFA4SJqrWkVtOVbpjRJN7c/edit
+	* Ale and Sandra on installer
+
+
+Sandra:
+    - Very busy creating and updating status and work items for next release (Core 2)
+    - Following up with pending pull requests for Core 1.
+    - Reviewed Kavya's test plan draft
+    - Worked with Gregg and Colin on high-level milestone schedule for funding agencies. Once I have a final version I'll share with the team. 
+    - Completed the revisions for the IT survey for the AJCs.
+
+
+TONY:
+	1. Created a browser-based pouchdb wrapper to assist Simon and Alan's work.
+	1. Integrated this with the express-pouchdb grades needed for Cindy's work.  Removed the "in memory" approaches I had previously used in favor of the disk-based approach created for Cindy.
+	1. Demonstrated the work to date on the Fluid Sandbox at the Design Crit and good good feedback.  Need to review the full range of options for creating dynamic components with Antranig in our next 1:1, as we have seemingly hit some hard limits in the pre-nexus world.
+	1. Arranging a meeting related to user management with Simon, Cindy, myself, Antranig, and Andres from Ilunion.
+	1. Now that the pouchdb work is more or less stable, moving back to PRs and the UL API.
+	1. As part of the PRs, will go through and confirm all QI builds work.
+
+
+Agenda:
+    
+    Questions about creating dynamic components, current best practice and timeline for nexus improvements in this area. <TONY>
+	    !!!
+	

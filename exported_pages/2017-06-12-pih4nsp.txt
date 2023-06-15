@@ -1,0 +1,3 @@
+Agenda
+* Terraform CI/CD demo [tyler]
+* GPII-2443 questions [tyler]

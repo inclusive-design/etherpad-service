@@ -1,0 +1,17 @@
+1. Metrics review
+
+2. Anything to demo this week?
+   - no
+
+3. Sprint planning ?
+
+4. Remove old k8s-snapshots images
+   - done
+
+5. Perform monthly backup restoration test
+-> @weekly
+  - done
+
+6. Ask Sandra about the future of GPII AWS account 
+	– Some things are still there: ES for devs, workspaces app??
+	– Alfredo should know more

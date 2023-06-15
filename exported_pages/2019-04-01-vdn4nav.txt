@@ -1,0 +1,9 @@
+Agenda:
+    1. Anything to demo?
+	    * Nothing from ops team
+    2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+    3. Follow-up on postmortem
+	    * Tyler forgot to cc sandra on response to gregg (she is not on that thread). Now forwarded.
+    4. Review of Sprint 22
+    5. Planning of Sprint 23
+    https://issues.gpii.net/secure/RapidBoard.jspa?rapidView=21&view=planning.nodetail&selectedIssue=GPII-2806

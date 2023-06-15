@@ -1,0 +1,18 @@
+Topic: The current status of GPII security work
+Date: Jun 20, 2017
+Participants: Cindy, Colin, Greg, Sandra
+
+Focusing on securing the communication between GPII apps installed on users' computers and GPII Cloud
+		* Needed for the pilot next year when deploying GPII in community colleges and GPII Cloud is involved
+		* Each GPII app will be assigned a client credential, a pair of client id and secret
+		* GPII Cloud will verify the client credential before it responds with user settings
+		* The designed workflow: https://wiki.gpii.net/w/Designs_of_Using_a_Dedicated_Process_to_Protect_the_Client_Secret_Assigned_to_GPII_Local_Installation#Workflow
+
+This work has 2 parts:
+	* Part 1: Implement the workflow mentioned above, covered by JIRA https://issues.gpii.net/browse/GPII-2434. It contains 3 subtasks:
+		* Add the support of OAuth2 resource owner password credentials grant into the auth server (GPII-2435): has a pull request (https://github.com/GPII/universal/pull/519) that is under review
+		* Add the new GPII access requester module (GPII-2436): Will start soon
+		* Integration of the entire workflow (GPII-2437): haven’t started
+
+	* Part 2: Workflows to request and manage client credentials
+		* UX dependent: https://wiki.gpii.net/w/Workflows_to_Request_and_Manage_Client_Credentials

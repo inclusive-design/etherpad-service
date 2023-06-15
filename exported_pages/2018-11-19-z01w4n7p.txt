@@ -1,0 +1,20 @@
+Agenda:
+    - Are we on track for completion of FERPA tasks? 
+    - JIRA 3221
+	    * Impacts:
+		* locust tests
+			* change to use internal kubernetes domain name and skip nginx-ingress?
+		* uptime checks
+			* is flowmanager check sufficient and we delete preferences check?
+			* dropping preferences check loses some reporting value as flowmanager uptime check is only "is this port open"?
+			* implementation of /health endpoint for flowmanager might replace some or all of this value
+			* wait until /health exists before removing this?
+			* decision: drop preferences check, change flowmanager uptime check to use health endpoint (but health endpoint MUST correctly test that flowmanager can talk to preferences)
+		* anything else?
+		* when to handle this / how urgent is this problem?
+			* availability of pilot data doesn't seem like a huge deal
+			* combine with updates to liveness/readiness checks
+			* decision: add to sprint 14 and try to do it now or soon
+			
+	
+	- Regarding on track for completion, there are 137 story points left. Running at a velocity of 27 story points per sprint (team has been averaging 30 with Alfredo), completion is estimated now for 25-Jan-2019, without buffer. 

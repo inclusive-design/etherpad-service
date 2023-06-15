@@ -1,0 +1,71 @@
+
+
+[MEDIUM/LOW] - MODEL TRANSFORMATION FRAMEWORK:
+	* Reduced expression parser that supports:
+		* Allow to express mathematical expressions
+		* Recognize whether an expression is in the linear subset of Math (an if so, be able to produce the inverse)
+		* support all the content of Math.x)
+		* Logical negation
+		* Written up as https://issues.fluidproject.org/browse/FLUID-5894
+	* Nested transforms vs. moving to chained transforms:
+		* Create a less verbose way of expressing the component tree
+		* Idea: use actual component trees to represent transforms with complex structures - draw up a "smaller dialect" for expressing and encoding these as transforms
+			* This enables us to get rid of the crazy "inputPath" etc. duality which appears wrt transforms which appear in MT docs, and instead return to using standard IoC expressions for linking transforms throughout
+		* packaging system for writing component trees:
+			* How you write it
+			* Security model, allowing you to express constraints
+			* How you author it.... VIZZUALLY. GPII customers will very soon need some effective and usable way of authoring solutions registry entries
+		* Some aspects of the Security model overlap with similar work required for securing the Nexus - drawing up allowable paths which can be read and written from, allowable grades which can be instantiated
+		* Security within the nexus and chained transforms
+
+[HIGH] - UNIFIED LISTING vs SOLUTIONS REGISTRY:
+	* Getting the solutions registry to DB
+	* API/interface between UL
+	* GUI/UX for adding solutions via UL
+
+[HIGH] - MATCHMAKER:
+	* Sharded ontologies in solutions registry
+		* Immediately required for inversion support
+		* Required soon for "spinal ontology" support aka "apptology"
+	* Multi-layer configuration support
+
+[MEDIUM] REVIEW PRIORITY MASTER LIST - New features, etc.
+
+[HIGH] SOLUTION REGISTRY
+	1. allowing multiple versions of the same AT:
+		2. allow inheritance in settings handler declarations such that we can easily support multiple versions of AT without tons of cut and paste. (ie JAWS 15, 16, 17, RWG 9, 10, 11)
+		2. Allow specifying the OS versoin in more details (eg. in relation to the keyboard 64 vs 32 bit)
+	1. marking which settings are configurable on the fly
+
+[MEDIUM] - SNAPSHOTTER / FDT
+
+[HIGH] - SECURITY stuff (like accounts, logins, etc.)
+	* Account Manager (Cindy and Simon)
+	* Authentication Server improvements (Simon)
+	* Auditing/security events infrastructure (Colin, Simon, maybe Adewale remotely?)
+	* Firewall and network designs (via Kubernetes/Flannel/etc) (Gio)
+
+[MEDIUM/LOW] - WHAT'S SHARED AND WHAT NOT BETWEEN DESKTOPS / ATMS / OTHER DEVICES - Architectural and implementation strategies for GPII / APCP development among differents platforms.
+
+[MEDIUM] - OPERATIONS - Update and next steps?
+	* Consider what are the availability and performance requirements and design the architecture from there to avoid overengineering
+	* [HIGH] CI and Testing environments status
+	* Release and deployment automation and process
+
+[HIGH] - INSTALLERS - Status and next steps.
+
+[HIGH] - APCP PROJECTS? - JULY PILOTS
+
+[HIGH] Discuss interface between Flowmanager/PCP/PMT for writing tags - and in relation that, the workflow related to Oauth, user accounts, server layouts, etc.
+
+[LOW/MEDIUM] - ELECTRON - Through Infusion? How to integrate Steve's initiative?
+
+[HIGH] - SUPPORT FOR WEB BASED SOLUTIONS:
+	* Matchmaker should provide settings for webpages (https://pad.gpii.net/p/matchmaker-webpage-support-70f2ot6 )
+	* Browser channel and Nexus: Compare WebSockets protocol for our browser plugin against that for the Nexus and look for commonalities and differences
+		* Similarity: They both provide change-based synchronisation of model changes
+		* Difference: There is a "BrowserChannel" concept of a client id and list of authorised solutions, for which there is no equivalent in the Nexus. However, the Nexus needs some kind of security model implemented anyway
+	* Support for PMT/PCP communication with Flow Manager via the browser channel
+
+[MEDIUM] - MACINTOSH IMPLEMENTATION
+

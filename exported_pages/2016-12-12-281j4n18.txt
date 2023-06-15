@@ -1,0 +1,64 @@
+Ops meeting
+
+Updates
+
+Alfredo:
+	* Vagrant-gpii-ci plugin 0.0.1 released
+	* Adding support of Windows 10 to Vagrant-gpii-ci
+	* Building a playbook to deploy the ansible-jenkins-master role in the testing VMs i-0037,i-0038,i-0039
+	* Letsencrypt stuff
+	* F2F meetings
+
+Avtar:
+	* Joined some F2F meetings last Monday and Tuesday
+	* Worked with Tony on moving his http://i-0044.tor1.inclusivedesign.ca CI jobs over to using Alfredo's vagrant-vmenv work
+	* Spent some time working out possible Gitlab next steps https://issues.gpii.net/browse/GPII-2133?focusedCommentId=22940&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-22940 Hoping to chat about this topic during the Arch meeting on Wednesday
+
+Colin
+	* F2F last week
+		* agreed to separate the question of what build tools to use for application from what we use for CI provisioning infrastructure
+		* agreed just to fix the current scripts before opening a discussion of next steps
+		* some useful discussion about the next steps for CI (post-Jenkins) in the channel during the meetings
+		* lots of discussion of hardware sensitivity testing
+			* we need bare Windows boxes that can be fairly easily provisioned for (manual) GPII Windows testing: XP, 7, 8, 8.1, 10
+
+Giovanni
+	* F2F - Attended some meetings remotely
+	* Update Fedora 24 / CentOS 7 box (actually, the CentOS box is broken, I'm building a new one now)
+	* (stealthly) Upgrade h-0005 with VirtualBox 5.1.10 and vagrant 1.9.1 --> seems stable now
+	* Troubleshooting Jenkins i-0044
+		* Builds are okay now
+		* It seems Tony fixed with build that was getting stuck while running tests
+		* There is still one build that gets stuck... Tony has access to verify where it gets stuck and attempt to fix
+		* 
+
+Agenda items:
+
+	1. Mirror Fedora/CentOS repository
+		2. Need to see how to allocate so much space using qcow format
+		2. Option: https://github.com/cobbler/cobbler/wiki/Using-nginx-as-a-caching-proxy-instead-of-cloning-the-whole-epel-repo
+		2. Build should be much faster
+		2. Sould be more reliable
+	1. VirtualBox 5.1
+		2. Create CI task to automate building the box (on top of using packer)
+		2. Create a list of repositories that should be used with a new box to validate it:
+			3. Use Alfredo's vagrant-gpii-qi's sample configurations (https://github.com/amatas/vagrant-gpii-ci/tree/master/samples)
+			3. Use GPII/universal, GPII/linux and fluid-project/infusion
+		2. Enhance RSpec definitions that Alfredo created for the CentOS (maybe also create it for the Fedora box)
+			3. https://github.com/amatas/packer-centos/blob/NOJIRA-testing/test/centos_spec.rb
+	1. .gitlab-ci.yml configuration template
+		2. GPII-2133
+		2. Need to standarize the name of stages
+	1. GPII-2009
+
+
+Things we wanted to share:
+
+	* Issue in Vagrant 1.9.1 - https://github.com/mitchellh/vagrant/issues/8104
+		* Worked around in our environment here: https://github.com/avtar/qi-config/commit/ec189e96056f00099e63222827e43cb42251cd80
+	* Kubernetes 1.5 will be released this week
+		* Feature status: https://docs.google.com/spreadsheets/d/1g9JU-67ncE4MHMeKnmslm-JO_aKeltv2kg_Dd6VFmKs/edit
+
+
+
+

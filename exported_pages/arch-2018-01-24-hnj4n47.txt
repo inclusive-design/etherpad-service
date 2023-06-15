@@ -1,0 +1,109 @@
+UPDATES:
+
+Kasparnet: 
+	* Updating my pull requests
+	* Going through the matchmaker code, prepping for handover
+	* Filed pull request on improved documentation https://github.com/GPII/universal/pull/584
+	* Forgot to mention last week, but did a fix for infinite spinner issue: https://github.com/GPII/universal/pull/583
+
+Alfredo:
+	* GPII-2651- FluentD setup to collect and send the logs to ES
+	* Reading documentation about how to hardening our infrastructure
+	* Some code reviewing
+	* Merging the Vagrant-gpii-ci plugin in to GPII-ops repository
+
+Antranig
+	* Pretty  this week
+	* Meeting with Astea about review fixes for base pull request
+	* Trying to follow Kaspar's matchmaker work but don't have the brainpower
+	* Meeting about handling errors, filed https://issues.gpii.net/browse/GPII-2831 for new error signalling system
+	* We need to revitalise https://issues.gpii.net/browse/GPII-2665 for new styled error display and offer it to Astea since we now have new wireframes from Whitney
+
+Brendan:
+	* Hardening/Vendor/Acceptable Use are done
+	* Up this week: Security Eng / Conf Management / Risk Register
+	* Planning to start Monday: ISO 27002 Assessment
+		* What it's for: finding the full delta between where we are now and where we need to be by June 1 (FERPA)
+		* What it's super not for: assigning blame :(
+		* Therefore, if I email you questions, please just do let me know. I am not the Bobs from Office Space (honest!)
+
+Cindy:
+	* GPII-2630
+		* Fixed all tests for the dev config (except the ones for testing /users/preference, waiting for Steve Githens' reply on whether that end point is in use) and the production VM
+		* Working on the documentation
+		* What's left: fix the tests for the production config
+	* Address pull request comments
+
+Danail (on behalf of Astea):
+	* Working on the `PCP-client` PR comments - finalising things
+	* Added the “white theme” to the `PCP-client` branch
+	* GPII-2818: For now we decided to go with the certificate exception for the “umd.edu” domain
+	* Working on the Technical Evaluation document for rule engine/expression evaluator
+		* https://docs.google.com/document/d/1gTdJFvGODpYDz8wPIbptRc3VW3DEZXzlQfyq9zvKzds/edit?usp=sharing
+		* Still in progress
+		* Working on a POC for a simpler, infusion-only evaluator, that uses timers instead of polling
+
+Javi
+	* Last week we delivered a new installer for the pre-pilots2
+	* This week I'm working on another installer for a demo next week (ATIA)
+
+JJ:
+	* Working into updating pull requests for ATIA-DEMO:
+		* GPII-2521: Steve suggestions + Several stability changes, nothing definitive.
+		* GPII-830: Working into ZoomText integration.
+		* GPII-2554: Talking with Steve about integrating minimal solution with his work.
+
+Joseph:
+	* Working on integrating Process Reporter into acceptance and integration testing (GPII-1882 and GPII-2275)
+	* Looking at Kasper's GPII-1230 branch regarding changes to solution entry structure
+	* Commented on some of his code.
+	* Continuing with modfiyfing ProcessReporter code and/or Kasper's code to make this work.
+
+
+Kavya:
+	*     Testing Prepilot 2 installer version
+	*      Going through 2212 and zoomtext AT for Demo next week
+	*      Started testing on Demo version build
+
+
+Sandra:
+    - Posted again the position for scalability. Reviewing resumes. Have a few screening interviews scheduled. 
+    - Staffing discussions. 
+    - Lots of meetings.
+    - Driving preparedness for Gregg's demo for ATIA (JJ, Javi, Kavya, Steve Grundell).
+    - Pre-pilot 2 started yesterday. Positive feedback from Maureen. 
+
+
+Steve Grundell:
+    Pilot & demo things:
+        Got the task-tray icon locked, using JJ's UI Automation magic - GPII-2554
+        Test info for multiple language support - GPII-2212
+        Working with JJ on whatever it was he was doing (many difficult things...)
+    Updating windows service - GPII-2883
+    IoD discussions
+
+Tony:
+
+		* Started the preliminary work for the i18n spike I discussed with various of you in late 2017.
+				* Reviewed previous tickets, notes, technical reviews, relative infusion docs and source.
+				* updated fluid.stringTemplate to support deeper paths to material, instead of just top-level keys. (Awaiting review)
+				* Moved the message resolver out of Renderer.js and into its own separate file. (awaiting review, same PR)
+				* Wrote the initial docs for the gpii-handlebars message-helper that Antranig, Steve and I have been discussing (sometimes here).
+		* Automated UL API import and reporting scripts so that task can be handed over post P4A.
+		* Cleaned up a bunch of EASTIN records using our cached copy of their records and updated transformation rules. 
+		* The Windows code coverage pull still needs final review. 
+
+Tyler:
+    * prd and stg are back and upgraded
+    * Design and code reviews: vault scripts, hardening standards, LDAPS, vagrant-gpii-ci
+
+
+AGENDA:
+
+Cindy: Shall we continue to test the trusted flow manager in the production config? If yes, which part should be running live?
+	* The current test for it: https://github.com/GPII/universal/blob/master/tests/ProductionConfigTests.js#L75
+		* This appears to connect to the *production* server; is that correct? If so, that's problematic.
+	* It connects to the live preferences server to retrieve user preferences
+	* With the change of GPII-2630, the prefs server is no longer a standalone server, it will become a subcomponent of the flow manager
+	* The decision is to axe this test and only test the live cloud based flow manager
+

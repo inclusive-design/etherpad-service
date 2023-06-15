@@ -1,0 +1,12 @@
+1. Anything to demo this week?
+  - Kiali
+  
+
+2. Review key metrics - https://pad.gpii.net/mypads/?/mypads/group/gpii-infrastructure-standups-lix4njm/pad/view/key-metrics-for-infrastructure-pc1g4nnd
+
+- Service Account Keys Added - seems like GCP behind the scenes stuff
+- review next week
+
+3. DNS
+ - gcp.gpii.net in AWS not used (and test1 not used)
+ 

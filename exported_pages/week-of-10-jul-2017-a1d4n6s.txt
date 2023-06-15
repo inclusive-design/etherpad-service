@@ -1,0 +1,37 @@
+2017-07-10
+
+Giovanni:
+	* Yesterday: GPII-2470 / GPII-2411 / GPII-2232
+		* https://github.com/GPII/universal/pull/525 (waiting)
+		* https://github.com/GPII/universal/pull/524 (merged)
+		* https://github.com/GPII/universal/pull/522 (merged)
+		* https://github.com/GPII/universal/pull/521 (waiting)
+	* Today: GPII-2470 / GPII-2411 / GPII-2232
+	* Not blocked
+
+Tyler:
+    * Yesterday: GPII-2412
+    * Today: GPII-2412
+    * Not blocked
+
+2017-07-12
+
+Tyler:
+    * Yesterday: GPII-2412
+    * Today: GPII-2412
+    * Not blocked
+
+
+2017-07-14
+
+Giovanni:
+	* Yesterday: GPII-2456 (fluid.tabbable error - non-Sprint task)
+	* Today: GPII-2470
+	* Not blocked
+
+Tyler:
+    * Yesterday: GPII-2412
+		* Good news: i can run a single 'rake' command and it does everything: create cluster dns, run kops to generate cluster config, run tf on that cluster config to actually spin up cluster, run tests, teardown
+		* Bad news: you have to run rake 3 times, 10 minutes apart each time :(
+    * Today: GPII-2412
+    * Not blocked

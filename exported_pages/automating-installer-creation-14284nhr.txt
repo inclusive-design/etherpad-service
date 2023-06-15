@@ -1,0 +1,40 @@
+Automating the installer creation
+
+Create a repo that can be added to CI to perform installer builds and publish the results.
+	* "Create a [separate] repo" moves us away from the "monorepo" idea (idk how serious that plan is) but is probably the right move, especially today - Yes, I had this dilemma, but given our current set up, yes, having a different repo made sense to me
+This new repository pulls the different resources to create a fully-functional installer that can be officially released
+These resources are:
+	* gpii-app: https://github.com/GPII/gpii-app
+	* gpii-wix-installer: https://github.com/GPII/gpii-wix-installer
+	* morphic-sharex-installer: https://github.com/javihernandez/morphic-sharex-installer
+	* morphic-documorph-installer: https://github.com/javihernandez/morphic-documorph-installer (private - need consent from devs to make this public)
+	* gpii-filebeat-installer: https://github.com/stegru/gpii-filebeat-installer
+		* We need to think about how we can provide the credentials for the creation of this merge module in a secure way
+			* We have ansible code for this today. It will change when we change CI, but this is a persistent problem that we will have a solution for. - Great :)
+
+This implies that the bits for creating the installer will be removed from gpii-app
+We need a way to indicate which parts of the installer we want to include in the installer or to perform customizations, i.e.:
+	* If we want to include filebeat in the installer
+	* If we want to configure the reset-to-std functionality
+	* If we want to provide a specific siteConfig file different that the default one
+	* If we want to configure the service to point to a specific cloud cluster
+* Sounds like we want to produce several installers on each build: a "Morphic only" one, one that includes filebeat, one that includes various language packs, etc. - Yes, but not sure how to do that in one run, let me think a bit more about it
+
+
+Ideally, the default config of this repo will create "official" installers that can be released - but this is a potential topic for discussion
+* I don't think this is optional. Automated builds includes automated publishing of artifacts. Sure, but I'm not sure yet how we can perform different kind of builds i.e.: for testing or releasing
+
+Will probably need codesigning soon (https://issues.gpii.net/browse/GPII-1767)
+
+Also, it would be great if we can provide some testing, mostly, to ensure that:
+	* That we can install/uninstall
+		* Unattended install/uninstall - is this still relevant?
+		* Try to create tests that emulates user interaction to install the software - stegru has some of this already in place (https://github.com/stegru/gpii-app/tree/GPII-3399/tests/installer)
+	* When installed
+		* Test that all the components are in place
+		* Test that is properly configured (see line 14)
+		* Ensure that both the service and morphic-app are running
+		* Perform basic login/logouts
+			* Not sure how to achieve this (potential topic for discussion)
+		* Emulate user interaction to remove the installer and check that everything has been removed
+

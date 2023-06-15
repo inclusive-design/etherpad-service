@@ -1,0 +1,11 @@
+PCP Status Meeting August 14, 2017
+
+Progress this week
+	* Added tasks to JIRA in the GPII project, PCP component https://issues.gpii.net/browse/GPII-2533?filter=14500
+	* Interested in organizing tasks into Epics (or whatever the correct JIRA terminology is for a prioritized sprint plan)
+
+Next Steps
+	* Create first pull request to gpii-app repository including code related to several tasks
+
+Technical Questions
+	* Question about lifecycle events: 

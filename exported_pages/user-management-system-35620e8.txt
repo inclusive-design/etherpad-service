@@ -1,0 +1,19 @@
+The data format used by gpii-express-user is comptible with the node module couchUser - as well as, presumably, the internal format used by CouchDB in its so-called "_users" table
+
+What we need in gpii-express-user:
+	* manage user in groups
+	* user permissions
+	* user profile
+	* be able to work with oauth integration
+
+2 levels of access:
+	* OAuth privacy settings page: give permission to prefs or subset of prefs to be shared with services
+	* PMT: to adminster all prefs and all tokens that are associated with a user
+
+Difference btw kettle and gpii-express
+kettle: has support to web sockets, used for infrastracture apps such as GPII and Nexus
+gpii-express: support native express routing, target for user facing web apps that need handlebars and rendering, 
+
+GPII requirements:
+	* sign up, for preferences server and oauth server
+

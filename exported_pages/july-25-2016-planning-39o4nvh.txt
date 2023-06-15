@@ -1,0 +1,69 @@
+Notes from TJ's visit: 
+
+Design Cards
+	* suggested we do the design cards excercise at the grantees meeting.
+		* check with Jutta/TJ about how they want to use the cards
+		* fleshing out activities
+	* expanding to encompass content creators
+		* perhaps a "How to Use These Guidelines" page that highlights particular principles/practices/tools/activities for various audiences
+	* Who are "content creators"?
+	* Create example uses of Guide. Example: how a musician / teacher / etc might use it.
+		* Would these be cards themselves?
+	* Retire old design handbook: https://wiki.fluidproject.org/display/fluid/Design+Handbook
+	* Link the printed version and the website. We should have a single source of data for both outputs. 
+	* Link to printable PDF to site
+		* there are 2 version: one for Duplex printing, and one for screen viewing.
+	* Depending on the PDF automation solution, we will need to evaluate the accessibility of the output.
+	* We should add Twitter Card metadata to the generated pages: https://dev.twitter.com/cards/overview
+	* Move relevant content from the ILDH to the Guide site.
+		* If me move content from the ILDH, we will have to either point to the guide site, or automatically pull the info from the guide site
+		* 
+
+PhET / Discovery Cats
+	* TJ played through both, but nothing specific came up
+
+The L3: Lifelong Learning Lab
+		* We need to add the type of metrics that TJ uses - bicycle data. Strava
+			* https://www.strava.com
+				* https://strava.github.io/api/
+				* http://labs.strava.com/developers/
+			* this probably looks like:
+				* ability to indicate you want to track a numeric metric
+				* a prompt to track it as part of the daily journal page
+				* ability to indicate what the measure used is (kilometres/miles, time spent, etc)
+					* automated unit conversion
+						* specific measure (km / miles, hours / seconds)
+						* type of measure (distance, time)
+						* the number itself
+				* eventually, ability to connect to other systems/devices to track measurement
+				* this underlying capability will form the basis of various other functions for numeric tracking
+			* design challenge to show different metrics in the same chart
+		* reskin UI based on user prefs
+
+QI
+Music Controls
+	* TJ can connect us with someone in Srilanka creating OER. 
+
+Nexus
+
+Chart Authoring
+	- fix side-by-side duplicate percentages bug
+	- maybe a demo that shows multiple chart styles from the same data. so we can show of our charting framework 
+
+
+Providing teachers with the scaffolding to use open content, local content and individualized content. 
+
+Helping people who have adopted the open texts to now leverage the fact that they are open.
+
+
+
+Tidy up tasks: 
+
+- get Learning Dashboard code into a state where it can be moved to the repository
+- get the latest chartAuthoring code finally merged
+
+
+
+
+
+
